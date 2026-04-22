@@ -5,271 +5,153 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hemraj Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
+body{background:#0b1220;color:white;}
 
-/* BODY */
-body{
-background:#0b1220;
-color:white;
-}
-
-/* NAVBAR */
+/* NAV */
 nav{
-display:flex;
-justify-content:center;
-gap:25px;
-padding:15px;
+position:sticky;top:0;z-index:999;
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 25px;
 background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-position:sticky;
-top:0;
-z-index:999;
+backdrop-filter:blur(12px);
 }
-
-nav a{
-color:white;
-text-decoration:none;
-font-weight:500;
-transition:.3s;
-}
-
-nav a:hover{
-color:#00d4ff;
-}
+nav .logo{font-weight:700;color:#00d4ff;font-size:18px;}
+nav ul{display:flex;gap:20px;list-style:none;}
+nav a{color:white;text-decoration:none;font-size:14px;transition:.3s;}
+nav a:hover{color:#00d4ff;}
 
 /* HERO */
 .hero{
-height:90vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-background:linear-gradient(135deg,#0b1220,#111c33);
-padding:20px;
+min-height:100vh;
+display:flex;flex-direction:column;justify-content:center;align-items:center;
+text-align:center;padding:20px;
+background:radial-gradient(circle at top,#111c33,#0b1220);
 }
-
 .hero h1{
-font-size:42px;
+font-size:48px;
 background:linear-gradient(90deg,#00d4ff,#7c3aed);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:fade 2s ease;
 }
+.hero p{max-width:650px;margin-top:15px;color:#cbd5e1;line-height:1.7;font-size:15px;}
 
-.hero p{
-max-width:700px;
-margin-top:15px;
-color:#cbd5e1;
-line-height:1.7;
-}
-
-@keyframes fade{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-/* BUTTON */
 .btn{
-margin-top:20px;
-padding:12px 25px;
-border:none;
-border-radius:25px;
+margin-top:25px;
+padding:12px 30px;border:none;border-radius:30px;
 background:linear-gradient(90deg,#00d4ff,#7c3aed);
-color:white;
-cursor:pointer;
+cursor:pointer;color:white;font-weight:500;
 transition:.3s;
 }
+.btn:hover{transform:scale(1.05);box-shadow:0 0 20px #00d4ff55;}
 
-.btn:hover{
-transform:scale(1.05);
-}
-
-/* SECTION TITLE */
 .section-title{
-text-align:center;
-font-size:28px;
-margin-bottom:30px;
-color:#00d4ff;
+text-align:center;font-size:30px;margin-bottom:40px;color:#00d4ff;
 }
 
 /* ABOUT */
-#about{
-padding:80px 20px;
-background:#0f172a;
-}
-
-.about-container{
-max-width:1000px;
-margin:auto;
-text-align:center;
-}
-
+#about{padding:80px 20px;background:#0f172a;}
+.about-container{max-width:1000px;margin:auto;text-align:center;}
 .skills{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-margin-top:30px;
+display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:35px;
 }
-
 .skill{
+padding:18px;border-radius:14px;
 background:rgba(255,255,255,0.05);
-padding:15px;
-border-radius:12px;
 border:1px solid rgba(255,255,255,0.1);
 transition:.3s;
 }
+.skill:hover{transform:translateY(-6px);border-color:#00d4ff;}
 
-.skill:hover{
-transform:translateY(-5px);
-border-color:#00d4ff;
-}
-
-#portfolio{
-padding:80px 20px;
-background:#0b1220;
-}
+/* PROJECTS */
+#portfolio{padding:80px 20px;}
 .projects-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
-max-width:1100px;
-margin:auto;
+display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;max-width:1100px;margin:auto;
 }
 .project-card{
+padding:22px;border-radius:16px;
 background:rgba(255,255,255,0.05);
-padding:20px;
-border-radius:15px;
 border:1px solid rgba(255,255,255,0.1);
-text-decoration:none;
-color:white;
-transition:.3s;
-position:relative;
-overflow:hidden;
+text-decoration:none;color:white;
+transition:.3s;position:relative;overflow:hidden;
 }
-.project-card::before{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-background:linear-gradient(135deg,#00d4ff33,#7c3aed33);
-top:0;
-left:0;
-opacity:0;
-transition:.3s;
-}
-.project-card:hover::before{
-opacity:1;
-}
+.project-card:hover{transform:translateY(-8px);}
+.project-card h3{color:#00d4ff;margin-bottom:8px;}
 
-.project-card:hover{
-transform:translateY(-8px);
-}
-
-.project-card h3{
-color:#00d4ff;
-}
-#contact{
-padding:80px 20px;
-background:#0f172a;
-}
+/* CONTACT */
+#contact{padding:80px 20px;background:#0f172a;}
 .contact-box{
-max-width:900px;
-margin:auto;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
+max-width:1000px;margin:auto;
+display:grid;grid-template-columns:1fr 1fr;gap:25px;
 }
+form{background:rgba(255,255,255,0.05);padding:20px;border-radius:15px;}
 input,textarea{
-width:100%;
-padding:12px;
-margin:10px 0;
-border-radius:10px;
-border:none;
-background:rgba(255,255,255,0.1);
-color:white;
-outline:none;
+width:100%;padding:12px;margin:10px 0;border:none;border-radius:10px;
+background:rgba(255,255,255,0.1);color:white;
 }
 button{
-width:100%;
-padding:12px;
-border:none;
-border-radius:10px;
+width:100%;padding:12px;border:none;border-radius:10px;
 background:linear-gradient(90deg,#00d4ff,#7c3aed);
-color:white;
-cursor:pointer;
+cursor:pointer;color:white;
 }
-footer{
-text-align:center;
+
+.contact-info{
 padding:20px;
-background:#050914;
-color:#94a3b8;
-margin-top:40px;
+background:rgba(255,255,255,0.05);
+border-radius:15px;
 }
+.contact-info h3{color:#00d4ff;margin-bottom:10px;}
+.contact-info p{color:#cbd5e1;margin:8px 0;}
+
+footer{text-align:center;padding:25px;background:#050914;color:#94a3b8;margin-top:40px;font-size:14px;}
+
+/* MOBILE */
 @media(max-width:768px){
-.hero h1{font-size:30px;}
+nav{flex-direction:column;gap:10px;}
+.hero h1{font-size:32px;}
 .contact-box{grid-template-columns:1fr;}
 }
 </style>
 </head>
+
 <body>
-<!-- NAV -->
+
 <nav>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#portfolio">Projects</a>
-<a href="#contact">Contact</a>
+<div class="logo">Hemraj</div>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#portfolio">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
-
 <h1>Hemraj Adhikari</h1>
-
-<p>
-Cloud Support • System Administrator • IT Infrastructure Specialist • Web Developer  
-<br><br>
-5+ Years Experience | 50+ Websites Managed | Hosting & Cloud Expert
-</p>
+<p>Cloud Support • System Administrator • IT Infrastructure Specialist • Web Developer<br><br>5+ Years Experience | 50+ Websites Managed | Hosting & Cloud Expert</p>
+<button class="btn">Hire Me</button>
 </section>
-<!-- ABOUT -->
+
 <section id="about">
-
 <h2 class="section-title">About Me</h2>
-
 <div class="about-container">
-
-<p style="color:#cbd5e1;">
-I specialize in IT support, system administration, cloud hosting, DNS, cPanel, AWS, and website deployment.
-</p>
+<p style="color:#cbd5e1;">I specialize in IT support, system administration, cloud hosting, DNS, cPanel, AWS, and website deployment.</p>
 
 <div class="skills">
-
 <div class="skill">Cloud (AWS, Google Workspace)</div>
 <div class="skill">System Admin (Windows/Linux)</div>
 <div class="skill">Networking (DNS, DHCP, LAN)</div>
 <div class="skill">Web Hosting & cPanel</div>
 <div class="skill">Security & Backup</div>
 <div class="skill">Remote IT Support</div>
-
 </div>
-
 </div>
-
 </section>
 
-<!-- PORTFOLIO -->
 <section id="portfolio">
-
 <h2 class="section-title">My Projects</h2>
-
 <div class="projects-grid">
 
 <a class="project-card" href="https://kbmfm.com/" target="_blank">
@@ -294,7 +176,7 @@ I specialize in IT support, system administration, cloud hosting, DNS, cPanel, A
 
 <a class="project-card" href="#">
 <h3>Sargam Vidyalaya</h3>
-<p>School Website (Pune)</p>
+<p>School Website</p>
 </a>
 
 <a class="project-card" href="#">
@@ -303,12 +185,9 @@ I specialize in IT support, system administration, cloud hosting, DNS, cPanel, A
 </a>
 
 </div>
-
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
-
 <h2 class="section-title">Contact Me</h2>
 
 <div class="contact-box">
@@ -320,15 +199,14 @@ I specialize in IT support, system administration, cloud hosting, DNS, cPanel, A
 <button type="submit">Send Message</button>
 </form>
 
-<div style="color:#cbd5e1;line-height:1.8;">
-<h3 style="color:#00d4ff;">Get in Touch</h3>
+<div class="contact-info">
+<h3>Get in Touch</h3>
 <p>Email: hemrajhadhikari@gmail.com</p>
 <p>Phone: +977-9865802093</p>
 <p>Location: Kathmandu, Nepal</p>
 </div>
 
 </div>
-
 </section>
 
 <footer>
