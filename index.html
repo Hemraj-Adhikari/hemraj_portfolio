@@ -5,268 +5,360 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hemraj Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-body{
+/* RESET */
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 scroll-behavior:smooth;
 }
 
+/* BODY */
+body{
+background:#0b1220;
+color:white;
+}
+
 /* NAVBAR */
 nav{
-background:#0f172a;
+display:flex;
+justify-content:center;
+gap:25px;
 padding:15px;
-text-align:center;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
 position:sticky;
 top:0;
-z-index:1000;
+z-index:999;
 }
 
 nav a{
 color:white;
-margin:0 15px;
 text-decoration:none;
 font-weight:500;
+transition:.3s;
+}
+
+nav a:hover{
+color:#00d4ff;
 }
 
 /* HERO */
 .hero{
-padding:80px 20px;
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
-background:#020617;
-color:white;
+background:linear-gradient(135deg,#0b1220,#111c33);
+padding:20px;
 }
 
 .hero h1{
-font-size:34px;
+font-size:42px;
+background:linear-gradient(90deg,#00d4ff,#7c3aed);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:fade 2s ease;
 }
 
 .hero p{
 max-width:700px;
-margin:auto;
+margin-top:15px;
 color:#cbd5e1;
 line-height:1.7;
 }
 
+@keyframes fade{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* BUTTON */
+.btn{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#00d4ff,#7c3aed);
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* SECTION TITLE */
+.section-title{
+text-align:center;
+font-size:28px;
+margin-bottom:30px;
+color:#00d4ff;
+}
+
 /* ABOUT */
 #about{
-padding:70px 20px;
-background:linear-gradient(135deg,#0f172a,#020617);
-color:#e2e8f0;
+padding:80px 20px;
+background:#0f172a;
 }
 
 .about-container{
-max-width:950px;
+max-width:1000px;
 margin:auto;
+text-align:center;
 }
 
 .skills{
 display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-margin-top:20px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+margin-top:30px;
 }
 
 .skill{
-background:#1e293b;
-padding:12px;
-border-radius:6px;
+background:rgba(255,255,255,0.05);
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.1);
+transition:.3s;
+}
+
+.skill:hover{
+transform:translateY(-5px);
+border-color:#00d4ff;
 }
 
 /* PORTFOLIO */
 #portfolio{
 padding:80px 20px;
-background:#f8fafc;
-}
-
-.container{
-max-width:1100px;
-margin:auto;
+background:#0b1220;
 }
 
 .projects-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
+max-width:1100px;
+margin:auto;
 }
 
 .project-card{
-background:white;
+background:rgba(255,255,255,0.05);
 padding:20px;
-border-radius:12px;
+border-radius:15px;
+border:1px solid rgba(255,255,255,0.1);
 text-decoration:none;
-color:black;
+color:white;
+transition:.3s;
+position:relative;
+overflow:hidden;
+}
+
+.project-card::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#00d4ff33,#7c3aed33);
+top:0;
+left:0;
+opacity:0;
 transition:.3s;
 }
 
+.project-card:hover::before{
+opacity:1;
+}
+
 .project-card:hover{
-transform:translateY(-5px);
+transform:translateY(-8px);
+}
+
+.project-card h3{
+color:#00d4ff;
 }
 
 /* CONTACT */
-.contact-section{
-display:flex;
-flex-wrap:wrap;
+#contact{
+padding:80px 20px;
+background:#0f172a;
+}
+
+.contact-box{
+max-width:900px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
 gap:20px;
-padding:20px;
 }
 
-.contact-form, .contact-info{
-flex:1;
-background:white;
-padding:20px;
-border-radius:10px;
-}
-
-.contact-input{
+input,textarea{
 width:100%;
-padding:10px;
-margin-bottom:10px;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+border:none;
+background:rgba(255,255,255,0.1);
+color:white;
+outline:none;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:linear-gradient(90deg,#00d4ff,#7c3aed);
+color:white;
+cursor:pointer;
 }
 
 /* FOOTER */
 footer{
-background:#0f172a;
-color:white;
 text-align:center;
 padding:20px;
+background:#050914;
+color:#94a3b8;
 margin-top:40px;
 }
 
-footer a{
-color:#6366f1;
-margin:0 10px;
-text-decoration:none;
-}
-
+/* RESPONSIVE */
 @media(max-width:768px){
-.skills{grid-template-columns:1fr;}
-.contact-section{flex-direction:column;}
+.hero h1{font-size:30px;}
+.contact-box{grid-template-columns:1fr;}
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav>
-<a href="#">Home</a>
+<a href="#home">Home</a>
 <a href="#about">About</a>
 <a href="#portfolio">Projects</a>
 <a href="#contact">Contact</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-<h1>Hello Namste, I am Hemraj Adhikari</h1>
+<section class="hero" id="home">
+
+<h1>Hemraj Adhikari</h1>
+
 <p>
-Cloud Support — System Administrator — IT Infrastructure Specialist — Website & App Developer<br><br>
-More than 5 years of experience. Deployed and managed 50+ websites.
+Cloud Support • System Administrator • IT Infrastructure Specialist • Web Developer  
+<br><br>
+5+ Years Experience | 50+ Websites Managed | Hosting & Cloud Expert
 </p>
+
+<button class="btn">View My Work</button>
+
 </section>
 
 <!-- ABOUT -->
 <section id="about">
+
+<h2 class="section-title">About Me</h2>
+
 <div class="about-container">
 
-<h2>About Me</h2>
-
-<p>
-Web & Hosting Administration, cPanel, Domain & DNS Management, SSL
+<p style="color:#cbd5e1;">
+I specialize in IT support, system administration, cloud hosting, DNS, cPanel, AWS, and website deployment.
 </p>
 
-<h3>Skills</h3>
 <div class="skills">
-<div class="skill">Cloud: AWS, Google Workspace, Microsoft 365</div>
-<div class="skill">System Admin: Windows, Linux</div>
-<div class="skill">Networking: LAN/WAN, DNS, DHCP</div>
-<div class="skill">IT Support & Security</div>
-<div class="skill">Backup & Recovery</div>
-<div class="skill">Remote Support Tools</div>
+
+<div class="skill">Cloud (AWS, Google Workspace)</div>
+<div class="skill">System Admin (Windows/Linux)</div>
+<div class="skill">Networking (DNS, DHCP, LAN)</div>
+<div class="skill">Web Hosting & cPanel</div>
+<div class="skill">Security & Backup</div>
+<div class="skill">Remote IT Support</div>
+
 </div>
 
 </div>
+
 </section>
 
 <!-- PORTFOLIO -->
 <section id="portfolio">
-<div class="container">
 
-<h2>My Projects</h2>
+<h2 class="section-title">My Projects</h2>
 
 <div class="projects-grid">
 
-<a href="https://kbmfm.com/" target="_blank" class="project-card">
+<a class="project-card" href="https://kbmfm.com/" target="_blank">
 <h3>KBM FM</h3>
-<p>Radio Website</p>
+<p>Live Radio Streaming Website</p>
 </a>
 
-<a href="https://www.megaloksewa.com/" target="_blank" class="project-card">
+<a class="project-card" href="https://www.megaloksewa.com/" target="_blank">
 <h3>Mega Loksewa</h3>
-<p>Learning Platform</p>
+<p>Education Platform</p>
 </a>
 
-<a href="https://arradhanashrestha.com/" target="_blank" class="project-card">
-<h3>Aradhana Shrestha</h3>
-<p>Personal Portfolio</p>
+<a class="project-card" href="https://arradhanashrestha.com/" target="_blank">
+<h3>Aradhana Portfolio</h3>
+<p>Personal Branding Website</p>
 </a>
 
-<a href="#" class="project-card">
+<a class="project-card" href="#">
 <h3>Achham Online</h3>
-<p>News Portal</p>
+<p>News Portal System</p>
 </a>
 
-<a href="#" class="project-card">
-<h3>Sargam Vidyalaya (Pune)</h3>
-<p>School Website</p>
+<a class="project-card" href="#">
+<h3>Sargam Vidyalaya</h3>
+<p>School Website (Pune)</p>
 </a>
 
-<a href="#" class="project-card">
-<h3>Rout2Uni Group</h3>
-<p>CRM System & Website</p>
+<a class="project-card" href="#">
+<h3>Rout2Uni CRM</h3>
+<p>CRM & Business System</p>
 </a>
 
 </div>
 
-</div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact-section">
+<section id="contact">
 
-<div class="contact-form">
-<h2>Contact Me</h2>
+<h2 class="section-title">Contact Me</h2>
+
+<div class="contact-box">
+
 <form action="https://formspree.io/f/xkgdznrn" method="POST">
-<input type="text" name="name" class="contact-input" placeholder="Your Name" required>
-<input type="email" name="email" class="contact-input" placeholder="Your Email" required>
-<textarea name="message" class="contact-input" placeholder="Message"></textarea>
-<button>Send</button>
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea name="message" rows="5" placeholder="Your Message"></textarea>
+<button type="submit">Send Message</button>
 </form>
-</div>
 
-<div class="contact-info">
-<h2>Get in Touch</h2>
+<div style="color:#cbd5e1;line-height:1.8;">
+<h3 style="color:#00d4ff;">Get in Touch</h3>
 <p>Email: hemrajhadhikari@gmail.com</p>
 <p>Phone: +977-9865802093</p>
-
-<iframe src="https://maps.google.com/maps?q=Kathmandu&output=embed" width="100%" height="200"></iframe>
+<p>Location: Kathmandu, Nepal</p>
+</div>
 
 </div>
 
 </section>
 
-<!-- FOOTER -->
 <footer>
-<p>Design by Hemraj Adhikari</p>
-<div>
-<a href="#">Home</a>
-<a href="#about">About</a>
-<a href="#contact">Contact Us</a>
-</div>
+Design by <b>Hemraj Adhikari</b> • IT Portfolio
 </footer>
 
 </body>
