@@ -3,106 +3,311 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hemraj Adhikari</title>
+<title>Hemraj Portfolio</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f4f4f4;
+
+/* GLOBAL */
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
 }
 
-header {
-    background: #222;
-    color: #fff;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
+/* ================= ABOUT ================= */
+
+#about{
+padding:70px 20px;
+background:linear-gradient(135deg,#0f172a,#020617);
+color:#e2e8f0;
+border-radius:12px;
 }
 
-nav a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
+.about-container{
+max-width:950px;
+margin:auto;
 }
 
-.hero {
-    text-align: center;
-    padding: 60px;
-    background: #007BFF;
-    color: white;
+.about-text h2{
+font-size:34px;
+color:white;
 }
 
-.hero button {
-    padding: 10px 20px;
-    background: white;
-    color: #007BFF;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
+.about-text span{
+color:#6366f1;
 }
 
-section {
-    padding: 20px;
+.about-text p{
+line-height:1.7;
+color:#cbd5e1;
 }
 
-footer {
-    text-align: center;
-    background: #222;
-    color: white;
-    padding: 10px;
+.skills{
+margin-top:20px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
 }
+
+.skill{
+background:#1e293b;
+padding:14px;
+border-radius:8px;
+border:1px solid #334155;
+transition:.3s;
+}
+
+.skill:hover{
+border-color:#6366f1;
+transform:translateY(-3px);
+}
+
+.tool-list{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.tool{
+background:#1e293b;
+border:1px solid #334155;
+padding:8px 14px;
+border-radius:6px;
+}
+
+.stats{
+margin-top:30px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.stat{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+.stat h3{
+color:#6366f1;
+}
+
+.goal{
+margin-top:30px;
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+}
+
+.cta{
+margin-top:25px;
+padding:18px;
+background:linear-gradient(90deg,#6366f1,#4f46e5);
+text-align:center;
+border-radius:8px;
+color:white;
+}
+
+/* CERTIFICATES */
+
+.certificate-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+}
+
+.certificate-grid img{
+width:100%;
+border-radius:8px;
+transition:.3s;
+}
+
+.certificate-grid img:hover{
+transform:scale(1.05);
+}
+
+/* ================= PORTFOLIO ================= */
+
+#portfolio{
+padding:100px 20px;
+background:#f8fafc;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.project-card{
+background:white;
+border-radius:20px;
+padding:30px;
+text-decoration:none;
+transition:.3s;
+}
+
+.project-card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.project-icon{
+font-size:24px;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-section{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+max-width:1000px;
+margin:auto;
+padding:20px;
+}
+
+.contact-form, .contact-info{
+flex:1;
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.contact-input, .contact-text{
+width:100%;
+padding:12px;
+margin-bottom:12px;
+border-radius:10px;
+border:1px solid #ddd;
+}
+
+.contact-btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:10px;
+background:#1d72e8;
+color:white;
+cursor:pointer;
+}
+
+.map-container iframe{
+width:100%;
+height:250px;
+border:0;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+.skills{grid-template-columns:1fr;}
+.stats{grid-template-columns:1fr;}
+.contact-section{flex-direction:column;}
+}
+
 </style>
 
 </head>
 <body>
 
-<header>
-    <h1>Hemraj Adhikari</h1>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">About Me</a>
-        <a href="#">Contact</a>
-    </nav>
-</header>
+<!-- ================= ABOUT ================= -->
 
-<section class="hero">
-    <h2>Hello, I am Hemraj Adhikari</h2>
-    <p>Cloud Support — System Administrator — IT Infrastructure Specialist</p>
-    <p>Website — App Design. Build. Deploy</p>
-    <button>Know More</button>
+<section id="about">
+<div class="about-container">
+
+<h2>About <span>Me</span></h2>
+
+<p>I am an IT enthusiast from Nepal building digital solutions.</p>
+
+<h3>Professional Focus</h3>
+
+<div class="skills">
+<div class="skill">IT Support</div>
+<div class="skill">System Admin</div>
+<div class="skill">Networking</div>
+<div class="skill">Web Development</div>
+</div>
+
+<h3>Tools</h3>
+<div class="tool-list">
+<div class="tool">WordPress</div>
+<div class="tool">Linux</div>
+<div class="tool">Git</div>
+</div>
+
+<div class="stats">
+<div class="stat"><h3>4+</h3><p>Years</p></div>
+<div class="stat"><h3>20+</h3><p>Projects</p></div>
+<div class="stat"><h3>100%</h3><p>Effort</p></div>
+</div>
+
+<div class="cta">Available for IT Projects</div>
+
+</div>
 </section>
 
-<section>
-    <h2>About Me</h2>
-    <p>
-        More than 5 years of experience in Web & Hosting Administration,
-        cPanel, Domain & DNS Management, SSL.
-    </p>
+<!-- ================= PORTFOLIO ================= -->
+
+<section id="portfolio">
+<div class="container">
+
+<h2 style="text-align:center;">My Projects</h2>
+
+<div class="projects-grid">
+
+<a href="https://kbmfm.com/" target="_blank" class="project-card">
+<div class="project-icon">🌐</div>
+<h3>KBM FM</h3>
+<p>Radio Website</p>
+</a>
+
+<a href="https://www.megaloksewa.com/" target="_blank" class="project-card">
+<div class="project-icon">📘</div>
+<h3>Mega Loksewa</h3>
+<p>Learning Platform</p>
+</a>
+
+</div>
+
+</div>
 </section>
 
-<section>
-    <h2>Skills</h2>
+<!-- ================= CONTACT ================= -->
 
-    <h3>Cloud & SaaS Platforms</h3>
-    <p>Google Workspace, Microsoft 365, AWS (EC2, IAM, S3)</p>
+<div class="contact-section">
 
-    <h3>System Administration</h3>
-    <p>Windows, Linux, Networking (LAN/WAN, DNS, DHCP)</p>
+<div class="contact-form">
+<h2>Contact Me</h2>
+<form action="https://formspree.io/f/xkgdznrn" method="POST">
+<input type="text" name="name" class="contact-input" placeholder="Your Name" required>
+<input type="email" name="email" class="contact-input" placeholder="Your Email" required>
+<textarea name="message" class="contact-text" placeholder="Message"></textarea>
+<button class="contact-btn">Send</button>
+</form>
+</div>
 
-    <h3>IT Operations & Support</h3>
-    <p>Helpdesk, Security, Backup, Troubleshooting</p>
-</section>
+<div class="contact-info">
+<h2>Get in Touch</h2>
+<p>Email: hemrajhadhikari@gmail.com</p>
+<p>Phone: +9779865802093</p>
 
-<section>
-    <h2>Welcome to my Blog!</h2>
-    <p>Your support means a lot — please explore my latest posts!</p>
-    <p><strong>No results found</strong></p>
-</section>
+<div class="map-container">
+<iframe src="https://maps.google.com/maps?q=Kathmandu&output=embed"></iframe>
+</div>
 
-<footer>
-    <p>© Hemraj Adhikari | Design by Hemraj Adhikari</p>
-</footer>
+</div>
+
+</div>
 
 </body>
 </html>
