@@ -14,38 +14,35 @@ body{background:#0b1220;color:white;}
 nav{
 position:sticky;top:0;z-index:999;
 display:flex;justify-content:space-between;align-items:center;
-padding:15px 25px;
+padding:12px 20px;
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(12px);
 }
 nav .logo{font-weight:700;color:#00d4ff;font-size:18px;}
-nav ul{display:flex;gap:20px;list-style:none;}
+nav ul{display:flex;gap:18px;list-style:none;}
 nav a{color:white;text-decoration:none;font-size:14px;transition:.3s;}
 nav a:hover{color:#00d4ff;}
 
-/* HERO */
+/* HERO FIXED */
 .hero{
-min-height:100vh;
+min-height:80vh; /* reduced extra space */
 display:flex;flex-direction:column;justify-content:center;align-items:center;
-text-align:center;padding:20px;
+text-align:center;padding:40px 20px;
 background:radial-gradient(circle at top,#111c33,#0b1220);
 }
 .hero h1{
-font-size:48px;
+font-size:42px;
 background:linear-gradient(90deg,#00d4ff,#7c3aed);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+margin-bottom:10px;
 }
-.hero p{max-width:650px;margin-top:15px;color:#cbd5e1;line-height:1.7;font-size:15px;}
-
-.btn{
-margin-top:25px;
-padding:12px 30px;border:none;border-radius:30px;
-background:linear-gradient(90deg,#00d4ff,#7c3aed);
-cursor:pointer;color:white;font-weight:500;
-transition:.3s;
+.hero .tagline{
+font-size:16px;
+color:#cbd5e1;
+max-width:600px;
+line-height:1.6;
 }
-.btn:hover{transform:scale(1.05);box-shadow:0 0 20px #00d4ff55;}
 
 .section-title{
 text-align:center;font-size:30px;margin-bottom:40px;color:#00d4ff;
@@ -110,7 +107,8 @@ footer{text-align:center;padding:25px;background:#050914;color:#94a3b8;margin-to
 /* MOBILE */
 @media(max-width:768px){
 nav{flex-direction:column;gap:10px;}
-.hero h1{font-size:32px;}
+.hero h1{font-size:30px;}
+.hero .tagline{font-size:14px;}
 .contact-box{grid-template-columns:1fr;}
 }
 </style>
@@ -130,8 +128,7 @@ nav{flex-direction:column;gap:10px;}
 
 <section class="hero" id="home">
 <h1>Hemraj Adhikari</h1>
-<p>Cloud Support • System Administrator • IT Infrastructure Specialist • Web Developer<br><br>5+ Years Experience | 50+ Websites Managed | Hosting & Cloud Expert</p>
-<button class="btn">Hire Me</button>
+<p class="tagline">IT Enthusiast who loves technology 💻❤️</p>
 </section>
 
 <section id="about">
