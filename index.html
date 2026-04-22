@@ -5,24 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hemraj Portfolio</title>
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-/* GLOBAL */
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
-/* ================= ABOUT ================= */
+/* NAVBAR */
+nav{
+background:#0f172a;
+padding:15px;
+text-align:center;
+position:sticky;
+top:0;
+z-index:1000;
+}
 
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-weight:500;
+}
+
+/* HERO */
+.hero{
+padding:80px 20px;
+text-align:center;
+background:#020617;
+color:white;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+.hero p{
+max-width:700px;
+margin:auto;
+color:#cbd5e1;
+line-height:1.7;
+}
+
+/* ABOUT */
 #about{
 padding:70px 20px;
 background:linear-gradient(135deg,#0f172a,#020617);
 color:#e2e8f0;
-border-radius:12px;
 }
 
 .about-container{
@@ -30,148 +63,54 @@ max-width:950px;
 margin:auto;
 }
 
-.about-text h2{
-font-size:34px;
-color:white;
-}
-
-.about-text span{
-color:#6366f1;
-}
-
-.about-text p{
-line-height:1.7;
-color:#cbd5e1;
-}
-
 .skills{
-margin-top:20px;
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:12px;
+gap:10px;
+margin-top:20px;
 }
 
 .skill{
 background:#1e293b;
-padding:14px;
-border-radius:8px;
-border:1px solid #334155;
-transition:.3s;
-}
-
-.skill:hover{
-border-color:#6366f1;
-transform:translateY(-3px);
-}
-
-.tool-list{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-}
-
-.tool{
-background:#1e293b;
-border:1px solid #334155;
-padding:8px 14px;
+padding:12px;
 border-radius:6px;
 }
 
-.stats{
-margin-top:30px;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-}
-
-.stat{
-background:#1e293b;
-padding:20px;
-border-radius:10px;
-text-align:center;
-}
-
-.stat h3{
-color:#6366f1;
-}
-
-.goal{
-margin-top:30px;
-background:#1e293b;
-padding:20px;
-border-radius:10px;
-}
-
-.cta{
-margin-top:25px;
-padding:18px;
-background:linear-gradient(90deg,#6366f1,#4f46e5);
-text-align:center;
-border-radius:8px;
-color:white;
-}
-
-/* CERTIFICATES */
-
-.certificate-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-}
-
-.certificate-grid img{
-width:100%;
-border-radius:8px;
-transition:.3s;
-}
-
-.certificate-grid img:hover{
-transform:scale(1.05);
-}
-
-/* ================= PORTFOLIO ================= */
-
+/* PORTFOLIO */
 #portfolio{
-padding:100px 20px;
+padding:80px 20px;
 background:#f8fafc;
 }
 
 .container{
-max-width:1200px;
+max-width:1100px;
 margin:auto;
 }
 
 .projects-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
 .project-card{
 background:white;
-border-radius:20px;
-padding:30px;
+padding:20px;
+border-radius:12px;
 text-decoration:none;
+color:black;
 transition:.3s;
 }
 
 .project-card:hover{
-transform:translateY(-8px);
-box-shadow:0 15px 40px rgba(0,0,0,0.08);
+transform:translateY(-5px);
 }
 
-.project-icon{
-font-size:24px;
-}
-
-/* ================= CONTACT ================= */
-
+/* CONTACT */
 .contact-section{
 display:flex;
 flex-wrap:wrap;
 gap:20px;
-max-width:1000px;
-margin:auto;
 padding:20px;
 }
 
@@ -179,102 +118,116 @@ padding:20px;
 flex:1;
 background:white;
 padding:20px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+border-radius:10px;
 }
 
-.contact-input, .contact-text{
+.contact-input{
 width:100%;
-padding:12px;
-margin-bottom:12px;
-border-radius:10px;
-border:1px solid #ddd;
+padding:10px;
+margin-bottom:10px;
 }
 
-.contact-btn{
-width:100%;
-padding:14px;
-border:none;
-border-radius:10px;
-background:#1d72e8;
+/* FOOTER */
+footer{
+background:#0f172a;
 color:white;
-cursor:pointer;
+text-align:center;
+padding:20px;
+margin-top:40px;
 }
 
-.map-container iframe{
-width:100%;
-height:250px;
-border:0;
+footer a{
+color:#6366f1;
+margin:0 10px;
+text-decoration:none;
 }
-
-/* MOBILE */
 
 @media(max-width:768px){
 .skills{grid-template-columns:1fr;}
-.stats{grid-template-columns:1fr;}
 .contact-section{flex-direction:column;}
 }
 
 </style>
-
 </head>
+
 <body>
 
-<!-- ================= ABOUT ================= -->
+<!-- NAVBAR -->
+<nav>
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#portfolio">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
 
+<!-- HERO -->
+<section class="hero">
+<h1>Hello Namste, I am Hemraj Adhikari</h1>
+<p>
+Cloud Support — System Administrator — IT Infrastructure Specialist — Website & App Developer<br><br>
+More than 5 years of experience. Deployed and managed 50+ websites.
+</p>
+</section>
+
+<!-- ABOUT -->
 <section id="about">
 <div class="about-container">
 
-<h2>About <span>Me</span></h2>
+<h2>About Me</h2>
 
-<p>I am an IT enthusiast from Nepal building digital solutions.</p>
+<p>
+Web & Hosting Administration, cPanel, Domain & DNS Management, SSL
+</p>
 
-<h3>Professional Focus</h3>
-
+<h3>Skills</h3>
 <div class="skills">
-<div class="skill">IT Support</div>
-<div class="skill">System Admin</div>
-<div class="skill">Networking</div>
-<div class="skill">Web Development</div>
+<div class="skill">Cloud: AWS, Google Workspace, Microsoft 365</div>
+<div class="skill">System Admin: Windows, Linux</div>
+<div class="skill">Networking: LAN/WAN, DNS, DHCP</div>
+<div class="skill">IT Support & Security</div>
+<div class="skill">Backup & Recovery</div>
+<div class="skill">Remote Support Tools</div>
 </div>
-
-<h3>Tools</h3>
-<div class="tool-list">
-<div class="tool">WordPress</div>
-<div class="tool">Linux</div>
-<div class="tool">Git</div>
-</div>
-
-<div class="stats">
-<div class="stat"><h3>4+</h3><p>Years</p></div>
-<div class="stat"><h3>20+</h3><p>Projects</p></div>
-<div class="stat"><h3>100%</h3><p>Effort</p></div>
-</div>
-
-<div class="cta">Available for IT Projects</div>
 
 </div>
 </section>
 
-<!-- ================= PORTFOLIO ================= -->
-
+<!-- PORTFOLIO -->
 <section id="portfolio">
 <div class="container">
 
-<h2 style="text-align:center;">My Projects</h2>
+<h2>My Projects</h2>
 
 <div class="projects-grid">
 
 <a href="https://kbmfm.com/" target="_blank" class="project-card">
-<div class="project-icon">🌐</div>
 <h3>KBM FM</h3>
 <p>Radio Website</p>
 </a>
 
 <a href="https://www.megaloksewa.com/" target="_blank" class="project-card">
-<div class="project-icon">📘</div>
 <h3>Mega Loksewa</h3>
 <p>Learning Platform</p>
+</a>
+
+<a href="https://arradhanashrestha.com/" target="_blank" class="project-card">
+<h3>Aradhana Shrestha</h3>
+<p>Personal Portfolio</p>
+</a>
+
+<a href="#" class="project-card">
+<h3>Achham Online</h3>
+<p>News Portal</p>
+</a>
+
+<a href="#" class="project-card">
+<h3>Sargam Vidyalaya (Pune)</h3>
+<p>School Website</p>
+</a>
+
+<a href="#" class="project-card">
+<h3>Rout2Uni Group</h3>
+<p>CRM System & Website</p>
 </a>
 
 </div>
@@ -282,32 +235,39 @@ border:0;
 </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-
-<div class="contact-section">
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
 
 <div class="contact-form">
 <h2>Contact Me</h2>
 <form action="https://formspree.io/f/xkgdznrn" method="POST">
 <input type="text" name="name" class="contact-input" placeholder="Your Name" required>
 <input type="email" name="email" class="contact-input" placeholder="Your Email" required>
-<textarea name="message" class="contact-text" placeholder="Message"></textarea>
-<button class="contact-btn">Send</button>
+<textarea name="message" class="contact-input" placeholder="Message"></textarea>
+<button>Send</button>
 </form>
 </div>
 
 <div class="contact-info">
 <h2>Get in Touch</h2>
 <p>Email: hemrajhadhikari@gmail.com</p>
-<p>Phone: +9779865802093</p>
+<p>Phone: +977-9865802093</p>
 
-<div class="map-container">
-<iframe src="https://maps.google.com/maps?q=Kathmandu&output=embed"></iframe>
-</div>
+<iframe src="https://maps.google.com/maps?q=Kathmandu&output=embed" width="100%" height="200"></iframe>
 
 </div>
 
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>Design by Hemraj Adhikari</p>
+<div>
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#contact">Contact Us</a>
 </div>
+</footer>
 
 </body>
 </html>
