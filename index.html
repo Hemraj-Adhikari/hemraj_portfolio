@@ -86,6 +86,42 @@ section{padding:100px 6vw;position:relative}
 .focus-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted);transition:border-color .3s,transform .3s}
 .focus-card:hover{border-color:var(--cyan);transform:translateX(4px);color:var(--text)}
 .focus-icon{font-size:16px;flex-shrink:0}
+.about-intro-grid{
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-text{
+  flex: 1;
+}
+
+.about-image{
+  flex: 0 0 320px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img{
+  width: 100%;
+  max-width: 320px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  object-fit: cover;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px){
+  .about-intro-grid{
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-image{
+    margin-top: 20px;
+  }
+}
 
 /* TOOLS ROW */
 .tools-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
@@ -282,22 +318,46 @@ footer{padding:30px 6vw;background:rgba(0,0,0,.5);border-top:1px solid var(--bor
     <div class="about-intro-grid reveal">
      <div class="about-text">
 
-  <p>
-    I am a <strong>Senior IT Professional & Full Stack Web Developer from Nepal with 10+ years of experience</strong> in building scalable digital solutions, managing IT infrastructure, and delivering high-performance websites and systems.
-  </p>
+  <!-- INTRO + FOCUS -->
+<div class="about-intro-grid reveal">
 
-  <p>
-    I have successfully worked on <strong>international freelance projects</strong>, including clients from India across industries such as healthcare, education, business, and media. My expertise covers website development, cloud services, system administration, and result-driven digital marketing.
-  </p>
+  <!-- LEFT SIDE TEXT -->
+  <div class="about-text">
 
-  <p>
-    I specialize in <strong>performance optimization, server management, and end-to-end project execution</strong> — from planning and development to deployment and growth. I focus on delivering solutions that are not only functional but also scalable, secure, and business-oriented.
-  </p>
+    <p>
+   <p>
+  I am a <strong>Senior IT Professional & Full Stack Web Developer from Nepal with 10+ years of experience</strong> in building scalable digital solutions, managing IT infrastructure, and delivering high-performance websites and systems.
+</p>
 
-  <p>
-    I am continuously evolving with modern technologies including <strong>cloud computing, automation, and advanced web systems</strong>, ensuring I stay ahead in the ever-changing IT landscape.
-  </p>
+<p>
+  I have successfully worked on <strong>international freelance projects</strong>, including clients from India across industries such as healthcare, education, business, and media. My expertise covers website development, cloud services, system administration, and result-driven digital marketing.
+</p>
+
+<p>
+  I specialize in <strong>performance optimization, server management, and end-to-end project execution</strong> — from planning and development to deployment and growth.
+</p>
+
+<p>
+  I am continuously evolving with modern technologies including <strong>cloud computing, automation, and advanced web systems</strong>.
+</p>
+
+<!-- NEW PROFESSIONAL LINES -->
+<p>
+  I focus on delivering <strong>clean, scalable, and business-oriented solutions</strong> that align with real-world requirements and user experience.
+</p>
+
+<p>
+  My goal is to help organizations grow digitally through <strong>innovative technology, reliability, and long-term technical excellence</strong>.
+</p>
+
   </div>
+
+  <!-- RIGHT SIDE IMAGE -->
+  <div class="about-image">
+    <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/hemraj.png" alt="My Image">
+  </div>
+
+</div>
 
 </div>
       </div>
@@ -515,7 +575,17 @@ footer{padding:30px 6vw;background:rgba(0,0,0,.5);border-top:1px solid var(--bor
     <h3>Remote IT Support & Monitoring</h3>
     <p>Proactive remote support with real-time monitoring, troubleshooting, and maintenance using tools like RDP, AnyDesk, and cloud dashboards.</p>
   </div>
+<div class="service-card reveal">
+  <div class="service-num">07</div>
+  <h3>CI/CD Automation & DevOps Pipeline</h3>
+  <p>Design and implementation of automated deployment pipelines using GitHub Actions, server automation, and continuous integration workflows to improve speed, reliability, and scalability of applications.</p>
+</div>
 
+<div class="service-card reveal">
+  <div class="service-num">08</div>
+  <h3>Cloud Architecture & IT Consulting</h3>
+  <p>Strategic IT consulting and cloud architecture design for scalable business systems, including AWS infrastructure planning, cost optimization, and enterprise-grade solution design.</p>
+</div>
 </div>
   </div>
 </section>
@@ -583,6 +653,13 @@ footer{padding:30px 6vw;background:rgba(0,0,0,.5);border-top:1px solid var(--bor
     <div class="project-link">Growth Achieved</div>
   </a>
 
+<a class="project-card reveal" href="#">
+  <div class="project-type">Enterprise Solution</div>
+  <h3>Cloud-Based IT Management System</h3>
+  <p>Developed a centralized cloud-based IT management system for monitoring servers, user access control, backup automation, and real-time system health tracking for business operations.</p>
+  <div class="project-link">Enterprise System</div>
+</a>
+
   <a class="project-card reveal" href="#">
     <div class="project-type">Business Growth</div>
     <h3>Veraaj Sales</h3>
@@ -606,8 +683,8 @@ footer{padding:30px 6vw;background:rgba(0,0,0,.5);border-top:1px solid var(--bor
 
   <a class="project-card reveal" href="#">
     <div class="project-type">Ongoing Projects</div>
-    <h3>News Portal & CRM Systems</h3>
-    <p>Currently developing advanced news portal, school management system, and custom CRM solutions.</p>
+    <h3>Business & CRM Systems</h3>
+    <p>Currently developing advanced  portal, Data management system, and custom CRM solutions.</p>
     <div class="project-link">In Progress</div>
   </a>
 
