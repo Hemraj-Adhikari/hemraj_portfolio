@@ -6,132 +6,128 @@
 <title>Hemraj Adhikari | IT Officer & Cloud Infrastructure Specialist | Nepal</title>
 <meta name="description" content="Hemraj Adhikari — IT Officer & Cloud Infrastructure Specialist from Kathmandu, Nepal. 3.5+ years in AWS Cloud, SysAdmin, Web Dev, Networking & Cybersecurity.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap');
+
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#060810;
-  --bg2:#0b0e1a;
-  --bg3:#101424;
-  --surface:rgba(255,255,255,.04);
-  --surface2:rgba(255,255,255,.07);
-  --border:rgba(255,255,255,.07);
-  --border2:rgba(100,210,255,.2);
+  --bg:#05060f;
+  --bg2:#080a18;
+  --bg3:#0d1020;
+  --surface:rgba(255,255,255,.035);
+  --surface2:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.06);
+  --border2:rgba(100,210,255,.18);
   --accent:#64d2ff;
   --accent2:#a78bfa;
   --accent3:#34d399;
   --accent-warm:#fb923c;
-  --text:#f0f4ff;
-  --text2:#8b9cc4;
-  --text3:#4a5578;
+  --text:#eef2ff;
+  --text2:#8892b0;
+  --text3:#3d4a6b;
   --grad:linear-gradient(135deg,#64d2ff,#a78bfa);
   --grad2:linear-gradient(135deg,#a78bfa,#fb923c);
-  --font-display:'Syne',sans-serif;
+  --font-display:'DM Sans',sans-serif;
   --font-body:'DM Sans',sans-serif;
-  --font-mono:'JetBrains Mono',monospace;
+  --font-mono:'DM Mono',monospace;
   --max:1140px;
   --gutter:clamp(18px,5vw,64px);
+  --radius:10px;
 }
 html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;line-height:1.7}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased}
 
-/* SCROLLBAR */
-::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar{width:2px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
 
-/* NOISE TEXTURE OVERLAY */
 body::before{
   content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  opacity:.4;
+  opacity:.3;
 }
 
-/* GRID BG */
 .grid-bg{
   position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(100,210,255,.025) 1px,transparent 1px),
-                   linear-gradient(90deg,rgba(100,210,255,.025) 1px,transparent 1px);
-  background-size:72px 72px;
+  background-image:linear-gradient(rgba(100,210,255,.018) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(100,210,255,.018) 1px,transparent 1px);
+  background-size:80px 80px;
   mask-image:radial-gradient(ellipse 90% 70% at 50% 30%,black,transparent);
 }
 
-/* GLOW ORBS */
-.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);animation:orbFloat 12s ease-in-out infinite}
-.orb1{width:600px;height:600px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(167,139,250,.12),transparent 70%);animation-delay:0s}
-.orb2{width:500px;height:500px;bottom:-100px;left:-150px;background:radial-gradient(circle,rgba(100,210,255,.1),transparent 70%);animation-delay:-5s}
-.orb3{width:300px;height:300px;top:40%;left:35%;background:radial-gradient(circle,rgba(52,211,153,.07),transparent 70%);animation-delay:-9s}
-@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-25px) scale(1.05)}}
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);animation:orbFloat 14s ease-in-out infinite}
+.orb1{width:700px;height:700px;top:-200px;right:-150px;background:radial-gradient(circle,rgba(167,139,250,.09),transparent 70%);animation-delay:0s}
+.orb2{width:500px;height:500px;bottom:-100px;left:-150px;background:radial-gradient(circle,rgba(100,210,255,.08),transparent 70%);animation-delay:-6s}
+.orb3{width:300px;height:300px;top:45%;left:30%;background:radial-gradient(circle,rgba(52,211,153,.05),transparent 70%);animation-delay:-10s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(18px,-22px) scale(1.04)}}
 
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(6,8,16,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  background:rgba(5,6,15,.85);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
   border-bottom:1px solid var(--border);
 }
 .nav-inner{
   max-width:var(--max);margin:0 auto;padding:0 var(--gutter);
-  display:flex;align-items:center;justify-content:space-between;height:60px;
+  display:flex;align-items:center;justify-content:space-between;height:58px;
 }
-.logo{font-family:var(--font-mono);font-size:16px;color:var(--accent);text-decoration:none;font-weight:500}
-.logo span{color:var(--accent2)}
-.nav-links{display:flex;gap:4px;list-style:none}
-.nav-links a{font-size:13px;font-weight:500;color:var(--text2);text-decoration:none;padding:5px 12px;border-radius:6px;transition:.2s;letter-spacing:.2px}
-.nav-links a:hover{color:var(--accent);background:rgba(100,210,255,.08)}
+.logo{font-family:var(--font-mono);font-size:15px;color:var(--text);text-decoration:none;font-weight:400;letter-spacing:-0.3px}
+.logo em{color:var(--accent);font-style:normal}
+.nav-links{display:flex;gap:2px;list-style:none}
+.nav-links a{font-size:13px;font-weight:400;color:var(--text2);text-decoration:none;padding:5px 11px;border-radius:6px;transition:.2s;letter-spacing:.1px}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.05)}
 .nav-dl{
   display:inline-flex;align-items:center;gap:6px;padding:6px 14px;
-  background:var(--grad);border-radius:6px;font-size:12px;font-weight:600;
-  color:#fff;text-decoration:none;transition:.2s;
+  background:rgba(100,210,255,.08);border:1px solid rgba(100,210,255,.2);border-radius:7px;
+  font-size:12px;font-weight:500;color:var(--accent);text-decoration:none;transition:.2s;
+  font-family:var(--font-mono);
 }
-.nav-dl:hover{opacity:.85;transform:translateY(-1px)}
+.nav-dl:hover{background:rgba(100,210,255,.15);transform:translateY(-1px)}
 .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
-.nav-toggle span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:.2s}
-.mobile-nav{display:none;position:fixed;top:60px;inset-x:0;z-index:99;background:var(--bg2);border-bottom:1px solid var(--border);padding:12px var(--gutter) 20px}
+.nav-toggle span{display:block;width:20px;height:1.5px;background:var(--text2);border-radius:2px;transition:.2s}
+.mobile-nav{display:none;position:fixed;top:58px;inset-x:0;z-index:99;background:var(--bg2);border-bottom:1px solid var(--border);padding:12px var(--gutter) 20px}
 .mobile-nav.open{display:block}
-.mobile-nav a{display:block;padding:12px 0;color:var(--text2);text-decoration:none;font-size:15px;font-weight:500;border-bottom:1px solid var(--border);transition:.2s}
-.mobile-nav a:hover{color:var(--accent)}
+.mobile-nav a{display:block;padding:11px 0;color:var(--text2);text-decoration:none;font-size:14px;font-weight:400;border-bottom:1px solid var(--border);transition:.2s}
+.mobile-nav a:hover{color:var(--text)}
 
-/* WRAPPER */
+/* LAYOUT */
 .page{position:relative;z-index:1}
 main{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
 section{padding:clamp(80px,10vw,130px) 0}
 
-/* SECTION LABELS */
-.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.eyebrow-line{width:28px;height:1.5px;background:var(--accent)}
-.eyebrow-text{font-family:var(--font-mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent)}
+/* LABELS */
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.eyebrow-line{width:24px;height:1px;background:var(--accent)}
+.eyebrow-text{font-family:var(--font-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:400}
 h2.sec-title{
-  font-family:var(--font-display);font-size:clamp(32px,5vw,58px);font-weight:800;
-  line-height:1.05;letter-spacing:-1.5px;color:var(--text);margin-bottom:48px;
+  font-family:var(--font-display);font-size:clamp(30px,5vw,54px);font-weight:700;
+  line-height:1.08;letter-spacing:-1.5px;color:var(--text);margin-bottom:48px;
 }
 h2.sec-title mark{background:none;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-image:var(--grad);background-clip:text}
 
-/* REVEAL ANIMATION */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
 .reveal.visible{opacity:1;transform:none}
 
-/* ══ HERO ══ */
-#hero{
-  min-height:100svh;display:flex;align-items:center;
-  padding-top:80px;padding-bottom:40px;
-}
-.hero-grid{display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:center;width:100%}
+/* HERO */
+#hero{min-height:100svh;display:flex;align-items:center;padding-top:80px;padding-bottom:40px}
+.hero-grid{display:grid;grid-template-columns:1fr 360px;gap:60px;align-items:center;width:100%}
 
 .badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:5px 14px;border-radius:100px;
-  background:rgba(100,210,255,.06);border:1px solid rgba(100,210,255,.2);
-  font-family:var(--font-mono);font-size:11px;letter-spacing:1px;
-  color:var(--accent);text-transform:uppercase;margin-bottom:22px;
+  display:inline-flex;align-items:center;gap:8px;padding:4px 13px;border-radius:100px;
+  background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.18);
+  font-family:var(--font-mono);font-size:10px;letter-spacing:1.5px;color:var(--accent3);
+  text-transform:uppercase;margin-bottom:20px;font-weight:400;
 }
-.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--accent3);animation:pulse 2s infinite;flex-shrink:0}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent3);animation:pulse 2.5s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.6)}}
 
 h1.hero-name{
   font-family:var(--font-display);
-  font-size:clamp(60px,9vw,112px);
-  font-weight:800;line-height:.9;letter-spacing:-3px;
-  margin-bottom:14px;
+  font-size:clamp(52px,8vw,100px);
+  font-weight:700;line-height:.92;letter-spacing:-3.5px;
+  margin-bottom:16px;
 }
 .name-line{display:block;color:var(--text)}
 .name-accent{
@@ -140,388 +136,370 @@ h1.hero-name{
 }
 
 .hero-role{
-  font-family:var(--font-mono);font-size:clamp(13px,1.4vw,15px);
-  color:var(--text2);margin-bottom:14px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  font-family:var(--font-mono);font-size:13px;font-weight:400;
+  color:var(--text3);margin-bottom:16px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;
 }
-.role-label{color:var(--text3)}
-.role-typed{color:var(--accent);font-weight:500;min-width:2ch}
-.role-cursor{color:var(--accent);animation:blink 1s step-end infinite;font-weight:300}
+.role-sep{color:var(--text3)}
+.role-typed{color:var(--text2);font-weight:400;min-width:2ch}
+.role-cursor{color:var(--accent);animation:blink 1s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
-.hero-desc{font-size:15px;color:var(--text2);max-width:520px;line-height:1.85;margin-bottom:20px}
-.hero-desc strong{color:var(--text);font-weight:600}
+.hero-desc{font-size:14.5px;color:var(--text2);max-width:500px;line-height:1.9;margin-bottom:22px;font-weight:400}
+.hero-desc strong{color:var(--text);font-weight:500}
 
-.tag-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px}
 .tag{
-  font-family:var(--font-mono);font-size:10px;font-weight:500;
-  padding:3px 11px;border-radius:4px;
-  background:rgba(100,210,255,.08);border:1px solid rgba(100,210,255,.18);
-  color:var(--accent);letter-spacing:1px;text-transform:uppercase;
+  font-family:var(--font-mono);font-size:10px;font-weight:400;
+  padding:3px 10px;border-radius:4px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  color:var(--text3);letter-spacing:.8px;text-transform:uppercase;transition:.2s;
 }
-.tag.purple{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.2);color:var(--accent2)}
-.tag.green{background:rgba(52,211,153,.08);border-color:rgba(52,211,153,.2);color:var(--accent3)}
+.tag:hover{color:var(--text2);border-color:rgba(255,255,255,.12)}
+.tag.blue{border-color:rgba(100,210,255,.15);color:rgba(100,210,255,.6)}
+.tag.purple{border-color:rgba(167,139,250,.15);color:rgba(167,139,250,.6)}
+.tag.green{border-color:rgba(52,211,153,.15);color:rgba(52,211,153,.6)}
 
-.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.cta-row{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:22px}
 .btn-primary{
-  display:inline-flex;align-items:center;gap:7px;padding:12px 24px;
-  background:var(--grad);border:none;border-radius:50px;
-  font-family:var(--font-body);font-weight:600;font-size:14px;color:#fff;
-  text-decoration:none;cursor:pointer;
-  box-shadow:0 4px 24px rgba(100,210,255,.22);
-  transition:.25s;
-}
-.btn-primary:hover{opacity:.88;transform:translateY(-2px);box-shadow:0 8px 36px rgba(100,210,255,.35)}
-.btn-outline{
   display:inline-flex;align-items:center;gap:7px;padding:11px 22px;
-  background:var(--surface2);border:1px solid var(--border2);border-radius:50px;
-  font-family:var(--font-body);font-weight:500;font-size:14px;
-  color:var(--text);text-decoration:none;transition:.25s;
+  background:var(--grad);border:none;border-radius:8px;
+  font-family:var(--font-body);font-weight:500;font-size:13.5px;color:#fff;
+  text-decoration:none;cursor:pointer;letter-spacing:.1px;
+  box-shadow:0 4px 20px rgba(100,210,255,.18);
+  transition:.22s;
 }
-.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn-primary:hover{opacity:.88;transform:translateY(-2px);box-shadow:0 8px 30px rgba(100,210,255,.28)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:7px;padding:10px 20px;
+  background:transparent;border:1px solid var(--border);border-radius:8px;
+  font-family:var(--font-body);font-weight:500;font-size:13.5px;
+  color:var(--text2);text-decoration:none;transition:.22s;
+}
+.btn-outline:hover{border-color:rgba(255,255,255,.15);color:var(--text);transform:translateY(-2px)}
 .btn-wa{
-  display:inline-flex;align-items:center;gap:7px;padding:11px 20px;
-  background:#25d366;border-radius:50px;
-  font-family:var(--font-body);font-weight:600;font-size:14px;color:#fff;
-  text-decoration:none;transition:.25s;
+  display:inline-flex;align-items:center;gap:7px;padding:10px 18px;
+  background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25);border-radius:8px;
+  font-family:var(--font-body);font-weight:500;font-size:13.5px;color:#25d366;
+  text-decoration:none;transition:.22s;
 }
-.btn-wa:hover{opacity:.88;transform:translateY(-2px)}
+.btn-wa:hover{background:rgba(37,211,102,.2);transform:translateY(-2px)}
 
-.social-row{display:flex;gap:9px}
+.social-row{display:flex;gap:8px}
 .social-btn{
-  width:38px;height:38px;border-radius:9px;
-  background:var(--surface2);border:1px solid var(--border);
+  width:36px;height:36px;border-radius:8px;
+  background:transparent;border:1px solid var(--border);
   color:var(--text3);display:flex;align-items:center;justify-content:center;
   text-decoration:none;transition:.2s;
 }
-.social-btn:hover{color:var(--accent);border-color:var(--border2);transform:translateY(-3px)}
+.social-btn:hover{color:var(--text2);border-color:rgba(255,255,255,.12);transform:translateY(-2px)}
 
 /* HERO VISUAL */
-.hero-visual{display:flex;flex-direction:column;align-items:center;gap:20px}
-
-.photo-wrap{
-  position:relative;width:300px;height:300px;
-}
+.hero-visual{display:flex;flex-direction:column;align-items:center;gap:18px}
+.photo-wrap{position:relative;width:280px;height:280px}
 .photo-ring-outer{
-  position:absolute;inset:-4px;border-radius:50%;
-  background:conic-gradient(from 0deg,var(--accent),var(--accent2),transparent 120deg,transparent 200deg,var(--accent2),var(--accent),transparent 330deg);
-  animation:spinRing 8s linear infinite;
+  position:absolute;inset:-3px;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--accent),var(--accent2),transparent 130deg,transparent 210deg,var(--accent2),var(--accent),transparent 340deg);
+  animation:spinRing 10s linear infinite;
 }
 @keyframes spinRing{to{transform:rotate(360deg)}}
 .photo-ring-inner{
   position:relative;z-index:1;width:100%;height:100%;
   border-radius:50%;overflow:hidden;
-  border:3px solid rgba(100,210,255,.35);
-  box-shadow:0 0 60px rgba(100,210,255,.2),0 0 120px rgba(167,139,250,.12),inset 0 0 40px rgba(0,0,0,.3);
+  border:2px solid rgba(100,210,255,.2);
   background:var(--bg3);
 }
-.photo-ring-inner img{
-  width:100%;height:100%;object-fit:cover;object-position:center top;display:block;
-}
+.photo-ring-inner img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 
-.orbit-ring{position:absolute;inset:-24px;border-radius:50%;animation:orbitSpin 18s linear infinite;z-index:2;pointer-events:none}
+.orbit-ring{position:absolute;inset:-22px;border-radius:50%;animation:orbitSpin 20s linear infinite;z-index:2;pointer-events:none}
 @keyframes orbitSpin{to{transform:rotate(360deg)}}
 .orb-icon{
-  position:absolute;width:42px;height:42px;
-  background:var(--bg2);border:1px solid var(--border2);border-radius:10px;
-  display:flex;align-items:center;justify-content:center;font-size:18px;
-  box-shadow:0 4px 20px rgba(0,0,0,.4);
-  animation:counterSpin 18s linear infinite;
+  position:absolute;width:38px;height:38px;
+  background:var(--bg2);border:1px solid var(--border);border-radius:9px;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+  box-shadow:0 4px 16px rgba(0,0,0,.5);
+  animation:counterSpin 20s linear infinite;
 }
 @keyframes counterSpin{to{transform:rotate(-360deg)}}
-.orb-icon:nth-child(1){top:-21px;left:50%;transform:translateX(-50%)}
-.orb-icon:nth-child(2){right:-21px;top:50%;transform:translateY(-50%)}
-.orb-icon:nth-child(3){bottom:-21px;left:50%;transform:translateX(-50%)}
-.orb-icon:nth-child(4){left:-21px;top:50%;transform:translateY(-50%)}
+.orb-icon:nth-child(1){top:-19px;left:50%;transform:translateX(-50%)}
+.orb-icon:nth-child(2){right:-19px;top:50%;transform:translateY(-50%)}
+.orb-icon:nth-child(3){bottom:-19px;left:50%;transform:translateX(-50%)}
+.orb-icon:nth-child(4){left:-19px;top:50%;transform:translateY(-50%)}
 
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
 .stat-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:14px;
-  padding:14px 16px;display:flex;flex-direction:column;align-items:center;
-  transition:.2s;cursor:default;
+  background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  padding:13px 14px;display:flex;flex-direction:column;align-items:center;transition:.2s;cursor:default;
 }
-.stat-card:hover{border-color:var(--border2);transform:translateY(-3px)}
-.stat-num{font-family:var(--font-display);font-size:30px;font-weight:800;letter-spacing:-1px;color:var(--accent);line-height:1}
-.stat-label{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-top:4px}
+.stat-card:hover{border-color:rgba(255,255,255,.1);transform:translateY(-2px)}
+.stat-num{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:-1.5px;color:var(--text);line-height:1}
+.stat-sup{font-size:14px;color:var(--accent);font-weight:500}
+.stat-label{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-top:4px;font-weight:400}
 
-/* SCROLL INDICATOR */
 .scroll-hint{
-  display:block;margin-top:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:2px;
-  text-transform:uppercase;color:var(--text3);text-decoration:none;text-align:center;
-  transition:.2s;
+  display:block;margin-top:4px;font-family:var(--font-mono);font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--text3);text-decoration:none;text-align:center;transition:.2s;
 }
-.scroll-hint:hover{color:var(--accent)}
+.scroll-hint:hover{color:var(--text2)}
 
-/* ══ ABOUT ══ */
-.about-grid{display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:start}
-.about-text p{font-size:15px;color:var(--text2);line-height:1.9;margin-bottom:14px}
-.about-text strong{color:var(--text);font-weight:600}
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:start}
+.about-text p{font-size:14.5px;color:var(--text2);line-height:1.9;margin-bottom:14px}
+.about-text strong{color:var(--text);font-weight:500}
 
-.hl-cards{display:flex;flex-direction:column;gap:10px;margin:22px 0 26px}
+.hl-cards{display:flex;flex-direction:column;gap:8px;margin:20px 0 24px}
 .hl-card{
-  display:flex;align-items:flex-start;gap:14px;padding:14px 18px;
-  background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:.2s;
+  display:flex;align-items:flex-start;gap:14px;padding:13px 16px;
+  background:var(--surface);border:1px solid var(--border);border-radius:9px;transition:.2s;
 }
-.hl-card:hover{border-color:var(--border2);background:var(--surface2)}
-.hl-icon{font-size:20px;flex-shrink:0;margin-top:2px}
-.hl-card strong{display:block;font-size:13px;color:var(--text);font-weight:600;margin-bottom:2px}
+.hl-card:hover{border-color:rgba(255,255,255,.1);background:var(--surface2)}
+.hl-icon{font-size:18px;flex-shrink:0;margin-top:2px}
+.hl-card strong{display:block;font-size:13px;color:var(--text);font-weight:500;margin-bottom:2px}
 .hl-card span{font-size:12px;color:var(--text3)}
 
-/* CARDS COL */
-.cards-col{display:flex;flex-direction:column;gap:14px}
+.cards-col{display:flex;flex-direction:column;gap:12px}
 .info-panel{
-  background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px 24px;
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 22px;
 }
 .info-panel h3{
-  font-family:var(--font-display);font-size:16px;font-weight:700;
-  color:var(--text);margin-bottom:18px;letter-spacing:-.3px;
+  font-family:var(--font-display);font-size:15px;font-weight:600;
+  color:var(--text);margin-bottom:16px;letter-spacing:-.2px;
 }
 
 /* TIMELINE */
 .timeline{display:flex;flex-direction:column;gap:0}
-.tl-item{display:flex;gap:14px;position:relative;padding-bottom:18px}
+.tl-item{display:flex;gap:14px;position:relative;padding-bottom:16px}
 .tl-item:last-child{padding-bottom:0}
-.tl-item:not(:last-child)::after{content:'';position:absolute;left:5px;top:13px;bottom:0;width:1px;background:var(--border)}
-.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--grad);flex-shrink:0;margin-top:4px;z-index:1}
-.tl-year{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:2px}
-.tl-title{font-size:13px;color:var(--text);font-weight:600;display:block;margin-bottom:1px}
+.tl-item:not(:last-child)::after{content:'';position:absolute;left:5px;top:12px;bottom:0;width:1px;background:var(--border)}
+.tl-dot{width:11px;height:11px;border-radius:50%;background:var(--grad);flex-shrink:0;margin-top:4px;z-index:1}
+.tl-year{font-family:var(--font-mono);font-size:9.5px;color:var(--accent);letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:2px;font-weight:400}
+.tl-title{font-size:12.5px;color:var(--text);font-weight:500;display:block;margin-bottom:1px}
 .tl-sub{font-size:11px;color:var(--text3)}
 
 /* CERTS */
-.cert-list{list-style:none;display:flex;flex-direction:column;gap:11px}
-.cert-item{display:flex;align-items:flex-start;gap:12px}
-.cert-ico{font-size:17px;flex-shrink:0;margin-top:2px}
-.cert-item strong{display:block;font-size:13px;color:var(--text);font-weight:600;margin-bottom:2px}
+.cert-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.cert-item{display:flex;align-items:flex-start;gap:11px}
+.cert-ico{font-size:15px;flex-shrink:0;margin-top:2px}
+.cert-item strong{display:block;font-size:12.5px;color:var(--text);font-weight:500;margin-bottom:2px}
 .cert-item span{font-size:11px;color:var(--text3)}
 
-/* ══ SKILLS ══ */
-#skills{background:linear-gradient(180deg,transparent,rgba(100,210,255,.02),transparent)}
-.skills-container{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-bottom:52px}
+/* SKILLS */
+#skills{background:linear-gradient(180deg,transparent,rgba(100,210,255,.015),transparent)}
+.skills-container{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-bottom:48px}
 .skills-col-title{
-  font-family:var(--font-display);font-size:18px;font-weight:700;
-  color:var(--text);margin-bottom:22px;letter-spacing:-.3px;
+  font-family:var(--font-display);font-size:16px;font-weight:600;
+  color:var(--text);margin-bottom:20px;letter-spacing:-.2px;
 }
-.skill-list{display:flex;flex-direction:column;gap:16px}
-.skill-info{display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px}
-.skill-info span:first-child{color:var(--text);font-weight:500}
-.skill-info span:last-child{font-family:var(--font-mono);font-size:11px;color:var(--accent)}
-.skill-track{height:5px;background:var(--surface2);border-radius:3px;overflow:hidden}
-.skill-fill{height:100%;border-radius:3px;background:var(--grad);width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1)}
+.skill-list{display:flex;flex-direction:column;gap:15px}
+.skill-info{display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px}
+.skill-info span:first-child{color:var(--text2);font-weight:400}
+.skill-info span:last-child{font-family:var(--font-mono);font-size:10.5px;color:var(--accent);font-weight:400}
+.skill-track{height:3px;background:var(--surface2);border-radius:2px;overflow:hidden}
+.skill-fill{height:100%;border-radius:2px;background:var(--grad);width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
 
-.tech-icons{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.tech-icons{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .tech-ico{
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  padding:15px 16px;background:var(--surface);border:1px solid var(--border);border-radius:12px;
-  font-size:22px;min-width:76px;transition:.2s;cursor:default;
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:14px 14px;background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  font-size:20px;min-width:72px;transition:.2s;cursor:default;
 }
-.tech-ico:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 8px 32px rgba(100,210,255,.1)}
-.tech-ico span{font-family:var(--font-mono);font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+.tech-ico:hover{border-color:rgba(255,255,255,.1);transform:translateY(-3px)}
+.tech-ico span{font-family:var(--font-mono);font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;font-weight:400}
 
-/* ══ EXPERIENCE ══ */
-.exp-list{display:flex;flex-direction:column;gap:18px}
+/* EXPERIENCE */
+.exp-list{display:flex;flex-direction:column;gap:14px}
 .exp-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:18px;
-  padding:28px 30px;position:relative;overflow:hidden;transition:.25s;
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:26px 28px;position:relative;overflow:hidden;transition:.22s;
 }
 .exp-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:var(--grad);transform:scaleX(0);transform-origin:left;transition:.35s;
+  content:'';position:absolute;top:0;left:0;right:0;height:1.5px;
+  background:var(--grad);transform:scaleX(0);transform-origin:left;transition:.3s;
 }
-.exp-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 12px 48px rgba(0,0,0,.4)}
+.exp-card:hover{border-color:rgba(255,255,255,.1);transform:translateY(-3px)}
 .exp-card:hover::before{transform:scaleX(1)}
-.exp-card.current::before{transform:scaleX(1);background:var(--grad)}
-.exp-card.current{border-color:rgba(100,210,255,.18)}
+.exp-card.current::before{transform:scaleX(1)}
+.exp-card.current{border-color:rgba(100,210,255,.12)}
 
-.exp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap}
-.exp-role{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text);letter-spacing:-.3px}
+.exp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:12px;flex-wrap:wrap}
+.exp-role{font-family:var(--font-display);font-size:19px;font-weight:600;color:var(--text);letter-spacing:-.3px}
 .exp-badge{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:3px 12px;border-radius:100px;
-  font-family:var(--font-mono);font-size:10px;letter-spacing:.5px;font-weight:500;
-  background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.25);color:var(--accent3);
+  display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:100px;
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.5px;font-weight:400;
+  background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);color:var(--accent3);
   flex-shrink:0;white-space:nowrap;
 }
-.exp-badge.past{background:rgba(100,210,255,.08);border-color:rgba(100,210,255,.2);color:var(--accent)}
-.exp-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
-.exp-company{
-  display:flex;align-items:center;gap:6px;
-  font-size:14px;font-weight:600;color:var(--accent2);
-}
-.exp-location{font-family:var(--font-mono);font-size:11px;color:var(--text3)}
-.exp-date{font-family:var(--font-mono);font-size:11px;color:var(--text3)}
+.exp-badge.past{background:rgba(100,210,255,.06);border-color:rgba(100,210,255,.15);color:rgba(100,210,255,.6)}
+.exp-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.exp-company{display:flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500;color:var(--text2)}
+.exp-location{font-family:var(--font-mono);font-size:10.5px;color:var(--text3);font-weight:400}
+.exp-date{font-family:var(--font-mono);font-size:10.5px;color:var(--text3);font-weight:400}
 .exp-sep{color:var(--text3);font-size:10px}
 
-.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:8px}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:7px}
 .exp-bullets li{
   display:flex;align-items:flex-start;gap:10px;
-  font-size:13.5px;color:var(--text2);line-height:1.7;
+  font-size:13.5px;color:var(--text2);line-height:1.75;
 }
 .exp-bullets li::before{
-  content:'▸';color:var(--accent);flex-shrink:0;margin-top:2px;font-size:11px;
+  content:'–';color:var(--text3);flex-shrink:0;margin-top:1px;font-size:13px;
 }
 
-/* ══ SERVICES ══ */
-.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
 .svc-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:16px;
-  padding:24px;position:relative;overflow:hidden;transition:.25s;
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  padding:22px;position:relative;overflow:hidden;transition:.22s;
 }
-.svc-card::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 80% 20%,rgba(100,210,255,.04),transparent 60%);
-  pointer-events:none;
-}
-.svc-card:hover{border-color:var(--border2);transform:translateY(-5px);box-shadow:0 12px 48px rgba(0,0,0,.4)}
+.svc-card:hover{border-color:rgba(255,255,255,.1);transform:translateY(-4px)}
 .svc-ico{
-  width:44px;height:44px;border-radius:12px;
-  background:rgba(100,210,255,.1);border:1px solid rgba(100,210,255,.15);
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(100,210,255,.07);border:1px solid rgba(100,210,255,.12);
   display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:14px;
 }
 .svc-num{
-  position:absolute;top:16px;right:18px;
-  font-family:var(--font-display);font-size:38px;font-weight:800;
-  color:rgba(100,210,255,.05);line-height:1;pointer-events:none;
+  position:absolute;top:14px;right:16px;
+  font-family:var(--font-mono);font-size:32px;font-weight:300;
+  color:rgba(255,255,255,.03);line-height:1;pointer-events:none;
 }
-.svc-card h3{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.2px}
+.svc-card h3{font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;letter-spacing:-.15px}
 .svc-card p{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px}
 .svc-tags{display:flex;flex-wrap:wrap;gap:5px;list-style:none}
-.svc-tags li{font-family:var(--font-mono);font-size:9px;padding:2px 8px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;color:var(--text3);letter-spacing:.5px;text-transform:uppercase}
+.svc-tags li{font-family:var(--font-mono);font-size:9px;padding:2px 7px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:4px;color:var(--text3);letter-spacing:.5px;text-transform:uppercase;font-weight:400}
 
-/* ══ PORTFOLIO ══ */
-.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+/* PORTFOLIO */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
 .proj-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:16px;
-  overflow:hidden;transition:.25s;
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;transition:.22s;
 }
-.proj-card:hover{border-color:var(--border2);transform:translateY(-5px);box-shadow:0 12px 48px rgba(0,0,0,.4)}
+.proj-card:hover{border-color:rgba(255,255,255,.1);transform:translateY(-4px)}
 .proj-thumb{
-  height:130px;display:flex;align-items:center;justify-content:center;
-  font-size:48px;background:linear-gradient(135deg,rgba(100,210,255,.07),rgba(167,139,250,.07));
+  height:120px;display:flex;align-items:center;justify-content:center;
+  font-size:42px;background:linear-gradient(135deg,rgba(100,210,255,.05),rgba(167,139,250,.05));
+  border-bottom:1px solid var(--border);
 }
-.proj-body{padding:20px 22px}
-.proj-meta{display:flex;justify-content:space-between;margin-bottom:8px}
-.proj-type{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase}
-.proj-year{font-family:var(--font-mono);font-size:10px;color:var(--text3)}
-.proj-card h3{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--text);margin-bottom:7px;letter-spacing:-.2px}
-.proj-card p{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:12px}
-.proj-tech{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
-.proj-tech span{font-family:var(--font-mono);font-size:9px;padding:2px 8px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
-.proj-link{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--accent);letter-spacing:.5px;text-transform:uppercase;text-decoration:none;transition:.2s}
-.proj-link:hover{gap:9px}
-.proj-done{color:var(--accent3);font-family:var(--font-mono);font-size:11px;letter-spacing:.5px;text-transform:uppercase}
+.proj-body{padding:18px 20px}
+.proj-meta{display:flex;justify-content:space-between;margin-bottom:7px}
+.proj-type{font-family:var(--font-mono);font-size:9.5px;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase;font-weight:400}
+.proj-year{font-family:var(--font-mono);font-size:9.5px;color:var(--text3);font-weight:400}
+.proj-card h3{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--text);margin-bottom:6px;letter-spacing:-.15px}
+.proj-card p{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:11px}
+.proj-tech{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.proj-tech span{font-family:var(--font-mono);font-size:9px;padding:2px 7px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:4px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;font-weight:400}
+.proj-link{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:10.5px;font-weight:400;color:var(--text2);letter-spacing:.5px;text-transform:uppercase;text-decoration:none;transition:.2s}
+.proj-link:hover{color:var(--accent);gap:8px}
+.proj-done{color:var(--accent3);font-family:var(--font-mono);font-size:10.5px;letter-spacing:.5px;text-transform:uppercase;font-weight:400}
 
-/* ══ EDUCATION ══ */
-.edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
 .edu-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:16px;
-  padding:24px;display:flex;gap:16px;align-items:flex-start;transition:.2s;
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  padding:22px;display:flex;gap:14px;align-items:flex-start;transition:.2s;
 }
-.edu-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.edu-card:hover{border-color:rgba(255,255,255,.1);transform:translateY(-2px)}
 .edu-icon{
-  width:44px;height:44px;border-radius:12px;flex-shrink:0;
-  background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.2);
-  display:flex;align-items:center;justify-content:center;color:var(--accent2);font-size:20px;
+  width:40px;height:40px;border-radius:10px;flex-shrink:0;
+  background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.15);
+  display:flex;align-items:center;justify-content:center;font-size:18px;
 }
-.edu-year{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:.5px;margin-bottom:4px}
-.edu-degree{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
+.edu-year{font-family:var(--font-mono);font-size:9.5px;color:var(--accent);letter-spacing:.5px;margin-bottom:4px;font-weight:400}
+.edu-degree{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:3px}
 .edu-school{font-size:12px;color:var(--text2);margin-bottom:2px}
 .edu-board{font-size:11px;color:var(--text3)}
 
-/* ══ CONTACT ══ */
-.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:48px}
-.contact-intro{font-size:15px;color:var(--text2);line-height:1.85;margin-bottom:26px}
-.contact-items{display:flex;flex-direction:column;gap:12px;margin-bottom:26px}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:44px}
+.contact-intro{font-size:14.5px;color:var(--text2);line-height:1.9;margin-bottom:24px}
+.contact-items{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
 .c-item{
-  display:flex;align-items:flex-start;gap:14px;padding:14px 16px;
-  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  display:flex;align-items:flex-start;gap:13px;padding:13px 15px;
+  background:var(--surface);border:1px solid var(--border);border-radius:9px;
   text-decoration:none;transition:.2s;
 }
-.c-item:hover{border-color:var(--border2);transform:translateX(4px)}
+.c-item:hover{border-color:rgba(255,255,255,.1);transform:translateX(3px)}
 .c-icon{
-  width:36px;height:36px;flex-shrink:0;border-radius:9px;
-  background:rgba(100,210,255,.1);border:1px solid rgba(100,210,255,.15);
+  width:34px;height:34px;flex-shrink:0;border-radius:8px;
+  background:rgba(100,210,255,.07);border:1px solid rgba(100,210,255,.12);
   display:flex;align-items:center;justify-content:center;color:var(--accent);
 }
-.c-label{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
-.c-val{font-size:13px;color:var(--text);font-weight:500}
+.c-label{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:2px;font-weight:400}
+.c-val{font-size:13px;color:var(--text);font-weight:400}
 .wa-cta{
-  display:inline-flex;align-items:center;gap:10px;width:100%;padding:14px 20px;
-  background:#25d366;border-radius:12px;font-size:15px;font-weight:600;
-  color:#fff;text-decoration:none;justify-content:center;transition:.2s;
+  display:inline-flex;align-items:center;gap:10px;width:100%;padding:13px 18px;
+  background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2);border-radius:9px;
+  font-size:14px;font-weight:500;color:#25d366;text-decoration:none;
+  justify-content:center;transition:.2s;
 }
-.wa-cta:hover{opacity:.88;transform:translateY(-2px)}
+.wa-cta:hover{background:rgba(37,211,102,.14);transform:translateY(-2px)}
 
 .contact-form-panel{
-  background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:30px;
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px;
 }
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form-group{margin-bottom:14px}
-.form-group label{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:7px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.form-group{margin-bottom:13px}
+.form-group label{display:block;font-family:var(--font-mono);font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:6px;font-weight:400}
 .form-group label span{color:var(--accent)}
 .form-group input,.form-group textarea{
-  width:100%;padding:11px 14px;background:rgba(255,255,255,.03);
-  border:1px solid var(--border);border-radius:9px;color:var(--text);
-  font-family:var(--font-body);font-size:14px;outline:none;transition:.2s;
+  width:100%;padding:10px 13px;background:rgba(255,255,255,.02);
+  border:1px solid var(--border);border-radius:8px;color:var(--text);
+  font-family:var(--font-body);font-size:13.5px;outline:none;transition:.2s;font-weight:400;
 }
-.form-group input:focus,.form-group textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(100,210,255,.09)}
+.form-group input:focus,.form-group textarea:focus{border-color:rgba(100,210,255,.25);box-shadow:0 0 0 3px rgba(100,210,255,.07)}
 .form-group input::placeholder,.form-group textarea::placeholder{color:var(--text3)}
-.form-group textarea{resize:vertical;min-height:115px}
+.form-group textarea{resize:vertical;min-height:110px}
 .btn-submit{
-  width:100%;padding:13px;background:var(--grad);border:none;border-radius:9px;
-  font-family:var(--font-body);font-weight:600;font-size:14px;color:#fff;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:8px;transition:.25s;
-  box-shadow:0 4px 20px rgba(100,210,255,.22);
+  width:100%;padding:12px;background:var(--grad);border:none;border-radius:8px;
+  font-family:var(--font-body);font-weight:500;font-size:13.5px;color:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;transition:.22s;
+  box-shadow:0 4px 18px rgba(100,210,255,.18);
 }
-.btn-submit:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 8px 32px rgba(100,210,255,.35)}
-.form-msg{margin-top:10px;font-size:13px;display:none}
+.btn-submit:hover{opacity:.9;transform:translateY(-2px)}
+.form-msg{margin-top:9px;font-size:12.5px;display:none;font-family:var(--font-mono)}
 .form-msg.ok{color:var(--accent3);display:block}
 .form-msg.err{color:#f87171;display:block}
 
 /* FOOTER */
 footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
 .footer-inner{
-  max-width:var(--max);margin:0 auto;padding:48px var(--gutter) 32px;
-  display:grid;grid-template-columns:280px 1fr;gap:48px;
+  max-width:var(--max);margin:0 auto;padding:44px var(--gutter) 28px;
+  display:grid;grid-template-columns:260px 1fr;gap:48px;
 }
-.footer-brand p{font-size:13px;color:var(--text2);line-height:1.7;margin:12px 0 16px;max-width:240px}
-.footer-social{display:flex;gap:9px}
+.footer-brand p{font-size:13px;color:var(--text2);line-height:1.7;margin:10px 0 14px;max-width:230px;font-weight:400}
+.footer-social{display:flex;gap:8px}
 .footer-social a{
-  width:32px;height:32px;border-radius:8px;background:var(--surface2);
+  width:30px;height:30px;border-radius:7px;background:var(--surface);
   border:1px solid var(--border);color:var(--text3);
   display:flex;align-items:center;justify-content:center;text-decoration:none;transition:.2s;
 }
-.footer-social a:hover{color:var(--accent);border-color:var(--border2)}
-.footer-links{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.footer-col h4{font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.footer-social a:hover{color:var(--text2);border-color:rgba(255,255,255,.1)}
+.footer-links{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.footer-col h4{font-family:var(--font-mono);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:11px;font-weight:400}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:7px}
-.footer-col a{font-size:13px;color:var(--text2);text-decoration:none;transition:.2s}
-.footer-col a:hover{color:var(--accent)}
+.footer-col a{font-size:13px;color:var(--text3);text-decoration:none;transition:.2s;font-weight:400}
+.footer-col a:hover{color:var(--text2)}
 .footer-bottom{
   border-top:1px solid var(--border);
-  max-width:var(--max);margin:0 auto;padding:16px var(--gutter);
+  max-width:var(--max);margin:0 auto;padding:14px var(--gutter);
   display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
 }
-.footer-bottom span{font-size:12px;color:var(--text3);font-family:var(--font-mono)}
+.footer-bottom span{font-size:11.5px;color:var(--text3);font-family:var(--font-mono);font-weight:400}
 
 /* BACK TO TOP */
 #btt{
-  position:fixed;bottom:24px;right:24px;width:44px;height:44px;
-  border-radius:12px;background:var(--grad);border:none;color:#fff;
+  position:fixed;bottom:22px;right:22px;width:40px;height:40px;
+  border-radius:10px;background:var(--surface2);border:1px solid var(--border);color:var(--text3);
   cursor:pointer;display:flex;align-items:center;justify-content:center;
-  opacity:0;transform:translateY(12px);transition:.3s;pointer-events:none;z-index:50;
-  box-shadow:0 4px 20px rgba(100,210,255,.3);
+  opacity:0;transform:translateY(10px);transition:.3s;pointer-events:none;z-index:50;
 }
 #btt.on{opacity:1;transform:none;pointer-events:auto}
-#btt:hover{transform:translateY(-3px)}
+#btt:hover{color:var(--text);border-color:rgba(255,255,255,.12);transform:translateY(-2px)}
 
-/* PROGRESS BAR */
-#progress{
-  position:fixed;top:0;left:0;height:2px;z-index:200;
-  background:var(--grad);width:0;transition:width .1s linear;border-radius:0 2px 2px 0;
-}
+/* PROGRESS */
+#progress{position:fixed;top:0;left:0;height:1.5px;z-index:200;background:var(--grad);width:0;transition:width .1s linear}
 
 /* RESPONSIVE */
 @media(max-width:1024px){
-  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
   .hero-visual{order:-1}
   .about-grid{grid-template-columns:1fr}
 }
@@ -535,7 +513,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
   .nav-links,.nav-dl{display:none}
   .nav-toggle{display:flex}
   .form-row{grid-template-columns:1fr}
-  .footer-links{grid-template-columns:1fr 1fr}
 }
 @media(max-width:480px){
   .stats-grid{grid-template-columns:1fr 1fr}
@@ -557,7 +534,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
 <!-- NAV -->
 <nav aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="#hero" class="logo"><span>&lt;</span>HA<span>/&gt;</span></a>
+    <a href="#hero" class="logo"><em>hemraj</em>.adhikari</a>
     <ul class="nav-links">
       <li><a href="#hero">Home</a></li>
       <li><a href="#about">About</a></li>
@@ -567,9 +544,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
       <li><a href="#portfolio">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="https://drive.google.com/file/d/1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy/view?usp=sharing" download class="nav-dl" aria-label="Download CV">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download CV
+    <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" class="nav-dl" aria-label="Download CV">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      CV
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -584,26 +561,26 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
   <a href="#services">Services</a>
   <a href="#portfolio">Projects</a>
   <a href="#contact">Contact</a>
-  <a href="https://drive.google.com/file/d/1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy/view?usp=sharing" download style="color:var(--accent);font-weight:600">⬇ Download CV</a>
+  <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" style="color:var(--accent)">⬇ Download CV</a>
 </div>
 
 <div class="page">
 <main>
 
-<!-- ══════ HERO ══════ -->
+<!-- HERO -->
 <section id="hero">
   <div class="hero-grid reveal">
     <div class="hero-content">
       <div class="badge">
         <span class="badge-dot"></span>
-        <span>Available for Work · Kathmandu, Nepal</span>
+        <span>Available · Kathmandu, Nepal</span>
       </div>
       <h1 class="hero-name">
         <span class="name-line">Hemraj</span>
         <span class="name-accent">Adhikari</span>
       </h1>
       <div class="hero-role">
-        <span class="role-label">I am a </span>
+        <span class="role-sep">→</span>
         <span class="role-typed" id="typedText"></span>
         <span class="role-cursor">|</span>
       </div>
@@ -614,7 +591,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
         Mentor for BIT, BCA &amp; BSc CSIT students across Nepal &amp; India.
       </p>
       <div class="tag-row">
-        <span class="tag">AWS Cloud</span>
+        <span class="tag blue">AWS Cloud</span>
         <span class="tag purple">Python</span>
         <span class="tag green">Linux</span>
         <span class="tag">SysAdmin</span>
@@ -625,30 +602,30 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
       </div>
       <div class="cta-row">
         <a href="#portfolio" class="btn-primary">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
           View Projects
         </a>
         <a href="#contact" class="btn-outline">Hire Me</a>
         <a href="https://wa.me/9779865802093" target="_blank" rel="noopener noreferrer" class="btn-wa">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
           WhatsApp
         </a>
       </div>
       <div class="social-row">
         <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         </a>
         <a href="https://www.linkedin.com/in/hemrajadhikary" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
         <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Upwork">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
         </a>
         <a href="mailto:hemrajhadhikari@gmail.com" class="social-btn" aria-label="Email">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         </a>
-        <a href="https://hemrajadhikari.info.np" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Portfolio Website">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <a href="https://hemrajadhikari.info.np" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Website">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </a>
       </div>
     </div>
@@ -660,9 +637,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
           <img
             src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/Hem-pic.png"
             alt="Hemraj Adhikari — IT Officer and Cloud Specialist from Kathmandu Nepal"
-            width="300" height="300"
+            width="280" height="280"
             loading="eager" fetchpriority="high"
-            onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:80px;background:linear-gradient(135deg,rgba(100,210,255,.12),rgba(167,139,250,.12))\'>👨‍💻</div>'"
+            onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:72px;background:linear-gradient(135deg,rgba(100,210,255,.08),rgba(167,139,250,.08))\'>👨‍💻</div>'"
           >
         </div>
         <div class="orbit-ring">
@@ -674,28 +651,28 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
       </div>
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-num" data-count="50">0</div><span>+</span>
-          <div class="stat-label">Websites Managed</div>
+          <div><span class="stat-num" data-count="50">0</span><span class="stat-sup">+</span></div>
+          <div class="stat-label">Websites</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num" data-count="3">0</div><span>.5+</span>
-          <div class="stat-label">Years Exp.</div>
+          <div><span class="stat-num" data-count="3">0</span><span class="stat-sup">.5+</span></div>
+          <div class="stat-label">Yrs Exp</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num" data-count="99">0</div><span>%</span>
+          <div><span class="stat-num" data-count="99">0</span><span class="stat-sup">%</span></div>
           <div class="stat-label">Uptime SLA</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num" data-count="100">0</div><span>+</span>
-          <div class="stat-label">Users Supported</div>
+          <div><span class="stat-num" data-count="100">0</span><span class="stat-sup">+</span></div>
+          <div class="stat-label">Users</div>
         </div>
       </div>
-      <a href="#about" class="scroll-hint">↓ &nbsp;scroll to explore</a>
+      <a href="#about" class="scroll-hint">↓ &nbsp;scroll</a>
     </div>
   </div>
 </section>
 
-<!-- ══════ ABOUT ══════ -->
+<!-- ABOUT -->
 <section id="about">
   <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">About Me</span></div>
   <h2 class="sec-title reveal">Nepal IT Expert &amp; <mark>Student Mentor</mark></h2>
@@ -705,38 +682,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
       <p>I hold a <strong>Bachelor of Information Technology (BIT)</strong> from JMC College under Bagmati Pradesh University (expected June 2026), backed by certifications in <strong>Linux Administration</strong>, <strong>Google Workspace</strong>, and <strong>Microsoft 365</strong>, with AWS Cloud Practitioner in progress.</p>
       <p>Beyond professional work, I am a passionate <strong>mentor for BIT, BCA, BSc CSIT, Computer Engineering students, AI learners, and digital marketing learners</strong> across Nepal and India — providing real-world guidance grounded in hands-on experience.</p>
       <div class="hl-cards">
-        <div class="hl-card">
-          <div class="hl-icon">🎓</div>
-          <div>
-            <strong>Nepal IT Student Mentor</strong>
-            <span>BIT · BCA · BSc CSIT · Comp Eng · AI Learners · Digital Marketing</span>
-          </div>
-        </div>
-        <div class="hl-card">
-          <div class="hl-icon">☁️</div>
-          <div>
-            <strong>Cloud & SaaS Specialist</strong>
-            <span>AWS · Google Workspace · Microsoft 365 · Azure Fundamentals</span>
-          </div>
-        </div>
-        <div class="hl-card">
-          <div class="hl-icon">⚡</div>
-          <div>
-            <strong>Sub-2hr Response SLA</strong>
-            <span>Fast, reliable IT support across high-throughput environments</span>
-          </div>
-        </div>
-        <div class="hl-card">
-          <div class="hl-icon">🌐</div>
-          <div>
-            <strong>Global Freelancer — 50+ Websites Deployed</strong>
-            <span>AWS EC2 · cPanel · Hostinger · DNS · SSL/TLS · WordPress Security</span>
-          </div>
-        </div>
+        <div class="hl-card"><div class="hl-icon">🎓</div><div><strong>Nepal IT Student Mentor</strong><span>BIT · BCA · BSc CSIT · Comp Eng · AI Learners · Digital Marketing</span></div></div>
+        <div class="hl-card"><div class="hl-icon">☁️</div><div><strong>Cloud & SaaS Specialist</strong><span>AWS · Google Workspace · Microsoft 365 · Azure Fundamentals</span></div></div>
+        <div class="hl-card"><div class="hl-icon">⚡</div><div><strong>Sub-2hr Response SLA</strong><span>Fast, reliable IT support across high-throughput environments</span></div></div>
+        <div class="hl-card"><div class="hl-icon">🌐</div><div><strong>Global Freelancer — 50+ Websites Deployed</strong><span>AWS EC2 · cPanel · Hostinger · DNS · SSL/TLS · WordPress Security</span></div></div>
       </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a href="https://hemrajadhikari.info.np/hemraj-adhikari-cv.pdf" download class="btn-primary">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <div style="display:flex;gap:9px;flex-wrap:wrap">
+        <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" class="btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download CV
         </a>
         <a href="#contact" class="btn-outline">Let's Talk</a>
@@ -746,38 +699,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
       <div class="info-panel">
         <h3>Career Timeline</h3>
         <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div>
-              <span class="tl-year">May 2026–Present</span>
-              <span class="tl-title">IT Officer — Route 2 Uni International Group</span>
-              <span class="tl-sub">CRM Admin · SaaS · Reporting Dashboards · L1/L2 Support</span>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div>
-              <span class="tl-year">Aug 2024–May 2026</span>
-              <span class="tl-title">IT Officer — Citizen Infotech</span>
-              <span class="tl-sub">CRM Administration · Data Governance · Automation</span>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div>
-              <span class="tl-year">Feb 2022–Jul 2024</span>
-              <span class="tl-title">IT Support Specialist — Percoid IT Solution</span>
-              <span class="tl-sub">L1/L2 Helpdesk · Windows Server · Active Directory · M365</span>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div>
-              <span class="tl-year">Jan 2021–Present</span>
-              <span class="tl-title">Web & Hosting Specialist — Freelance</span>
-              <span class="tl-sub">50+ Websites · AWS EC2 · DNS · SSL/TLS · WordPress Security</span>
-            </div>
-          </div>
+          <div class="tl-item"><div class="tl-dot"></div><div><span class="tl-year">May 2026–Present</span><span class="tl-title">IT Officer — Route 2 Uni International Group</span><span class="tl-sub">CRM Admin · SaaS · Reporting Dashboards · L1/L2 Support</span></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><span class="tl-year">Aug 2024–May 2026</span><span class="tl-title">IT Officer — Citizen Infotech</span><span class="tl-sub">CRM Administration · Data Governance · Automation</span></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><span class="tl-year">Feb 2022–Jul 2024</span><span class="tl-title">IT Support Specialist — Percoid IT Solution</span><span class="tl-sub">L1/L2 Helpdesk · Windows Server · Active Directory · M365</span></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><span class="tl-year">Jan 2021–Present</span><span class="tl-title">Web & Hosting Specialist — Freelance</span><span class="tl-sub">50+ Websites · AWS EC2 · DNS · SSL/TLS · WordPress Security</span></div></div>
         </div>
       </div>
       <div class="info-panel">
@@ -794,26 +719,17 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
   </div>
 </section>
 
-<!-- ══════ EXPERIENCE ══════ -->
+<!-- EXPERIENCE -->
 <section id="experience">
   <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">Work History</span></div>
   <h2 class="sec-title reveal">Professional <mark>Experience</mark></h2>
   <div class="exp-list">
-
     <article class="exp-card current reveal">
-      <div class="exp-head">
-        <div class="exp-role">IT Officer</div>
-        <span class="exp-badge">● Current Role</span>
-      </div>
+      <div class="exp-head"><div class="exp-role">IT Officer</div><span class="exp-badge">● Current</span></div>
       <div class="exp-meta">
-        <span class="exp-company">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          Route 2 Uni International Group
-        </span>
-        <span class="exp-sep">·</span>
-        <span class="exp-location">📍 Putalisadak, Kathmandu, Nepal</span>
-        <span class="exp-sep">·</span>
-        <span class="exp-date">May 2026 – Present</span>
+        <span class="exp-company"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Route 2 Uni International Group</span>
+        <span class="exp-sep">·</span><span class="exp-location">📍 Putalisadak, Kathmandu</span>
+        <span class="exp-sep">·</span><span class="exp-date">May 2026 – Present</span>
       </div>
       <ul class="exp-bullets">
         <li>Administer cloud-based CRM and SaaS platforms for 50+ staff, enforcing RBAC, MFA, and data governance policies — maintaining 100% compliance with internal security standards.</li>
@@ -823,19 +739,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
         <li>Provide L1/L2 technical support for all staff, maintaining a sub-2-hour SLA across a high-throughput consultancy environment.</li>
       </ul>
     </article>
-
     <article class="exp-card reveal">
-      <div class="exp-head">
-        <div class="exp-role">IT Officer</div>
-        <span class="exp-badge past">Aug 2024–May 2026</span>
-      </div>
+      <div class="exp-head"><div class="exp-role">IT Officer</div><span class="exp-badge past">Aug 2024–May 2026</span></div>
       <div class="exp-meta">
-        <span class="exp-company">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          Citizen Infotech
-        </span>
-        <span class="exp-sep">·</span>
-        <span class="exp-location">📍 Mid Baneshwor, Kathmandu, Nepal</span>
+        <span class="exp-company"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Citizen Infotech</span>
+        <span class="exp-sep">·</span><span class="exp-location">📍 Mid Baneshwor, Kathmandu</span>
       </div>
       <ul class="exp-bullets">
         <li>Owned full-lifecycle CRM administration for 50+ users — data entry standards, system integrity checks, and user access governance — reducing data discrepancies by 35%.</li>
@@ -845,19 +753,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
         <li>Provided system troubleshooting and IT support for all staff, sustaining a 98%+ ticket resolution rate.</li>
       </ul>
     </article>
-
     <article class="exp-card reveal">
-      <div class="exp-head">
-        <div class="exp-role">IT Support Specialist</div>
-        <span class="exp-badge past">Feb 2022–Jul 2024</span>
-      </div>
+      <div class="exp-head"><div class="exp-role">IT Support Specialist</div><span class="exp-badge past">Feb 2022–Jul 2024</span></div>
       <div class="exp-meta">
-        <span class="exp-company">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          Percoid IT Solution
-        </span>
-        <span class="exp-sep">·</span>
-        <span class="exp-location">📍 Manbhawan, Lalitpur, Nepal</span>
+        <span class="exp-company"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Percoid IT Solution</span>
+        <span class="exp-sep">·</span><span class="exp-location">📍 Manbhawan, Lalitpur</span>
       </div>
       <ul class="exp-bullets">
         <li>Delivered L1/L2 helpdesk support to 100+ users across hardware, software, OS, and network issues — 95% first-call resolution rate while meeting all SLA targets.</li>
@@ -867,21 +767,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
         <li>Supported Google Workspace and Microsoft 365 tenant administration: onboarding, license assignments, permissions, and email security configurations.</li>
       </ul>
     </article>
-
     <article class="exp-card reveal">
-      <div class="exp-head">
-        <div class="exp-role">Web & Hosting Specialist</div>
-        <span class="exp-badge">● Ongoing</span>
-      </div>
+      <div class="exp-head"><div class="exp-role">Web & Hosting Specialist</div><span class="exp-badge">● Ongoing</span></div>
       <div class="exp-meta">
-        <span class="exp-company">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-          Self-Employed / Freelance
-        </span>
-        <span class="exp-sep">·</span>
-        <span class="exp-location">📍 Nepal (Remote)</span>
-        <span class="exp-sep">·</span>
-        <span class="exp-date">Jan 2021–Present</span>
+        <span class="exp-company"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>Self-Employed / Freelance</span>
+        <span class="exp-sep">·</span><span class="exp-location">📍 Nepal (Remote)</span>
+        <span class="exp-sep">·</span><span class="exp-date">Jan 2021–Present</span>
       </div>
       <ul class="exp-bullets">
         <li>Deployed and managed 50+ client websites across AWS EC2, cPanel, and Hostinger — maintaining uptime SLAs and resolving hosting incidents within agreed windows.</li>
@@ -890,11 +781,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
         <li>Executed site migrations and backup automation with restoration drills, achieving average page load times under 2 seconds.</li>
       </ul>
     </article>
-
   </div>
 </section>
 
-<!-- ══════ SKILLS ══════ -->
+<!-- SKILLS -->
 <section id="skills">
   <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">Technical Skills</span></div>
   <h2 class="sec-title reveal">My <mark>Skillset</mark></h2>
@@ -925,7 +815,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
   <div class="tech-icons reveal">
     <div class="tech-ico">☁️<span>AWS</span></div>
     <div class="tech-ico">🐧<span>Linux</span></div>
-    <div class="tech-ico">🪟<span>Windows Server</span></div>
+    <div class="tech-ico">🪟<span>Win Server</span></div>
     <div class="tech-ico">📧<span>M365</span></div>
     <div class="tech-ico">📂<span>G Workspace</span></div>
     <div class="tech-ico">🐍<span>Python</span></div>
@@ -938,204 +828,66 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
   </div>
 </section>
 
-<!-- ══════ SERVICES ══════ -->
-<section id="services" style="background:linear-gradient(180deg,transparent,rgba(167,139,250,.02),transparent)">
+<!-- SERVICES -->
+<section id="services">
   <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">What I Do</span></div>
   <h2 class="sec-title reveal">IT Services for <mark>Nepal & India</mark></h2>
   <div class="svc-grid">
-    <article class="svc-card reveal">
-      <div class="svc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-      <span class="svc-num">01</span>
-      <h3>Cloud Infrastructure & DevOps</h3>
-      <p>Design, deploy, and manage scalable cloud environments on AWS — EC2, IAM, S3, VPC, CloudWatch — with automated CI/CD and infrastructure as code.</p>
-      <ul class="svc-tags"><li>AWS</li><li>CI/CD</li><li>Docker</li><li>GitHub Actions</li></ul>
-    </article>
-    <article class="svc-card reveal">
-      <div class="svc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M9 12h1m4 0h1"/></svg></div>
-      <span class="svc-num">02</span>
-      <h3>SaaS & CRM Administration</h3>
-      <p>Full-lifecycle CRM and SaaS platform management for teams of 50+, including RBAC, MFA, data governance, user onboarding/offboarding, and compliance.</p>
-      <ul class="svc-tags"><li>Google Workspace</li><li>M365</li><li>CRM</li><li>RBAC</li></ul>
-    </article>
-    <article class="svc-card reveal">
-      <div class="svc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-      <span class="svc-num">03</span>
-      <h3>System Administration</h3>
-      <p>Advanced Windows Server & Linux administration, Active Directory, Group Policy, security patching, and automation scripting for Nepal & India enterprises.</p>
-      <ul class="svc-tags"><li>Linux</li><li>Windows Server</li><li>Active Directory</li><li>Scripting</li></ul>
-    </article>
-    <article class="svc-card reveal">
-      <div class="svc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <span class="svc-num">04</span>
-      <h3>Cybersecurity & Data Protection</h3>
-      <p>Endpoint security hardening, SSL/TLS management, vulnerability assessment, backup automation, disaster recovery planning, and security auditing.</p>
-      <ul class="svc-tags"><li>SSL/TLS</li><li>Firewall</li><li>Backup & DR</li><li>Security Audit</li></ul>
-    </article>
-    <article class="svc-card reveal">
-      <div class="svc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-      <span class="svc-num">05</span>
-      <h3>Web Hosting & DNS Management</h3>
-      <p>End-to-end web hosting on AWS EC2, cPanel, and Hostinger — DNS records, SPF/DKIM/DMARC, SSL certificates, WordPress hardening, and site migrations.</p>
-      <ul class="svc-tags"><li>AWS EC2</li><li>cPanel</li><li>DNS</li><li>WordPress</li></ul>
-    </article>
-    <article class="svc-card reveal">
-      <div class="svc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
-      <span class="svc-num">06</span>
-      <h3>Network Engineering</h3>
-      <p>LAN/WAN architecture, VPN configuration, DNS & DHCP management, VLAN segmentation, firewall rules, and Wi-Fi network monitoring for enterprises.</p>
-      <ul class="svc-tags"><li>LAN/WAN</li><li>VPN</li><li>DNS/DHCP</li><li>VLANs</li></ul>
-    </article>
-    <article class="svc-card reveal">
-      <div class="svc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-      <span class="svc-num">07</span>
-      <h3>IT Helpdesk & L1/L2 Support</h3>
-      <p>Professional ITIL-based helpdesk support — incident and change management, asset management, SLA compliance, and end-user technical support.</p>
-      <ul class="svc-tags"><li>ITIL</li><li>Helpdesk</li><li>Asset Mgmt</li><li>SLA</li></ul>
-    </article>
-    <article class="svc-card reveal">
-      <div class="svc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-      <span class="svc-num">08</span>
-      <h3>IT Mentoring — Nepal Students</h3>
-      <p>Career guidance, project assistance, and technical mentoring for BIT, BCA, BSc CSIT, Computer Engineering, AI learners, and digital marketing learners in Nepal & India.</p>
-      <ul class="svc-tags"><li>BIT Nepal</li><li>BCA Nepal</li><li>BSc CSIT</li><li>AI Learner</li></ul>
-    </article>
+    <article class="svc-card reveal"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><span class="svc-num">01</span><h3>Cloud Infrastructure & DevOps</h3><p>Design, deploy, and manage scalable cloud environments on AWS — EC2, IAM, S3, VPC, CloudWatch — with automated CI/CD and infrastructure as code.</p><ul class="svc-tags"><li>AWS</li><li>CI/CD</li><li>Docker</li><li>GitHub Actions</li></ul></article>
+    <article class="svc-card reveal"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M9 12h1m4 0h1"/></svg></div><span class="svc-num">02</span><h3>SaaS & CRM Administration</h3><p>Full-lifecycle CRM and SaaS platform management for teams of 50+, including RBAC, MFA, data governance, user onboarding/offboarding, and compliance.</p><ul class="svc-tags"><li>Google Workspace</li><li>M365</li><li>CRM</li><li>RBAC</li></ul></article>
+    <article class="svc-card reveal"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><span class="svc-num">03</span><h3>System Administration</h3><p>Advanced Windows Server & Linux administration, Active Directory, Group Policy, security patching, and automation scripting for Nepal & India enterprises.</p><ul class="svc-tags"><li>Linux</li><li>Windows Server</li><li>Active Directory</li><li>Scripting</li></ul></article>
+    <article class="svc-card reveal"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span class="svc-num">04</span><h3>Cybersecurity & Data Protection</h3><p>Endpoint security hardening, SSL/TLS management, vulnerability assessment, backup automation, disaster recovery planning, and security auditing.</p><ul class="svc-tags"><li>SSL/TLS</li><li>Firewall</li><li>Backup & DR</li><li>Security Audit</li></ul></article>
+    <article class="svc-card reveal"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><span class="svc-num">05</span><h3>Web Hosting & DNS Management</h3><p>End-to-end web hosting on AWS EC2, cPanel, and Hostinger — DNS records, SPF/DKIM/DMARC, SSL certificates, WordPress hardening, and site migrations.</p><ul class="svc-tags"><li>AWS EC2</li><li>cPanel</li><li>DNS</li><li>WordPress</li></ul></article>
+    <article class="svc-card reveal"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div><span class="svc-num">06</span><h3>Network Engineering</h3><p>LAN/WAN architecture, VPN configuration, DNS & DHCP management, VLAN segmentation, firewall rules, and Wi-Fi network monitoring for enterprises.</p><ul class="svc-tags"><li>LAN/WAN</li><li>VPN</li><li>DNS/DHCP</li><li>VLANs</li></ul></article>
+    <article class="svc-card reveal"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><span class="svc-num">07</span><h3>IT Helpdesk & L1/L2 Support</h3><p>Professional ITIL-based helpdesk support — incident and change management, asset management, SLA compliance, and end-user technical support.</p><ul class="svc-tags"><li>ITIL</li><li>Helpdesk</li><li>Asset Mgmt</li><li>SLA</li></ul></article>
+    <article class="svc-card reveal"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="svc-num">08</span><h3>IT Mentoring — Nepal Students</h3><p>Career guidance, project assistance, and technical mentoring for BIT, BCA, BSc CSIT, Computer Engineering, AI learners, and digital marketing learners in Nepal & India.</p><ul class="svc-tags"><li>BIT Nepal</li><li>BCA Nepal</li><li>BSc CSIT</li><li>AI Learner</li></ul></article>
   </div>
 </section>
 
-<!-- ══════ PORTFOLIO ══════ -->
+<!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">Portfolio</span></div>
   <h2 class="sec-title reveal">Featured <mark>Projects</mark></h2>
   <div class="proj-grid">
-    <article class="proj-card reveal">
-      <div class="proj-thumb">🎙️</div>
-      <div class="proj-body">
-        <div class="proj-meta"><span class="proj-type">Media & Streaming</span><span class="proj-year">2023</span></div>
-        <h3>KBM FM — Radio Streaming Platform</h3>
-        <p>Live radio streaming platform with real-time audio broadcasting, program scheduling, and audience engagement for Nepal listeners. Built for maximum uptime and mobile performance.</p>
-        <div class="proj-tech"><span>PHP</span><span>MySQL</span><span>Streaming API</span></div>
-        <a href="https://kbmfm.com/" target="_blank" rel="noopener noreferrer" class="proj-link">View Live <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-      </div>
-    </article>
-    <article class="proj-card reveal">
-      <div class="proj-thumb">📚</div>
-      <div class="proj-body">
-        <div class="proj-meta"><span class="proj-type">EdTech — Nepal</span><span class="proj-year">2022</span></div>
-        <h3>Mega Loksewa — Nepal Exam Prep</h3>
-        <p>Full-scale government exam preparation platform — mock tests, live classes, LMS, student dashboards. Ideal for BIT, BCA, BSc CSIT and Loksewa aspirants.</p>
-        <div class="proj-tech"><span>Laravel</span><span>MySQL</span><span>LMS</span></div>
-        <a href="https://www.megaloksewa.com/" target="_blank" rel="noopener noreferrer" class="proj-link">View Live <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-      </div>
-    </article>
-    <article class="proj-card reveal">
-      <div class="proj-thumb">🎨</div>
-      <div class="proj-body">
-        <div class="proj-meta"><span class="proj-type">Personal Branding</span><span class="proj-year">2023</span></div>
-        <h3>Aradhana Shrestha Portfolio</h3>
-        <p>Elegant personal brand website with professional storytelling, portfolio showcase, and conversion-focused design — SEO-optimised for Nepal audience reach and client bookings.</p>
-        <div class="proj-tech"><span>HTML5</span><span>CSS3</span><span>SEO Nepal</span></div>
-        <a href="https://arradhanashrestha.com/" target="_blank" rel="noopener noreferrer" class="proj-link">View Live <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-      </div>
-    </article>
-    <article class="proj-card reveal">
-      <div class="proj-thumb">☁️</div>
-      <div class="proj-body">
-        <div class="proj-meta"><span class="proj-type">Enterprise Cloud</span><span class="proj-year">2023</span></div>
-        <h3>Cloud IT Management System</h3>
-        <p>Centralised cloud IT management for monitoring servers, user access control, backup automation, and real-time system health dashboards — delivered for Nepal enterprise client.</p>
-        <div class="proj-tech"><span>AWS</span><span>Python</span><span>CloudWatch</span></div>
-        <span class="proj-done">Enterprise System ✓</span>
-      </div>
-    </article>
-    <article class="proj-card reveal">
-      <div class="proj-thumb">🏥</div>
-      <div class="proj-body">
-        <div class="proj-meta"><span class="proj-type">Healthcare — India & Australia</span><span class="proj-year">2021–22</span></div>
-        <h3>Healthcare Web & App Solutions</h3>
-        <p>Four healthcare web and mobile solutions — appointment booking, patient tracking dashboards, and responsive admin panels for clinics in India and Australia.</p>
-        <div class="proj-tech"><span>React</span><span>Node.js</span><span>MySQL</span></div>
-        <span class="proj-done">4 Projects Delivered ✓</span>
-      </div>
-    </article>
-    <article class="proj-card reveal">
-      <div class="proj-thumb">🎵</div>
-      <div class="proj-body">
-        <div class="proj-meta"><span class="proj-type">Education & Branding</span><span class="proj-year">2022</span></div>
-        <h3>Sargam Vidyalaya Music School</h3>
-        <p>Complete website, digital marketing strategy, and SEO branding for a Nepal music school — measurable student enrollment growth and strong local SEO ranking.</p>
-        <div class="proj-tech"><span>WordPress</span><span>SEO Nepal</span><span>Google Ads</span></div>
-        <span class="proj-done">Growth Achieved ✓</span>
-      </div>
-    </article>
+    <article class="proj-card reveal"><div class="proj-thumb">🎙️</div><div class="proj-body"><div class="proj-meta"><span class="proj-type">Media & Streaming</span><span class="proj-year">2023</span></div><h3>KBM FM — Radio Streaming</h3><p>Live radio streaming platform with real-time audio broadcasting, program scheduling, and audience engagement for Nepal listeners.</p><div class="proj-tech"><span>PHP</span><span>MySQL</span><span>Streaming API</span></div><a href="https://kbmfm.com/" target="_blank" rel="noopener noreferrer" class="proj-link">View Live <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></article>
+    <article class="proj-card reveal"><div class="proj-thumb">📚</div><div class="proj-body"><div class="proj-meta"><span class="proj-type">EdTech — Nepal</span><span class="proj-year">2022</span></div><h3>Mega Loksewa — Exam Prep</h3><p>Full-scale government exam preparation platform — mock tests, live classes, LMS, student dashboards for Loksewa aspirants.</p><div class="proj-tech"><span>Laravel</span><span>MySQL</span><span>LMS</span></div><a href="https://www.megaloksewa.com/" target="_blank" rel="noopener noreferrer" class="proj-link">View Live <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></article>
+    <article class="proj-card reveal"><div class="proj-thumb">🎨</div><div class="proj-body"><div class="proj-meta"><span class="proj-type">Personal Branding</span><span class="proj-year">2023</span></div><h3>Aradhana Shrestha Portfolio</h3><p>Elegant personal brand website with professional storytelling, portfolio showcase, and conversion-focused design — SEO-optimised for Nepal audience.</p><div class="proj-tech"><span>HTML5</span><span>CSS3</span><span>SEO Nepal</span></div><a href="https://arradhanashrestha.com/" target="_blank" rel="noopener noreferrer" class="proj-link">View Live <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></article>
+    <article class="proj-card reveal"><div class="proj-thumb">☁️</div><div class="proj-body"><div class="proj-meta"><span class="proj-type">Enterprise Cloud</span><span class="proj-year">2023</span></div><h3>Cloud IT Management System</h3><p>Centralised cloud IT management for monitoring servers, user access control, backup automation, and real-time system health dashboards.</p><div class="proj-tech"><span>AWS</span><span>Python</span><span>CloudWatch</span></div><span class="proj-done">Enterprise System ✓</span></div></article>
+    <article class="proj-card reveal"><div class="proj-thumb">🏥</div><div class="proj-body"><div class="proj-meta"><span class="proj-type">Healthcare</span><span class="proj-year">2021–22</span></div><h3>Healthcare Web & App Solutions</h3><p>Four healthcare web and mobile solutions — appointment booking, patient tracking dashboards, and responsive admin panels for clinics in India and Australia.</p><div class="proj-tech"><span>React</span><span>Node.js</span><span>MySQL</span></div><span class="proj-done">4 Projects Delivered ✓</span></div></article>
+    <article class="proj-card reveal"><div class="proj-thumb">🎵</div><div class="proj-body"><div class="proj-meta"><span class="proj-type">Education & Branding</span><span class="proj-year">2022</span></div><h3>Sargam Vidyalaya Music School</h3><p>Complete website, digital marketing strategy, and SEO branding for a Nepal music school — measurable student enrollment growth and strong local SEO ranking.</p><div class="proj-tech"><span>WordPress</span><span>SEO Nepal</span><span>Google Ads</span></div><span class="proj-done">Growth Achieved ✓</span></div></article>
   </div>
-  <div class="reveal" style="margin-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:20px 24px;background:var(--surface);border:1px solid var(--border);border-radius:12px">
-    <p style="font-size:13px;color:var(--text2)">Several additional projects on <strong style="color:var(--text)">Upwork</strong> — some details confidential per client NDAs.</p>
-    <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" class="btn-outline">View Upwork Profile ↗</a>
+  <div class="reveal" style="margin-top:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);border-radius:10px">
+    <p style="font-size:13px;color:var(--text2)">Several additional projects on <strong style="color:var(--text);font-weight:500">Upwork</strong> — some details confidential per client NDAs.</p>
+    <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" class="btn-outline">Upwork Profile ↗</a>
   </div>
 </section>
 
-<!-- ══════ EDUCATION ══════ -->
+<!-- EDUCATION -->
 <section id="education">
   <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">Education</span></div>
   <h2 class="sec-title reveal">Academic <mark>Background</mark></h2>
   <div class="edu-grid">
-    <div class="edu-card reveal">
-      <div class="edu-icon">🎓</div>
-      <div>
-        <div class="edu-year">2023 – Expected Jun 2026</div>
-        <div class="edu-degree">Bachelor of Information Technology (BIT)</div>
-        <div class="edu-school">JMC College · Kathmandu, Nepal</div>
-        <div class="edu-board">Bagmati Pradesh University</div>
-      </div>
-    </div>
-    <div class="edu-card reveal">
-      <div class="edu-icon">📗</div>
-      <div>
-        <div class="edu-year">Completed 2022</div>
-        <div class="edu-degree">Higher Secondary Certificate (+2) — Computer Science</div>
-        <div class="edu-school">Sodsha Devi School · Kathmandu, Nepal</div>
-        <div class="edu-board">National Examination Board (NEB)</div>
-      </div>
-    </div>
-    <div class="edu-card reveal">
-      <div class="edu-icon">📘</div>
-      <div>
-        <div class="edu-year">Completed 2019</div>
-        <div class="edu-degree">School Leaving Certificate (SLC)</div>
-        <div class="edu-school">Manakamana Maavi Secondary School · Achham, Nepal</div>
-        <div class="edu-board">National Examination Board (NEB)</div>
-      </div>
-    </div>
+    <div class="edu-card reveal"><div class="edu-icon">🎓</div><div><div class="edu-year">2023 – Expected Jun 2026</div><div class="edu-degree">Bachelor of Information Technology (BIT)</div><div class="edu-school">JMC College · Kathmandu, Nepal</div><div class="edu-board">Bagmati Pradesh University</div></div></div>
+    <div class="edu-card reveal"><div class="edu-icon">📗</div><div><div class="edu-year">Completed 2022</div><div class="edu-degree">Higher Secondary Certificate (+2) — Computer Science</div><div class="edu-school">Sodsha Devi School · Kathmandu, Nepal</div><div class="edu-board">National Examination Board (NEB)</div></div></div>
+    <div class="edu-card reveal"><div class="edu-icon">📘</div><div><div class="edu-year">Completed 2019</div><div class="edu-degree">School Leaving Certificate (SLC)</div><div class="edu-school">Manakamana Maavi Secondary School · Achham, Nepal</div><div class="edu-board">National Examination Board (NEB)</div></div></div>
   </div>
 </section>
 
-<!-- ══════ CONTACT ══════ -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">Get in Touch</span></div>
   <h2 class="sec-title reveal">Let's <mark>Connect</mark></h2>
   <div class="contact-grid">
     <div class="reveal">
-      <p class="contact-intro">Have a project, need IT support, or want mentoring for BIT, BCA, BSc CSIT, AI learning, or digital marketing careers? I'm available for freelance projects, consultations, and student mentoring — locally in Nepal, across India, and worldwide.</p>
+      <p class="contact-intro">Have a project, need IT support, or want mentoring for BIT, BCA, BSc CSIT, AI learning, or digital marketing careers? Available for freelance projects, consultations, and student mentoring — locally in Nepal, across India, and worldwide.</p>
       <div class="contact-items">
-        <a href="mailto:hemrajhadhikari@gmail.com" class="c-item">
-          <div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-          <div><span class="c-label">Email</span><span class="c-val">hemrajhadhikari@gmail.com</span></div>
-        </a>
-        <a href="tel:+9779865802093" class="c-item">
-          <div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.11-1.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-          <div><span class="c-label">Phone / WhatsApp</span><span class="c-val">+977-9865802093</span></div>
-        </a>
-        <div class="c-item">
-          <div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div><span class="c-label">Location</span><span class="c-val">Kathmandu, Bagmati Province, Nepal</span></div>
-        </div>
-        <div class="c-item">
-          <div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div><span class="c-label">Response Time</span><span class="c-val">Within 24 hours · Nepal & Global</span></div>
-        </div>
+        <a href="mailto:hemrajhadhikari@gmail.com" class="c-item"><div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><div><span class="c-label">Email</span><span class="c-val">hemrajhadhikari@gmail.com</span></div></a>
+        <a href="tel:+9779865802093" class="c-item"><div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.11-1.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><span class="c-label">Phone / WhatsApp</span><span class="c-val">+977-9865802093</span></div></a>
+        <div class="c-item"><div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><span class="c-label">Location</span><span class="c-val">Kathmandu, Bagmati Province, Nepal</span></div></div>
+        <div class="c-item"><div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><span class="c-label">Response Time</span><span class="c-val">Within 24 hours · Nepal & Global</span></div></div>
       </div>
       <a href="https://wa.me/9779865802093?text=Hi%20Hemraj%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss." target="_blank" rel="noopener noreferrer" class="wa-cta">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
         Chat on WhatsApp
       </a>
     </div>
@@ -1144,14 +896,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
         <form id="contactForm" action="https://formspree.io/f/xkgdznrn" method="POST" novalidate>
           <div class="form-row">
             <div class="form-group"><label>Your Name <span>*</span></label><input type="text" name="name" placeholder="Your full name" required autocomplete="name"></div>
-            <div class="form-group"><label>Email Address <span>*</span></label><input type="email" name="email" placeholder="your@email.com" required autocomplete="email"></div>
+            <div class="form-group"><label>Email <span>*</span></label><input type="email" name="email" placeholder="your@email.com" required autocomplete="email"></div>
           </div>
           <div class="form-group"><label>Subject</label><input type="text" name="subject" placeholder="e.g. IT support, BIT mentoring, web project…" maxlength="200"></div>
           <div class="form-group"><label>Message <span>*</span></label><textarea name="message" placeholder="Tell me about your project, inquiry, or what you need help with…" required minlength="10" maxlength="2000"></textarea></div>
           <div style="display:none"><input type="text" name="_gotcha" tabindex="-1"></div>
           <button type="submit" class="btn-submit" id="submitBtn">
             Send Message
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           </button>
           <p class="form-msg" id="formMsg" role="alert"></p>
         </form>
@@ -1160,63 +912,47 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
   </div>
 </section>
 
-</main><!-- /main -->
+</main>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <a href="#hero" class="logo"><span>&lt;</span>HA<span>/&gt;</span></a>
+      <a href="#hero" class="logo"><em>hemraj</em>.adhikari</a>
       <p>IT Officer & Cloud Infrastructure Specialist from Kathmandu, Nepal. Mentor for BIT, BCA, BSc CSIT, AI learners & digital marketing learners across Nepal & India.</p>
       <div class="footer-social">
-        <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/hemrajadhikary" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" aria-label="Upwork">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
-        </a>
-        <a href="mailto:hemrajhadhikari@gmail.com" aria-label="Email">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        </a>
+        <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        <a href="https://www.linkedin.com/in/hemrajadhikary" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" aria-label="Upwork"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg></a>
+        <a href="mailto:hemrajhadhikari@gmail.com" aria-label="Email"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
       </div>
     </div>
     <div class="footer-links">
       <div class="footer-col">
         <h4>Navigation</h4>
         <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Projects</a></li>
+          <li><a href="#hero">Home</a></li><li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li><li><a href="#skills">Skills</a></li>
+          <li><a href="#services">Services</a></li><li><a href="#portfolio">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>IT Services</h4>
         <ul>
-          <li><a href="#services">AWS Cloud</a></li>
-          <li><a href="#services">SaaS Admin</a></li>
-          <li><a href="#services">System Admin</a></li>
-          <li><a href="#services">Networking</a></li>
-          <li><a href="#services">Cybersecurity</a></li>
-          <li><a href="#services">Web Hosting</a></li>
+          <li><a href="#services">AWS Cloud</a></li><li><a href="#services">SaaS Admin</a></li>
+          <li><a href="#services">System Admin</a></li><li><a href="#services">Networking</a></li>
+          <li><a href="#services">Cybersecurity</a></li><li><a href="#services">Web Hosting</a></li>
           <li><a href="#services">IT Helpdesk</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Students</h4>
         <ul>
-          <li><a href="#services">BIT Nepal</a></li>
-          <li><a href="#services">BCA Nepal</a></li>
-          <li><a href="#services">BSc CSIT Nepal</a></li>
-          <li><a href="#services">AI Learner</a></li>
+          <li><a href="#services">BIT Nepal</a></li><li><a href="#services">BCA Nepal</a></li>
+          <li><a href="#services">BSc CSIT Nepal</a></li><li><a href="#services">AI Learner</a></li>
           <li><a href="#services">Digital Marketing</a></li>
-          <li><a href="https://hemrajadhikari.info.np/hemraj-adhikari-cv.pdf" download>Download CV</a></li>
+          <li><a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy">Download CV</a></li>
         </ul>
       </div>
     </div>
@@ -1226,10 +962,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
     <span>Made with ❤️ for Nepal & India IT Community</span>
   </div>
 </footer>
-</div><!-- /page -->
+</div>
 
 <button id="btt" aria-label="Back to top">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
 <script>
@@ -1252,10 +988,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
       tog.setAttribute('aria-expanded', String(o));
     });
     mob.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){
-        mob.classList.remove('open');
-        tog.setAttribute('aria-expanded','false');
-      });
+      a.addEventListener('click', function(){ mob.classList.remove('open'); tog.setAttribute('aria-expanded','false'); });
     });
   }
 
@@ -1280,9 +1013,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
       if(!del) ci++; else ci--;
       if(!del && ci > p.length){ del=true; setTimeout(loop,1800); return; }
       if(del && ci===0){ del=false; pi=(pi+1)%phrases.length; }
-      setTimeout(loop, del?50:80);
+      setTimeout(loop, del?45:75);
     }
-    setTimeout(loop, 800);
+    setTimeout(loop, 700);
   } else if(el){ el.textContent = phrases[0]; }
 
   // Reveal on scroll
@@ -1294,7 +1027,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
         e.target.classList.add('visible');
         ro.unobserve(e.target);
       });
-    }, {threshold:0.07, rootMargin:'0px 0px -40px 0px'});
+    }, {threshold:0.06, rootMargin:'0px 0px -36px 0px'});
     reveals.forEach(function(el){ ro.observe(el); });
   } else {
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
@@ -1306,7 +1039,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
     var co = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(!e.isIntersecting) return;
-        var el = e.target, tg = parseInt(el.getAttribute('data-count'),10), st=null, dur=1400;
+        var el = e.target, tg = parseInt(el.getAttribute('data-count'),10), st=null, dur=1200;
         function ac(ts){ if(!st)st=ts; var p=Math.min((ts-st)/dur,1),ea=1-Math.pow(1-p,3); el.textContent=Math.round(ea*tg); if(p<1)requestAnimationFrame(ac); }
         requestAnimationFrame(ac);
         co.unobserve(el);
@@ -1333,7 +1066,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
   // Back to top
   var btt = document.getElementById('btt');
   if(btt){
-    window.addEventListener('scroll', function(){ btt.classList.toggle('on', window.scrollY > 600); }, {passive:true});
+    window.addEventListener('scroll', function(){ btt.classList.toggle('on', window.scrollY > 500); }, {passive:true});
     btt.addEventListener('click', function(){ window.scrollTo({top:0, behavior: reduced?'auto':'smooth'}); });
   }
 
