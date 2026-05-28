@@ -1,0 +1,119 @@
+# ============================================================
+# Hemraj Adhikari Portfolio — .htaccess
+# Production-grade: Performance + Security + SEO
+# ============================================================
+
+Options -Indexes
+ServerSignature Off
+
+# ── HTTPS redirect ──────────────────────────────────────────
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# ── www → non-www (adjust if you prefer www) ────────────────
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# ── Trailing slash removal (except directories) ─────────────
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [R=301,L]
+
+# ── GZIP Compression ────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/x-javascript text/javascript
+  AddOutputFilterByType DEFLATE image/svg+xml application/xml
+  AddOutputFilterByType DEFLATE font/ttf font/otf font/woff font/woff2
+  AddOutputFilterByType DEFLATE application/font-woff application/font-woff2
+</IfModule>
+
+# ── Brotli (if available) ────────────────────────────────────
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json
+  AddOutputFilterByType BROTLI_COMPRESS font/woff font/woff2 image/svg+xml
+</IfModule>
+
+# ── Browser Caching ──────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html                     "access plus 1 hour"
+  ExpiresByType text/css                      "access plus 1 year"
+  ExpiresByType application/javascript        "access plus 1 year"
+  ExpiresByType image/png                     "access plus 1 year"
+  ExpiresByType image/jpg                     "access plus 1 year"
+  ExpiresByType image/jpeg                    "access plus 1 year"
+  ExpiresByType image/gif                     "access plus 1 year"
+  ExpiresByType image/webp                    "access plus 1 year"
+  ExpiresByType image/avif                    "access plus 1 year"
+  ExpiresByType image/svg+xml                 "access plus 1 year"
+  ExpiresByType image/x-icon                  "access plus 1 year"
+  ExpiresByType font/woff                     "access plus 1 year"
+  ExpiresByType font/woff2                    "access plus 1 year"
+  ExpiresByType application/font-woff         "access plus 1 year"
+  ExpiresByType application/font-woff2        "access plus 1 year"
+  ExpiresByType application/manifest+json     "access plus 1 week"
+</IfModule>
+
+# ── Cache-Control headers ────────────────────────────────────
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|woff|woff2|ttf|otf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpg|jpeg|gif|webp|avif|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+
+  # ── Security Headers ──────────────────────────────────────
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # Content Security Policy — adjust if adding more third-parties
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://formspree.io https://api.formspree.io; frame-ancestors 'self';"
+
+  # Remove server info
+  Header unset Server
+  Header unset X-Powered-By
+</IfModule>
+
+# ── ETags ────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+FileETag None
+
+# ── MIME Types ───────────────────────────────────────────────
+<IfModule mod_mime.c>
+  AddType application/javascript          js mjs
+  AddType text/css                        css
+  AddType image/webp                      webp
+  AddType image/avif                      avif
+  AddType font/woff                       woff
+  AddType font/woff2                      woff2
+  AddType application/manifest+json      webmanifest
+</IfModule>
+
+# ── Block bad bots & scanners ────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTP_USER_AGENT} (masscan|nikto|sqlmap|nmap|dirbuster|zgrab) [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+
+# ── 404 custom page (create a 404.html) ─────────────────────
+ErrorDocument 404 /404.html
+
+# ── Deny access to dotfiles ──────────────────────────────────
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
