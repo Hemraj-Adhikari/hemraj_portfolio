@@ -1,1127 +1,1953 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- PRIMARY META -->
+<!-- ═══════════════════════════════════════════════════════════
+     PRIMARY META
+     ═══════════════════════════════════════════════════════════ -->
 <title>Hemraj Adhikari | IT Professional & Full Stack Web Developer | Kathmandu, Nepal</title>
-<meta name="description" content="Hemraj Adhikari — IT Professional & Full Stack Web Developer from Kathmandu, Nepal with 10+ years of experience in Cloud (AWS), Web Development, System Administration, Networking & Cybersecurity. 62+ projects delivered worldwide.">
+<meta name="description" content="Hemraj Adhikari — IT Professional & Full Stack Web Developer from Kathmandu, Nepal. 10+ years experience in Cloud (AWS), Web Development, System Administration, Networking & Cybersecurity. 62+ projects delivered worldwide.">
 <meta name="author" content="Hemraj Adhikari">
+<meta name="keywords" content="IT professional Nepal, full stack web developer Nepal, Nepal web developer, software engineer Nepal, AWS cloud engineer Nepal, freelance developer Nepal, Kathmandu web developer, system administrator Nepal, cybersecurity Nepal, web development Nepal">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" content="#040d1a">
+
+<!-- Canonical URL — single source of truth -->
 <link rel="canonical" href="https://hemrajadhikari.com.np/">
 
-<!-- OPEN GRAPH -->
+<!-- hreflang self-reference for geo-targeting signal -->
+<link rel="alternate" hreflang="en" href="https://hemrajadhikari.com.np/">
+
+<!-- ═══════════════════════════════════════════════════════════
+     OPEN GRAPH
+     ═══════════════════════════════════════════════════════════ -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hemrajadhikari.com.np/">
 <meta property="og:title" content="Hemraj Adhikari | IT Professional & Full Stack Web Developer | Nepal">
-<meta property="og:description" content="Nepal-based IT Professional with 10+ years experience in Cloud, Web Development, System Admin, Networking & Cybersecurity. 62+ projects delivered worldwide.">
+<meta property="og:description" content="Nepal-based IT Professional with 10+ years experience in Cloud, Web Development, System Administration, Networking & Cybersecurity. 62+ projects delivered worldwide.">
 <meta property="og:image" content="https://hemrajadhikari.com.np/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hemraj Adhikari — IT Professional and Full Stack Web Developer from Kathmandu, Nepal">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Hemraj Adhikari">
 
-<!-- TWITTER -->
+<!-- ═══════════════════════════════════════════════════════════
+     TWITTER / X CARD
+     ═══════════════════════════════════════════════════════════ -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hemraj Adhikari | IT Professional & Full Stack Web Developer | Nepal">
 <meta name="twitter:description" content="Nepal-based IT Professional with 10+ years experience. Cloud, Web Dev, System Admin, Networking & Cybersecurity. 62+ projects delivered.">
 <meta name="twitter:image" content="https://hemrajadhikari.com.np/og-image.jpg">
+<meta name="twitter:image:alt" content="Hemraj Adhikari — IT Professional from Nepal">
 
-<!-- GEO TAGS -->
+<!-- ═══════════════════════════════════════════════════════════
+     GEO TAGS — Nepal local targeting
+     ═══════════════════════════════════════════════════════════ -->
 <meta name="geo.region" content="NP-BA">
 <meta name="geo.placename" content="Kathmandu, Nepal">
 <meta name="geo.position" content="27.7172;85.3240">
 <meta name="ICBM" content="27.7172, 85.3240">
 
-<!-- FAVICON -->
+<!-- ═══════════════════════════════════════════════════════════
+     FAVICON
+     ═══════════════════════════════════════════════════════════ -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<!-- PRECONNECT — critical third parties only -->
+<!-- ═══════════════════════════════════════════════════════════
+     PERFORMANCE: Preconnect + Preload
+     ═══════════════════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="//formspree.io">
 
-<!-- FONTS — single request, display=swap -->
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Preload LCP image — critical for Lighthouse LCP score -->
+<!-- IMPORTANT: Replace src with your self-hosted WebP image path -->
+<link rel="preload" as="image" href="/hemraj.webp" type="image/webp" fetchpriority="high">
 
-<!-- STRUCTURED DATA: Person -->
+<!-- ═══════════════════════════════════════════════════════════
+     FONTS — Non-blocking load pattern
+     Prevents render-blocking on slow Nepal mobile connections
+     ═══════════════════════════════════════════════════════════ -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap">
+</noscript>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STRUCTURED DATA: Person Schema
+     ═══════════════════════════════════════════════════════════ -->
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"Person",
-  "name":"Hemraj Adhikari",
-  "url":"https://hemrajadhikari.com.np/",
-  "image":"https://hemrajadhikari.com.np/hemraj.png",
-  "jobTitle":"IT Professional & Full Stack Web Developer",
-  "worksFor":{"@type":"Organization","name":"Freelance / Self-Employed"},
-  "description":"IT Professional and Full Stack Web Developer from Kathmandu, Nepal with 10+ years of experience in cloud infrastructure, web development, system administration, network engineering, and cybersecurity.",
-  "address":{"@type":"PostalAddress","addressLocality":"Kathmandu","addressRegion":"Bagmati Province","addressCountry":"NP"},
-  "telephone":"+977-9865802093",
-  "email":"hemrajhadhikari@gmail.com",
-  "sameAs":["https://github.com/Hemraj-Adhikari","https://www.linkedin.com/in/hemrajadhikari","https://www.facebook.com/hemraaj.adhikaari","https://www.upwork.com/freelancers/hemrajadhikari"]
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Hemraj Adhikari",
+  "url": "https://hemrajadhikari.com.np/",
+  "image": "https://hemrajadhikari.com.np/hemraj.webp",
+  "jobTitle": "IT Professional & Full Stack Web Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance / Self-Employed"
+  },
+  "description": "IT Professional and Full Stack Web Developer from Kathmandu, Nepal with 10+ years of experience in cloud infrastructure (AWS), web development, system administration, network engineering, and cybersecurity.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kathmandu",
+    "addressRegion": "Bagmati Province",
+    "addressCountry": "NP"
+  },
+  "telephone": "+977-9865802093",
+  "email": "hemrajhadhikari@gmail.com",
+  "knowsAbout": ["Cloud Computing", "AWS", "Web Development", "System Administration", "Cybersecurity", "Network Engineering", "DevOps", "Python", "JavaScript", "Linux"],
+  "sameAs": [
+    "https://github.com/Hemraj-Adhikari",
+    "https://www.linkedin.com/in/hemrajadhikari",
+    "https://www.facebook.com/hemraaj.adhikaari",
+    "https://www.upwork.com/freelancers/hemrajadhikari"
+  ]
 }
 </script>
 
-<!-- STRUCTURED DATA: WebSite -->
+<!-- ═══════════════════════════════════════════════════════════
+     STRUCTURED DATA: WebSite Schema (no SearchAction — site has no search)
+     ═══════════════════════════════════════════════════════════ -->
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "name":"Hemraj Adhikari",
-  "url":"https://hemrajadhikari.com.np/",
-  "description":"Official portfolio of Hemraj Adhikari — IT Professional & Full Stack Web Developer based in Kathmandu, Nepal.",
-  "inLanguage":"en",
-  "potentialAction":{"@type":"SearchAction","target":"https://hemrajadhikari.com.np/?s={search_term_string}","query-input":"required name=search_term_string"}
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Hemraj Adhikari",
+  "url": "https://hemrajadhikari.com.np/",
+  "description": "Official portfolio of Hemraj Adhikari — IT Professional & Full Stack Web Developer based in Kathmandu, Nepal.",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "name": "Hemraj Adhikari"
+  }
 }
 </script>
 
-<!-- STRUCTURED DATA: FAQ -->
+<!-- ═══════════════════════════════════════════════════════════
+     STRUCTURED DATA: FAQ Schema
+     ═══════════════════════════════════════════════════════════ -->
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"Who is Hemraj Adhikari?","acceptedAnswer":{"@type":"Answer","text":"Hemraj Adhikari is an IT Professional and Full Stack Web Developer from Kathmandu, Nepal with 10+ years of experience in cloud infrastructure, web development, system administration, networking, and cybersecurity."}},
-    {"@type":"Question","name":"What services does Hemraj Adhikari offer?","acceptedAnswer":{"@type":"Answer","text":"Services include Cloud Infrastructure (AWS), Full Stack Web Development, Web Hosting & Server Management, System Administration, Network Engineering, Cybersecurity, DevOps, Remote IT Support, and Digital Marketing."}},
-    {"@type":"Question","name":"Is Hemraj Adhikari available for international remote projects?","acceptedAnswer":{"@type":"Answer","text":"Yes, Hemraj Adhikari is available for remote freelance projects worldwide including clients in the USA, UK, Australia, India, and other countries."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who is Hemraj Adhikari?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hemraj Adhikari is an IT Professional and Full Stack Web Developer from Kathmandu, Nepal with over 10 years of experience in cloud infrastructure (AWS), web development, system administration, network engineering, and cybersecurity. He has delivered 62+ projects for clients across Nepal and internationally."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What services does Hemraj Adhikari offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Services include Cloud Infrastructure (AWS), Full Stack Web Development, Web Hosting and Server Management, System Administration (Windows Server and Linux), Network Engineering, Cybersecurity and Data Protection, DevOps and CI/CD pipelines, Remote IT Support, and IT Consulting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Hemraj Adhikari available for international remote projects?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Hemraj Adhikari is available for remote freelance projects worldwide including clients in the USA, UK, Australia, India, and other countries. He can be reached via email at hemrajhadhikari@gmail.com or through his Upwork profile."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many years of IT experience does Hemraj Adhikari have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hemraj Adhikari has over 10 years of hands-on IT experience, having completed 62+ projects across industries including healthcare, education, media, and business — serving clients in Nepal, India, the USA, Australia, and the UK."
+      }
+    }
   ]
 }
 </script>
 
 <style>
-/* ===== RESET & TOKENS ===== */
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+/* ═══════════════════════════════════════════════════════════
+   RESET & DESIGN TOKENS
+   ═══════════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-:root{
-  /* Colors */
-  --bg:#040d1a;
-  --bg2:#071628;
-  --surface:rgba(255,255,255,0.035);
-  --surface2:rgba(255,255,255,0.06);
-  --border:rgba(0,210,255,0.14);
-  --border2:rgba(0,210,255,0.25);
-  --cyan:#00d2ff;
-  --cyan-dim:rgba(0,210,255,0.15);
-  --violet:#7c3aed;
-  --violet-dim:rgba(124,58,237,0.15);
-  --text:#e2eaf5;
-  --text2:#b8c8dc;
-  --muted:#6a829a;
-  --grad:linear-gradient(110deg,var(--cyan) 0%,var(--violet) 100%);
+:root {
+  /* Color palette */
+  --bg:            #040d1a;
+  --bg2:           #071628;
+  --surface:       rgba(255, 255, 255, 0.035);
+  --surface2:      rgba(255, 255, 255, 0.06);
+  --border:        rgba(0, 210, 255, 0.14);
+  --border2:       rgba(0, 210, 255, 0.28);
+  --cyan:          #00d2ff;
+  --cyan-dim:      rgba(0, 210, 255, 0.15);
+  --violet:        #7c3aed;
+  --violet-dim:    rgba(124, 58, 237, 0.15);
+  --text:          #e2eaf5;
+  --text2:         #b8c8dc;
+  /* FIXED: lightened from #6a829a to pass WCAG AA 4.5:1 on --bg */
+  --muted:         #8aa4be;
+  --grad:          linear-gradient(110deg, var(--cyan) 0%, var(--violet) 100%);
 
   /* Typography */
-  --font-display:'Syne',sans-serif;
-  --font-body:'DM Sans',sans-serif;
-  --font-mono:'DM Mono',monospace;
+  --font-display:  'Syne', sans-serif;
+  --font-body:     'DM Sans', sans-serif;
+  --font-mono:     'DM Mono', monospace;
 
   /* Spacing */
-  --section-pad:clamp(72px,8vw,120px);
-  --gutter:clamp(20px,6vw,80px);
+  --section-pad:   clamp(72px, 8vw, 120px);
+  --gutter:        clamp(20px, 6vw, 80px);
 
-  /* Effects */
-  --card-glow:0 0 30px rgba(0,210,255,0.07);
-  --card-glow-hover:0 12px 50px rgba(0,0,0,.5),0 0 40px rgba(0,210,255,0.12);
-  --transition:all .25s cubic-bezier(.4,0,.2,1);
+  /* Elevation */
+  --card-glow:       0 0 30px rgba(0, 210, 255, 0.07);
+  --card-glow-hover: 0 12px 50px rgba(0, 0, 0, .5), 0 0 40px rgba(0, 210, 255, 0.12);
+  --transition:      all .25s cubic-bezier(.4, 0, .2, 1);
 }
 
-html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden}
+/* scroll-behavior removed from html — handled in JS with prefers-reduced-motion check */
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  /* Font stack fallbacks for before Google Fonts loads */
+  font-family: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
 
 /* Scrollbar */
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--cyan);border-radius:2px}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 2px; }
 
-/* Noise overlay */
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:0
+/* Noise texture overlay — performance: will-change promotes to own layer */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform; /* own compositing layer — prevents repaint on scroll */
 }
 
-/* ===== NAVIGATION ===== */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:16px var(--gutter);
-  background:rgba(4,13,26,0.85);
-  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);
-  contain:layout style;
+/* ═══════════════════════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px var(--gutter);
+  background: rgba(4, 13, 26, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+  contain: layout style; /* CSS containment — skip layout outside nav */
 }
-.nav__logo{
-  font-family:var(--font-display);font-size:20px;font-weight:800;
-  color:var(--cyan);letter-spacing:-0.5px;text-decoration:none;
+
+.nav__logo {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--cyan);
+  letter-spacing: -0.5px;
+  text-decoration: none;
 }
-.nav__logo span{color:var(--text2)}
-.nav__links{display:flex;gap:28px;list-style:none}
-.nav__links a{
-  font-size:12px;font-weight:500;letter-spacing:1px;
-  color:var(--muted);text-decoration:none;text-transform:uppercase;
-  position:relative;transition:color .2s;
+.nav__logo span { color: var(--text2); }
+
+.nav__links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
 }
-.nav__links a::after{
-  content:'';position:absolute;bottom:-4px;left:0;
-  width:0;height:1px;background:var(--cyan);transition:width .3s;
+.nav__links a {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  transition: color .2s;
 }
-.nav__links a:hover,.nav__links a.active{color:var(--cyan)}
-.nav__links a:hover::after,.nav__links a.active::after{width:100%}
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--cyan);
+  transition: width .3s;
+}
+.nav__links a:hover,
+.nav__links a.active { color: var(--cyan); }
+.nav__links a:hover::after,
+.nav__links a.active::after { width: 100%; }
 
 /* Hamburger */
-.nav__toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;border:none;background:none}
-.nav__toggle span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:var(--transition)}
-.nav__toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.nav__toggle.open span:nth-child(2){opacity:0}
-.nav__toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  border: none;
+  background: none;
+}
+.nav__toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+.nav__toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav__toggle.open span:nth-child(2) { opacity: 0; }
+.nav__toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
 /* Mobile menu */
-.nav__mobile{
-  display:none;position:fixed;top:57px;left:0;right:0;
-  background:rgba(4,13,26,0.97);backdrop-filter:blur(24px);
-  padding:16px var(--gutter) 24px;
-  border-bottom:1px solid var(--border);z-index:99;
+.nav__mobile {
+  display: none;
+  position: fixed;
+  top: 57px;
+  left: 0;
+  right: 0;
+  background: rgba(4, 13, 26, 0.97);
+  backdrop-filter: blur(24px);
+  padding: 16px var(--gutter) 24px;
+  border-bottom: 1px solid var(--border);
+  z-index: 99;
 }
-.nav__mobile.open{display:block}
-.nav__mobile ul{list-style:none;display:flex;flex-direction:column}
-.nav__mobile a{
-  display:block;padding:13px 0;font-size:15px;font-weight:500;
-  color:var(--text2);text-decoration:none;
-  border-bottom:1px solid var(--border);transition:color .2s;
+.nav__mobile.open { display: block; }
+.nav__mobile ul { list-style: none; display: flex; flex-direction: column; }
+.nav__mobile a {
+  display: block;
+  padding: 13px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: color .2s;
 }
-.nav__mobile a:hover{color:var(--cyan)}
+.nav__mobile a:hover { color: var(--cyan); }
 
-/* ===== LAYOUT ===== */
-section{padding:var(--section-pad) var(--gutter);position:relative}
-.container{max-width:1100px;margin:0 auto;width:100%}
-.divider{border:none;border-top:1px solid var(--border);margin:0 var(--gutter)}
+/* ═══════════════════════════════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════════════════════════════ */
+section { padding: var(--section-pad) var(--gutter); position: relative; }
+.container { max-width: 1100px; margin: 0 auto; width: 100%; }
+.divider { border: none; border-top: 1px solid var(--border); margin: 0 var(--gutter); }
 
-/* Section labels */
-.eyebrow{
-  font-family:var(--font-mono);font-size:11px;letter-spacing:3px;
-  text-transform:uppercase;color:var(--cyan);margin-bottom:12px;
-  display:flex;align-items:center;gap:10px;
+/* Eyebrow label */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.eyebrow::before{content:'';width:24px;height:1px;background:var(--cyan)}
-.section-title{
-  font-family:var(--font-display);
-  font-size:clamp(30px,4vw,52px);
-  font-weight:800;line-height:1.05;
-  letter-spacing:-1px;color:var(--text);margin-bottom:48px;
-}
-.section-title mark{
-  background:none;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-image:var(--grad);background-clip:text;
-}
-
-/* ===== HERO ===== */
-#home{
-  min-height:100svh;display:flex;align-items:center;
-  padding-top:100px;padding-bottom:80px;overflow:hidden;
-}
-.hero__orb-r{
-  position:absolute;top:-100px;right:-80px;
-  width:520px;height:520px;border-radius:50%;
-  background:radial-gradient(circle,rgba(124,58,237,0.2) 0%,transparent 70%);
-  animation:floatOrb 9s ease-in-out infinite;pointer-events:none;z-index:0;
-}
-.hero__orb-l{
-  position:absolute;bottom:-60px;left:-60px;
-  width:400px;height:400px;border-radius:50%;
-  background:radial-gradient(circle,rgba(0,210,255,0.12) 0%,transparent 70%);
-  animation:floatOrb 11s ease-in-out infinite reverse;pointer-events:none;z-index:0;
-}
-@keyframes floatOrb{
-  0%,100%{transform:translate(0,0) scale(1)}
-  50%{transform:translate(20px,-24px) scale(1.04)}
-}
-.hero__inner{
-  display:grid;grid-template-columns:1fr auto;
-  align-items:center;gap:60px;
-  width:100%;max-width:1100px;margin:0 auto;
-  position:relative;z-index:1;
-}
-.hero__badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--surface2);border:1px solid var(--border2);
-  border-radius:100px;padding:6px 16px;margin-bottom:28px;
-  font-family:var(--font-mono);font-size:11px;letter-spacing:1px;
-  color:var(--cyan);text-transform:uppercase;width:fit-content;
-  animation:fadeUp .7s ease both;
-}
-.hero__badge-dot{
-  width:7px;height:7px;border-radius:50%;background:var(--cyan);
-  animation:pulse 2s ease infinite;
-}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
-
-.hero__name{
-  font-family:var(--font-display);
-  font-size:clamp(68px,9.5vw,130px);
-  font-weight:800;line-height:.9;letter-spacing:-2px;
-  margin-bottom:24px;animation:fadeUp .8s .08s ease both;
-}
-.hero__name .l1{display:block;color:var(--text)}
-.hero__name .l2{
-  display:block;
-  background:var(--grad);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.hero__tagline{
-  font-size:clamp(14px,1.5vw,16px);color:var(--text2);
-  max-width:500px;margin-bottom:16px;font-weight:300;line-height:1.8;
-  animation:fadeUp .8s .16s ease both;
-}
-.hero__tagline strong{color:var(--text);font-weight:500}
-
-.hero__tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;animation:fadeUp .8s .2s ease both}
-.tag{
-  font-family:var(--font-mono);font-size:10px;font-weight:500;
-  letter-spacing:1.5px;padding:4px 12px;border-radius:4px;
-  background:var(--cyan-dim);border:1px solid rgba(0,210,255,0.22);
-  color:var(--cyan);text-transform:uppercase;
+.eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--cyan);
+  flex-shrink: 0;
 }
 
-.hero__cta{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp .8s .24s ease both}
-.btn-primary{
-  padding:13px 28px;background:var(--grad);border:none;border-radius:50px;
-  font-family:var(--font-body);font-weight:500;font-size:14px;
-  color:#fff;cursor:pointer;text-decoration:none;
-  transition:opacity .2s,transform .2s,box-shadow .2s;
-  box-shadow:0 0 28px rgba(0,210,255,0.28);
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  color: var(--text);
+  margin-bottom: 48px;
 }
-.btn-primary:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 8px 36px rgba(0,210,255,0.38)}
-.btn-outline{
-  padding:12px 26px;background:transparent;
-  border:1px solid var(--border2);border-radius:50px;
-  font-family:var(--font-body);font-weight:500;font-size:14px;
-  color:var(--text);cursor:pointer;text-decoration:none;
-  transition:border-color .2s,color .2s,transform .2s;
-}
-.btn-outline:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
-
-.hero__stats{display:flex;gap:36px;margin-top:48px;animation:fadeUp .8s .3s ease both}
-.stat__num{
-  font-family:var(--font-display);font-size:42px;font-weight:800;
-  letter-spacing:-1px;color:var(--cyan);line-height:1;
-}
-.stat__label{font-family:var(--font-mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
-
-/* Photo */
-.hero__photo{animation:fadeUp .8s .1s ease both;flex-shrink:0}
-.photo-frame{position:relative;width:310px;height:310px}
-.photo-frame::before{
-  content:'';position:absolute;inset:-5px;border-radius:50%;
-  background:conic-gradient(from 0deg,var(--cyan) 0deg,var(--violet) 120deg,transparent 120deg,transparent 200deg,var(--cyan) 200deg,var(--violet) 320deg,transparent 320deg,transparent 360deg);
-  animation:spinRing 7s linear infinite;
-}
-.photo-frame::after{
-  content:'';position:absolute;inset:-22px;border-radius:50%;
-  background:radial-gradient(circle,rgba(0,210,255,0.18) 0%,rgba(124,58,237,0.1) 50%,transparent 70%);
-  animation:glowPulse 3.5s ease-in-out infinite;z-index:-1;
-}
-@keyframes spinRing{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes glowPulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
-.photo-inner{
-  position:relative;z-index:1;width:100%;height:100%;border-radius:50%;overflow:hidden;
-  border:3px solid rgba(0,210,255,0.55);
-  box-shadow:0 0 0 1px rgba(124,58,237,0.3),0 0 40px rgba(0,210,255,0.3),0 0 80px rgba(0,210,255,0.12);
-  background:var(--bg2);
-}
-.photo-inner img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:contrast(1.04) saturate(1.06)}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-
-/* ===== ABOUT ===== */
-#about{background:var(--bg2)}
-.about__stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:52px}
-.stat-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:14px;
-  padding:24px 16px;text-align:center;
-  transition:border-color .25s,transform .25s;
-}
-.stat-card:hover{border-color:var(--border2);transform:translateY(-4px)}
-.stat-card__num{font-family:var(--font-display);font-size:44px;font-weight:800;letter-spacing:-1px;color:var(--cyan);line-height:1}
-.stat-card__label{font-family:var(--font-mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px}
-
-.about__grid{display:grid;grid-template-columns:1fr 280px;gap:52px;align-items:start;margin-bottom:44px}
-.about__text p{color:var(--text2);font-size:15px;margin-bottom:14px;line-height:1.85}
-.about__text p strong{color:var(--text);font-weight:500}
-.about__img img{
-  width:100%;border-radius:16px;
-  box-shadow:0 20px 60px rgba(0,0,0,.35),0 0 0 1px var(--border);
-  object-fit:cover;display:block;
+.section-title mark {
+  background: none;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--grad);
+  background-clip: text;
 }
 
-/* Stack section */
-.stack-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:44px}
-.stack-box__title{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--text);margin-bottom:20px;letter-spacing:-.5px}
-.prog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
-.prog-card{
-  background:var(--bg);border:1px solid var(--border);border-radius:10px;
-  padding:14px 10px;text-align:center;
-  transition:border-color .25s,transform .25s,box-shadow .25s;cursor:default;
+/* ═══════════════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════════════ */
+#home {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  overflow: hidden;
 }
-.prog-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:var(--card-glow)}
-.prog-card__icon{font-size:24px;margin-bottom:7px}
-.prog-card__name{font-weight:600;font-size:13px;color:var(--text)}
-.prog-card__sub{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.3}
+
+.hero__orb-r {
+  position: absolute;
+  top: -100px;
+  right: -80px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 70%);
+  animation: floatOrb 9s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero__orb-l {
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.12) 0%, transparent 70%);
+  animation: floatOrb 11s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(20px, -24px) scale(1.04); }
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 100px;
+  padding: 6px 16px;
+  margin-bottom: 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  width: fit-content;
+  animation: fadeUp .7s ease both;
+}
+.hero__badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: pulse 2s ease infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .4; transform: scale(1.4); }
+}
+
+.hero__name {
+  font-family: var(--font-display);
+  font-size: clamp(68px, 9.5vw, 130px);
+  font-weight: 800;
+  line-height: .9;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+  /* animation-fill-mode: forwards — LCP element animates but is NOT hidden before paint */
+  animation: fadeUp .8s .08s ease forwards;
+  /* Start visible — fallback for slow/no-JS */
+  opacity: 1;
+}
+.hero__name .l1 { display: block; color: var(--text); }
+.hero__name .l2 {
+  display: block;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero__tagline {
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--text2);
+  max-width: 520px;
+  margin-bottom: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  animation: fadeUp .8s .16s ease forwards;
+  opacity: 1;
+}
+.hero__tagline strong { color: var(--text); font-weight: 500; }
+
+.hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+  animation: fadeUp .8s .2s ease forwards;
+  opacity: 1;
+}
+.tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  background: var(--cyan-dim);
+  border: 1px solid rgba(0, 210, 255, 0.22);
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+
+.hero__cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: fadeUp .8s .24s ease forwards;
+  opacity: 1;
+}
+
+.btn-primary {
+  padding: 13px 28px;
+  background: var(--grad);
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity .2s, transform .2s, box-shadow .2s;
+  box-shadow: 0 0 28px rgba(0, 210, 255, 0.28);
+}
+.btn-primary:hover {
+  opacity: .9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 36px rgba(0, 210, 255, 0.38);
+}
+.btn-outline {
+  padding: 12px 26px;
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: border-color .2s, color .2s, transform .2s;
+}
+.btn-outline:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  transform: translateY(-2px);
+}
+
+.hero__stats {
+  display: flex;
+  gap: 36px;
+  margin-top: 48px;
+  animation: fadeUp .8s .3s ease forwards;
+  opacity: 1;
+}
+.stat__num {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--cyan);
+  line-height: 1;
+}
+.stat__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+/* Photo frame */
+.hero__photo {
+  animation: fadeUp .8s .1s ease forwards;
+  opacity: 1;
+  flex-shrink: 0;
+}
+.photo-frame {
+  position: relative;
+  width: 310px;
+  height: 310px;
+}
+.photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--cyan) 0deg,
+    var(--violet) 120deg,
+    transparent 120deg,
+    transparent 200deg,
+    var(--cyan) 200deg,
+    var(--violet) 320deg,
+    transparent 320deg,
+    transparent 360deg
+  );
+  animation: spinRing 7s linear infinite;
+}
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: -22px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.18) 0%, rgba(124, 58, 237, 0.1) 50%, transparent 70%);
+  animation: glowPulse 3.5s ease-in-out infinite;
+  z-index: -1;
+}
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: .7; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.05); }
+}
+
+.photo-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(0, 210, 255, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(124, 58, 237, 0.3),
+    0 0 40px rgba(0, 210, 255, 0.3),
+    0 0 80px rgba(0, 210, 255, 0.12);
+  background: var(--bg2);
+  /* Prevent layout shift — explicit aspect ratio */
+  aspect-ratio: 1;
+}
+.photo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: contrast(1.04) saturate(1.06);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Social links — visible in hero */
+.hero__social {
+  display: flex;
+  gap: 14px;
+  margin-top: 28px;
+  animation: fadeUp .8s .35s ease forwards;
+  opacity: 1;
+}
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  text-decoration: none;
+  transition: border-color .2s, color .2s, transform .2s;
+  font-size: 16px;
+}
+.social-link:hover {
+  border-color: var(--border2);
+  color: var(--cyan);
+  transform: translateY(-3px);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ABOUT SECTION
+   ═══════════════════════════════════════════════════════════ */
+#about { background: var(--bg2); }
+
+.about__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 52px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 16px;
+  text-align: center;
+  transition: border-color .25s, transform .25s;
+}
+.stat-card:hover { border-color: var(--border2); transform: translateY(-4px); }
+.stat-card__num {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--cyan);
+  line-height: 1;
+}
+.stat-card__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 6px;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 52px;
+  align-items: start;
+  margin-bottom: 44px;
+}
+.about__text p {
+  color: var(--text2);
+  font-size: 15px;
+  margin-bottom: 14px;
+  line-height: 1.85;
+}
+.about__text p strong { color: var(--text); font-weight: 500; }
+.about__img img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .35), 0 0 0 1px var(--border);
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 7/8;
+}
+
+/* Programming stack */
+.stack-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 44px;
+}
+.stack-box__title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 20px;
+  letter-spacing: -.5px;
+}
+.prog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+.prog-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 10px;
+  text-align: center;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+  cursor: default;
+}
+.prog-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-4px);
+  box-shadow: var(--card-glow);
+}
+.prog-card__icon { font-size: 24px; margin-bottom: 7px; }
+.prog-card__name { font-weight: 600; font-size: 13px; color: var(--text); }
+.prog-card__sub  { font-size: 10px; color: var(--muted); margin-top: 2px; line-height: 1.3; }
 
 /* Skills grid */
-.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:44px}
-.skill-item{
-  background:var(--surface);border:1px solid var(--border);border-radius:12px;
-  padding:15px 18px;display:flex;align-items:center;gap:12px;
-  transition:border-color .25s,transform .25s,box-shadow .25s;
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 44px;
 }
-.skill-item:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:var(--card-glow)}
-.skill-item__icon{
-  width:36px;height:36px;flex-shrink:0;border-radius:8px;
-  background:linear-gradient(135deg,var(--cyan-dim),var(--violet-dim));
-  display:flex;align-items:center;justify-content:center;font-size:17px;
+.skill-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
 }
-.skill-item__label{font-size:13px;font-weight:500;color:var(--text);line-height:1.3}
+.skill-item:hover {
+  border-color: var(--border2);
+  transform: translateY(-3px);
+  box-shadow: var(--card-glow);
+}
+.skill-item__icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--cyan-dim), var(--violet-dim));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+}
+.skill-item__label { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3; }
 
 /* Mission card */
-.mission-card{
-  background:linear-gradient(135deg,rgba(0,210,255,0.05),rgba(124,58,237,0.05));
-  border:1px solid rgba(0,210,255,0.18);border-radius:18px;
-  padding:34px;position:relative;overflow:hidden;
+.mission-card {
+  background: linear-gradient(135deg, rgba(0, 210, 255, 0.05), rgba(124, 58, 237, 0.05));
+  border: 1px solid rgba(0, 210, 255, 0.18);
+  border-radius: 18px;
+  padding: 34px;
+  position: relative;
+  overflow: hidden;
 }
-.mission-card::before{
-  content:'';position:absolute;top:-40px;right:-40px;
-  width:180px;height:180px;
-  background:radial-gradient(circle,rgba(0,210,255,0.13),transparent 70%);
-  border-radius:50%;pointer-events:none;
+.mission-card::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.13), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
 }
-.mission-card h3{font-family:var(--font-display);font-size:21px;font-weight:800;color:var(--text);margin-bottom:14px;letter-spacing:-.5px}
-.mission-card p{font-size:15px;color:var(--text2);line-height:1.85;margin-bottom:12px}
-.avail-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--font-mono);font-size:11px;color:var(--cyan);letter-spacing:.5px;
+.mission-card h3 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 14px;
+  letter-spacing: -.5px;
 }
-.avail-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:pulse 2s ease infinite}
-
-/* ===== SERVICES ===== */
-.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
-.service-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:16px;
-  padding:26px;transition:border-color .25s,transform .25s,box-shadow .25s;
+.mission-card p {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.85;
+  margin-bottom: 12px;
 }
-.service-card:hover{border-color:var(--border2);transform:translateY(-5px);box-shadow:var(--card-glow-hover)}
-.service-num{
-  font-family:var(--font-display);font-size:52px;font-weight:800;letter-spacing:-1px;
-  color:rgba(0,210,255,0.1);line-height:1;margin-bottom:10px;
+.avail-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyan);
+  letter-spacing: .5px;
 }
-.service-card h3{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.3px}
-.service-card p{font-size:13px;color:var(--muted);line-height:1.7}
-
-/* ===== PROJECTS ===== */
-#portfolio{background:var(--bg)}
-.portfolio__header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:44px}
-.portfolio__hint{
-  font-family:var(--font-mono);font-size:11px;letter-spacing:1px;
-  color:var(--cyan);background:var(--cyan-dim);
-  border:1px solid rgba(0,210,255,0.2);border-radius:6px;
-  padding:7px 14px;
-}
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
-.project-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:16px;
-  padding:26px;text-decoration:none;color:var(--text);
-  display:flex;flex-direction:column;gap:9px;
-  position:relative;overflow:hidden;
-  transition:border-color .3s,transform .3s,box-shadow .3s;
-}
-.project-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
-}
-.project-card:hover{border-color:rgba(0,210,255,.28);transform:translateY(-6px);box-shadow:var(--card-glow-hover)}
-.project-card:hover::before{transform:scaleX(1)}
-.project-card__type{font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan)}
-.project-card h3{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text);letter-spacing:-.3px}
-.project-card p{font-size:13px;color:var(--muted);flex:1;line-height:1.65}
-.project-card__link{
-  display:inline-flex;align-items:center;gap:6px;
-  font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.5px;
-  color:var(--cyan);text-transform:uppercase;margin-top:6px;
-  transition:gap .2s;
-}
-.project-card:hover .project-card__link{gap:10px}
-.projects-note{
-  max-width:1100px;margin:20px auto 0;font-size:13px;color:var(--muted);
-  text-align:center;padding:12px;
-  background:var(--surface);border:1px solid var(--border);border-radius:10px;
+.avail-badge::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: pulse 2s ease infinite;
+  flex-shrink: 0;
 }
 
-/* ===== CONTACT ===== */
-#contact{background:var(--bg2)}
-.contact__grid{display:grid;grid-template-columns:1fr 1.4fr;gap:40px}
-.contact__intro{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:32px}
-.contact__item{display:flex;align-items:flex-start;gap:15px;margin-bottom:20px}
-.contact__item-icon{
-  width:40px;height:40px;flex-shrink:0;
-  background:var(--surface);border:1px solid var(--border);border-radius:10px;
-  display:flex;align-items:center;justify-content:center;font-size:17px;
+/* ═══════════════════════════════════════════════════════════
+   SERVICES
+   ═══════════════════════════════════════════════════════════ */
+#services { background: var(--bg2); }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
 }
-.contact__item-label{font-family:var(--font-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);font-weight:500}
-.contact__item-val{font-size:14px;color:var(--text);margin-top:2px}
+.service-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 26px;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+}
+.service-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-5px);
+  box-shadow: var(--card-glow-hover);
+}
+.service-num {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: rgba(0, 210, 255, 0.1);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.service-card h3 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -.3px;
+}
+.service-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* ═══════════════════════════════════════════════════════════
+   PROJECTS
+   ═══════════════════════════════════════════════════════════ */
+#portfolio { background: var(--bg); }
+
+.portfolio__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 44px;
+}
+.portfolio__hint {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--cyan);
+  background: var(--cyan-dim);
+  border: 1px solid rgba(0, 210, 255, 0.2);
+  border-radius: 6px;
+  padding: 7px 14px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 26px;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+}
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--grad);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s ease;
+}
+.project-card:hover {
+  border-color: rgba(0, 210, 255, .28);
+  transform: translateY(-6px);
+  box-shadow: var(--card-glow-hover);
+}
+.project-card:hover::before { transform: scaleX(1); }
+.project-card__type {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.project-card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -.3px;
+}
+.project-card p { font-size: 13px; color: var(--muted); flex: 1; line-height: 1.65; }
+.project-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .5px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-top: 6px;
+  transition: gap .2s;
+}
+.project-card:hover .project-card__link { gap: 10px; }
+
+.projects-note {
+  max-width: 1100px;
+  margin: 20px auto 0;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONTACT
+   ═══════════════════════════════════════════════════════════ */
+#contact { background: var(--bg2); }
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 40px;
+}
+.contact__intro { font-size: 15px; color: var(--text2); line-height: 1.8; margin-bottom: 32px; }
+.contact__item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; }
+.contact__item-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+}
+.contact__item-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 500;
+}
+.contact__item-val { font-size: 14px; color: var(--text); margin-top: 2px; }
+.contact__item-val a { color: var(--text); text-decoration: none; transition: color .2s; }
+.contact__item-val a:hover { color: var(--cyan); }
 
 /* Form */
-.contact__form{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:32px}
-.form-group{margin-bottom:16px}
-.form-group label{
-  display:block;font-family:var(--font-mono);font-size:10px;
-  letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;
+.contact__form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 32px;
 }
-.form-group input,.form-group textarea{
-  width:100%;padding:12px 15px;
-  background:rgba(255,255,255,0.03);border:1px solid var(--border);
-  border-radius:9px;color:var(--text);
-  font-family:var(--font-body);font-size:14px;outline:none;
-  transition:border-color .2s,box-shadow .2s;
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
 }
-.form-group input:focus,.form-group textarea:focus{
-  border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,210,255,.08);
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
 }
-.form-group input::placeholder,.form-group textarea::placeholder{color:var(--muted)}
-.form-group textarea{resize:vertical;min-height:120px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.btn-submit{
-  width:100%;padding:13px;background:var(--grad);border:none;
-  border-radius:9px;font-family:var(--font-body);font-weight:600;font-size:14px;
-  color:#fff;cursor:pointer;letter-spacing:.3px;
-  transition:opacity .2s,transform .2s,box-shadow .2s;
-  box-shadow:0 4px 20px rgba(0,210,255,0.2);
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(0, 210, 255, .08);
 }
-.btn-submit:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 8px 36px rgba(0,210,255,0.35)}
-.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
-.form-msg{margin-top:12px;font-size:13px;display:none}
-.form-msg.success{color:var(--cyan);display:block}
-.form-msg.error{color:#f87171;display:block}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--muted); }
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
-/* ===== FOOTER ===== */
-footer{
-  padding:26px var(--gutter);
-  background:rgba(0,0,0,.45);
-  border-top:1px solid var(--border);
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+.btn-submit {
+  width: 100%;
+  padding: 13px;
+  background: var(--grad);
+  border: none;
+  border-radius: 9px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: .3px;
+  transition: opacity .2s, transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 20px rgba(0, 210, 255, 0.2);
 }
-.footer__brand{font-family:var(--font-display);font-weight:800;color:var(--cyan);font-size:16px;letter-spacing:-.3px}
-.footer__copy{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:.5px}
+.btn-submit:hover {
+  opacity: .9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 36px rgba(0, 210, 255, 0.35);
+}
+.btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
 
-/* ===== REVEAL ANIMATION ===== */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
+.form-msg { margin-top: 12px; font-size: 13px; display: none; }
+.form-msg.success { color: var(--cyan); display: block; }
+.form-msg.error   { color: #f87171; display: block; }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:1024px){
-  .photo-frame{width:260px;height:260px}
-  .hero__inner{gap:36px}
-  .about__stats{grid-template-columns:repeat(2,1fr)}
+/* ═══════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════ */
+footer {
+  padding: 32px var(--gutter);
+  background: rgba(0, 0, 0, .45);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
 }
-@media(max-width:860px){
-  .hero__inner{grid-template-columns:1fr;text-align:center;gap:44px}
-  .hero__photo{order:-1}
-  .photo-frame{width:220px;height:220px;margin:0 auto}
-  .hero__badge,.hero__tagline{margin-left:auto;margin-right:auto}
-  .hero__cta{justify-content:center}
-  .hero__stats{justify-content:center}
-  .hero__tags{justify-content:center}
-  .about__grid{grid-template-columns:1fr}
-  .about__img{display:none}
-  .contact__grid{grid-template-columns:1fr}
-  .portfolio__header{flex-direction:column;align-items:flex-start}
+.footer__brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--text);
+  font-size: 16px;
+  letter-spacing: -.3px;
 }
-@media(max-width:768px){
-  .nav__links{display:none}
-  .nav__toggle{display:flex}
-  .skills-grid{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr}
-  footer{flex-direction:column;text-align:center}
+.footer__brand span { color: var(--cyan); }
+.footer__links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
 }
-@media(max-width:480px){
-  section{padding:60px calc(var(--gutter) * .7)}
-  .hero__stats{gap:20px;flex-wrap:wrap;justify-content:center}
-  .about__stats{grid-template-columns:1fr 1fr}
-  .prog-grid{grid-template-columns:repeat(2,1fr)}
+.footer__links a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  transition: color .2s;
 }
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
-  .reveal{opacity:1;transform:none}
+.footer__links a:hover { color: var(--cyan); }
+.footer__copy {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .5px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BACK TO TOP BUTTON
+   ═══════════════════════════════════════════════════════════ */
+.back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--cyan);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .3s, transform .3s;
+  pointer-events: none;
+  z-index: 50;
+}
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.back-to-top:hover { background: var(--cyan-dim); }
+
+/* ═══════════════════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .photo-frame { width: 260px; height: 260px; }
+  .hero__inner { gap: 36px; }
+  .about__stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .hero__inner { grid-template-columns: 1fr; text-align: center; gap: 44px; }
+  .hero__photo { order: -1; }
+  .photo-frame { width: 220px; height: 220px; margin: 0 auto; }
+  .hero__badge, .hero__tagline { margin-left: auto; margin-right: auto; }
+  .hero__cta, .hero__stats, .hero__tags, .hero__social { justify-content: center; }
+  .about__grid { grid-template-columns: 1fr; }
+  .about__img  { display: none; }
+  .contact__grid { grid-template-columns: 1fr; }
+  .portfolio__header { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 768px) {
+  .nav__links { display: none; }
+  .nav__toggle { display: flex; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; }
+  .footer__links { flex-wrap: wrap; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  section { padding: 60px calc(var(--gutter) * .7); }
+  .hero__stats { gap: 20px; flex-wrap: wrap; justify-content: center; }
+  .about__stats { grid-template-columns: 1fr 1fr; }
+  .prog-grid { grid-template-columns: repeat(2, 1fr); }
+  .back-to-top { bottom: 16px; right: 16px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   REDUCED MOTION — WCAG 2.1 §2.3.3
+   ═══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .hero__orb-r, .hero__orb-l { animation: none; }
+  .photo-frame::before { animation: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- SKIP NAV (accessibility) -->
-<a href="#main" style="position:absolute;left:-9999px;top:4px;padding:8px 16px;background:var(--cyan);color:#000;font-weight:700;border-radius:4px;z-index:9999;text-decoration:none;font-size:14px" onfocus="this.style.left='4px'" onblur="this.style.left='-9999px'">Skip to main content</a>
+<!-- SKIP NAVIGATION — Accessible keyboard users -->
+<a
+  href="#main"
+  class="skip-nav"
+  style="
+    position: absolute;
+    top: 4px;
+    left: -9999px;
+    padding: 8px 16px;
+    background: var(--cyan);
+    color: #000;
+    font-weight: 700;
+    border-radius: 4px;
+    z-index: 9999;
+    text-decoration: none;
+    font-size: 14px;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+  "
+  onfocus="this.style.left='4px';this.style.clip='auto';this.style.clipPath='none'"
+  onblur="this.style.left='-9999px';this.style.clip='rect(1px,1px,1px,1px)';this.style.clipPath='inset(50%)'"
+>Skip to main content</a>
 
-<!-- NAVIGATION -->
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════ -->
 <nav class="nav" role="navigation" aria-label="Main navigation">
-  <a href="#home" class="nav__logo" aria-label="Hemraj Adhikari — Home">Hemraj<span> Adhikari</span></a>
+  <a href="#home" class="nav__logo" aria-label="Hemraj Adhikari — go to homepage">
+    Hemraj<span> Adhikari</span>
+  </a>
   <ul class="nav__links" role="list">
-    <li><a href="#home">Home</a></li>
+    <li><a href="#home" aria-current="true">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#portfolio">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="nav__toggle" id="navToggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileNav">
+  <button
+    class="nav__toggle"
+    id="navToggle"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="mobileNav"
+    type="button"
+  >
     <span></span><span></span><span></span>
   </button>
 </nav>
-<div class="nav__mobile" id="mobileNav" role="dialog" aria-label="Mobile navigation">
-  <ul>
+
+<!-- Mobile navigation -->
+<nav
+  class="nav__mobile"
+  id="mobileNav"
+  role="navigation"
+  aria-label="Mobile navigation"
+>
+  <ul role="list">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#portfolio">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-</div>
+</nav>
 
 <main id="main">
 
-<!-- ===== HERO ===== -->
-<section id="home" aria-label="Introduction">
-  <div class="hero__orb-r" aria-hidden="true"></div>
-  <div class="hero__orb-l" aria-hidden="true"></div>
-  <div class="hero__inner">
-    <div class="hero__left">
-      <div class="hero__badge" role="status">
-        <span class="hero__badge-dot" aria-hidden="true"></span>
-        Available for work
-      </div>
-      <h1 class="hero__name">
-        <span class="l1">Hemraj</span>
-        <span class="l2">Adhikari</span>
-      </h1>
-      <p class="hero__tagline">
-        IT Professional &amp; Full Stack Developer with <strong>10+ years of experience</strong> delivering scalable cloud infrastructure, secure systems, and high-performance web solutions for clients across Nepal and internationally.
-      </p>
-      <div class="hero__tags" aria-label="Core technologies">
-        <span class="tag">C / C++</span>
-        <span class="tag">Java</span>
-        <span class="tag">Python</span>
-        <span class="tag">C# .NET</span>
-        <span class="tag">AWS</span>
-        <span class="tag">Linux</span>
-      </div>
-      <div class="hero__cta">
-        <a href="#portfolio" class="btn-primary">View Projects</a>
-        <a href="#contact" class="btn-outline">Get in Touch</a>
-      </div>
-      <div class="hero__stats" aria-label="Key statistics">
-        <div class="stat">
-          <div class="stat__num">62+</div>
-          <div class="stat__label">Projects Done</div>
-        </div>
-        <div class="stat">
-          <div class="stat__num">10+</div>
-          <div class="stat__label">Years Experience</div>
-        </div>
-        <div class="stat">
-          <div class="stat__num">9</div>
-          <div class="stat__label">Locations Served</div>
-        </div>
-      </div>
-    </div>
-    <div class="hero__photo">
-      <div class="photo-frame">
-        <div class="photo-inner">
-          <!-- Replace src with your actual image path -->
-          <img
-            src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/hemraj.png"
-            alt="Hemraj Adhikari — IT Professional and Full Stack Web Developer from Kathmandu, Nepal"
-            width="310" height="310"
-            loading="eager"
-            fetchpriority="high"
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- ═══════════════════════════════════════════════════════
+       HERO SECTION
+       ═══════════════════════════════════════════════════════ -->
+  <section id="home" aria-label="Introduction — Hemraj Adhikari, IT Professional from Nepal">
+    <div class="hero__orb-r" aria-hidden="true"></div>
+    <div class="hero__orb-l" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <div class="hero__left">
 
-<hr class="divider">
+        <div class="hero__badge" role="status" aria-live="polite">
+          <span class="hero__badge-dot" aria-hidden="true"></span>
+          Available for work
+        </div>
 
-<!-- ===== ABOUT ===== -->
-<section id="about" aria-labelledby="about-title">
-  <div class="container">
+        <!-- H1 — primary SEO keyword signal -->
+        <h1 class="hero__name">
+          <span class="l1">Hemraj</span>
+          <span class="l2">Adhikari</span>
+        </h1>
 
-    <div class="reveal">
-      <p class="eyebrow">About Me</p>
-      <h2 class="section-title" id="about-title">Who I <mark>Am</mark></h2>
-    </div>
+        <p class="hero__tagline">
+          <strong>IT Professional &amp; Full Stack Web Developer</strong> from Kathmandu, Nepal with
+          <strong>10+ years of experience</strong> delivering scalable cloud infrastructure, secure systems,
+          and high-performance web solutions for clients across Nepal and internationally.
+        </p>
 
-    <!-- Stats -->
-    <div class="about__stats reveal" aria-label="Career statistics">
-      <div class="stat-card">
-        <div class="stat-card__num">100+</div>
-        <div class="stat-card__label">Freelance Works</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card__num">62+</div>
-        <div class="stat-card__label">Completed Projects</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card__num">9</div>
-        <div class="stat-card__label">Locations Served</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card__num">10+</div>
-        <div class="stat-card__label">Partnership Works</div>
-      </div>
-    </div>
+        <div class="hero__tags" aria-label="Core skills and technologies">
+          <span class="tag">C / C++</span>
+          <span class="tag">Java</span>
+          <span class="tag">Python</span>
+          <span class="tag">C# .NET</span>
+          <span class="tag">AWS Cloud</span>
+          <span class="tag">Linux</span>
+        </div>
 
-    <!-- Bio + Image -->
-    <div class="about__grid reveal">
-      <div class="about__text">
-        <p>I am an <strong>IT Professional &amp; Full Stack Web Developer from Nepal</strong> with over a decade of hands-on experience building scalable digital solutions, managing enterprise IT infrastructure, and delivering high-performance websites and systems for clients worldwide.</p>
-        <p>I have successfully executed <strong>international freelance projects</strong> across industries including healthcare, education, business, and media — with a strong track record serving clients in India, the USA, Australia, and the UK.</p>
-        <p>My expertise spans <strong>cloud architecture, server administration, network engineering, and end-to-end web development</strong> — from initial planning and architecture design through deployment, optimization, and long-term maintenance.</p>
-        <p>I continuously evolve with emerging technologies, particularly in <strong>cloud computing, CI/CD automation, and modern web systems</strong>, ensuring every solution I deliver is future-ready and business-aligned.</p>
-      </div>
-      <div class="about__img">
-        <img
-          src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/hemraj.png"
-          alt="Hemraj Adhikari at work"
-          width="280" height="320"
-          loading="lazy"
-        >
-      </div>
-    </div>
+        <div class="hero__cta">
+          <a href="#portfolio" class="btn-primary">View Projects</a>
+          <a href="#contact" class="btn-outline">Hire Me</a>
+        </div>
 
-    <!-- Programming Stack -->
-    <div class="stack-box reveal">
-      <h3 class="stack-box__title">Programming &amp; Development Stack</h3>
-      <div class="prog-grid">
-        <div class="prog-card">
-          <div class="prog-card__icon" aria-hidden="true">⚙️</div>
-          <div class="prog-card__name">C</div>
-          <div class="prog-card__sub">Systems &amp; Memory Management</div>
+        <!-- Social proof links — visible in page (not just in schema) -->
+        <nav class="hero__social" aria-label="Social and professional profiles">
+          <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer"
+             class="social-link" aria-label="GitHub profile — Hemraj Adhikari" title="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/hemrajadhikari" target="_blank" rel="noopener noreferrer"
+             class="social-link" aria-label="LinkedIn profile — Hemraj Adhikari" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer"
+             class="social-link" aria-label="Upwork profile — hire Hemraj Adhikari" title="Upwork">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/>
+            </svg>
+          </a>
+          <a href="mailto:hemrajhadhikari@gmail.com"
+             class="social-link" aria-label="Email Hemraj Adhikari" title="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </a>
+        </nav>
+
+        <div class="hero__stats" aria-label="Career highlights">
+          <div class="stat">
+            <div class="stat__num">62+</div>
+            <div class="stat__label">Projects Done</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">10+</div>
+            <div class="stat__label">Years Experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">9</div>
+            <div class="stat__label">Locations Served</div>
+          </div>
         </div>
-        <div class="prog-card">
-          <div class="prog-card__icon" aria-hidden="true">🚀</div>
-          <div class="prog-card__name">C++</div>
-          <div class="prog-card__sub">OOP, STL &amp; High-Performance</div>
-        </div>
-        <div class="prog-card">
-          <div class="prog-card__icon" aria-hidden="true">☕</div>
-          <div class="prog-card__name">Java</div>
-          <div class="prog-card__sub">Enterprise &amp; Backend Systems</div>
-        </div>
-        <div class="prog-card">
-          <div class="prog-card__icon" aria-hidden="true">🐍</div>
-          <div class="prog-card__name">Python</div>
-          <div class="prog-card__sub">Automation &amp; Scripting</div>
-        </div>
-        <div class="prog-card">
-          <div class="prog-card__icon" aria-hidden="true">🧩</div>
-          <div class="prog-card__name">C# / .NET</div>
-          <div class="prog-card__sub">Windows &amp; ASP.NET Apps</div>
-        </div>
-        <div class="prog-card">
-          <div class="prog-card__icon" aria-hidden="true">🌐</div>
-          <div class="prog-card__name">JavaScript</div>
-          <div class="prog-card__sub">Frontend &amp; Interactive UI</div>
-        </div>
-        <div class="prog-card">
-          <div class="prog-card__icon" aria-hidden="true">🗄️</div>
-          <div class="prog-card__name">SQL</div>
-          <div class="prog-card__sub">Database Design &amp; Queries</div>
+
+      </div>
+
+      <div class="hero__photo">
+        <div class="photo-frame">
+          <div class="photo-inner">
+            <!--
+              IMPORTANT: Self-host hemraj.webp on your server.
+              Steps:
+              1. Download your photo from GitHub
+              2. Convert to WebP: https://squoosh.app (target ~80KB for a 310×310 image)
+              3. Upload to your domain root as /hemraj.webp
+              4. Also keep /hemraj.png as fallback
+              Exact dimensions: match your actual image dimensions here.
+            -->
+            <picture>
+              <source srcset="/hemraj.webp" type="image/webp">
+              <img
+                src="/hemraj.png"
+                alt="Hemraj Adhikari — IT Professional and Full Stack Web Developer from Kathmandu, Nepal"
+                width="310"
+                height="310"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              >
+            </picture>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Skills -->
-    <div class="skills-grid reveal" aria-label="Technical skills">
-      <div class="skill-item">
-        <div class="skill-item__icon" aria-hidden="true">☁️</div>
-        <div class="skill-item__label">Cloud Services — AWS, Google Workspace, Cloudflare</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item__icon" aria-hidden="true">🖥️</div>
-        <div class="skill-item__label">System Administration — Windows Server &amp; Linux</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item__icon" aria-hidden="true">🌐</div>
-        <div class="skill-item__label">Networking — DNS, DHCP, TCP/IP, LAN/WAN</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item__icon" aria-hidden="true">⚙️</div>
-        <div class="skill-item__label">Web Hosting, cPanel &amp; Server Configuration</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item__icon" aria-hidden="true">🔐</div>
-        <div class="skill-item__label">Cybersecurity, Data Protection &amp; Backup</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item__icon" aria-hidden="true">🛠️</div>
-        <div class="skill-item__label">Remote IT Support — RDP, AnyDesk, Cloud Dashboards</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item__icon" aria-hidden="true">📊</div>
-        <div class="skill-item__label">Monitoring &amp; Performance Optimization</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item__icon" aria-hidden="true">🗄️</div>
-        <div class="skill-item__label">Database Management — MySQL, phpMyAdmin</div>
-      </div>
-    </div>
+  <hr class="divider">
 
-    <!-- Mission -->
-    <div class="mission-card reveal">
-      <h3>My Mission</h3>
-      <p>To deliver <strong style="color:var(--text)">scalable, secure, and high-performance IT solutions</strong> that solve real-world business challenges. With over a decade of hands-on experience, I build systems that are reliable, efficient, and future-ready.</p>
-      <p>I specialize in <strong style="color:var(--text)">end-to-end project execution</strong> — from architecture and development to deployment and optimization — ensuring every solution aligns with business goals and user needs.</p>
-      <div class="avail-badge">Available for Cloud · Web Development · IT Infrastructure · Digital Growth</div>
-    </div>
+  <!-- ═══════════════════════════════════════════════════════
+       ABOUT SECTION
+       ═══════════════════════════════════════════════════════ -->
+  <section id="about" aria-labelledby="about-title">
+    <div class="container">
 
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- ===== SERVICES ===== -->
-<section id="services" aria-labelledby="services-title" style="background:var(--bg2)">
-  <div class="container">
-    <div class="reveal">
-      <p class="eyebrow">What I Do</p>
-      <h2 class="section-title" id="services-title">Services I <mark>Offer</mark></h2>
-    </div>
-    <div class="services-grid">
-      <article class="service-card reveal">
-        <div class="service-num" aria-hidden="true">01</div>
-        <h3>Cloud Infrastructure &amp; DevOps</h3>
-        <p>Design, deploy, and manage scalable cloud environments on AWS &amp; Google Cloud — including EC2, IAM, storage, and automated deployment workflows.</p>
-      </article>
-      <article class="service-card reveal">
-        <div class="service-num" aria-hidden="true">02</div>
-        <h3>Web Hosting &amp; Server Management</h3>
-        <p>End-to-end hosting with cPanel/WHM, VPS setup, domain &amp; DNS management, SSL integration, and seamless server migrations.</p>
-      </article>
-      <article class="service-card reveal">
-        <div class="service-num" aria-hidden="true">03</div>
-        <h3>System Administration</h3>
-        <p>Advanced Windows Server &amp; Linux administration, Active Directory management, security patching, automation, and performance tuning.</p>
-      </article>
-      <article class="service-card reveal">
-        <div class="service-num" aria-hidden="true">04</div>
-        <h3>Network Engineering &amp; Security</h3>
-        <p>Secure network design with LAN/WAN architecture, DNS &amp; DHCP configuration, firewall setup, VPN, and network security auditing.</p>
-      </article>
-      <article class="service-card reveal">
-        <div class="service-num" aria-hidden="true">05</div>
-        <h3>Cybersecurity &amp; Data Protection</h3>
-        <p>Comprehensive threat prevention, SSL/TLS hardening, automated backup solutions, and disaster recovery planning for business continuity.</p>
-      </article>
-      <article class="service-card reveal">
-        <div class="service-num" aria-hidden="true">06</div>
-        <h3>Remote IT Support &amp; Monitoring</h3>
-        <p>Proactive remote support with real-time monitoring, troubleshooting, and maintenance using RDP, AnyDesk, and cloud dashboards.</p>
-      </article>
-      <article class="service-card reveal">
-        <div class="service-num" aria-hidden="true">07</div>
-        <h3>CI/CD Automation &amp; Pipelines</h3>
-        <p>Automated deployment pipelines using GitHub Actions and server automation tools to improve speed, reliability, and application scalability.</p>
-      </article>
-      <article class="service-card reveal">
-        <div class="service-num" aria-hidden="true">08</div>
-        <h3>IT Consulting &amp; Cloud Architecture</h3>
-        <p>Strategic IT consulting and cloud architecture design for scalable business systems — AWS planning, cost optimization, and enterprise-grade solution design.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- ===== PROJECTS ===== -->
-<section id="portfolio" aria-labelledby="portfolio-title">
-  <div class="container">
-    <div class="portfolio__header reveal">
-      <div>
-        <p class="eyebrow">Portfolio</p>
-        <h2 class="section-title" id="portfolio-title" style="margin-bottom:0">Featured <mark>Projects</mark></h2>
-      </div>
-      <div class="portfolio__hint" aria-label="Tip">Click cards to view live projects</div>
-    </div>
-    <div class="projects-grid">
-
-      <a class="project-card reveal" href="https://kbmfm.com/" target="_blank" rel="noopener noreferrer" aria-label="KBM FM — Live radio streaming platform">
-        <div class="project-card__type">Media &amp; Streaming</div>
-        <h3>KBM FM</h3>
-        <p>Live radio streaming platform with real-time audio broadcasting, program scheduling, and audience engagement features.</p>
-        <div class="project-card__link" aria-hidden="true">View Live ↗</div>
-      </a>
-
-      <a class="project-card reveal" href="https://www.megaloksewa.com/" target="_blank" rel="noopener noreferrer" aria-label="Mega Loksewa — Government exam preparation platform">
-        <div class="project-card__type">EdTech Platform</div>
-        <h3>Mega Loksewa</h3>
-        <p>Full-scale government exam preparation platform featuring mock tests, live classes, and structured learning management systems.</p>
-        <div class="project-card__link" aria-hidden="true">View Live ↗</div>
-      </a>
-
-      <a class="project-card reveal" href="https://arradhanashrestha.com/" target="_blank" rel="noopener noreferrer" aria-label="Aradhana Shrestha — Personal brand portfolio">
-        <div class="project-card__type">Personal Branding</div>
-        <h3>Aradhana Portfolio</h3>
-        <p>Elegant personal brand website with professional storytelling, portfolio showcase, and conversion-focused design architecture.</p>
-        <div class="project-card__link" aria-hidden="true">View Live ↗</div>
-      </a>
-
-      <div class="project-card reveal" role="article" aria-label="Healthcare web and app projects">
-        <div class="project-card__type">Healthcare — Freelancing</div>
-        <h3>Healthcare Web &amp; App Solutions</h3>
-        <p>4 healthcare-based web &amp; mobile solutions including appointment booking systems, patient tracking dashboards, and responsive admin panels.</p>
-        <div class="project-card__link" aria-hidden="true">Completed ✓</div>
-      </div>
-
-      <div class="project-card reveal" role="article">
-        <div class="project-card__type">International — India</div>
-        <h3>Business Websites (6+ Projects)</h3>
-        <p>Designed and deployed websites for cafes, restaurants, and educational institutes across India with full SEO and performance optimization.</p>
-        <div class="project-card__link" aria-hidden="true">Delivered ✓</div>
-      </div>
-
-      <div class="project-card reveal" role="article">
-        <div class="project-card__type">Digital Marketing</div>
-        <h3>Real Estate Campaigns — India</h3>
-        <p>Digital marketing campaigns for property platforms improving lead generation, organic traffic, and online brand visibility significantly.</p>
-        <div class="project-card__link" aria-hidden="true">Case Study</div>
-      </div>
-
-      <div class="project-card reveal" role="article">
-        <div class="project-card__type">Education &amp; Branding</div>
-        <h3>Sargam Vidyalaya</h3>
-        <p>Complete website, digital marketing strategy, and branding for a music school — driving strong online presence and student enrollment growth.</p>
-        <div class="project-card__link" aria-hidden="true">Growth Achieved ✓</div>
-      </div>
-
-      <div class="project-card reveal" role="article">
-        <div class="project-card__type">Enterprise Solution</div>
-        <h3>Cloud-Based IT Management System</h3>
-        <p>Centralized cloud IT management for monitoring servers, user access control, backup automation, and real-time system health tracking.</p>
-        <div class="project-card__link" aria-hidden="true">Enterprise System</div>
-      </div>
-
-      <div class="project-card reveal" role="article">
-        <div class="project-card__type">Artist Portfolios</div>
-        <h3>Artist Website Collection</h3>
-        <p>Portfolio websites for artists including Milind Kulkarni, Aniruddha Deshpande, Adwait Abhyankar, and Vishwajeet Godbole.</p>
-        <div class="project-card__link" aria-hidden="true">View Projects</div>
-      </div>
-
-      <div class="project-card reveal" role="article">
-        <div class="project-card__type">Business Growth</div>
-        <h3>Veraaj Sales</h3>
-        <p>Complete digital marketing strategy delivering significant business growth, qualified lead generation, and enhanced brand visibility.</p>
-        <div class="project-card__link" aria-hidden="true">View Results</div>
-      </div>
-
-      <div class="project-card reveal" role="article">
-        <div class="project-card__type">Software Development</div>
-        <h3>C Programming Projects</h3>
-        <p>System-level and logic-based applications focusing on performance engineering, memory management, and algorithmic problem solving.</p>
-        <div class="project-card__link" aria-hidden="true">View Details</div>
-      </div>
-
-      <div class="project-card reveal" role="article">
-        <div class="project-card__type">In Progress</div>
-        <h3>Business Portal &amp; CRM Systems</h3>
-        <p>Currently developing an advanced business portal, data management system, and custom CRM solutions for enterprise clients.</p>
-        <div class="project-card__link" aria-hidden="true">In Progress →</div>
-      </div>
-
-    </div>
-    <p class="projects-note reveal">Several additional freelance projects completed on <strong>Upwork</strong> — some details remain confidential per client agreements.</p>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- ===== CONTACT ===== -->
-<section id="contact" aria-labelledby="contact-title">
-  <div class="container">
-    <div class="contact__grid">
       <div class="reveal">
-        <p class="eyebrow">Contact</p>
-        <h2 class="section-title" id="contact-title" style="margin-bottom:20px">Let's <mark>Connect</mark></h2>
-        <p class="contact__intro">Have a project in mind, need IT support, or just want to say hello? I'm always open to new opportunities and conversations worldwide.</p>
-        <div class="contact__item">
-          <div class="contact__item-icon" aria-hidden="true">✉️</div>
-          <div>
-            <div class="contact__item-label">Email</div>
-            <div class="contact__item-val"><a href="mailto:hemrajhadhikari@gmail.com" style="color:var(--text);text-decoration:none">hemrajhadhikari@gmail.com</a></div>
-          </div>
+        <p class="eyebrow">About Me</p>
+        <h2 class="section-title" id="about-title">Who I <mark>Am</mark></h2>
+      </div>
+
+      <!-- Stats -->
+      <div class="about__stats reveal" aria-label="Career statistics at a glance">
+        <div class="stat-card">
+          <div class="stat-card__num">100+</div>
+          <div class="stat-card__label">Freelance Works</div>
         </div>
-        <div class="contact__item">
-          <div class="contact__item-icon" aria-hidden="true">📞</div>
-          <div>
-            <div class="contact__item-label">Phone / WhatsApp</div>
-            <div class="contact__item-val"><a href="tel:+9779865802093" style="color:var(--text);text-decoration:none">+977-9865802093</a></div>
-          </div>
+        <div class="stat-card">
+          <div class="stat-card__num">62+</div>
+          <div class="stat-card__label">Completed Projects</div>
         </div>
-        <div class="contact__item">
-          <div class="contact__item-icon" aria-hidden="true">📍</div>
-          <div>
-            <div class="contact__item-label">Location</div>
-            <div class="contact__item-val">Kathmandu, Nepal</div>
+        <div class="stat-card">
+          <div class="stat-card__num">9</div>
+          <div class="stat-card__label">Locations Served</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__num">10+</div>
+          <div class="stat-card__label">Years Experience</div>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="about__grid reveal">
+        <div class="about__text">
+          <p>I am an <strong>IT Professional and Full Stack Web Developer from Nepal</strong> with over a decade of hands-on experience building scalable digital solutions, managing enterprise IT infrastructure, and delivering high-performance websites and systems for clients worldwide.</p>
+          <p>I have successfully executed <strong>international freelance projects</strong> across industries including healthcare, education, business, and media — with a strong track record serving clients in India, the USA, Australia, and the UK. My Upwork profile reflects the depth of these engagements.</p>
+          <p>My expertise spans <strong>cloud architecture (AWS), server administration, network engineering, and end-to-end web development</strong> — from initial planning and architecture design through deployment, optimization, and long-term maintenance.</p>
+          <p>I continuously evolve with emerging technologies, particularly in <strong>cloud computing, CI/CD automation, and modern web systems</strong>, ensuring every solution I deliver is future-ready and business-aligned. Whether you are a Nepal-based startup or an international enterprise, I bring the technical depth and professional communication to make your project succeed.</p>
+        </div>
+        <div class="about__img">
+          <picture>
+            <source srcset="/hemraj.webp" type="image/webp">
+            <img
+              src="/hemraj.png"
+              alt="Hemraj Adhikari — professional portrait"
+              width="280"
+              height="320"
+              loading="lazy"
+              decoding="async"
+            >
+          </picture>
+        </div>
+      </div>
+
+      <!-- Programming Stack -->
+      <div class="stack-box reveal">
+        <h3 class="stack-box__title">Programming &amp; Development Stack</h3>
+        <div class="prog-grid">
+          <div class="prog-card">
+            <div class="prog-card__icon" aria-hidden="true">⚙️</div>
+            <div class="prog-card__name">C</div>
+            <div class="prog-card__sub">Systems &amp; Memory Management</div>
+          </div>
+          <div class="prog-card">
+            <div class="prog-card__icon" aria-hidden="true">🚀</div>
+            <div class="prog-card__name">C++</div>
+            <div class="prog-card__sub">OOP, STL &amp; High-Performance</div>
+          </div>
+          <div class="prog-card">
+            <div class="prog-card__icon" aria-hidden="true">☕</div>
+            <div class="prog-card__name">Java</div>
+            <div class="prog-card__sub">Enterprise &amp; Backend Systems</div>
+          </div>
+          <div class="prog-card">
+            <div class="prog-card__icon" aria-hidden="true">🐍</div>
+            <div class="prog-card__name">Python</div>
+            <div class="prog-card__sub">Automation &amp; Scripting</div>
+          </div>
+          <div class="prog-card">
+            <div class="prog-card__icon" aria-hidden="true">🧩</div>
+            <div class="prog-card__name">C# / .NET</div>
+            <div class="prog-card__sub">Windows &amp; ASP.NET Apps</div>
+          </div>
+          <div class="prog-card">
+            <div class="prog-card__icon" aria-hidden="true">🌐</div>
+            <div class="prog-card__name">JavaScript</div>
+            <div class="prog-card__sub">Frontend &amp; Interactive UI</div>
+          </div>
+          <div class="prog-card">
+            <div class="prog-card__icon" aria-hidden="true">🗄️</div>
+            <div class="prog-card__name">SQL</div>
+            <div class="prog-card__sub">Database Design &amp; Queries</div>
           </div>
         </div>
       </div>
 
-      <div class="contact__form reveal">
-        <form id="contactForm" action="https://formspree.io/f/xkgdznrn" method="POST" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name" minlength="2" maxlength="100">
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="john@example.com" required autocomplete="email" maxlength="254">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="How can I help you?" maxlength="200">
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Tell me about your project or inquiry..." required minlength="10" maxlength="2000"></textarea>
-          </div>
-          <!-- Honeypot -->
-          <div style="display:none" aria-hidden="true">
-            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-          </div>
-          <button type="submit" class="btn-submit" id="submitBtn">Send Message →</button>
-          <p class="form-msg" id="formMsg" role="alert" aria-live="polite"></p>
-        </form>
+      <!-- Skills -->
+      <div class="skills-grid reveal" aria-label="Technical skills and domains">
+        <div class="skill-item">
+          <div class="skill-item__icon" aria-hidden="true">☁️</div>
+          <div class="skill-item__label">Cloud Services — AWS, Google Workspace, Cloudflare</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__icon" aria-hidden="true">🖥️</div>
+          <div class="skill-item__label">System Administration — Windows Server &amp; Linux</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__icon" aria-hidden="true">🌐</div>
+          <div class="skill-item__label">Networking — DNS, DHCP, TCP/IP, LAN/WAN</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__icon" aria-hidden="true">⚙️</div>
+          <div class="skill-item__label">Web Hosting, cPanel &amp; Server Configuration</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__icon" aria-hidden="true">🔐</div>
+          <div class="skill-item__label">Cybersecurity, Data Protection &amp; Backup</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__icon" aria-hidden="true">🛠️</div>
+          <div class="skill-item__label">Remote IT Support — RDP, AnyDesk, Cloud Dashboards</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__icon" aria-hidden="true">📊</div>
+          <div class="skill-item__label">Monitoring &amp; Performance Optimization</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__icon" aria-hidden="true">🗄️</div>
+          <div class="skill-item__label">Database Management — MySQL, phpMyAdmin</div>
+        </div>
+      </div>
+
+      <!-- Mission -->
+      <div class="mission-card reveal">
+        <h3>My Mission</h3>
+        <p>To deliver <strong style="color:var(--text)">scalable, secure, and high-performance IT solutions</strong> that solve real-world business challenges. With over a decade of hands-on experience, I build systems that are reliable, efficient, and future-ready.</p>
+        <p>I specialize in <strong style="color:var(--text)">end-to-end project execution</strong> — from architecture and development to deployment and optimization — ensuring every solution aligns with business goals and user needs. My clients range from Nepal-based startups to international enterprises across the USA, UK, and Australia.</p>
+        <div class="avail-badge">Available for Cloud · Web Development · IT Infrastructure · Digital Growth</div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       SERVICES SECTION
+       ═══════════════════════════════════════════════════════ -->
+  <section id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow">What I Do</p>
+        <h2 class="section-title" id="services-title">Services I <mark>Offer</mark></h2>
+      </div>
+      <div class="services-grid">
+        <article class="service-card reveal">
+          <div class="service-num" aria-hidden="true">01</div>
+          <h3>Cloud Infrastructure &amp; DevOps</h3>
+          <p>Design, deploy, and manage scalable cloud environments on AWS &amp; Google Cloud — including EC2, IAM, storage, and automated deployment workflows.</p>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-num" aria-hidden="true">02</div>
+          <h3>Web Hosting &amp; Server Management</h3>
+          <p>End-to-end hosting with cPanel/WHM, VPS setup, domain &amp; DNS management, SSL integration, and seamless server migrations.</p>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-num" aria-hidden="true">03</div>
+          <h3>System Administration</h3>
+          <p>Advanced Windows Server &amp; Linux administration, Active Directory management, security patching, automation, and performance tuning.</p>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-num" aria-hidden="true">04</div>
+          <h3>Network Engineering &amp; Security</h3>
+          <p>Secure network design with LAN/WAN architecture, DNS &amp; DHCP configuration, firewall setup, VPN, and network security auditing.</p>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-num" aria-hidden="true">05</div>
+          <h3>Cybersecurity &amp; Data Protection</h3>
+          <p>Comprehensive threat prevention, SSL/TLS hardening, automated backup solutions, and disaster recovery planning for business continuity.</p>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-num" aria-hidden="true">06</div>
+          <h3>Remote IT Support &amp; Monitoring</h3>
+          <p>Proactive remote support with real-time monitoring, troubleshooting, and maintenance using RDP, AnyDesk, and cloud dashboards.</p>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-num" aria-hidden="true">07</div>
+          <h3>CI/CD Automation &amp; Pipelines</h3>
+          <p>Automated deployment pipelines using GitHub Actions and server automation tools to improve speed, reliability, and application scalability.</p>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-num" aria-hidden="true">08</div>
+          <h3>IT Consulting &amp; Cloud Architecture</h3>
+          <p>Strategic IT consulting and cloud architecture design for scalable business systems — AWS planning, cost optimization, and enterprise-grade solution design.</p>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       PROJECTS SECTION
+       ═══════════════════════════════════════════════════════ -->
+  <section id="portfolio" aria-labelledby="portfolio-title">
+    <div class="container">
+      <div class="portfolio__header reveal">
+        <div>
+          <p class="eyebrow">Portfolio</p>
+          <h2 class="section-title" id="portfolio-title" style="margin-bottom:0">Featured <mark>Projects</mark></h2>
+        </div>
+        <div class="portfolio__hint">Click cards to view live projects</div>
+      </div>
+      <div class="projects-grid">
+
+        <a class="project-card reveal" href="https://kbmfm.com/" target="_blank" rel="noopener noreferrer" aria-label="KBM FM — Live radio streaming platform (opens in new tab)">
+          <div class="project-card__type">Media &amp; Streaming</div>
+          <h3>KBM FM</h3>
+          <p>Live radio streaming platform with real-time audio broadcasting, program scheduling, and audience engagement features for listeners across Nepal.</p>
+          <div class="project-card__link" aria-hidden="true">View Live ↗</div>
+        </a>
+
+        <a class="project-card reveal" href="https://www.megaloksewa.com/" target="_blank" rel="noopener noreferrer" aria-label="Mega Loksewa — Government exam preparation platform (opens in new tab)">
+          <div class="project-card__type">EdTech Platform</div>
+          <h3>Mega Loksewa</h3>
+          <p>Full-scale government exam preparation platform featuring mock tests, live classes, and a structured learning management system for Nepalese students.</p>
+          <div class="project-card__link" aria-hidden="true">View Live ↗</div>
+        </a>
+
+        <a class="project-card reveal" href="https://arradhanashrestha.com/" target="_blank" rel="noopener noreferrer" aria-label="Aradhana Shrestha — Personal brand portfolio (opens in new tab)">
+          <div class="project-card__type">Personal Branding</div>
+          <h3>Aradhana Portfolio</h3>
+          <p>Elegant personal brand website with professional storytelling, portfolio showcase, and conversion-focused design architecture for increased client reach.</p>
+          <div class="project-card__link" aria-hidden="true">View Live ↗</div>
+        </a>
+
+        <article class="project-card reveal">
+          <div class="project-card__type">Healthcare — International</div>
+          <h3>Healthcare Web &amp; App Solutions</h3>
+          <p>Four healthcare-based web &amp; mobile solutions including appointment booking systems, patient tracking dashboards, and responsive admin panels for clinics.</p>
+          <div class="project-card__link" aria-hidden="true">Delivered ✓</div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-card__type">Business — India</div>
+          <h3>6+ Business Websites</h3>
+          <p>Designed and deployed websites for cafes, restaurants, and educational institutes across India with complete SEO setup and performance optimization.</p>
+          <div class="project-card__link" aria-hidden="true">Delivered ✓</div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-card__type">Digital Marketing</div>
+          <h3>Real Estate Campaigns</h3>
+          <p>Digital marketing campaigns for property platforms in India — improving lead generation, organic search traffic, and online brand visibility significantly.</p>
+          <div class="project-card__link" aria-hidden="true">Results Achieved ✓</div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-card__type">Education &amp; Branding</div>
+          <h3>Sargam Vidyalaya</h3>
+          <p>Complete website build, digital marketing strategy, and branding for a music school — driving strong online presence and measurable student enrollment growth.</p>
+          <div class="project-card__link" aria-hidden="true">Growth Achieved ✓</div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-card__type">Enterprise Cloud</div>
+          <h3>Cloud IT Management System</h3>
+          <p>Centralized cloud IT management platform for monitoring servers, user access control, backup automation, and real-time system health dashboards.</p>
+          <div class="project-card__link" aria-hidden="true">Enterprise System</div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-card__type">Artist Portfolios</div>
+          <h3>Artist Website Collection</h3>
+          <p>Portfolio websites for established artists: Milind Kulkarni, Aniruddha Deshpande, Adwait Abhyankar, and Vishwajeet Godbole — each optimized for reach and bookings.</p>
+          <div class="project-card__link" aria-hidden="true">View Projects</div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-card__type">Business Growth</div>
+          <h3>Veraaj Sales</h3>
+          <p>Complete digital marketing strategy and execution delivering significant business growth, qualified lead generation, and enhanced brand visibility across platforms.</p>
+          <div class="project-card__link" aria-hidden="true">Results Delivered</div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-card__type">Software Development</div>
+          <h3>Systems Programming Projects</h3>
+          <p>System-level applications in C/C++ focusing on performance engineering, memory management, algorithmic problem solving, and embedded logic design.</p>
+          <div class="project-card__link" aria-hidden="true">View Details</div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-card__type">In Progress</div>
+          <h3>Business Portal &amp; CRM Systems</h3>
+          <p>Currently developing an advanced business portal, data management system, and custom CRM solutions tailored for enterprise clients in South Asia.</p>
+          <div class="project-card__link" aria-hidden="true">In Progress →</div>
+        </article>
+
+      </div>
+      <p class="projects-note reveal">
+        Several additional freelance projects completed on <strong>Upwork</strong> — some details remain confidential per client NDAs.
+        <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);margin-left:6px">View Upwork Profile ↗</a>
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       CONTACT SECTION
+       ═══════════════════════════════════════════════════════ -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="contact__grid">
+
+        <div class="reveal">
+          <p class="eyebrow">Get in Touch</p>
+          <h2 class="section-title" id="contact-title" style="margin-bottom:20px">Let's <mark>Connect</mark></h2>
+          <p class="contact__intro">
+            Have a project in mind, need IT support, or just want to discuss ideas? I'm open to new opportunities, freelance work, and collaborations — locally in Nepal and worldwide.
+            I typically respond within 24 hours.
+          </p>
+
+          <div class="contact__item">
+            <div class="contact__item-icon" aria-hidden="true">✉️</div>
+            <div>
+              <div class="contact__item-label">Email</div>
+              <div class="contact__item-val">
+                <a href="mailto:hemrajhadhikari@gmail.com">hemrajhadhikari@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact__item">
+            <div class="contact__item-icon" aria-hidden="true">📞</div>
+            <div>
+              <div class="contact__item-label">Phone / WhatsApp</div>
+              <div class="contact__item-val">
+                <a href="tel:+9779865802093">+977-9865802093</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact__item">
+            <div class="contact__item-icon" aria-hidden="true">📍</div>
+            <div>
+              <div class="contact__item-label">Location</div>
+              <div class="contact__item-val">Kathmandu, Bagmati Province, Nepal</div>
+            </div>
+          </div>
+
+          <div class="contact__item">
+            <div class="contact__item-icon" aria-hidden="true">⏱️</div>
+            <div>
+              <div class="contact__item-label">Response Time</div>
+              <div class="contact__item-val">Within 24 hours</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact__form reveal">
+          <form
+            id="contactForm"
+            action="https://formspree.io/f/xkgdznrn"
+            method="POST"
+            novalidate
+            aria-label="Contact form"
+          >
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name <span aria-hidden="true" style="color:var(--cyan)">*</span></label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="John Doe"
+                  required
+                  autocomplete="name"
+                  minlength="2"
+                  maxlength="100"
+                  aria-required="true"
+                >
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address <span aria-hidden="true" style="color:var(--cyan)">*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="john@example.com"
+                  required
+                  autocomplete="email"
+                  maxlength="254"
+                  aria-required="true"
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="What can I help you with?"
+                maxlength="200"
+                autocomplete="off"
+              >
+            </div>
+            <div class="form-group">
+              <label for="message">Message <span aria-hidden="true" style="color:var(--cyan)">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tell me about your project or inquiry…"
+                required
+                minlength="10"
+                maxlength="2000"
+                aria-required="true"
+              ></textarea>
+            </div>
+            <!-- Honeypot anti-spam field — hidden from users and screen readers -->
+            <div style="display:none" aria-hidden="true">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
+            <button type="submit" class="btn-submit" id="submitBtn">Send Message →</button>
+            <p class="form-msg" id="formMsg" role="alert" aria-live="polite"></p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
 </main>
 
-<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
 <footer role="contentinfo">
-  <div class="footer__brand">Thank you for visiting</div>
-  <div class="footer__copy">© 2025 · Hemraj Adhikari · Kathmandu, Nepal</div>
+  <div class="footer__brand">
+    <span>Hemraj</span> Adhikari
+  </div>
+  <nav aria-label="Footer navigation">
+    <ul class="footer__links" role="list">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="footer__copy">
+    <span>© 2025 Hemraj Adhikari · Kathmandu, Nepal</span>
+  </div>
 </footer>
 
-<script>
-(function(){
-  'use strict';
+<!-- Back to top button -->
+<button
+  id="backToTop"
+  class="back-to-top"
+  aria-label="Back to top of page"
+  type="button"
+  title="Back to top"
+>↑</button>
 
-  /* ── Mobile nav ── */
-  var toggle = document.getElementById('navToggle');
-  var mobileNav = document.getElementById('mobileNav');
+<!-- External JS — allows strict CSP without 'unsafe-inline' for scripts -->
+<script src="/main.js" defer></script>
 
-  toggle.addEventListener('click', function(){
-    var open = mobileNav.classList.toggle('open');
-    toggle.classList.toggle('open', open);
-    toggle.setAttribute('aria-expanded', String(open));
-  });
-
-  mobileNav.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click', function(){
-      mobileNav.classList.remove('open');
-      toggle.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  /* ── Reveal on scroll ── */
-  if ('IntersectionObserver' in window) {
-    var reveals = document.querySelectorAll('.reveal');
-    var revealObs = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry, idx){
-        if (entry.isIntersecting) {
-          setTimeout(function(){ entry.target.classList.add('visible'); }, idx * 60);
-          revealObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    reveals.forEach(function(el){ revealObs.observe(el); });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
-  }
-
-  /* ── Active nav link on scroll ── */
-  var sections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('.nav__links a');
-
-  window.addEventListener('scroll', function(){
-    var scrollY = window.scrollY;
-    var current = '';
-    sections.forEach(function(sec){
-      if (scrollY >= sec.offsetTop - 120) current = sec.id;
-    });
-    navLinks.forEach(function(a){
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
-  }, { passive: true });
-
-  /* ── Contact form with validation + async ── */
-  var form = document.getElementById('contactForm');
-  var submitBtn = document.getElementById('submitBtn');
-  var formMsg = document.getElementById('formMsg');
-
-  if (form) {
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      formMsg.className = 'form-msg';
-      formMsg.textContent = '';
-
-      var name = form.name.value.trim();
-      var email = form.email.value.trim();
-      var message = form.message.value.trim();
-      var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (!name || name.length < 2) { showMsg('Please enter your name.', 'error'); return; }
-      if (!emailRe.test(email)) { showMsg('Please enter a valid email address.', 'error'); return; }
-      if (!message || message.length < 10) { showMsg('Please write a message (at least 10 characters).', 'error'); return; }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending…';
-
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      })
-      .then(function(res){
-        if (res.ok) {
-          form.reset();
-          showMsg('Message sent successfully! I\'ll respond within 24 hours.', 'success');
-        } else {
-          showMsg('Something went wrong. Please email me directly.', 'error');
-        }
-      })
-      .catch(function(){
-        showMsg('Network error. Please try again or email directly.', 'error');
-      })
-      .finally(function(){
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message →';
-      });
-    });
-  }
-
-  function showMsg(text, type) {
-    formMsg.textContent = text;
-    formMsg.className = 'form-msg ' + type;
-  }
-
-})();
-</script>
 </body>
 </html>
