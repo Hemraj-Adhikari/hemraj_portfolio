@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /cgi-bin/
+Disallow: /*.php$
+Disallow: /*.sql$
+Disallow: /*.log$
+
+# Sitemap
+Sitemap: https://hemrajadhikari.com.np/sitemap.xml
