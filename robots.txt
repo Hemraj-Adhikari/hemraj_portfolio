@@ -1,9 +1,11 @@
 User-agent: *
 Allow: /
 Disallow: /cgi-bin/
-Disallow: /*.php$
-Disallow: /*.sql$
-Disallow: /*.log$
+Disallow: /cgi-bin
 
-# Sitemap
-Sitemap: https://hemrajadhikari.com.np/sitemap.xml
+# Block direct access to sensitive file types
+Disallow: /.env
+Disallow: /.git
+
+# Sitemap location
+Sitemap: https://hemrajadhikari.info.np/sitemap.xml
