@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }} | Hemraj Adhikari — Nepal IT Blog</title>
+  <meta name="description" content="{{ page.description | default: page.excerpt | strip_html | truncate: 160 }}" />
+  <meta name="author" content="Hemraj Adhikari" />
+  <meta name="keywords" content="{{ page.tags | join: ', ' }}, Nepal IT, Kathmandu tech" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:description" content="{{ page.description | default: page.excerpt | strip_html | truncate: 160 }}" />
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  <meta property="og:site_name" content="Hemraj Adhikari — Nepal IT Blog" />
+  <meta property="og:image" content="{{ site.url }}/assets/img/blog-og.png" />
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+  <meta property="article:author" content="Hemraj Adhikari" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ page.title }}" />
+  <meta name="twitter:description" content="{{ page.description | default: page.excerpt | strip_html | truncate: 160 }}" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ page.title | escape }}",
+    "description": "{{ page.description | default: page.excerpt | strip_html | truncate: 160 | escape }}",
+    "author": {
+      "@type": "Person",
+      "name": "Hemraj Adhikari",
+      "url": "{{ site.url }}",
+      "jobTitle": "IT Officer & Cloud Infrastructure Specialist",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kathmandu",
+        "addressCountry": "NP"
+      }
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Hemraj Adhikari",
+      "url": "{{ site.url }}"
+    },
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+    "url": "{{ site.url }}{{ page.url }}",
+    "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
+    "inLanguage": "en-NP",
+    "keywords": "{{ page.tags | join: ', ' }}"
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── DESIGN TOKENS — matching portfolio ── */
+    :root {
+      --bg:        #060810;
+      --bg-card:   #0e1120;
+      --bg-nav:    rgba(6,8,16,0.92);
+      --border:    rgba(99,179,237,0.12);
+      --accent:    #63b3ed;
+      --accent2:   #a78bfa;
+      --accent3:   #34d399;
+      --text:      #e2e8f0;
+      --text-muted:#8892a4;
+      --text-dim:  #4a5568;
+      --radius:    12px;
+      --mono:      'Space Mono', monospace;
+      --sans:      'DM Sans', sans-serif;
+      --max:       760px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--bg-nav);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo em { color: var(--accent); font-style: normal; }
+
+    .nav-links {
+      display: flex; gap: 1.5rem; list-style: none; align-items: center;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    .nav-blog-tag {
+      background: rgba(99,179,237,0.1);
+      border: 1px solid rgba(99,179,237,0.25);
+      color: var(--accent);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-family: var(--mono);
+      font-weight: 700;
+    }
+
+    /* ── MAIN WRAPPER ── */
+    main {
+      position: relative; z-index: 1;
+      padding-top: 100px;
+      padding-bottom: 80px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-bottom: 2.5rem;
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { color: var(--text-dim); }
+
+    /* ── POST HEADER ── */
+    .post-header { margin-bottom: 2.5rem; }
+
+    .post-category {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(99,179,237,0.08);
+      border: 1px solid rgba(99,179,237,0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    .post-title {
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.25;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .post-description {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    .post-meta {
+      display: flex; align-items: center; gap: 1.2rem;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .post-meta .author { color: var(--accent3); }
+    .post-meta .read-time { color: var(--accent2); }
+
+    /* ── POST TAGS ── */
+    .post-tags {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+
+    /* ── POST CONTENT ── */
+    .post-content {
+      color: var(--text);
+      line-height: 1.9;
+    }
+
+    .post-content h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 2.5rem 0 1rem;
+      letter-spacing: -0.02em;
+      padding-left: 1rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    .post-content h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 2rem 0 0.8rem;
+    }
+
+    .post-content p { margin-bottom: 1.4rem; }
+
+    .post-content a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: rgba(99,179,237,0.3);
+    }
+    .post-content a:hover { text-decoration-color: var(--accent); }
+
+    .post-content ul, .post-content ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.4rem;
+    }
+    .post-content li { margin-bottom: 0.4rem; }
+
+    .post-content strong { color: #fff; font-weight: 600; }
+
+    .post-content code {
+      font-family: var(--mono);
+      font-size: 0.82em;
+      background: rgba(99,179,237,0.08);
+      border: 1px solid rgba(99,179,237,0.15);
+      color: var(--accent);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .post-content pre {
+      background: #090c18;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      overflow-x: auto;
+      margin-bottom: 1.8rem;
+    }
+    .post-content pre code {
+      background: none;
+      border: none;
+      color: var(--accent3);
+      padding: 0;
+      font-size: 0.85rem;
+    }
+
+    .post-content blockquote {
+      border-left: 3px solid var(--accent2);
+      margin: 1.8rem 0;
+      padding: 1rem 1.4rem;
+      background: rgba(167,139,250,0.06);
+      border-radius: 0 8px 8px 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      background: rgba(99,179,237,0.07);
+      border: 1px solid rgba(99,179,237,0.2);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+      margin: 1.8rem 0;
+      font-size: 0.95rem;
+    }
+    .callout.tip { border-color: rgba(52,211,153,0.25); background: rgba(52,211,153,0.07); }
+    .callout.warn { border-color: rgba(251,191,36,0.25); background: rgba(251,191,36,0.07); }
+
+    /* ── TABLE ── */
+    .post-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.8rem;
+      font-size: 0.9rem;
+    }
+    .post-content th {
+      background: rgba(99,179,237,0.1);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      padding: 0.7rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .post-content td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .post-content tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* ── AUTHOR BOX ── */
+    .author-box {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+    .author-box img {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    .author-box-info h4 {
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .author-box-info p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── CTA BOX ── */
+    .cta-box {
+      background: linear-gradient(135deg, rgba(99,179,237,0.08), rgba(167,139,250,0.08));
+      border: 1px solid rgba(99,179,237,0.2);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .cta-box h3 { color: #fff; margin-bottom: 0.6rem; }
+    .cta-box p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem; }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--accent);
+      color: #060810;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.85; }
+
+    /* ── RELATED POSTS ── */
+    .related { margin-top: 3.5rem; }
+    .related h3 {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .related-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .related-card .rc-cat {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .related-card h4 { color: #fff; font-size: 0.88rem; line-height: 1.4; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .post-title { font-size: 1.6rem; }
+      .author-box { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo"><em>hemraj</em>.adhikari</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#portfolio">Projects</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><span class="nav-blog-tag">Nepal IT Blog</span></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/blog/">Blog</a>
+      <span>/</span>
+      <span>{{ page.title | truncate: 40 }}</span>
+    </div>
+
+    <!-- POST HEADER -->
+    <header class="post-header">
+      {% if page.category %}
+      <span class="post-category">{{ page.category }}</span>
+      {% endif %}
+      <h1 class="post-title">{{ page.title }}</h1>
+      {% if page.description %}
+      <p class="post-description">{{ page.description }}</p>
+      {% endif %}
+      <div class="post-meta">
+        <span class="author">✍ Hemraj Adhikari</span>
+        <span>📅 {{ page.date | date: "%B %d, %Y" }}</span>
+        <span class="read-time">⏱ {{ content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+        <span>📍 Kathmandu, Nepal</span>
+      </div>
+    </header>
+
+    <!-- TAGS -->
+    {% if page.tags %}
+    <div class="post-tags">
+      {% for tag in page.tags %}
+      <span class="tag">#{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- POST BODY -->
+    <article class="post-content">
+      {{ content }}
+    </article>
+
+    <!-- AUTHOR BOX -->
+    <div class="author-box">
+      <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/Hem-pic.png" alt="Hemraj Adhikari" />
+      <div class="author-box-info">
+        <h4>Hemraj Adhikari</h4>
+        <p>IT Officer & Cloud Infrastructure Specialist from Kathmandu, Nepal. 5+ years in AWS, Linux, SysAdmin & Cybersecurity. Mentor for BIT, BCA & BSc CSIT students across Nepal & India.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <h3>Need IT Help or Mentoring?</h3>
+      <p>Available for freelance projects, IT consulting, and student mentoring in Nepal & India.</p>
+      <a href="https://wa.me/9779865802093" class="cta-btn">💬 Chat on WhatsApp</a>
+    </div>
+
+    <!-- RELATED POSTS -->
+    {% assign related = site.posts | where_exp: "p", "p.url != page.url" | limit: 3 %}
+    {% if related.size > 0 %}
+    <div class="related">
+      <h3>— More Articles</h3>
+      <div class="related-grid">
+        {% for post in related %}
+        <a href="{{ post.url }}" class="related-card">
+          <div class="rc-cat">{{ post.category | default: "Nepal IT" }}</div>
+          <h4>{{ post.title }}</h4>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+  </div><!-- /container -->
+</main>
+
+<footer>
+  <p>© 2026 <a href="/">Hemraj Adhikari</a> · Kathmandu, Nepal — IT Officer & Cloud Infrastructure Specialist · <a href="/blog/">Blog</a></p>
+</footer>
+
+</body>
+</html>
