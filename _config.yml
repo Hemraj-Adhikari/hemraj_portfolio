@@ -1,0 +1,56 @@
+# =============================================
+# Hemraj Adhikari — Jekyll Blog Config
+# hemrajadhikari.info.np
+# =============================================
+
+title: "Hemraj Adhikari"
+description: "IT Officer & Cloud Infrastructure Specialist from Kathmandu, Nepal. Blog on AWS, Linux, Networking, Cybersecurity & IT Career tips for Nepal students."
+url: "https://hemrajadhikari.info.np"
+baseurl: ""
+author:
+  name: "Hemraj Adhikari"
+  email: "hemrajhadhikari@gmail.com"
+  location: "Kathmandu, Nepal"
+  twitter: ""
+  linkedin: "hemrajadhikary"
+  github: "Hemraj-Adhikari"
+
+# Blog settings
+paginate: 10
+paginate_path: "/blog/page:num/"
+
+# Permalink style — SEO friendly
+permalink: /blog/:year/:month/:day/:title/
+
+# Collections
+collections:
+  posts:
+    output: true
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Hemraj Adhikari"
+      image: "/assets/img/blog-default.png"
+
+# Plugins (all supported by GitHub Pages)
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - README.md
+
+# SEO
+lang: "en-NP"
+timezone: "Asia/Kathmandu"
