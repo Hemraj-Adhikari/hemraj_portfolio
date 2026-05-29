@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Experience — Hemraj Adhikari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#05060f;--bg2:#080a18;--bg3:#0d1020;
+      --surface:rgba(255,255,255,.035);--surface2:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.06);
+      --accent:#64d2ff;--accent2:#a78bfa;--accent3:#34d399;
+      --text:#eef2ff;--text2:#8892b0;--text3:#3d4a6b;
+      --grad:linear-gradient(135deg,#64d2ff,#a78bfa);
+      --font-display:'DM Sans',sans-serif;--font-body:'DM Sans',sans-serif;
+      --font-mono:'DM Mono',monospace;--max:1140px;
+      --gutter:clamp(18px,5vw,64px);--t:.22s cubic-bezier(.4,0,.2,1);
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;line-height:1.7;-webkit-font-smoothing:antialiased}
+    ::-webkit-scrollbar{width:2px}
+    ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+    /* bg effects */
+    .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(100,210,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(100,210,255,.018) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 90% 70% at 50% 30%,black,transparent)}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);animation:orbFloat 14s ease-in-out infinite}
+    .orb1{width:600px;height:600px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(167,139,250,.09),transparent 70%)}
+    .orb2{width:400px;height:400px;bottom:-80px;left:-100px;background:radial-gradient(circle,rgba(100,210,255,.08),transparent 70%);animation-delay:-6s}
+    @keyframes orbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,-22px)}}
+    /* nav */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,6,15,.85);backdrop-filter:blur(28px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;height:58px}
+    .logo{font-family:var(--font-mono);font-size:15px;color:var(--text);text-decoration:none}
+    .logo em{color:var(--accent);font-style:normal}
+    .nav-links{display:flex;gap:2px;list-style:none}
+    .nav-links a{font-size:13px;color:var(--text2);text-decoration:none;padding:5px 11px;border-radius:6px;transition:var(--t)}
+    .nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(255,255,255,.05)}
+    .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .nav-toggle span{display:block;width:20px;height:1.5px;background:var(--text2);border-radius:2px;transition:var(--t)}
+    .nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .nav-toggle.open span:nth-child(2){opacity:0}
+    .nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    .mobile-nav{display:none;position:fixed;top:58px;inset-x:0;z-index:99;background:var(--bg2);border-bottom:1px solid var(--border);padding:12px var(--gutter) 20px}
+    .mobile-nav.open{display:block}
+    .mobile-nav a{display:flex;align-items:center;padding:13px 0;color:var(--text2);text-decoration:none;font-size:15px;min-height:44px;border-bottom:1px solid var(--border);transition:var(--t)}
+    .mobile-nav a:hover{color:var(--text)}
+    /* layout */
+    .page{position:relative;z-index:1}
+    main{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+    .hero-section{padding:clamp(100px,12vw,150px) 0 clamp(60px,8vw,100px)}
+    /* eyebrow */
+    .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .eyebrow-line{width:24px;height:1px;background:var(--accent);flex-shrink:0}
+    .eyebrow-text{font-family:var(--font-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent)}
+    h1.page-title{font-family:var(--font-display);font-size:clamp(36px,7vw,80px);font-weight:700;line-height:1;letter-spacing:-3px;margin-bottom:16px}
+    h1.page-title mark{background:none;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-image:var(--grad);background-clip:text}
+    .page-desc{font-size:15px;color:var(--text2);max-width:560px;line-height:1.8;margin-bottom:48px}
+    /* reveal */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+    .reveal.visible{opacity:1;transform:none}
+    /* experience */
+    .exp-list{display:flex;flex-direction:column;gap:12px;margin-bottom:60px}
+    .exp-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:var(--t)}
+    .exp-card.current{border-color:rgba(100,210,255,.15)}
+    .exp-trigger{width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:14px;position:relative}
+    .exp-trigger::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:.3s}
+    .exp-card.current .exp-trigger::before,.exp-card.open .exp-trigger::before{transform:scaleX(1)}
+    .exp-trigger:hover::before{transform:scaleX(1)}
+    .exp-trigger-left{display:flex;flex-direction:column;gap:8px;flex:1}
+    .exp-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .exp-role{font-size:20px;font-weight:600;color:var(--text);letter-spacing:-.3px}
+    .exp-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:100px;font-family:var(--font-mono);font-size:9.5px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);color:var(--accent3)}
+    .exp-badge.past{background:rgba(100,210,255,.06);border-color:rgba(100,210,255,.15);color:rgba(100,210,255,.6)}
+    .exp-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .exp-company{font-size:13.5px;font-weight:500;color:var(--text2)}
+    .exp-location,.exp-date{font-family:var(--font-mono);font-size:10px;color:var(--text3)}
+    .exp-sep{color:var(--text3)}
+    .exp-chevron{width:30px;height:30px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--text3);transition:var(--t)}
+    .exp-chevron svg{transition:transform .3s}
+    .exp-card.open .exp-chevron svg{transform:rotate(180deg)}
+    .exp-card.open .exp-chevron{border-color:rgba(100,210,255,.2);color:var(--accent);background:rgba(100,210,255,.06)}
+    .exp-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .3s;padding:0 28px}
+    .exp-card.open .exp-body{max-height:600px;padding:0 28px 24px}
+    .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .exp-bullets li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text2);line-height:1.75}
+    .exp-bullets li::before{content:'–';color:var(--text3);flex-shrink:0;margin-top:1px}
+    /* skills strip */
+    .skills-strip{margin-bottom:60px}
+    .strip-title{font-family:var(--font-mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:16px}
+    .tech-row{display:flex;flex-wrap:wrap;gap:8px}
+    .tech-tag{font-family:var(--font-mono);font-size:10px;padding:5px 13px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--text2);transition:var(--t)}
+    .tech-tag:hover{border-color:rgba(100,210,255,.2);color:var(--accent)}
+    /* footer */
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px var(--gutter);text-align:center}
+    footer span{font-family:var(--font-mono);font-size:11px;color:var(--text3)}
+    /* responsive */
+    @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:flex}}
+    @media(max-width:480px){h1.page-title{letter-spacing:-2px}.exp-trigger{padding:18px 18px}.exp-body{padding:0 18px}.exp-card.open .exp-body{padding:0 18px 18px}}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">hem<em>raj</em>.dev</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="experience.html" class="active">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-nav">
+    <a href="../index.html">Home</a>
+    <a href="experience.html">Experience</a>
+    <a href="services.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="page">
+    <main>
+      <div class="hero-section">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Experience</span></div>
+        <h1 class="page-title">Work <mark>History</mark></h1>
+        <p class="page-desc">My professional journey so far — from lab assistant to freelance developer. Every role taught me something new.</p>
+
+        <div class="exp-list reveal">
+          <div class="exp-card current open">
+            <button class="exp-trigger" aria-expanded="true">
+              <div class="exp-trigger-left">
+                <div class="exp-head">
+                  <span class="exp-role">Freelance Web Developer</span>
+                  <span class="exp-badge">● Current</span>
+                </div>
+                <div class="exp-meta">
+                  <span class="exp-company">Self-Employed</span>
+                  <span class="exp-sep">·</span>
+                  <span class="exp-location">Kathmandu, Nepal</span>
+                  <span class="exp-sep">·</span>
+                  <span class="exp-date">2022 – Present</span>
+                </div>
+              </div>
+              <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </button>
+            <div class="exp-body">
+              <ul class="exp-bullets">
+                <li>Designed and developed responsive websites for local businesses and startups across Nepal</li>
+                <li>Built full-stack web applications using React, Node.js, Express, and MongoDB</li>
+                <li>Deployed and maintained projects on AWS EC2 and S3 with custom domain and HTTPS</li>
+                <li>Provided SEO optimization, achieving significant improvements in organic search rankings</li>
+                <li>Communicated directly with clients to gather requirements and deliver on time</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-card">
+            <button class="exp-trigger" aria-expanded="false">
+              <div class="exp-trigger-left">
+                <div class="exp-head">
+                  <span class="exp-role">IT Lab Assistant</span>
+                  <span class="exp-badge past">Past</span>
+                </div>
+                <div class="exp-meta">
+                  <span class="exp-company">College Lab</span>
+                  <span class="exp-sep">·</span>
+                  <span class="exp-location">Kathmandu</span>
+                  <span class="exp-sep">·</span>
+                  <span class="exp-date">2023 – 2024</span>
+                </div>
+              </div>
+              <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </button>
+            <div class="exp-body">
+              <ul class="exp-bullets">
+                <li>Assisted students in practical labs covering networking, programming, and Linux administration</li>
+                <li>Maintained lab machines and ensured smooth operation of software environments</li>
+                <li>Created study guides and cheat sheets used by over 100 students</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-strip reveal">
+          <div class="strip-title">Technologies I've worked with</div>
+          <div class="tech-row">
+            <span class="tech-tag">HTML / CSS</span><span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">React</span><span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Express</span><span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">AWS EC2</span><span class="tech-tag">AWS S3</span>
+            <span class="tech-tag">Linux</span><span class="tech-tag">Git</span>
+            <span class="tech-tag">Figma</span><span class="tech-tag">Python</span>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer><span>© 2025 Hemraj Adhikari · Made with ♥ in Kathmandu 🇳🇵</span></footer>
+  </div>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const mNav = document.querySelector('.mobile-nav');
+    toggle.addEventListener('click', () => { toggle.classList.toggle('open'); mNav.classList.toggle('open'); });
+    mNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { toggle.classList.remove('open'); mNav.classList.remove('open'); }));
+    const revObs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);} }), {threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+    document.querySelectorAll('.exp-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.exp-card');
+        const isOpen = card.classList.contains('open');
+        document.querySelectorAll('.exp-card').forEach(c => { c.classList.remove('open'); c.querySelector('.exp-trigger').setAttribute('aria-expanded',false); });
+        if(!isOpen){ card.classList.add('open'); btn.setAttribute('aria-expanded',true); }
+      });
+    });
+  </script>
+</body>
+</html>
