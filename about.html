@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Hemraj Adhikari — IT Officer & Cloud Specialist | Kathmandu, Nepal</title>
+<meta name="description" content="About Hemraj Adhikari — IT Officer & Cloud Infrastructure Specialist from Kathmandu, Nepal. 3.5+ years in AWS Cloud, Linux, SaaS, Networking & Cybersecurity. Mentor for BIT, BCA, BSc CSIT students across Nepal & India.">
+<meta name="keywords" content="Hemraj Adhikari about, IT Officer Nepal, Cloud Specialist Kathmandu, AWS Nepal, BIT Nepal mentor, BCA Nepal, BSc CSIT Nepal, IT professional Nepal, Nepal IT expert">
+<meta name="author" content="Hemraj Adhikari">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hemrajadhikari.info.np/about.html">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="About Hemraj Adhikari — IT Officer & Cloud Specialist">
+<meta property="og:description" content="IT Officer & Cloud Infrastructure Specialist from Kathmandu, Nepal. Expert in AWS, Linux, SaaS, Networking & Cybersecurity. Mentor for Nepal IT students.">
+<meta property="og:url" content="https://hemrajadhikari.info.np/about.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Hemraj Adhikari",
+  "jobTitle": "IT Officer & Cloud Infrastructure Specialist",
+  "address": {"@type": "PostalAddress","addressLocality": "Kathmandu","addressCountry": "NP"},
+  "url": "https://hemrajadhikari.info.np",
+  "email": "hemrajhadhikari@gmail.com",
+  "telephone": "+977-9865802093",
+  "sameAs": [
+    "https://github.com/Hemraj-Adhikari",
+    "https://www.linkedin.com/in/hemrajadhikary",
+    "https://www.upwork.com/freelancers/hemrajadhikari"
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── ABOUT PAGE SPECIFIC ──────────────────────────────── */
+.about-page-wrap {
+  position: relative; z-index: 1;
+  max-width: var(--max); margin: 0 auto;
+  padding: 96px var(--gutter) 80px;
+}
+
+/* Hero Strip */
+.about-hero {
+  display: grid; grid-template-columns: auto 1fr; gap: 40px;
+  align-items: center;
+  padding: 40px; margin-bottom: 60px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+  position: relative; overflow: hidden;
+}
+.about-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 0% 50%, rgba(100,210,255,.05), transparent 70%);
+  pointer-events: none;
+}
+.about-hero-photo {
+  width: 120px; height: 120px; border-radius: 50%; flex-shrink: 0;
+  border: 2px solid rgba(100,210,255,.25);
+  overflow: hidden; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, rgba(100,210,255,.08), rgba(167,139,250,.08));
+  font-size: 48px;
+}
+.about-hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-hero-content { position: relative; z-index: 1; }
+.about-hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--accent3);
+  margin-bottom: 10px;
+}
+.about-hero-badge::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent3); animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:.4} }
+.about-hero-name {
+  font-family: var(--font-display); font-size: clamp(26px, 4vw, 38px);
+  font-weight: 800; letter-spacing: -1.5px; color: var(--text);
+  line-height: 1.1; margin-bottom: 8px;
+}
+.about-hero-name span {
+  background: var(--grad); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+}
+.about-hero-role {
+  font-size: 14px; color: var(--text2); margin-bottom: 16px;
+}
+.about-hero-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.about-hero-tags .tag {
+  font-family: var(--font-mono); font-size: 10px; padding: 4px 10px;
+  border-radius: 20px; border: 1px solid var(--border); color: var(--text3);
+  letter-spacing: .5px;
+}
+.about-hero-tags .tag.blue { border-color: rgba(100,210,255,.25); color: var(--accent); background: rgba(100,210,255,.06); }
+.about-hero-tags .tag.purple { border-color: rgba(167,139,250,.25); color: var(--accent2); background: rgba(167,139,250,.06); }
+.about-hero-tags .tag.green { border-color: rgba(52,211,153,.25); color: var(--accent3); background: rgba(52,211,153,.06); }
+.about-hero-actions {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px;
+}
+
+/* Stats Row */
+.stats-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  margin-bottom: 60px;
+}
+.stat-block {
+  padding: 24px 20px; text-align: center;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  transition: border-color var(--t);
+}
+.stat-block:hover { border-color: rgba(100,210,255,.2); }
+.stat-block-num {
+  font-family: var(--font-display); font-size: 32px; font-weight: 800;
+  background: var(--grad); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+  line-height: 1; margin-bottom: 6px;
+}
+.stat-block-label {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--text3);
+}
+
+/* Section Layout */
+.about-section { margin-bottom: 64px; }
+.about-section-eyebrow {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+  display: flex; align-items: center; gap: 10px;
+}
+.about-section-eyebrow::before {
+  content: ''; width: 20px; height: 1px; background: var(--accent);
+}
+.about-section-title {
+  font-family: var(--font-display); font-size: clamp(20px, 3vw, 28px);
+  font-weight: 800; letter-spacing: -1px; color: var(--text);
+  margin-bottom: 28px;
+}
+.about-section-title mark {
+  background: none; background-image: var(--grad);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* Bio */
+.bio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.bio-text { font-size: 15px; color: var(--text2); line-height: 1.8; }
+.bio-text p { margin-bottom: 16px; }
+.bio-text strong { color: var(--text); }
+.bio-highlights { display: flex; flex-direction: column; gap: 12px; }
+.hl-card {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); transition: border-color var(--t);
+}
+.hl-card:hover { border-color: rgba(100,210,255,.15); }
+.hl-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.hl-card div { display: flex; flex-direction: column; gap: 3px; }
+.hl-card strong { font-size: 13px; color: var(--text); }
+.hl-card span { font-size: 11px; color: var(--text3); font-family: var(--font-mono); }
+
+/* Timeline */
+.timeline-list { display: flex; flex-direction: column; gap: 0; }
+.tl-item {
+  display: flex; gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.tl-item:last-child { border-bottom: none; }
+.tl-left { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; }
+.tl-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--grad); flex-shrink: 0; margin-top: 4px;
+}
+.tl-line {
+  width: 1px; flex: 1; background: var(--border); margin-top: 6px;
+}
+.tl-item:last-child .tl-line { display: none; }
+.tl-body { padding-bottom: 4px; }
+.tl-year {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 4px; display: block;
+}
+.tl-role {
+  font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 3px;
+}
+.tl-company {
+  font-size: 13px; color: var(--accent2); margin-bottom: 6px;
+}
+.tl-desc { font-size: 12px; color: var(--text3); font-family: var(--font-mono); }
+
+/* Skills */
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.skill-group {
+  padding: 20px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.skill-group-title {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--text3); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.skill-group-title .sg-icon { font-size: 14px; }
+.skill-bars { display: flex; flex-direction: column; gap: 10px; }
+.skill-bar-row { display: flex; flex-direction: column; gap: 5px; }
+.skill-bar-label {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: var(--text2);
+}
+.skill-bar-label span:last-child {
+  font-family: var(--font-mono); font-size: 10px; color: var(--accent);
+}
+.skill-bar-track {
+  height: 4px; background: var(--border); border-radius: 2px; overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%; border-radius: 2px;
+  background: var(--grad);
+  transition: width 1s ease;
+}
+.skill-bar-fill.green { background: linear-gradient(90deg, #34d399, #64d2ff); }
+.skill-bar-fill.purple { background: linear-gradient(90deg, #a78bfa, #64d2ff); }
+
+/* Certifications */
+.cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cert-card {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 18px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); transition: all var(--t);
+}
+.cert-card:hover { border-color: rgba(167,139,250,.2); transform: translateY(-2px); }
+.cert-ico-wrap {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(167,139,250,.1); font-size: 18px;
+}
+.cert-card-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.cert-card-sub { font-size: 11px; color: var(--text3); font-family: var(--font-mono); }
+.cert-card-status {
+  display: inline-block; margin-top: 6px;
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 1px;
+  padding: 2px 8px; border-radius: 4px; text-transform: uppercase;
+}
+.cert-card-status.done { background: rgba(52,211,153,.1); color: var(--accent3); }
+.cert-card-status.progress { background: rgba(251,146,60,.1); color: #fb923c; }
+
+/* Services mini */
+.services-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.svc-mini-card {
+  padding: 18px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); transition: all var(--t);
+}
+.svc-mini-card:hover { border-color: rgba(100,210,255,.2); transform: translateY(-2px); }
+.svc-mini-icon { font-size: 24px; margin-bottom: 10px; }
+.svc-mini-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+.svc-mini-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.svc-mini-tags span {
+  font-family: var(--font-mono); font-size: 9px; padding: 2px 7px;
+  background: rgba(255,255,255,.04); border: 1px solid var(--border);
+  border-radius: 4px; color: var(--text3);
+}
+
+/* Education */
+.edu-list { display: flex; flex-direction: column; gap: 12px; }
+.edu-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 20px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.edu-icon-wrap {
+  width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  background: rgba(100,210,255,.06); border: 1px solid rgba(100,210,255,.12);
+}
+.edu-year { font-family: var(--font-mono); font-size: 10px; color: var(--accent); margin-bottom: 3px; }
+.edu-degree { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.edu-school { font-size: 12px; color: var(--text2); }
+.edu-board { font-size: 11px; color: var(--text3); font-family: var(--font-mono); margin-top: 2px; }
+
+/* CTA */
+.about-cta {
+  padding: 48px 40px; border-radius: 20px; text-align: center;
+  background: linear-gradient(135deg, rgba(100,210,255,.07), rgba(167,139,250,.05));
+  border: 1px solid rgba(100,210,255,.15);
+}
+.about-cta h3 {
+  font-family: var(--font-display); font-size: clamp(20px, 3vw, 28px);
+  font-weight: 800; color: var(--text); letter-spacing: -1px; margin-bottom: 10px;
+}
+.about-cta p { font-size: 14px; color: var(--text2); margin-bottom: 24px; }
+.cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* Social links */
+.social-strip {
+  display: flex; justify-content: center; gap: 10px; margin-top: 28px;
+}
+.social-link {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text3); text-decoration: none; transition: all var(--t);
+}
+.social-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+
+/* Responsive */
+@media(max-width:768px){
+  .about-hero { grid-template-columns: 1fr; text-align: center; }
+  .about-hero-photo { margin: 0 auto; }
+  .about-hero-tags { justify-content: center; }
+  .about-hero-actions { justify-content: center; }
+  .bio-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .skills-grid { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: 1fr; }
+  .services-mini { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:480px){
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .services-mini { grid-template-columns: 1fr; }
+  .about-cta { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="orb orb1" aria-hidden="true"></div>
+<div class="orb orb2" aria-hidden="true"></div>
+<div class="orb orb3" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><em>hemraj</em>.adhikari</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" style="color:var(--accent)">About</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#portfolio">Projects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" class="nav-dl" aria-label="Download CV">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      CV
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="index.html#experience">Experience</a>
+  <a href="index.html#services">Services</a>
+  <a href="index.html#portfolio">Projects</a>
+  <a href="blog.html">Blog</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" style="color:var(--accent)">⬇ Download CV</a>
+</div>
+
+<div class="page">
+<main>
+<div class="about-page-wrap">
+
+  <!-- ── HERO STRIP ─────────────────────────────────────── -->
+  <div class="about-hero reveal">
+    <div class="about-hero-photo">
+      <img
+        src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/Hem-pic.png"
+        alt="Hemraj Adhikari"
+        onerror="this.style.display='none';this.parentElement.innerHTML='👨‍💻'"
+      >
+    </div>
+    <div class="about-hero-content">
+      <div class="about-hero-badge">Available · Kathmandu, Nepal 🇳🇵</div>
+      <div class="about-hero-name">Hemraj <span>Adhikari</span></div>
+      <div class="about-hero-role">IT Officer &amp; Cloud Infrastructure Specialist · BIT Nepal Mentor</div>
+      <div class="about-hero-tags">
+        <span class="tag blue">AWS Cloud</span>
+        <span class="tag green">Linux</span>
+        <span class="tag purple">Python</span>
+        <span class="tag">SysAdmin</span>
+        <span class="tag purple">DevOps</span>
+        <span class="tag">Networking</span>
+        <span class="tag purple">Cybersecurity</span>
+        <span class="tag green">CRM Admin</span>
+      </div>
+      <div class="about-hero-actions">
+        <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" class="btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
+        <a href="index.html#contact" class="btn-outline">Hire Me</a>
+        <a href="https://wa.me/9779865802093" target="_blank" rel="noopener noreferrer" class="btn-wa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STATS ──────────────────────────────────────────── -->
+  <div class="stats-row reveal">
+    <div class="stat-block">
+      <div class="stat-block-num">3.5+</div>
+      <div class="stat-block-label">Years Experience</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-block-num">50+</div>
+      <div class="stat-block-label">Websites Deployed</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-block-num">99%</div>
+      <div class="stat-block-label">Uptime SLA</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-block-num">100+</div>
+      <div class="stat-block-label">Users Supported</div>
+    </div>
+  </div>
+
+  <!-- ── BIO ────────────────────────────────────────────── -->
+  <section class="about-section reveal">
+    <div class="about-section-eyebrow">Who I Am</div>
+    <h2 class="about-section-title">Nepal IT Expert &amp; <mark>Student Mentor</mark></h2>
+    <div class="bio-grid">
+      <div class="bio-text">
+        <p>I am <strong>Hemraj Adhikari</strong>, an <strong>IT Officer and Cloud Infrastructure Specialist</strong> from <strong>Kathmandu, Nepal</strong>. Currently serving at <strong>Route 2 Uni International Group</strong>, I have built deep expertise across cloud platforms, SaaS administration, system administration, networking, and cybersecurity over more than three years of professional work.</p>
+        <p>I hold a <strong>Bachelor of Information Technology (BIT)</strong> from JMC College under Bagmati Pradesh University (expected June 2026), backed by certifications in <strong>Linux Administration</strong>, <strong>Google Workspace</strong>, and <strong>Microsoft 365</strong> — with AWS Cloud Practitioner currently in progress.</p>
+        <p>Beyond professional work, I am a passionate <strong>mentor for BIT, BCA, BSc CSIT, Computer Engineering students, AI learners, and digital marketing learners</strong> across Nepal and India — providing real-world guidance grounded in hands-on experience.</p>
+      </div>
+      <div class="bio-highlights">
+        <div class="hl-card">
+          <div class="hl-icon">🎓</div>
+          <div>
+            <strong>Nepal IT Student Mentor</strong>
+            <span>BIT · BCA · BSc CSIT · Comp Eng · AI Learners · Digital Marketing</span>
+          </div>
+        </div>
+        <div class="hl-card">
+          <div class="hl-icon">☁️</div>
+          <div>
+            <strong>Cloud &amp; SaaS Specialist</strong>
+            <span>AWS · Google Workspace · Microsoft 365 · Azure Fundamentals</span>
+          </div>
+        </div>
+        <div class="hl-card">
+          <div class="hl-icon">⚡</div>
+          <div>
+            <strong>Sub-2hr Response SLA</strong>
+            <span>Fast, reliable IT support across high-throughput environments</span>
+          </div>
+        </div>
+        <div class="hl-card">
+          <div class="hl-icon">🌐</div>
+          <div>
+            <strong>Global Freelancer — 50+ Websites</strong>
+            <span>AWS EC2 · cPanel · Hostinger · DNS · SSL/TLS · WordPress Security</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CAREER TIMELINE ────────────────────────────────── -->
+  <section class="about-section reveal">
+    <div class="about-section-eyebrow">Work History</div>
+    <h2 class="about-section-title">Career <mark>Timeline</mark></h2>
+    <div class="timeline-list">
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-year">May 2026 – Present · Current</span>
+          <div class="tl-role">IT Officer</div>
+          <div class="tl-company">Route 2 Uni International Group · Putalisadak, Kathmandu</div>
+          <div class="tl-desc">CRM Admin · SaaS · Reporting Dashboards · L1/L2 Support · RBAC · MFA · Data Governance</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-year">Aug 2024 – May 2026</span>
+          <div class="tl-role">IT Officer</div>
+          <div class="tl-company">Citizen Infotech · Mid Baneshwor, Kathmandu</div>
+          <div class="tl-desc">CRM Administration · Data Governance · Automation · Compliance</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-year">Feb 2022 – Jul 2024</span>
+          <div class="tl-role">IT Support Specialist</div>
+          <div class="tl-company">Percoid IT Solution · Manbhawan, Lalitpur</div>
+          <div class="tl-desc">L1/L2 Helpdesk · Windows Server · Active Directory · M365 · Google Workspace</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-year">Jan 2021 – Present · Ongoing</span>
+          <div class="tl-role">Web &amp; Hosting Specialist</div>
+          <div class="tl-company">Self-Employed / Freelance · Nepal (Remote)</div>
+          <div class="tl-desc">50+ Websites · AWS EC2 · cPanel · DNS · SSL/TLS · WordPress Security</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SKILLS ─────────────────────────────────────────── -->
+  <section class="about-section reveal">
+    <div class="about-section-eyebrow">Technical Skills</div>
+    <h2 class="about-section-title">Skills &amp; <mark>Expertise</mark></h2>
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <div class="skill-group-title"><span class="sg-icon">☁️</span> Cloud &amp; DevOps</div>
+        <div class="skill-bars">
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>AWS (EC2, S3, IAM, VPC, CloudWatch)</span><span>90%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Docker &amp; Containers</span><span>75%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>CI/CD &amp; GitHub Actions</span><span>70%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Terraform / IaC</span><span>60%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title"><span class="sg-icon">🐧</span> Systems &amp; Networking</div>
+        <div class="skill-bars">
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Linux Administration (Ubuntu, CentOS)</span><span>92%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill green" style="width:92%"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Windows Server &amp; Active Directory</span><span>85%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill green" style="width:85%"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Networking (DNS, DHCP, VPN, VLANs)</span><span>82%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill green" style="width:82%"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Cybersecurity &amp; SSL/TLS</span><span>78%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill green" style="width:78%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title"><span class="sg-icon">💼</span> SaaS &amp; CRM</div>
+        <div class="skill-bars">
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Google Workspace Administration</span><span>95%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill purple" style="width:95%"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Microsoft 365 Administration</span><span>90%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill purple" style="width:90%"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>CRM Platforms &amp; Data Governance</span><span>88%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill purple" style="width:88%"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Reporting &amp; Dashboard Automation</span><span>80%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill purple" style="width:80%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title"><span class="sg-icon">🌐</span> Web &amp; Development</div>
+        <div class="skill-bars">
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>WordPress &amp; cPanel Hosting</span><span>95%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>HTML / CSS / JavaScript</span><span>80%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Python Scripting &amp; Automation</span><span>72%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:72%"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>DNS &amp; SSL/TLS Management</span><span>93%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:93%"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CERTIFICATIONS ─────────────────────────────────── -->
+  <section class="about-section reveal">
+    <div class="about-section-eyebrow">Credentials</div>
+    <h2 class="about-section-title">Certifications &amp; <mark>Education</mark></h2>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-ico-wrap">🏆</div>
+        <div>
+          <div class="cert-card-title">AWS Cloud Practitioner (CLF-C02)</div>
+          <div class="cert-card-sub">Amazon Web Services · 2025</div>
+          <span class="cert-card-status progress">In Progress</span>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico-wrap">✅</div>
+        <div>
+          <div class="cert-card-title">Linux Administration Fundamentals</div>
+          <div class="cert-card-sub">Completed · Hands-On Certified</div>
+          <span class="cert-card-status done">Completed</span>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico-wrap">✅</div>
+        <div>
+          <div class="cert-card-title">Google Workspace Administrator</div>
+          <div class="cert-card-sub">Google · Hands-On Proficiency</div>
+          <span class="cert-card-status done">Completed</span>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico-wrap">✅</div>
+        <div>
+          <div class="cert-card-title">Microsoft 365 Administration</div>
+          <div class="cert-card-sub">Microsoft · Hands-On Proficiency</div>
+          <span class="cert-card-status done">Completed</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="edu-list" style="margin-top:16px">
+      <div class="edu-item">
+        <div class="edu-icon-wrap">🎓</div>
+        <div>
+          <div class="edu-year">2023 – Expected Jun 2026</div>
+          <div class="edu-degree">Bachelor of Information Technology (BIT)</div>
+          <div class="edu-school">JMC College · Kathmandu, Nepal</div>
+          <div class="edu-board">Bagmati Pradesh University</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-icon-wrap">📗</div>
+        <div>
+          <div class="edu-year">Completed 2022</div>
+          <div class="edu-degree">Higher Secondary Certificate (+2) — Computer Science</div>
+          <div class="edu-school">Sodsha Devi School · Kathmandu, Nepal</div>
+          <div class="edu-board">National Examination Board (NEB)</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-icon-wrap">📘</div>
+        <div>
+          <div class="edu-year">Completed 2019</div>
+          <div class="edu-degree">School Leaving Certificate (SLC)</div>
+          <div class="edu-school">Manakamana Maavi Secondary School · Achham, Nepal</div>
+          <div class="edu-board">National Examination Board (NEB)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES MINI ──────────────────────────────────── -->
+  <section class="about-section reveal">
+    <div class="about-section-eyebrow">What I Do</div>
+    <h2 class="about-section-title">IT Services for <mark>Nepal &amp; India</mark></h2>
+    <div class="services-mini">
+      <div class="svc-mini-card">
+        <div class="svc-mini-icon">☁️</div>
+        <div class="svc-mini-title">Cloud Infrastructure &amp; DevOps</div>
+        <div class="svc-mini-tags"><span>AWS</span><span>CI/CD</span><span>Docker</span><span>IaC</span></div>
+      </div>
+      <div class="svc-mini-card">
+        <div class="svc-mini-icon">🗂️</div>
+        <div class="svc-mini-title">SaaS &amp; CRM Administration</div>
+        <div class="svc-mini-tags"><span>Google Workspace</span><span>M365</span><span>RBAC</span></div>
+      </div>
+      <div class="svc-mini-card">
+        <div class="svc-mini-icon">🖥️</div>
+        <div class="svc-mini-title">System Administration</div>
+        <div class="svc-mini-tags"><span>Linux</span><span>Windows Server</span><span>AD</span></div>
+      </div>
+      <div class="svc-mini-card">
+        <div class="svc-mini-icon">🛡️</div>
+        <div class="svc-mini-title">Cybersecurity &amp; Data Protection</div>
+        <div class="svc-mini-tags"><span>SSL/TLS</span><span>Firewall</span><span>Backup &amp; DR</span></div>
+      </div>
+      <div class="svc-mini-card">
+        <div class="svc-mini-icon">🌐</div>
+        <div class="svc-mini-title">Web Hosting &amp; DNS</div>
+        <div class="svc-mini-tags"><span>AWS EC2</span><span>cPanel</span><span>DNS</span><span>WordPress</span></div>
+      </div>
+      <div class="svc-mini-card">
+        <div class="svc-mini-icon">👨‍🏫</div>
+        <div class="svc-mini-title">IT Mentoring — Nepal Students</div>
+        <div class="svc-mini-tags"><span>BIT</span><span>BCA</span><span>BSc CSIT</span><span>AI</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ────────────────────────────────────────────── -->
+  <div class="about-cta reveal">
+    <h3>Let's Build Something Together 🚀</h3>
+    <p>Need IT support, cloud infrastructure, or mentoring for Nepal IT students? I'm available for freelance projects, consultations, and career guidance — locally in Nepal, across India, and worldwide.</p>
+    <div class="cta-actions">
+      <a href="index.html#contact" class="btn-primary">Get in Touch</a>
+      <a href="https://wa.me/9779865802093" target="_blank" rel="noopener noreferrer" class="btn-wa">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="index.html#portfolio" class="btn-outline">View Projects</a>
+    </div>
+    <div class="social-strip">
+      <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/hemrajadhikary" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Upwork">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+      </a>
+      <a href="mailto:hemrajhadhikari@gmail.com" class="social-link" aria-label="Email">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+</div><!-- /.about-page-wrap -->
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo"><em>hemraj</em>.adhikari</a>
+      <p>IT Officer & Cloud Infrastructure Specialist from Kathmandu, Nepal. Mentor for BIT, BCA, BSc CSIT, AI learners & digital marketing learners across Nepal & India.</p>
+      <div class="footer-social">
+        <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        <a href="https://www.linkedin.com/in/hemrajadhikary" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" aria-label="Upwork"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg></a>
+        <a href="mailto:hemrajhadhikari@gmail.com" aria-label="Email"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#portfolio">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>IT Services Nepal</h4>
+        <ul>
+          <li><a href="index.html#services">AWS Cloud Nepal</a></li>
+          <li><a href="index.html#services">SaaS Admin Nepal</a></li>
+          <li><a href="index.html#services">System Admin Kathmandu</a></li>
+          <li><a href="index.html#services">Networking Nepal</a></li>
+          <li><a href="index.html#services">Cybersecurity Nepal</a></li>
+          <li><a href="index.html#services">Web Hosting Nepal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Students Nepal</h4>
+        <ul>
+          <li><a href="index.html#services">BIT Nepal Mentor</a></li>
+          <li><a href="index.html#services">BCA Nepal Guide</a></li>
+          <li><a href="index.html#services">BSc CSIT Nepal</a></li>
+          <li><a href="blog.html">IT Blog Nepal</a></li>
+          <li><a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy">Download CV</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Hemraj Adhikari · Kathmandu, Nepal — IT Officer & Cloud Infrastructure Specialist</span>
+    <span>Made with ❤️ for Nepal & India IT Community</span>
+  </div>
+</footer>
+</div>
+
+<button id="btt" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const mobileNav = document.getElementById('mobileNav');
+navToggle.addEventListener('click', function() {
+  const open = mobileNav.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', open);
+});
+document.querySelectorAll('.mobile-nav a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    mobileNav.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', false);
+  });
+});
+
+// Back to top
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', function() {
+  btt.style.opacity = window.scrollY > 400 ? '1' : '0';
+  btt.style.pointerEvents = window.scrollY > 400 ? 'auto' : 'none';
+});
+btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(function(el) { observer.observe(el); });
+
+// Skill bar animation
+const skillObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-bar-fill').forEach(function(bar) {
+        const w = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(function() { bar.style.width = w; }, 100);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skill-group').forEach(function(el) { skillObserver.observe(el); });
+</script>
+</body>
+</html>
