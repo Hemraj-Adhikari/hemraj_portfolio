@@ -12,7 +12,7 @@
       --bg:#05060f;--bg2:#080a18;--bg3:#0d1020;
       --surface:rgba(255,255,255,.035);--surface2:rgba(255,255,255,.06);
       --border:rgba(255,255,255,.06);
-      --accent:#64d2ff;--accent2:#a78bfa;--accent3:#34d399;
+      --accent:#64d2ff;--accent2:#a78bfa;--accent3:#34d399;--accent4:#f9a26c;
       --text:#eef2ff;--text2:#8892b0;--text3:#3d4a6b;
       --grad:linear-gradient(135deg,#64d2ff,#a78bfa);
       --font-display:'DM Sans',sans-serif;--font-body:'DM Sans',sans-serif;
@@ -23,13 +23,11 @@
     body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;line-height:1.7;-webkit-font-smoothing:antialiased}
     ::-webkit-scrollbar{width:2px}
     ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
-    /* bg effects */
     .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(100,210,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(100,210,255,.018) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 90% 70% at 50% 30%,black,transparent)}
     .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);animation:orbFloat 14s ease-in-out infinite}
     .orb1{width:600px;height:600px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(167,139,250,.09),transparent 70%)}
     .orb2{width:400px;height:400px;bottom:-80px;left:-100px;background:radial-gradient(circle,rgba(100,210,255,.08),transparent 70%);animation-delay:-6s}
     @keyframes orbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,-22px)}}
-    /* nav */
     nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,6,15,.85);backdrop-filter:blur(28px);border-bottom:1px solid var(--border)}
     .nav-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;height:58px}
     .logo{font-family:var(--font-mono);font-size:15px;color:var(--text);text-decoration:none}
@@ -46,22 +44,29 @@
     .mobile-nav.open{display:block}
     .mobile-nav a{display:flex;align-items:center;padding:13px 0;color:var(--text2);text-decoration:none;font-size:15px;min-height:44px;border-bottom:1px solid var(--border);transition:var(--t)}
     .mobile-nav a:hover{color:var(--text)}
-    /* layout */
     .page{position:relative;z-index:1}
     main{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
     .hero-section{padding:clamp(100px,12vw,150px) 0 clamp(60px,8vw,100px)}
-    /* eyebrow */
     .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
     .eyebrow-line{width:24px;height:1px;background:var(--accent);flex-shrink:0}
     .eyebrow-text{font-family:var(--font-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent)}
     h1.page-title{font-family:var(--font-display);font-size:clamp(36px,7vw,80px);font-weight:700;line-height:1;letter-spacing:-3px;margin-bottom:16px}
     h1.page-title mark{background:none;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-image:var(--grad);background-clip:text}
     .page-desc{font-size:15px;color:var(--text2);max-width:560px;line-height:1.8;margin-bottom:48px}
-    /* reveal */
     .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
     .reveal.visible{opacity:1;transform:none}
-    /* experience */
-    .exp-list{display:flex;flex-direction:column;gap:12px;margin-bottom:60px}
+
+    /* Stats bar */
+    .stats-bar{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:48px}
+    .stat-pill{display:flex;align-items:center;gap:8px;padding:10px 18px;background:var(--surface);border:1px solid var(--border);border-radius:100px;font-size:13px}
+    .stat-pill .sv{font-family:var(--font-mono);color:var(--accent);font-size:14px;font-weight:500}
+    .stat-pill .sl{color:var(--text2)}
+
+    /* Timeline section */
+    .section-eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:20px}
+
+    /* Experience accordion */
+    .exp-list{display:flex;flex-direction:column;gap:12px;margin-bottom:64px}
     .exp-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:var(--t)}
     .exp-card.current{border-color:rgba(100,210,255,.15)}
     .exp-trigger{width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:14px;position:relative}
@@ -70,9 +75,11 @@
     .exp-trigger:hover::before{transform:scaleX(1)}
     .exp-trigger-left{display:flex;flex-direction:column;gap:8px;flex:1}
     .exp-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .exp-role{font-size:20px;font-weight:600;color:var(--text);letter-spacing:-.3px}
-    .exp-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:100px;font-family:var(--font-mono);font-size:9.5px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);color:var(--accent3)}
-    .exp-badge.past{background:rgba(100,210,255,.06);border-color:rgba(100,210,255,.15);color:rgba(100,210,255,.6)}
+    .exp-role{font-size:19px;font-weight:600;color:var(--text);letter-spacing:-.3px}
+    .exp-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:100px;font-family:var(--font-mono);font-size:9.5px}
+    .exp-badge.current-badge{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);color:var(--accent3)}
+    .exp-badge.past{background:rgba(100,210,255,.06);border:1px solid rgba(100,210,255,.15);color:rgba(100,210,255,.6)}
+    .exp-badge.freelance{background:rgba(249,162,108,.08);border:1px solid rgba(249,162,108,.2);color:var(--accent4)}
     .exp-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
     .exp-company{font-size:13.5px;font-weight:500;color:var(--text2)}
     .exp-location,.exp-date{font-family:var(--font-mono);font-size:10px;color:var(--text3)}
@@ -82,22 +89,50 @@
     .exp-card.open .exp-chevron svg{transform:rotate(180deg)}
     .exp-card.open .exp-chevron{border-color:rgba(100,210,255,.2);color:var(--accent);background:rgba(100,210,255,.06)}
     .exp-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .3s;padding:0 28px}
-    .exp-card.open .exp-body{max-height:600px;padding:0 28px 24px}
+    .exp-card.open .exp-body{max-height:800px;padding:0 28px 24px}
     .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:8px}
     .exp-bullets li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text2);line-height:1.75}
     .exp-bullets li::before{content:'–';color:var(--text3);flex-shrink:0;margin-top:1px}
-    /* skills strip */
-    .skills-strip{margin-bottom:60px}
-    .strip-title{font-family:var(--font-mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:16px}
-    .tech-row{display:flex;flex-wrap:wrap;gap:8px}
-    .tech-tag{font-family:var(--font-mono);font-size:10px;padding:5px 13px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--text2);transition:var(--t)}
-    .tech-tag:hover{border-color:rgba(100,210,255,.2);color:var(--accent)}
-    /* footer */
+
+    /* highlights tags inside bullets */
+    .exp-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;padding:1px 7px;border-radius:4px;background:rgba(100,210,255,.07);border:1px solid rgba(100,210,255,.12);color:var(--accent);margin-left:4px;vertical-align:middle}
+    .exp-tag.green{background:rgba(52,211,153,.07);border-color:rgba(52,211,153,.15);color:var(--accent3)}
+    .exp-tag.purple{background:rgba(167,139,250,.07);border-color:rgba(167,139,250,.15);color:var(--accent2)}
+
+    /* Skills grid */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:64px}
+    .skill-group{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
+    .skill-group-title{font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+    .skill-tags{display:flex;flex-wrap:wrap;gap:7px}
+    .skill-tag{font-family:var(--font-mono);font-size:10.5px;padding:4px 11px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text2);transition:var(--t)}
+    .skill-tag:hover{border-color:rgba(100,210,255,.2);color:var(--accent)}
+
+    /* Education */
+    .edu-list{display:flex;flex-direction:column;gap:10px;margin-bottom:64px}
+    .edu-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;transition:var(--t)}
+    .edu-card:hover{border-color:rgba(100,210,255,.1);background:var(--surface2)}
+    .edu-degree{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+    .edu-school{font-size:13px;color:var(--text2)}
+    .edu-date{font-family:var(--font-mono);font-size:10px;color:var(--text3);white-space:nowrap;margin-top:4px}
+
+    /* Certifications */
+    .cert-list{display:flex;flex-direction:column;gap:10px;margin-bottom:64px}
+    .cert-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 24px;display:flex;align-items:center;gap:14px;transition:var(--t)}
+    .cert-card:hover{border-color:rgba(100,210,255,.1)}
+    .cert-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+    .cert-icon.aws{background:rgba(249,162,108,.1);border:1px solid rgba(249,162,108,.2)}
+    .cert-icon.linux{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.15)}
+    .cert-icon.google{background:rgba(100,210,255,.07);border:1px solid rgba(100,210,255,.15)}
+    .cert-icon.ms{background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.15)}
+    .cert-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:2px}
+    .cert-status{font-family:var(--font-mono);font-size:10px;color:var(--text3)}
+    .cert-status.done{color:var(--accent3)}
+    .cert-status.progress{color:var(--accent4)}
+
     footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px var(--gutter);text-align:center}
     footer span{font-family:var(--font-mono);font-size:11px;color:var(--text3)}
-    /* responsive */
     @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:flex}}
-    @media(max-width:480px){h1.page-title{letter-spacing:-2px}.exp-trigger{padding:18px 18px}.exp-body{padding:0 18px}.exp-card.open .exp-body{padding:0 18px 18px}}
+    @media(max-width:480px){h1.page-title{letter-spacing:-2px}.exp-trigger{padding:18px}.exp-body{padding:0 18px}.exp-card.open .exp-body{padding:0 18px 18px}.skills-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -131,77 +166,251 @@
   <div class="page">
     <main>
       <div class="hero-section">
-        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Experience</span></div>
-        <h1 class="page-title">Work <mark>History</mark></h1>
-        <p class="page-desc">My professional journey so far — from lab assistant to freelance developer. Every role taught me something new.</p>
+        <div class="eyebrow reveal"><div class="eyebrow-line"></div><span class="eyebrow-text">Experience</span></div>
+        <h1 class="page-title reveal">Work <mark>History</mark></h1>
+        <p class="page-desc reveal">IT Officer and System Administrator with 3.5+ years building cloud infrastructure, SaaS platforms, and supporting end-users — across Kathmandu's fastest-moving tech environments.</p>
 
+        <!-- Stats -->
+        <div class="stats-bar reveal">
+          <div class="stat-pill"><span class="sv">3.5+</span><span class="sl">Years Experience</span></div>
+          <div class="stat-pill"><span class="sv">99%+</span><span class="sl">Uptime Maintained</span></div>
+          <div class="stat-pill"><span class="sv">50+</span><span class="sl">Websites Deployed</span></div>
+          <div class="stat-pill"><span class="sv">100+</span><span class="sl">Users Supported</span></div>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="section-eyebrow reveal">Work Experience</div>
         <div class="exp-list reveal">
+
+          <!-- IT Officer – Route 2 Uni -->
           <div class="exp-card current open">
             <button class="exp-trigger" aria-expanded="true">
               <div class="exp-trigger-left">
                 <div class="exp-head">
-                  <span class="exp-role">Freelance Web Developer</span>
-                  <span class="exp-badge">● Current</span>
+                  <span class="exp-role">IT Officer</span>
+                  <span class="exp-badge current-badge">● Current</span>
                 </div>
                 <div class="exp-meta">
-                  <span class="exp-company">Self-Employed</span>
+                  <span class="exp-company">Route 2 Uni International Group</span>
                   <span class="exp-sep">·</span>
-                  <span class="exp-location">Kathmandu, Nepal</span>
+                  <span class="exp-location">Putalisadak, Kathmandu</span>
                   <span class="exp-sep">·</span>
-                  <span class="exp-date">2022 – Present</span>
+                  <span class="exp-date">May 2026 – Present</span>
                 </div>
               </div>
               <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
             </button>
             <div class="exp-body">
               <ul class="exp-bullets">
-                <li>Designed and developed responsive websites for local businesses and startups across Nepal</li>
-                <li>Built full-stack web applications using React, Node.js, Express, and MongoDB</li>
-                <li>Deployed and maintained projects on AWS EC2 and S3 with custom domain and HTTPS</li>
-                <li>Provided SEO optimization, achieving significant improvements in organic search rankings</li>
-                <li>Communicated directly with clients to gather requirements and deliver on time</li>
+                <li>Administer cloud-based CRM and SaaS platforms for 50+ staff, enforcing RBAC, MFA, and data governance policies — maintaining 100% compliance with internal security standards.<span class="exp-tag">RBAC</span><span class="exp-tag">MFA</span></li>
+                <li>Manage university partner portals and integration workflows, ensuring real-time data accuracy across 30+ partner institutions.</li>
+                <li>Built operational and student-progress reporting dashboards for leadership, reducing manual reporting overhead by 40%.<span class="exp-tag green">–40% overhead</span></li>
+                <li>Coordinated IT workflows across student support, admissions, and infrastructure teams — cutting average ticket resolution time by 25%.<span class="exp-tag green">–25% TTR</span></li>
+                <li>Provide L1/L2 technical support for all staff, maintaining a sub-2-hour SLA in a high-throughput consultancy environment.</li>
               </ul>
             </div>
           </div>
 
+          <!-- IT Officer – Citizen Infotech -->
           <div class="exp-card">
             <button class="exp-trigger" aria-expanded="false">
               <div class="exp-trigger-left">
                 <div class="exp-head">
-                  <span class="exp-role">IT Lab Assistant</span>
+                  <span class="exp-role">IT Officer</span>
                   <span class="exp-badge past">Past</span>
                 </div>
                 <div class="exp-meta">
-                  <span class="exp-company">College Lab</span>
+                  <span class="exp-company">Citizen Infotech</span>
                   <span class="exp-sep">·</span>
-                  <span class="exp-location">Kathmandu</span>
+                  <span class="exp-location">Mid Baneshwor, Kathmandu</span>
                   <span class="exp-sep">·</span>
-                  <span class="exp-date">2023 – 2024</span>
+                  <span class="exp-date">Aug 2024 – May 2026</span>
                 </div>
               </div>
               <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
             </button>
             <div class="exp-body">
               <ul class="exp-bullets">
-                <li>Assisted students in practical labs covering networking, programming, and Linux administration</li>
-                <li>Maintained lab machines and ensured smooth operation of software environments</li>
-                <li>Created study guides and cheat sheets used by over 100 students</li>
+                <li>Owned full-lifecycle CRM administration for 50+ users — data entry standards, system integrity checks, and user access governance — reducing data discrepancies by 35%.<span class="exp-tag green">–35% discrepancies</span></li>
+                <li>Enforced data verification and quality assurance workflows, achieving full compliance with internal governance standards across all active records.</li>
+                <li>Automated operational and performance reporting for management, saving an estimated 6 hours of manual effort per week.<span class="exp-tag green">6 hrs/wk saved</span></li>
+                <li>Managed client and partner portals — ensuring content accuracy, access control, and consistent uptime for internal and external stakeholders.</li>
+                <li>Provided system troubleshooting and IT support for all staff, sustaining 98%+ ticket resolution rate.</li>
               </ul>
+            </div>
+          </div>
+
+          <!-- IT Support Specialist – Percoid -->
+          <div class="exp-card">
+            <button class="exp-trigger" aria-expanded="false">
+              <div class="exp-trigger-left">
+                <div class="exp-head">
+                  <span class="exp-role">IT Support Specialist</span>
+                  <span class="exp-badge past">Past</span>
+                </div>
+                <div class="exp-meta">
+                  <span class="exp-company">Percoid IT Solution</span>
+                  <span class="exp-sep">·</span>
+                  <span class="exp-location">Manbhawan, Lalitpur</span>
+                  <span class="exp-sep">·</span>
+                  <span class="exp-date">Feb 2022 – Jul 2024</span>
+                </div>
+              </div>
+              <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </button>
+            <div class="exp-body">
+              <ul class="exp-bullets">
+                <li>Delivered L1/L2 helpdesk support to 100+ users across hardware, software, OS, and network issues — achieving a 95% first-call resolution rate while meeting SLA targets.<span class="exp-tag green">95% FCR</span></li>
+                <li>Deployed and maintained Windows 10/11 endpoints; managed OS patching, software distribution, and system hardening for endpoint security compliance.<span class="exp-tag">Windows Server</span></li>
+                <li>Administered Windows Server and Active Directory — user lifecycle management, Group Policy configuration, and access provisioning/de-provisioning.<span class="exp-tag purple">AD / GPO</span></li>
+                <li>Overhauled IT asset inventory and hardware lifecycle documentation, improving asset tracking accuracy by 25% and reducing procurement delays.</li>
+                <li>Supported Google Workspace and Microsoft 365 tenant administration: onboarding, license assignments, permissions, and email security configurations.<span class="exp-tag">M365</span><span class="exp-tag">GWS</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Web & Hosting Specialist – Freelance -->
+          <div class="exp-card">
+            <button class="exp-trigger" aria-expanded="false">
+              <div class="exp-trigger-left">
+                <div class="exp-head">
+                  <span class="exp-role">Web & Hosting Specialist</span>
+                  <span class="exp-badge freelance">⟳ Ongoing</span>
+                </div>
+                <div class="exp-meta">
+                  <span class="exp-company">Self-Employed / Freelance</span>
+                  <span class="exp-sep">·</span>
+                  <span class="exp-location">Nepal (Remote)</span>
+                  <span class="exp-sep">·</span>
+                  <span class="exp-date">Jan 2021 – Present</span>
+                </div>
+              </div>
+              <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </button>
+            <div class="exp-body">
+              <ul class="exp-bullets">
+                <li>Deployed and managed 50+ client websites across AWS EC2, cPanel, and Hostinger — maintaining uptime SLAs and resolving hosting incidents within agreed windows.<span class="exp-tag">AWS EC2</span></li>
+                <li>Managed end-to-end DNS and domain operations: A/CNAME/MX/TXT records, SPF/DKIM/DMARC, and SSL/TLS certificate lifecycle.<span class="exp-tag">DNS</span><span class="exp-tag">SSL/TLS</span></li>
+                <li>Hardened WordPress sites against XSS, brute-force, and injection attacks; ran plugin audits and automated security scans.<span class="exp-tag purple">Security</span></li>
+                <li>Executed site migrations and backup automation with restoration drills, achieving average page load times under 2 seconds.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Skills -->
+        <div class="section-eyebrow reveal">Technical Skills</div>
+        <div class="skills-grid reveal">
+          <div class="skill-group">
+            <div class="skill-group-title">Cloud</div>
+            <div class="skill-tags">
+              <span class="skill-tag">AWS EC2</span><span class="skill-tag">IAM</span><span class="skill-tag">S3</span><span class="skill-tag">VPC</span><span class="skill-tag">CloudWatch</span><span class="skill-tag">Azure</span><span class="skill-tag">Google Cloud</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">SaaS Admin</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Google Workspace</span><span class="skill-tag">Microsoft 365</span><span class="skill-tag">Exchange</span><span class="skill-tag">Teams</span><span class="skill-tag">SharePoint</span><span class="skill-tag">Intune</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">OS & Servers</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Windows Server</span><span class="skill-tag">Ubuntu</span><span class="skill-tag">CentOS</span><span class="skill-tag">Active Directory</span><span class="skill-tag">Group Policy</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Networking</div>
+            <div class="skill-tags">
+              <span class="skill-tag">TCP/IP</span><span class="skill-tag">DNS</span><span class="skill-tag">DHCP</span><span class="skill-tag">VPN</span><span class="skill-tag">Firewall</span><span class="skill-tag">VLANs</span><span class="skill-tag">LAN/WAN</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Security</div>
+            <div class="skill-tags">
+              <span class="skill-tag">RBAC</span><span class="skill-tag">MFA</span><span class="skill-tag">Endpoint Security</span><span class="skill-tag">Hardening</span><span class="skill-tag">Vulnerability Mgmt</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Scripting</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Bash</span><span class="skill-tag">PowerShell</span><span class="skill-tag">Python</span><span class="skill-tag">Task Scheduling</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">IT Operations</div>
+            <div class="skill-tags">
+              <span class="skill-tag">ITIL</span><span class="skill-tag">Helpdesk L1/L2</span><span class="skill-tag">Incident Mgmt</span><span class="skill-tag">Backup & DR</span><span class="skill-tag">Patch Mgmt</span><span class="skill-tag">SLA</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Web & Hosting</div>
+            <div class="skill-tags">
+              <span class="skill-tag">WordPress</span><span class="skill-tag">cPanel</span><span class="skill-tag">SSL/TLS</span><span class="skill-tag">DNS Mgmt</span><span class="skill-tag">React</span><span class="skill-tag">Node.js</span>
             </div>
           </div>
         </div>
 
-        <div class="skills-strip reveal">
-          <div class="strip-title">Technologies I've worked with</div>
-          <div class="tech-row">
-            <span class="tech-tag">HTML / CSS</span><span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">React</span><span class="tech-tag">Node.js</span>
-            <span class="tech-tag">Express</span><span class="tech-tag">MongoDB</span>
-            <span class="tech-tag">AWS EC2</span><span class="tech-tag">AWS S3</span>
-            <span class="tech-tag">Linux</span><span class="tech-tag">Git</span>
-            <span class="tech-tag">Figma</span><span class="tech-tag">Python</span>
+        <!-- Education -->
+        <div class="section-eyebrow reveal">Education</div>
+        <div class="edu-list reveal">
+          <div class="edu-card">
+            <div>
+              <div class="edu-degree">Bachelor of Information Technology (B.I.T)</div>
+              <div class="edu-school">JMC College · Bagmati Pradesh University · Kathmandu, Nepal</div>
+            </div>
+            <div class="edu-date">2023 – Jun 2026</div>
+          </div>
+          <div class="edu-card">
+            <div>
+              <div class="edu-degree">Higher Secondary Certificate (+2) — Computer Science</div>
+              <div class="edu-school">Sodsha Devi School · National Examination Board · Kathmandu, Nepal</div>
+            </div>
+            <div class="edu-date">Completed 2022</div>
+          </div>
+          <div class="edu-card">
+            <div>
+              <div class="edu-degree">School Leaving Certificate (SLC)</div>
+              <div class="edu-school">Manakamana Maavi Secondary School · NEB · Achham, Nepal</div>
+            </div>
+            <div class="edu-date">Completed 2019</div>
           </div>
         </div>
+
+        <!-- Certifications -->
+        <div class="section-eyebrow reveal">Certifications</div>
+        <div class="cert-list reveal">
+          <div class="cert-card">
+            <div class="cert-icon aws">☁</div>
+            <div>
+              <div class="cert-name">AWS Certified Cloud Practitioner</div>
+              <div class="cert-status progress">⟳ In Progress — Expected 2025</div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon linux">🐧</div>
+            <div>
+              <div class="cert-name">Linux Administration Fundamentals</div>
+              <div class="cert-status done">✓ Completed</div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon google">G</div>
+            <div>
+              <div class="cert-name">Google Workspace Administrator</div>
+              <div class="cert-status done">✓ Hands-On Proficiency</div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon ms">⊞</div>
+            <div>
+              <div class="cert-name">Microsoft 365 Administration</div>
+              <div class="cert-status done">✓ Hands-On Proficiency</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </main>
     <footer><span>© 2025 Hemraj Adhikari · Made with ♥ in Kathmandu 🇳🇵</span></footer>
@@ -212,7 +421,7 @@
     const mNav = document.querySelector('.mobile-nav');
     toggle.addEventListener('click', () => { toggle.classList.toggle('open'); mNav.classList.toggle('open'); });
     mNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { toggle.classList.remove('open'); mNav.classList.remove('open'); }));
-    const revObs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);} }), {threshold:.1});
+    const revObs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);} }), {threshold:.08});
     document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
     document.querySelectorAll('.exp-trigger').forEach(btn => {
       btn.addEventListener('click', () => {
