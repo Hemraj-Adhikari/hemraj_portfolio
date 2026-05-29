@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Projects — Hemraj Adhikari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#05060f;--bg2:#080a18;--surface:rgba(255,255,255,.035);--surface2:rgba(255,255,255,.06);--border:rgba(255,255,255,.06);--accent:#64d2ff;--accent2:#a78bfa;--accent3:#34d399;--text:#eef2ff;--text2:#8892b0;--text3:#3d4a6b;--grad:linear-gradient(135deg,#64d2ff,#a78bfa);--font-display:'DM Sans',sans-serif;--font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;--max:1140px;--gutter:clamp(18px,5vw,64px);--t:.22s cubic-bezier(.4,0,.2,1)}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;line-height:1.7;-webkit-font-smoothing:antialiased}
+    ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+    .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(100,210,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(100,210,255,.018) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 90% 70% at 50% 30%,black,transparent)}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);animation:orbFloat 14s ease-in-out infinite}
+    .orb1{width:600px;height:600px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(167,139,250,.09),transparent 70%)}
+    .orb2{width:400px;height:400px;bottom:-80px;left:-100px;background:radial-gradient(circle,rgba(100,210,255,.08),transparent 70%);animation-delay:-6s}
+    @keyframes orbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,-22px)}}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,6,15,.85);backdrop-filter:blur(28px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;height:58px}
+    .logo{font-family:var(--font-mono);font-size:15px;color:var(--text);text-decoration:none}
+    .logo em{color:var(--accent);font-style:normal}
+    .nav-links{display:flex;gap:2px;list-style:none}
+    .nav-links a{font-size:13px;color:var(--text2);text-decoration:none;padding:5px 11px;border-radius:6px;transition:var(--t)}
+    .nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(255,255,255,.05)}
+    .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .nav-toggle span{display:block;width:20px;height:1.5px;background:var(--text2);border-radius:2px;transition:var(--t)}
+    .nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .nav-toggle.open span:nth-child(2){opacity:0}
+    .nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    .mobile-nav{display:none;position:fixed;top:58px;inset-x:0;z-index:99;background:var(--bg2);border-bottom:1px solid var(--border);padding:12px var(--gutter) 20px}
+    .mobile-nav.open{display:block}
+    .mobile-nav a{display:flex;align-items:center;padding:13px 0;color:var(--text2);text-decoration:none;font-size:15px;min-height:44px;border-bottom:1px solid var(--border);transition:var(--t)}
+    .mobile-nav a:hover{color:var(--text)}
+    .page{position:relative;z-index:1}
+    main{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+    .hero-section{padding:clamp(100px,12vw,150px) 0 clamp(60px,8vw,100px)}
+    .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .eyebrow-line{width:24px;height:1px;background:var(--accent);flex-shrink:0}
+    .eyebrow-text{font-family:var(--font-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent)}
+    h1.page-title{font-family:var(--font-display);font-size:clamp(36px,7vw,80px);font-weight:700;line-height:1;letter-spacing:-3px;margin-bottom:16px}
+    h1.page-title mark{background:none;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-image:var(--grad);background-clip:text}
+    .page-desc{font-size:15px;color:var(--text2);max-width:560px;line-height:1.8;margin-bottom:32px}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+    .reveal.visible{opacity:1;transform:none}
+    /* Filter */
+    .filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:36px}
+    .filter-btn{font-family:var(--font-mono);font-size:10px;letter-spacing:.8px;text-transform:uppercase;padding:5px 14px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--text3);cursor:pointer;transition:var(--t)}
+    .filter-btn:hover,.filter-btn.active{border-color:rgba(100,210,255,.25);color:var(--accent);background:rgba(100,210,255,.06)}
+    /* Cards */
+    .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:60px}
+    .proj-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:var(--t);display:flex;flex-direction:column}
+    .proj-card:hover{border-color:rgba(255,255,255,.1);transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+    .proj-thumb{height:130px;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,rgba(100,210,255,.05),rgba(167,139,250,.05));border-bottom:1px solid var(--border)}
+    .proj-body{padding:20px 22px;flex:1;display:flex;flex-direction:column}
+    .proj-meta{display:flex;justify-content:space-between;margin-bottom:8px}
+    .proj-type{font-family:var(--font-mono);font-size:9.5px;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase}
+    .proj-year{font-family:var(--font-mono);font-size:9.5px;color:var(--text3)}
+    .proj-card h3{font-size:17px;font-weight:600;color:var(--text);margin-bottom:7px;letter-spacing:-.2px}
+    .proj-card p{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px;flex:1}
+    .proj-tech{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+    .proj-tech span{font-family:var(--font-mono);font-size:9px;padding:2px 7px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:4px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+    .proj-links{display:flex;gap:10px}
+    .proj-link{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:10.5px;color:var(--text2);letter-spacing:.5px;text-transform:uppercase;text-decoration:none;transition:var(--t)}
+    .proj-link:hover{color:var(--accent);gap:8px}
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px var(--gutter);text-align:center;margin-top:0}
+    footer span{font-family:var(--font-mono);font-size:11px;color:var(--text3)}
+    @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:flex}}
+    @media(max-width:640px){.proj-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">hem<em>raj</em>.dev</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-nav">
+    <a href="../index.html">Home</a>
+    <a href="experience.html">Experience</a>
+    <a href="services.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="page">
+    <main>
+      <div class="hero-section">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Portfolio</span></div>
+        <h1 class="page-title">Featured <mark>Projects</mark></h1>
+        <p class="page-desc">Things I've built — from personal projects to client work. Each one taught me something valuable.</p>
+
+        <div class="filter-row reveal">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+          <button class="filter-btn" data-filter="cloud">Cloud</button>
+          <button class="filter-btn" data-filter="frontend">Frontend</button>
+        </div>
+
+        <div class="proj-grid reveal">
+          <div class="proj-card" data-cat="frontend">
+            <div class="proj-thumb">🌐</div>
+            <div class="proj-body">
+              <div class="proj-meta"><span class="proj-type">Frontend</span><span class="proj-year">2024</span></div>
+              <h3>Personal Portfolio</h3>
+              <p>This very website — built with vanilla HTML, CSS and JavaScript. Fully responsive with dark theme, scroll animations and mobile nav.</p>
+              <div class="proj-tech"><span>HTML</span><span>CSS</span><span>JS</span><span>GitHub Pages</span></div>
+              <div class="proj-links"><a href="https://hemrajadhikari.info.np" target="_blank" rel="noopener" class="proj-link">Live →</a><a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener" class="proj-link">GitHub →</a></div>
+            </div>
+          </div>
+          <div class="proj-card" data-cat="fullstack">
+            <div class="proj-thumb">📝</div>
+            <div class="proj-body">
+              <div class="proj-meta"><span class="proj-type">Full-Stack</span><span class="proj-year">2024</span></div>
+              <h3>Nepal IT Blog Platform</h3>
+              <p>Multi-page blog platform with category pages, SEO-optimized content, sitemap, and structured data for Nepali IT students.</p>
+              <div class="proj-tech"><span>HTML</span><span>CSS</span><span>JS</span><span>SEO</span><span>Schema</span></div>
+              <div class="proj-links"><a href="https://hemrajadhikari.info.np/blog.html" target="_blank" rel="noopener" class="proj-link">Live →</a></div>
+            </div>
+          </div>
+          <div class="proj-card" data-cat="cloud">
+            <div class="proj-thumb">☁️</div>
+            <div class="proj-body">
+              <div class="proj-meta"><span class="proj-type">Cloud / DevOps</span><span class="proj-year">2023</span></div>
+              <h3>AWS Static Site Pipeline</h3>
+              <p>Automated CI/CD deployment pipeline using AWS S3, CloudFront CDN and GitHub Actions for zero-downtime static site hosting.</p>
+              <div class="proj-tech"><span>AWS S3</span><span>CloudFront</span><span>GitHub Actions</span><span>Route 53</span></div>
+              <div class="proj-links"><a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener" class="proj-link">GitHub →</a></div>
+            </div>
+          </div>
+          <div class="proj-card" data-cat="fullstack">
+            <div class="proj-thumb">🛒</div>
+            <div class="proj-body">
+              <div class="proj-meta"><span class="proj-type">Full-Stack</span><span class="proj-year">2023</span></div>
+              <h3>Local Business Website</h3>
+              <p>Responsive business website for a local Nepali client — includes product catalog, contact form, Google Maps integration and WhatsApp CTA.</p>
+              <div class="proj-tech"><span>HTML</span><span>CSS</span><span>JS</span><span>PHP</span></div>
+              <div class="proj-links"><span class="proj-link" style="cursor:default;color:var(--accent3)">✔ Delivered</span></div>
+            </div>
+          </div>
+          <div class="proj-card" data-cat="cloud">
+            <div class="proj-thumb">🐧</div>
+            <div class="proj-body">
+              <div class="proj-meta"><span class="proj-type">Linux / Server</span><span class="proj-year">2023</span></div>
+              <h3>Linux Server Setup Scripts</h3>
+              <p>Bash scripts for quick LAMP/LEMP server provisioning on Ubuntu — includes firewall config, SSL with Certbot, and Nginx reverse proxy.</p>
+              <div class="proj-tech"><span>Bash</span><span>Ubuntu</span><span>Nginx</span><span>Certbot</span></div>
+              <div class="proj-links"><a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener" class="proj-link">GitHub →</a></div>
+            </div>
+          </div>
+          <div class="proj-card" data-cat="frontend">
+            <div class="proj-thumb">📊</div>
+            <div class="proj-body">
+              <div class="proj-meta"><span class="proj-type">Frontend</span><span class="proj-year">2022</span></div>
+              <h3>Student Result Tracker</h3>
+              <p>A simple web app for BCA students to track semester results, calculate CGPA, and visualize grade trends with charts.</p>
+              <div class="proj-tech"><span>HTML</span><span>CSS</span><span>JS</span><span>Chart.js</span></div>
+              <div class="proj-links"><a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener" class="proj-link">GitHub →</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer><span>© 2025 Hemraj Adhikari · Made with ♥ in Kathmandu 🇳🇵</span></footer>
+  </div>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const mNav = document.querySelector('.mobile-nav');
+    toggle.addEventListener('click', () => { toggle.classList.toggle('open'); mNav.classList.toggle('open'); });
+    mNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { toggle.classList.remove('open'); mNav.classList.remove('open'); }));
+    const revObs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);} }), {threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+    // Filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.proj-card').forEach(card => {
+          card.style.display = (f === 'all' || card.dataset.cat === f) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
