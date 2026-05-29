@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Services — Hemraj Adhikari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#05060f;--bg2:#080a18;--surface:rgba(255,255,255,.035);--surface2:rgba(255,255,255,.06);--border:rgba(255,255,255,.06);--accent:#64d2ff;--accent2:#a78bfa;--accent3:#34d399;--text:#eef2ff;--text2:#8892b0;--text3:#3d4a6b;--grad:linear-gradient(135deg,#64d2ff,#a78bfa);--font-display:'DM Sans',sans-serif;--font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;--max:1140px;--gutter:clamp(18px,5vw,64px);--t:.22s cubic-bezier(.4,0,.2,1)}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;line-height:1.7;-webkit-font-smoothing:antialiased}
+    ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+    .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(100,210,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(100,210,255,.018) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 90% 70% at 50% 30%,black,transparent)}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);animation:orbFloat 14s ease-in-out infinite}
+    .orb1{width:600px;height:600px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(167,139,250,.09),transparent 70%)}
+    .orb2{width:400px;height:400px;bottom:-80px;left:-100px;background:radial-gradient(circle,rgba(100,210,255,.08),transparent 70%);animation-delay:-6s}
+    @keyframes orbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,-22px)}}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,6,15,.85);backdrop-filter:blur(28px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;height:58px}
+    .logo{font-family:var(--font-mono);font-size:15px;color:var(--text);text-decoration:none}
+    .logo em{color:var(--accent);font-style:normal}
+    .nav-links{display:flex;gap:2px;list-style:none}
+    .nav-links a{font-size:13px;color:var(--text2);text-decoration:none;padding:5px 11px;border-radius:6px;transition:var(--t)}
+    .nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(255,255,255,.05)}
+    .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .nav-toggle span{display:block;width:20px;height:1.5px;background:var(--text2);border-radius:2px;transition:var(--t)}
+    .nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .nav-toggle.open span:nth-child(2){opacity:0}
+    .nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    .mobile-nav{display:none;position:fixed;top:58px;inset-x:0;z-index:99;background:var(--bg2);border-bottom:1px solid var(--border);padding:12px var(--gutter) 20px}
+    .mobile-nav.open{display:block}
+    .mobile-nav a{display:flex;align-items:center;padding:13px 0;color:var(--text2);text-decoration:none;font-size:15px;min-height:44px;border-bottom:1px solid var(--border);transition:var(--t)}
+    .mobile-nav a:hover{color:var(--text)}
+    .page{position:relative;z-index:1}
+    main{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+    .hero-section{padding:clamp(100px,12vw,150px) 0 clamp(60px,8vw,100px)}
+    .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .eyebrow-line{width:24px;height:1px;background:var(--accent);flex-shrink:0}
+    .eyebrow-text{font-family:var(--font-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent)}
+    h1.page-title{font-family:var(--font-display);font-size:clamp(36px,7vw,80px);font-weight:700;line-height:1;letter-spacing:-3px;margin-bottom:16px}
+    h1.page-title mark{background:none;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-image:var(--grad);background-clip:text}
+    .page-desc{font-size:15px;color:var(--text2);max-width:560px;line-height:1.8;margin-bottom:56px}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+    .reveal.visible{opacity:1;transform:none}
+    .svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:60px}
+    .svc-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px;position:relative;overflow:hidden;transition:var(--t)}
+    .svc-card:hover{border-color:rgba(255,255,255,.1);transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+    .svc-ico{width:44px;height:44px;border-radius:11px;background:rgba(100,210,255,.07);border:1px solid rgba(100,210,255,.12);display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:16px}
+    .svc-num{position:absolute;top:16px;right:18px;font-family:var(--font-mono);font-size:36px;font-weight:300;color:rgba(255,255,255,.03);line-height:1;pointer-events:none}
+    .svc-card h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px;letter-spacing:-.15px}
+    .svc-card p{font-size:13.5px;color:var(--text2);line-height:1.75;margin-bottom:14px}
+    .svc-tags{display:flex;flex-wrap:wrap;gap:5px;list-style:none}
+    .svc-tags li{font-family:var(--font-mono);font-size:9px;padding:3px 8px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:4px;color:var(--text3);letter-spacing:.5px;text-transform:uppercase}
+    /* CTA */
+    .cta-band{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .cta-band h2{font-size:22px;font-weight:600;color:var(--text);letter-spacing:-.3px}
+    .cta-band p{font-size:13.5px;color:var(--text2);margin-top:4px}
+    .btn-primary{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;background:var(--grad);border:none;border-radius:8px;font-family:var(--font-body);font-weight:500;font-size:13.5px;color:#fff;text-decoration:none;cursor:pointer;transition:var(--t)}
+    .btn-primary:hover{opacity:.88;transform:translateY(-2px)}
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px var(--gutter);text-align:center;margin-top:60px}
+    footer span{font-family:var(--font-mono);font-size:11px;color:var(--text3)}
+    @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:flex}}
+    @media(max-width:520px){.svc-grid{grid-template-columns:1fr}.cta-band{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">hem<em>raj</em>.dev</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-nav">
+    <a href="../index.html">Home</a>
+    <a href="experience.html">Experience</a>
+    <a href="services.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="page">
+    <main>
+      <div class="hero-section">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Services</span></div>
+        <h1 class="page-title">What I <mark>Offer</mark></h1>
+        <p class="page-desc">From pixel-perfect frontends to cloud deployments — I build it all. Here's what I can do for you.</p>
+
+        <div class="svc-grid reveal">
+          <div class="svc-card">
+            <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+            <span class="svc-num">01</span>
+            <h3>Web Development</h3>
+            <p>Custom, responsive websites and full-stack web applications. Clean code, fast load times, mobile-first approach.</p>
+            <ul class="svc-tags"><li>React</li><li>Node.js</li><li>MongoDB</li><li>REST API</li><li>HTML/CSS</li></ul>
+          </div>
+          <div class="svc-card">
+            <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+            <span class="svc-num">02</span>
+            <h3>UI / UX Design</h3>
+            <p>Clean, user-centered interfaces that look great and convert. Figma prototyping and pixel-perfect CSS implementation.</p>
+            <ul class="svc-tags"><li>Figma</li><li>CSS</li><li>Animations</li><li>Accessibility</li></ul>
+          </div>
+          <div class="svc-card">
+            <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <span class="svc-num">03</span>
+            <h3>Cloud & DevOps</h3>
+            <p>Deploy and scale your applications with AWS. CI/CD pipelines, Linux server setup, domain management and SSL.</p>
+            <ul class="svc-tags"><li>AWS</li><li>EC2</li><li>S3</li><li>Linux</li><li>GitHub Actions</li></ul>
+          </div>
+          <div class="svc-card">
+            <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+            <span class="svc-num">04</span>
+            <h3>SEO Optimization</h3>
+            <p>Technical SEO audits, Core Web Vitals fixes, structured data markup. Help your site rank higher and load faster.</p>
+            <ul class="svc-tags"><li>On-Page SEO</li><li>Core Web Vitals</li><li>Schema</li><li>Sitemap</li></ul>
+          </div>
+          <div class="svc-card">
+            <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+            <span class="svc-num">05</span>
+            <h3>Content & Blogging</h3>
+            <p>Technical content writing for IT audiences. Blog posts, tutorials and guides for Nepali developers and students.</p>
+            <ul class="svc-tags"><li>Technical Writing</li><li>SEO Content</li><li>Tutorials</li></ul>
+          </div>
+          <div class="svc-card">
+            <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+            <span class="svc-num">06</span>
+            <h3>Website Maintenance</h3>
+            <p>Ongoing support for existing sites — updates, bug fixes, performance tuning, and security patches.</p>
+            <ul class="svc-tags"><li>Maintenance</li><li>Performance</li><li>Security</li><li>Updates</li></ul>
+          </div>
+        </div>
+
+        <div class="cta-band reveal">
+          <div>
+            <h2>Have a project in mind?</h2>
+            <p>Let's talk about your requirements — free consultation, no strings attached.</p>
+          </div>
+          <a href="contact.html" class="btn-primary">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer><span>© 2025 Hemraj Adhikari · Made with ♥ in Kathmandu 🇳🇵</span></footer>
+  </div>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const mNav = document.querySelector('.mobile-nav');
+    toggle.addEventListener('click', () => { toggle.classList.toggle('open'); mNav.classList.toggle('open'); });
+    mNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { toggle.classList.remove('open'); mNav.classList.remove('open'); }));
+    const revObs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);} }), {threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+  </script>
+</body>
+</html>
