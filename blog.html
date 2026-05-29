@@ -3,600 +3,353 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nepal IT Student Projects - LinkedIn Post</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Nepal IT Blog — Cloud, Career, Courses, Freelancing | Hemraj Adhikari</title>
+<meta name="description" content="Nepal IT professionals ra students ko lagi free blog. AWS Cloud, Linux, BCA vs CSIT, freelancing, project ideas — sabai Nepali context ma. Hemraj Adhikari IT Blog.">
+<meta name="keywords" content="Nepal IT blog, IT blog Nepal Nepali, BCA CSIT blog Nepal, AWS Nepal blog, Linux Nepal blog, IT career Nepal, cloud computing Nepal blog, freelancing Nepal IT, Hemraj Adhikari blog">
+<meta name="author" content="Hemraj Adhikari">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hemrajadhikari.info.np/blog-index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nepal IT Blog — Hemraj Adhikari">
+<meta property="og:description" content="Nepal IT students ra professionals ko lagi free resources — Cloud, Linux, Career, Freelancing, Projects.">
+<meta property="og:url" content="https://hemrajadhikari.info.np/blog-index.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Hemraj Adhikari IT Blog",
+  "url": "https://hemrajadhikari.info.np/blog-index.html",
+  "author": {"@type": "Person","name": "Hemraj Adhikari","url": "https://hemrajadhikari.info.np"},
+  "description": "Nepal IT students ra professionals ko lagi free blog — Cloud, Linux, Career, Freelancing.",
+  "inLanguage": ["en-NP", "ne"]
+}
+</script>
+<link rel="stylesheet" href="blog-style.css">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* ── INDEX-SPECIFIC STYLES ─────────────── */
+.index-hero {
+  padding: 80px 0 60px;
+  text-align: center;
+}
+.index-hero-label {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.index-hero-label::before, .index-hero-label::after {
+  content: ''; display: block; width: 24px; height: 1px; background: var(--accent);
+}
+.index-hero h1 {
+  font-family: var(--font-display); font-size: clamp(32px, 6vw, 58px);
+  font-weight: 800; line-height: 1.1; letter-spacing: -2px; color: var(--text);
+  margin-bottom: 16px;
+}
+.index-hero h1 mark {
+  background: none; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-image: var(--grad); background-clip: text;
+}
+.index-hero p {
+  font-size: 15px; color: var(--text2); max-width: 520px; margin: 0 auto 32px;
+  line-height: 1.75;
+}
+.index-hero-stats {
+  display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+}
+.hero-stat-num { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--accent); display: block; }
+.hero-stat-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text3); margin-top: 3px; }
 
-  body {
-    background: #0a0a0f;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 40px 20px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-  }
+/* FILTER BAR */
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 40px;
+  padding: 0 clamp(16px,5vw,32px);
+  max-width: 900px; margin-left: auto; margin-right: auto;
+}
+.filter-pill {
+  font-family: var(--font-mono); font-size: 11px; padding: 6px 14px;
+  border-radius: 20px; border: 1px solid var(--border); color: var(--text2);
+  background: transparent; cursor: pointer; transition: .2s; letter-spacing: .5px;
+}
+.filter-pill:hover, .filter-pill.active { border-color: var(--accent); color: var(--accent); background: rgba(100,210,255,.06); }
 
-  .card {
-    width: 680px;
-    background: #0f0f1a;
-    border-radius: 24px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.07);
-    box-shadow: 0 40px 120px rgba(0,0,0,0.6);
-    animation: fadeUp 0.8s ease both;
-  }
+/* BLOG GRID */
+.blog-grid-wrap {
+  max-width: 900px; margin: 0 auto;
+  padding: 0 clamp(16px,5vw,32px) 80px;
+}
+.featured-card {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+  margin-bottom: 32px; transition: .3s; text-decoration: none;
+  background: var(--surface);
+}
+.featured-card:hover { border-color: rgba(100,210,255,.25); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+.featured-visual {
+  background: linear-gradient(135deg, #0d1f4a, #1a0533);
+  min-height: 240px; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.featured-visual-emoji { font-size: 72px; opacity: .6; }
+.featured-visual::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(100,210,255,.12), transparent 60%);
+}
+.featured-badge {
+  position: absolute; top: 16px; left: 16px;
+  background: rgba(100,210,255,.15); border: 1px solid rgba(100,210,255,.3);
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--accent); padding: 4px 10px; border-radius: 20px;
+}
+.featured-body { padding: 28px; display: flex; flex-direction: column; justify-content: center; }
+.featured-cat { font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+.featured-title { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 22px); font-weight: 800; color: var(--text); line-height: 1.25; margin-bottom: 10px; letter-spacing: -.5px; }
+.featured-desc { font-size: 13px; color: var(--text2); line-height: 1.65; margin-bottom: 16px; }
+.featured-meta { display: flex; align-items: center; gap: 12px; }
+.feat-read { font-family: var(--font-mono); font-size: 10px; color: var(--text3); }
+.feat-arrow { font-size: 13px; color: var(--accent); margin-left: auto; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+/* BLOG CARD GRID */
+.cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.blog-card-link {
+  display: block; text-decoration: none;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; transition: .25s;
+}
+.blog-card-link:hover { border-color: rgba(167,139,250,.2); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,.2); }
+.blog-card-thumb {
+  height: 120px; display: flex; align-items: center; justify-content: center;
+  font-size: 48px; position: relative; overflow: hidden;
+}
+.blog-card-thumb.purple { background: linear-gradient(135deg, rgba(167,139,250,.12), rgba(167,139,250,.03)); }
+.blog-card-thumb.green { background: linear-gradient(135deg, rgba(52,211,153,.12), rgba(52,211,153,.03)); }
+.blog-card-thumb.orange { background: linear-gradient(135deg, rgba(251,146,60,.12), rgba(251,146,60,.03)); }
+.blog-card-thumb.blue { background: linear-gradient(135deg, rgba(100,210,255,.12), rgba(100,210,255,.03)); }
+.blog-card-body { padding: 16px; }
+.blog-card-cat { font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text3); margin-bottom: 7px; }
+.blog-card-title { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.35; margin-bottom: 7px; letter-spacing: -.3px; }
+.blog-card-desc { font-size: 12px; color: var(--text2); line-height: 1.55; margin-bottom: 10px; }
+.blog-card-footer { display: flex; align-items: center; justify-content: space-between; }
+.blog-card-read { font-family: var(--font-mono); font-size: 10px; color: var(--text3); }
+.blog-card-arrow { color: var(--accent2); font-size: 12px; }
 
-  /* HEADER */
-  .header {
-    background: linear-gradient(135deg, #1a0533 0%, #0d1f4a 50%, #0a2a1a 100%);
-    padding: 44px 44px 36px;
-    position: relative;
-    overflow: hidden;
-  }
+/* COMING SOON */
+.coming-soon-section { margin-top: 48px; }
+.coming-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text3); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.coming-title::before { content: ''; display: block; width: 20px; height: 1px; background: var(--text3); }
+.coming-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.coming-card { padding: 14px 16px; background: rgba(255,255,255,.02); border: 1px dashed rgba(255,255,255,.07); border-radius: 10px; }
+.coming-card-title { font-size: 13px; font-weight: 600; color: var(--text3); margin-bottom: 4px; }
+.coming-card-badge { display: inline-block; font-family: var(--font-mono); font-size: 9px; padding: 2px 8px; border-radius: 4px; background: rgba(255,255,255,.04); color: var(--text3); letter-spacing: 1px; text-transform: uppercase; }
 
-  .header::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 280px; height: 280px;
-    background: radial-gradient(circle, rgba(168,85,247,0.25) 0%, transparent 70%);
-    pointer-events: none;
-  }
+/* NEWSLETTER */
+.newsletter-block {
+  margin-top: 56px; padding: 32px; border-radius: 16px;
+  background: linear-gradient(135deg, rgba(167,139,250,.08), rgba(52,211,153,.05));
+  border: 1px solid rgba(167,139,250,.15); text-align: center;
+}
+.newsletter-block h3 { font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+.newsletter-block p { font-size: 13px; color: var(--text2); margin-bottom: 20px; }
+.nl-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 
-  .header::after {
-    content: '';
-    position: absolute;
-    bottom: -40px; left: 30px;
-    width: 200px; height: 200px;
-    background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .flag-line {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-
-  .flag-emoji { font-size: 22px; }
-
-  .tag {
-    background: rgba(168,85,247,0.2);
-    border: 1px solid rgba(168,85,247,0.4);
-    color: #c084fc;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 20px;
-  }
-
-  .header h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 1.15;
-    color: #fff;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .header h1 span.accent { color: #a855f7; }
-  .header h1 span.green { color: #34d399; }
-
-  .header .subtitle {
-    color: rgba(255,255,255,0.55);
-    font-size: 14px;
-    line-height: 1.6;
-    max-width: 480px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .stats-row {
-    display: flex;
-    gap: 24px;
-    margin-top: 28px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 26px;
-    font-weight: 800;
-    color: #a855f7;
-    line-height: 1;
-  }
-
-  .stat-num.green { color: #34d399; }
-  .stat-num.orange { color: #fb923c; }
-
-  .stat-label {
-    font-size: 11px;
-    color: rgba(255,255,255,0.4);
-    margin-top: 3px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(168,85,247,0.3), rgba(52,211,153,0.2), transparent);
-    margin: 0;
-  }
-
-  /* BODY */
-  .body { padding: 32px 44px; }
-
-  .section-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 20px;
-  }
-
-  /* LEVEL CARDS */
-  .levels { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
-
-  .level-card {
-    border-radius: 14px;
-    padding: 18px 20px;
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    border: 1px solid;
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-    transition: transform 0.2s ease;
-    animation: slideIn 0.5s ease both;
-  }
-
-  .level-card:hover { transform: translateX(4px); }
-
-  .level-card:nth-child(1) { animation-delay: 0.1s; }
-  .level-card:nth-child(2) { animation-delay: 0.2s; }
-  .level-card:nth-child(3) { animation-delay: 0.3s; }
-
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateX(-16px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-
-  .level-card.beginner {
-    background: linear-gradient(135deg, rgba(52,211,153,0.08) 0%, rgba(52,211,153,0.02) 100%);
-    border-color: rgba(52,211,153,0.2);
-  }
-
-  .level-card.intermediate {
-    background: linear-gradient(135deg, rgba(251,146,60,0.08) 0%, rgba(251,146,60,0.02) 100%);
-    border-color: rgba(251,146,60,0.2);
-  }
-
-  .level-card.advanced {
-    background: linear-gradient(135deg, rgba(168,85,247,0.10) 0%, rgba(168,85,247,0.02) 100%);
-    border-color: rgba(168,85,247,0.25);
-  }
-
-  .level-glow {
-    position: absolute;
-    top: -20px; right: -20px;
-    width: 100px; height: 100px;
-    border-radius: 50%;
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-  .beginner .level-glow { background: radial-gradient(circle, rgba(52,211,153,0.3) 0%, transparent 70%); }
-  .intermediate .level-glow { background: radial-gradient(circle, rgba(251,146,60,0.3) 0%, transparent 70%); }
-  .advanced .level-glow { background: radial-gradient(circle, rgba(168,85,247,0.35) 0%, transparent 70%); }
-
-  .level-icon {
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-
-  .beginner .level-icon { background: rgba(52,211,153,0.15); }
-  .intermediate .level-icon { background: rgba(251,146,60,0.15); }
-  .advanced .level-icon { background: rgba(168,85,247,0.15); }
-
-  .level-content { flex: 1; }
-
-  .level-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 6px;
-  }
-
-  .level-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: #fff;
-  }
-
-  .level-badge {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 20px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  .beginner .level-badge { background: rgba(52,211,153,0.15); color: #34d399; }
-  .intermediate .level-badge { background: rgba(251,146,60,0.15); color: #fb923c; }
-  .advanced .level-badge { background: rgba(168,85,247,0.15); color: #c084fc; }
-
-  .level-desc {
-    font-size: 12.5px;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.5;
-    margin-bottom: 10px;
-  }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .project-tag {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 8px;
-    color: rgba(255,255,255,0.75);
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-
-  /* TIPS SECTION */
-  .tips-section { margin-bottom: 28px; }
-
-  .tips-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .tip-item {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
-    padding: 14px 16px;
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    animation: fadeUp 0.5s ease both;
-  }
-
-  .tip-item:nth-child(1) { animation-delay: 0.4s; }
-  .tip-item:nth-child(2) { animation-delay: 0.5s; }
-  .tip-item:nth-child(3) { animation-delay: 0.6s; }
-  .tip-item:nth-child(4) { animation-delay: 0.7s; }
-
-  .tip-icon { font-size: 18px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
-
-  .tip-text {
-    font-size: 12px;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.5;
-  }
-
-  .tip-text strong {
-    display: block;
-    color: rgba(255,255,255,0.88);
-    font-weight: 600;
-    font-size: 12.5px;
-    margin-bottom: 2px;
-  }
-
-  /* QUOTE */
-  .quote-block {
-    background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(52,211,153,0.05));
-    border-left: 3px solid #a855f7;
-    border-radius: 0 12px 12px 0;
-    padding: 16px 20px;
-    margin-bottom: 28px;
-  }
-
-  .quote-text {
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.6;
-    font-style: italic;
-  }
-
-  .quote-text span { color: #c084fc; font-style: normal; font-weight: 700; }
-
-  /* FOOTER */
-  .footer {
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 24px 44px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255,255,255,0.01);
-  }
-
-  .author-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .avatar {
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #a855f7, #34d399);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 15px;
-    color: #fff;
-  }
-
-  .author-name {
-    font-weight: 700;
-    font-size: 14px;
-    color: #fff;
-  }
-
-  .author-role {
-    font-size: 11.5px;
-    color: rgba(255,255,255,0.4);
-    margin-top: 1px;
-  }
-
-  .hashtags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    justify-content: flex-end;
-    max-width: 260px;
-  }
-
-  .hashtag {
-    font-size: 11px;
-    color: #a855f7;
-    opacity: 0.7;
-  }
-
-  .hashtag:hover { opacity: 1; }
-
-  /* ENGAGEMENT BAR */
-  .engagement {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 14px 44px;
-    border-top: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .engage-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.35);
-    cursor: pointer;
-    transition: color 0.2s;
-  }
-
-  .engage-item:hover { color: rgba(255,255,255,0.7); }
-  .engage-icon { font-size: 15px; }
+@media (max-width: 640px) {
+  .featured-card { grid-template-columns: 1fr; }
+  .featured-visual { min-height: 140px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .coming-grid { grid-template-columns: 1fr 1fr; }
+  .index-hero-stats { gap: 20px; }
+}
+@media (max-width: 400px) {
+  .coming-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="orb orb1" aria-hidden="true"></div>
+<div class="orb orb2" aria-hidden="true"></div>
 
-<div class="card">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="flag-line">
-      <span class="flag-emoji">🇳🇵</span>
-      <span class="tag">Nepal IT Students</span>
-    </div>
-    <h1>
-      Project Ideas — <span class="accent">Garo</span> dekhi<br>
-      <span class="green">Ekdam Advanced</span> samma 🚀
-    </h1>
-    <p class="subtitle">
-      Nepal ma IT padhda "kasto project banaun?" bhanera confuse hunu parcha. Yaha cha complete roadmap — sabai level ko lagi!
-    </p>
-    <div class="stats-row">
-      <div class="stat">
-        <span class="stat-num">12+</span>
-        <span class="stat-label">Project Ideas</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num green">3</span>
-        <span class="stat-label">Levels</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num orange">∞</span>
-        <span class="stat-label">Opportunities</span>
-      </div>
+<nav class="blog-nav">
+  <div class="blog-nav-inner">
+    <a href="index.html" class="blog-nav-logo"><em>HA</em>.blog</a>
+    <div class="blog-nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact" class="btn-back">← Portfolio</a>
     </div>
   </div>
+</nav>
 
-  <div class="divider"></div>
+<div style="position:relative;z-index:1;">
 
-  <!-- BODY -->
-  <div class="body">
-
-    <p class="section-label">🎯 Project Levels — Choose Your Path</p>
-
-    <div class="levels">
-
-      <!-- BEGINNER -->
-      <div class="level-card beginner">
-        <div class="level-glow"></div>
-        <div class="level-icon">🌱</div>
-        <div class="level-content">
-          <div class="level-header">
-            <span class="level-title">Beginner Level</span>
-            <span class="level-badge">Suru Garnu</span>
-          </div>
-          <p class="level-desc">Simple tara impactful — portfolio ma rakhna perfect. Logic clear garna ko lagi best choice.</p>
-          <div class="project-tags">
-            <span class="project-tag">📋 Student Result System</span>
-            <span class="project-tag">🛒 Pasal Management (CRUD)</span>
-            <span class="project-tag">💰 Expense Tracker</span>
-            <span class="project-tag">📚 Library System</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- INTERMEDIATE -->
-      <div class="level-card intermediate">
-        <div class="level-glow"></div>
-        <div class="level-icon">⚡</div>
-        <div class="level-content">
-          <div class="level-header">
-            <span class="level-title">Intermediate Level</span>
-            <span class="level-badge">Confidence Build</span>
-          </div>
-          <p class="level-desc">Real-world problem solve garcha — Nepal ko context ma banayera impact double huncha!</p>
-          <div class="project-tags">
-            <span class="project-tag">🏥 Hospital Appointment App</span>
-            <span class="project-tag">🚌 Bus Ticket Booking</span>
-            <span class="project-tag">🌾 Krishi: Farmer's Marketplace</span>
-            <span class="project-tag">📰 Nepali News Aggregator</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ADVANCED -->
-      <div class="level-card advanced">
-        <div class="level-glow"></div>
-        <div class="level-icon">🔥</div>
-        <div class="level-content">
-          <div class="level-header">
-            <span class="level-title">Advanced Level</span>
-            <span class="level-badge">Job Ready 💼</span>
-          </div>
-          <p class="level-desc">AI, ML, Blockchain use garyo bhane recruiters le notice garcha — Nepal + Global market ko lagi!</p>
-          <div class="project-tags">
-            <span class="project-tag">🤖 AI Chatbot (Nepali NLP)</span>
-            <span class="project-tag">🩺 Disease Prediction ML</span>
-            <span class="project-tag">🏔️ Tourism AR Guide</span>
-            <span class="project-tag">🔗 Land Registry Blockchain</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- TIPS -->
-    <p class="section-label">💡 Pro Tips — Nepal IT Students Ko Lagi</p>
-    <div class="tips-section">
-      <div class="tips-grid">
-        <div class="tip-item">
-          <span class="tip-icon">🇳🇵</span>
-          <div class="tip-text">
-            <strong>Nepal-Specific Problem Solve Gara</strong>
-            Load shedding tracker, trekking app, remittance tool — local problems = unique projects!
-          </div>
-        </div>
-        <div class="tip-item">
-          <span class="tip-icon">📂</span>
-          <div class="tip-text">
-            <strong>GitHub ma Rakh Sabai Kaam</strong>
-            Code rakhe pug-daina — README, demo video, ra documentation pani add gara.
-          </div>
-        </div>
-        <div class="tip-item">
-          <span class="tip-icon">🤝</span>
-          <div class="tip-text">
-            <strong>Team Ma Bana — Solo Nabhaye</strong>
-            2-3 jana milera banauna khoji. Team collaboration = industry-ready skill!
-          </div>
-        </div>
-        <div class="tip-item">
-          <span class="tip-icon">🌐</span>
-          <div class="tip-text">
-            <strong>Deploy Gara — Localhost Ma Nachhod</strong>
-            Vercel, Netlify, Render — free ma live project deploy gara. Recruiter lai link deu!
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- QUOTE -->
-    <div class="quote-block">
-      <p class="quote-text">
-        "Project ko size matter gardaina — <span>impact</span> matter garcha. Nepal ko ek gaun ko problem solve garne app le Silicon Valley ko generic todo app bhanda धेरै value rakhcha।"
-      </p>
-    </div>
-
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="author-info">
-      <div class="avatar">IT</div>
+  <!-- HERO -->
+  <div class="index-hero">
+    <div class="index-hero-label">Nepal IT Knowledge Hub</div>
+    <h1>Free IT Guides<br><mark>Nepal Ko Lagi</mark> 🇳🇵</h1>
+    <p>Cloud, Linux, Career, Freelancing, Projects — sabai Nepal context ma, students ra professionals ko lagi freely share garirako cha.</p>
+    <div class="index-hero-stats">
       <div>
-        <div class="author-name">Nepal IT Community 🇳🇵</div>
-        <div class="author-role">Building the Future from the Himalayas</div>
+        <span class="hero-stat-num">5</span>
+        <div class="hero-stat-label">Published Blogs</div>
       </div>
-    </div>
-    <div class="hashtags">
-      <span class="hashtag">#NepalIT</span>
-      <span class="hashtag">#ITStudent</span>
-      <span class="hashtag">#NepaliDev</span>
-      <span class="hashtag">#TechNepal</span>
-      <span class="hashtag">#ProjectIdeas</span>
-      <span class="hashtag">#CodeNepal</span>
+      <div>
+        <span class="hero-stat-num">1000+</span>
+        <div class="hero-stat-label">Planned Posts</div>
+      </div>
+      <div>
+        <span class="hero-stat-num">🆓</span>
+        <div class="hero-stat-label">Always Free</div>
+      </div>
     </div>
   </div>
 
-  <!-- ENGAGEMENT -->
-  <div class="engagement">
-    <div class="engage-item">
-      <span class="engage-icon">👍</span>
-      <span>Like</span>
-    </div>
-    <div class="engage-item">
-      <span class="engage-icon">💬</span>
-      <span>Comment</span>
-    </div>
-    <div class="engage-item">
-      <span class="engage-icon">🔁</span>
-      <span>Repost</span>
-    </div>
-    <div class="engage-item">
-      <span class="engage-icon">📤</span>
-      <span>Share</span>
-    </div>
+  <!-- FILTER -->
+  <div class="filter-bar">
+    <button class="filter-pill active" onclick="filterPosts('all',this)">All Posts</button>
+    <button class="filter-pill" onclick="filterPosts('education',this)">🎓 Education</button>
+    <button class="filter-pill" onclick="filterPosts('cloud',this)">☁️ Cloud/AWS</button>
+    <button class="filter-pill" onclick="filterPosts('linux',this)">🐧 Linux</button>
+    <button class="filter-pill" onclick="filterPosts('career',this)">💼 Career</button>
+    <button class="filter-pill" onclick="filterPosts('freelancing',this)">💵 Freelancing</button>
   </div>
+
+  <!-- POSTS -->
+  <div class="blog-grid-wrap">
+
+    <!-- FEATURED -->
+    <a href="blog-nepal-it-student-projects.html" class="featured-card" data-category="education">
+      <div class="featured-visual">
+        <span class="featured-visual-emoji">🚀</span>
+        <div class="featured-badge">⭐ Featured</div>
+      </div>
+      <div class="featured-body">
+        <div class="featured-cat">🎓 IT Education · Nepal</div>
+        <div class="featured-title">Nepal IT Student Project Ideas — Garo dekhi Advanced Samma</div>
+        <div class="featured-desc">BCA, BSc CSIT, BIT students ko lagi complete project roadmap. 12+ ideas, 3 levels, GitHub tips, deploy guide — yo padhe pachi "ke banaun?" bhannai pardaina.</div>
+        <div class="featured-meta">
+          <span class="feat-read">⏱ 8 min read</span>
+          <span class="feat-arrow">→ Read Now</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- CARD GRID -->
+    <div class="cards-grid" id="blogsGrid">
+
+      <a href="blog-bca-vs-bsccsit-nepal.html" class="blog-card-link" data-category="education">
+        <div class="blog-card-thumb purple">🎓</div>
+        <div class="blog-card-body">
+          <div class="blog-card-cat">🇳🇵 Education · Comparison</div>
+          <div class="blog-card-title">BCA vs BSc CSIT Nepal 2025 — Kun Course Linu Ramro?</div>
+          <div class="blog-card-desc">Subjects, fees, scope, salary, abroad options — complete honest comparison Nepal context ma.</div>
+          <div class="blog-card-footer">
+            <span class="blog-card-read">⏱ 10 min</span>
+            <span class="blog-card-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog-aws-jobs-nepal.html" class="blog-card-link" data-category="cloud career">
+        <div class="blog-card-thumb blue">☁️</div>
+        <div class="blog-card-body">
+          <div class="blog-card-cat">☁️ Cloud · AWS · Career</div>
+          <div class="blog-card-title">AWS Cloud Jobs Nepal 2025 — Salary, Skills ra Career Guide</div>
+          <div class="blog-card-desc">Nepal ma AWS ko demand, Rs. 40K–1.8L salary range, certifications roadmap, 6-month action plan.</div>
+          <div class="blog-card-footer">
+            <span class="blog-card-read">⏱ 9 min</span>
+            <span class="blog-card-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog-freelancing-nepal-it.html" class="blog-card-link" data-category="freelancing career">
+        <div class="blog-card-thumb orange">💵</div>
+        <div class="blog-card-body">
+          <div class="blog-card-cat">💼 Freelancing · Nepal</div>
+          <div class="blog-card-title">Nepal Bata IT Freelancing — Dollar Kamaaunu Complete Guide</div>
+          <div class="blog-card-desc">Upwork, Fiverr profile setup, first client paunu, Nepal bata payment receive — sabai step-by-step.</div>
+          <div class="blog-card-footer">
+            <span class="blog-card-read">⏱ 11 min</span>
+            <span class="blog-card-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog-linux-beginners-nepal.html" class="blog-card-link" data-category="linux">
+        <div class="blog-card-thumb green">🐧</div>
+        <div class="blog-card-body">
+          <div class="blog-card-cat">🐧 Linux · Sysadmin</div>
+          <div class="blog-card-title">Linux Suru Garne Complete Guide — Nepal IT Students Ko Lagi</div>
+          <div class="blog-card-desc">Commands, file system, user management, web server setup, certifications — 30-day learning plan sanga.</div>
+          <div class="blog-card-footer">
+            <span class="blog-card-read">⏱ 12 min</span>
+            <span class="blog-card-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /.cards-grid -->
+
+    <!-- COMING SOON -->
+    <div class="coming-soon-section">
+      <div class="coming-title">Coming Soon — Upcoming Blogs</div>
+      <div class="coming-grid">
+        <div class="coming-card">
+          <div class="coming-card-title">🔒 Cybersecurity Nepal 2025</div>
+          <div class="coming-card-badge">Next Up</div>
+        </div>
+        <div class="coming-card">
+          <div class="coming-card-title">🐍 Python Suru Garne Guide</div>
+          <div class="coming-card-badge">Writing</div>
+        </div>
+        <div class="coming-card">
+          <div class="coming-card-title">🐳 Docker Beginners Nepal</div>
+          <div class="coming-card-badge">Planned</div>
+        </div>
+        <div class="coming-card">
+          <div class="coming-card-title">📊 Data Science Career Nepal</div>
+          <div class="coming-card-badge">Planned</div>
+        </div>
+        <div class="coming-card">
+          <div class="coming-card-title">🌐 WordPress Nepal Guide</div>
+          <div class="coming-card-badge">Planned</div>
+        </div>
+        <div class="coming-card">
+          <div class="coming-card-title">🤖 AI Tools Nepal IT Ma</div>
+          <div class="coming-card-badge">Planned</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEWSLETTER / CTA -->
+    <div class="newsletter-block">
+      <h3>📬 New Blog Alert Chahincha?</h3>
+      <p>Naya blog publish hune bittikai notify hunu cha bhane seedha contact garnu — ya portfolio ma listed social media follow garnu.</p>
+      <div class="nl-row">
+        <a href="https://hemrajadhikari.info.np#contact" class="cta-btn primary">Contact Hemraj</a>
+        <a href="https://hemrajadhikari.info.np" class="cta-btn outline">Visit Portfolio →</a>
+      </div>
+    </div>
+
+  </div><!-- /.blog-grid-wrap -->
 
 </div>
+
+<footer class="blog-footer">
+  <p class="blog-footer-text">
+    © 2025 <a href="https://hemrajadhikari.info.np">Hemraj Adhikari</a> · IT Officer & Cloud Specialist · Kathmandu, Nepal 🇳🇵<br>
+    Building Nepal IT Community — One Blog at a Time 🙏
+  </p>
+</footer>
+
+<script>
+function filterPosts(cat, btn) {
+  document.querySelectorAll('.filter-pill').forEach(function(p){ p.classList.remove('active'); });
+  btn.classList.add('active');
+  var cards = document.querySelectorAll('#blogsGrid .blog-card-link');
+  cards.forEach(function(card){
+    var cats = card.getAttribute('data-category') || '';
+    card.style.display = (cat === 'all' || cats.includes(cat)) ? 'block' : 'none';
+  });
+}
+</script>
 
 </body>
 </html>
