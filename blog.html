@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nepal IT Student Projects - LinkedIn Post</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0f;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .card {
+    width: 680px;
+    background: #0f0f1a;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.07);
+    box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+    animation: fadeUp 0.8s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #1a0533 0%, #0d1f4a 50%, #0a2a1a 100%);
+    padding: 44px 44px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(168,85,247,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .flag-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .flag-emoji { font-size: 22px; }
+
+  .tag {
+    background: rgba(168,85,247,0.2);
+    border: 1px solid rgba(168,85,247,0.4);
+    color: #c084fc;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  .header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header h1 span.accent { color: #a855f7; }
+  .header h1 span.green { color: #34d399; }
+
+  .header .subtitle {
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 480px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 24px;
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #a855f7;
+    line-height: 1;
+  }
+
+  .stat-num.green { color: #34d399; }
+  .stat-num.orange { color: #fb923c; }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 3px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(168,85,247,0.3), rgba(52,211,153,0.2), transparent);
+    margin: 0;
+  }
+
+  /* BODY */
+  .body { padding: 32px 44px; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 20px;
+  }
+
+  /* LEVEL CARDS */
+  .levels { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+
+  .level-card {
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    border: 1px solid;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: transform 0.2s ease;
+    animation: slideIn 0.5s ease both;
+  }
+
+  .level-card:hover { transform: translateX(4px); }
+
+  .level-card:nth-child(1) { animation-delay: 0.1s; }
+  .level-card:nth-child(2) { animation-delay: 0.2s; }
+  .level-card:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-16px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .level-card.beginner {
+    background: linear-gradient(135deg, rgba(52,211,153,0.08) 0%, rgba(52,211,153,0.02) 100%);
+    border-color: rgba(52,211,153,0.2);
+  }
+
+  .level-card.intermediate {
+    background: linear-gradient(135deg, rgba(251,146,60,0.08) 0%, rgba(251,146,60,0.02) 100%);
+    border-color: rgba(251,146,60,0.2);
+  }
+
+  .level-card.advanced {
+    background: linear-gradient(135deg, rgba(168,85,247,0.10) 0%, rgba(168,85,247,0.02) 100%);
+    border-color: rgba(168,85,247,0.25);
+  }
+
+  .level-glow {
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .beginner .level-glow { background: radial-gradient(circle, rgba(52,211,153,0.3) 0%, transparent 70%); }
+  .intermediate .level-glow { background: radial-gradient(circle, rgba(251,146,60,0.3) 0%, transparent 70%); }
+  .advanced .level-glow { background: radial-gradient(circle, rgba(168,85,247,0.35) 0%, transparent 70%); }
+
+  .level-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .beginner .level-icon { background: rgba(52,211,153,0.15); }
+  .intermediate .level-icon { background: rgba(251,146,60,0.15); }
+  .advanced .level-icon { background: rgba(168,85,247,0.15); }
+
+  .level-content { flex: 1; }
+
+  .level-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .level-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .level-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .beginner .level-badge { background: rgba(52,211,153,0.15); color: #34d399; }
+  .intermediate .level-badge { background: rgba(251,146,60,0.15); color: #fb923c; }
+  .advanced .level-badge { background: rgba(168,85,247,0.15); color: #c084fc; }
+
+  .level-desc {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .project-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 8px;
+    color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* TIPS SECTION */
+  .tips-section { margin-bottom: 28px; }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .tip-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .tip-item:nth-child(1) { animation-delay: 0.4s; }
+  .tip-item:nth-child(2) { animation-delay: 0.5s; }
+  .tip-item:nth-child(3) { animation-delay: 0.6s; }
+  .tip-item:nth-child(4) { animation-delay: 0.7s; }
+
+  .tip-icon { font-size: 18px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+
+  .tip-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+
+  .tip-text strong {
+    display: block;
+    color: rgba(255,255,255,0.88);
+    font-weight: 600;
+    font-size: 12.5px;
+    margin-bottom: 2px;
+  }
+
+  /* QUOTE */
+  .quote-block {
+    background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(52,211,153,0.05));
+    border-left: 3px solid #a855f7;
+    border-radius: 0 12px 12px 0;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+
+  .quote-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .quote-text span { color: #c084fc; font-style: normal; font-weight: 700; }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 24px 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.01);
+  }
+
+  .author-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a855f7, #34d399);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: #fff;
+  }
+
+  .author-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  .author-role {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 1px;
+  }
+
+  .hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+    max-width: 260px;
+  }
+
+  .hashtag {
+    font-size: 11px;
+    color: #a855f7;
+    opacity: 0.7;
+  }
+
+  .hashtag:hover { opacity: 1; }
+
+  /* ENGAGEMENT BAR */
+  .engagement {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 44px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .engage-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .engage-item:hover { color: rgba(255,255,255,0.7); }
+  .engage-icon { font-size: 15px; }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="flag-line">
+      <span class="flag-emoji">🇳🇵</span>
+      <span class="tag">Nepal IT Students</span>
+    </div>
+    <h1>
+      Project Ideas — <span class="accent">Garo</span> dekhi<br>
+      <span class="green">Ekdam Advanced</span> samma 🚀
+    </h1>
+    <p class="subtitle">
+      Nepal ma IT padhda "kasto project banaun?" bhanera confuse hunu parcha. Yaha cha complete roadmap — sabai level ko lagi!
+    </p>
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-num">12+</span>
+        <span class="stat-label">Project Ideas</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num green">3</span>
+        <span class="stat-label">Levels</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num orange">∞</span>
+        <span class="stat-label">Opportunities</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p class="section-label">🎯 Project Levels — Choose Your Path</p>
+
+    <div class="levels">
+
+      <!-- BEGINNER -->
+      <div class="level-card beginner">
+        <div class="level-glow"></div>
+        <div class="level-icon">🌱</div>
+        <div class="level-content">
+          <div class="level-header">
+            <span class="level-title">Beginner Level</span>
+            <span class="level-badge">Suru Garnu</span>
+          </div>
+          <p class="level-desc">Simple tara impactful — portfolio ma rakhna perfect. Logic clear garna ko lagi best choice.</p>
+          <div class="project-tags">
+            <span class="project-tag">📋 Student Result System</span>
+            <span class="project-tag">🛒 Pasal Management (CRUD)</span>
+            <span class="project-tag">💰 Expense Tracker</span>
+            <span class="project-tag">📚 Library System</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERMEDIATE -->
+      <div class="level-card intermediate">
+        <div class="level-glow"></div>
+        <div class="level-icon">⚡</div>
+        <div class="level-content">
+          <div class="level-header">
+            <span class="level-title">Intermediate Level</span>
+            <span class="level-badge">Confidence Build</span>
+          </div>
+          <p class="level-desc">Real-world problem solve garcha — Nepal ko context ma banayera impact double huncha!</p>
+          <div class="project-tags">
+            <span class="project-tag">🏥 Hospital Appointment App</span>
+            <span class="project-tag">🚌 Bus Ticket Booking</span>
+            <span class="project-tag">🌾 Krishi: Farmer's Marketplace</span>
+            <span class="project-tag">📰 Nepali News Aggregator</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADVANCED -->
+      <div class="level-card advanced">
+        <div class="level-glow"></div>
+        <div class="level-icon">🔥</div>
+        <div class="level-content">
+          <div class="level-header">
+            <span class="level-title">Advanced Level</span>
+            <span class="level-badge">Job Ready 💼</span>
+          </div>
+          <p class="level-desc">AI, ML, Blockchain use garyo bhane recruiters le notice garcha — Nepal + Global market ko lagi!</p>
+          <div class="project-tags">
+            <span class="project-tag">🤖 AI Chatbot (Nepali NLP)</span>
+            <span class="project-tag">🩺 Disease Prediction ML</span>
+            <span class="project-tag">🏔️ Tourism AR Guide</span>
+            <span class="project-tag">🔗 Land Registry Blockchain</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TIPS -->
+    <p class="section-label">💡 Pro Tips — Nepal IT Students Ko Lagi</p>
+    <div class="tips-section">
+      <div class="tips-grid">
+        <div class="tip-item">
+          <span class="tip-icon">🇳🇵</span>
+          <div class="tip-text">
+            <strong>Nepal-Specific Problem Solve Gara</strong>
+            Load shedding tracker, trekking app, remittance tool — local problems = unique projects!
+          </div>
+        </div>
+        <div class="tip-item">
+          <span class="tip-icon">📂</span>
+          <div class="tip-text">
+            <strong>GitHub ma Rakh Sabai Kaam</strong>
+            Code rakhe pug-daina — README, demo video, ra documentation pani add gara.
+          </div>
+        </div>
+        <div class="tip-item">
+          <span class="tip-icon">🤝</span>
+          <div class="tip-text">
+            <strong>Team Ma Bana — Solo Nabhaye</strong>
+            2-3 jana milera banauna khoji. Team collaboration = industry-ready skill!
+          </div>
+        </div>
+        <div class="tip-item">
+          <span class="tip-icon">🌐</span>
+          <div class="tip-text">
+            <strong>Deploy Gara — Localhost Ma Nachhod</strong>
+            Vercel, Netlify, Render — free ma live project deploy gara. Recruiter lai link deu!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUOTE -->
+    <div class="quote-block">
+      <p class="quote-text">
+        "Project ko size matter gardaina — <span>impact</span> matter garcha. Nepal ko ek gaun ko problem solve garne app le Silicon Valley ko generic todo app bhanda धेरै value rakhcha।"
+      </p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="author-info">
+      <div class="avatar">IT</div>
+      <div>
+        <div class="author-name">Nepal IT Community 🇳🇵</div>
+        <div class="author-role">Building the Future from the Himalayas</div>
+      </div>
+    </div>
+    <div class="hashtags">
+      <span class="hashtag">#NepalIT</span>
+      <span class="hashtag">#ITStudent</span>
+      <span class="hashtag">#NepaliDev</span>
+      <span class="hashtag">#TechNepal</span>
+      <span class="hashtag">#ProjectIdeas</span>
+      <span class="hashtag">#CodeNepal</span>
+    </div>
+  </div>
+
+  <!-- ENGAGEMENT -->
+  <div class="engagement">
+    <div class="engage-item">
+      <span class="engage-icon">👍</span>
+      <span>Like</span>
+    </div>
+    <div class="engage-item">
+      <span class="engage-icon">💬</span>
+      <span>Comment</span>
+    </div>
+    <div class="engage-item">
+      <span class="engage-icon">🔁</span>
+      <span>Repost</span>
+    </div>
+    <div class="engage-item">
+      <span class="engage-icon">📤</span>
+      <span>Share</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
