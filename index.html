@@ -56,6 +56,90 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap">
 <link rel="stylesheet" href="style.css">
+<style>
+/* About section photo column */
+.about-photo-col {
+  position: relative;
+}
+.about-photo-col .deco-ring {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 72px;
+  height: 72px;
+  border: 1.5px dashed rgba(167,139,250,0.22);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.about-photo-frame {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+  aspect-ratio: 3/4;
+  background: rgba(255,255,255,0.03);
+  position: relative;
+}
+.about-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.about-photo-badge {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  background: rgba(0,0,0,0.76);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 10px 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.about-photo-badge .badge-dot-green {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px #4ade80;
+  animation: pulse 2.5s infinite;
+}
+.about-photo-badge strong {
+  color: #fff;
+  font-size: 13px;
+  display: block;
+  font-weight: 500;
+}
+.about-photo-badge span {
+  font-size: 11px;
+  color: #d1d5db;
+}
+
+/* Override about-grid for 3-column: text | (empty) | photo
+   We use 2-col: text takes most space, photo is fixed width */
+@media (min-width: 1025px) {
+  .about-grid {
+    grid-template-columns: 1fr 300px !important;
+    gap: 48px !important;
+  }
+}
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .about-photo-col {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+</style>
 </head>
 <body>
 <div class="grid-bg" aria-hidden="true"></div>
@@ -64,7 +148,7 @@
 <div class="orb orb3" aria-hidden="true"></div>
 <div id="progress" role="progressbar" aria-label="Page scroll progress"></div>
 
-<!-- NAV — all links updated to separate pages -->
+<!-- NAV -->
 <nav aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="logo"><em>hemraj</em>.adhikari</a>
@@ -210,6 +294,8 @@
   <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">About Me</span></div>
   <h2 class="sec-title reveal">Nepal IT Expert &amp; <mark>Student Mentor</mark></h2>
   <div class="about-grid">
+
+    <!-- LEFT: Text content -->
     <div class="about-text reveal">
       <p>I am <strong>Hemraj Adhikari</strong>, an <strong>IT Officer and Cloud Infrastructure Specialist</strong> from <strong>Kathmandu, Nepal</strong>. Currently serving at <strong>Route 2 Uni International Group</strong>, I have built expertise across cloud platforms, SaaS administration, system administration, networking, and cybersecurity over more than three years of professional work.</p>
       <p>I hold a <strong>Bachelor of Information Technology (BIT)</strong> from JMC College under Bagmati Pradesh University (expected June 2026), backed by certifications in <strong>Linux Administration</strong>, <strong>Google Workspace</strong>, and <strong>Microsoft 365</strong>, with AWS Cloud Practitioner in progress.</p>
@@ -229,27 +315,27 @@
         <a href="about.html" class="btn-outline">Full About →</a>
       </div>
     </div>
-    <div class="cards-col reveal">
-      <div class="info-panel">
-        <h3>Career Timeline</h3>
-        <div class="timeline">
-          <div class="tl-item"><div class="tl-dot"></div><div><span class="tl-year">May 2026–Present</span><span class="tl-title">IT Officer — Route 2 Uni International Group</span><span class="tl-sub">CRM Admin · SaaS · Reporting Dashboards · L1/L2 Support</span></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div><span class="tl-year">Aug 2024–May 2026</span><span class="tl-title">IT Officer — Citizen Infotech</span><span class="tl-sub">CRM Administration · Data Governance · Automation</span></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div><span class="tl-year">Feb 2022–Jul 2024</span><span class="tl-title">IT Support Specialist — Percoid IT Solution</span><span class="tl-sub">L1/L2 Helpdesk · Windows Server · Active Directory · M365</span></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div><span class="tl-year">Jan 2021–Present</span><span class="tl-title">Web & Hosting Specialist — Freelance</span><span class="tl-sub">50+ Websites · AWS EC2 · DNS · SSL/TLS · WordPress Security</span></div></div>
+
+    <!-- RIGHT: Photo -->
+    <div class="about-photo-col reveal">
+      <div class="deco-ring"></div>
+      <div class="about-photo-frame">
+        <img
+          src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/hemraj.png"
+          alt="Hemraj Adhikari — IT Officer and Cloud Specialist from Kathmandu Nepal"
+          loading="lazy"
+          onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='<span style=\'font-size:72px\'>👨‍💻</span>'"
+        >
+        <div class="about-photo-badge">
+          <div class="badge-dot-green"></div>
+          <div>
+            <strong>Hemraj Adhikari</strong>
+            <span>IT Officer · Kathmandu, Nepal</span>
+          </div>
         </div>
       </div>
-      <div class="info-panel">
-        <h3>Certifications & Education</h3>
-        <ul class="cert-list">
-          <li class="cert-item"><span class="cert-ico">🏆</span><div><strong>AWS Cloud Practitioner</strong><span>Amazon Web Services — In Progress (2025)</span></div></li>
-          <li class="cert-item"><span class="cert-ico">✅</span><div><strong>Linux Administration Fundamentals</strong><span>Completed</span></div></li>
-          <li class="cert-item"><span class="cert-ico">✅</span><div><strong>Google Workspace Administrator</strong><span>Hands-On Proficiency</span></div></li>
-          <li class="cert-item"><span class="cert-ico">✅</span><div><strong>Microsoft 365 Administration</strong><span>Hands-On Proficiency</span></div></li>
-          <li class="cert-item"><span class="cert-ico">🎓</span><div><strong>BIT — Bagmati Pradesh University</strong><span>JMC College · 2023–Expected Jun 2026</span></div></li>
-        </ul>
-      </div>
     </div>
+
   </div>
 </section>
 
