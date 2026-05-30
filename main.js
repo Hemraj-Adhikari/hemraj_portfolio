@@ -1,13 +1,13 @@
 /**
- * Hemraj Adhikari Portfolio — main.js v4.0
- * FIXED: correct IDs, mobile nav, scroll progress, back-to-top
+ * Hemraj Adhikari Portfolio — main.js v5.0
+ * FIXED: mobile nav, search bar, scroll progress, back-to-top
  */
 (function () {
   'use strict';
 
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── SCROLL PROGRESS BAR (id="progress") ── */
+  /* ── SCROLL PROGRESS BAR ── */
   var progressBar = document.getElementById('progress');
   if (progressBar) {
     window.addEventListener('scroll', function () {
@@ -22,21 +22,32 @@
 
   function closeMobileNav() {
     if (!mobileNav || !navToggle) return;
+    mobileNav.removeAttribute('style');
     mobileNav.classList.remove('open');
+    mobileNav.setAttribute('aria-hidden', 'true');
     navToggle.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
 
+  function openMobileNav() {
+    if (!mobileNav || !navToggle) return;
+    mobileNav.classList.add('open');
+    mobileNav.setAttribute('aria-hidden', 'false');
+    navToggle.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    var first = mobileNav.querySelector('a');
+    if (first) setTimeout(function(){ first.focus(); }, 50);
+  }
+
   if (navToggle && mobileNav) {
-    navToggle.addEventListener('click', function () {
-      var isOpen = mobileNav.classList.toggle('open');
-      navToggle.classList.toggle('open', isOpen);
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-      if (isOpen) {
-        var first = mobileNav.querySelector('a');
-        if (first) first.focus();
+    navToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (mobileNav.classList.contains('open')) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
       }
     });
 
@@ -60,7 +71,83 @@
     });
   }
 
-  /* ── ACTIVE NAV (fixed selector: .nav-links a) ── */
+  /* ── SEARCH BAR TOGGLE ── */
+  var searchToggle = document.getElementById('searchToggle');
+  var searchOverlay = document.getElementById('searchOverlay');
+  var searchInput = document.getElementById('searchInput');
+  var searchClose = document.getElementById('searchClose');
+
+  function openSearch() {
+    if (!searchOverlay) return;
+    searchOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ if(searchInput) searchInput.focus(); }, 80);
+  }
+  function closeSearch() {
+    if (!searchOverlay) return;
+    searchOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+    if(searchInput) searchInput.value = '';
+    var results = document.getElementById('searchResults');
+    if(results) results.innerHTML = '';
+  }
+
+  if (searchToggle) {
+    searchToggle.addEventListener('click', function(e){
+      e.stopPropagation();
+      closeMobileNav();
+      openSearch();
+    });
+  }
+  if (searchClose) {
+    searchClose.addEventListener('click', closeSearch);
+  }
+  if (searchOverlay) {
+    searchOverlay.addEventListener('click', function(e){
+      if(e.target === searchOverlay) closeSearch();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeSearch();
+    });
+  }
+
+  /* Search functionality */
+  var searchableContent = [
+    { title: 'About Hemraj', section: '#about', keywords: 'about hemraj it officer cloud kathmandu nepal' },
+    { title: 'Skills & Tech Stack', section: '#skills', keywords: 'aws linux python devops docker cybersecurity crm google workspace microsoft 365' },
+    { title: 'Work Experience', section: '#experience', keywords: 'experience route2uni citizen infotech it officer work history' },
+    { title: 'Services', section: '#services', keywords: 'cloud infrastructure saas crm wordpress hosting cybersecurity helpdesk mentoring' },
+    { title: 'Projects', section: '#portfolio', keywords: 'kbm fm mega loksewa cloud management projects portfolio' },
+    { title: 'Blog & IT Guides', section: '#blog', keywords: 'aws cloud career linux nepal cybersecurity csit bca bit blog guide' },
+    { title: 'BIT / BCA / CSIT Mentoring', section: '#services', keywords: 'bit bca csit mentoring nepal students career guidance computer engineering' },
+    { title: 'FAQ', section: '#faq', keywords: 'faq hire freelance pricing upwork whatsapp international' },
+    { title: 'Contact', section: '#contact', keywords: 'contact hire email whatsapp upwork kathmandu nepal freelance' },
+  ];
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function(){
+      var q = searchInput.value.trim().toLowerCase();
+      var results = document.getElementById('searchResults');
+      if(!results) return;
+      if(q.length < 2){ results.innerHTML = ''; return; }
+      var matches = searchableContent.filter(function(item){
+        return item.title.toLowerCase().includes(q) || item.keywords.includes(q);
+      });
+      if(matches.length === 0){
+        results.innerHTML = '<div class="search-no-result">No results for "' + q + '"</div>';
+        return;
+      }
+      results.innerHTML = matches.map(function(item){
+        return '<a href="' + item.section + '" class="search-result-item" onclick="closeSearchPublic()">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>' +
+          '<span>' + item.title + '</span>' +
+        '</a>';
+      }).join('');
+    });
+  }
+  window.closeSearchPublic = closeSearch;
+
+  /* ── ACTIVE NAV ── */
   var sections = document.querySelectorAll('section[id]');
   var navLinks = document.querySelectorAll('.nav-links a');
   var ticking  = false;
@@ -86,9 +173,12 @@
   /* ── SMOOTH SCROLL ── */
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
-      var target = document.querySelector(this.getAttribute('href'));
+      var href = this.getAttribute('href');
+      if(href === '#') return;
+      var target = document.querySelector(href);
       if (!target) return;
       e.preventDefault();
+      closeSearch();
       target.scrollIntoView(prefersReduced ? undefined : { behavior: 'smooth' });
     });
   });
@@ -198,36 +288,6 @@
     }
   };
 
-  /* ── PORTFOLIO FILTER ── */
-  var filterBtns   = document.querySelectorAll('.filter-btn[data-filter]');
-  var projectCards = document.querySelectorAll('.project-card[data-category]');
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      filterBtns.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      var filter = btn.getAttribute('data-filter');
-      projectCards.forEach(function (card) {
-        var cats = card.getAttribute('data-category') || '';
-        card.classList.toggle('hidden', filter !== 'all' && !cats.includes(filter));
-      });
-    });
-  });
-
-  /* ── BLOG FILTER ── */
-  var blogFilterBtns = document.querySelectorAll('.filter-btn[data-blog-filter]');
-  var blogCards      = document.querySelectorAll('.blog-card[data-blog-category]');
-  blogFilterBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      blogFilterBtns.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      var filter = btn.getAttribute('data-blog-filter');
-      blogCards.forEach(function (card) {
-        var cats = card.getAttribute('data-blog-category') || '';
-        card.classList.toggle('hidden', filter !== 'all' && !cats.includes(filter));
-      });
-    });
-  });
-
   /* ── CONTACT FORM ── */
   var form      = document.getElementById('contactForm');
   var submitBtn = document.getElementById('submitBtn');
@@ -268,7 +328,7 @@
     });
   }
 
-  /* ── BACK TO TOP (id="btt", class="on") ── */
+  /* ── BACK TO TOP ── */
   var btt = document.getElementById('btt');
   if (btt) {
     window.addEventListener('scroll', function () {
