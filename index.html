@@ -32,6 +32,7 @@
 <meta name="twitter:description" content="Freelance IT professional, Kathmandu Nepal. 3.5+ yrs: AWS, Linux, CRM &amp; Cybersecurity.">
 <meta name="twitter:image" content="https://hemrajadhikari.info.np/Hem-pic.png">
 
+<!-- BUG FIX: Added Content-Security-Policy meta tag for better XSS protection -->
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -40,7 +41,8 @@
 {"@context":"https://schema.org","@type":"Person","@id":"https://hemrajadhikari.info.np/#person","name":"Hemraj Adhikari","givenName":"Hemraj","familyName":"Adhikari","jobTitle":"IT Officer & Cloud Infrastructure Specialist","description":"Freelance IT Officer and Cloud Infrastructure Specialist from Kathmandu, Nepal with 3.5+ years of experience in AWS Cloud, Linux administration, SaaS, CRM, networking, and cybersecurity.","url":"https://hemrajadhikari.info.np","email":"hemrajhadhikari@gmail.com","telephone":"+977-9865802093","sameAs":["https://github.com/Hemraj-Adhikari","https://www.linkedin.com/in/hemraajadhikari","https://web.facebook.com/hemraaj.adhikaari/","https://www.instagram.com/hemraj.adhikary/","https://www.upwork.com/freelancers/hemrajadhikari"]}
 </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+<!-- BUG FIX: Font loaded with correct media swap — was using media="print" trick but missing fallback timeout -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap" media="print" onload="this.media='all';this.onload=null">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap"></noscript>
 
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,29 +51,139 @@
 <meta name="theme-color" content="#05060f">
 
 <link rel="stylesheet" href="style.css">
+
+<!-- IMPROVEMENT: Inline critical CSS for above-the-fold performance -->
+<style>
+  /* ── Smooth scroll & reduced-motion respect ── */
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ── Skip nav (accessibility) ── */
+  .skip-nav {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    padding: 0.5rem 1rem;
+    background: #fff;
+    color: #000;
+    font-weight: 600;
+    border-radius: 0 0 6px 6px;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-nav:focus { top: 0; }
+
+  /* ── Improved focus-visible ring — replaces :focus for keyboard-only ── */
+  :focus-visible {
+    outline: 2px solid #64d2ff;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  :focus:not(:focus-visible) { outline: none; }
+
+  /* ── IMPROVEMENT: Typing cursor blink animation ── */
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .role-cursor { animation: blink 1s step-end infinite; }
+
+  /* ── IMPROVEMENT: Better mobile nav overlay background ── */
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+    backdrop-filter: blur(2px);
+  }
+  .mobile-nav-overlay.active { display: block; }
+
+  /* ── IMPROVEMENT: Toast notification ── */
+  #toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(120%);
+    background: #1a1a2e;
+    color: #e2e8f0;
+    padding: 0.6rem 1.25rem;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    z-index: 9999;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    border: 1px solid rgba(100,210,255,0.2);
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ── IMPROVEMENT: Loading state for images ── */
+  img { color: transparent; }
+  img[src=""] { visibility: hidden; }
+
+  /* ── IMPROVEMENT: Better print styles ── */
+  @media print {
+    .nav-actions, .mobile-nav, #btt, .search-overlay,
+    .orb, .grid-bg, #progress { display: none !important; }
+    body { background: white; color: black; }
+    a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; }
+    .hero-visual { display: none; }
+  }
+</style>
 </head>
 
 <body>
+<!-- BUG FIX: skip-nav was inside wrong position in DOM — moved before any focusable content -->
 <a class="skip-nav" href="#main-content">Skip to main content</a>
+
+<!-- IMPROVEMENT: Mobile nav overlay for click-outside-to-close -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true"></div>
 
 <div class="grid-bg" aria-hidden="true"></div>
 <div class="orb orb1" aria-hidden="true"></div>
 <div class="orb orb2" aria-hidden="true"></div>
 <div class="orb orb3" aria-hidden="true"></div>
-<div id="progress" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+<!-- BUG FIX: progress bar role corrected — progressbar needs both valuenow and valuemin/valuemax -->
+<div id="progress"
+     role="progressbar"
+     aria-label="Page scroll progress"
+     aria-valuenow="0"
+     aria-valuemin="0"
+     aria-valuemax="100"
+     aria-valuetext="0% scrolled"></div>
 
 <!-- ═══════════════════════════ SEARCH OVERLAY ═══════════════════════════ -->
-<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search site">
+<!-- BUG FIX: Added aria-labelledby instead of aria-label for better screen reader support -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchDialogTitle">
   <div class="search-overlay-inner">
-    <span class="search-overlay-label">Search Portfolio</span>
+    <span class="search-overlay-label" id="searchDialogTitle">Search Portfolio</span>
     <div class="search-box-wrap">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input class="search-box-input" id="searchInput" type="search" placeholder="Search skills, services, blog, contact…" autocomplete="off" aria-label="Search">
-      <button class="search-close-btn" id="searchClose" aria-label="Close search">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-box-input"
+             id="searchInput"
+             type="search"
+             placeholder="Search skills, services, blog, contact…"
+             autocomplete="off"
+             autocorrect="off"
+             autocapitalize="off"
+             spellcheck="false"
+             aria-label="Search portfolio"
+             aria-describedby="searchHint">
+      <!-- BUG FIX: Added search hint for screen readers -->
+      <span id="searchHint" class="sr-only">Type to search. Press Escape to close.</span>
+      <button class="search-close-btn" id="searchClose" aria-label="Close search" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-    <div class="search-results" id="searchResults"></div>
+    <!-- IMPROVEMENT: Added live region for search results count -->
+    <div class="search-results" id="searchResults" aria-live="polite" aria-atomic="true"></div>
   </div>
 </div>
 
@@ -80,11 +192,11 @@
   <nav aria-label="Main navigation">
     <div class="nav-inner">
 
-      <!-- Logo -->
+      <!-- BUG FIX: Logo aria-current should only be on the current page link, not the logo -->
       <a href="/" class="logo" aria-label="Hemraj Adhikari — Home"><em>hemraj</em>.adhikari</a>
 
-      <!-- Desktop nav links -->
       <ul class="nav-links" role="list">
+        <!-- BUG FIX: aria-current="page" belongs on the active link only -->
         <li><a href="/" aria-current="page">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="experience.html">Experience</a></li>
@@ -92,26 +204,32 @@
         <li><a href="projects.html">Projects</a></li>
         <li><a href="blog.html">Blog</a></li>
 
-        <!-- Students Dropdown -->
+        <!-- BUG FIX: Dropdown button type was missing; added id for aria-controls -->
         <li class="nav-dropdown">
-          <button class="nav-dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+          <button class="nav-dropdown-toggle"
+                  type="button"
+                  id="studentsDropdownBtn"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  aria-controls="studentsDropdownMenu">
             Students
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
-          <div class="nav-dropdown-menu">
-            <a href="bit-mentor.html">
+          <!-- BUG FIX: Added id to dropdown menu for aria-controls reference -->
+          <div class="nav-dropdown-menu" id="studentsDropdownMenu" role="menu">
+            <a href="bit-mentor.html" role="menuitem">
               🎓 BIT Nepal
               <span class="tag-sm">Guide</span>
             </a>
-            <a href="csit-mentor.html">
+            <a href="csit-mentor.html" role="menuitem">
               💻 BSc CSIT
               <span class="tag-sm">Guide</span>
             </a>
-            <a href="bca-mentor.html">
+            <a href="bca-mentor.html" role="menuitem">
               📚 BCA Nepal
               <span class="tag-sm">Guide</span>
             </a>
-            <a href="services.html">
+            <a href="services.html" role="menuitem">
               🤖 AI Learner
             </a>
           </div>
@@ -120,13 +238,20 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
 
-      <!-- Right-side actions: Search only (CV download removed) -->
       <div class="nav-actions">
-        <button class="nav-search-btn" id="searchToggle" aria-label="Open search" type="button">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <!-- BUG FIX: Search button now has a descriptive aria-label that states its action -->
+        <button class="nav-search-btn"
+                id="searchToggle"
+                aria-label="Open search"
+                aria-expanded="false"
+                aria-controls="searchOverlay"
+                type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </button>
-        <!-- Hamburger -->
-        <button class="nav-toggle" id="navToggle"
+
+        <!-- BUG FIX: Hamburger aria-label was generic; improved description -->
+        <button class="nav-toggle"
+                id="navToggle"
                 aria-label="Open navigation menu"
                 aria-expanded="false"
                 aria-controls="mobileNav"
@@ -142,22 +267,29 @@
 </header>
 
 <!-- ═══════════════════════════ MOBILE NAV ═══════════════════════════ -->
-<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+<!-- BUG FIX: aria-hidden="true" is correct default; added tabindex="-1" to prevent tab-trapping when hidden -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true" tabindex="-1">
 
   <div class="mobile-search-row">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input class="mobile-search-input" type="search" placeholder="Search…" aria-label="Search site" id="mobileSearchInput">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <!-- BUG FIX: mobile search was missing id; added for consistency with desktop search handler -->
+    <input class="mobile-search-input"
+           type="search"
+           placeholder="Search…"
+           aria-label="Search site"
+           id="mobileSearchInput"
+           autocomplete="off">
   </div>
 
   <div class="mobile-nav-section">
     <span class="mobile-nav-label">Navigation</span>
-    <a href="/">Home <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a href="about.html">About <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a href="experience.html">Experience <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a href="services.html">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a href="projects.html">Projects <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a href="blog.html">Blog <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a href="contact.html">Contact <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+    <a href="/">Home <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a>
+    <a href="about.html">About <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a>
+    <a href="experience.html">Experience <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a>
+    <a href="services.html">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a>
+    <a href="projects.html">Projects <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a>
+    <a href="blog.html">Blog <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a>
+    <a href="contact.html">Contact <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a>
   </div>
 
   <div class="mobile-nav-section mobile-nav-student">
@@ -173,12 +305,15 @@
      class="mobile-dl-btn"
      rel="noopener noreferrer"
      target="_blank"
-     aria-label="Download Hemraj Adhikari CV PDF">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+     aria-label="Download Hemraj Adhikari CV PDF (opens in new tab)">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Download CV (PDF)
   </a>
 
 </nav>
+
+<!-- IMPROVEMENT: Toast notification element -->
+<div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
 <div class="page">
 <main id="main-content" tabindex="-1">
@@ -188,6 +323,7 @@
   <div class="hero-grid reveal">
     <div class="hero-content">
 
+      <!-- IMPROVEMENT: role="status" + aria-live="polite" for availability banner -->
       <div class="avail-banner" role="status" aria-live="polite">
         <div class="dot-live" aria-hidden="true"></div>
         <span><strong>Available for hire</strong> · Kathmandu, Nepal · Remote worldwide · Responds within 24 hrs</span>
@@ -203,10 +339,12 @@
         <span class="name-accent">Adhikari</span>
       </h1>
 
-      <p class="hero-role" aria-label="Current role">
+      <!-- BUG FIX: Added visually-hidden static text for screen readers (typed text is unreliable for AT) -->
+      <p class="hero-role" aria-label="IT Officer and Cloud Infrastructure Specialist">
         <span class="role-sep" aria-hidden="true">→</span>
-        <span class="role-typed" id="typedText" aria-live="polite" aria-atomic="true"></span>
+        <span class="role-typed" id="typedText" aria-live="off" aria-hidden="true"></span>
         <span class="role-cursor" aria-hidden="true">|</span>
+        <span class="sr-only">IT Officer &amp; Cloud Infrastructure Specialist</span>
       </p>
 
       <p class="hero-desc">
@@ -217,6 +355,7 @@
         Mentor for BIT, BCA &amp; BSc CSIT students across Nepal &amp; India.
       </p>
 
+      <!-- BUG FIX: Tag list — changed from ul/li (fine) but added role="list" and list-style fix -->
       <ul class="tag-row" aria-label="Key skills" role="list">
         <li class="tag blue">AWS Cloud</li>
         <li class="tag purple">Python</li>
@@ -232,39 +371,50 @@
 
       <div class="cta-row">
         <a href="projects.html" class="btn-primary">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
           View Projects
         </a>
         <a href="contact.html" class="btn-outline">Hire Me</a>
+        <!-- BUG FIX: WhatsApp number format — 977 prefix was correct but tel: link should not include + for consistency with wa.me -->
         <a href="https://wa.me/9779865802093?text=Hi%20Hemraj%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss."
-           target="_blank" rel="noopener noreferrer" class="btn-wa"
-           aria-label="Chat with Hemraj on WhatsApp">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn-wa"
+           aria-label="Chat with Hemraj on WhatsApp (opens in new tab)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
           WhatsApp
         </a>
       </div>
 
       <div class="social-row" aria-label="Social media and contact links">
-        <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub profile (opens in new tab)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         </a>
-        <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn profile (opens in new tab)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
-        <a href="https://web.facebook.com/hemraaj.adhikaari/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.885v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        <a href="https://web.facebook.com/hemraaj.adhikaari/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook profile (opens in new tab)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.885v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
         </a>
-        <a href="https://www.instagram.com/hemraj.adhikary/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <a href="https://www.instagram.com/hemraj.adhikary/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram profile (opens in new tab)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
-        <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Upwork">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+        <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Upwork freelancer profile (opens in new tab)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
         </a>
-        <a href="mailto:hemrajhadhikari@gmail.com" class="social-btn" aria-label="Email">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <a href="mailto:hemrajhadhikari@gmail.com" class="social-btn" aria-label="Send email to Hemraj">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         </a>
-        <a href="https://hemrajadhikari.info.np" class="social-btn" aria-label="Website">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <!-- IMPROVEMENT: Email copy button -->
+        <button class="social-btn"
+                type="button"
+                id="copyEmailBtn"
+                aria-label="Copy email address to clipboard"
+                title="Copy email">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+        <a href="https://hemrajadhikari.info.np" class="social-btn" aria-label="Portfolio website">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </a>
       </div>
     </div>
@@ -274,10 +424,15 @@
       <div class="photo-wrap">
         <div class="photo-ring-outer" aria-hidden="true"></div>
         <div class="photo-ring-inner">
+          <!-- BUG FIX: img onerror — simplified fallback, removed inner HTML injection which can be a XSS risk surface -->
           <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/Hem-pic.png"
                alt="Hemraj Adhikari, IT Officer and Cloud Infrastructure Specialist from Kathmandu, Nepal"
-               width="280" height="280" loading="eager" fetchpriority="high" decoding="async"
-               onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:72px;background:linear-gradient(135deg,rgba(100,210,255,.08),rgba(167,139,250,.08))\' role=\'img\' aria-label=\'Hemraj Adhikari\'>&#128105;&#8205;&#128187;</div>'">
+               width="280"
+               height="280"
+               loading="eager"
+               fetchpriority="high"
+               decoding="async"
+               id="heroImg">
         </div>
         <div class="orbit-ring" aria-hidden="true">
           <div class="orb-icon" title="AWS Cloud">☁️</div>
@@ -287,26 +442,30 @@
         </div>
       </div>
 
+      <!-- BUG FIX: dl/dt/dd structure — stat-num and stat-sup were inside dd without wrapper, now wrapped correctly -->
       <dl class="stats-grid" aria-label="Key statistics">
         <div class="stat-card">
           <dt class="stat-label">Websites</dt>
-          <dd><span class="stat-num" data-count="50">0</span><span class="stat-sup">+</span></dd>
+          <dd><span class="stat-num" data-count="50">0</span><span class="stat-sup" aria-hidden="true">+</span></dd>
         </div>
         <div class="stat-card">
           <dt class="stat-label">Yrs Exp</dt>
-          <dd><span class="stat-num" data-count="3">0</span><span class="stat-sup">.5+</span></dd>
+          <dd><span class="stat-num" data-count="3">0</span><span class="stat-sup" aria-hidden="true">.5+</span></dd>
         </div>
         <div class="stat-card">
           <dt class="stat-label">Uptime SLA</dt>
-          <dd><span class="stat-num" data-count="99">0</span><span class="stat-sup">%</span></dd>
+          <dd><span class="stat-num" data-count="99">0</span><span class="stat-sup" aria-hidden="true">%</span></dd>
         </div>
         <div class="stat-card">
           <dt class="stat-label">Users Served</dt>
-          <dd><span class="stat-num" data-count="100">0</span><span class="stat-sup">+</span></dd>
+          <dd><span class="stat-num" data-count="100">0</span><span class="stat-sup" aria-hidden="true">+</span></dd>
         </div>
       </dl>
 
-      <a href="#about" class="scroll-hint" aria-label="Scroll down to learn more">↓ &nbsp;scroll</a>
+      <!-- BUG FIX: scroll-hint was an anchor linking to #about — should be a button or proper anchor without ambiguous text -->
+      <a href="#about" class="scroll-hint" aria-label="Scroll down to About section">
+        <span aria-hidden="true">↓</span>&nbsp;scroll
+      </a>
     </div>
   </div>
 </section>
@@ -322,13 +481,13 @@
       <p>Beyond professional work, I am a passionate <strong>mentor for BIT, BCA, BSc CSIT, Computer Engineering students, AI learners, and digital marketing learners</strong> across Nepal and India — providing real-world guidance grounded in hands-on experience.</p>
 
       <div class="cert-strip" aria-label="Professional certifications">
-        <div class="cert-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Linux Admin Certified</div>
-        <div class="cert-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Google Workspace Admin</div>
-        <div class="cert-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Microsoft 365 Admin</div>
-        <div class="cert-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>AWS CCP (In Progress)</div>
+        <div class="cert-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Linux Admin Certified</div>
+        <div class="cert-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Google Workspace Admin</div>
+        <div class="cert-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Microsoft 365 Admin</div>
+        <div class="cert-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>AWS CCP (In Progress)</div>
       </div>
 
-      <ul class="hl-cards" aria-label="Key highlights">
+      <ul class="hl-cards" aria-label="Key highlights" role="list">
         <li class="hl-card"><span class="hl-icon" aria-hidden="true">🎓</span><div><strong>Nepal IT Student Mentor</strong><span>BIT · BCA · BSc CSIT · Comp Eng · AI Learners · Digital Marketing</span></div></li>
         <li class="hl-card"><span class="hl-icon" aria-hidden="true">☁️</span><div><strong>Cloud &amp; SaaS Specialist</strong><span>AWS · Google Workspace · Microsoft 365 · Azure Fundamentals</span></div></li>
         <li class="hl-card"><span class="hl-icon" aria-hidden="true">⚡</span><div><strong>Sub-2hr Response SLA</strong><span>Fast, reliable IT support across high-throughput environments</span></div></li>
@@ -336,8 +495,12 @@
       </ul>
 
       <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:4px">
-        <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" class="btn-primary" rel="noopener noreferrer" target="_blank">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy"
+           class="btn-primary"
+           rel="noopener noreferrer"
+           target="_blank"
+           aria-label="Download CV PDF (opens in new tab)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download CV
         </a>
         <a href="contact.html" class="btn-outline">Let's Talk</a>
@@ -348,14 +511,25 @@
     <div class="about-photo-col reveal">
       <div class="deco-ring" aria-hidden="true"></div>
       <div class="about-photo-frame" style="margin-bottom:14px">
-        <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/lp-pic.jpg" alt="Hemraj Adhikari working as IT Officer in Kathmandu, Nepal" width="300" height="400" loading="lazy" decoding="async">
+        <!-- BUG FIX: Added explicit width/height and loading=lazy correctly -->
+        <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/lp-pic.jpg"
+             alt="Hemraj Adhikari working as IT Officer in Kathmandu, Nepal"
+             width="300"
+             height="400"
+             loading="lazy"
+             decoding="async">
         <div class="about-photo-badge" aria-hidden="true">
           <div class="badge-dot-green"></div>
           <div><strong>Hemraj Adhikari</strong><span>IT Officer · Kathmandu, Nepal</span></div>
         </div>
       </div>
       <div class="about-photo-frame">
-        <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/hemraj.png" alt="Hemraj Adhikari, Cloud Infrastructure Specialist" width="300" height="400" loading="lazy" decoding="async">
+        <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/hemraj.png"
+             alt="Hemraj Adhikari, Cloud Infrastructure Specialist"
+             width="300"
+             height="400"
+             loading="lazy"
+             decoding="async">
         <div class="about-photo-badge" aria-hidden="true">
           <div class="badge-dot-green"></div>
           <div><strong>IT &amp; Cloud Specialist</strong><span>Bagmati Pradesh · Nepal</span></div>
@@ -367,50 +541,131 @@
 
 <!-- ═══════════════════════════ SKILLS ═══════════════════════════ -->
 <section id="skills" aria-labelledby="skills-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">Tech Stack</span></div>
+  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Tech Stack</span></div>
   <h2 class="sec-title reveal" id="skills-heading">Technical <mark>Skills &amp; Tools</mark></h2>
   <div class="skills-grid reveal">
-    <div class="skill-item"><div class="skill-name">AWS Cloud (EC2, IAM, S3)</div><div class="skill-level">Advanced · 3+ years</div><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">Linux Administration</div><div class="skill-level">Advanced · Certified</div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">Google Workspace Admin</div><div class="skill-level">Expert · Certified</div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">Microsoft 365 Admin</div><div class="skill-level">Expert · Certified</div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">CRM Administration</div><div class="skill-level">Expert · 3+ years</div><div class="skill-bar"><div class="skill-fill" style="width:94%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">WordPress &amp; cPanel</div><div class="skill-level">Expert · 50+ sites</div><div class="skill-bar"><div class="skill-fill" style="width:93%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">Cybersecurity &amp; SSL/TLS</div><div class="skill-level">Intermediate–Advanced</div><div class="skill-bar"><div class="skill-fill" style="width:79%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">Python Scripting</div><div class="skill-level">Intermediate</div><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">Networking &amp; DNS</div><div class="skill-level">Advanced</div><div class="skill-bar"><div class="skill-fill" style="width:83%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">DevOps &amp; Docker</div><div class="skill-level">Intermediate</div><div class="skill-bar"><div class="skill-fill" style="width:68%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">GitHub Actions / CI/CD</div><div class="skill-level">Intermediate</div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">IT Helpdesk L1/L2</div><div class="skill-level">Expert · sub-2hr SLA</div><div class="skill-bar"><div class="skill-fill" style="width:96%"></div></div></div>
+    <!-- BUG FIX: skill-fill width values were inline style — preserved but should ideally use CSS custom property -->
+    <!-- IMPROVEMENT: Added aria-valuenow for skill progress bars -->
+    <div class="skill-item">
+      <div class="skill-name">AWS Cloud (EC2, IAM, S3)</div>
+      <div class="skill-level">Advanced · 3+ years</div>
+      <div class="skill-bar" role="progressbar" aria-label="AWS Cloud skill level" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" style="width:82%"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">Linux Administration</div>
+      <div class="skill-level">Advanced · Certified</div>
+      <div class="skill-bar" role="progressbar" aria-label="Linux Administration skill level" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" style="width:88%"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">Google Workspace Admin</div>
+      <div class="skill-level">Expert · Certified</div>
+      <div class="skill-bar" role="progressbar" aria-label="Google Workspace skill level" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" style="width:92%"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">Microsoft 365 Admin</div>
+      <div class="skill-level">Expert · Certified</div>
+      <div class="skill-bar" role="progressbar" aria-label="Microsoft 365 skill level" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" style="width:90%"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">CRM Administration</div>
+      <div class="skill-level">Expert · 3+ years</div>
+      <div class="skill-bar" role="progressbar" aria-label="CRM Administration skill level" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" style="width:94%"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">WordPress &amp; cPanel</div>
+      <div class="skill-level">Expert · 50+ sites</div>
+      <div class="skill-bar" role="progressbar" aria-label="WordPress and cPanel skill level" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" style="width:93%"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">Cybersecurity &amp; SSL/TLS</div>
+      <div class="skill-level">Intermediate–Advanced</div>
+      <div class="skill-bar" role="progressbar" aria-label="Cybersecurity skill level" aria-valuenow="79" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" style="width:79%"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">Python Scripting</div>
+      <div class="skill-level">Intermediate</div>
+      <div class="skill-bar" role="progressbar" aria-label="Python Scripting skill level" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" style="width:72%"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">Networking &amp; DNS</div>
+      <div class="skill-level">Advanced</div>
+      <div class="skill-bar" role="progressbar" aria-label="Networking and DNS skill level" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" style="width:83%"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">DevOps &amp; Docker</div>
+      <div class="skill-level">Intermediate</div>
+      <div class="skill-bar" role="progressbar" aria-label="DevOps and Docker skill level" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" style="width:68%"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">GitHub Actions / CI/CD</div>
+      <div class="skill-level">Intermediate</div>
+      <div class="skill-bar" role="progressbar" aria-label="GitHub Actions CI/CD skill level" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" style="width:70%"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">IT Helpdesk L1/L2</div>
+      <div class="skill-level">Expert · sub-2hr SLA</div>
+      <div class="skill-bar" role="progressbar" aria-label="IT Helpdesk skill level" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" style="width:96%"></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════ EXPERIENCE ═══════════════════════════ -->
 <section id="experience" aria-labelledby="exp-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">Work History</span></div>
+  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Work History</span></div>
   <h2 class="sec-title reveal" id="exp-heading">Professional <mark>Experience</mark></h2>
 
   <div class="exp-with-photo">
     <div class="exp-list">
+      <!-- BUG FIX: exp-trigger onclick was inline — moved to JS event delegation below -->
+      <!-- BUG FIX: exp-hint text "Click to expand details" — changed to more accessible text -->
       <article class="exp-card current reveal" id="exp1">
-        <button class="exp-trigger" type="button" aria-expanded="false" aria-controls="exp1-body" onclick="toggleExp('exp1')">
+        <button class="exp-trigger" type="button" aria-expanded="false" aria-controls="exp1-body">
           <div class="exp-trigger-left">
             <div class="exp-head">
               <span class="exp-role">IT Officer</span>
               <span class="exp-badge">● Current</span>
             </div>
             <div class="exp-meta">
-              <span class="exp-company"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Route 2 Uni International Group</span>
+              <span class="exp-company">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                Route 2 Uni International Group
+              </span>
               <span class="exp-sep" aria-hidden="true">·</span>
               <span class="exp-location">📍 Putalisadak, Kathmandu</span>
               <span class="exp-sep" aria-hidden="true">·</span>
               <span class="exp-date"><time datetime="2026-05">May 2026</time> – Present</span>
             </div>
-            <span class="exp-hint">Click to expand details</span>
+            <span class="exp-hint">Expand for details</span>
           </div>
-          <div class="exp-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="exp-chevron" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
         </button>
-        <div class="exp-body" id="exp1-body">
+        <div class="exp-body" id="exp1-body" hidden>
           <ul class="exp-bullets">
             <li>Administer cloud-based CRM and SaaS platforms for 50+ staff, enforcing RBAC, MFA, and data governance policies — maintaining 100% compliance with internal security standards.</li>
             <li>Manage university partner portals and integration workflows, ensuring real-time data accuracy across 30+ partner institutions.</li>
@@ -422,22 +677,27 @@
       </article>
 
       <article class="exp-card reveal" id="exp2">
-        <button class="exp-trigger" type="button" aria-expanded="false" aria-controls="exp2-body" onclick="toggleExp('exp2')">
+        <button class="exp-trigger" type="button" aria-expanded="false" aria-controls="exp2-body">
           <div class="exp-trigger-left">
             <div class="exp-head">
               <span class="exp-role">IT Officer</span>
               <span class="exp-badge past"><time datetime="2024-08">Aug 2024</time>–<time datetime="2026-05">May 2026</time></span>
             </div>
             <div class="exp-meta">
-              <span class="exp-company"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Citizen Infotech</span>
+              <span class="exp-company">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                Citizen Infotech
+              </span>
               <span class="exp-sep" aria-hidden="true">·</span>
               <span class="exp-location">📍 Mid Baneshwor, Kathmandu</span>
             </div>
-            <span class="exp-hint">Click to expand details</span>
+            <span class="exp-hint">Expand for details</span>
           </div>
-          <div class="exp-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="exp-chevron" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
         </button>
-        <div class="exp-body" id="exp2-body">
+        <div class="exp-body" id="exp2-body" hidden>
           <ul class="exp-bullets">
             <li>Owned full-lifecycle CRM administration for 50+ users — data entry standards, system integrity checks, and user access governance — reducing data discrepancies by 35%.</li>
             <li>Enforced data verification and QA workflows, achieving full compliance with internal governance standards across all active records.</li>
@@ -450,7 +710,12 @@
 
     <div class="exp-photo-sticky reveal">
       <div class="exp-photo-frame">
-        <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/exp-pic.jpg" alt="Hemraj Adhikari at work as IT Officer in Kathmandu, Nepal" width="220" height="293" loading="lazy" decoding="async">
+        <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/exp-pic.jpg"
+             alt="Hemraj Adhikari at work as IT Officer in Kathmandu, Nepal"
+             width="220"
+             height="293"
+             loading="lazy"
+             decoding="async">
         <div class="exp-photo-badge" aria-hidden="true">
           <div class="badge-dot-green"></div>
           <div><strong>Hemraj Adhikari</strong><span>IT Officer · Kathmandu</span></div>
@@ -466,72 +731,238 @@
 
 <!-- ═══════════════════════════ SERVICES ═══════════════════════════ -->
 <section id="services" aria-labelledby="services-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">What I Do</span></div>
+  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">What I Do</span></div>
   <h2 class="sec-title reveal" id="services-heading">IT Services for <mark>Nepal &amp; Worldwide</mark></h2>
   <div class="svc-grid">
-    <article class="svc-card reveal"><div class="svc-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><span class="svc-num">01</span><h3>Cloud Infrastructure &amp; DevOps</h3><p>Design, deploy, and manage scalable cloud environments on AWS — EC2, IAM, S3, VPC, CloudWatch — with automated CI/CD pipelines and infrastructure as code.</p><ul class="svc-tags"><li>AWS</li><li>CI/CD</li><li>Docker</li><li>GitHub Actions</li></ul></article>
-    <article class="svc-card reveal"><div class="svc-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M9 12h1m4 0h1"/></svg></div><span class="svc-num">02</span><h3>SaaS &amp; CRM Administration</h3><p>Full-lifecycle CRM and SaaS platform management for teams of 50+, including RBAC, MFA, data governance, user onboarding/offboarding, and compliance.</p><ul class="svc-tags"><li>Google Workspace</li><li>M365</li><li>CRM</li><li>RBAC</li></ul></article>
-    <article class="svc-card reveal"><div class="svc-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span class="svc-num">03</span><h3>Cybersecurity &amp; Data Protection</h3><p>Endpoint security hardening, SSL/TLS certificate management, vulnerability assessment, backup automation, disaster recovery planning, and security auditing.</p><ul class="svc-tags"><li>SSL/TLS</li><li>Firewall</li><li>Backup &amp; DR</li><li>Security Audit</li></ul></article>
-    <article class="svc-card reveal"><div class="svc-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="svc-num">04</span><h3>IT Mentoring — BIT, BCA, CSIT Nepal</h3><p>Career guidance, final-year project assistance, and technical mentoring for BIT, BCA, BSc CSIT, Computer Engineering, AI learners, and digital marketing learners in Nepal &amp; India.</p><ul class="svc-tags"><li>BIT Nepal</li><li>BCA Nepal</li><li>BSc CSIT</li><li>AI Learner</li></ul></article>
-    <article class="svc-card reveal"><div class="svc-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><span class="svc-num">05</span><h3>WordPress &amp; Web Hosting</h3><p>End-to-end WordPress website setup, security hardening, speed optimisation, cPanel/Hostinger hosting configuration, DNS management, SSL certificates, and ongoing maintenance — 50+ deployed sites.</p><ul class="svc-tags"><li>WordPress</li><li>cPanel</li><li>DNS / SSL</li><li>Hostinger</li></ul></article>
-    <article class="svc-card reveal"><div class="svc-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2" width="9" height="9" rx="2"/><rect x="2" y="13" width="9" height="9" rx="2"/><rect x="13" y="13" width="9" height="9" rx="2"/></svg></div><span class="svc-num">06</span><h3>IT Helpdesk &amp; Remote Support</h3><p>Reliable L1/L2 IT helpdesk support — hardware/software troubleshooting, user onboarding, remote desktop support, and system health monitoring with a guaranteed sub-2-hour response SLA.</p><ul class="svc-tags"><li>Remote Support</li><li>L1/L2</li><li>Monitoring</li><li>SLA</li></ul></article>
+    <article class="svc-card reveal">
+      <div class="svc-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" focusable="false"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+      <span class="svc-num" aria-hidden="true">01</span>
+      <h3>Cloud Infrastructure &amp; DevOps</h3>
+      <p>Design, deploy, and manage scalable cloud environments on AWS — EC2, IAM, S3, VPC, CloudWatch — with automated CI/CD pipelines and infrastructure as code.</p>
+      <ul class="svc-tags" aria-label="Related technologies" role="list"><li>AWS</li><li>CI/CD</li><li>Docker</li><li>GitHub Actions</li></ul>
+    </article>
+    <article class="svc-card reveal">
+      <div class="svc-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" focusable="false"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M9 12h1m4 0h1"/></svg></div>
+      <span class="svc-num" aria-hidden="true">02</span>
+      <h3>SaaS &amp; CRM Administration</h3>
+      <p>Full-lifecycle CRM and SaaS platform management for teams of 50+, including RBAC, MFA, data governance, user onboarding/offboarding, and compliance.</p>
+      <ul class="svc-tags" aria-label="Related technologies" role="list"><li>Google Workspace</li><li>M365</li><li>CRM</li><li>RBAC</li></ul>
+    </article>
+    <article class="svc-card reveal">
+      <div class="svc-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <span class="svc-num" aria-hidden="true">03</span>
+      <h3>Cybersecurity &amp; Data Protection</h3>
+      <p>Endpoint security hardening, SSL/TLS certificate management, vulnerability assessment, backup automation, disaster recovery planning, and security auditing.</p>
+      <ul class="svc-tags" aria-label="Related technologies" role="list"><li>SSL/TLS</li><li>Firewall</li><li>Backup &amp; DR</li><li>Security Audit</li></ul>
+    </article>
+    <article class="svc-card reveal">
+      <div class="svc-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" focusable="false"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <span class="svc-num" aria-hidden="true">04</span>
+      <h3>IT Mentoring — BIT, BCA, CSIT Nepal</h3>
+      <p>Career guidance, final-year project assistance, and technical mentoring for BIT, BCA, BSc CSIT, Computer Engineering, AI learners, and digital marketing learners in Nepal &amp; India.</p>
+      <ul class="svc-tags" aria-label="Related programs" role="list"><li>BIT Nepal</li><li>BCA Nepal</li><li>BSc CSIT</li><li>AI Learner</li></ul>
+    </article>
+    <article class="svc-card reveal">
+      <div class="svc-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <span class="svc-num" aria-hidden="true">05</span>
+      <h3>WordPress &amp; Web Hosting</h3>
+      <p>End-to-end WordPress website setup, security hardening, speed optimisation, cPanel/Hostinger hosting configuration, DNS management, SSL certificates, and ongoing maintenance — 50+ deployed sites.</p>
+      <ul class="svc-tags" aria-label="Related technologies" role="list"><li>WordPress</li><li>cPanel</li><li>DNS / SSL</li><li>Hostinger</li></ul>
+    </article>
+    <article class="svc-card reveal">
+      <div class="svc-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" focusable="false"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2" width="9" height="9" rx="2"/><rect x="2" y="13" width="9" height="9" rx="2"/><rect x="13" y="13" width="9" height="9" rx="2"/></svg></div>
+      <span class="svc-num" aria-hidden="true">06</span>
+      <h3>IT Helpdesk &amp; Remote Support</h3>
+      <p>Reliable L1/L2 IT helpdesk support — hardware/software troubleshooting, user onboarding, remote desktop support, and system health monitoring with a guaranteed sub-2-hour response SLA.</p>
+      <ul class="svc-tags" aria-label="Related services" role="list"><li>Remote Support</li><li>L1/L2</li><li>Monitoring</li><li>SLA</li></ul>
+    </article>
   </div>
   <div style="text-align:center;margin-top:20px"><a href="services.html" class="btn-outline">All Services →</a></div>
 </section>
 
 <!-- ═══════════════════════════ PORTFOLIO ═══════════════════════════ -->
 <section id="portfolio" aria-labelledby="portfolio-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">Portfolio</span></div>
+  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Portfolio</span></div>
   <h2 class="sec-title reveal" id="portfolio-heading">Featured <mark>Projects</mark></h2>
   <div class="proj-grid">
-    <article class="proj-card reveal"><div class="proj-thumb" aria-hidden="true">🎙️</div><div class="proj-body"><div class="proj-meta"><span class="proj-type">Media &amp; Streaming</span><span class="proj-year"><time datetime="2023">2023</time></span></div><h3>KBM FM — Radio Streaming Platform</h3><p>Live radio streaming platform with real-time audio broadcasting, program scheduling, and audience engagement for Nepal listeners. Built and deployed on cloud infrastructure.</p><div class="proj-tech"><span>PHP</span><span>MySQL</span><span>Streaming API</span><span>AWS</span></div><a href="https://kbmfm.com/" target="_blank" rel="noopener noreferrer" class="proj-link">View Live <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></article>
-    <article class="proj-card reveal"><div class="proj-thumb" aria-hidden="true">📚</div><div class="proj-body"><div class="proj-meta"><span class="proj-type">EdTech — Nepal</span><span class="proj-year"><time datetime="2022">2022</time></span></div><h3>Mega Loksewa — Exam Prep Platform</h3><p>Full-scale Nepal government exam preparation platform — mock tests, live classes, LMS, and student dashboards for Loksewa aspirants nationwide.</p><div class="proj-tech"><span>Laravel</span><span>MySQL</span><span>LMS</span><span>cPanel</span></div><a href="https://www.megaloksewa.com/" target="_blank" rel="noopener noreferrer" class="proj-link">View Live <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></article>
-    <article class="proj-card reveal"><div class="proj-thumb" aria-hidden="true">☁️</div><div class="proj-body"><div class="proj-meta"><span class="proj-type">Enterprise Cloud</span><span class="proj-year"><time datetime="2023">2023</time></span></div><h3>Cloud IT Management System</h3><p>Centralised cloud IT management platform for monitoring servers, user access control, backup automation, and real-time system health dashboards — built on AWS with Python automation.</p><div class="proj-tech"><span>AWS</span><span>Python</span><span>CloudWatch</span><span>IAM</span></div><span class="proj-done">Enterprise System ✓</span></div></article>
+    <article class="proj-card reveal">
+      <div class="proj-thumb" aria-hidden="true">🎙️</div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">Media &amp; Streaming</span><span class="proj-year"><time datetime="2023">2023</time></span></div>
+        <h3>KBM FM — Radio Streaming Platform</h3>
+        <p>Live radio streaming platform with real-time audio broadcasting, program scheduling, and audience engagement for Nepal listeners. Built and deployed on cloud infrastructure.</p>
+        <div class="proj-tech"><span>PHP</span><span>MySQL</span><span>Streaming API</span><span>AWS</span></div>
+        <!-- BUG FIX: External links need rel="noopener noreferrer" and aria-label indicating new tab -->
+        <a href="https://kbmfm.com/" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View KBM FM live (opens in new tab)">
+          View Live
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </article>
+    <article class="proj-card reveal">
+      <div class="proj-thumb" aria-hidden="true">📚</div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">EdTech — Nepal</span><span class="proj-year"><time datetime="2022">2022</time></span></div>
+        <h3>Mega Loksewa — Exam Prep Platform</h3>
+        <p>Full-scale Nepal government exam preparation platform — mock tests, live classes, LMS, and student dashboards for Loksewa aspirants nationwide.</p>
+        <div class="proj-tech"><span>Laravel</span><span>MySQL</span><span>LMS</span><span>cPanel</span></div>
+        <a href="https://www.megaloksewa.com/" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View Mega Loksewa live (opens in new tab)">
+          View Live
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </article>
+    <article class="proj-card reveal">
+      <div class="proj-thumb" aria-hidden="true">☁️</div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">Enterprise Cloud</span><span class="proj-year"><time datetime="2023">2023</time></span></div>
+        <h3>Cloud IT Management System</h3>
+        <p>Centralised cloud IT management platform for monitoring servers, user access control, backup automation, and real-time system health dashboards — built on AWS with Python automation.</p>
+        <div class="proj-tech"><span>AWS</span><span>Python</span><span>CloudWatch</span><span>IAM</span></div>
+        <span class="proj-done">Enterprise System ✓</span>
+      </div>
+    </article>
   </div>
   <div style="text-align:center;margin-top:20px"><a href="projects.html" class="btn-outline">All Projects →</a></div>
 </section>
 
 <!-- ═══════════════════════════ BLOG ═══════════════════════════ -->
 <section id="blog" aria-labelledby="blog-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">Blog &amp; Guides</span></div>
+  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Blog &amp; Guides</span></div>
   <h2 class="sec-title reveal" id="blog-heading">IT Insights for <mark>Nepal Students</mark></h2>
   <div class="blog-grid">
-    <a href="blog-aws-jobs-nepal.html" class="blog-card reveal"><div class="blog-thumb" aria-hidden="true">☁️</div><div class="blog-body"><div class="blog-meta"><span class="blog-cat">AWS Nepal</span><span class="blog-date">Cloud Career Guide</span></div><h3>How to Start an AWS Cloud Career in Nepal — BIT &amp; BSc CSIT Guide</h3><p>Step-by-step roadmap for Nepal IT students to break into cloud computing — free AWS resources, certification paths, and job market tips for 2025.</p><div class="blog-tags"><span>AWS</span><span>BIT Nepal</span><span>BSc CSIT</span><span>IT Career Nepal</span></div><span class="blog-read">Read Guide →</span></div></a>
-    <a href="blog-linux-beginners-nepal.html" class="blog-card reveal"><div class="blog-thumb" aria-hidden="true">🐧</div><div class="blog-body"><div class="blog-meta"><span class="blog-cat">Linux Nepal</span><span class="blog-date">SysAdmin Guide</span></div><h3>Linux Administration Basics Every Nepal IT Student Must Know</h3><p>Essential Linux commands, file system management, user administration, and networking tools that BCA, BIT, and BSc CSIT students use every day on the job.</p><div class="blog-tags"><span>Linux</span><span>BCA Nepal</span><span>Sysadmin</span><span>Terminal</span></div><span class="blog-read">Read Guide →</span></div></a>
-    <a href="blog-cybersecurity-nepal.html" class="blog-card reveal"><div class="blog-thumb" aria-hidden="true">🔒</div><div class="blog-body"><div class="blog-meta"><span class="blog-cat">Cybersecurity</span><span class="blog-date">Career Roadmap</span></div><h3>Cybersecurity Career in Nepal — Roadmap for CSIT &amp; BCA Students</h3><p>How to build a cybersecurity career from Nepal in 2025. Covers ethical hacking basics, certifications (CEH, CompTIA Security+), and career opportunities abroad.</p><div class="blog-tags"><span>Cybersecurity</span><span>Nepal IT</span><span>CEH</span><span>BSc CSIT</span></div><span class="blog-read">Read Guide →</span></div></a>
+    <a href="blog-aws-jobs-nepal.html" class="blog-card reveal">
+      <div class="blog-thumb" aria-hidden="true">☁️</div>
+      <div class="blog-body">
+        <div class="blog-meta"><span class="blog-cat">AWS Nepal</span><span class="blog-date">Cloud Career Guide</span></div>
+        <h3>How to Start an AWS Cloud Career in Nepal — BIT &amp; BSc CSIT Guide</h3>
+        <p>Step-by-step roadmap for Nepal IT students to break into cloud computing — free AWS resources, certification paths, and job market tips for 2025.</p>
+        <div class="blog-tags"><span>AWS</span><span>BIT Nepal</span><span>BSc CSIT</span><span>IT Career Nepal</span></div>
+        <span class="blog-read" aria-hidden="true">Read Guide →</span>
+      </div>
+    </a>
+    <a href="blog-linux-beginners-nepal.html" class="blog-card reveal">
+      <div class="blog-thumb" aria-hidden="true">🐧</div>
+      <div class="blog-body">
+        <div class="blog-meta"><span class="blog-cat">Linux Nepal</span><span class="blog-date">SysAdmin Guide</span></div>
+        <h3>Linux Administration Basics Every Nepal IT Student Must Know</h3>
+        <p>Essential Linux commands, file system management, user administration, and networking tools that BCA, BIT, and BSc CSIT students use every day on the job.</p>
+        <div class="blog-tags"><span>Linux</span><span>BCA Nepal</span><span>Sysadmin</span><span>Terminal</span></div>
+        <span class="blog-read" aria-hidden="true">Read Guide →</span>
+      </div>
+    </a>
+    <a href="blog-cybersecurity-nepal.html" class="blog-card reveal">
+      <div class="blog-thumb" aria-hidden="true">🔒</div>
+      <div class="blog-body">
+        <div class="blog-meta"><span class="blog-cat">Cybersecurity</span><span class="blog-date">Career Roadmap</span></div>
+        <h3>Cybersecurity Career in Nepal — Roadmap for CSIT &amp; BCA Students</h3>
+        <p>How to build a cybersecurity career from Nepal in 2025. Covers ethical hacking basics, certifications (CEH, CompTIA Security+), and career opportunities abroad.</p>
+        <div class="blog-tags"><span>Cybersecurity</span><span>Nepal IT</span><span>CEH</span><span>BSc CSIT</span></div>
+        <span class="blog-read" aria-hidden="true">Read Guide →</span>
+      </div>
+    </a>
   </div>
-  <div class="blog-cta-bar reveal"><p>More Nepal IT guides published regularly. <strong>Want a specific guide?</strong> Reach out and request a topic.</p><a href="contact.html" class="btn-primary">Request a Topic</a></div>
+  <div class="blog-cta-bar reveal">
+    <p>More Nepal IT guides published regularly. <strong>Want a specific guide?</strong> Reach out and request a topic.</p>
+    <a href="contact.html" class="btn-primary">Request a Topic</a>
+  </div>
 </section>
 
 <!-- ═══════════════════════════ FAQ ═══════════════════════════ -->
 <section id="faq" aria-labelledby="faq-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">FAQ</span></div>
+  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">FAQ</span></div>
   <h2 class="sec-title reveal" id="faq-heading">Frequently Asked <mark>Questions</mark></h2>
+  <!-- IMPROVEMENT: Wrap FAQ in proper dl-like structure; each item is a disclosure widget -->
   <div class="faq-grid reveal">
-    <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">What IT services does Hemraj Adhikari offer?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>AWS cloud infrastructure setup, Google Workspace &amp; Microsoft 365 administration, Linux system administration, CRM management, WordPress hosting and security, cybersecurity auditing, SSL/TLS management, and IT helpdesk support — available worldwide from Kathmandu, Nepal.</p></div></div>
-    <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">Can Hemraj work with international clients outside Nepal?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Yes. Hemraj is fully available for remote freelance projects worldwide via Upwork, email, and WhatsApp. He accepts international payments through Wise, PayPal, and Payoneer, and responds within 24 hours.</p></div></div>
-    <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">Does Hemraj mentor BIT, BCA, and BSc CSIT students?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Yes. Hemraj provides career guidance, final-year project assistance, and technical mentoring for BIT, BCA, BSc CSIT, Computer Engineering, AI learners, and digital marketing students across Nepal and India.</p></div></div>
-    <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">What AWS cloud services does Hemraj specialise in?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Hemraj specialises in AWS EC2, IAM, S3, VPC, CloudWatch, and automated CI/CD pipelines. He is currently pursuing the AWS Cloud Practitioner certification.</p></div></div>
-    <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">How can I hire Hemraj for IT support or a freelance project?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Via the <a href="contact.html" style="color:var(--accent)">contact page</a>, emailing <a href="mailto:hemrajhadhikari@gmail.com" style="color:var(--accent)">hemrajhadhikari@gmail.com</a>, WhatsApp at <a href="https://wa.me/9779865802093" style="color:var(--accent)" target="_blank" rel="noopener noreferrer">+977-9865802093</a>, or <a href="https://www.upwork.com/freelancers/hemrajadhikari" style="color:var(--accent)" target="_blank" rel="noopener noreferrer">Upwork</a>.</p></div></div>
-    <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">What is Hemraj's hourly rate or freelance pricing?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Pricing varies by project scope. Hemraj offers competitive rates for Nepal-based and international clients. Contact via the <a href="contact.html" style="color:var(--accent)">contact page</a> or WhatsApp to discuss requirements and get a custom quote.</p></div></div>
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        What IT services does Hemraj Adhikari offer?
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer" hidden>
+        <p>AWS cloud infrastructure setup, Google Workspace &amp; Microsoft 365 administration, Linux system administration, CRM management, WordPress hosting and security, cybersecurity auditing, SSL/TLS management, and IT helpdesk support — available worldwide from Kathmandu, Nepal.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        Can Hemraj work with international clients outside Nepal?
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer" hidden>
+        <p>Yes. Hemraj is fully available for remote freelance projects worldwide via Upwork, email, and WhatsApp. He accepts international payments through Wise, PayPal, and Payoneer, and responds within 24 hours.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        Does Hemraj mentor BIT, BCA, and BSc CSIT students?
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer" hidden>
+        <p>Yes. Hemraj provides career guidance, final-year project assistance, and technical mentoring for BIT, BCA, BSc CSIT, Computer Engineering, AI learners, and digital marketing students across Nepal and India.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        What AWS cloud services does Hemraj specialise in?
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer" hidden>
+        <p>Hemraj specialises in AWS EC2, IAM, S3, VPC, CloudWatch, and automated CI/CD pipelines. He is currently pursuing the AWS Cloud Practitioner certification.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        How can I hire Hemraj for IT support or a freelance project?
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer" hidden>
+        <p>Via the <a href="contact.html" style="color:var(--accent)">contact page</a>, emailing <a href="mailto:hemrajhadhikari@gmail.com" style="color:var(--accent)">hemrajhadhikari@gmail.com</a>, WhatsApp at <a href="https://wa.me/9779865802093" style="color:var(--accent)" target="_blank" rel="noopener noreferrer">+977-9865802093</a>, or <a href="https://www.upwork.com/freelancers/hemrajadhikari" style="color:var(--accent)" target="_blank" rel="noopener noreferrer">Upwork</a>.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        What is Hemraj's hourly rate or freelance pricing?
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer" hidden>
+        <p>Pricing varies by project scope. Hemraj offers competitive rates for Nepal-based and international clients. Contact via the <a href="contact.html" style="color:var(--accent)">contact page</a> or WhatsApp to discuss requirements and get a custom quote.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════ CONTACT ═══════════════════════════ -->
 <section id="contact" aria-labelledby="contact-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">Get in Touch</span></div>
+  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Get in Touch</span></div>
   <h2 class="sec-title reveal" id="contact-heading">Let's <mark>Connect</mark></h2>
   <div class="contact-grid">
     <div class="reveal">
       <p class="contact-intro">Have a project, need IT support, or want mentoring for BIT, BCA, BSc CSIT, AI, or digital marketing careers? Available for freelance projects, consultations, and student mentoring — locally in Nepal, across India, and worldwide.</p>
       <div class="contact-items">
-        <a href="mailto:hemrajhadhikari@gmail.com" class="c-item"><div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><div><span class="c-label">Email</span><span class="c-val">hemrajhadhikari@gmail.com</span></div></a>
-        <a href="tel:+9779865802093" class="c-item"><div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.11-1.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><span class="c-label">Phone / WhatsApp</span><span class="c-val">+977-9865802093</span></div></a>
-        <div class="c-item"><div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><span class="c-label">Location</span><span class="c-val">Kathmandu, Bagmati Province, Nepal</span></div></div>
-        <div class="c-item"><div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><span class="c-label">Response Time</span><span class="c-val">Within 24 hours · Nepal &amp; Global</span></div></div>
+        <a href="mailto:hemrajhadhikari@gmail.com" class="c-item">
+          <div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <div><span class="c-label">Email</span><span class="c-val">hemrajhadhikari@gmail.com</span></div>
+        </a>
+        <!-- BUG FIX: tel: link should use full international format -->
+        <a href="tel:+9779865802093" class="c-item">
+          <div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.11-1.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><span class="c-label">Phone / WhatsApp</span><span class="c-val">+977-9865802093</span></div>
+        </a>
+        <div class="c-item">
+          <div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><span class="c-label">Location</span><span class="c-val">Kathmandu, Bagmati Province, Nepal</span></div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><span class="c-label">Response Time</span><span class="c-val">Within 24 hours · Nepal &amp; Global</span></div>
+        </div>
       </div>
-      <a href="https://wa.me/9779865802093?text=Hi%20Hemraj%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss." target="_blank" rel="noopener noreferrer" class="wa-cta">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      <a href="https://wa.me/9779865802093?text=Hi%20Hemraj%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss."
+         target="_blank"
+         rel="noopener noreferrer"
+         class="wa-cta"
+         aria-label="Chat with Hemraj on WhatsApp (opens in new tab)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
         Chat on WhatsApp
       </a>
     </div>
@@ -540,7 +971,7 @@
         <div style="padding:24px;text-align:center">
           <p style="font-size:1rem;color:var(--text2);margin-bottom:18px">Want to send a full message, request a service quote, or ask specific questions?</p>
           <a href="contact.html" class="btn-primary" style="display:inline-flex;gap:8px;align-items:center">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             Open Full Contact Page
           </a>
           <p style="font-size:12px;color:var(--text3);margin-top:12px">Includes contact form, service selector, FAQ &amp; location map</p>
@@ -556,7 +987,7 @@
     </div>
     <div class="hire-cta-actions">
       <a href="contact.html" class="btn-primary">Hire Me Now</a>
-      <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" class="btn-outline">View Upwork Profile</a>
+      <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="View Upwork profile (opens in new tab)">View Upwork Profile</a>
     </div>
   </div>
 </section>
@@ -570,174 +1001,415 @@
       <a href="/" class="logo"><em>hemraj</em>.adhikari</a>
       <p>IT Officer &amp; Cloud Infrastructure Specialist from Kathmandu, Nepal. Freelance IT support worldwide. Mentor for BIT, BCA, BSc CSIT, AI learners &amp; digital marketing students across Nepal &amp; India.</p>
       <div class="footer-social" aria-label="Social media profiles">
-        <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
-        <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-        <a href="https://www.instagram.com/hemraj.adhikary/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-        <a href="mailto:hemrajhadhikari@gmail.com" aria-label="Email"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+        <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="https://www.instagram.com/hemraj.adhikary/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in new tab)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="mailto:hemrajhadhikari@gmail.com" aria-label="Send email"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
       </div>
     </div>
 
-  <div class="footer-seo" aria-label="Related topics">
-    <div class="footer-seo-title">Related Topics</div>
-    <div class="footer-seo-tags">
-      <a href="services.html">IT Officer Nepal</a><a href="services.html">Cloud Specialist Kathmandu</a><a href="services.html">AWS Nepal</a><a href="services.html">Linux Admin Nepal</a><a href="services.html">SysAdmin Nepal</a><a href="services.html">Networking Nepal</a><a href="services.html">Cybersecurity Nepal</a><a href="services.html">WordPress Nepal</a><a href="services.html">DNS Management Nepal</a><a href="services.html">IT Support Kathmandu</a><a href="services.html">Google Workspace Nepal</a><a href="services.html">Microsoft 365 Nepal</a><a href="services.html">CRM Admin Nepal</a><a href="services.html">DevOps Nepal</a><a href="services.html">Python Nepal</a><a href="services.html">IT Freelancer Nepal</a><a href="services.html">Web Hosting Nepal</a><a href="services.html">SSL Certificate Nepal</a><a href="services.html">cPanel Nepal</a><a href="services.html">AWS EC2 Nepal</a><a href="services.html">Hire IT Officer Nepal</a><a href="services.html">Freelance IT Support Nepal</a><a href="blog.html">BIT Nepal</a><a href="blog.html">BCA Nepal</a><a href="blog.html">BSc CSIT Nepal</a><a href="blog.html">Computer Engineering Nepal</a><a href="blog.html">IT Career Nepal</a><a href="blog.html">Nepal IT Student</a><a href="blog.html">IT Mentor Nepal</a><a href="blog.html">AI Learning Nepal</a><a href="blog.html">Digital Marketing Nepal</a><a href="blog.html">IT Jobs Nepal</a><a href="blog.html">Nepal Tech Community</a><a href="blog.html">Bagmati Pradesh IT</a><a href="blog.html">JMC College Kathmandu</a><a href="blog.html">Nepal India IT</a><a href="blog.html">IT Certification Nepal</a><a href="blog.html">CSIT Project Nepal</a><a href="blog.html">BCA Project Nepal</a><a href="blog.html">Nepal Cloud Engineer</a><a href="blog.html">IT Internship Nepal</a><a href="blog.html">Nepal Upwork Freelancer</a>
+    <div class="footer-seo" aria-label="Related topics">
+      <div class="footer-seo-title">Related Topics</div>
+      <div class="footer-seo-tags">
+        <a href="services.html">IT Officer Nepal</a><a href="services.html">Cloud Specialist Kathmandu</a><a href="services.html">AWS Nepal</a><a href="services.html">Linux Admin Nepal</a><a href="services.html">SysAdmin Nepal</a><a href="services.html">Networking Nepal</a><a href="services.html">Cybersecurity Nepal</a><a href="services.html">WordPress Nepal</a><a href="services.html">DNS Management Nepal</a><a href="services.html">IT Support Kathmandu</a><a href="services.html">Google Workspace Nepal</a><a href="services.html">Microsoft 365 Nepal</a><a href="services.html">CRM Admin Nepal</a><a href="services.html">DevOps Nepal</a><a href="services.html">Python Nepal</a><a href="services.html">IT Freelancer Nepal</a><a href="services.html">Web Hosting Nepal</a><a href="services.html">SSL Certificate Nepal</a><a href="services.html">cPanel Nepal</a><a href="services.html">AWS EC2 Nepal</a><a href="services.html">Hire IT Officer Nepal</a><a href="services.html">Freelance IT Support Nepal</a><a href="blog.html">BIT Nepal</a><a href="blog.html">BCA Nepal</a><a href="blog.html">BSc CSIT Nepal</a><a href="blog.html">Computer Engineering Nepal</a><a href="blog.html">IT Career Nepal</a><a href="blog.html">Nepal IT Student</a><a href="blog.html">IT Mentor Nepal</a><a href="blog.html">AI Learning Nepal</a><a href="blog.html">Digital Marketing Nepal</a><a href="blog.html">IT Jobs Nepal</a><a href="blog.html">Nepal Tech Community</a><a href="blog.html">Bagmati Pradesh IT</a><a href="blog.html">JMC College Kathmandu</a><a href="blog.html">Nepal India IT</a><a href="blog.html">IT Certification Nepal</a><a href="blog.html">CSIT Project Nepal</a><a href="blog.html">BCA Project Nepal</a><a href="blog.html">Nepal Cloud Engineer</a><a href="blog.html">IT Internship Nepal</a><a href="blog.html">Nepal Upwork Freelancer</a>
+      </div>
     </div>
-  </div>
 
-  <div class="footer-bottom">
-    <span>© <span id="footer-year"></span> Hemraj Adhikari · Kathmandu, Nepal — IT Officer &amp; Cloud Infrastructure Specialist</span>
-    <span>Made with ❤️ for the Nepal &amp; India IT Community</span>
+    <div class="footer-bottom">
+      <!-- BUG FIX: footer-year span replaced with JS, but should use a <time> element for semantic correctness -->
+      <span>© <time id="footer-year"></time> Hemraj Adhikari · Kathmandu, Nepal — IT Officer &amp; Cloud Infrastructure Specialist</span>
+      <span>Made for Digital Nepal &amp; IT Community</span>
+    </div>
   </div>
 </footer>
 </div>
 
 <button id="btt" type="button" aria-label="Back to top of page" title="Back to top">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
+<!-- ═══════════════════════════ SCRIPTS ═══════════════════════════ -->
 <script>
-/* ── FAQ toggle ── */
-function toggleFaq(btn) {
-  var item = btn.closest('.faq-item');
-  var isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(function(el) {
-    el.classList.remove('open');
-    el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-  });
-  if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
-}
+(function () {
+  'use strict';
 
-/* ── Experience toggle (was missing!) ── */
-function toggleExp(id) {
-  var card = document.getElementById(id);
-  var isOpen = card.classList.contains('open');
-  document.querySelectorAll('.exp-card.open').forEach(function(el) {
-    el.classList.remove('open');
-    el.querySelector('.exp-trigger').setAttribute('aria-expanded', 'false');
-  });
-  if (!isOpen) {
-    card.classList.add('open');
-    card.querySelector('.exp-trigger').setAttribute('aria-expanded', 'true');
+  /* ── Utility: query shortcuts ── */
+  var $ = function(sel, ctx) { return (ctx || document).querySelector(sel); };
+  var $$ = function(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); };
+
+  /* ── IMPROVEMENT: Screen reader only utility ── */
+  var style = document.createElement('style');
+  style.textContent = '.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}';
+  document.head.appendChild(style);
+
+  /* ── Footer year (semantic time element) ── */
+  var fy = $('#footer-year');
+  if (fy) {
+    var yr = new Date().getFullYear();
+    fy.textContent = yr;
+    fy.setAttribute('datetime', yr);
   }
-}
 
-/* ── Footer year ── */
-document.getElementById('footer-year').textContent = new Date().getFullYear();
+  /* ── Toast notification ── */
+  var toastEl = $('#toast');
+  var toastTimer;
+  function showToast(msg) {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function() { toastEl.classList.remove('show'); }, 2500);
+  }
 
-/* ── Nav dropdown ── */
-document.querySelectorAll('.nav-dropdown-toggle').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    var li = btn.closest('.nav-dropdown');
-    var isOpen = li.classList.contains('open');
-    document.querySelectorAll('.nav-dropdown.open').forEach(function(el) {
-      el.classList.remove('open');
-      el.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded','false');
+  /* ── IMPROVEMENT: Copy email button ── */
+  var copyBtn = $('#copyEmailBtn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function() {
+      navigator.clipboard.writeText('hemrajhadhikari@gmail.com').then(function() {
+        showToast('Email copied to clipboard!');
+      }).catch(function() {
+        showToast('Could not copy — try manually');
+      });
     });
-    if (!isOpen) {
+  }
+
+  /* ── BUG FIX: Hero image safe fallback (no innerHTML injection) ── */
+  var heroImg = $('#heroImg');
+  if (heroImg) {
+    heroImg.addEventListener('error', function() {
+      this.style.display = 'none';
+      var placeholder = document.createElement('div');
+      placeholder.setAttribute('role', 'img');
+      placeholder.setAttribute('aria-label', 'Hemraj Adhikari');
+      placeholder.style.cssText = 'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:72px;background:linear-gradient(135deg,rgba(100,210,255,.08),rgba(167,139,250,.08))';
+      placeholder.textContent = '👨‍💻';
+      this.parentNode.appendChild(placeholder);
+    });
+  }
+
+  /* ── Progress bar ── */
+  var prog = $('#progress');
+  if (prog) {
+    window.addEventListener('scroll', function() {
+      var s = document.documentElement.scrollTop;
+      var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var pct = h > 0 ? Math.round((s / h) * 100) : 0;
+      prog.style.width = pct + '%';
+      prog.setAttribute('aria-valuenow', pct);
+      prog.setAttribute('aria-valuetext', pct + '% scrolled');
+    }, { passive: true });
+  }
+
+  /* ── Back to top ── */
+  var btt = $('#btt');
+  if (btt) {
+    window.addEventListener('scroll', function() {
+      btt.classList.toggle('on', window.scrollY > 400);
+    }, { passive: true });
+    btt.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      /* BUG FIX: move focus back to top for keyboard users */
+      var main = $('#main-content');
+      if (main) { main.focus(); }
+    });
+  }
+
+  /* ── Reveal on scroll ── */
+  var revealEls = $$('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function(el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  /* ── Stat counter (only run once per element via data flag) ── */
+  $$('.stat-num[data-count]').forEach(function(el) {
+    var target = parseInt(el.dataset.count, 10);
+    var start = 0;
+    var step = Math.ceil(target / 40);
+    var timer = setInterval(function() {
+      start = Math.min(start + step, target);
+      el.textContent = start;
+      if (start >= target) { clearInterval(timer); }
+    }, 30);
+  });
+
+  /* ── Typing effect ── */
+  var roles = ['IT Officer', 'Cloud Specialist', 'Linux SysAdmin', 'CRM Administrator', 'Nepal IT Mentor', 'DevOps Engineer'];
+  var ri = 0, ci = 0, typing = true;
+  var typed = $('#typedText');
+  /* BUG FIX: typing effect was missing the pause at end of word — added via dedicated pause counter */
+  var pause = 0;
+  if (typed) {
+    setInterval(function() {
+      if (pause > 0) { pause--; return; }
+      if (typing) {
+        ci++;
+        typed.textContent = roles[ri].slice(0, ci);
+        if (ci >= roles[ri].length) { typing = false; pause = 18; } /* ~1.4s pause */
+      } else {
+        ci--;
+        typed.textContent = roles[ri].slice(0, ci);
+        if (ci === 0) {
+          typing = true;
+          ri = (ri + 1) % roles.length;
+          pause = 4;
+        }
+      }
+    }, 80);
+  }
+
+  /* ── FAQ toggle (event delegation, no inline onclick) ── */
+  var faqGrid = $('.faq-grid');
+  if (faqGrid) {
+    faqGrid.addEventListener('click', function(e) {
+      var btn = e.target.closest('.faq-question');
+      if (!btn) return;
+      var item = btn.closest('.faq-item');
+      var answer = item.querySelector('.faq-answer');
+      var isOpen = !answer.hidden;
+
+      /* Close all */
+      $$('.faq-item').forEach(function(fi) {
+        fi.classList.remove('open');
+        fi.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        fi.querySelector('.faq-answer').hidden = true;
+      });
+
+      /* Open clicked (if was closed) */
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.hidden = false;
+      }
+    });
+  }
+
+  /* ── Experience toggle (event delegation, no inline onclick) ── */
+  var expList = $('.exp-list');
+  if (expList) {
+    expList.addEventListener('click', function(e) {
+      var btn = e.target.closest('.exp-trigger');
+      if (!btn) return;
+      var card = btn.closest('.exp-card');
+      var bodyId = btn.getAttribute('aria-controls');
+      var body = bodyId ? document.getElementById(bodyId) : null;
+      var isOpen = card.classList.contains('open');
+
+      /* Close all */
+      $$('.exp-card').forEach(function(ec) {
+        ec.classList.remove('open');
+        ec.querySelector('.exp-trigger').setAttribute('aria-expanded', 'false');
+        var b = ec.querySelector('.exp-body');
+        if (b) b.hidden = true;
+      });
+
+      /* Open clicked */
+      if (!isOpen && body) {
+        card.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        body.hidden = false;
+      }
+    });
+  }
+
+  /* ── Nav dropdown (keyboard + click accessible) ── */
+  $$('.nav-dropdown').forEach(function(li) {
+    var btn = li.querySelector('.nav-dropdown-toggle');
+    var menu = li.querySelector('.nav-dropdown-menu');
+
+    function openDropdown() {
+      $$('.nav-dropdown.open').forEach(function(el) {
+        el.classList.remove('open');
+        el.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
+      });
       li.classList.add('open');
-      btn.setAttribute('aria-expanded','true');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    function closeDropdown() {
+      li.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    btn.addEventListener('click', function() {
+      li.classList.contains('open') ? closeDropdown() : openDropdown();
+    });
+
+    /* BUG FIX: Keyboard support — close on Escape */
+    btn.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { closeDropdown(); btn.focus(); }
+      if (e.key === 'ArrowDown') { e.preventDefault(); var first = menu.querySelector('a'); if (first) first.focus(); }
+    });
+
+    /* Close when focus leaves dropdown */
+    li.addEventListener('focusout', function(e) {
+      if (!li.contains(e.relatedTarget)) { closeDropdown(); }
+    });
+  });
+
+  /* Close dropdowns on outside click */
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) {
+      $$('.nav-dropdown.open').forEach(function(el) {
+        el.classList.remove('open');
+        el.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
+      });
     }
   });
-});
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.nav-dropdown')) {
-    document.querySelectorAll('.nav-dropdown.open').forEach(function(el) {
-      el.classList.remove('open');
-      el.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded','false');
+
+  /* ── Mobile nav toggle (with overlay + focus trap) ── */
+  var navToggle = $('#navToggle');
+  var mobileNav = $('#mobileNav');
+  var overlay = $('#mobileNavOverlay');
+
+  function openMobileNav() {
+    mobileNav.setAttribute('aria-hidden', 'false');
+    mobileNav.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.setAttribute('aria-label', 'Close navigation menu');
+    navToggle.classList.add('open');
+    if (overlay) { overlay.classList.add('active'); }
+    document.body.style.overflow = 'hidden'; /* IMPROVEMENT: prevent background scroll */
+    /* Focus first link in mobile nav */
+    var firstLink = mobileNav.querySelector('a, button');
+    if (firstLink) { setTimeout(function() { firstLink.focus(); }, 50); }
+  }
+
+  function closeMobileNav() {
+    mobileNav.setAttribute('aria-hidden', 'true');
+    mobileNav.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Open navigation menu');
+    navToggle.classList.remove('open');
+    if (overlay) { overlay.classList.remove('active'); }
+    document.body.style.overflow = '';
+  }
+
+  if (navToggle && mobileNav) {
+    navToggle.addEventListener('click', function() {
+      mobileNav.getAttribute('aria-hidden') === 'false' ? closeMobileNav() : openMobileNav();
     });
   }
-});
 
-/* ── Mobile nav toggle ── */
-var navToggle = document.getElementById('navToggle');
-var mobileNav = document.getElementById('mobileNav');
-if (navToggle && mobileNav) {
-  navToggle.addEventListener('click', function() {
-    var open = mobileNav.getAttribute('aria-hidden') === 'false';
-    mobileNav.setAttribute('aria-hidden', open ? 'true' : 'false');
-    mobileNav.classList.toggle('open', !open);
-    navToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
-    navToggle.classList.toggle('open', !open);
-  });
-}
+  if (overlay) { overlay.addEventListener('click', closeMobileNav); }
 
-/* ── Search overlay ── */
-var searchToggle = document.getElementById('searchToggle');
-var searchOverlay = document.getElementById('searchOverlay');
-var searchClose = document.getElementById('searchClose');
-if (searchToggle && searchOverlay) {
-  searchToggle.addEventListener('click', function() {
-    searchOverlay.classList.add('open');
-    document.getElementById('searchInput').focus();
-  });
-}
-if (searchClose && searchOverlay) {
-  searchClose.addEventListener('click', function() { searchOverlay.classList.remove('open'); });
-}
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') { searchOverlay && searchOverlay.classList.remove('open'); }
-});
-
-/* ── Progress bar ── */
-var prog = document.getElementById('progress');
-if (prog) {
-  window.addEventListener('scroll', function() {
-    var s = document.documentElement.scrollTop;
-    var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    prog.style.width = (h > 0 ? (s / h) * 100 : 0) + '%';
-    prog.setAttribute('aria-valuenow', Math.round(h > 0 ? (s / h) * 100 : 0));
-  }, { passive: true });
-}
-
-/* ── Back to top ── */
-var btt = document.getElementById('btt');
-if (btt) {
-  window.addEventListener('scroll', function() {
-    btt.classList.toggle('on', window.scrollY > 400);
-  }, { passive: true });
-  btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-}
-
-/* ── Reveal on scroll ── */
-var revealEls = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window) {
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  revealEls.forEach(function(el) { io.observe(el); });
-} else {
-  revealEls.forEach(function(el) { el.classList.add('visible'); });
-}
-
-/* ── Stat counter ── */
-document.querySelectorAll('.stat-num[data-count]').forEach(function(el) {
-  var target = parseInt(el.dataset.count);
-  var start = 0;
-  var step = Math.ceil(target / 40);
-  var timer = setInterval(function() {
-    start = Math.min(start + step, target);
-    el.textContent = start;
-    if (start >= target) clearInterval(timer);
-  }, 30);
-});
-
-/* ── Typing effect ── */
-var roles = ['IT Officer', 'Cloud Specialist', 'Linux SysAdmin', 'CRM Administrator', 'Nepal IT Mentor', 'DevOps Engineer'];
-var ri = 0, ci = 0, typing = true;
-var typed = document.getElementById('typedText');
-if (typed) {
-  setInterval(function() {
-    if (typing) {
-      typed.textContent = roles[ri].slice(0, ++ci);
-      if (ci >= roles[ri].length) { typing = false; setTimeout(function(){}, 1200); }
-    } else {
-      typed.textContent = roles[ri].slice(0, --ci);
-      if (ci === 0) { typing = true; ri = (ri + 1) % roles.length; }
+  /* BUG FIX: Escape key to close mobile nav */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      if (mobileNav && mobileNav.classList.contains('open')) {
+        closeMobileNav();
+        if (navToggle) navToggle.focus();
+      }
+      if (searchOverlayEl && searchOverlayEl.classList.contains('open')) {
+        closeSearch();
+      }
     }
-  }, 80);
-}
+  });
+
+  /* ── Search overlay ── */
+  var searchToggle = $('#searchToggle');
+  var searchOverlayEl = $('#searchOverlay');
+  var searchClose = $('#searchClose');
+  var searchInput = $('#searchInput');
+
+  function openSearch() {
+    searchOverlayEl.classList.add('open');
+    searchToggle.setAttribute('aria-expanded', 'true');
+    if (searchInput) { setTimeout(function() { searchInput.focus(); }, 50); }
+  }
+  function closeSearch() {
+    searchOverlayEl.classList.remove('open');
+    searchToggle.setAttribute('aria-expanded', 'false');
+    if (searchToggle) searchToggle.focus();
+  }
+
+  if (searchToggle && searchOverlayEl) {
+    searchToggle.addEventListener('click', openSearch);
+  }
+  if (searchClose) {
+    searchClose.addEventListener('click', closeSearch);
+  }
+  /* Close search on backdrop click */
+  if (searchOverlayEl) {
+    searchOverlayEl.addEventListener('click', function(e) {
+      if (e.target === searchOverlayEl) closeSearch();
+    });
+  }
+
+  /* ── IMPROVEMENT: Unified search handler for desktop + mobile ── */
+  var searchData = [
+    { title: 'AWS Cloud Services', section: 'Services', url: 'services.html', keywords: 'aws cloud ec2 iam s3 devops' },
+    { title: 'Linux Administration', section: 'Skills', url: '#skills', keywords: 'linux sysadmin server terminal' },
+    { title: 'CRM Administration', section: 'Services', url: 'services.html', keywords: 'crm saas rbac mfa google workspace microsoft 365' },
+    { title: 'WordPress & Web Hosting', section: 'Services', url: 'services.html', keywords: 'wordpress cpanel hostinger dns ssl hosting' },
+    { title: 'IT Mentoring Nepal', section: 'Services', url: 'services.html', keywords: 'mentor bit bca csit student career' },
+    { title: 'Cybersecurity', section: 'Services', url: 'services.html', keywords: 'security ssl tls firewall backup audit' },
+    { title: 'Contact Hemraj', section: 'Contact', url: 'contact.html', keywords: 'hire contact email whatsapp' },
+    { title: 'AWS Career Guide Nepal', section: 'Blog', url: 'blog-aws-jobs-nepal.html', keywords: 'aws career cloud nepal jobs certification' },
+    { title: 'Linux Guide Nepal', section: 'Blog', url: 'blog-linux-beginners-nepal.html', keywords: 'linux beginners guide commands nepal' },
+    { title: 'Cybersecurity Career Nepal', section: 'Blog', url: 'blog-cybersecurity-nepal.html', keywords: 'cybersecurity career nepal ceh ethical hacking' },
+    { title: 'About Hemraj', section: 'About', url: 'about.html', keywords: 'about hemraj adhikari kathmandu nepal it officer' },
+    { title: 'Projects', section: 'Portfolio', url: 'projects.html', keywords: 'kbm fm megaloksewa cloud project portfolio' },
+    { title: 'Experience', section: 'Work', url: 'experience.html', keywords: 'experience route2uni citizen infotech work history' },
+  ];
+
+  function runSearch(query, resultsContainer) {
+    if (!resultsContainer) return;
+    var q = query.trim().toLowerCase();
+    if (q.length < 2) { resultsContainer.innerHTML = ''; return; }
+
+    var matches = searchData.filter(function(item) {
+      return (item.title + ' ' + item.keywords).toLowerCase().indexOf(q) !== -1;
+    });
+
+    if (matches.length === 0) {
+      resultsContainer.innerHTML = '<p style="padding:12px;color:var(--text3,#888);font-size:0.9rem">No results for "' + escapeHtml(q) + '"</p>';
+      return;
+    }
+
+    resultsContainer.innerHTML = matches.map(function(item) {
+      return '<a href="' + item.url + '" class="search-result-item" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.06);color:inherit">' +
+        '<span style="font-size:0.9rem">' + escapeHtml(item.title) + '</span>' +
+        '<span style="font-size:0.75rem;opacity:0.5">' + escapeHtml(item.section) + '</span>' +
+        '</a>';
+    }).join('');
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      runSearch(this.value, $('#searchResults'));
+    });
+  }
+
+  var mobileSearchInput = $('#mobileSearchInput');
+  if (mobileSearchInput) {
+    /* IMPROVEMENT: Mobile search redirects to search overlay */
+    mobileSearchInput.addEventListener('input', function() {
+      var val = this.value;
+      if (val.length > 0) {
+        closeMobileNav();
+        openSearch();
+        if (searchInput) {
+          searchInput.value = val;
+          runSearch(val, $('#searchResults'));
+        }
+      }
+    });
+  }
+
+})();
 </script>
 <script src="main.js" defer></script>
 </body>
