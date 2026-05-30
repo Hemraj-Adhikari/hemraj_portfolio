@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   Hemraj Adhikari Portfolio — style.css v4.0
+   Hemraj Adhikari Portfolio — style.css v4.1
    Separated, optimized, production-ready
    ═══════════════════════════════════════════════════════ */
 
@@ -136,7 +136,7 @@ nav{
 }
 .mobile-nav.open{display:block}
 .mobile-nav a{
-  display:flex;align-items:center;padding:13px 0;color:var(--text2);
+  display:flex;align-items:center;padding:14px 0;color:var(--text2);
   text-decoration:none;font-size:15px;font-weight:400;min-height:44px;
   border-bottom:1px solid var(--border);transition:var(--t);
 }
@@ -270,6 +270,8 @@ h1.hero-name{
 .photo-ring-inner img{
   width:100%;height:100%;object-fit:cover;object-position:center top;display:block;
 }
+
+/* Orbit ring — icons positioned via wrapper, counter-spin on icon itself */
 .orbit-ring{
   position:absolute;inset:-22px;border-radius:50%;
   animation:orbitSpin 20s linear infinite;z-index:2;pointer-events:none;
@@ -283,10 +285,11 @@ h1.hero-name{
   animation:counterSpin 20s linear infinite;
 }
 @keyframes counterSpin{to{transform:rotate(-360deg)}}
-.orb-icon:nth-child(1){top:-19px;left:50%;transform:translateX(-50%)}
-.orb-icon:nth-child(2){right:-19px;top:50%;transform:translateY(-50%)}
-.orb-icon:nth-child(3){bottom:-19px;left:50%;transform:translateX(-50%)}
-.orb-icon:nth-child(4){left:-19px;top:50%;transform:translateY(-50%)}
+/* Desktop positions — use margin trick so counter-spin doesn't fight translate */
+.orb-icon:nth-child(1){top:0;left:50%;margin-left:-19px;margin-top:-19px}
+.orb-icon:nth-child(2){top:50%;right:0;margin-top:-19px;margin-right:-19px}
+.orb-icon:nth-child(3){bottom:0;left:50%;margin-left:-19px;margin-bottom:-19px}
+.orb-icon:nth-child(4){top:50%;left:0;margin-top:-19px;margin-left:-19px}
 
 .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
 .stat-card{
@@ -615,76 +618,119 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
 #btt.on{opacity:1;transform:none;pointer-events:auto}
 #btt:hover{color:var(--text);border-color:rgba(255,255,255,.12);transform:translateY(-2px)}
 
-/* ─── RESPONSIVE ─────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════ */
+
+/* ── 1024px ── */
 @media(max-width:1024px){
   .hero-grid{grid-template-columns:1fr;gap:40px}
   .hero-visual{order:-1}
-  .about-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:32px}
   .cards-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 }
+
+/* ── 860px ── */
 @media(max-width:860px){
-  .contact-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr;gap:28px}
   .footer-inner{grid-template-columns:1fr;gap:28px}
-  .footer-links{grid-template-columns:1fr 1fr}
+  .footer-links{grid-template-columns:1fr 1fr;gap:16px}
+  .skills-container{grid-template-columns:1fr;gap:32px}
 }
+
+/* ── 768px ── */
 @media(max-width:768px){
+  /* Nav */
   .nav-links,.nav-dl{display:none}
   .nav-toggle{display:flex}
-  .form-row{grid-template-columns:1fr}
+  .nav-inner{height:52px}
+  .logo{font-size:14px}
+
+  /* Hero */
   #hero{padding-top:70px;padding-bottom:30px}
   .hero-grid{gap:28px}
+
+  /* Photo */
   .photo-wrap{width:200px;height:200px}
   .orbit-ring{inset:-16px}
   .orb-icon{width:30px;height:30px;font-size:13px}
-  h1.hero-name{font-size:clamp(38px,10vw,60px);letter-spacing:-2px;margin-bottom:10px}
+  .orb-icon:nth-child(1){margin-left:-15px;margin-top:-15px}
+  .orb-icon:nth-child(2){margin-top:-15px;margin-right:-15px}
+  .orb-icon:nth-child(3){margin-left:-15px;margin-bottom:-15px}
+  .orb-icon:nth-child(4){margin-top:-15px;margin-left:-15px}
+
+  /* Stats */
+  .stats-grid{grid-template-columns:1fr 1fr;gap:6px;max-width:320px;margin:0 auto}
+  .stat-card{padding:10px 8px}
+  .stat-num{font-size:22px}
+
+  /* Text */
+  h1.hero-name{font-size:clamp(40px,11vw,60px);letter-spacing:-2px;margin-bottom:10px}
   .hero-desc{font-size:13.5px}
   .tag{font-size:9px;padding:2px 8px}
   .btn-primary,.btn-outline,.btn-wa{padding:10px 16px;font-size:13px}
   .social-btn{width:34px;height:34px}
-  .nav-inner{height:52px}
-  .logo{font-size:14px}
-  .stats-grid{max-width:320px;margin:0 auto}
+
+  /* Experience */
   .exp-trigger{padding:16px 18px}
   .exp-body{padding:0 18px}
   .exp-card.open .exp-body{padding:0 18px 18px}
   .exp-role{font-size:16px}
+  .exp-head{flex-direction:column;gap:6px;align-items:flex-start}
 }
+
+/* ── 640px ── */
 @media(max-width:640px){
   .cards-col{grid-template-columns:1fr}
   .proj-grid{grid-template-columns:1fr}
   .blog-grid{grid-template-columns:1fr}
+  .hl-card{padding:11px 12px;gap:10px}
+  .hl-card span{font-size:11px}
   h2.sec-title{font-size:clamp(24px,7vw,36px);margin-bottom:28px;letter-spacing:-1px}
 }
+
+/* ── 600px ── */
 @media(max-width:600px){
   section{padding:clamp(56px,8vw,90px) 0}
+  h2.sec-title{font-size:clamp(24px,7vw,38px);margin-bottom:28px}
   .exp-bullets li{font-size:12.5px}
+  .tech-icons{gap:7px}
+  .tech-ico{min-width:60px;padding:10px 10px;font-size:18px}
+  .tech-ico span{font-size:8px}
 }
+
+/* ── 520px ── */
 @media(max-width:520px){
   :root{--gutter:16px}
   .svc-grid{grid-template-columns:1fr}
+  .svc-card{padding:18px}
   .edu-grid{grid-template-columns:1fr}
+  .edu-card{padding:16px}
   .contact-form-panel{padding:18px 16px}
+  .form-row{grid-template-columns:1fr;gap:0}
   .c-item{padding:11px 12px}
   .wa-cta{padding:12px 14px;font-size:13px}
   .footer-inner{padding:28px var(--gutter) 20px}
 }
+
+/* ── 480px ── */
 @media(max-width:480px){
-  .footer-links{grid-template-columns:1fr}
+  .footer-links{grid-template-columns:1fr;gap:12px}
   .footer-bottom{flex-direction:column;gap:4px;align-items:flex-start}
 }
+
+/* ── 380px ── */
 @media(max-width:380px){
   :root{--gutter:14px}
-  h1.hero-name{font-size:34px;letter-spacing:-1.5px}
+  h1.hero-name{font-size:36px;letter-spacing:-1.5px}
   .photo-wrap{width:165px;height:165px}
   .orbit-ring{inset:-14px}
   .cta-row{flex-direction:column}
   .btn-primary,.btn-outline,.btn-wa{width:100%;justify-content:center}
-  h2.sec-title{font-size:24px;letter-spacing:-0.8px}
+  h2.sec-title{font-size:26px;letter-spacing:-0.8px}
   .scroll-hint{display:none}
   .stat-num{font-size:22px}
   .stat-label{font-size:8px}
-  .hl-card{padding:11px 12px;gap:10px}
-  .hl-card span{font-size:11px}
 }
 
 /* ─── REDUCED MOTION ─────────────────────────────────── */
@@ -692,145 +738,3 @@ footer{background:var(--bg2);border-top:1px solid var(--border);margin-top:20px}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   .reveal{opacity:1;transform:none}
 }
-
-/* =============================================
-   HEMRAJ PORTFOLIO — MOBILE RESPONSIVE FIXES
-   Paste this entire block just before </style>
-   in your HTML file (after the prefers-reduced-motion block)
-   ============================================= */
-
-/* Fix 1: Hero — stack properly on mobile */
-@media(max-width:768px){
-  #hero { padding-top: 70px; padding-bottom: 30px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 28px; }
-  .hero-visual { order: -1; }
-
-  .photo-wrap { width: 200px; height: 200px; }
-  .orb-icon { width: 30px; height: 30px; font-size: 13px; }
-  .orb-icon:nth-child(1){ top:-15px; left:50%; transform:translateX(-50%); }
-  .orb-icon:nth-child(2){ right:-15px; top:50%; transform:translateY(-50%); }
-  .orb-icon:nth-child(3){ bottom:-15px; left:50%; transform:translateX(-50%); }
-  .orb-icon:nth-child(4){ left:-15px; top:50%; transform:translateY(-50%); }
-  .orbit-ring { inset: -16px; }
-
-  .stats-grid { grid-template-columns: 1fr 1fr; gap: 6px; width: 100%; max-width: 320px; margin: 0 auto; }
-  .stat-card { padding: 10px 8px; }
-  .stat-num { font-size: 22px; }
-
-  h1.hero-name { font-size: clamp(40px, 11vw, 60px); letter-spacing: -2px; margin-bottom: 10px; }
-  .hero-desc { font-size: 13.5px; }
-  .tag-row { gap: 5px; }
-  .tag { font-size: 9px; padding: 2px 8px; }
-
-  .cta-row { gap: 8px; }
-  .btn-primary, .btn-outline, .btn-wa { padding: 10px 16px; font-size: 13px; }
-
-  .social-row { gap: 6px; }
-  .social-btn { width: 34px; height: 34px; }
-
-  .nav-inner { height: 52px; }
-  .logo { font-size: 14px; }
-}
-
-/* Fix 2: Very small screens (iPhone SE etc.) */
-@media(max-width:380px){
-  :root { --gutter: 14px; }
-  h1.hero-name { font-size: 36px; letter-spacing: -1.5px; }
-  .photo-wrap { width: 165px; height: 165px; }
-  .orbit-ring { inset: -14px; }
-  .cta-row { flex-direction: column; }
-  .btn-primary, .btn-outline, .btn-wa { width: 100%; justify-content: center; }
-  h2.sec-title { font-size: 26px; letter-spacing: -0.8px; }
-  .scroll-hint { display: none; }
-}
-
-/* Fix 3: Section padding on mobile */
-@media(max-width:600px){
-  section { padding: clamp(56px, 8vw, 90px) 0; }
-  h2.sec-title { font-size: clamp(24px, 7vw, 38px); margin-bottom: 28px; }
-}
-
-/* Fix 4: About section */
-@media(max-width:1024px){
-  .about-grid { grid-template-columns: 1fr; gap: 32px; }
-  .cards-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-}
-@media(max-width:640px){
-  .cards-col { grid-template-columns: 1fr; }
-  .hl-card { padding: 11px 12px; gap: 10px; }
-  .hl-card span { font-size: 11px; }
-}
-
-/* Fix 5: Skills */
-@media(max-width:860px){
-  .skills-container { grid-template-columns: 1fr; gap: 32px; }
-}
-@media(max-width:600px){
-  .tech-icons { gap: 7px; }
-  .tech-ico { min-width: 60px; padding: 10px 10px; font-size: 18px; }
-  .tech-ico span { font-size: 8px; }
-}
-
-/* Fix 6: Experience cards */
-@media(max-width:600px){
-  .exp-card { padding: 18px 16px; }
-  .exp-role { font-size: 16px; }
-  .exp-head { flex-direction: column; gap: 6px; align-items: flex-start; }
-  .exp-meta { gap: 6px; }
-  .exp-bullets li { font-size: 12.5px; }
-}
-
-/* Fix 7: Services — single column on small mobile */
-@media(max-width:520px){
-  .svc-grid { grid-template-columns: 1fr; }
-  .svc-card { padding: 18px; }
-}
-
-/* Fix 8: Projects — single column on small screens */
-@media(max-width:640px){
-  .proj-grid { grid-template-columns: 1fr; }
-}
-
-/* Fix 9: Education */
-@media(max-width:520px){
-  .edu-grid { grid-template-columns: 1fr; }
-  .edu-card { padding: 16px; }
-}
-
-/* Fix 10: Contact */
-@media(max-width:860px){
-  .contact-grid { grid-template-columns: 1fr; gap: 28px; }
-}
-@media(max-width:520px){
-  .contact-form-panel { padding: 18px 16px; }
-  .form-row { grid-template-columns: 1fr; gap: 0; }
-  .c-item { padding: 11px 12px; }
-  .wa-cta { padding: 12px 14px; font-size: 13px; }
-}
-
-/* Fix 11: Footer */
-@media(max-width:860px){
-  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
-  .footer-links { grid-template-columns: 1fr 1fr; gap: 16px; }
-}
-@media(max-width:480px){
-  .footer-links { grid-template-columns: 1fr; gap: 12px; }
-  .footer-inner { padding: 28px var(--gutter) 20px; }
-  .footer-bottom { flex-direction: column; gap: 4px; align-items: flex-start; }
-}
-
-/* Fix 12: Mobile nav touch targets */
-.mobile-nav a {
-  padding: 14px 0;
-  font-size: 15px;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-}
-
-/* Fix 13: Prevent horizontal overflow globally */
-body { overflow-x: hidden; }
-img, video, iframe, table { max-width: 100%; }
-.exp-meta { flex-wrap: wrap; }
-.hero-role { flex-wrap: wrap; }
-.exp-head { flex-wrap: wrap; }
