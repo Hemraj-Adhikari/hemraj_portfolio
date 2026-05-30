@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════
-   Hemraj Adhikari Portfolio — style.css v6.0
-   Fixed: Search overlay, nav dropdown, all missing CSS
+   Hemraj Adhikari Portfolio — style.css v6.1
+   Fixed: Footer SEO tags overflow/bleed onto hero
    ═══════════════════════════════════════════════════════ */
 
 /* ─── RESET ─────────────────────────────────────────── */
@@ -313,14 +313,12 @@ nav{
   gap:2px;
   z-index:200;
   box-shadow:0 16px 48px rgba(0,0,0,.6);
-  /* Triangle pointer */
 }
 .nav-dropdown-menu::before{
   content:'';
   position:absolute;
   top:-6px;
   left:50%;
-  transform:translateX(-50%);
   width:10px;
   height:10px;
   background:var(--bg2);
@@ -373,7 +371,6 @@ nav{
   align-items:flex-start;
   justify-content:center;
   padding:80px 20px 40px;
-  /* Hidden by default */
   opacity:0;
   pointer-events:none;
   transition:opacity .2s;
@@ -462,7 +459,6 @@ nav{
   padding:0 var(--gutter) 20px;
   max-height:calc(100svh - 58px);
   overflow-y:auto;
-  /* Hidden by default */
   display:none;
 }
 .mobile-nav.open{display:block}
@@ -1560,6 +1556,7 @@ a.c-item:hover{border-color:rgba(255,255,255,.1);transform:translateX(3px)}
 }
 
 /* ─── FOOTER ─────────────────────────────────────────── */
+/* FIX: overflow:hidden stops SEO tags bleeding outside footer bounds */
 footer{
   background:var(--bg2);
   border-top:1px solid var(--border);
@@ -1567,6 +1564,7 @@ footer{
   position:relative;
   z-index:2;
   isolation:isolate;
+  overflow:hidden; /* ← FIX: was missing, caused tags to bleed onto hero */
 }
 .footer-inner{
   max-width:var(--max);
@@ -1604,11 +1602,16 @@ footer{
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:7px;padding:0}
 .footer-col a{font-size:13px;color:var(--text3);text-decoration:none;transition:color var(--t)}
 .footer-col a:hover{color:var(--text2)}
+
+/* FIX: width+box-sizing ensures .footer-seo never exceeds footer width */
 .footer-seo{
   max-width:var(--max);
+  width:100%;           /* ← FIX */
+  box-sizing:border-box; /* ← FIX */
   margin:0 auto;
   padding:20px var(--gutter);
   border-top:1px solid var(--border);
+  overflow:hidden;      /* ← FIX: clips any tag that might still overflow */
 }
 .footer-seo-title{
   font-family:var(--font-mono);
@@ -1618,7 +1621,8 @@ footer{
   color:var(--text3);
   margin-bottom:10px;
 }
-.footer-seo-tags{display:flex;flex-wrap:wrap;gap:5px}
+/* FIX: width:100% ensures the flex row doesn't spill outside its container */
+.footer-seo-tags{display:flex;flex-wrap:wrap;gap:5px;width:100%;overflow:hidden;}
 .footer-seo-tags a{
   font-family:var(--font-mono);
   font-size:9.5px;
