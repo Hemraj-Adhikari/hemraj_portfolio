@@ -139,3 +139,28 @@ img, video, iframe, table { max-width: 100%; }
 .exp-meta { flex-wrap: wrap; }
 .hero-role { flex-wrap: wrap; }
 .exp-head { flex-wrap: wrap; }
+
+/* Fix 14: Mobile nav overlay smooth fade transition */
+.mobile-nav-overlay {
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+}
+.mobile-nav-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Fix 15: Mobile search input row — clickable full width */
+.mobile-search-row {
+  cursor: text;
+}
+.mobile-search-input {
+  width: 100%;
+  min-height: 44px;
+}
+
+/* Fix 16: Nav toggle aria label visual (screen reader only, no visual change) */
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; width: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
