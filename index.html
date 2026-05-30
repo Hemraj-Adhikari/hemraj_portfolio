@@ -121,8 +121,6 @@
   color: #d1d5db;
 }
 
-/* Override about-grid for 3-column: text | (empty) | photo
-   We use 2-col: text takes most space, photo is fixed width */
 @media (min-width: 1025px) {
   .about-grid {
     grid-template-columns: 1fr 300px !important;
@@ -137,6 +135,81 @@
   .about-photo-col {
     max-width: 320px;
     margin: 0 auto;
+  }
+}
+
+/* Experience section with photo layout */
+.exp-with-photo {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 28px;
+  align-items: start;
+}
+.exp-photo-sticky {
+  position: sticky;
+  top: 80px;
+}
+.exp-photo-frame {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+  aspect-ratio: 3/4;
+  background: rgba(255,255,255,0.03);
+  position: relative;
+}
+.exp-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.exp-photo-badge {
+  position: absolute;
+  bottom: 14px;
+  left: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.76);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.exp-photo-badge .badge-dot-green {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px #4ade80;
+  animation: pulse 2.5s infinite;
+}
+.exp-photo-badge strong {
+  color: #fff;
+  font-size: 12px;
+  display: block;
+  font-weight: 500;
+}
+.exp-photo-badge span {
+  font-size: 11px;
+  color: #d1d5db;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+@media (max-width: 900px) {
+  .exp-with-photo {
+    grid-template-columns: 1fr;
+  }
+  .exp-photo-sticky {
+    position: static;
+    max-width: 200px;
+    margin: 0 auto;
+    order: -1;
   }
 }
 </style>
@@ -343,58 +416,86 @@
 <section id="experience">
   <div class="eyebrow reveal"><span class="eyebrow-line"></span><span class="eyebrow-text">Work History</span></div>
   <h2 class="sec-title reveal">Professional <mark>Experience</mark></h2>
-  <div class="exp-list">
-    <article class="exp-card current reveal" id="exp1">
-      <button class="exp-trigger" aria-expanded="false" aria-controls="exp1-body" onclick="toggleExp('exp1')">
-        <div class="exp-trigger-left">
-          <div class="exp-head">
-            <div class="exp-role">IT Officer</div>
-            <span class="exp-badge">● Current</span>
+
+  <!-- Experience grid with photo -->
+  <div class="exp-with-photo">
+
+    <!-- LEFT: Experience cards -->
+    <div class="exp-list">
+      <article class="exp-card current reveal" id="exp1">
+        <button class="exp-trigger" aria-expanded="false" aria-controls="exp1-body" onclick="toggleExp('exp1')">
+          <div class="exp-trigger-left">
+            <div class="exp-head">
+              <div class="exp-role">IT Officer</div>
+              <span class="exp-badge">● Current</span>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-company"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Route 2 Uni International Group</span>
+              <span class="exp-sep">·</span><span class="exp-location">📍 Putalisadak, Kathmandu</span>
+              <span class="exp-sep">·</span><span class="exp-date">May 2026 – Present</span>
+            </div>
+            <span class="exp-hint">Click to expand details</span>
           </div>
-          <div class="exp-meta">
-            <span class="exp-company"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Route 2 Uni International Group</span>
-            <span class="exp-sep">·</span><span class="exp-location">📍 Putalisadak, Kathmandu</span>
-            <span class="exp-sep">·</span><span class="exp-date">May 2026 – Present</span>
-          </div>
-          <span class="exp-hint">Click to expand details</span>
+          <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="exp-body" id="exp1-body">
+          <ul class="exp-bullets">
+            <li>Administer cloud-based CRM and SaaS platforms for 50+ staff, enforcing RBAC, MFA, and data governance policies — maintaining 100% compliance with internal security standards.</li>
+            <li>Manage university partner portals and integration workflows, ensuring real-time data accuracy across 30+ partner institutions.</li>
+            <li>Built operational and student-progress reporting dashboards for leadership, cutting manual reporting overhead by 40%.</li>
+            <li>Coordinated IT workflows across student support, admissions, and infrastructure teams — reducing average ticket resolution time by 25%.</li>
+            <li>Provide L1/L2 technical support for all staff, maintaining a sub-2-hour SLA across a high-throughput consultancy environment.</li>
+          </ul>
         </div>
-        <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-      </button>
-      <div class="exp-body" id="exp1-body">
-        <ul class="exp-bullets">
-          <li>Administer cloud-based CRM and SaaS platforms for 50+ staff, enforcing RBAC, MFA, and data governance policies — maintaining 100% compliance with internal security standards.</li>
-          <li>Manage university partner portals and integration workflows, ensuring real-time data accuracy across 30+ partner institutions.</li>
-          <li>Built operational and student-progress reporting dashboards for leadership, cutting manual reporting overhead by 40%.</li>
-          <li>Coordinated IT workflows across student support, admissions, and infrastructure teams — reducing average ticket resolution time by 25%.</li>
-          <li>Provide L1/L2 technical support for all staff, maintaining a sub-2-hour SLA across a high-throughput consultancy environment.</li>
-        </ul>
-      </div>
-    </article>
-    <article class="exp-card reveal" id="exp2">
-      <button class="exp-trigger" aria-expanded="false" aria-controls="exp2-body" onclick="toggleExp('exp2')">
-        <div class="exp-trigger-left">
-          <div class="exp-head">
-            <div class="exp-role">IT Officer</div>
-            <span class="exp-badge past">Aug 2024–May 2026</span>
+      </article>
+
+      <article class="exp-card reveal" id="exp2">
+        <button class="exp-trigger" aria-expanded="false" aria-controls="exp2-body" onclick="toggleExp('exp2')">
+          <div class="exp-trigger-left">
+            <div class="exp-head">
+              <div class="exp-role">IT Officer</div>
+              <span class="exp-badge past">Aug 2024–May 2026</span>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-company"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Citizen Infotech</span>
+              <span class="exp-sep">·</span><span class="exp-location">📍 Mid Baneshwor, Kathmandu</span>
+            </div>
+            <span class="exp-hint">Click to expand details</span>
           </div>
-          <div class="exp-meta">
-            <span class="exp-company"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Citizen Infotech</span>
-            <span class="exp-sep">·</span><span class="exp-location">📍 Mid Baneshwor, Kathmandu</span>
-          </div>
-          <span class="exp-hint">Click to expand details</span>
+          <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="exp-body" id="exp2-body">
+          <ul class="exp-bullets">
+            <li>Owned full-lifecycle CRM administration for 50+ users — data entry standards, system integrity checks, and user access governance — reducing data discrepancies by 35%.</li>
+            <li>Enforced data verification and QA workflows, achieving full compliance with internal governance standards across all active records.</li>
+            <li>Automated operational and performance reporting for management, saving ~6 hours of manual effort per week.</li>
+            <li>Managed client and partner portals — ensuring content accuracy, access control, and consistent uptime for all stakeholders.</li>
+          </ul>
         </div>
-        <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-      </button>
-      <div class="exp-body" id="exp2-body">
-        <ul class="exp-bullets">
-          <li>Owned full-lifecycle CRM administration for 50+ users — data entry standards, system integrity checks, and user access governance — reducing data discrepancies by 35%.</li>
-          <li>Enforced data verification and QA workflows, achieving full compliance with internal governance standards across all active records.</li>
-          <li>Automated operational and performance reporting for management, saving ~6 hours of manual effort per week.</li>
-          <li>Managed client and partner portals — ensuring content accuracy, access control, and consistent uptime for all stakeholders.</li>
-        </ul>
+      </article>
+    </div>
+
+    <!-- RIGHT: Professional photo -->
+    <div class="exp-photo-sticky reveal">
+      <div class="exp-photo-frame">
+        <img
+          src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/lp-pic.jpg"
+          alt="Hemraj Adhikari — IT Officer and Cloud Infrastructure Specialist Kathmandu Nepal"
+          loading="lazy"
+          onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='<span style=\'font-size:64px\'>👨‍💻</span>'"
+        >
+        <div class="exp-photo-badge">
+          <div class="badge-dot-green"></div>
+          <div>
+            <strong>Hemraj Adhikari</strong>
+            <span>IT Officer · Kathmandu</span>
+          </div>
+        </div>
       </div>
-    </article>
-  </div>
+    </div>
+
+  </div><!-- end exp-with-photo -->
+
   <div style="text-align:center;margin-top:20px">
     <a href="experience.html" class="btn-outline">View Full Experience →</a>
   </div>
