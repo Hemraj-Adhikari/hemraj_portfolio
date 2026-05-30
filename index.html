@@ -75,11 +75,11 @@
         "https://www.instagram.com/hemraj.adhikary/",
         "https://www.upwork.com/freelancers/hemrajadhikari"
       ],
-      "knowsAbout": ["AWS Cloud", "Linux Administration", "CRM Administration", "Cybersecurity", "Google Workspace", "Microsoft 365", "WordPress", "Python", "DevOps", "Docker"],
+      "knowsAbout": ["AWS Cloud","Linux Administration","CRM Administration","Cybersecurity","Google Workspace","Microsoft 365","WordPress","Python","DevOps","Docker"],
       "alumniOf": {
         "@type": "CollegeOrUniversity",
         "name": "Bagmati Pradesh University",
-        "address": {"@type": "PostalAddress", "addressCountry": "NP"}
+        "address": {"@type": "PostalAddress","addressCountry": "NP"}
       }
     },
     {
@@ -109,1202 +109,22 @@
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#060811">
 
-<style>
-/* ════════════════════════════════════════
-   DESIGN TOKENS & RESET
-════════════════════════════════════════ */
-:root {
-  --bg:          #060811;
-  --bg2:         #0b0f1a;
-  --bg3:         #111622;
-  --surface:     #141926;
-  --surface2:    #1a2030;
-  --border:      rgba(255,255,255,0.07);
-  --border2:     rgba(255,255,255,0.12);
-
-  --text1:       #f2f5ff;
-  --text2:       #9aa3bc;
-  --text3:       #5a6278;
-
-  --accent:      #4f9cf9;
-  --accent2:     #8b72ff;
-  --accent3:     #2dd4a0;
-  --accent-glow: rgba(79,156,249,0.15);
-
-  --font-display: 'Syne', system-ui, sans-serif;
-  --font-mono:    'DM Mono', 'Courier New', monospace;
-
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-
-  --nav-h: 64px;
-  --max-w: 1160px;
-
-  --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-  -webkit-text-size-adjust: 100%;
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-body {
-  background: var(--bg);
-  color: var(--text2);
-  font-family: var(--font-display);
-  line-height: 1.65;
-  overflow-x: hidden;
-}
-
-img { display: block; max-width: 100%; color: transparent; }
-a { color: inherit; text-decoration: none; }
-button { cursor: pointer; font-family: inherit; background: none; border: none; }
-ul, ol { list-style: none; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-:focus:not(:focus-visible) { outline: none; }
-
-/* ════════════════════════════════════════
-   ACCESSIBILITY
-════════════════════════════════════════ */
-.sr-only {
-  position: absolute; width: 1px; height: 1px;
-  padding: 0; margin: -1px; overflow: hidden;
-  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-}
-.skip-nav {
-  position: absolute; top: -100%; left: 1rem; z-index: 9999;
-  padding: 0.5rem 1.2rem; background: var(--accent); color: #000;
-  font-weight: 700; border-radius: 0 0 8px 8px; transition: top 0.2s;
-}
-.skip-nav:focus { top: 0; }
-
-/* ════════════════════════════════════════
-   BACKGROUND TEXTURE
-════════════════════════════════════════ */
-.grid-bg {
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background-image:
-    linear-gradient(rgba(79,156,249,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79,156,249,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-.orb {
-  position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
-  filter: blur(100px);
-}
-.orb1 {
-  width: 600px; height: 600px;
-  top: -200px; left: -200px;
-  background: radial-gradient(circle, rgba(79,156,249,0.08) 0%, transparent 70%);
-}
-.orb2 {
-  width: 500px; height: 500px;
-  bottom: 20%; right: -150px;
-  background: radial-gradient(circle, rgba(139,114,255,0.07) 0%, transparent 70%);
-}
-.orb3 {
-  width: 400px; height: 400px;
-  top: 50%; left: 40%;
-  background: radial-gradient(circle, rgba(45,212,160,0.04) 0%, transparent 70%);
-}
-
-/* ════════════════════════════════════════
-   PROGRESS BAR
-════════════════════════════════════════ */
-#progress {
-  position: fixed; top: 0; left: 0; z-index: 9999;
-  height: 2px; width: 0;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  transition: width 0.1s linear;
-}
-
-/* ════════════════════════════════════════
-   NAVIGATION
-════════════════════════════════════════ */
-header {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-  height: var(--nav-h);
-  background: rgba(6,8,17,0.85);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border-bottom: 1px solid var(--border);
-  transition: background var(--transition), box-shadow var(--transition);
-}
-header.scrolled {
-  background: rgba(6,8,17,0.96);
-  box-shadow: 0 1px 0 var(--border2);
-}
-
-.nav-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 24px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-
-.logo {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text1);
-  letter-spacing: -0.3px;
-  white-space: nowrap;
-}
-.logo em { font-style: normal; color: var(--accent); }
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  margin-left: auto;
-}
-.nav-links a {
-  padding: 6px 12px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text2);
-  border-radius: var(--radius-sm);
-  transition: color var(--transition), background var(--transition);
-}
-.nav-links a:hover,
-.nav-links a[aria-current="page"] {
-  color: var(--text1);
-  background: rgba(255,255,255,0.06);
-}
-
-/* Dropdown */
-.nav-dropdown { position: relative; }
-.nav-dropdown-toggle {
-  display: flex; align-items: center; gap: 5px;
-  padding: 6px 12px;
-  font-size: 0.85rem; font-weight: 500;
-  color: var(--text2);
-  border-radius: var(--radius-sm);
-  transition: color var(--transition), background var(--transition);
-}
-.nav-dropdown-toggle:hover { color: var(--text1); background: rgba(255,255,255,0.06); }
-.nav-dropdown-toggle svg { transition: transform 0.2s; }
-.nav-dropdown.open .nav-dropdown-toggle svg { transform: rotate(180deg); }
-
-.nav-dropdown-menu {
-  position: absolute; top: calc(100% + 8px); right: 0;
-  min-width: 220px;
-  background: var(--bg3);
-  border: 1px solid var(--border2);
-  border-radius: var(--radius-md);
-  padding: 6px;
-  opacity: 0; pointer-events: none;
-  transform: translateY(-6px);
-  transition: opacity 0.15s, transform 0.15s;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-}
-.nav-dropdown.open .nav-dropdown-menu {
-  opacity: 1; pointer-events: auto; transform: translateY(0);
-}
-.nav-dropdown-menu a {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 9px 12px;
-  font-size: 0.84rem; color: var(--text2);
-  border-radius: var(--radius-sm);
-  transition: background var(--transition), color var(--transition);
-}
-.nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06); color: var(--text1); }
-.tag-sm {
-  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.04em;
-  padding: 2px 7px; border-radius: 20px;
-  background: rgba(79,156,249,0.12); color: var(--accent);
-}
-
-/* Nav actions */
-.nav-actions { display: flex; align-items: center; gap: 8px; margin-left: 8px; }
-.nav-search-btn, .nav-toggle {
-  display: flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px;
-  border-radius: var(--radius-sm);
-  color: var(--text2);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  transition: color var(--transition), border-color var(--transition), background var(--transition);
-}
-.nav-search-btn:hover, .nav-toggle:hover {
-  color: var(--text1); border-color: var(--border2); background: var(--surface2);
-}
-.nav-toggle { flex-direction: column; gap: 4px; }
-.nav-toggle span {
-  display: block; width: 16px; height: 1.5px;
-  background: currentColor; border-radius: 2px;
-  transition: transform 0.25s, opacity 0.25s, width 0.25s;
-}
-.nav-toggle.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
-.nav-toggle.open span:nth-child(2) { opacity: 0; width: 0; }
-.nav-toggle.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
-
-/* ════════════════════════════════════════
-   MOBILE NAV
-════════════════════════════════════════ */
-.mobile-nav-overlay {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,0.6); z-index: 498;
-  backdrop-filter: blur(4px);
-}
-.mobile-nav-overlay.active { display: block; }
-
-.mobile-nav {
-  position: fixed; top: var(--nav-h); right: 0; bottom: 0;
-  width: min(300px, 88vw);
-  background: var(--bg2);
-  border-left: 1px solid var(--border2);
-  z-index: 499;
-  overflow-y: auto;
-  transform: translateX(100%);
-  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
-  padding: 16px;
-}
-.mobile-nav.open { transform: translateX(0); }
-
-.mobile-search-row {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-md); padding: 9px 14px;
-  margin-bottom: 16px;
-  color: var(--text3);
-}
-.mobile-search-input {
-  flex: 1; background: none; border: none; outline: none;
-  color: var(--text1); font-size: 0.9rem; font-family: inherit;
-}
-.mobile-search-input::placeholder { color: var(--text3); }
-
-.mobile-nav-section { margin-bottom: 20px; }
-.mobile-nav-label {
-  display: block; font-size: 0.68rem; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--text3); margin-bottom: 8px; padding: 0 4px;
-}
-.mobile-nav-section a {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 12px; color: var(--text2); font-size: 0.9rem;
-  border-radius: var(--radius-sm);
-  transition: background var(--transition), color var(--transition);
-}
-.mobile-nav-section a:hover { background: rgba(255,255,255,0.05); color: var(--text1); }
-
-.mobile-dl-btn {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  width: 100%; padding: 11px;
-  background: var(--accent); color: #000;
-  border-radius: var(--radius-md); font-weight: 700;
-  font-size: 0.88rem; margin-top: 8px;
-  transition: opacity var(--transition);
-}
-.mobile-dl-btn:hover { opacity: 0.88; }
-
-/* ════════════════════════════════════════
-   SEARCH OVERLAY
-════════════════════════════════════════ */
-.search-overlay {
-  position: fixed; inset: 0; z-index: 600;
-  background: rgba(6,8,17,0.9); backdrop-filter: blur(16px);
-  display: flex; align-items: flex-start; justify-content: center;
-  padding-top: 100px;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.2s;
-}
-.search-overlay.open { opacity: 1; pointer-events: auto; }
-.search-overlay-inner {
-  width: min(600px, calc(100vw - 48px));
-  background: var(--bg3); border: 1px solid var(--border2);
-  border-radius: var(--radius-xl); padding: 24px;
-  box-shadow: 0 32px 64px rgba(0,0,0,0.5);
-}
-.search-overlay-label {
-  display: block; font-size: 0.7rem; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--text3); margin-bottom: 14px;
-}
-.search-box-wrap {
-  display: flex; align-items: center; gap: 12px;
-  background: var(--surface); border: 1px solid var(--border2);
-  border-radius: var(--radius-md); padding: 12px 16px;
-  color: var(--text3);
-}
-.search-box-input {
-  flex: 1; background: none; border: none; outline: none;
-  color: var(--text1); font-size: 1rem; font-family: inherit;
-}
-.search-box-input::placeholder { color: var(--text3); }
-.search-close-btn {
-  width: 28px; height: 28px; border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text3); border: 1px solid var(--border);
-  transition: color var(--transition), border-color var(--transition);
-}
-.search-close-btn:hover { color: var(--text1); border-color: var(--border2); }
-.search-results { margin-top: 12px; }
-.search-result-item {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 11px 14px; border-radius: var(--radius-sm);
-  color: var(--text2); font-size: 0.9rem;
-  transition: background var(--transition), color var(--transition);
-  border-bottom: 1px solid var(--border);
-}
-.search-result-item:hover { background: rgba(255,255,255,0.04); color: var(--text1); }
-.search-result-item:last-child { border-bottom: none; }
-.search-result-section { font-size: 0.72rem; color: var(--text3); }
-
-/* ════════════════════════════════════════
-   TOAST
-════════════════════════════════════════ */
-#toast {
-  position: fixed; bottom: 1.5rem; left: 50%;
-  transform: translateX(-50%) translateY(140%);
-  background: var(--bg3); color: var(--text1);
-  padding: 9px 20px; border-radius: 40px;
-  font-size: 0.84rem; z-index: 9999;
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-  pointer-events: none; white-space: nowrap;
-  border: 1px solid var(--border2);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-}
-#toast.show { transform: translateX(-50%) translateY(0); }
-
-/* ════════════════════════════════════════
-   PAGE & SECTIONS
-════════════════════════════════════════ */
-.page { position: relative; z-index: 1; }
-main { padding-top: var(--nav-h); }
-
-section {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 80px 24px;
-}
-
-/* Reveal animation */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* Eyebrow */
-.eyebrow {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 12px;
-}
-.eyebrow-line {
-  display: block; width: 28px; height: 1.5px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-}
-.eyebrow-text {
-  font-family: var(--font-mono); font-size: 0.72rem;
-  font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--accent);
-}
-
-/* Section title */
-.sec-title {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 800; color: var(--text1);
-  line-height: 1.15; margin-bottom: 40px;
-  letter-spacing: -0.02em;
-}
-.sec-title mark {
-  background: none;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  background-image: linear-gradient(135deg, var(--accent), var(--accent2));
-}
-
-/* Buttons */
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 11px 22px;
-  background: var(--accent); color: #000;
-  border-radius: var(--radius-md); font-weight: 700;
-  font-size: 0.88rem; font-family: inherit;
-  transition: opacity var(--transition), transform var(--transition);
-  border: none; cursor: pointer;
-}
-.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-
-.btn-outline {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 22px;
-  border: 1px solid var(--border2); color: var(--text2);
-  border-radius: var(--radius-md); font-weight: 600;
-  font-size: 0.88rem; font-family: inherit;
-  transition: color var(--transition), border-color var(--transition), background var(--transition);
-}
-.btn-outline:hover { color: var(--text1); border-color: var(--accent); background: rgba(79,156,249,0.06); }
-
-.btn-wa {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 20px;
-  border: 1px solid rgba(37,211,102,0.35);
-  color: #25d366; border-radius: var(--radius-md);
-  font-weight: 600; font-size: 0.88rem; font-family: inherit;
-  background: rgba(37,211,102,0.05);
-  transition: background var(--transition), border-color var(--transition);
-}
-.btn-wa:hover { background: rgba(37,211,102,0.1); border-color: rgba(37,211,102,0.5); }
-
-/* ════════════════════════════════════════
-   HERO
-════════════════════════════════════════ */
-#hero {
-  min-height: calc(100vh - var(--nav-h));
-  display: flex; align-items: center;
-  padding-top: 0; padding-bottom: 80px;
-}
-.hero-grid {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 60px;
-  align-items: center;
-}
-
-.avail-banner {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: rgba(45,212,160,0.07); border: 1px solid rgba(45,212,160,0.2);
-  border-radius: 30px; padding: 7px 16px;
-  font-size: 0.8rem; color: var(--accent3);
-  margin-bottom: 20px;
-}
-.dot-live {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--accent3);
-  box-shadow: 0 0 0 3px rgba(45,212,160,0.2);
-  animation: live-pulse 2s ease-in-out infinite;
-  flex-shrink: 0;
-}
-@keyframes live-pulse {
-  0%,100% { box-shadow: 0 0 0 3px rgba(45,212,160,0.2); }
-  50% { box-shadow: 0 0 0 6px rgba(45,212,160,0.05); }
-}
-
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(79,156,249,0.08); border: 1px solid rgba(79,156,249,0.2);
-  border-radius: 6px; padding: 5px 12px;
-  font-family: var(--font-mono); font-size: 0.75rem;
-  color: var(--accent); margin-bottom: 20px;
-}
-.badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
-
-.hero-name {
-  font-size: clamp(2.8rem, 6vw, 4.5rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  margin-bottom: 16px;
-}
-.name-line { display: block; color: var(--text1); }
-.name-accent {
-  display: block;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text; background-clip: text;
-  background-image: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-}
-
-.hero-role {
-  display: flex; align-items: center; gap: 10px;
-  font-family: var(--font-mono); font-size: 0.92rem;
-  color: var(--text2); margin-bottom: 20px;
-  height: 24px;
-}
-.role-sep { color: var(--accent); font-weight: 700; }
-.role-typed { color: var(--text1); }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-.role-cursor { color: var(--accent); animation: blink 1s step-end infinite; }
-
-.hero-desc {
-  font-size: 0.97rem; line-height: 1.75;
-  color: var(--text2); max-width: 560px;
-  margin-bottom: 28px;
-}
-.hero-desc strong { color: var(--text1); font-weight: 600; }
-
-/* Tag row */
-.tag-row {
-  display: flex; flex-wrap: wrap; gap: 7px;
-  margin-bottom: 28px;
-}
-.tag {
-  padding: 5px 13px; border-radius: 20px;
-  font-size: 0.78rem; font-weight: 500;
-  background: var(--surface2); border: 1px solid var(--border);
-  color: var(--text2);
-  transition: border-color var(--transition), color var(--transition);
-}
-.tag:hover { border-color: var(--border2); color: var(--text1); }
-.tag.blue  { background: rgba(79,156,249,0.08); border-color: rgba(79,156,249,0.2); color: #82b8fb; }
-.tag.purple{ background: rgba(139,114,255,0.08); border-color: rgba(139,114,255,0.2); color: #b49aff; }
-.tag.green { background: rgba(45,212,160,0.08); border-color: rgba(45,212,160,0.2); color: #5ddfc2; }
-
-/* CTA row */
-.cta-row {
-  display: flex; flex-wrap: wrap; gap: 10px;
-  margin-bottom: 28px;
-}
-
-/* Social row */
-.social-row {
-  display: flex; flex-wrap: wrap; gap: 7px;
-  align-items: center;
-}
-.social-btn {
-  display: flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px;
-  border-radius: var(--radius-sm);
-  color: var(--text2); border: 1px solid var(--border);
-  background: var(--surface);
-  transition: color var(--transition), border-color var(--transition), background var(--transition);
-}
-.social-btn:hover { color: var(--text1); border-color: var(--border2); background: var(--surface2); }
-
-/* Hero visual */
-.hero-visual {
-  display: flex; flex-direction: column; align-items: center; gap: 24px;
-}
-.photo-wrap {
-  position: relative; display: flex; align-items: center; justify-content: center;
-}
-.photo-ring-outer {
-  position: absolute; inset: -20px;
-  border-radius: 50%; border: 1px solid var(--border);
-  animation: rotate-slow 20s linear infinite;
-}
-@keyframes rotate-slow { to { transform: rotate(360deg); } }
-.photo-ring-inner {
-  width: 220px; height: 220px; border-radius: 50%;
-  overflow: hidden; border: 2px solid var(--border2);
-  background: var(--surface);
-  position: relative; z-index: 1;
-}
-.photo-ring-inner img {
-  width: 100%; height: 100%; object-fit: cover;
-}
-.orbit-ring {
-  position: absolute; inset: -40px; border-radius: 50%;
-  animation: rotate-slow 12s linear infinite reverse;
-}
-.orb-icon {
-  position: absolute; font-size: 1.1rem;
-  width: 36px; height: 36px;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--surface2); border: 1px solid var(--border2);
-  border-radius: var(--radius-sm);
-}
-.orb-icon:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
-.orb-icon:nth-child(2) { top: 50%; right: -4px; transform: translateY(-50%); }
-.orb-icon:nth-child(3) { bottom: 0; left: 50%; transform: translateX(-50%); }
-.orb-icon:nth-child(4) { top: 50%; left: -4px; transform: translateY(-50%); }
-
-/* Stats */
-.stats-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-  width: 100%;
-}
-.stat-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-md); padding: 14px 16px;
-  transition: border-color var(--transition);
-}
-.stat-card:hover { border-color: var(--border2); }
-.stat-label {
-  display: block; font-size: 0.7rem; font-weight: 500;
-  letter-spacing: 0.06em; color: var(--text3);
-  text-transform: uppercase; margin-bottom: 4px;
-}
-.stat-num {
-  font-size: 1.7rem; font-weight: 800; color: var(--text1);
-  line-height: 1; font-feature-settings: "tnum";
-}
-.stat-sup {
-  font-size: 0.9rem; font-weight: 600;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-left: 1px;
-}
-
-/* Scroll hint */
-.scroll-hint {
-  display: flex; align-items: center; gap: 7px;
-  font-family: var(--font-mono); font-size: 0.72rem;
-  color: var(--text3); letter-spacing: 0.08em;
-  transition: color var(--transition);
-  padding: 0 4px;
-}
-.scroll-hint:hover { color: var(--text2); }
-
-/* ════════════════════════════════════════
-   ABOUT
-════════════════════════════════════════ */
-.about-grid {
-  display: grid; grid-template-columns: 1fr 280px; gap: 60px;
-  align-items: start;
-}
-.about-text p {
-  color: var(--text2); line-height: 1.8; margin-bottom: 18px;
-  font-size: 0.97rem;
-}
-.about-text p strong { color: var(--text1); font-weight: 600; }
-
-.cert-strip {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin: 20px 0;
-}
-.cert-badge {
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 6px 13px; border-radius: var(--radius-sm);
-  background: var(--surface); border: 1px solid var(--border);
-  font-size: 0.78rem; color: var(--text2);
-  transition: border-color var(--transition), color var(--transition);
-}
-.cert-badge:hover { border-color: var(--accent); color: var(--text1); }
-.cert-badge svg { color: var(--accent); flex-shrink: 0; }
-
-.hl-cards { display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
-.hl-card {
-  display: flex; align-items: flex-start; gap: 14px;
-  padding: 14px 16px;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  transition: border-color var(--transition);
-}
-.hl-card:hover { border-color: var(--border2); }
-.hl-icon { font-size: 1.2rem; margin-top: 1px; flex-shrink: 0; }
-.hl-card div { display: flex; flex-direction: column; gap: 3px; }
-.hl-card strong { font-size: 0.9rem; font-weight: 600; color: var(--text1); }
-.hl-card span { font-size: 0.8rem; color: var(--text3); }
-
-.about-photo-col { position: relative; }
-.deco-ring {
-  position: absolute; top: -20px; right: -20px;
-  width: 120px; height: 120px; border-radius: 50%;
-  border: 1px dashed var(--border2); pointer-events: none;
-  animation: rotate-slow 20s linear infinite;
-}
-.about-photo-frame {
-  position: relative; border-radius: var(--radius-lg); overflow: hidden;
-  border: 1px solid var(--border);
-}
-.about-photo-frame img { width: 100%; display: block; }
-.about-photo-badge {
-  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-  display: flex; align-items: center; gap: 8px;
-  background: rgba(6,8,17,0.85); backdrop-filter: blur(8px);
-  border: 1px solid var(--border2); border-radius: var(--radius-md);
-  padding: 8px 14px; white-space: nowrap;
-}
-.badge-dot-green {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--accent3); flex-shrink: 0;
-}
-.about-photo-badge div { display: flex; flex-direction: column; }
-.about-photo-badge strong { font-size: 0.8rem; color: var(--text1); font-weight: 600; }
-.about-photo-badge span { font-size: 0.72rem; color: var(--text3); }
-
-/* ════════════════════════════════════════
-   SKILLS
-════════════════════════════════════════ */
-.skills-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px;
-}
-.skill-item {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-md); padding: 16px 18px;
-  transition: border-color var(--transition);
-}
-.skill-item:hover { border-color: var(--border2); }
-.skill-name { font-size: 0.9rem; font-weight: 600; color: var(--text1); margin-bottom: 3px; }
-.skill-level { font-size: 0.75rem; color: var(--text3); margin-bottom: 10px; font-family: var(--font-mono); }
-.skill-bar {
-  height: 4px; background: var(--bg3); border-radius: 4px; overflow: hidden;
-}
-.skill-fill {
-  height: 100%; border-radius: 4px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  transform-origin: left;
-  transform: scaleX(0);
-  transition: transform 1s cubic-bezier(0.4,0,0.2,1);
-}
-.skill-item.visible .skill-fill { transform: scaleX(1); }
-
-/* ════════════════════════════════════════
-   EXPERIENCE
-════════════════════════════════════════ */
-.exp-with-photo { display: grid; grid-template-columns: 1fr 200px; gap: 40px; align-items: start; }
-.exp-list { display: flex; flex-direction: column; gap: 12px; }
-
-.exp-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); overflow: hidden;
-  transition: border-color var(--transition);
-}
-.exp-card:hover { border-color: var(--border2); }
-.exp-card.current { border-color: rgba(45,212,160,0.25); }
-.exp-card.current:hover { border-color: rgba(45,212,160,0.45); }
-
-.exp-trigger {
-  display: flex; align-items: flex-start; justify-content: space-between;
-  gap: 16px; padding: 20px; width: 100%; text-align: left;
-  transition: background var(--transition);
-}
-.exp-trigger:hover { background: rgba(255,255,255,0.02); }
-.exp-trigger-left { flex: 1; min-width: 0; }
-
-.exp-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-.exp-role { font-size: 1rem; font-weight: 700; color: var(--text1); }
-.exp-badge {
-  font-size: 0.7rem; font-weight: 600; padding: 2px 9px;
-  border-radius: 20px; white-space: nowrap;
-  background: rgba(45,212,160,0.1); color: var(--accent3);
-  border: 1px solid rgba(45,212,160,0.2);
-}
-.exp-badge.past {
-  background: rgba(255,255,255,0.05); color: var(--text3);
-  border-color: var(--border);
-}
-
-.exp-meta {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
-  font-size: 0.8rem; color: var(--text3); margin-bottom: 6px;
-}
-.exp-company { display: flex; align-items: center; gap: 5px; color: var(--text2); }
-.exp-sep { color: var(--border2); }
-.exp-hint {
-  font-family: var(--font-mono); font-size: 0.7rem;
-  color: var(--text3); letter-spacing: 0.04em;
-}
-.exp-chevron { color: var(--text3); flex-shrink: 0; transition: transform 0.2s; padding-top: 4px; }
-.exp-card.open .exp-chevron { transform: rotate(180deg); }
-
-.exp-body {
-  padding: 0 20px 20px;
-  border-top: 1px solid var(--border);
-}
-.exp-body[hidden] { display: none; }
-.exp-bullets {
-  padding-left: 18px; list-style: disc;
-  margin-top: 14px;
-}
-.exp-bullets li {
-  font-size: 0.88rem; color: var(--text2); line-height: 1.7;
-  margin-bottom: 8px;
-  list-style: disc;
-}
-.exp-bullets li::marker { color: var(--accent); }
-
-.exp-photo-sticky { position: sticky; top: calc(var(--nav-h) + 24px); }
-.exp-photo-frame { position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); }
-.exp-photo-frame img { width: 100%; display: block; }
-.exp-photo-badge {
-  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
-  display: flex; align-items: center; gap: 8px;
-  background: rgba(6,8,17,0.9); backdrop-filter: blur(8px);
-  border: 1px solid var(--border2); border-radius: var(--radius-md);
-  padding: 7px 12px; white-space: nowrap;
-}
-.exp-photo-badge div { display: flex; flex-direction: column; }
-.exp-photo-badge strong { font-size: 0.75rem; color: var(--text1); font-weight: 600; }
-.exp-photo-badge span { font-size: 0.68rem; color: var(--text3); }
-
-/* ════════════════════════════════════════
-   SERVICES
-════════════════════════════════════════ */
-.svc-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 16px;
-}
-.svc-card {
-  position: relative;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 24px;
-  overflow: hidden;
-  transition: border-color var(--transition), transform var(--transition);
-}
-.svc-card:hover { border-color: var(--border2); transform: translateY(-2px); }
-.svc-card::before {
-  content: ''; position: absolute;
-  top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  opacity: 0; transition: opacity var(--transition);
-}
-.svc-card:hover::before { opacity: 1; }
-
-.svc-ico {
-  width: 44px; height: 44px;
-  background: rgba(79,156,249,0.08); border: 1px solid rgba(79,156,249,0.15);
-  border-radius: var(--radius-md);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--accent); margin-bottom: 14px;
-}
-.svc-num {
-  position: absolute; top: 20px; right: 20px;
-  font-family: var(--font-mono); font-size: 0.65rem;
-  color: var(--text3); letter-spacing: 0.05em;
-}
-.svc-card h3 { font-size: 1rem; font-weight: 700; color: var(--text1); margin-bottom: 10px; }
-.svc-card p { font-size: 0.88rem; color: var(--text2); line-height: 1.7; margin-bottom: 16px; }
-
-.svc-tags {
-  display: flex; flex-wrap: wrap; gap: 6px;
-}
-.svc-tags li {
-  padding: 3px 10px; border-radius: 20px;
-  font-size: 0.72rem; font-weight: 500;
-  background: var(--bg3); border: 1px solid var(--border);
-  color: var(--text3);
-}
-
-/* ════════════════════════════════════════
-   PORTFOLIO
-════════════════════════════════════════ */
-.proj-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 16px;
-}
-.proj-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); overflow: hidden;
-  display: flex; flex-direction: column;
-  transition: border-color var(--transition), transform var(--transition);
-}
-.proj-card:hover { border-color: var(--border2); transform: translateY(-2px); }
-.proj-thumb {
-  height: 100px; display: flex; align-items: center; justify-content: center;
-  font-size: 2.5rem;
-  background: linear-gradient(135deg, var(--surface2), var(--bg3));
-  border-bottom: 1px solid var(--border);
-}
-.proj-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
-.proj-meta { display: flex; align-items: center; justify-content: space-between; }
-.proj-type {
-  font-size: 0.72rem; font-weight: 600; color: var(--accent);
-  font-family: var(--font-mono);
-}
-.proj-year { font-size: 0.72rem; color: var(--text3); font-family: var(--font-mono); }
-.proj-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--text1); line-height: 1.4; }
-.proj-card p { font-size: 0.84rem; color: var(--text2); line-height: 1.65; flex: 1; }
-.proj-tech {
-  display: flex; flex-wrap: wrap; gap: 6px;
-}
-.proj-tech span {
-  padding: 3px 9px; border-radius: 20px;
-  font-size: 0.71rem; background: var(--bg3);
-  border: 1px solid var(--border); color: var(--text3);
-}
-.proj-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 0.82rem; font-weight: 600; color: var(--accent);
-  transition: gap var(--transition);
-}
-.proj-link:hover { gap: 9px; }
-.proj-done {
-  font-size: 0.78rem; font-weight: 600; color: var(--accent3);
-  font-family: var(--font-mono);
-}
-
-/* ════════════════════════════════════════
-   BLOG
-════════════════════════════════════════ */
-.blog-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px; margin-bottom: 28px;
-}
-.blog-card {
-  display: flex; flex-direction: column;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); overflow: hidden;
-  transition: border-color var(--transition), transform var(--transition);
-}
-.blog-card:hover { border-color: var(--border2); transform: translateY(-2px); }
-.blog-thumb {
-  height: 80px; display: flex; align-items: center; justify-content: center;
-  font-size: 2rem;
-  background: linear-gradient(135deg, var(--surface2), var(--bg3));
-  border-bottom: 1px solid var(--border);
-}
-.blog-body { padding: 18px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
-.blog-meta { display: flex; align-items: center; gap: 10px; }
-.blog-cat {
-  font-size: 0.7rem; font-weight: 600; color: var(--accent);
-  font-family: var(--font-mono);
-}
-.blog-date { font-size: 0.7rem; color: var(--text3); }
-.blog-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--text1); line-height: 1.4; }
-.blog-card p { font-size: 0.83rem; color: var(--text2); line-height: 1.65; flex: 1; }
-.blog-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-.blog-tags span {
-  padding: 2px 8px; border-radius: 20px; font-size: 0.68rem;
-  background: var(--bg3); border: 1px solid var(--border); color: var(--text3);
-}
-.blog-read { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
-
-.blog-cta-bar {
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 16px;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 20px 24px;
-}
-.blog-cta-bar p { font-size: 0.9rem; color: var(--text2); }
-.blog-cta-bar strong { color: var(--text1); }
-
-/* ════════════════════════════════════════
-   FAQ
-════════════════════════════════════════ */
-.faq-grid { display: flex; flex-direction: column; gap: 8px; }
-.faq-item {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-md); overflow: hidden;
-  transition: border-color var(--transition);
-}
-.faq-item.open { border-color: var(--border2); }
-
-.faq-question {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 16px; padding: 18px 20px;
-  width: 100%; text-align: left;
-  font-size: 0.92rem; font-weight: 600; color: var(--text1);
-  transition: background var(--transition);
-}
-.faq-question:hover { background: rgba(255,255,255,0.02); }
-.faq-question svg { flex-shrink: 0; color: var(--text3); transition: transform 0.2s; }
-.faq-item.open .faq-question svg { transform: rotate(180deg); }
-
-.faq-answer { padding: 0 20px 18px; border-top: 1px solid var(--border); }
-.faq-answer[hidden] { display: none; }
-.faq-answer p {
-  font-size: 0.88rem; color: var(--text2); line-height: 1.75;
-  padding-top: 14px;
-}
-.faq-answer a { color: var(--accent); }
-.faq-answer a:hover { text-decoration: underline; }
-
-/* ════════════════════════════════════════
-   CONTACT
-════════════════════════════════════════ */
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.contact-intro {
-  font-size: 0.97rem; color: var(--text2); line-height: 1.8;
-  margin-bottom: 24px;
-}
-.contact-items { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
-.c-item {
-  display: flex; align-items: flex-start; gap: 14px;
-  padding: 14px 16px;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  transition: border-color var(--transition);
-}
-.c-item:hover { border-color: var(--border2); }
-.c-icon {
-  width: 36px; height: 36px; border-radius: var(--radius-sm);
-  background: rgba(79,156,249,0.08); border: 1px solid rgba(79,156,249,0.15);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--accent); flex-shrink: 0;
-}
-.c-label { display: block; font-size: 0.72rem; color: var(--text3); margin-bottom: 2px; }
-.c-val { display: block; font-size: 0.88rem; font-weight: 600; color: var(--text1); }
-
-.wa-cta {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 13px 24px;
-  background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.25);
-  border-radius: var(--radius-md); color: #25d366; font-weight: 700;
-  font-size: 0.92rem;
-  transition: background var(--transition), border-color var(--transition);
-}
-.wa-cta:hover { background: rgba(37,211,102,0.14); border-color: rgba(37,211,102,0.4); }
-
-.contact-form-panel {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); height: 100%;
-  display: flex; align-items: center; justify-content: center;
-}
-
-.hire-cta-bar {
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 20px;
-  background: linear-gradient(135deg, rgba(79,156,249,0.06) 0%, rgba(139,114,255,0.06) 100%);
-  border: 1px solid rgba(79,156,249,0.2);
-  border-radius: var(--radius-xl); padding: 28px 32px;
-  margin-top: 32px;
-}
-.hire-cta-text h3 { font-size: 1.1rem; font-weight: 700; color: var(--text1); margin-bottom: 4px; }
-.hire-cta-text p { font-size: 0.88rem; color: var(--text2); }
-.hire-cta-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-
-/* ════════════════════════════════════════
-   FOOTER
-════════════════════════════════════════ */
-.ft {
-  background: var(--bg2); border-top: 1px solid var(--border);
-  position: relative; z-index: 1;
-}
-.ft-accent-bar {
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 50%, transparent 100%);
-  opacity: 0.4;
-}
-.ft-main {
-  max-width: var(--max-w); margin: 0 auto;
-  padding: 56px 24px 40px;
-  display: grid; grid-template-columns: 300px 1fr 1fr 1fr; gap: 48px 40px;
-}
-.ft-logo {
-  display: inline-block; font-size: 1.05rem; font-weight: 700;
-  color: var(--text1); letter-spacing: -0.3px; margin-bottom: 14px;
-  text-decoration: none;
-}
-.ft-logo em { font-style: normal; color: var(--accent); }
-.ft-tagline { font-size: 0.82rem; line-height: 1.65; color: var(--text2); margin-bottom: 18px; }
-.ft-avail {
-  display: inline-flex; align-items: center; gap: 7px;
-  background: rgba(45,212,160,0.07); border: 1px solid rgba(45,212,160,0.18);
-  border-radius: 30px; padding: 5px 12px;
-  font-size: 0.76rem; color: var(--accent3); font-weight: 500; margin-bottom: 20px;
-}
-.ft-avail-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--accent3); animation: live-pulse 2s ease-in-out infinite;
-}
-.ft-social { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
-.ft-social a {
-  display: flex; align-items: center; justify-content: center;
-  width: 34px; height: 34px; border-radius: var(--radius-sm);
-  border: 1px solid var(--border); background: var(--surface);
-  color: var(--text2); transition: border-color var(--transition), color var(--transition), background var(--transition);
-}
-.ft-social a:hover { border-color: var(--accent); color: var(--accent); background: rgba(79,156,249,0.06); }
-.ft-col-title {
-  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--text1); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
-}
-.ft-nav-list { display: flex; flex-direction: column; gap: 10px; }
-.ft-nav-list a {
-  font-size: 0.855rem; color: var(--text2); display: flex; align-items: center; gap: 7px;
-  transition: color var(--transition);
-}
-.ft-nav-list a:hover { color: var(--text1); }
-.ft-nav-list a svg { flex-shrink: 0; opacity: 0.4; transition: opacity var(--transition); }
-.ft-nav-list a:hover svg { opacity: 1; }
-.ft-badge {
-  display: inline-block; font-size: 0.65rem; font-weight: 600;
-  padding: 1px 6px; border-radius: 4px;
-  background: rgba(139,114,255,0.1); color: var(--accent2);
-  border: 1px solid rgba(139,114,255,0.2);
-}
-.ft-contact-strip {
-  max-width: var(--max-w); margin: 0 auto;
-  padding: 24px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
-  border-top: 1px solid var(--border);
-}
-.ft-contact-item {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 0.82rem; color: var(--text2); text-decoration: none;
-  transition: color var(--transition);
-}
-.ft-contact-item:hover { color: var(--text1); }
-.ft-contact-item svg { color: var(--accent); opacity: 0.7; flex-shrink: 0; }
-.ft-contact-divider { width: 1px; height: 16px; background: var(--border); flex-shrink: 0; }
-.ft-bottom {
-  border-top: 1px solid var(--border);
-  max-width: var(--max-w); margin: 0 auto;
-  padding: 20px 24px; display: flex;
-  align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-}
-.ft-copy { font-size: 0.8rem; color: var(--text3); }
-.ft-copy strong { color: var(--text2); font-weight: 500; }
-.ft-bottom-links { display: flex; align-items: center; gap: 20px; }
-.ft-bottom-links a { font-size: 0.8rem; color: var(--text3); transition: color var(--transition); }
-.ft-bottom-links a:hover { color: var(--text2); }
-.ft-made { font-size: 0.8rem; color: var(--text3); display: flex; align-items: center; gap: 5px; }
-.ft-heart { color: #f87171; }
-
-/* Back to top */
-#btt {
-  position: fixed; bottom: 24px; right: 24px; z-index: 100;
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--surface2); border: 1px solid var(--border2);
-  color: var(--text2); display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none;
-  transition: opacity var(--transition), transform var(--transition), color var(--transition);
-}
-#btt.on { opacity: 1; pointer-events: auto; }
-#btt:hover { color: var(--text1); transform: translateY(-2px); }
-
-/* ════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════ */
-@media (max-width: 960px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
-  .about-grid { grid-template-columns: 1fr; }
-  .about-photo-col { display: none; }
-  .exp-with-photo { grid-template-columns: 1fr; }
-  .exp-photo-sticky { display: none; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .ft-main { grid-template-columns: 1fr 1fr; }
-  .ft-brand { grid-column: 1 / -1; }
-  .nav-links { display: none; }
-}
-@media (max-width: 600px) {
-  section { padding: 60px 20px; }
-  .skills-grid { grid-template-columns: 1fr; }
-  .svc-grid { grid-template-columns: 1fr; }
-  .proj-grid { grid-template-columns: 1fr; }
-  .blog-grid { grid-template-columns: 1fr; }
-  .cta-row { gap: 8px; }
-  .hire-cta-bar { flex-direction: column; align-items: flex-start; }
-  .ft-main { grid-template-columns: 1fr; padding: 40px 20px 28px; }
-  .ft-contact-strip { flex-direction: column; align-items: flex-start; padding: 20px; }
-  .ft-contact-divider { display: none; }
-  .ft-bottom { flex-direction: column; align-items: flex-start; padding: 16px 20px; }
-  .blog-cta-bar { flex-direction: column; }
-  #btt { right: 16px; bottom: 16px; }
-}
-
-/* ════════════════════════════════════════
-   PRINT
-════════════════════════════════════════ */
-@media print {
-  .nav-actions, .mobile-nav, #btt, .search-overlay,
-  .orb, .grid-bg, #progress, header, .skip-nav { display: none !important; }
-  body { background: white; color: black; font-size: 12pt; }
-  a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: gray; }
-  .hero-visual, .about-photo-col, .exp-photo-sticky { display: none; }
-  section { padding: 20pt; page-break-inside: avoid; }
-}
-</style>
+<!-- ═══ STYLESHEETS ═══ -->
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/mobile.css">
 </head>
 
 <body>
+<!-- Skip navigation for accessibility -->
 <a class="skip-nav" href="#main-content">Skip to main content</a>
-<div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true"></div>
+
+<!-- Background decorations (aria-hidden) -->
 <div class="grid-bg" aria-hidden="true"></div>
 <div class="orb orb1" aria-hidden="true"></div>
 <div class="orb orb2" aria-hidden="true"></div>
 <div class="orb orb3" aria-hidden="true"></div>
 
+<!-- Scroll progress indicator -->
 <div id="progress"
      role="progressbar"
      aria-label="Page scroll progress"
@@ -1314,7 +134,7 @@ section {
      aria-valuetext="0% scrolled"></div>
 
 <!-- ═══ SEARCH OVERLAY ═══ -->
-<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchDialogTitle">
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchDialogTitle" aria-hidden="true">
   <div class="search-overlay-inner">
     <span class="search-overlay-label" id="searchDialogTitle">Search Portfolio</span>
     <div class="search-box-wrap">
@@ -1328,60 +148,64 @@ section {
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-    <div class="search-results" id="searchResults" aria-live="polite" aria-atomic="true"></div>
+    <div class="search-results" id="searchResults" role="listbox" aria-live="polite" aria-atomic="true"></div>
   </div>
 </div>
 
 <!-- ═══ NAVIGATION ═══ -->
 <header id="site-header">
-  <nav aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="/" class="logo" aria-label="Hemraj Adhikari — Home"><em>hemraj</em>.adhikari</a>
-      <ul class="nav-links" role="list">
-        <li><a href="/" aria-current="page">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="experience.html">Experience</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li class="nav-dropdown">
-          <button class="nav-dropdown-toggle" type="button" id="studentsDropdownBtn"
-                  aria-haspopup="true" aria-expanded="false" aria-controls="studentsDropdownMenu">
-            Students
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="nav-dropdown-menu" id="studentsDropdownMenu" role="menu">
-            <a href="bit-mentor.html" role="menuitem">🎓 BIT Nepal <span class="tag-sm">Guide</span></a>
-            <a href="csit-mentor.html" role="menuitem">💻 BSc CSIT <span class="tag-sm">Guide</span></a>
-            <a href="bca-mentor.html" role="menuitem">📚 BCA Nepal <span class="tag-sm">Guide</span></a>
-            <a href="services.html" role="menuitem">🤖 AI Learner</a>
-          </div>
-        </li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="nav-search-btn" id="searchToggle" aria-label="Open search"
-                aria-expanded="false" aria-controls="searchOverlay" type="button">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  <nav class="nav-inner" aria-label="Main navigation">
+    <a href="/" class="logo" aria-label="Hemraj Adhikari — Home"><em>hemraj</em>.adhikari</a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="/" aria-current="page">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-toggle" type="button" id="studentsDropdownBtn"
+                aria-haspopup="true" aria-expanded="false" aria-controls="studentsDropdownMenu">
+          Students
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu"
-                aria-expanded="false" aria-controls="mobileNav" type="button">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button>
-      </div>
+        <div class="nav-dropdown-menu" id="studentsDropdownMenu" role="menu">
+          <a href="bit-mentor.html" role="menuitem">🎓 BIT Nepal <span class="tag-sm">Guide</span></a>
+          <a href="csit-mentor.html" role="menuitem">💻 BSc CSIT <span class="tag-sm">Guide</span></a>
+          <a href="bca-mentor.html" role="menuitem">📚 BCA Nepal <span class="tag-sm">Guide</span></a>
+          <a href="services.html" role="menuitem">🤖 AI Learner</a>
+        </div>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="nav-search-btn" id="searchToggle"
+              aria-label="Open search" aria-expanded="false" aria-controls="searchOverlay" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle"
+              aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav" type="button">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
     </div>
   </nav>
 </header>
 
+<!-- Mobile nav overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true"></div>
+
 <!-- ═══ MOBILE NAV ═══ -->
-<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true" tabindex="-1">
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
   <div class="mobile-search-row">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     <input class="mobile-search-input" type="search" placeholder="Search…"
            aria-label="Search site" id="mobileSearchInput" autocomplete="off">
   </div>
+
   <div class="mobile-nav-section">
     <span class="mobile-nav-label">Navigation</span>
     <a href="/">Home <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
@@ -1392,6 +216,7 @@ section {
     <a href="blog.html">Blog <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
     <a href="contact.html">Contact <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
   </div>
+
   <div class="mobile-nav-section">
     <span class="mobile-nav-label">🎓 Students Nepal</span>
     <a href="bit-mentor.html">BIT Nepal — Mentor &amp; Career Guide</a>
@@ -1399,6 +224,7 @@ section {
     <a href="bca-mentor.html">BCA Nepal — Mentor &amp; Career Guide</a>
     <a href="services.html">AI Learner Mentoring</a>
   </div>
+
   <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy"
      class="mobile-dl-btn" rel="noopener noreferrer" target="_blank"
      aria-label="Download Hemraj Adhikari CV PDF (opens in new tab)">
@@ -1407,6 +233,7 @@ section {
   </a>
 </nav>
 
+<!-- Toast notification -->
 <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
 <div class="page">
@@ -1415,11 +242,13 @@ section {
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section id="hero" aria-labelledby="hero-heading">
   <div class="hero-grid reveal">
+
+    <!-- Hero Content -->
     <div class="hero-content">
-      <div class="avail-banner" role="status" aria-live="polite">
-        <div class="dot-live" aria-hidden="true"></div>
+      <p class="avail-banner" role="status" aria-live="polite">
+        <span class="dot-live" aria-hidden="true"></span>
         <span><strong>Available for hire</strong> · Kathmandu, Nepal · Remote worldwide · Responds within 24 hrs</span>
-      </div>
+      </p>
 
       <div class="hero-badge">
         <span class="badge-dot" aria-hidden="true"></span>
@@ -1500,18 +329,18 @@ section {
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </a>
       </div>
-    </div>
+    </div><!-- /hero-content -->
 
     <!-- Hero Visual -->
-    <div class="hero-visual">
+    <div class="hero-visual" aria-hidden="true">
       <div class="photo-wrap">
-        <div class="photo-ring-outer" aria-hidden="true"></div>
+        <div class="photo-ring-outer"></div>
         <div class="photo-ring-inner">
           <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/Hem-pic.png"
                alt="Hemraj Adhikari, IT Officer and Cloud Infrastructure Specialist from Kathmandu, Nepal"
                width="220" height="220" loading="eager" fetchpriority="high" decoding="async" id="heroImg">
         </div>
-        <div class="orbit-ring" aria-hidden="true">
+        <div class="orbit-ring">
           <div class="orb-icon" title="AWS Cloud">☁️</div>
           <div class="orb-icon" title="Python">🐍</div>
           <div class="orb-icon" title="Linux">🐧</div>
@@ -1519,36 +348,38 @@ section {
         </div>
       </div>
 
-      <dl class="stats-grid" aria-label="Key statistics">
+      <dl class="stats-grid" aria-label="Key statistics" aria-hidden="false">
         <div class="stat-card">
           <dt class="stat-label">Websites</dt>
-          <dd><span class="stat-num" data-count="50">0</span><span class="stat-sup" aria-hidden="true">+</span></dd>
+          <dd><span class="stat-num" data-count="50">0</span><span class="stat-sup">+</span></dd>
         </div>
         <div class="stat-card">
           <dt class="stat-label">Yrs Exp</dt>
-          <dd><span class="stat-num" data-count="3">0</span><span class="stat-sup" aria-hidden="true">.5+</span></dd>
+          <dd><span class="stat-num" data-count="3">0</span><span class="stat-sup">.5+</span></dd>
         </div>
         <div class="stat-card">
           <dt class="stat-label">Uptime SLA</dt>
-          <dd><span class="stat-num" data-count="99">0</span><span class="stat-sup" aria-hidden="true">%</span></dd>
+          <dd><span class="stat-num" data-count="99">0</span><span class="stat-sup">%</span></dd>
         </div>
         <div class="stat-card">
           <dt class="stat-label">Users Served</dt>
-          <dd><span class="stat-num" data-count="100">0</span><span class="stat-sup" aria-hidden="true">+</span></dd>
+          <dd><span class="stat-num" data-count="100">0</span><span class="stat-sup">+</span></dd>
         </div>
       </dl>
 
       <a href="#about" class="scroll-hint" aria-label="Scroll down to About section">
         <span aria-hidden="true">↓</span>&nbsp;scroll
       </a>
-    </div>
-  </div>
+    </div><!-- /hero-visual -->
+
+  </div><!-- /hero-grid -->
 </section>
 
 <!-- ═══════════════════ ABOUT ═══════════════════ -->
 <section id="about" aria-labelledby="about-heading">
   <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">About Me</span></div>
   <h2 class="sec-title reveal" id="about-heading">Nepal IT Expert &amp; <mark>Student Mentor</mark></h2>
+
   <div class="about-grid">
     <div class="about-text reveal">
       <p>I am <strong>Hemraj Adhikari</strong>, an <strong>IT Officer and Cloud Infrastructure Specialist</strong> from <strong>Kathmandu, Nepal</strong>. Currently serving at <strong>Route 2 Uni International Group</strong>, I have built expertise across cloud platforms, SaaS administration, system administration, networking, and cybersecurity over more than three years of professional work.</p>
@@ -1556,10 +387,22 @@ section {
       <p>Beyond professional work, I am a passionate <strong>mentor for BIT, BCA, BSc CSIT, Computer Engineering students, AI learners, and digital marketing learners</strong> across Nepal and India — providing real-world guidance grounded in hands-on experience.</p>
 
       <div class="cert-strip" aria-label="Professional certifications">
-        <div class="cert-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Linux Admin Certified</div>
-        <div class="cert-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Google Workspace Admin</div>
-        <div class="cert-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Microsoft 365 Admin</div>
-        <div class="cert-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>AWS CCP (In Progress)</div>
+        <div class="cert-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          Linux Admin Certified
+        </div>
+        <div class="cert-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          Google Workspace Admin
+        </div>
+        <div class="cert-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Microsoft 365 Admin
+        </div>
+        <div class="cert-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          AWS CCP (In Progress)
+        </div>
       </div>
 
       <ul class="hl-cards" aria-label="Key highlights" role="list">
@@ -1569,7 +412,7 @@ section {
         <li class="hl-card"><span class="hl-icon" aria-hidden="true">🌐</span><div><strong>Global Freelancer — 50+ Websites Deployed</strong><span>AWS EC2 · cPanel · Hostinger · DNS · SSL/TLS · WordPress Security</span></div></li>
       </ul>
 
-      <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:16px">
+      <div class="about-actions">
         <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy"
            class="btn-primary" rel="noopener noreferrer" target="_blank"
            aria-label="Download CV PDF (opens in new tab)">
@@ -1579,7 +422,7 @@ section {
         <a href="contact.html" class="btn-outline">Let's Talk</a>
         <a href="about.html" class="btn-outline">Full About →</a>
       </div>
-    </div>
+    </div><!-- /about-text -->
 
     <div class="about-photo-col reveal">
       <div class="deco-ring" aria-hidden="true"></div>
@@ -1601,8 +444,8 @@ section {
           <div><strong>IT &amp; Cloud Specialist</strong><span>Bagmati Pradesh · Nepal</span></div>
         </div>
       </div>
-    </div>
-  </div>
+    </div><!-- /about-photo-col -->
+  </div><!-- /about-grid -->
 </section>
 
 <!-- ═══════════════════ SKILLS ═══════════════════ -->
@@ -1610,18 +453,90 @@ section {
   <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Tech Stack</span></div>
   <h2 class="sec-title reveal" id="skills-heading">Technical <mark>Skills &amp; Tools</mark></h2>
   <div class="skills-grid reveal">
-    <div class="skill-item"><div class="skill-name">AWS Cloud (EC2, IAM, S3)</div><div class="skill-level">Advanced · 3+ years</div><div class="skill-bar" role="progressbar" aria-label="AWS Cloud skill level" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><div class="skill-fill" style="--w:82%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">Linux Administration</div><div class="skill-level">Advanced · Certified</div><div class="skill-bar" role="progressbar" aria-label="Linux Administration skill level" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-fill" style="--w:88%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">Google Workspace Admin</div><div class="skill-level">Expert · Certified</div><div class="skill-bar" role="progressbar" aria-label="Google Workspace skill level" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><div class="skill-fill" style="--w:92%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">Microsoft 365 Admin</div><div class="skill-level">Expert · Certified</div><div class="skill-bar" role="progressbar" aria-label="Microsoft 365 skill level" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><div class="skill-fill" style="--w:90%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">CRM Administration</div><div class="skill-level">Expert · 3+ years</div><div class="skill-bar" role="progressbar" aria-label="CRM Administration skill level" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"><div class="skill-fill" style="--w:94%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">WordPress &amp; cPanel</div><div class="skill-level">Expert · 50+ sites</div><div class="skill-bar" role="progressbar" aria-label="WordPress and cPanel skill level" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100"><div class="skill-fill" style="--w:93%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">Cybersecurity &amp; SSL/TLS</div><div class="skill-level">Intermediate–Advanced</div><div class="skill-bar" role="progressbar" aria-label="Cybersecurity skill level" aria-valuenow="79" aria-valuemin="0" aria-valuemax="100"><div class="skill-fill" style="--w:79%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">Python Scripting</div><div class="skill-level">Intermediate</div><div class="skill-bar" role="progressbar" aria-label="Python Scripting skill level" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"><div class="skill-fill" style="--w:72%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">Networking &amp; DNS</div><div class="skill-level">Advanced</div><div class="skill-bar" role="progressbar" aria-label="Networking and DNS skill level" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100"><div class="skill-fill" style="--w:83%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">DevOps &amp; Docker</div><div class="skill-level">Intermediate</div><div class="skill-bar" role="progressbar" aria-label="DevOps and Docker skill level" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><div class="skill-fill" style="--w:68%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">GitHub Actions / CI/CD</div><div class="skill-level">Intermediate</div><div class="skill-bar" role="progressbar" aria-label="GitHub Actions CI/CD skill level" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><div class="skill-fill" style="--w:70%"></div></div></div>
-    <div class="skill-item"><div class="skill-name">IT Helpdesk L1/L2</div><div class="skill-level">Expert · sub-2hr SLA</div><div class="skill-bar" role="progressbar" aria-label="IT Helpdesk skill level" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100"><div class="skill-fill" style="--w:96%"></div></div></div>
+    <div class="skill-item">
+      <div class="skill-name">AWS Cloud (EC2, IAM, S3)</div>
+      <div class="skill-level">Advanced · 3+ years</div>
+      <div class="skill-bar" role="progressbar" aria-label="AWS Cloud skill level: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" data-width="82"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">Linux Administration</div>
+      <div class="skill-level">Advanced · Certified</div>
+      <div class="skill-bar" role="progressbar" aria-label="Linux Administration skill level: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" data-width="88"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">Google Workspace Admin</div>
+      <div class="skill-level">Expert · Certified</div>
+      <div class="skill-bar" role="progressbar" aria-label="Google Workspace skill level: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" data-width="92"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">Microsoft 365 Admin</div>
+      <div class="skill-level">Expert · Certified</div>
+      <div class="skill-bar" role="progressbar" aria-label="Microsoft 365 skill level: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" data-width="90"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">CRM Administration</div>
+      <div class="skill-level">Expert · 3+ years</div>
+      <div class="skill-bar" role="progressbar" aria-label="CRM Administration skill level: 94%" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" data-width="94"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">WordPress &amp; cPanel</div>
+      <div class="skill-level">Expert · 50+ sites</div>
+      <div class="skill-bar" role="progressbar" aria-label="WordPress and cPanel skill level: 93%" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" data-width="93"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">Cybersecurity &amp; SSL/TLS</div>
+      <div class="skill-level">Intermediate–Advanced</div>
+      <div class="skill-bar" role="progressbar" aria-label="Cybersecurity skill level: 79%" aria-valuenow="79" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" data-width="79"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">Python Scripting</div>
+      <div class="skill-level">Intermediate</div>
+      <div class="skill-bar" role="progressbar" aria-label="Python Scripting skill level: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" data-width="72"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">Networking &amp; DNS</div>
+      <div class="skill-level">Advanced</div>
+      <div class="skill-bar" role="progressbar" aria-label="Networking and DNS skill level: 83%" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" data-width="83"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">DevOps &amp; Docker</div>
+      <div class="skill-level">Intermediate</div>
+      <div class="skill-bar" role="progressbar" aria-label="DevOps and Docker skill level: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" data-width="68"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">GitHub Actions / CI/CD</div>
+      <div class="skill-level">Intermediate</div>
+      <div class="skill-bar" role="progressbar" aria-label="GitHub Actions CI/CD skill level: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" data-width="70"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-name">IT Helpdesk L1/L2</div>
+      <div class="skill-level">Expert · sub-2hr SLA</div>
+      <div class="skill-bar" role="progressbar" aria-label="IT Helpdesk skill level: 96%" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100">
+        <div class="skill-fill" data-width="96"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1629,8 +544,10 @@ section {
 <section id="experience" aria-labelledby="exp-heading">
   <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Work History</span></div>
   <h2 class="sec-title reveal" id="exp-heading">Professional <mark>Experience</mark></h2>
+
   <div class="exp-with-photo">
     <div class="exp-list">
+      <!-- Experience Card 1 -->
       <article class="exp-card current reveal" id="exp1">
         <button class="exp-trigger" type="button" aria-expanded="false" aria-controls="exp1-body">
           <div class="exp-trigger-left">
@@ -1639,7 +556,10 @@ section {
               <span class="exp-badge">● Current</span>
             </div>
             <div class="exp-meta">
-              <span class="exp-company"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Route 2 Uni International Group</span>
+              <span class="exp-company">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                Route 2 Uni International Group
+              </span>
               <span class="exp-sep" aria-hidden="true">·</span>
               <span class="exp-location">📍 Putalisadak, Kathmandu</span>
               <span class="exp-sep" aria-hidden="true">·</span>
@@ -1647,9 +567,11 @@ section {
             </div>
             <span class="exp-hint">Expand for details</span>
           </div>
-          <div class="exp-chevron" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" focusable="false"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="exp-chevron" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
         </button>
-        <div class="exp-body" id="exp1-body" hidden>
+        <div class="exp-body" id="exp1-body">
           <ul class="exp-bullets">
             <li>Administer cloud-based CRM and SaaS platforms for 50+ staff, enforcing RBAC, MFA, and data governance policies — maintaining 100% compliance with internal security standards.</li>
             <li>Manage university partner portals and integration workflows, ensuring real-time data accuracy across 30+ partner institutions.</li>
@@ -1660,6 +582,7 @@ section {
         </div>
       </article>
 
+      <!-- Experience Card 2 -->
       <article class="exp-card reveal" id="exp2">
         <button class="exp-trigger" type="button" aria-expanded="false" aria-controls="exp2-body">
           <div class="exp-trigger-left">
@@ -1668,15 +591,20 @@ section {
               <span class="exp-badge past"><time datetime="2024-08">Aug 2024</time>–<time datetime="2026-05">May 2026</time></span>
             </div>
             <div class="exp-meta">
-              <span class="exp-company"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Citizen Infotech</span>
+              <span class="exp-company">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                Citizen Infotech
+              </span>
               <span class="exp-sep" aria-hidden="true">·</span>
               <span class="exp-location">📍 Mid Baneshwor, Kathmandu</span>
             </div>
             <span class="exp-hint">Expand for details</span>
           </div>
-          <div class="exp-chevron" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" focusable="false"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="exp-chevron" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
         </button>
-        <div class="exp-body" id="exp2-body" hidden>
+        <div class="exp-body" id="exp2-body">
           <ul class="exp-bullets">
             <li>Owned full-lifecycle CRM administration for 50+ users — data entry standards, system integrity checks, and user access governance — reducing data discrepancies by 35%.</li>
             <li>Enforced data verification and QA workflows, achieving full compliance with internal governance standards across all active records.</li>
@@ -1685,8 +613,9 @@ section {
           </ul>
         </div>
       </article>
-    </div>
+    </div><!-- /exp-list -->
 
+    <!-- Experience photo sidebar -->
     <div class="exp-photo-sticky reveal">
       <div class="exp-photo-frame">
         <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/exp-pic.jpg"
@@ -1698,8 +627,9 @@ section {
         </div>
       </div>
     </div>
-  </div>
-  <div style="text-align:center;margin-top:24px">
+  </div><!-- /exp-with-photo -->
+
+  <div class="section-cta">
     <a href="experience.html" class="btn-outline">View Full Experience →</a>
   </div>
 </section>
@@ -1752,7 +682,7 @@ section {
       <ul class="svc-tags" aria-label="Related services" role="list"><li>Remote Support</li><li>L1/L2</li><li>Monitoring</li><li>SLA</li></ul>
     </article>
   </div>
-  <div style="text-align:center;margin-top:24px"><a href="services.html" class="btn-outline">All Services →</a></div>
+  <div class="section-cta"><a href="services.html" class="btn-outline">All Services →</a></div>
 </section>
 
 <!-- ═══════════════════ PORTFOLIO ═══════════════════ -->
@@ -1767,7 +697,10 @@ section {
         <h3>KBM FM — Radio Streaming Platform</h3>
         <p>Live radio streaming platform with real-time audio broadcasting, program scheduling, and audience engagement for Nepal listeners. Built and deployed on cloud infrastructure.</p>
         <div class="proj-tech"><span>PHP</span><span>MySQL</span><span>Streaming API</span><span>AWS</span></div>
-        <a href="https://kbmfm.com/" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View KBM FM live (opens in new tab)">View Live <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        <a href="https://kbmfm.com/" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View KBM FM live (opens in new tab)">
+          View Live
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
       </div>
     </article>
     <article class="proj-card reveal">
@@ -1777,7 +710,10 @@ section {
         <h3>Mega Loksewa — Exam Prep Platform</h3>
         <p>Full-scale Nepal government exam preparation platform — mock tests, live classes, LMS, and student dashboards for Loksewa aspirants nationwide.</p>
         <div class="proj-tech"><span>Laravel</span><span>MySQL</span><span>LMS</span><span>cPanel</span></div>
-        <a href="https://www.megaloksewa.com/" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View Mega Loksewa live (opens in new tab)">View Live <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        <a href="https://www.megaloksewa.com/" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View Mega Loksewa live (opens in new tab)">
+          View Live
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
       </div>
     </article>
     <article class="proj-card reveal">
@@ -1791,7 +727,7 @@ section {
       </div>
     </article>
   </div>
-  <div style="text-align:center;margin-top:24px"><a href="projects.html" class="btn-outline">All Projects →</a></div>
+  <div class="section-cta"><a href="projects.html" class="btn-outline">All Projects →</a></div>
 </section>
 
 <!-- ═══════════════════ BLOG ═══════════════════ -->
@@ -1842,28 +778,58 @@ section {
   <h2 class="sec-title reveal" id="faq-heading">Frequently Asked <mark>Questions</mark></h2>
   <div class="faq-grid reveal">
     <div class="faq-item">
-      <button class="faq-question" type="button" aria-expanded="false">What IT services does Hemraj Adhikari offer?<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="faq-answer" hidden><p>AWS cloud infrastructure setup, Google Workspace &amp; Microsoft 365 administration, Linux system administration, CRM management, WordPress hosting and security, cybersecurity auditing, SSL/TLS management, and IT helpdesk support — available worldwide from Kathmandu, Nepal.</p></div>
+      <button class="faq-question" type="button" aria-expanded="false">
+        What IT services does Hemraj Adhikari offer?
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p>AWS cloud infrastructure setup, Google Workspace &amp; Microsoft 365 administration, Linux system administration, CRM management, WordPress hosting and security, cybersecurity auditing, SSL/TLS management, and IT helpdesk support — available worldwide from Kathmandu, Nepal.</p>
+      </div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" type="button" aria-expanded="false">Can Hemraj work with international clients outside Nepal?<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="faq-answer" hidden><p>Yes. Hemraj is fully available for remote freelance projects worldwide via Upwork, email, and WhatsApp. He accepts international payments through Wise, PayPal, and Payoneer, and responds within 24 hours.</p></div>
+      <button class="faq-question" type="button" aria-expanded="false">
+        Can Hemraj work with international clients outside Nepal?
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p>Yes. Hemraj is fully available for remote freelance projects worldwide via Upwork, email, and WhatsApp. He accepts international payments through Wise, PayPal, and Payoneer, and responds within 24 hours.</p>
+      </div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" type="button" aria-expanded="false">Does Hemraj mentor BIT, BCA, and BSc CSIT students?<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="faq-answer" hidden><p>Yes. Hemraj provides career guidance, final-year project assistance, and technical mentoring for BIT, BCA, BSc CSIT, Computer Engineering, AI learners, and digital marketing students across Nepal and India.</p></div>
+      <button class="faq-question" type="button" aria-expanded="false">
+        Does Hemraj mentor BIT, BCA, and BSc CSIT students?
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p>Yes. Hemraj provides career guidance, final-year project assistance, and technical mentoring for BIT, BCA, BSc CSIT, Computer Engineering, AI learners, and digital marketing students across Nepal and India.</p>
+      </div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" type="button" aria-expanded="false">What AWS cloud services does Hemraj specialise in?<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="faq-answer" hidden><p>Hemraj specialises in AWS EC2, IAM, S3, VPC, CloudWatch, and automated CI/CD pipelines. He is currently pursuing the AWS Cloud Practitioner certification.</p></div>
+      <button class="faq-question" type="button" aria-expanded="false">
+        What AWS cloud services does Hemraj specialise in?
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p>Hemraj specialises in AWS EC2, IAM, S3, VPC, CloudWatch, and automated CI/CD pipelines. He is currently pursuing the AWS Cloud Practitioner certification.</p>
+      </div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" type="button" aria-expanded="false">How can I hire Hemraj for IT support or a freelance project?<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="faq-answer" hidden><p>Via the <a href="contact.html">contact page</a>, emailing <a href="mailto:hemrajhadhikari@gmail.com">hemrajhadhikari@gmail.com</a>, WhatsApp at <a href="https://wa.me/9779865802093" target="_blank" rel="noopener noreferrer">+977-9865802093</a>, or <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer">Upwork</a>.</p></div>
+      <button class="faq-question" type="button" aria-expanded="false">
+        How can I hire Hemraj for IT support or a freelance project?
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p>Via the <a href="contact.html">contact page</a>, emailing <a href="mailto:hemrajhadhikari@gmail.com">hemrajhadhikari@gmail.com</a>, WhatsApp at <a href="https://wa.me/9779865802093" target="_blank" rel="noopener noreferrer">+977-9865802093</a>, or <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer">Upwork</a>.</p>
+      </div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" type="button" aria-expanded="false">What is Hemraj's hourly rate or freelance pricing?<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="faq-answer" hidden><p>Pricing varies by project scope. Hemraj offers competitive rates for Nepal-based and international clients. Contact via the <a href="contact.html">contact page</a> or WhatsApp to discuss requirements and get a custom quote.</p></div>
+      <button class="faq-question" type="button" aria-expanded="false">
+        What is Hemraj's hourly rate or freelance pricing?
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p>Pricing varies by project scope. Hemraj offers competitive rates for Nepal-based and international clients. Contact via the <a href="contact.html">contact page</a> or WhatsApp to discuss requirements and get a custom quote.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1900,19 +866,19 @@ section {
         Chat on WhatsApp
       </a>
     </div>
+
     <div class="reveal">
       <div class="contact-form-panel">
-        <div style="padding:32px;text-align:center">
-          <p style="font-size:0.97rem;color:var(--text2);margin-bottom:20px;line-height:1.7">Want to send a full message, request a service quote, or ask specific questions?</p>
-          <a href="contact.html" class="btn-primary" style="display:inline-flex;gap:8px;align-items:center">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Open Full Contact Page
-          </a>
-          <p style="font-size:0.78rem;color:var(--text3);margin-top:12px">Includes contact form, service selector, FAQ &amp; location map</p>
-        </div>
+        <p>Want to send a full message, request a service quote, or ask specific questions?</p>
+        <a href="contact.html" class="btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Open Full Contact Page
+        </a>
+        <p class="contact-form-note">Includes contact form, service selector, FAQ &amp; location map</p>
       </div>
     </div>
   </div>
+
   <div class="hire-cta-bar reveal">
     <div class="hire-cta-text">
       <h3>Ready to hire a reliable IT professional?</h3>
@@ -1925,76 +891,110 @@ section {
   </div>
 </section>
 
-</main>
+</main><!-- /main-content -->
 
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
-<footer class="ft" role="contentinfo">
-  <div class="ft-accent-bar"></div>
-  <div class="ft-main">
-    <div class="ft-brand">
-      <a href="/" class="ft-logo"><em>hemraj</em>.adhikari</a>
-      <p class="ft-tagline">IT Officer &amp; Cloud Infrastructure Specialist based in Kathmandu, Nepal. Available for freelance IT projects worldwide. Mentor for BIT, BCA &amp; BSc CSIT students.</p>
-      <div class="ft-avail"><div class="ft-avail-dot" aria-hidden="true"></div>Open to freelance &amp; consulting</div>
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-accent-bar" aria-hidden="true"></div>
+
+  <div class="footer-main">
+    <!-- Brand column -->
+    <div class="footer-brand">
+      <a href="/" class="footer-logo"><em>hemraj</em>.adhikari</a>
+      <p class="footer-tagline">IT Officer &amp; Cloud Infrastructure Specialist based in Kathmandu, Nepal. Available for freelance IT projects worldwide. Mentor for BIT, BCA &amp; BSc CSIT students.</p>
+      <div class="footer-avail">
+        <div class="footer-avail-dot" aria-hidden="true"></div>
+        Open to freelance &amp; consulting
+      </div>
       <nav aria-label="Social media links">
-        <div class="ft-social">
-          <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
-          <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-          <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" aria-label="Upwork"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg></a>
-          <a href="mailto:hemrajhadhikari@gmail.com" aria-label="Email"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
-          <a href="https://wa.me/9779865802093" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+        <div class="footer-social">
+          <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" aria-label="Upwork">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+          </a>
+          <a href="mailto:hemrajhadhikari@gmail.com" aria-label="Email">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+          <a href="https://wa.me/9779865802093" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
         </div>
       </nav>
-    </div>
-    <nav aria-label="Site pages">
-      <div class="ft-col-title">Pages</div>
-      <ul class="ft-nav-list" role="list">
-        <li><a href="/"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Home</a></li>
-        <li><a href="about.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>About</a></li>
-        <li><a href="experience.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Experience</a></li>
-        <li><a href="services.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Services</a></li>
-        <li><a href="projects.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Projects</a></li>
-        <li><a href="blog.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Blog</a></li>
-        <li><a href="contact.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Contact</a></li>
+    </div><!-- /footer-brand -->
+
+    <!-- Pages column -->
+    <nav aria-label="Site pages" class="footer-col">
+      <div class="footer-col-title">Pages</div>
+      <ul class="footer-nav-list" role="list">
+        <li><a href="/">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <nav aria-label="Services">
-      <div class="ft-col-title">Services</div>
-      <ul class="ft-nav-list" role="list">
-        <li><a href="services.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>AWS Cloud &amp; DevOps</a></li>
-        <li><a href="services.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>SaaS &amp; CRM Admin</a></li>
-        <li><a href="services.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>Linux SysAdmin</a></li>
-        <li><a href="services.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>Cybersecurity</a></li>
-        <li><a href="services.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>WordPress &amp; Hosting</a></li>
-        <li><a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Hire on Upwork</a></li>
+
+    <!-- Services column -->
+    <nav aria-label="Services" class="footer-col">
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-nav-list" role="list">
+        <li><a href="services.html">AWS Cloud &amp; DevOps</a></li>
+        <li><a href="services.html">SaaS &amp; CRM Admin</a></li>
+        <li><a href="services.html">Linux SysAdmin</a></li>
+        <li><a href="services.html">Cybersecurity</a></li>
+        <li><a href="services.html">WordPress &amp; Hosting</a></li>
+        <li><a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer">Hire on Upwork</a></li>
       </ul>
     </nav>
-    <nav aria-label="Student resources">
-      <div class="ft-col-title">Students Nepal</div>
-      <ul class="ft-nav-list" role="list">
-        <li><a href="bit-mentor.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>BIT Nepal Guide <span class="ft-badge">Mentor</span></a></li>
-        <li><a href="bca-mentor.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>BCA Nepal Guide <span class="ft-badge">Mentor</span></a></li>
-        <li><a href="csit-mentor.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>BSc CSIT Guide <span class="ft-badge">Mentor</span></a></li>
-        <li><a href="services.html"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>AI Learner Mentoring</a></li>
-        <li><a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" target="_blank" rel="noopener noreferrer"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download CV (PDF)</a></li>
+
+    <!-- Students column -->
+    <nav aria-label="Student resources" class="footer-col">
+      <div class="footer-col-title">Students Nepal</div>
+      <ul class="footer-nav-list" role="list">
+        <li><a href="bit-mentor.html">BIT Nepal Guide</a></li>
+        <li><a href="bca-mentor.html">BCA Nepal Guide</a></li>
+        <li><a href="csit-mentor.html">BSc CSIT Guide</a></li>
+        <li><a href="services.html">AI Learner Mentoring</a></li>
+        <li><a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" target="_blank" rel="noopener noreferrer">Download CV (PDF)</a></li>
       </ul>
     </nav>
+  </div><!-- /footer-main -->
+
+  <!-- Contact strip -->
+  <div class="footer-contact-strip">
+    <a href="mailto:hemrajhadhikari@gmail.com" class="footer-contact-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      hemrajhadhikari@gmail.com
+    </a>
+    <div class="footer-contact-divider" aria-hidden="true"></div>
+    <a href="tel:+9779865802093" class="footer-contact-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.11-1.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +977-9865802093
+    </a>
+    <div class="footer-contact-divider" aria-hidden="true"></div>
+    <span class="footer-contact-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Kathmandu, Nepal · Remote Worldwide
+    </span>
   </div>
-  <div class="ft-contact-strip">
-    <a href="mailto:hemrajhadhikari@gmail.com" class="ft-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>hemrajhadhikari@gmail.com</a>
-    <div class="ft-contact-divider" aria-hidden="true"></div>
-    <a href="tel:+9779865802093" class="ft-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.11-1.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+977-9865802093</a>
-    <div class="ft-contact-divider" aria-hidden="true"></div>
-    <span class="ft-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Kathmandu, Nepal · Remote Worldwide</span>
-  </div>
-  <div class="ft-bottom">
-    <p class="ft-copy">© <time id="ft-year"></time> <strong>Hemraj Adhikari</strong> · Kathmandu, Nepal</p>
-    <div class="ft-bottom-links">
+
+  <!-- Footer bottom -->
+  <div class="footer-bottom">
+    <p class="footer-copy">© <span id="ft-year"></span> <strong>Hemraj Adhikari</strong> · Kathmandu, Nepal</p>
+    <nav class="footer-bottom-links" aria-label="Footer links">
       <a href="/">Home</a>
       <a href="contact.html">Contact</a>
       <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer">Upwork</a>
       <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" target="_blank" rel="noopener noreferrer">Download CV</a>
-    </div>
-    <p class="ft-made">Made with <span class="ft-heart" aria-hidden="true">♥</span> for Digital Nepal</p>
+    </nav>
+    <p class="footer-made">Made with <span class="footer-heart" aria-hidden="true">♥</span> for Digital Nepal</p>
   </div>
 </footer>
 
@@ -2005,329 +1005,7 @@ section {
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
-<script>
-(function(){
-'use strict';
-
-/* ── Utility ── */
-var $  = function(s,c){ return (c||document).querySelector(s); };
-var $$ = function(s,c){ return Array.from((c||document).querySelectorAll(s)); };
-
-/* ── Footer year ── */
-var fy = $('#ft-year');
-if(fy){ var y=new Date().getFullYear(); fy.textContent=y; fy.setAttribute('datetime',y); }
-
-/* ── Toast ── */
-var toastEl = $('#toast'), toastTimer;
-function showToast(msg){
-  if(!toastEl) return;
-  toastEl.textContent = msg;
-  toastEl.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 2500);
-}
-
-/* ── Copy email ── */
-var copyBtn = $('#copyEmailBtn');
-if(copyBtn){
-  copyBtn.addEventListener('click', function(){
-    navigator.clipboard.writeText('hemrajhadhikari@gmail.com')
-      .then(function(){ showToast('Email copied!'); })
-      .catch(function(){ showToast('Could not copy'); });
-  });
-}
-
-/* ── Hero image fallback (no innerHTML injection) ── */
-var heroImg = $('#heroImg');
-if(heroImg){
-  heroImg.addEventListener('error', function(){
-    this.style.display='none';
-    var el = document.createElement('div');
-    el.setAttribute('role','img');
-    el.setAttribute('aria-label','Hemraj Adhikari');
-    el.style.cssText='width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px;background:rgba(79,156,249,0.05)';
-    el.textContent='👨‍💻';
-    this.parentNode.appendChild(el);
-  });
-}
-
-/* ── Header scroll state ── */
-var hdr = $('#site-header');
-window.addEventListener('scroll', function(){
-  if(hdr) hdr.classList.toggle('scrolled', window.scrollY > 20);
-}, {passive:true});
-
-/* ── Progress bar ── */
-var prog = $('#progress');
-if(prog){
-  window.addEventListener('scroll', function(){
-    var s = document.documentElement.scrollTop;
-    var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    var pct = h>0 ? Math.round((s/h)*100) : 0;
-    prog.style.width = pct+'%';
-    prog.setAttribute('aria-valuenow', pct);
-    prog.setAttribute('aria-valuetext', pct+'% scrolled');
-  }, {passive:true});
-}
-
-/* ── Back to top ── */
-var btt = $('#btt');
-if(btt){
-  window.addEventListener('scroll', function(){ btt.classList.toggle('on', window.scrollY>400); }, {passive:true});
-  btt.addEventListener('click', function(){
-    window.scrollTo({top:0,behavior:'smooth'});
-    var main=$('#main-content'); if(main) main.focus();
-  });
-}
-
-/* ── Reveal on scroll ── */
-var revealEls = $$('.reveal');
-if('IntersectionObserver' in window){
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        e.target.classList.add('visible');
-        /* Animate skill bars when their section reveals */
-        $$('.skill-item', e.target).forEach(function(si){ si.classList.add('visible'); });
-        io.unobserve(e.target);
-      }
-    });
-  }, {threshold:0.08, rootMargin:'0px 0px -30px 0px'});
-  revealEls.forEach(function(el){ io.observe(el); });
-} else {
-  revealEls.forEach(function(el){
-    el.classList.add('visible');
-    $$('.skill-item',el).forEach(function(si){ si.classList.add('visible'); });
-  });
-}
-
-/* ── Skill bars: animate width via CSS custom prop ── */
-$$('.skill-fill').forEach(function(sf){
-  var w = sf.style.getPropertyValue('--w') || sf.style.width;
-  sf.style.setProperty('--target-w', w);
-  sf.style.width = w; /* fallback */
-});
-
-/* ── Skill items reveal ── */
-var skillItems = $$('.skill-item');
-if('IntersectionObserver' in window){
-  var sio = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('visible'); sio.unobserve(e.target); }
-    });
-  }, {threshold:0.1});
-  skillItems.forEach(function(el){ sio.observe(el); });
-}
-
-/* ── Stat counter ── */
-$$('.stat-num[data-count]').forEach(function(el){
-  var target = parseInt(el.dataset.count,10);
-  var start = 0; var step = Math.ceil(target/40);
-  var timer = setInterval(function(){
-    start = Math.min(start+step, target);
-    el.textContent = start;
-    if(start>=target) clearInterval(timer);
-  }, 30);
-});
-
-/* ── Typing effect ── */
-var roles = ['IT Officer','Cloud Specialist','Linux SysAdmin','CRM Administrator','Nepal IT Mentor','DevOps Engineer'];
-var ri=0, ci=0, typing=true, pause=0;
-var typed = $('#typedText');
-if(typed){
-  setInterval(function(){
-    if(pause>0){ pause--; return; }
-    if(typing){
-      ci++;
-      typed.textContent = roles[ri].slice(0,ci);
-      if(ci>=roles[ri].length){ typing=false; pause=18; }
-    } else {
-      ci--;
-      typed.textContent = roles[ri].slice(0,ci);
-      if(ci===0){ typing=true; ri=(ri+1)%roles.length; pause=4; }
-    }
-  }, 80);
-}
-
-/* ── FAQ ── */
-var faqGrid = $('.faq-grid');
-if(faqGrid){
-  faqGrid.addEventListener('click', function(e){
-    var btn = e.target.closest('.faq-question');
-    if(!btn) return;
-    var item = btn.closest('.faq-item');
-    var answer = item.querySelector('.faq-answer');
-    var isOpen = !answer.hidden;
-    $$('.faq-item').forEach(function(fi){
-      fi.classList.remove('open');
-      fi.querySelector('.faq-question').setAttribute('aria-expanded','false');
-      fi.querySelector('.faq-answer').hidden = true;
-    });
-    if(!isOpen){ item.classList.add('open'); btn.setAttribute('aria-expanded','true'); answer.hidden=false; }
-  });
-}
-
-/* ── Experience ── */
-var expList = $('.exp-list');
-if(expList){
-  expList.addEventListener('click', function(e){
-    var btn = e.target.closest('.exp-trigger');
-    if(!btn) return;
-    var card = btn.closest('.exp-card');
-    var bodyId = btn.getAttribute('aria-controls');
-    var body = bodyId ? document.getElementById(bodyId) : null;
-    var isOpen = card.classList.contains('open');
-    $$('.exp-card').forEach(function(ec){
-      ec.classList.remove('open');
-      ec.querySelector('.exp-trigger').setAttribute('aria-expanded','false');
-      var b = ec.querySelector('.exp-body'); if(b) b.hidden=true;
-    });
-    if(!isOpen && body){ card.classList.add('open'); btn.setAttribute('aria-expanded','true'); body.hidden=false; }
-  });
-}
-
-/* ── Nav dropdown ── */
-$$('.nav-dropdown').forEach(function(li){
-  var btn = li.querySelector('.nav-dropdown-toggle');
-  var menu = li.querySelector('.nav-dropdown-menu');
-  function open(){
-    $$('.nav-dropdown.open').forEach(function(el){
-      el.classList.remove('open');
-      el.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded','false');
-    });
-    li.classList.add('open'); btn.setAttribute('aria-expanded','true');
-  }
-  function close(){ li.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
-  btn.addEventListener('click', function(){ li.classList.contains('open') ? close() : open(); });
-  btn.addEventListener('keydown', function(e){
-    if(e.key==='Escape'){ close(); btn.focus(); }
-    if(e.key==='ArrowDown'){ e.preventDefault(); var f=menu.querySelector('a'); if(f) f.focus(); }
-  });
-  li.addEventListener('focusout', function(e){ if(!li.contains(e.relatedTarget)) close(); });
-});
-document.addEventListener('click', function(e){
-  if(!e.target.closest('.nav-dropdown')){
-    $$('.nav-dropdown.open').forEach(function(el){
-      el.classList.remove('open');
-      el.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded','false');
-    });
-  }
-});
-
-/* ── Mobile nav ── */
-var navToggle = $('#navToggle');
-var mobileNav = $('#mobileNav');
-var overlay   = $('#mobileNavOverlay');
-var searchOverlayEl = $('#searchOverlay');
-
-function openMobileNav(){
-  mobileNav.setAttribute('aria-hidden','false');
-  mobileNav.classList.add('open');
-  navToggle.setAttribute('aria-expanded','true');
-  navToggle.setAttribute('aria-label','Close navigation menu');
-  navToggle.classList.add('open');
-  if(overlay) overlay.classList.add('active');
-  document.body.style.overflow='hidden';
-  var first=mobileNav.querySelector('a,button');
-  if(first) setTimeout(function(){ first.focus(); },50);
-}
-function closeMobileNav(){
-  mobileNav.setAttribute('aria-hidden','true');
-  mobileNav.classList.remove('open');
-  navToggle.setAttribute('aria-expanded','false');
-  navToggle.setAttribute('aria-label','Open navigation menu');
-  navToggle.classList.remove('open');
-  if(overlay) overlay.classList.remove('active');
-  document.body.style.overflow='';
-}
-if(navToggle && mobileNav){
-  navToggle.addEventListener('click', function(){
-    mobileNav.getAttribute('aria-hidden')==='false' ? closeMobileNav() : openMobileNav();
-  });
-}
-if(overlay) overlay.addEventListener('click', closeMobileNav);
-
-/* ── Search overlay ── */
-var searchToggle = $('#searchToggle');
-var searchClose  = $('#searchClose');
-var searchInput  = $('#searchInput');
-
-function openSearch(){
-  searchOverlayEl.classList.add('open');
-  searchToggle.setAttribute('aria-expanded','true');
-  if(searchInput) setTimeout(function(){ searchInput.focus(); },50);
-}
-function closeSearch(){
-  searchOverlayEl.classList.remove('open');
-  searchToggle.setAttribute('aria-expanded','false');
-  if(searchToggle) searchToggle.focus();
-}
-if(searchToggle && searchOverlayEl) searchToggle.addEventListener('click', openSearch);
-if(searchClose) searchClose.addEventListener('click', closeSearch);
-if(searchOverlayEl){
-  searchOverlayEl.addEventListener('click', function(e){ if(e.target===searchOverlayEl) closeSearch(); });
-}
-
-/* ── Escape key ── */
-document.addEventListener('keydown', function(e){
-  if(e.key==='Escape'){
-    if(mobileNav && mobileNav.classList.contains('open')){ closeMobileNav(); if(navToggle) navToggle.focus(); }
-    if(searchOverlayEl && searchOverlayEl.classList.contains('open')){ closeSearch(); }
-  }
-});
-
-/* ── Mobile search → desktop search ── */
-var mobileSearchInput = $('#mobileSearchInput');
-if(mobileSearchInput){
-  mobileSearchInput.addEventListener('input', function(){
-    var val = this.value;
-    if(val.length>0){
-      closeMobileNav();
-      openSearch();
-      if(searchInput){ searchInput.value=val; runSearch(val,$('#searchResults')); }
-    }
-  });
-}
-
-/* ── Search engine ── */
-var searchData = [
-  {title:'AWS Cloud Services',section:'Services',url:'services.html',kw:'aws cloud ec2 iam s3 devops'},
-  {title:'Linux Administration',section:'Skills',url:'#skills',kw:'linux sysadmin server terminal'},
-  {title:'CRM Administration',section:'Services',url:'services.html',kw:'crm saas rbac mfa google workspace microsoft 365'},
-  {title:'WordPress & Web Hosting',section:'Services',url:'services.html',kw:'wordpress cpanel hostinger dns ssl'},
-  {title:'IT Mentoring Nepal',section:'Services',url:'services.html',kw:'mentor bit bca csit student career'},
-  {title:'Cybersecurity',section:'Services',url:'services.html',kw:'security ssl tls firewall backup audit'},
-  {title:'Contact Hemraj',section:'Contact',url:'contact.html',kw:'hire contact email whatsapp'},
-  {title:'AWS Career Guide Nepal',section:'Blog',url:'blog-aws-jobs-nepal.html',kw:'aws career cloud nepal certification'},
-  {title:'Linux Guide Nepal',section:'Blog',url:'blog-linux-beginners-nepal.html',kw:'linux beginners commands nepal'},
-  {title:'Cybersecurity Career Nepal',section:'Blog',url:'blog-cybersecurity-nepal.html',kw:'cybersecurity ceh ethical hacking'},
-  {title:'About Hemraj',section:'About',url:'about.html',kw:'about hemraj adhikari kathmandu nepal it officer'},
-  {title:'Projects',section:'Portfolio',url:'projects.html',kw:'kbm fm megaloksewa cloud project'},
-  {title:'Experience',section:'Work',url:'experience.html',kw:'experience route2uni citizen infotech work history'},
-];
-function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function runSearch(q, container){
-  if(!container) return;
-  q = q.trim().toLowerCase();
-  if(q.length<2){ container.innerHTML=''; return; }
-  var matches = searchData.filter(function(it){
-    return (it.title+' '+it.kw).toLowerCase().indexOf(q)!==-1;
-  });
-  if(!matches.length){
-    container.innerHTML='<p style="padding:12px;color:var(--text3);font-size:0.88rem">No results for "'+esc(q)+'"</p>';
-    return;
-  }
-  container.innerHTML = matches.map(function(it){
-    return '<a href="'+it.url+'" class="search-result-item">'
-      +'<span>'+esc(it.title)+'</span>'
-      +'<span class="search-result-section">'+esc(it.section)+'</span>'
-      +'</a>';
-  }).join('');
-}
-if(searchInput){ searchInput.addEventListener('input', function(){ runSearch(this.value,$('#searchResults')); }); }
-
-})();
-</script>
-<script src="main.js" defer></script>
+<!-- JavaScript — single file, deferred -->
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
