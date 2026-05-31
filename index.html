@@ -119,7 +119,7 @@
   <meta name="theme-color" content="#060811">
 
   <!-- ═══ STYLESHEETS ═══ -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/style.css">
 </head>
 
 <body>
@@ -1131,7 +1131,7 @@
 
       <!-- Footer bottom -->
       <div class="footer-bottom">
-        <p class="footer-copy">© <span id="ft-year"></span> <strong>Hemraj Adhikari</strong> · Kathmandu, Nepal</p>
+        <p class="footer-copy">© <span id="footer-year"></span> <strong>Hemraj Adhikari</strong> · Kathmandu, Nepal</p>
         <nav class="footer-bottom-links" aria-label="Footer utility links">
           <a href="/">Home</a>
           <a href="contact.html">Contact</a>
@@ -1151,7 +1151,63 @@
     </svg>
   </button>
 
+  <!-- Inline patches: copyEmailBtn + students dropdown (missing from main.js) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      /* ── COPY EMAIL BUTTON ── */
+      var copyBtn = document.getElementById('copyEmailBtn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText('hemrajhadhikari@gmail.com').then(function () {
+            var orig = copyBtn.getAttribute('aria-label');
+            copyBtn.setAttribute('aria-label', 'Email copied!');
+            copyBtn.title = 'Copied!';
+            setTimeout(function () {
+              copyBtn.setAttribute('aria-label', orig);
+              copyBtn.title = 'Copy email';
+            }, 2000);
+          }).catch(function () {
+            var ta = document.createElement('textarea');
+            ta.value = 'hemrajhadhikari@gmail.com';
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+          });
+        });
+      }
+
+      /* ── STUDENTS DROPDOWN (desktop nav) ── */
+      var dropBtn  = document.getElementById('studentsDropdownBtn');
+      var dropMenu = document.getElementById('studentsDropdownMenu');
+      if (dropBtn && dropMenu) {
+        dropBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var isOpen = dropBtn.getAttribute('aria-expanded') === 'true';
+          dropBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+          dropMenu.classList.toggle('open', !isOpen);
+        });
+        document.addEventListener('click', function (e) {
+          if (!dropBtn.contains(e.target)) {
+            dropBtn.setAttribute('aria-expanded', 'false');
+            dropMenu.classList.remove('open');
+          }
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            dropBtn.setAttribute('aria-expanded', 'false');
+            dropMenu.classList.remove('open');
+          }
+        });
+      }
+
+    });
+  </script>
+
   <!-- JavaScript — deferred, single entry point -->
-<script src="js/main.js" defer></script>
+  <script src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/main.js" defer></script>
 </body>
 </html>
