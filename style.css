@@ -413,6 +413,7 @@ ol {
   display: flex;
   align-items: center;
   gap: 32px;
+  justify-content: space-between; /* ← FIX: logo left, actions right on mobile */
 }
 
 .logo {
@@ -546,7 +547,7 @@ ol {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-left: 8px;
+  margin-left: auto; /* ← FIX: pushes actions to right when nav-links hidden */
 }
 
 .nav-search-btn {
