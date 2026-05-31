@@ -56,8 +56,8 @@
   --grad-rev:      linear-gradient(135deg, #8b72ff, #4f9cf9);
 
   /* Typography */
-  --font-display:  'Syne', system-ui, sans-serif;
-  --font-mono:     'DM Mono', 'Courier New', monospace;
+  --font-display:  'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono:     'JetBrains Mono', 'Courier New', monospace;
 
   /* Layout */
   --nav-h:         64px;
