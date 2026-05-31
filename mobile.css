@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   Hemraj Adhikari Portfolio — mobile.css v1.0
+   Hemraj Adhikari Portfolio — mobile.css v1.1
    Responsive breakpoints & mobile-specific overrides
    ═══════════════════════════════════════════════════════════════ */
 
@@ -15,6 +15,10 @@
   .nav-dropdown      { display: none; }
   .nav-toggle        { display: flex; }
   .mobile-nav-overlay{ display: block; }
+
+  /* ← FIX: ensure logo stays left, actions stay right */
+  .nav-inner         { justify-content: space-between; }
+  .nav-actions       { margin-left: auto; }
 
   .footer-main       { grid-template-columns: 1fr; gap: 28px; }
   .footer-links      { grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -54,7 +58,7 @@
   .btn-wa       { padding: 10px 16px; font-size: 13px; }
   .social-row   { gap: 6px; }
   .social-btn   { width: 34px; height: 34px; }
-  .nav-inner    { height: 52px; }
+  .nav-inner    { height: 52px; justify-content: space-between; }
   .logo         { font-size: 14px; }
 }
 
