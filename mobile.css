@@ -1,0 +1,156 @@
+/* ═══════════════════════════════════════════════════════════════
+   Hemraj Adhikari Portfolio — mobile.css v1.0
+   Responsive breakpoints & mobile-specific overrides
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── TABLET / SMALL DESKTOP ──────────────────────────────────── */
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cards-col  { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+}
+
+/* ── HIDE DESKTOP NAV, SHOW MOBILE TOGGLE ────────────────────── */
+@media (max-width: 860px) {
+  .nav-links,
+  .nav-dropdown      { display: none; }
+  .nav-toggle        { display: flex; }
+  .mobile-nav-overlay{ display: block; }
+
+  .footer-main       { grid-template-columns: 1fr; gap: 28px; }
+  .footer-links      { grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .exp-with-photo    { grid-template-columns: 1fr; gap: 28px; }
+  .exp-photo-sticky  { position: static; }
+
+  .contact-grid      { grid-template-columns: 1fr; gap: 28px; }
+  .skills-container  { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ── TABLET PORTRAIT / LARGE PHONE ──────────────────────────── */
+@media (max-width: 768px) {
+  #hero { padding-top: 70px; padding-bottom: 30px; }
+  .hero-grid    { grid-template-columns: 1fr; gap: 28px; }
+  .hero-visual  { order: -1; }
+
+  .photo-wrap   { width: 200px; height: 200px; }
+  .orb-icon     { width: 30px; height: 30px; font-size: 13px; }
+  .orb-icon:nth-child(1) { top: -15px; left: 50%; transform: translateX(-50%); }
+  .orb-icon:nth-child(2) { right: -15px; top: 50%; transform: translateY(-50%); }
+  .orb-icon:nth-child(3) { bottom: -15px; left: 50%; transform: translateX(-50%); }
+  .orb-icon:nth-child(4) { left: -15px; top: 50%; transform: translateY(-50%); }
+  .orbit-ring   { inset: -16px; }
+
+  .stats-grid   { grid-template-columns: 1fr 1fr; gap: 6px; width: 100%; max-width: 320px; margin: 0 auto; }
+  .stat-card    { padding: 10px 8px; }
+  .stat-num     { font-size: 22px; }
+
+  h1.hero-name  { font-size: clamp(40px, 11vw, 60px); letter-spacing: -2px; margin-bottom: 10px; }
+  .hero-desc    { font-size: 13.5px; }
+  .tag-row      { gap: 5px; }
+  .tag          { font-size: 9px; padding: 2px 8px; }
+  .cta-row      { gap: 8px; }
+  .btn-primary,
+  .btn-outline,
+  .btn-wa       { padding: 10px 16px; font-size: 13px; }
+  .social-row   { gap: 6px; }
+  .social-btn   { width: 34px; height: 34px; }
+  .nav-inner    { height: 52px; }
+  .logo         { font-size: 14px; }
+}
+
+/* ── SMALL PHONES ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .about-text .cards-col { grid-template-columns: 1fr; }
+  .hl-card  { padding: 11px 12px; gap: 10px; }
+  .hl-card span { font-size: 11px; }
+  .proj-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  section { padding: clamp(56px, 8vw, 90px) 0; }
+  h2.sec-title { font-size: clamp(24px, 7vw, 38px); margin-bottom: 28px; }
+
+  .tech-icons { gap: 7px; }
+  .tech-ico   { min-width: 60px; padding: 10px; font-size: 18px; }
+  .tech-ico span { font-size: 8px; }
+
+  .exp-trigger   { padding: 15px 16px; }
+  .exp-role      { font-size: 16px; }
+  .exp-head      { flex-direction: column; gap: 6px; align-items: flex-start; }
+  .exp-meta      { gap: 6px; }
+  .exp-bullets li { font-size: 12.5px; }
+}
+
+@media (max-width: 520px) {
+  .svc-grid { grid-template-columns: 1fr; }
+  .svc-card { padding: 18px; }
+
+  .contact-form-panel { padding: 18px 16px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .c-item   { padding: 11px 12px; }
+  .wa-cta   { padding: 12px 14px; font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  .footer-links  { grid-template-columns: 1fr; gap: 12px; }
+  .footer-bottom { flex-direction: column; gap: 4px; align-items: flex-start; }
+}
+
+@media (max-width: 380px) {
+  :root { --gutter: 14px; }
+  h1.hero-name   { font-size: 36px; letter-spacing: -1.5px; }
+  .photo-wrap    { width: 165px; height: 165px; }
+  .orbit-ring    { inset: -14px; }
+  .cta-row       { flex-direction: column; }
+  .btn-primary,
+  .btn-outline,
+  .btn-wa        { width: 100%; justify-content: center; }
+  h2.sec-title   { font-size: 26px; letter-spacing: -.8px; }
+  .scroll-hint   { display: none; }
+}
+
+/* ── MOBILE NAV LINK TOUCH TARGETS ──────────────────────────── */
+.mobile-nav a {
+  padding: 14px 0;
+  font-size: 15px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* ── GLOBAL SAFETY RULES ─────────────────────────────────────── */
+body              { overflow-x: hidden; }
+img, video, iframe, table { max-width: 100%; }
+.exp-meta  { flex-wrap: wrap; }
+.hero-role { flex-wrap: wrap; }
+.exp-head  { flex-wrap: wrap; }
+
+/* ── PRINT ──────────────────────────────────────────────────── */
+@media print {
+  .nav-actions, .mobile-nav, .mobile-nav-overlay,
+  #btt, .search-overlay, .orb, .grid-bg, #progress,
+  #site-header, .skip-nav, .hero-visual,
+  .about-photo-col, .exp-photo-sticky { display: none !important; }
+  body    { background: #fff; color: #000; font-size: 12pt; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: .8em; color: gray; }
+  section { padding: 20pt; page-break-inside: avoid; }
+}
+
+/* ── REDUCED MOTION ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  html   { scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+/* ── HIGH CONTRAST ──────────────────────────────────────────── */
+@media (forced-colors: active) {
+  .tag, .exp-badge, .blog-cat,
+  .cert-badge, .hero-badge { border: 1px solid ButtonText; }
+  .btn-primary, .btn-outline, .btn-wa { border: 2px solid ButtonText; }
+}
