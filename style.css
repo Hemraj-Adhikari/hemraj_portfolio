@@ -1,5 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
-   Hemraj Adhikari Portfolio — style.css v6.0
+   Hemraj Adhikari Portfolio — style.css v7.0 (Desktop)
+   ═══════════════════════════════════════════════════════════════
    Sections:
    1.  Root Variables
    2.  Reset & Base
@@ -7,11 +8,11 @@
    4.  Backgrounds & Decorations
    5.  Progress Bar
    6.  Search Overlay
-   7.  Navigation (Header + Desktop Nav)
-   8.  Mobile Nav
+   7.  Navigation
+   8.  Mobile Nav Shell (structure; breakpoints in mobile.css)
    9.  Toast
-   10. Page Layout
-   11. Typography Utilities (eyebrow, section titles)
+   10. Page Layout & Reveal Animation
+   11. Typography Utilities
    12. Buttons
    13. Hero Section
    14. About Section
@@ -26,13 +27,15 @@
    23. Back to Top
    24. Utilities
    25. Print
+   26. Reduced Motion & High Contrast
    ═══════════════════════════════════════════════════════════════ */
+
 
 /* ─────────────────────────────────────────────────────────────
    1. ROOT VARIABLES
    ───────────────────────────────────────────────────────────── */
 :root {
-  /* Colours */
+  /* Colour palette */
   --bg:            #060811;
   --bg2:           #0b0f1a;
   --bg3:           #111622;
@@ -56,18 +59,21 @@
   --font-display:  'Syne', system-ui, sans-serif;
   --font-mono:     'DM Mono', 'Courier New', monospace;
 
-  /* Sizing */
+  /* Layout */
   --nav-h:         64px;
   --max-w:         1160px;
   --gutter:        clamp(18px, 5vw, 64px);
-  --radius-sm:     6px;
-  --radius-md:     10px;
-  --radius-lg:     16px;
-  --radius-xl:     24px;
 
-  /* Animation */
+  /* Border radius scale */
+  --r-sm:          6px;
+  --r-md:          10px;
+  --r-lg:          16px;
+  --r-xl:          24px;
+
+  /* Transition shorthand: duration + easing */
   --t:             0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 /* ─────────────────────────────────────────────────────────────
    2. RESET & BASE
@@ -81,10 +87,10 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* scroll-behavior set via prefers-reduced-motion below */
 }
 
 body {
@@ -108,7 +114,7 @@ table {
 
 img {
   height: auto;
-  color: transparent; /* hide broken-image alt text visually */
+  color: transparent; /* suppress broken-image alt text rendering */
 }
 
 a {
@@ -128,6 +134,7 @@ ol {
   list-style: none;
 }
 
+/* Focus styles */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -138,18 +145,22 @@ ol {
   outline: none;
 }
 
-::-webkit-scrollbar { width: 2px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+/* Scrollbar */
+::-webkit-scrollbar        { width: 2px; }
+::-webkit-scrollbar-track  { background: var(--bg); }
+::-webkit-scrollbar-thumb  { background: var(--accent); border-radius: 2px; }
 
+/* Selection */
 ::selection {
   background: rgba(79, 156, 249, 0.22);
   color: var(--text1);
 }
 
+
 /* ─────────────────────────────────────────────────────────────
    3. ACCESSIBILITY
    ───────────────────────────────────────────────────────────── */
+/* Single unified screen-reader utility (removed duplicate .visually-hidden) */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -179,6 +190,7 @@ ol {
 .skip-nav:focus {
   top: 0;
 }
+
 
 /* ─────────────────────────────────────────────────────────────
    4. BACKGROUNDS & DECORATIONS
@@ -226,6 +238,7 @@ ol {
   background: radial-gradient(circle, rgba(45, 212, 160, 0.04) 0%, transparent 70%);
 }
 
+
 /* ─────────────────────────────────────────────────────────────
    5. PROGRESS BAR
    ───────────────────────────────────────────────────────────── */
@@ -240,6 +253,7 @@ ol {
   transition: width 0.1s linear;
   will-change: width;
 }
+
 
 /* ─────────────────────────────────────────────────────────────
    6. SEARCH OVERLAY
@@ -269,7 +283,7 @@ ol {
   width: min(600px, calc(100vw - 48px));
   background: var(--bg3);
   border: 1px solid var(--border2);
-  border-radius: var(--radius-xl);
+  border-radius: var(--r-xl);
   padding: 24px;
   box-shadow: 0 32px 64px rgba(0, 0, 0, 0.5);
 }
@@ -291,7 +305,7 @@ ol {
   gap: 12px;
   background: var(--surface);
   border: 1px solid var(--border2);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   padding: 12px 16px;
   color: var(--text3);
 }
@@ -313,7 +327,7 @@ ol {
 .search-close-btn {
   width: 28px;
   height: 28px;
-  border-radius: 6px;
+  border-radius: var(--r-sm);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -321,8 +335,8 @@ ol {
   border: 1px solid var(--border);
   background: none;
   cursor: pointer;
-  transition: color var(--t), border-color var(--t);
   flex-shrink: 0;
+  transition: color var(--t), border-color var(--t);
 }
 
 .search-close-btn:hover {
@@ -339,7 +353,7 @@ ol {
   justify-content: space-between;
   align-items: center;
   padding: 11px 14px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-sm);
   color: var(--text2);
   font-size: 0.9rem;
   transition: background var(--t), color var(--t);
@@ -367,6 +381,7 @@ ol {
   color: var(--text3);
   font-size: 0.88rem;
 }
+
 
 /* ─────────────────────────────────────────────────────────────
    7. NAVIGATION
@@ -427,7 +442,7 @@ ol {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--text2);
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-sm);
   transition: color var(--t), background var(--t);
 }
 
@@ -438,7 +453,7 @@ ol {
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* Nav dropdown */
+/* Dropdown */
 .nav-dropdown {
   position: relative;
 }
@@ -451,7 +466,7 @@ ol {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--text2);
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-sm);
   border: 1px solid transparent;
   background: none;
   cursor: pointer;
@@ -482,7 +497,7 @@ ol {
   min-width: 220px;
   background: var(--bg3);
   border: 1px solid var(--border2);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   padding: 6px;
   opacity: 0;
   pointer-events: none;
@@ -505,7 +520,7 @@ ol {
   padding: 9px 12px;
   font-size: 0.84rem;
   color: var(--text2);
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-sm);
   transition: background var(--t), color var(--t);
 }
 
@@ -526,7 +541,7 @@ ol {
   flex-shrink: 0;
 }
 
-/* Nav actions */
+/* Nav action buttons */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -540,7 +555,7 @@ ol {
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-sm);
   color: var(--text2);
   border: 1px solid var(--border);
   background: var(--surface);
@@ -553,7 +568,7 @@ ol {
   background: var(--surface2);
 }
 
-/* Hamburger */
+/* Hamburger button — hidden on desktop, shown via mobile.css */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -562,7 +577,7 @@ ol {
   gap: 4px;
   width: 36px;
   height: 36px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-sm);
   color: var(--text2);
   border: 1px solid var(--border);
   background: var(--surface);
@@ -584,12 +599,15 @@ ol {
   transition: transform 0.25s, opacity 0.25s, width 0.25s;
 }
 
-.nav-toggle.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
-.nav-toggle.open span:nth-child(2) { opacity: 0; width: 0; }
-.nav-toggle.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+/* Hamburger → X via aria-expanded (no duplicate .open class needed) */
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; width: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
 
 /* ─────────────────────────────────────────────────────────────
-   8. MOBILE NAV
+   8. MOBILE NAV SHELL
+   (Breakpoint rules live in mobile.css)
    ───────────────────────────────────────────────────────────── */
 .mobile-nav-overlay {
   display: none;
@@ -599,10 +617,14 @@ ol {
   z-index: 498;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
 }
 
 .mobile-nav-overlay.active {
-  display: block;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .mobile-nav {
@@ -630,14 +652,17 @@ ol {
   gap: 10px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   padding: 9px 14px;
   margin-bottom: 16px;
   color: var(--text3);
+  cursor: text;
 }
 
 .mobile-search-input {
   flex: 1;
+  width: 100%;
+  min-height: 44px;
   background: none;
   border: none;
   outline: none;
@@ -669,11 +694,10 @@ ol {
 .mobile-nav-section a {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 11px 12px;
   color: var(--text2);
   font-size: 0.9rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-sm);
   min-height: 44px;
   transition: background var(--t), color var(--t);
 }
@@ -692,7 +716,7 @@ ol {
   padding: 11px;
   background: var(--accent);
   color: #000;
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   font-weight: 700;
   font-size: 0.88rem;
   margin-top: 8px;
@@ -703,6 +727,7 @@ ol {
 .mobile-dl-btn:hover {
   opacity: 0.88;
 }
+
 
 /* ─────────────────────────────────────────────────────────────
    9. TOAST
@@ -729,8 +754,9 @@ ol {
   transform: translateX(-50%) translateY(0);
 }
 
+
 /* ─────────────────────────────────────────────────────────────
-   10. PAGE LAYOUT
+   10. PAGE LAYOUT & REVEAL
    ───────────────────────────────────────────────────────────── */
 .page {
   position: relative;
@@ -748,13 +774,25 @@ section {
   padding: 80px var(--gutter);
 }
 
-/* Section CTA row (centered button below grid) */
+/* Below-fold sections: browser can skip rendering until near viewport */
+#about,
+#skills,
+#experience,
+#services,
+#portfolio,
+#blog,
+#faq,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+
 .section-cta {
   text-align: center;
   margin-top: 24px;
 }
 
-/* Reveal animation */
+/* Scroll-reveal animation */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -765,6 +803,7 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
+
 
 /* ─────────────────────────────────────────────────────────────
    11. TYPOGRAPHY UTILITIES
@@ -809,6 +848,7 @@ section {
   background-image: var(--grad);
 }
 
+
 /* ─────────────────────────────────────────────────────────────
    12. BUTTONS
    ───────────────────────────────────────────────────────────── */
@@ -819,7 +859,7 @@ section {
   padding: 11px 22px;
   background: var(--accent);
   color: #000;
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   font-weight: 700;
   font-size: 0.88rem;
   font-family: var(--font-display);
@@ -841,7 +881,7 @@ section {
   padding: 10px 22px;
   border: 1px solid var(--border2);
   color: var(--text2);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   font-weight: 600;
   font-size: 0.88rem;
   font-family: var(--font-display);
@@ -863,7 +903,7 @@ section {
   padding: 10px 20px;
   border: 1px solid rgba(37, 211, 102, 0.35);
   color: #25d366;
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   font-weight: 600;
   font-size: 0.88rem;
   font-family: var(--font-display);
@@ -877,6 +917,7 @@ section {
   border-color: rgba(37, 211, 102, 0.5);
   transform: translateY(-1px);
 }
+
 
 /* ─────────────────────────────────────────────────────────────
    13. HERO SECTION
@@ -926,13 +967,14 @@ section {
   50%       { box-shadow: 0 0 0 6px rgba(45, 212, 160, 0.05); }
 }
 
+/* IT Officer badge */
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   background: rgba(79, 156, 249, 0.08);
   border: 1px solid rgba(79, 156, 249, 0.2);
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-sm);
   padding: 5px 12px;
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -953,6 +995,7 @@ section {
   50%       { opacity: 0.4; transform: scale(1.5); }
 }
 
+/* Hero name */
 .hero-name {
   font-size: clamp(2.8rem, 6vw, 4.5rem);
   font-weight: 800;
@@ -974,6 +1017,7 @@ section {
   background-image: var(--grad);
 }
 
+/* Typed role text */
 .hero-role {
   display: flex;
   align-items: center;
@@ -986,14 +1030,8 @@ section {
   flex-wrap: wrap;
 }
 
-.role-sep {
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.role-typed {
-  color: var(--text1);
-}
+.role-sep    { color: var(--accent); font-weight: 700; }
+.role-typed  { color: var(--text1); }
 
 .role-cursor {
   color: var(--accent);
@@ -1018,13 +1056,12 @@ section {
   font-weight: 600;
 }
 
-/* Skill tag row */
+/* Skill tags */
 .tag-row {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
   margin-bottom: 28px;
-  padding: 0;
 }
 
 .tag {
@@ -1038,10 +1075,10 @@ section {
   transition: border-color var(--t), color var(--t);
 }
 
-.tag:hover { border-color: var(--border2); color: var(--text1); }
-.tag.blue   { background: rgba(79, 156, 249, 0.08); border-color: rgba(79, 156, 249, 0.2); color: #82b8fb; }
-.tag.purple { background: rgba(139, 114, 255, 0.08); border-color: rgba(139, 114, 255, 0.2); color: #b49aff; }
-.tag.green  { background: rgba(45, 212, 160, 0.08); border-color: rgba(45, 212, 160, 0.2); color: #5ddfc2; }
+.tag:hover         { border-color: var(--border2); color: var(--text1); }
+.tag.blue          { background: rgba(79, 156, 249, 0.08); border-color: rgba(79, 156, 249, 0.2); color: #82b8fb; }
+.tag.purple        { background: rgba(139, 114, 255, 0.08); border-color: rgba(139, 114, 255, 0.2); color: #b49aff; }
+.tag.green         { background: rgba(45, 212, 160, 0.08); border-color: rgba(45, 212, 160, 0.2); color: #5ddfc2; }
 
 /* CTA row */
 .cta-row {
@@ -1051,7 +1088,7 @@ section {
   margin-bottom: 28px;
 }
 
-/* Social row */
+/* Social buttons */
 .social-row {
   display: flex;
   flex-wrap: wrap;
@@ -1065,7 +1102,7 @@ section {
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-sm);
   color: var(--text2);
   border: 1px solid var(--border);
   background: var(--surface);
@@ -1079,7 +1116,7 @@ section {
   transform: translateY(-2px);
 }
 
-/* Hero visual */
+/* Hero visual (right column) */
 .hero-visual {
   display: flex;
   flex-direction: column;
@@ -1087,6 +1124,7 @@ section {
   gap: 24px;
 }
 
+/* Profile photo with orbit */
 .photo-wrap {
   position: relative;
   display: flex;
@@ -1094,6 +1132,7 @@ section {
   justify-content: center;
   width: 280px;
   height: 280px;
+  contain: layout;
 }
 
 .photo-ring-outer {
@@ -1125,6 +1164,7 @@ section {
   object-position: center top;
 }
 
+/* Orbit ring: contains the 4 emoji icons */
 .orbit-ring {
   position: absolute;
   inset: -40px;
@@ -1143,36 +1183,39 @@ section {
   height: 38px;
   background: var(--bg2);
   border: 1px solid var(--border2);
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
-  animation: counter-spin 20s linear infinite;
-  will-change: transform;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  will-change: transform;
 }
 
-@keyframes counter-spin { to { transform: rotate(-360deg); } }
+/* Place each icon at a compass point and counter-rotate so they stay upright */
+.orb-icon:nth-child(1) {
+  top: 0; left: 50%;
+  animation: counter-top    20s linear infinite;
+}
+.orb-icon:nth-child(2) {
+  top: 50%; right: 0;
+  animation: counter-right  20s linear infinite;
+}
+.orb-icon:nth-child(3) {
+  bottom: 0; left: 50%;
+  animation: counter-bottom 20s linear infinite;
+}
+.orb-icon:nth-child(4) {
+  top: 50%; left: 0;
+  animation: counter-left   20s linear infinite;
+}
 
-/* Position each orbit icon at compass points */
-.orb-icon:nth-child(1) { top: 0;   left: 50%; transform: translateX(-50%) translateY(-50%); }
-.orb-icon:nth-child(2) { top: 50%; right: 0;  transform: translateY(-50%) translateX(50%); }
-.orb-icon:nth-child(3) { bottom: 0; left: 50%; transform: translateX(-50%) translateY(50%); }
-.orb-icon:nth-child(4) { top: 50%; left: 0;   transform: translateY(-50%) translateX(-50%); }
+@keyframes counter-top    { to { transform: translateX(-50%) translateY(-50%) rotate(-360deg); } }
+@keyframes counter-right  { to { transform: translateY(-50%) translateX(50%) rotate(-360deg); } }
+@keyframes counter-bottom { to { transform: translateX(-50%) translateY(50%) rotate(-360deg); } }
+@keyframes counter-left   { to { transform: translateY(-50%) translateX(-50%) rotate(-360deg); } }
 
-/* Override counter-spin so icons stay upright */
-.orb-icon:nth-child(1) { animation: counter-spin-pos1 20s linear infinite; }
-.orb-icon:nth-child(2) { animation: counter-spin-pos2 20s linear infinite; }
-.orb-icon:nth-child(3) { animation: counter-spin-pos3 20s linear infinite; }
-.orb-icon:nth-child(4) { animation: counter-spin-pos4 20s linear infinite; }
-
-@keyframes counter-spin-pos1 { to { transform: translateX(-50%) translateY(-50%) rotate(-360deg); } }
-@keyframes counter-spin-pos2 { to { transform: translateY(-50%) translateX(50%) rotate(-360deg); } }
-@keyframes counter-spin-pos3 { to { transform: translateX(-50%) translateY(50%) rotate(-360deg); } }
-@keyframes counter-spin-pos4 { to { transform: translateY(-50%) translateX(-50%) rotate(-360deg); } }
-
-/* Stats */
+/* Stats grid */
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1183,7 +1226,7 @@ section {
 .stat-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   padding: 14px 16px;
   display: flex;
   flex-direction: column;
@@ -1243,12 +1286,12 @@ section {
   letter-spacing: 0.08em;
   transition: color var(--t);
   padding: 0 4px;
-  text-decoration: none;
 }
 
 .scroll-hint:hover {
   color: var(--text2);
 }
+
 
 /* ─────────────────────────────────────────────────────────────
    14. ABOUT SECTION
@@ -1279,7 +1322,7 @@ section {
   margin-top: 16px;
 }
 
-/* Cert badges */
+/* Certification badges */
 .cert-strip {
   display: flex;
   flex-wrap: wrap;
@@ -1292,7 +1335,7 @@ section {
   align-items: center;
   gap: 7px;
   padding: 6px 13px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-sm);
   background: var(--surface);
   border: 1px solid var(--border);
   font-size: 0.78rem;
@@ -1325,7 +1368,7 @@ section {
   padding: 14px 16px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   transition: border-color var(--t);
 }
 
@@ -1375,7 +1418,7 @@ section {
 
 .about-photo-frame {
   position: relative;
-  border-radius: var(--radius-lg);
+  border-radius: var(--r-lg);
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--bg3);
@@ -1399,7 +1442,7 @@ section {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border2);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   padding: 8px 14px;
   white-space: nowrap;
 }
@@ -1429,6 +1472,7 @@ section {
   color: var(--text3);
 }
 
+
 /* ─────────────────────────────────────────────────────────────
    15. SKILLS SECTION
    ───────────────────────────────────────────────────────────── */
@@ -1441,7 +1485,7 @@ section {
 .skill-item {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   padding: 16px 18px;
   transition: border-color var(--t);
 }
@@ -1471,7 +1515,7 @@ section {
   overflow: hidden;
 }
 
-/* Width is set via JS using data-width attribute */
+/* Width applied via JS data-width attribute; starts at 0, animates to target */
 .skill-fill {
   height: 100%;
   border-radius: 4px;
@@ -1479,6 +1523,7 @@ section {
   width: 0;
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 /* ─────────────────────────────────────────────────────────────
    16. EXPERIENCE SECTION
@@ -1499,7 +1544,7 @@ section {
 .exp-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--r-lg);
   overflow: hidden;
   transition: border-color var(--t);
 }
@@ -1532,6 +1577,7 @@ section {
   transition: background var(--t);
 }
 
+/* Accent top-border on hover/open */
 .exp-trigger::before {
   content: '';
   position: absolute;
@@ -1632,13 +1678,13 @@ section {
   color: var(--accent);
 }
 
-/* Accordion body — pure CSS max-height approach, no hidden attr */
+/* Accordion body — CSS max-height pattern */
 .exp-body {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s;
   padding: 0 20px;
-  border-top: 0px solid var(--border);
+  border-top: 0 solid var(--border);
 }
 
 .exp-card.open .exp-body {
@@ -1664,7 +1710,7 @@ section {
   color: var(--accent);
 }
 
-/* Photo sidebar */
+/* Sticky photo sidebar */
 .exp-photo-sticky {
   position: sticky;
   top: calc(var(--nav-h) + 24px);
@@ -1672,7 +1718,7 @@ section {
 
 .exp-photo-frame {
   position: relative;
-  border-radius: var(--radius-lg);
+  border-radius: var(--r-lg);
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--bg3);
@@ -1696,7 +1742,7 @@ section {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border2);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   padding: 7px 12px;
   white-space: nowrap;
 }
@@ -1717,6 +1763,7 @@ section {
   color: var(--text3);
 }
 
+
 /* ─────────────────────────────────────────────────────────────
    17. SERVICES SECTION
    ───────────────────────────────────────────────────────────── */
@@ -1730,7 +1777,7 @@ section {
   position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--r-lg);
   padding: 24px;
   overflow: hidden;
   transition: border-color var(--t), transform var(--t);
@@ -1762,7 +1809,7 @@ section {
   height: 44px;
   background: rgba(79, 156, 249, 0.08);
   border: 1px solid rgba(79, 156, 249, 0.15);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1811,6 +1858,7 @@ section {
   font-family: var(--font-mono);
 }
 
+
 /* ─────────────────────────────────────────────────────────────
    18. PORTFOLIO SECTION
    ───────────────────────────────────────────────────────────── */
@@ -1823,7 +1871,7 @@ section {
 .proj-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--r-lg);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1924,6 +1972,7 @@ section {
   font-family: var(--font-mono);
 }
 
+
 /* ─────────────────────────────────────────────────────────────
    19. BLOG SECTION
    ───────────────────────────────────────────────────────────── */
@@ -1939,7 +1988,7 @@ section {
   flex-direction: column;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--r-lg);
   overflow: hidden;
   transition: border-color var(--t), transform var(--t);
   text-decoration: none;
@@ -2024,7 +2073,6 @@ section {
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--accent);
-  transition: gap var(--t);
 }
 
 .blog-cta-bar {
@@ -2035,7 +2083,7 @@ section {
   gap: 16px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--r-lg);
   padding: 20px 24px;
 }
 
@@ -2047,6 +2095,7 @@ section {
 .blog-cta-bar strong {
   color: var(--text1);
 }
+
 
 /* ─────────────────────────────────────────────────────────────
    20. FAQ SECTION
@@ -2060,7 +2109,7 @@ section {
 .faq-item {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   overflow: hidden;
   transition: border-color var(--t);
 }
@@ -2085,7 +2134,7 @@ section {
   font-weight: 600;
   color: var(--text1);
   min-height: 44px;
-  transition: background var(--t);
+  transition: background var(--t), color var(--t);
 }
 
 .faq-question:hover {
@@ -2104,13 +2153,12 @@ section {
   color: var(--accent);
 }
 
-/* Pure CSS max-height accordion */
 .faq-answer {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.25s;
   padding: 0 20px;
-  border-top: 0px solid var(--border);
+  border-top: 0 solid var(--border);
 }
 
 .faq-item.open .faq-answer {
@@ -2132,6 +2180,7 @@ section {
 .faq-answer a:hover {
   text-decoration: underline;
 }
+
 
 /* ─────────────────────────────────────────────────────────────
    21. CONTACT SECTION
@@ -2163,7 +2212,7 @@ section {
   padding: 14px 16px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   text-decoration: none;
   transition: border-color var(--t), transform var(--t);
 }
@@ -2176,7 +2225,7 @@ a.c-item:hover {
 .c-icon {
   width: 36px;
   height: 36px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-sm);
   background: rgba(79, 156, 249, 0.08);
   border: 1px solid rgba(79, 156, 249, 0.15);
   display: flex;
@@ -2210,7 +2259,7 @@ a.c-item:hover {
   padding: 13px 24px;
   background: rgba(37, 211, 102, 0.08);
   border: 1px solid rgba(37, 211, 102, 0.25);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   color: #25d366;
   font-weight: 700;
   font-size: 0.92rem;
@@ -2227,7 +2276,7 @@ a.c-item:hover {
 .contact-form-panel {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--r-lg);
   padding: 32px;
   height: 100%;
   display: flex;
@@ -2259,7 +2308,7 @@ a.c-item:hover {
   gap: 20px;
   background: linear-gradient(135deg, rgba(79, 156, 249, 0.06) 0%, rgba(139, 114, 255, 0.06) 100%);
   border: 1px solid rgba(79, 156, 249, 0.2);
-  border-radius: var(--radius-xl);
+  border-radius: var(--r-xl);
   padding: 28px 32px;
   margin-top: 32px;
 }
@@ -2281,6 +2330,7 @@ a.c-item:hover {
   gap: 10px;
   flex-wrap: wrap;
 }
+
 
 /* ─────────────────────────────────────────────────────────────
    22. FOOTER
@@ -2354,6 +2404,7 @@ a.c-item:hover {
   flex-shrink: 0;
 }
 
+/* Footer social — now a div[role="list"], not inside <nav> */
 .footer-social {
   display: flex;
   align-items: center;
@@ -2367,7 +2418,7 @@ a.c-item:hover {
   justify-content: center;
   width: 34px;
   height: 34px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-sm);
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text2);
@@ -2380,10 +2431,7 @@ a.c-item:hover {
   background: rgba(79, 156, 249, 0.06);
 }
 
-.footer-col {
-  /* column wrapper */
-}
-
+/* Footer nav columns */
 .footer-col-title {
   font-size: 0.68rem;
   font-weight: 600;
@@ -2416,7 +2464,7 @@ a.c-item:hover {
   color: var(--text1);
 }
 
-/* Footer contact strip */
+/* Contact strip */
 .footer-contact-strip {
   max-width: var(--max-w);
   margin: 0 auto;
@@ -2455,7 +2503,7 @@ a.c-item:hover {
   flex-shrink: 0;
 }
 
-/* Footer bottom */
+/* Footer bottom bar */
 .footer-bottom {
   border-top: 1px solid var(--border);
   max-width: var(--max-w);
@@ -2507,6 +2555,7 @@ a.c-item:hover {
   color: #f87171;
 }
 
+
 /* ─────────────────────────────────────────────────────────────
    23. BACK TO TOP
    ───────────────────────────────────────────────────────────── */
@@ -2539,17 +2588,12 @@ a.c-item:hover {
   transform: translateY(-2px);
 }
 
+
 /* ─────────────────────────────────────────────────────────────
    24. UTILITIES
    ───────────────────────────────────────────────────────────── */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-}
+/* .sr-only defined in section 3 — no duplicate needed */
+
 
 /* ─────────────────────────────────────────────────────────────
    25. PRINT
@@ -2557,6 +2601,7 @@ a.c-item:hover {
 @media print {
   .nav-actions,
   .mobile-nav,
+  .mobile-nav-overlay,
   #btt,
   .search-overlay,
   .orb,
@@ -2568,15 +2613,16 @@ a.c-item:hover {
   .about-photo-col,
   .exp-photo-sticky { display: none !important; }
 
-  body { background: white; color: black; font-size: 12pt; }
+  body { background: #fff; color: #000; font-size: 12pt; }
 
   a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: gray; }
 
   section { padding: 20pt; page-break-inside: avoid; }
 }
 
+
 /* ─────────────────────────────────────────────────────────────
-   REDUCED MOTION
+   26. REDUCED MOTION & HIGH CONTRAST
    ───────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -2587,7 +2633,8 @@ a.c-item:hover {
     transition-duration: 0.01ms !important;
   }
 
-  html { scroll-behavior: auto; }
+  /* Override smooth scrolling when motion is reduced */
+  html { scroll-behavior: auto !important; }
 
   .reveal {
     opacity: 1;
@@ -2595,9 +2642,10 @@ a.c-item:hover {
   }
 }
 
-/* ─────────────────────────────────────────────────────────────
-   HIGH CONTRAST
-   ───────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
 @media (forced-colors: active) {
   .tag,
   .exp-badge,
@@ -2609,163 +2657,3 @@ a.c-item:hover {
   .btn-outline,
   .btn-wa { border: 2px solid ButtonText; }
 }
-
-/* ==============================================
-   MOBILE RESPONSIVE FIXES — integrated
-   ============================================== */
-
-/* Fix 1: Hero — stack properly on mobile */
-@media(max-width:768px){
-  #hero { padding-top: 70px; padding-bottom: 30px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 28px; }
-  .hero-visual { order: -1; }
-
-  .photo-wrap { width: 200px; height: 200px; }
-  .orb-icon { width: 30px; height: 30px; font-size: 13px; }
-  .orb-icon:nth-child(1){ top:-15px; left:50%; transform:translateX(-50%); }
-  .orb-icon:nth-child(2){ right:-15px; top:50%; transform:translateY(-50%); }
-  .orb-icon:nth-child(3){ bottom:-15px; left:50%; transform:translateX(-50%); }
-  .orb-icon:nth-child(4){ left:-15px; top:50%; transform:translateY(-50%); }
-  .orbit-ring { inset: -16px; }
-
-  .stats-grid { grid-template-columns: 1fr 1fr; gap: 6px; width: 100%; max-width: 320px; margin: 0 auto; }
-  .stat-card { padding: 10px 8px; }
-  .stat-num { font-size: 22px; }
-
-  h1.hero-name { font-size: clamp(40px, 11vw, 60px); letter-spacing: -2px; margin-bottom: 10px; }
-  .hero-desc { font-size: 13.5px; }
-  .tag-row { gap: 5px; }
-  .tag { font-size: 9px; padding: 2px 8px; }
-
-  .cta-row { gap: 8px; }
-  .btn-primary, .btn-outline, .btn-wa { padding: 10px 16px; font-size: 13px; }
-
-  .social-row { gap: 6px; }
-  .social-btn { width: 34px; height: 34px; }
-
-  .nav-inner { height: 52px; }
-  .logo { font-size: 14px; }
-}
-
-/* Fix 2: Very small screens (iPhone SE etc.) */
-@media(max-width:380px){
-  :root { --gutter: 14px; }
-  h1.hero-name { font-size: 36px; letter-spacing: -1.5px; }
-  .photo-wrap { width: 165px; height: 165px; }
-  .orbit-ring { inset: -14px; }
-  .cta-row { flex-direction: column; }
-  .btn-primary, .btn-outline, .btn-wa { width: 100%; justify-content: center; }
-  h2.sec-title { font-size: 26px; letter-spacing: -0.8px; }
-  .scroll-hint { display: none; }
-}
-
-/* Fix 3: Section padding on mobile */
-@media(max-width:600px){
-  section { padding: clamp(56px, 8vw, 90px) 0; }
-  h2.sec-title { font-size: clamp(24px, 7vw, 38px); margin-bottom: 28px; }
-}
-
-/* Fix 4: About section */
-@media(max-width:1024px){
-  .about-grid { grid-template-columns: 1fr; gap: 32px; }
-  .cards-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-}
-@media(max-width:640px){
-  .cards-col { grid-template-columns: 1fr; }
-  .hl-card { padding: 11px 12px; gap: 10px; }
-  .hl-card span { font-size: 11px; }
-}
-
-/* Fix 5: Skills */
-@media(max-width:860px){
-  .skills-container { grid-template-columns: 1fr; gap: 32px; }
-}
-@media(max-width:600px){
-  .tech-icons { gap: 7px; }
-  .tech-ico { min-width: 60px; padding: 10px 10px; font-size: 18px; }
-  .tech-ico span { font-size: 8px; }
-}
-
-/* Fix 6: Experience cards */
-@media(max-width:600px){
-  .exp-card { padding: 18px 16px; }
-  .exp-role { font-size: 16px; }
-  .exp-head { flex-direction: column; gap: 6px; align-items: flex-start; }
-  .exp-meta { gap: 6px; }
-  .exp-bullets li { font-size: 12.5px; }
-}
-
-/* Fix 7: Services — single column on small mobile */
-@media(max-width:520px){
-  .svc-grid { grid-template-columns: 1fr; }
-  .svc-card { padding: 18px; }
-}
-
-/* Fix 8: Projects — single column on small screens */
-@media(max-width:640px){
-  .proj-grid { grid-template-columns: 1fr; }
-}
-
-/* Fix 9: Education */
-@media(max-width:520px){
-  .edu-grid { grid-template-columns: 1fr; }
-  .edu-card { padding: 16px; }
-}
-
-/* Fix 10: Contact */
-@media(max-width:860px){
-  .contact-grid { grid-template-columns: 1fr; gap: 28px; }
-}
-@media(max-width:520px){
-  .contact-form-panel { padding: 18px 16px; }
-  .form-row { grid-template-columns: 1fr; gap: 0; }
-  .c-item { padding: 11px 12px; }
-  .wa-cta { padding: 12px 14px; font-size: 13px; }
-}
-
-/* Fix 11: Footer */
-@media(max-width:860px){
-  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
-  .footer-links { grid-template-columns: 1fr 1fr; gap: 16px; }
-}
-@media(max-width:480px){
-  .footer-links { grid-template-columns: 1fr; gap: 12px; }
-  .footer-inner { padding: 28px var(--gutter) 20px; }
-  .footer-bottom { flex-direction: column; gap: 4px; align-items: flex-start; }
-}
-
-/* Fix 12: Mobile nav touch targets */
-.mobile-nav a {
-  padding: 14px 0;
-  font-size: 15px;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-}
-
-/* Fix 13: Prevent horizontal overflow globally */
-body { overflow-x: hidden; }
-img, video, iframe, table { max-width: 100%; }
-.exp-meta { flex-wrap: wrap; }
-.hero-role { flex-wrap: wrap; }
-.exp-head { flex-wrap: wrap; }
-
-/* Fix 14: Mobile nav overlay smooth fade transition */
-.mobile-nav-overlay {
-  opacity: 0;
-  transition: opacity 0.28s ease;
-  pointer-events: none;
-}
-.mobile-nav-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Fix 15: Mobile search input row — clickable full width */
-.mobile-search-row { cursor: text; }
-.mobile-search-input { width: 100%; min-height: 44px; }
-
-/* Fix 16: Nav toggle animation via aria-expanded */
-.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
-.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; width: 0; }
-.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
