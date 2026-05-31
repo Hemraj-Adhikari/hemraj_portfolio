@@ -1,1010 +1,1158 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<!-- ═══ PRECONNECT & DNS PREFETCH ═══ -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="dns-prefetch" href="https://raw.githubusercontent.com">
-<link rel="preload" as="image" href="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/Hem-pic.png" fetchpriority="high">
+  <!-- ═══ PRECONNECT & DNS PREFETCH ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
 
-<!-- ═══ SEO: Title & Meta ═══ -->
-<title>Hemraj Adhikari — IT Officer & Cloud Specialist | Kathmandu, Nepal</title>
-<meta name="description" content="Hemraj Adhikari — IT Officer & Cloud Infrastructure Specialist in Kathmandu, Nepal. 3.5+ yrs in AWS, Linux SysAdmin, CRM & Cybersecurity. Available worldwide. Mentor for BIT, BCA & BSc CSIT students.">
-<meta name="keywords" content="Hemraj Adhikari, IT Officer Nepal, Cloud Specialist Kathmandu, AWS Nepal, Linux Admin Nepal, CRM Administrator, BSc CSIT mentor, BIT mentor, BCA mentor, freelance IT Nepal">
-<meta name="author" content="Hemraj Adhikari">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<meta name="language" content="en">
-<meta name="geo.region" content="NP-BA">
-<meta name="geo.placename" content="Kathmandu, Bagmati Province, Nepal">
-<link rel="canonical" href="https://hemrajadhikari.info.np/">
+  <!-- Critical font preload (above-fold Syne display font) -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uQ.woff2" type="font/woff2" crossorigin>
 
-<!-- ═══ SEO: Open Graph ═══ -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hemraj Adhikari — IT Officer & Cloud Specialist | Kathmandu, Nepal">
-<meta property="og:description" content="IT Officer & Cloud Infrastructure Specialist from Kathmandu, Nepal. AWS, Linux, CRM, SaaS & Cybersecurity. Available worldwide for freelance projects.">
-<meta property="og:url" content="https://hemrajadhikari.info.np/">
-<meta property="og:image" content="https://hemrajadhikari.info.np/Hem-pic.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Hemraj Adhikari">
+  <!-- Critical image preload -->
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/Hem-pic.png" fetchpriority="high">
 
-<!-- ═══ SEO: Twitter Card ═══ -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@hemrajadhikari">
-<meta name="twitter:creator" content="@hemrajadhikari">
-<meta name="twitter:title" content="Hemraj Adhikari — IT Officer & Cloud Specialist | Nepal">
-<meta name="twitter:description" content="IT professional from Kathmandu, Nepal. 3.5+ yrs: AWS, Linux, CRM & Cybersecurity. Freelance worldwide.">
-<meta name="twitter:image" content="https://hemrajadhikari.info.np/Hem-pic.png">
+  <!-- ═══ SEO: Title & Meta ═══ -->
+  <title>Hemraj Adhikari — IT Officer & Cloud Specialist | Kathmandu, Nepal</title>
+  <meta name="description" content="Hemraj Adhikari — IT Officer & Cloud Infrastructure Specialist in Kathmandu, Nepal. 3.5+ yrs in AWS, Linux SysAdmin, CRM & Cybersecurity. Available worldwide. Mentor for BIT, BCA & BSc CSIT students.">
+  <meta name="keywords" content="Hemraj Adhikari, IT Officer Nepal, Cloud Specialist Kathmandu, AWS Nepal, Linux Admin Nepal, CRM Administrator, BSc CSIT mentor, BIT mentor, BCA mentor, freelance IT Nepal">
+  <meta name="author" content="Hemraj Adhikari">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="language" content="en">
+  <meta name="geo.region" content="NP-BA">
+  <meta name="geo.placename" content="Kathmandu, Bagmati Province, Nepal">
+  <link rel="canonical" href="https://hemrajadhikari.info.np/">
 
-<!-- ═══ SECURITY HEADERS ═══ -->
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-<meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- ═══ SEO: Open Graph ═══ -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hemraj Adhikari — IT Officer & Cloud Specialist | Kathmandu, Nepal">
+  <meta property="og:description" content="IT Officer & Cloud Infrastructure Specialist from Kathmandu, Nepal. AWS, Linux, CRM, SaaS & Cybersecurity. Available worldwide for freelance projects.">
+  <meta property="og:url" content="https://hemrajadhikari.info.np/">
+  <meta property="og:image" content="https://hemrajadhikari.info.np/Hem-pic.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Hemraj Adhikari">
 
-<!-- ═══ STRUCTURED DATA (JSON-LD) ═══ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://hemrajadhikari.info.np/#person",
-      "name": "Hemraj Adhikari",
-      "givenName": "Hemraj",
-      "familyName": "Adhikari",
-      "jobTitle": "IT Officer & Cloud Infrastructure Specialist",
-      "description": "IT Officer and Cloud Infrastructure Specialist from Kathmandu, Nepal with 3.5+ years in AWS Cloud, Linux administration, SaaS, CRM, networking, and cybersecurity.",
-      "url": "https://hemrajadhikari.info.np",
-      "email": "hemrajhadhikari@gmail.com",
-      "telephone": "+977-9865802093",
-      "image": "https://hemrajadhikari.info.np/Hem-pic.png",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Kathmandu",
-        "addressRegion": "Bagmati Province",
-        "addressCountry": "NP"
+  <!-- ═══ SEO: Twitter Card ═══ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@hemrajadhikari">
+  <meta name="twitter:creator" content="@hemrajadhikari">
+  <meta name="twitter:title" content="Hemraj Adhikari — IT Officer & Cloud Specialist | Nepal">
+  <meta name="twitter:description" content="IT professional from Kathmandu, Nepal. 3.5+ yrs: AWS, Linux, CRM & Cybersecurity. Freelance worldwide.">
+  <meta name="twitter:image" content="https://hemrajadhikari.info.np/Hem-pic.png">
+
+  <!-- ═══ SECURITY HEADERS ═══ -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- ═══ STRUCTURED DATA (JSON-LD) ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://hemrajadhikari.info.np/#person",
+        "name": "Hemraj Adhikari",
+        "givenName": "Hemraj",
+        "familyName": "Adhikari",
+        "jobTitle": "IT Officer & Cloud Infrastructure Specialist",
+        "description": "IT Officer and Cloud Infrastructure Specialist from Kathmandu, Nepal with 3.5+ years in AWS Cloud, Linux administration, SaaS, CRM, networking, and cybersecurity.",
+        "url": "https://hemrajadhikari.info.np",
+        "email": "hemrajhadhikari@gmail.com",
+        "telephone": "+977-9865802093",
+        "image": "https://hemrajadhikari.info.np/Hem-pic.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kathmandu",
+          "addressRegion": "Bagmati Province",
+          "addressCountry": "NP"
+        },
+        "sameAs": [
+          "https://github.com/Hemraj-Adhikari",
+          "https://www.linkedin.com/in/hemraajadhikari",
+          "https://web.facebook.com/hemraaj.adhikaari/",
+          "https://www.instagram.com/hemraj.adhikary/",
+          "https://www.upwork.com/freelancers/hemrajadhikari"
+        ],
+        "knowsAbout": ["AWS Cloud","Linux Administration","CRM Administration","Cybersecurity","Google Workspace","Microsoft 365","WordPress","Python","DevOps","Docker"],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Bagmati Pradesh University",
+          "address": {"@type": "PostalAddress","addressCountry": "NP"}
+        }
       },
-      "sameAs": [
-        "https://github.com/Hemraj-Adhikari",
-        "https://www.linkedin.com/in/hemraajadhikari",
-        "https://web.facebook.com/hemraaj.adhikaari/",
-        "https://www.instagram.com/hemraj.adhikary/",
-        "https://www.upwork.com/freelancers/hemrajadhikari"
-      ],
-      "knowsAbout": ["AWS Cloud","Linux Administration","CRM Administration","Cybersecurity","Google Workspace","Microsoft 365","WordPress","Python","DevOps","Docker"],
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Bagmati Pradesh University",
-        "address": {"@type": "PostalAddress","addressCountry": "NP"}
+      {
+        "@type": "WebSite",
+        "@id": "https://hemrajadhikari.info.np/#website",
+        "url": "https://hemrajadhikari.info.np",
+        "name": "Hemraj Adhikari — IT Officer & Cloud Specialist",
+        "description": "Portfolio of Hemraj Adhikari, IT Officer and Cloud Infrastructure Specialist in Kathmandu, Nepal.",
+        "publisher": {"@id": "https://hemrajadhikari.info.np/#person"},
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://hemrajadhikari.info.np/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
       }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://hemrajadhikari.info.np/#website",
-      "url": "https://hemrajadhikari.info.np",
-      "name": "Hemraj Adhikari — IT Officer & Cloud Specialist",
-      "description": "Portfolio of Hemraj Adhikari, IT Officer and Cloud Infrastructure Specialist in Kathmandu, Nepal.",
-      "publisher": {"@id": "https://hemrajadhikari.info.np/#person"},
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://hemrajadhikari.info.np/?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-  ]
-}
-</script>
+    ]
+  }
+  </script>
 
-<!-- ═══ FONTS ═══ -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" media="print" onload="this.media='all';this.onload=null">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap"></noscript>
+  <!-- ═══ FONTS — font-display=swap for performance ═══ -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap"
+        media="print" onload="this.media='all';this.onload=null">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap">
+  </noscript>
 
-<!-- ═══ FAVICON ═══ -->
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#060811">
+  <!-- ═══ FAVICON ═══ -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#060811">
 
-<!-- ═══ STYLESHEETS ═══ -->
-<link rel="stylesheet" href="style.css">
+  <!-- ═══ STYLESHEETS ═══ -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/mobile.css">
 </head>
 
 <body>
-<!-- Skip navigation for accessibility -->
-<a class="skip-nav" href="#main-content">Skip to main content</a>
+  <!-- Skip navigation for accessibility -->
+  <a class="skip-nav" href="#main-content">Skip to main content</a>
 
-<!-- Background decorations (aria-hidden) -->
-<div class="grid-bg" aria-hidden="true"></div>
-<div class="orb orb1" aria-hidden="true"></div>
-<div class="orb orb2" aria-hidden="true"></div>
-<div class="orb orb3" aria-hidden="true"></div>
+  <!-- Background decorations (presentational only) -->
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="orb orb1" aria-hidden="true"></div>
+  <div class="orb orb2" aria-hidden="true"></div>
+  <div class="orb orb3" aria-hidden="true"></div>
 
-<!-- Scroll progress indicator -->
-<div id="progress"
-     role="progressbar"
-     aria-label="Page scroll progress"
-     aria-valuenow="0"
-     aria-valuemin="0"
-     aria-valuemax="100"
-     aria-valuetext="0% scrolled"></div>
+  <!-- Scroll progress indicator -->
+  <div id="progress"
+       role="progressbar"
+       aria-label="Page scroll progress"
+       aria-valuenow="0"
+       aria-valuemin="0"
+       aria-valuemax="100"
+       aria-valuetext="0% scrolled"></div>
 
-<!-- ═══ SEARCH OVERLAY ═══ -->
-<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchDialogTitle" aria-hidden="true">
-  <div class="search-overlay-inner">
-    <span class="search-overlay-label" id="searchDialogTitle">Search Portfolio</span>
-    <div class="search-box-wrap">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input class="search-box-input" id="searchInput" type="search"
-             placeholder="Search skills, services, blog, contact…"
-             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-             aria-label="Search portfolio" aria-describedby="searchHint">
-      <span id="searchHint" class="sr-only">Type to search. Press Escape to close.</span>
-      <button class="search-close-btn" id="searchClose" aria-label="Close search" type="button">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </div>
-    <div class="search-results" id="searchResults" role="listbox" aria-live="polite" aria-atomic="true"></div>
-  </div>
-</div>
-
-<!-- ═══ NAVIGATION ═══ -->
-<header id="site-header">
-  <nav class="nav-inner" aria-label="Main navigation">
-    <a href="/" class="logo" aria-label="Hemraj Adhikari — Home"><em>hemraj</em>.adhikari</a>
-
-    <ul class="nav-links" role="list">
-      <li><a href="/" aria-current="page">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li class="nav-dropdown">
-        <button class="nav-dropdown-toggle" type="button" id="studentsDropdownBtn"
-                aria-haspopup="true" aria-expanded="false" aria-controls="studentsDropdownMenu">
-          Students
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+  <!-- ═══ SEARCH OVERLAY ═══ -->
+  <div class="search-overlay"
+       id="searchOverlay"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="searchDialogTitle"
+       aria-hidden="true">
+    <div class="search-overlay-inner">
+      <span class="search-overlay-label" id="searchDialogTitle">Search Portfolio</span>
+      <div class="search-box-wrap">
+        <!-- SVG icon: search -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input class="search-box-input"
+               id="searchInput"
+               type="search"
+               placeholder="Search skills, services, blog, contact…"
+               autocomplete="off"
+               autocorrect="off"
+               autocapitalize="off"
+               spellcheck="false"
+               aria-label="Search portfolio"
+               aria-describedby="searchHint">
+        <span id="searchHint" class="sr-only">Type to search. Press Escape to close.</span>
+        <button class="search-close-btn" id="searchClose" aria-label="Close search" type="button">
+          <!-- SVG icon: close -->
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
         </button>
-        <div class="nav-dropdown-menu" id="studentsDropdownMenu" role="menu">
-          <a href="bit-mentor.html" role="menuitem">🎓 BIT Nepal <span class="tag-sm">Guide</span></a>
-          <a href="csit-mentor.html" role="menuitem">💻 BSc CSIT <span class="tag-sm">Guide</span></a>
-          <a href="bca-mentor.html" role="menuitem">📚 BCA Nepal <span class="tag-sm">Guide</span></a>
-          <a href="services.html" role="menuitem">🤖 AI Learner</a>
-        </div>
-      </li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-
-    <div class="nav-actions">
-      <button class="nav-search-btn" id="searchToggle"
-              aria-label="Open search" aria-expanded="false" aria-controls="searchOverlay" type="button">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </button>
-      <button class="nav-toggle" id="navToggle"
-              aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav" type="button">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
+      </div>
+      <div class="search-results" id="searchResults" role="listbox" aria-live="polite" aria-atomic="true"></div>
     </div>
-  </nav>
-</header>
-
-<!-- Mobile nav overlay -->
-<div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true"></div>
-
-<!-- ═══ MOBILE NAV ═══ -->
-<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
-  <div class="mobile-search-row">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input class="mobile-search-input" type="search" placeholder="Search…"
-           aria-label="Search site" id="mobileSearchInput" autocomplete="off">
   </div>
 
-  <div class="mobile-nav-section">
-    <span class="mobile-nav-label">Navigation</span>
-    <a href="/">Home <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a href="about.html">About <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a href="experience.html">Experience <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a href="services.html">Services <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a href="projects.html">Projects <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a href="blog.html">Blog <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a href="contact.html">Contact <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-  </div>
-
-  <div class="mobile-nav-section">
-    <span class="mobile-nav-label">🎓 Students Nepal</span>
-    <a href="bit-mentor.html">BIT Nepal — Mentor &amp; Career Guide</a>
-    <a href="csit-mentor.html">BSc CSIT — Mentor &amp; Career Guide</a>
-    <a href="bca-mentor.html">BCA Nepal — Mentor &amp; Career Guide</a>
-    <a href="services.html">AI Learner Mentoring</a>
-  </div>
-
-  <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy"
-     class="mobile-dl-btn" rel="noopener noreferrer" target="_blank"
-     aria-label="Download Hemraj Adhikari CV PDF (opens in new tab)">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    Download CV (PDF)
-  </a>
-</nav>
-
-<!-- Toast notification -->
-<div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-
-<div class="page">
-<main id="main-content" tabindex="-1">
-
-<!-- ═══════════════════ HERO ═══════════════════ -->
-<section id="hero" aria-labelledby="hero-heading">
-  <div class="hero-grid reveal">
-
-    <!-- Hero Content -->
-    <div class="hero-content">
-      <p class="avail-banner" role="status" aria-live="polite">
-        <span class="dot-live" aria-hidden="true"></span>
-        <span><strong>Available for hire</strong> · Kathmandu, Nepal · Remote worldwide · Responds within 24 hrs</span>
-      </p>
-
-      <div class="hero-badge">
-        <span class="badge-dot" aria-hidden="true"></span>
-        <span>IT Officer · Kathmandu, Nepal</span>
-      </div>
-
-      <h1 class="hero-name" id="hero-heading">
-        <span class="name-line">Hemraj</span>
-        <span class="name-accent">Adhikari</span>
-      </h1>
-
-      <p class="hero-role" aria-label="IT Officer and Cloud Infrastructure Specialist">
-        <span class="role-sep" aria-hidden="true">→</span>
-        <span class="role-typed" id="typedText" aria-live="off" aria-hidden="true"></span>
-        <span class="role-cursor" aria-hidden="true">|</span>
-        <span class="sr-only">IT Officer &amp; Cloud Infrastructure Specialist</span>
-      </p>
-
-      <p class="hero-desc">
-        <strong>IT Officer &amp; Cloud Infrastructure Specialist</strong> based in <strong>Kathmandu, Nepal</strong> with
-        <strong>3.5+ years</strong> of hands-on experience in <strong>AWS Cloud</strong>, SaaS administration,
-        <strong>Linux system administration</strong>, networking, and cybersecurity. Currently pursuing a
-        <strong>BIT degree at Bagmati Pradesh University</strong>. Available for <strong>freelance IT projects worldwide</strong>.
-        Mentor for BIT, BCA &amp; BSc CSIT students across Nepal &amp; India.
-      </p>
-
-      <ul class="tag-row" aria-label="Key skills" role="list">
-        <li class="tag blue">AWS Cloud</li>
-        <li class="tag purple">Python</li>
-        <li class="tag green">Linux</li>
-        <li class="tag">SysAdmin</li>
-        <li class="tag purple">DevOps</li>
-        <li class="tag green">CRM Admin</li>
-        <li class="tag">Networking</li>
-        <li class="tag purple">Cybersecurity</li>
-        <li class="tag blue">Google Workspace</li>
-        <li class="tag">WordPress</li>
-      </ul>
-
-      <div class="cta-row">
-        <a href="projects.html" class="btn-primary">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          View Projects
-        </a>
-        <a href="contact.html" class="btn-outline">Hire Me</a>
-        <a href="https://wa.me/9779865802093?text=Hi%20Hemraj%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss."
-           target="_blank" rel="noopener noreferrer" class="btn-wa"
-           aria-label="Chat with Hemraj on WhatsApp (opens in new tab)">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-          WhatsApp
-        </a>
-      </div>
-
-      <div class="social-row" aria-label="Social media and contact links">
-        <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub profile (opens in new tab)">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn profile (opens in new tab)">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="https://web.facebook.com/hemraaj.adhikaari/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook profile (opens in new tab)">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.885v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/hemraj.adhikary/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram profile (opens in new tab)">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Upwork freelancer profile (opens in new tab)">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
-        </a>
-        <a href="mailto:hemrajhadhikari@gmail.com" class="social-btn" aria-label="Send email to Hemraj">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        </a>
-        <button class="social-btn" type="button" id="copyEmailBtn"
-                aria-label="Copy email address to clipboard" title="Copy email">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        </button>
-        <a href="https://hemrajadhikari.info.np" class="social-btn" aria-label="Portfolio website">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </a>
-      </div>
-    </div><!-- /hero-content -->
-
-    <!-- Hero Visual -->
-    <div class="hero-visual" aria-hidden="true">
-      <div class="photo-wrap">
-        <div class="photo-ring-outer"></div>
-        <div class="photo-ring-inner">
-          <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/Hem-pic.png"
-               alt="Hemraj Adhikari, IT Officer and Cloud Infrastructure Specialist from Kathmandu, Nepal"
-               width="220" height="220" loading="eager" fetchpriority="high" decoding="async" id="heroImg">
-        </div>
-        <div class="orbit-ring">
-          <div class="orb-icon" title="AWS Cloud">☁️</div>
-          <div class="orb-icon" title="Python">🐍</div>
-          <div class="orb-icon" title="Linux">🐧</div>
-          <div class="orb-icon" title="Cybersecurity">🛡️</div>
-        </div>
-      </div>
-
-      <dl class="stats-grid" aria-label="Key statistics" aria-hidden="false">
-        <div class="stat-card">
-          <dt class="stat-label">Websites</dt>
-          <dd><span class="stat-num" data-count="50">0</span><span class="stat-sup">+</span></dd>
-        </div>
-        <div class="stat-card">
-          <dt class="stat-label">Yrs Exp</dt>
-          <dd><span class="stat-num" data-count="3">0</span><span class="stat-sup">.5+</span></dd>
-        </div>
-        <div class="stat-card">
-          <dt class="stat-label">Uptime SLA</dt>
-          <dd><span class="stat-num" data-count="99">0</span><span class="stat-sup">%</span></dd>
-        </div>
-        <div class="stat-card">
-          <dt class="stat-label">Users Served</dt>
-          <dd><span class="stat-num" data-count="100">0</span><span class="stat-sup">+</span></dd>
-        </div>
-      </dl>
-
-      <a href="#about" class="scroll-hint" aria-label="Scroll down to About section">
-        <span aria-hidden="true">↓</span>&nbsp;scroll
+  <!-- ═══ SITE HEADER & NAVIGATION ═══ -->
+  <header id="site-header">
+    <nav class="nav-inner" aria-label="Main navigation" id="main-nav">
+      <a href="/" class="logo" aria-label="Hemraj Adhikari — Home">
+        <em>hemraj</em>.adhikari
       </a>
-    </div><!-- /hero-visual -->
 
-  </div><!-- /hero-grid -->
-</section>
-
-<!-- ═══════════════════ ABOUT ═══════════════════ -->
-<section id="about" aria-labelledby="about-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">About Me</span></div>
-  <h2 class="sec-title reveal" id="about-heading">Nepal IT Expert &amp; <mark>Student Mentor</mark></h2>
-
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <p>I am <strong>Hemraj Adhikari</strong>, an <strong>IT Officer and Cloud Infrastructure Specialist</strong> from <strong>Kathmandu, Nepal</strong>. Currently serving at <strong>Route 2 Uni International Group</strong>, I have built expertise across cloud platforms, SaaS administration, system administration, networking, and cybersecurity over more than three years of professional work.</p>
-      <p>I hold a <strong>Bachelor of Information Technology (BIT)</strong> from JMC College under Bagmati Pradesh University (expected June 2026), backed by certifications in <strong>Linux Administration</strong>, <strong>Google Workspace</strong>, and <strong>Microsoft 365</strong>, with <strong>AWS Cloud Practitioner</strong> in progress.</p>
-      <p>Beyond professional work, I am a passionate <strong>mentor for BIT, BCA, BSc CSIT, Computer Engineering students, AI learners, and digital marketing learners</strong> across Nepal and India — providing real-world guidance grounded in hands-on experience.</p>
-
-      <div class="cert-strip" aria-label="Professional certifications">
-        <div class="cert-badge">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          Linux Admin Certified
-        </div>
-        <div class="cert-badge">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-          Google Workspace Admin
-        </div>
-        <div class="cert-badge">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          Microsoft 365 Admin
-        </div>
-        <div class="cert-badge">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-          AWS CCP (In Progress)
-        </div>
-      </div>
-
-      <ul class="hl-cards" aria-label="Key highlights" role="list">
-        <li class="hl-card"><span class="hl-icon" aria-hidden="true">🎓</span><div><strong>Nepal IT Student Mentor</strong><span>BIT · BCA · BSc CSIT · Comp Eng · AI Learners · Digital Marketing</span></div></li>
-        <li class="hl-card"><span class="hl-icon" aria-hidden="true">☁️</span><div><strong>Cloud &amp; SaaS Specialist</strong><span>AWS · Google Workspace · Microsoft 365 · Azure Fundamentals</span></div></li>
-        <li class="hl-card"><span class="hl-icon" aria-hidden="true">⚡</span><div><strong>Sub-2hr Response SLA</strong><span>Fast, reliable IT support across high-throughput environments</span></div></li>
-        <li class="hl-card"><span class="hl-icon" aria-hidden="true">🌐</span><div><strong>Global Freelancer — 50+ Websites Deployed</strong><span>AWS EC2 · cPanel · Hostinger · DNS · SSL/TLS · WordPress Security</span></div></li>
-      </ul>
-
-      <div class="about-actions">
-        <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy"
-           class="btn-primary" rel="noopener noreferrer" target="_blank"
-           aria-label="Download CV PDF (opens in new tab)">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download CV
-        </a>
-        <a href="contact.html" class="btn-outline">Let's Talk</a>
-        <a href="about.html" class="btn-outline">Full About →</a>
-      </div>
-    </div><!-- /about-text -->
-
-    <div class="about-photo-col reveal">
-      <div class="deco-ring" aria-hidden="true"></div>
-      <div class="about-photo-frame" style="margin-bottom:14px">
-        <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/lp-pic.jpg"
-             alt="Hemraj Adhikari working as IT Officer in Kathmandu, Nepal"
-             width="300" height="400" loading="lazy" decoding="async">
-        <div class="about-photo-badge" aria-hidden="true">
-          <div class="badge-dot-green"></div>
-          <div><strong>Hemraj Adhikari</strong><span>IT Officer · Kathmandu, Nepal</span></div>
-        </div>
-      </div>
-      <div class="about-photo-frame">
-        <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/hemraj.png"
-             alt="Hemraj Adhikari, Cloud Infrastructure Specialist"
-             width="300" height="400" loading="lazy" decoding="async">
-        <div class="about-photo-badge" aria-hidden="true">
-          <div class="badge-dot-green"></div>
-          <div><strong>IT &amp; Cloud Specialist</strong><span>Bagmati Pradesh · Nepal</span></div>
-        </div>
-      </div>
-    </div><!-- /about-photo-col -->
-  </div><!-- /about-grid -->
-</section>
-
-<!-- ═══════════════════ SKILLS ═══════════════════ -->
-<section id="skills" aria-labelledby="skills-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Tech Stack</span></div>
-  <h2 class="sec-title reveal" id="skills-heading">Technical <mark>Skills &amp; Tools</mark></h2>
-  <div class="skills-grid reveal">
-    <div class="skill-item">
-      <div class="skill-name">AWS Cloud (EC2, IAM, S3)</div>
-      <div class="skill-level">Advanced · 3+ years</div>
-      <div class="skill-bar" role="progressbar" aria-label="AWS Cloud skill level: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
-        <div class="skill-fill" data-width="82"></div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">Linux Administration</div>
-      <div class="skill-level">Advanced · Certified</div>
-      <div class="skill-bar" role="progressbar" aria-label="Linux Administration skill level: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
-        <div class="skill-fill" data-width="88"></div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">Google Workspace Admin</div>
-      <div class="skill-level">Expert · Certified</div>
-      <div class="skill-bar" role="progressbar" aria-label="Google Workspace skill level: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
-        <div class="skill-fill" data-width="92"></div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">Microsoft 365 Admin</div>
-      <div class="skill-level">Expert · Certified</div>
-      <div class="skill-bar" role="progressbar" aria-label="Microsoft 365 skill level: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-        <div class="skill-fill" data-width="90"></div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">CRM Administration</div>
-      <div class="skill-level">Expert · 3+ years</div>
-      <div class="skill-bar" role="progressbar" aria-label="CRM Administration skill level: 94%" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100">
-        <div class="skill-fill" data-width="94"></div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">WordPress &amp; cPanel</div>
-      <div class="skill-level">Expert · 50+ sites</div>
-      <div class="skill-bar" role="progressbar" aria-label="WordPress and cPanel skill level: 93%" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100">
-        <div class="skill-fill" data-width="93"></div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">Cybersecurity &amp; SSL/TLS</div>
-      <div class="skill-level">Intermediate–Advanced</div>
-      <div class="skill-bar" role="progressbar" aria-label="Cybersecurity skill level: 79%" aria-valuenow="79" aria-valuemin="0" aria-valuemax="100">
-        <div class="skill-fill" data-width="79"></div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">Python Scripting</div>
-      <div class="skill-level">Intermediate</div>
-      <div class="skill-bar" role="progressbar" aria-label="Python Scripting skill level: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
-        <div class="skill-fill" data-width="72"></div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">Networking &amp; DNS</div>
-      <div class="skill-level">Advanced</div>
-      <div class="skill-bar" role="progressbar" aria-label="Networking and DNS skill level: 83%" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100">
-        <div class="skill-fill" data-width="83"></div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">DevOps &amp; Docker</div>
-      <div class="skill-level">Intermediate</div>
-      <div class="skill-bar" role="progressbar" aria-label="DevOps and Docker skill level: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">
-        <div class="skill-fill" data-width="68"></div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">GitHub Actions / CI/CD</div>
-      <div class="skill-level">Intermediate</div>
-      <div class="skill-bar" role="progressbar" aria-label="GitHub Actions CI/CD skill level: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-        <div class="skill-fill" data-width="70"></div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">IT Helpdesk L1/L2</div>
-      <div class="skill-level">Expert · sub-2hr SLA</div>
-      <div class="skill-bar" role="progressbar" aria-label="IT Helpdesk skill level: 96%" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100">
-        <div class="skill-fill" data-width="96"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ EXPERIENCE ═══════════════════ -->
-<section id="experience" aria-labelledby="exp-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Work History</span></div>
-  <h2 class="sec-title reveal" id="exp-heading">Professional <mark>Experience</mark></h2>
-
-  <div class="exp-with-photo">
-    <div class="exp-list">
-      <!-- Experience Card 1 -->
-      <article class="exp-card current reveal" id="exp1">
-        <button class="exp-trigger" type="button" aria-expanded="false" aria-controls="exp1-body">
-          <div class="exp-trigger-left">
-            <div class="exp-head">
-              <span class="exp-role">IT Officer</span>
-              <span class="exp-badge">● Current</span>
-            </div>
-            <div class="exp-meta">
-              <span class="exp-company">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                Route 2 Uni International Group
-              </span>
-              <span class="exp-sep" aria-hidden="true">·</span>
-              <span class="exp-location">📍 Putalisadak, Kathmandu</span>
-              <span class="exp-sep" aria-hidden="true">·</span>
-              <span class="exp-date"><time datetime="2026-05">May 2026</time> – Present</span>
-            </div>
-            <span class="exp-hint">Expand for details</span>
-          </div>
-          <div class="exp-chevron" aria-hidden="true">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </button>
-        <div class="exp-body" id="exp1-body">
-          <ul class="exp-bullets">
-            <li>Administer cloud-based CRM and SaaS platforms for 50+ staff, enforcing RBAC, MFA, and data governance policies — maintaining 100% compliance with internal security standards.</li>
-            <li>Manage university partner portals and integration workflows, ensuring real-time data accuracy across 30+ partner institutions.</li>
-            <li>Built operational and student-progress reporting dashboards for leadership, cutting manual reporting overhead by 40%.</li>
-            <li>Coordinated IT workflows across student support, admissions, and infrastructure teams — reducing average ticket resolution time by 25%.</li>
-            <li>Provide L1/L2 technical support for all staff, maintaining a sub-2-hour SLA across a high-throughput consultancy environment.</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Experience Card 2 -->
-      <article class="exp-card reveal" id="exp2">
-        <button class="exp-trigger" type="button" aria-expanded="false" aria-controls="exp2-body">
-          <div class="exp-trigger-left">
-            <div class="exp-head">
-              <span class="exp-role">IT Officer</span>
-              <span class="exp-badge past"><time datetime="2024-08">Aug 2024</time>–<time datetime="2026-05">May 2026</time></span>
-            </div>
-            <div class="exp-meta">
-              <span class="exp-company">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                Citizen Infotech
-              </span>
-              <span class="exp-sep" aria-hidden="true">·</span>
-              <span class="exp-location">📍 Mid Baneshwor, Kathmandu</span>
-            </div>
-            <span class="exp-hint">Expand for details</span>
-          </div>
-          <div class="exp-chevron" aria-hidden="true">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </button>
-        <div class="exp-body" id="exp2-body">
-          <ul class="exp-bullets">
-            <li>Owned full-lifecycle CRM administration for 50+ users — data entry standards, system integrity checks, and user access governance — reducing data discrepancies by 35%.</li>
-            <li>Enforced data verification and QA workflows, achieving full compliance with internal governance standards across all active records.</li>
-            <li>Automated operational and performance reporting for management, saving ~6 hours of manual effort per week.</li>
-            <li>Managed client and partner portals — ensuring content accuracy, access control, and consistent uptime for all stakeholders.</li>
-          </ul>
-        </div>
-      </article>
-    </div><!-- /exp-list -->
-
-    <!-- Experience photo sidebar -->
-    <div class="exp-photo-sticky reveal">
-      <div class="exp-photo-frame">
-        <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/exp-pic.jpg"
-             alt="Hemraj Adhikari at work as IT Officer in Kathmandu, Nepal"
-             width="220" height="293" loading="lazy" decoding="async">
-        <div class="exp-photo-badge" aria-hidden="true">
-          <div class="badge-dot-green"></div>
-          <div><strong>Hemraj Adhikari</strong><span>IT Officer · Kathmandu</span></div>
-        </div>
-      </div>
-    </div>
-  </div><!-- /exp-with-photo -->
-
-  <div class="section-cta">
-    <a href="experience.html" class="btn-outline">View Full Experience →</a>
-  </div>
-</section>
-
-<!-- ═══════════════════ SERVICES ═══════════════════ -->
-<section id="services" aria-labelledby="services-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">What I Do</span></div>
-  <h2 class="sec-title reveal" id="services-heading">IT Services for <mark>Nepal &amp; Worldwide</mark></h2>
-  <div class="svc-grid">
-    <article class="svc-card reveal">
-      <div class="svc-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-      <span class="svc-num" aria-hidden="true">01</span>
-      <h3>Cloud Infrastructure &amp; DevOps</h3>
-      <p>Design, deploy, and manage scalable cloud environments on AWS — EC2, IAM, S3, VPC, CloudWatch — with automated CI/CD pipelines and infrastructure as code.</p>
-      <ul class="svc-tags" aria-label="Related technologies" role="list"><li>AWS</li><li>CI/CD</li><li>Docker</li><li>GitHub Actions</li></ul>
-    </article>
-    <article class="svc-card reveal">
-      <div class="svc-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M9 12h1m4 0h1"/></svg></div>
-      <span class="svc-num" aria-hidden="true">02</span>
-      <h3>SaaS &amp; CRM Administration</h3>
-      <p>Full-lifecycle CRM and SaaS platform management for teams of 50+, including RBAC, MFA, data governance, user onboarding/offboarding, and compliance.</p>
-      <ul class="svc-tags" aria-label="Related technologies" role="list"><li>Google Workspace</li><li>M365</li><li>CRM</li><li>RBAC</li></ul>
-    </article>
-    <article class="svc-card reveal">
-      <div class="svc-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <span class="svc-num" aria-hidden="true">03</span>
-      <h3>Cybersecurity &amp; Data Protection</h3>
-      <p>Endpoint security hardening, SSL/TLS certificate management, vulnerability assessment, backup automation, disaster recovery planning, and security auditing.</p>
-      <ul class="svc-tags" aria-label="Related technologies" role="list"><li>SSL/TLS</li><li>Firewall</li><li>Backup &amp; DR</li><li>Security Audit</li></ul>
-    </article>
-    <article class="svc-card reveal">
-      <div class="svc-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-      <span class="svc-num" aria-hidden="true">04</span>
-      <h3>IT Mentoring — BIT, BCA, CSIT Nepal</h3>
-      <p>Career guidance, final-year project assistance, and technical mentoring for BIT, BCA, BSc CSIT, Computer Engineering, AI learners, and digital marketing learners in Nepal &amp; India.</p>
-      <ul class="svc-tags" aria-label="Related programs" role="list"><li>BIT Nepal</li><li>BCA Nepal</li><li>BSc CSIT</li><li>AI Learner</li></ul>
-    </article>
-    <article class="svc-card reveal">
-      <div class="svc-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-      <span class="svc-num" aria-hidden="true">05</span>
-      <h3>WordPress &amp; Web Hosting</h3>
-      <p>End-to-end WordPress setup, security hardening, speed optimisation, cPanel/Hostinger hosting configuration, DNS management, SSL certificates, and ongoing maintenance — 50+ deployed sites.</p>
-      <ul class="svc-tags" aria-label="Related technologies" role="list"><li>WordPress</li><li>cPanel</li><li>DNS / SSL</li><li>Hostinger</li></ul>
-    </article>
-    <article class="svc-card reveal">
-      <div class="svc-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2" width="9" height="9" rx="2"/><rect x="2" y="13" width="9" height="9" rx="2"/><rect x="13" y="13" width="9" height="9" rx="2"/></svg></div>
-      <span class="svc-num" aria-hidden="true">06</span>
-      <h3>IT Helpdesk &amp; Remote Support</h3>
-      <p>Reliable L1/L2 IT helpdesk support — hardware/software troubleshooting, user onboarding, remote desktop support, and system health monitoring with a sub-2-hour response SLA.</p>
-      <ul class="svc-tags" aria-label="Related services" role="list"><li>Remote Support</li><li>L1/L2</li><li>Monitoring</li><li>SLA</li></ul>
-    </article>
-  </div>
-  <div class="section-cta"><a href="services.html" class="btn-outline">All Services →</a></div>
-</section>
-
-<!-- ═══════════════════ PORTFOLIO ═══════════════════ -->
-<section id="portfolio" aria-labelledby="portfolio-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Portfolio</span></div>
-  <h2 class="sec-title reveal" id="portfolio-heading">Featured <mark>Projects</mark></h2>
-  <div class="proj-grid">
-    <article class="proj-card reveal">
-      <div class="proj-thumb" aria-hidden="true">🎙️</div>
-      <div class="proj-body">
-        <div class="proj-meta"><span class="proj-type">Media &amp; Streaming</span><span class="proj-year"><time datetime="2023">2023</time></span></div>
-        <h3>KBM FM — Radio Streaming Platform</h3>
-        <p>Live radio streaming platform with real-time audio broadcasting, program scheduling, and audience engagement for Nepal listeners. Built and deployed on cloud infrastructure.</p>
-        <div class="proj-tech"><span>PHP</span><span>MySQL</span><span>Streaming API</span><span>AWS</span></div>
-        <a href="https://kbmfm.com/" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View KBM FM live (opens in new tab)">
-          View Live
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
-    </article>
-    <article class="proj-card reveal">
-      <div class="proj-thumb" aria-hidden="true">📚</div>
-      <div class="proj-body">
-        <div class="proj-meta"><span class="proj-type">EdTech — Nepal</span><span class="proj-year"><time datetime="2022">2022</time></span></div>
-        <h3>Mega Loksewa — Exam Prep Platform</h3>
-        <p>Full-scale Nepal government exam preparation platform — mock tests, live classes, LMS, and student dashboards for Loksewa aspirants nationwide.</p>
-        <div class="proj-tech"><span>Laravel</span><span>MySQL</span><span>LMS</span><span>cPanel</span></div>
-        <a href="https://www.megaloksewa.com/" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View Mega Loksewa live (opens in new tab)">
-          View Live
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
-    </article>
-    <article class="proj-card reveal">
-      <div class="proj-thumb" aria-hidden="true">☁️</div>
-      <div class="proj-body">
-        <div class="proj-meta"><span class="proj-type">Enterprise Cloud</span><span class="proj-year"><time datetime="2023">2023</time></span></div>
-        <h3>Cloud IT Management System</h3>
-        <p>Centralised cloud IT management platform for monitoring servers, user access control, backup automation, and real-time system health dashboards — built on AWS with Python automation.</p>
-        <div class="proj-tech"><span>AWS</span><span>Python</span><span>CloudWatch</span><span>IAM</span></div>
-        <span class="proj-done">Enterprise System ✓</span>
-      </div>
-    </article>
-  </div>
-  <div class="section-cta"><a href="projects.html" class="btn-outline">All Projects →</a></div>
-</section>
-
-<!-- ═══════════════════ BLOG ═══════════════════ -->
-<section id="blog" aria-labelledby="blog-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Blog &amp; Guides</span></div>
-  <h2 class="sec-title reveal" id="blog-heading">IT Insights for <mark>Nepal Students</mark></h2>
-  <div class="blog-grid">
-    <a href="blog-aws-jobs-nepal.html" class="blog-card reveal">
-      <div class="blog-thumb" aria-hidden="true">☁️</div>
-      <div class="blog-body">
-        <div class="blog-meta"><span class="blog-cat">AWS Nepal</span><span class="blog-date">Cloud Career Guide</span></div>
-        <h3>How to Start an AWS Cloud Career in Nepal — BIT &amp; BSc CSIT Guide</h3>
-        <p>Step-by-step roadmap for Nepal IT students to break into cloud computing — free AWS resources, certification paths, and job market tips for 2025.</p>
-        <div class="blog-tags"><span>AWS</span><span>BIT Nepal</span><span>BSc CSIT</span><span>IT Career Nepal</span></div>
-        <span class="blog-read" aria-hidden="true">Read Guide →</span>
-      </div>
-    </a>
-    <a href="blog-linux-beginners-nepal.html" class="blog-card reveal">
-      <div class="blog-thumb" aria-hidden="true">🐧</div>
-      <div class="blog-body">
-        <div class="blog-meta"><span class="blog-cat">Linux Nepal</span><span class="blog-date">SysAdmin Guide</span></div>
-        <h3>Linux Administration Basics Every Nepal IT Student Must Know</h3>
-        <p>Essential Linux commands, file system management, user administration, and networking tools that BCA, BIT, and BSc CSIT students use every day on the job.</p>
-        <div class="blog-tags"><span>Linux</span><span>BCA Nepal</span><span>Sysadmin</span><span>Terminal</span></div>
-        <span class="blog-read" aria-hidden="true">Read Guide →</span>
-      </div>
-    </a>
-    <a href="blog-cybersecurity-nepal.html" class="blog-card reveal">
-      <div class="blog-thumb" aria-hidden="true">🔒</div>
-      <div class="blog-body">
-        <div class="blog-meta"><span class="blog-cat">Cybersecurity</span><span class="blog-date">Career Roadmap</span></div>
-        <h3>Cybersecurity Career in Nepal — Roadmap for CSIT &amp; BCA Students</h3>
-        <p>How to build a cybersecurity career from Nepal in 2025. Covers ethical hacking basics, certifications (CEH, CompTIA Security+), and career opportunities abroad.</p>
-        <div class="blog-tags"><span>Cybersecurity</span><span>Nepal IT</span><span>CEH</span><span>BSc CSIT</span></div>
-        <span class="blog-read" aria-hidden="true">Read Guide →</span>
-      </div>
-    </a>
-  </div>
-  <div class="blog-cta-bar reveal">
-    <p>More Nepal IT guides published regularly. <strong>Want a specific guide?</strong> Reach out and request a topic.</p>
-    <a href="contact.html" class="btn-primary">Request a Topic</a>
-  </div>
-</section>
-
-<!-- ═══════════════════ FAQ ═══════════════════ -->
-<section id="faq" aria-labelledby="faq-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">FAQ</span></div>
-  <h2 class="sec-title reveal" id="faq-heading">Frequently Asked <mark>Questions</mark></h2>
-  <div class="faq-grid reveal">
-    <div class="faq-item">
-      <button class="faq-question" type="button" aria-expanded="false">
-        What IT services does Hemraj Adhikari offer?
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="faq-answer">
-        <p>AWS cloud infrastructure setup, Google Workspace &amp; Microsoft 365 administration, Linux system administration, CRM management, WordPress hosting and security, cybersecurity auditing, SSL/TLS management, and IT helpdesk support — available worldwide from Kathmandu, Nepal.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" type="button" aria-expanded="false">
-        Can Hemraj work with international clients outside Nepal?
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="faq-answer">
-        <p>Yes. Hemraj is fully available for remote freelance projects worldwide via Upwork, email, and WhatsApp. He accepts international payments through Wise, PayPal, and Payoneer, and responds within 24 hours.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" type="button" aria-expanded="false">
-        Does Hemraj mentor BIT, BCA, and BSc CSIT students?
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="faq-answer">
-        <p>Yes. Hemraj provides career guidance, final-year project assistance, and technical mentoring for BIT, BCA, BSc CSIT, Computer Engineering, AI learners, and digital marketing students across Nepal and India.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" type="button" aria-expanded="false">
-        What AWS cloud services does Hemraj specialise in?
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="faq-answer">
-        <p>Hemraj specialises in AWS EC2, IAM, S3, VPC, CloudWatch, and automated CI/CD pipelines. He is currently pursuing the AWS Cloud Practitioner certification.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" type="button" aria-expanded="false">
-        How can I hire Hemraj for IT support or a freelance project?
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="faq-answer">
-        <p>Via the <a href="contact.html">contact page</a>, emailing <a href="mailto:hemrajhadhikari@gmail.com">hemrajhadhikari@gmail.com</a>, WhatsApp at <a href="https://wa.me/9779865802093" target="_blank" rel="noopener noreferrer">+977-9865802093</a>, or <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer">Upwork</a>.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" type="button" aria-expanded="false">
-        What is Hemraj's hourly rate or freelance pricing?
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="faq-answer">
-        <p>Pricing varies by project scope. Hemraj offers competitive rates for Nepal-based and international clients. Contact via the <a href="contact.html">contact page</a> or WhatsApp to discuss requirements and get a custom quote.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ CONTACT ═══════════════════ -->
-<section id="contact" aria-labelledby="contact-heading">
-  <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Get in Touch</span></div>
-  <h2 class="sec-title reveal" id="contact-heading">Let's <mark>Connect</mark></h2>
-  <div class="contact-grid">
-    <div class="reveal">
-      <p class="contact-intro">Have a project, need IT support, or want mentoring for BIT, BCA, BSc CSIT, AI, or digital marketing careers? Available for freelance projects, consultations, and student mentoring — locally in Nepal, across India, and worldwide.</p>
-      <div class="contact-items">
-        <a href="mailto:hemrajhadhikari@gmail.com" class="c-item">
-          <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-          <div><span class="c-label">Email</span><span class="c-val">hemrajhadhikari@gmail.com</span></div>
-        </a>
-        <a href="tel:+9779865802093" class="c-item">
-          <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.11-1.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-          <div><span class="c-label">Phone / WhatsApp</span><span class="c-val">+977-9865802093</span></div>
-        </a>
-        <div class="c-item">
-          <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div><span class="c-label">Location</span><span class="c-val">Kathmandu, Bagmati Province, Nepal</span></div>
-        </div>
-        <div class="c-item">
-          <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div><span class="c-label">Response Time</span><span class="c-val">Within 24 hours · Nepal &amp; Global</span></div>
-        </div>
-      </div>
-      <a href="https://wa.me/9779865802093?text=Hi%20Hemraj%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss."
-         target="_blank" rel="noopener noreferrer" class="wa-cta"
-         aria-label="Chat with Hemraj on WhatsApp (opens in new tab)">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        Chat on WhatsApp
-      </a>
-    </div>
-
-    <div class="reveal">
-      <div class="contact-form-panel">
-        <p>Want to send a full message, request a service quote, or ask specific questions?</p>
-        <a href="contact.html" class="btn-primary">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          Open Full Contact Page
-        </a>
-        <p class="contact-form-note">Includes contact form, service selector, FAQ &amp; location map</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="hire-cta-bar reveal">
-    <div class="hire-cta-text">
-      <h3>Ready to hire a reliable IT professional?</h3>
-      <p>Available for freelance IT projects worldwide — cloud, SaaS, Linux, WordPress &amp; more.</p>
-    </div>
-    <div class="hire-cta-actions">
-      <a href="contact.html" class="btn-primary">Hire Me Now</a>
-      <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="View Upwork profile (opens in new tab)">View Upwork Profile</a>
-    </div>
-  </div>
-</section>
-
-</main><!-- /main-content -->
-
-<!-- ═══════════════════ FOOTER ═══════════════════ -->
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-accent-bar" aria-hidden="true"></div>
-
-  <div class="footer-main">
-    <!-- Brand column -->
-    <div class="footer-brand">
-      <a href="/" class="footer-logo"><em>hemraj</em>.adhikari</a>
-      <p class="footer-tagline">IT Officer &amp; Cloud Infrastructure Specialist based in Kathmandu, Nepal. Available for freelance IT projects worldwide. Mentor for BIT, BCA &amp; BSc CSIT students.</p>
-      <div class="footer-avail">
-        <div class="footer-avail-dot" aria-hidden="true"></div>
-        Open to freelance &amp; consulting
-      </div>
-      <nav aria-label="Social media links">
-        <div class="footer-social">
-          <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" aria-label="Upwork">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
-          </a>
-          <a href="mailto:hemrajhadhikari@gmail.com" aria-label="Email">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          </a>
-          <a href="https://wa.me/9779865802093" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-          </a>
-        </div>
-      </nav>
-    </div><!-- /footer-brand -->
-
-    <!-- Pages column -->
-    <nav aria-label="Site pages" class="footer-col">
-      <div class="footer-col-title">Pages</div>
-      <ul class="footer-nav-list" role="list">
-        <li><a href="/">Home</a></li>
+      <ul class="nav-links" role="list">
+        <li><a href="/" aria-current="page">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="experience.html">Experience</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="blog.html">Blog</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-toggle"
+                  type="button"
+                  id="studentsDropdownBtn"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  aria-controls="studentsDropdownMenu">
+            Students
+            <!-- SVG icon: chevron-down -->
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="nav-dropdown-menu" id="studentsDropdownMenu" role="menu">
+            <a href="bit-mentor.html" role="menuitem">🎓 BIT Nepal <span class="tag-sm">Guide</span></a>
+            <a href="csit-mentor.html" role="menuitem">💻 BSc CSIT <span class="tag-sm">Guide</span></a>
+            <a href="bca-mentor.html" role="menuitem">📚 BCA Nepal <span class="tag-sm">Guide</span></a>
+            <a href="services.html" role="menuitem">🤖 AI Learner</a>
+          </div>
+        </li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+
+      <div class="nav-actions">
+        <button class="nav-search-btn"
+                id="searchToggle"
+                aria-label="Open search"
+                aria-expanded="false"
+                aria-controls="searchOverlay"
+                type="button">
+          <!-- SVG icon: search -->
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+        <button class="nav-toggle"
+                id="navToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="mobileNav"
+                type="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
     </nav>
+  </header>
 
-    <!-- Services column -->
-    <nav aria-label="Services" class="footer-col">
-      <div class="footer-col-title">Services</div>
-      <ul class="footer-nav-list" role="list">
-        <li><a href="services.html">AWS Cloud &amp; DevOps</a></li>
-        <li><a href="services.html">SaaS &amp; CRM Admin</a></li>
-        <li><a href="services.html">Linux SysAdmin</a></li>
-        <li><a href="services.html">Cybersecurity</a></li>
-        <li><a href="services.html">WordPress &amp; Hosting</a></li>
-        <li><a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer">Hire on Upwork</a></li>
-      </ul>
-    </nav>
+  <!-- Mobile nav backdrop -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true"></div>
 
-    <!-- Students column -->
-    <nav aria-label="Student resources" class="footer-col">
-      <div class="footer-col-title">Students Nepal</div>
-      <ul class="footer-nav-list" role="list">
-        <li><a href="bit-mentor.html">BIT Nepal Guide</a></li>
-        <li><a href="bca-mentor.html">BCA Nepal Guide</a></li>
-        <li><a href="csit-mentor.html">BSc CSIT Guide</a></li>
-        <li><a href="services.html">AI Learner Mentoring</a></li>
-        <li><a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" target="_blank" rel="noopener noreferrer">Download CV (PDF)</a></li>
-      </ul>
-    </nav>
-  </div><!-- /footer-main -->
+  <!-- ═══ MOBILE NAV ═══ -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-search-row">
+      <!-- SVG icon: search -->
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input class="mobile-search-input"
+             type="search"
+             placeholder="Search…"
+             aria-label="Search site"
+             id="mobileSearchInput"
+             autocomplete="off">
+    </div>
 
-  <!-- Contact strip -->
-  <div class="footer-contact-strip">
-    <a href="mailto:hemrajhadhikari@gmail.com" class="footer-contact-item">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      hemrajhadhikari@gmail.com
-    </a>
-    <div class="footer-contact-divider" aria-hidden="true"></div>
-    <a href="tel:+9779865802093" class="footer-contact-item">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.11-1.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      +977-9865802093
-    </a>
-    <div class="footer-contact-divider" aria-hidden="true"></div>
-    <span class="footer-contact-item">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Kathmandu, Nepal · Remote Worldwide
-    </span>
-  </div>
-
-  <!-- Footer bottom -->
-  <div class="footer-bottom">
-    <p class="footer-copy">© <span id="ft-year"></span> <strong>Hemraj Adhikari</strong> · Kathmandu, Nepal</p>
-    <nav class="footer-bottom-links" aria-label="Footer links">
+    <div class="mobile-nav-section">
+      <span class="mobile-nav-label">Navigation</span>
       <a href="/">Home</a>
+      <a href="about.html">About</a>
+      <a href="experience.html">Experience</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
       <a href="contact.html">Contact</a>
-      <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer">Upwork</a>
-      <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" target="_blank" rel="noopener noreferrer">Download CV</a>
-    </nav>
-    <p class="footer-made">Made with <span class="footer-heart" aria-hidden="true">♥</span> for Digital Nepal</p>
-  </div>
-</footer>
+    </div>
 
-</div><!-- /.page -->
+    <div class="mobile-nav-section">
+      <span class="mobile-nav-label">🎓 Students Nepal</span>
+      <a href="bit-mentor.html">BIT Nepal — Mentor &amp; Career Guide</a>
+      <a href="csit-mentor.html">BSc CSIT — Mentor &amp; Career Guide</a>
+      <a href="bca-mentor.html">BCA Nepal — Mentor &amp; Career Guide</a>
+      <a href="services.html">AI Learner Mentoring</a>
+    </div>
 
-<!-- Back to top -->
-<button id="btt" aria-label="Back to top" type="button">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
+    <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy"
+       class="mobile-dl-btn"
+       rel="noopener noreferrer"
+       target="_blank"
+       aria-label="Download Hemraj Adhikari CV PDF (opens in new tab)">
+      <!-- SVG icon: download -->
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Download CV (PDF)
+    </a>
+  </nav>
 
-<!-- JavaScript — single file, deferred -->
-<script src="main.js" defer></script>
+  <!-- Toast notification (aria-live region) -->
+  <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ═══ PAGE WRAPPER ═══ -->
+  <div class="page">
+    <main id="main-content" tabindex="-1">
+
+      <!-- ══════════════ HERO ══════════════ -->
+      <section id="hero" aria-labelledby="hero-heading">
+        <div class="hero-grid reveal">
+
+          <!-- Hero Content -->
+          <div class="hero-content">
+            <p class="avail-banner" role="status" aria-live="polite">
+              <span class="dot-live" aria-hidden="true"></span>
+              <span><strong>Available for hire</strong> · Kathmandu, Nepal · Remote worldwide · Responds within 24 hrs</span>
+            </p>
+
+            <div class="hero-badge">
+              <span class="badge-dot" aria-hidden="true"></span>
+              <span>IT Officer · Kathmandu, Nepal</span>
+            </div>
+
+            <h1 class="hero-name" id="hero-heading">
+              <span class="name-line">Hemraj</span>
+              <span class="name-accent">Adhikari</span>
+            </h1>
+
+            <p class="hero-role" aria-label="IT Officer and Cloud Infrastructure Specialist">
+              <span class="role-sep" aria-hidden="true">→</span>
+              <span class="role-typed" id="typedText" aria-live="off" aria-hidden="true"></span>
+              <span class="role-cursor" aria-hidden="true">|</span>
+              <span class="sr-only">IT Officer &amp; Cloud Infrastructure Specialist</span>
+            </p>
+
+            <p class="hero-desc">
+              <strong>IT Officer &amp; Cloud Infrastructure Specialist</strong> based in <strong>Kathmandu, Nepal</strong> with
+              <strong>3.5+ years</strong> of hands-on experience in <strong>AWS Cloud</strong>, SaaS administration,
+              <strong>Linux system administration</strong>, networking, and cybersecurity. Currently pursuing a
+              <strong>BIT degree at Bagmati Pradesh University</strong>. Available for <strong>freelance IT projects worldwide</strong>.
+              Mentor for BIT, BCA &amp; BSc CSIT students across Nepal &amp; India.
+            </p>
+
+            <ul class="tag-row" aria-label="Key skills" role="list">
+              <li class="tag blue">AWS Cloud</li>
+              <li class="tag purple">Python</li>
+              <li class="tag green">Linux</li>
+              <li class="tag">SysAdmin</li>
+              <li class="tag purple">DevOps</li>
+              <li class="tag green">CRM Admin</li>
+              <li class="tag">Networking</li>
+              <li class="tag purple">Cybersecurity</li>
+              <li class="tag blue">Google Workspace</li>
+              <li class="tag">WordPress</li>
+            </ul>
+
+            <div class="cta-row">
+              <a href="projects.html" class="btn-primary">
+                <!-- SVG icon: book-open -->
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+                View Projects
+              </a>
+              <a href="contact.html" class="btn-outline">Hire Me</a>
+              <a href="https://wa.me/9779865802093?text=Hi%20Hemraj%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss."
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="btn-wa"
+                 aria-label="Chat with Hemraj on WhatsApp (opens in new tab)">
+                <!-- SVG icon: whatsapp -->
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                </svg>
+                WhatsApp
+              </a>
+            </div>
+
+            <div class="social-row" aria-label="Social media and contact links">
+              <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub profile (opens in new tab)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn profile (opens in new tab)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              <a href="https://web.facebook.com/hemraaj.adhikaari/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook profile (opens in new tab)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.885v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/hemraj.adhikary/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram profile (opens in new tab)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Upwork freelancer profile (opens in new tab)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+              </a>
+              <a href="mailto:hemrajhadhikari@gmail.com" class="social-btn" aria-label="Send email to Hemraj">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </a>
+              <button class="social-btn" type="button" id="copyEmailBtn" aria-label="Copy email address to clipboard" title="Copy email">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              </button>
+              <a href="https://hemrajadhikari.info.np" class="social-btn" aria-label="Portfolio website">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </a>
+            </div>
+          </div><!-- /hero-content -->
+
+          <!-- Hero Visual -->
+          <div class="hero-visual" aria-hidden="true">
+            <div class="photo-wrap">
+              <div class="photo-ring-outer"></div>
+              <div class="photo-ring-inner">
+                <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/Hem-pic.png"
+                     alt="Hemraj Adhikari, IT Officer and Cloud Infrastructure Specialist from Kathmandu, Nepal"
+                     width="220"
+                     height="220"
+                     loading="eager"
+                     fetchpriority="high"
+                     decoding="async"
+                     id="heroImg">
+              </div>
+              <div class="orbit-ring">
+                <div class="orb-icon" title="AWS Cloud">☁️</div>
+                <div class="orb-icon" title="Python">🐍</div>
+                <div class="orb-icon" title="Linux">🐧</div>
+                <div class="orb-icon" title="Cybersecurity">🛡️</div>
+              </div>
+            </div>
+
+            <dl class="stats-grid" aria-label="Key statistics">
+              <div class="stat-card">
+                <dt class="stat-label">Websites</dt>
+                <dd><span class="stat-num" data-count="50">0</span><span class="stat-sup">+</span></dd>
+              </div>
+              <div class="stat-card">
+                <dt class="stat-label">Yrs Exp</dt>
+                <dd><span class="stat-num" data-count="3">0</span><span class="stat-sup">.5+</span></dd>
+              </div>
+              <div class="stat-card">
+                <dt class="stat-label">Uptime SLA</dt>
+                <dd><span class="stat-num" data-count="99">0</span><span class="stat-sup">%</span></dd>
+              </div>
+              <div class="stat-card">
+                <dt class="stat-label">Users Served</dt>
+                <dd><span class="stat-num" data-count="100">0</span><span class="stat-sup">+</span></dd>
+              </div>
+            </dl>
+
+            <a href="#about" class="scroll-hint" aria-label="Scroll down to About section">
+              <span aria-hidden="true">↓</span>&nbsp;scroll
+            </a>
+          </div><!-- /hero-visual -->
+
+        </div><!-- /hero-grid -->
+      </section>
+
+      <!-- ══════════════ ABOUT ══════════════ -->
+      <section id="about" aria-labelledby="about-heading">
+        <div class="eyebrow reveal">
+          <span class="eyebrow-line" aria-hidden="true"></span>
+          <span class="eyebrow-text">About Me</span>
+        </div>
+        <h2 class="sec-title reveal" id="about-heading">Nepal IT Expert &amp; <mark>Student Mentor</mark></h2>
+
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>I am <strong>Hemraj Adhikari</strong>, an <strong>IT Officer and Cloud Infrastructure Specialist</strong> from <strong>Kathmandu, Nepal</strong>. Currently serving at <strong>Route 2 Uni International Group</strong>, I have built expertise across cloud platforms, SaaS administration, system administration, networking, and cybersecurity over more than three years of professional work.</p>
+            <p>I hold a <strong>Bachelor of Information Technology (BIT)</strong> from JMC College under Bagmati Pradesh University (expected June 2026), backed by certifications in <strong>Linux Administration</strong>, <strong>Google Workspace</strong>, and <strong>Microsoft 365</strong>, with <strong>AWS Cloud Practitioner</strong> in progress.</p>
+            <p>Beyond professional work, I am a passionate <strong>mentor for BIT, BCA, BSc CSIT, Computer Engineering students, AI learners, and digital marketing learners</strong> across Nepal and India — providing real-world guidance grounded in hands-on experience.</p>
+
+            <div class="cert-strip" aria-label="Professional certifications">
+              <div class="cert-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                Linux Admin Certified
+              </div>
+              <div class="cert-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                Google Workspace Admin
+              </div>
+              <div class="cert-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Microsoft 365 Admin
+              </div>
+              <div class="cert-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                AWS CCP (In Progress)
+              </div>
+            </div>
+
+            <ul class="hl-cards" aria-label="Key highlights" role="list">
+              <li class="hl-card">
+                <span class="hl-icon" aria-hidden="true">🎓</span>
+                <div>
+                  <strong>Nepal IT Student Mentor</strong>
+                  <span>BIT · BCA · BSc CSIT · Comp Eng · AI Learners · Digital Marketing</span>
+                </div>
+              </li>
+              <li class="hl-card">
+                <span class="hl-icon" aria-hidden="true">☁️</span>
+                <div>
+                  <strong>Cloud &amp; SaaS Specialist</strong>
+                  <span>AWS · Google Workspace · Microsoft 365 · Azure Fundamentals</span>
+                </div>
+              </li>
+              <li class="hl-card">
+                <span class="hl-icon" aria-hidden="true">⚡</span>
+                <div>
+                  <strong>Sub-2hr Response SLA</strong>
+                  <span>Fast, reliable IT support across high-throughput environments</span>
+                </div>
+              </li>
+              <li class="hl-card">
+                <span class="hl-icon" aria-hidden="true">🌐</span>
+                <div>
+                  <strong>Global Freelancer — 50+ Websites Deployed</strong>
+                  <span>AWS EC2 · cPanel · Hostinger · DNS · SSL/TLS · WordPress Security</span>
+                </div>
+              </li>
+            </ul>
+
+            <div class="about-actions">
+              <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy"
+                 class="btn-primary"
+                 rel="noopener noreferrer"
+                 target="_blank"
+                 aria-label="Download CV PDF (opens in new tab)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download CV
+              </a>
+              <a href="contact.html" class="btn-outline">Let's Talk</a>
+              <a href="about.html" class="btn-outline">Full About →</a>
+            </div>
+          </div><!-- /about-text -->
+
+          <div class="about-photo-col reveal">
+            <div class="deco-ring" aria-hidden="true"></div>
+            <div class="about-photo-frame" style="margin-bottom:14px">
+              <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/lp-pic.jpg"
+                   alt="Hemraj Adhikari working as IT Officer in Kathmandu, Nepal"
+                   width="300"
+                   height="400"
+                   loading="lazy"
+                   decoding="async">
+              <div class="about-photo-badge" aria-hidden="true">
+                <div class="badge-dot-green"></div>
+                <div>
+                  <strong>Hemraj Adhikari</strong>
+                  <span>IT Officer · Kathmandu, Nepal</span>
+                </div>
+              </div>
+            </div>
+            <div class="about-photo-frame">
+              <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/hemraj.png"
+                   alt="Hemraj Adhikari, Cloud Infrastructure Specialist"
+                   width="300"
+                   height="400"
+                   loading="lazy"
+                   decoding="async">
+              <div class="about-photo-badge" aria-hidden="true">
+                <div class="badge-dot-green"></div>
+                <div>
+                  <strong>IT &amp; Cloud Specialist</strong>
+                  <span>Bagmati Pradesh · Nepal</span>
+                </div>
+              </div>
+            </div>
+          </div><!-- /about-photo-col -->
+        </div><!-- /about-grid -->
+      </section>
+
+      <!-- ══════════════ SKILLS ══════════════ -->
+      <section id="skills" aria-labelledby="skills-heading">
+        <div class="eyebrow reveal">
+          <span class="eyebrow-line" aria-hidden="true"></span>
+          <span class="eyebrow-text">Tech Stack</span>
+        </div>
+        <h2 class="sec-title reveal" id="skills-heading">Technical <mark>Skills &amp; Tools</mark></h2>
+        <div class="skills-grid reveal">
+          <div class="skill-item">
+            <div class="skill-name">AWS Cloud (EC2, IAM, S3)</div>
+            <div class="skill-level">Advanced · 3+ years</div>
+            <div class="skill-bar" role="progressbar" aria-label="AWS Cloud skill level: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
+              <div class="skill-fill" data-width="82"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Linux Administration</div>
+            <div class="skill-level">Advanced · Certified</div>
+            <div class="skill-bar" role="progressbar" aria-label="Linux Administration skill level: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+              <div class="skill-fill" data-width="88"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Google Workspace Admin</div>
+            <div class="skill-level">Expert · Certified</div>
+            <div class="skill-bar" role="progressbar" aria-label="Google Workspace skill level: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
+              <div class="skill-fill" data-width="92"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Microsoft 365 Admin</div>
+            <div class="skill-level">Expert · Certified</div>
+            <div class="skill-bar" role="progressbar" aria-label="Microsoft 365 skill level: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+              <div class="skill-fill" data-width="90"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">CRM Administration</div>
+            <div class="skill-level">Expert · 3+ years</div>
+            <div class="skill-bar" role="progressbar" aria-label="CRM Administration skill level: 94%" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100">
+              <div class="skill-fill" data-width="94"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">WordPress &amp; cPanel</div>
+            <div class="skill-level">Expert · 50+ sites</div>
+            <div class="skill-bar" role="progressbar" aria-label="WordPress and cPanel skill level: 93%" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100">
+              <div class="skill-fill" data-width="93"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Cybersecurity &amp; SSL/TLS</div>
+            <div class="skill-level">Intermediate–Advanced</div>
+            <div class="skill-bar" role="progressbar" aria-label="Cybersecurity skill level: 79%" aria-valuenow="79" aria-valuemin="0" aria-valuemax="100">
+              <div class="skill-fill" data-width="79"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Python Scripting</div>
+            <div class="skill-level">Intermediate</div>
+            <div class="skill-bar" role="progressbar" aria-label="Python Scripting skill level: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+              <div class="skill-fill" data-width="72"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Networking &amp; DNS</div>
+            <div class="skill-level">Advanced</div>
+            <div class="skill-bar" role="progressbar" aria-label="Networking and DNS skill level: 83%" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100">
+              <div class="skill-fill" data-width="83"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">DevOps &amp; Docker</div>
+            <div class="skill-level">Intermediate</div>
+            <div class="skill-bar" role="progressbar" aria-label="DevOps and Docker skill level: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">
+              <div class="skill-fill" data-width="68"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">GitHub Actions / CI/CD</div>
+            <div class="skill-level">Intermediate</div>
+            <div class="skill-bar" role="progressbar" aria-label="GitHub Actions CI/CD skill level: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+              <div class="skill-fill" data-width="70"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">IT Helpdesk L1/L2</div>
+            <div class="skill-level">Expert · sub-2hr SLA</div>
+            <div class="skill-bar" role="progressbar" aria-label="IT Helpdesk skill level: 96%" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100">
+              <div class="skill-fill" data-width="96"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════ EXPERIENCE ══════════════ -->
+      <section id="experience" aria-labelledby="exp-heading">
+        <div class="eyebrow reveal">
+          <span class="eyebrow-line" aria-hidden="true"></span>
+          <span class="eyebrow-text">Work History</span>
+        </div>
+        <h2 class="sec-title reveal" id="exp-heading">Professional <mark>Experience</mark></h2>
+
+        <div class="exp-with-photo">
+          <div class="exp-list">
+
+            <!-- Experience Card 1 — Current -->
+            <article class="exp-card current reveal" id="exp1">
+              <button class="exp-trigger" type="button" aria-expanded="false" aria-controls="exp1-body">
+                <div class="exp-trigger-left">
+                  <div class="exp-head">
+                    <span class="exp-role">IT Officer</span>
+                    <span class="exp-badge">● Current</span>
+                  </div>
+                  <div class="exp-meta">
+                    <span class="exp-company">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                      Route 2 Uni International Group
+                    </span>
+                    <span class="exp-sep" aria-hidden="true">·</span>
+                    <span class="exp-location">📍 Putalisadak, Kathmandu</span>
+                    <span class="exp-sep" aria-hidden="true">·</span>
+                    <span class="exp-date"><time datetime="2026-05">May 2026</time> – Present</span>
+                  </div>
+                  <span class="exp-hint">Expand for details</span>
+                </div>
+                <div class="exp-chevron" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </button>
+              <div class="exp-body" id="exp1-body" role="region" aria-label="Route 2 Uni experience details">
+                <ul class="exp-bullets">
+                  <li>Administer cloud-based CRM and SaaS platforms for 50+ staff, enforcing RBAC, MFA, and data governance policies — maintaining 100% compliance with internal security standards.</li>
+                  <li>Manage university partner portals and integration workflows, ensuring real-time data accuracy across 30+ partner institutions.</li>
+                  <li>Built operational and student-progress reporting dashboards for leadership, cutting manual reporting overhead by 40%.</li>
+                  <li>Coordinated IT workflows across student support, admissions, and infrastructure teams — reducing average ticket resolution time by 25%.</li>
+                  <li>Provide L1/L2 technical support for all staff, maintaining a sub-2-hour SLA across a high-throughput consultancy environment.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Experience Card 2 -->
+            <article class="exp-card reveal" id="exp2">
+              <button class="exp-trigger" type="button" aria-expanded="false" aria-controls="exp2-body">
+                <div class="exp-trigger-left">
+                  <div class="exp-head">
+                    <span class="exp-role">IT Officer</span>
+                    <span class="exp-badge past"><time datetime="2024-08">Aug 2024</time>–<time datetime="2026-05">May 2026</time></span>
+                  </div>
+                  <div class="exp-meta">
+                    <span class="exp-company">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                      Citizen Infotech
+                    </span>
+                    <span class="exp-sep" aria-hidden="true">·</span>
+                    <span class="exp-location">📍 Mid Baneshwor, Kathmandu</span>
+                  </div>
+                  <span class="exp-hint">Expand for details</span>
+                </div>
+                <div class="exp-chevron" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </button>
+              <div class="exp-body" id="exp2-body" role="region" aria-label="Citizen Infotech experience details">
+                <ul class="exp-bullets">
+                  <li>Owned full-lifecycle CRM administration for 50+ users — data entry standards, system integrity checks, and user access governance — reducing data discrepancies by 35%.</li>
+                  <li>Enforced data verification and QA workflows, achieving full compliance with internal governance standards across all active records.</li>
+                  <li>Automated operational and performance reporting for management, saving ~6 hours of manual effort per week.</li>
+                  <li>Managed client and partner portals — ensuring content accuracy, access control, and consistent uptime for all stakeholders.</li>
+                </ul>
+              </div>
+            </article>
+
+          </div><!-- /exp-list -->
+
+          <!-- Sticky photo sidebar -->
+          <div class="exp-photo-sticky reveal">
+            <div class="exp-photo-frame">
+              <img src="https://raw.githubusercontent.com/Hemraj-Adhikari/hemraj_portfolio/main/exp-pic.jpg"
+                   alt="Hemraj Adhikari at work as IT Officer in Kathmandu, Nepal"
+                   width="220"
+                   height="293"
+                   loading="lazy"
+                   decoding="async">
+              <div class="exp-photo-badge" aria-hidden="true">
+                <div class="badge-dot-green"></div>
+                <div>
+                  <strong>Hemraj Adhikari</strong>
+                  <span>IT Officer · Kathmandu</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /exp-with-photo -->
+
+        <div class="section-cta">
+          <a href="experience.html" class="btn-outline">View Full Experience →</a>
+        </div>
+      </section>
+
+      <!-- ══════════════ SERVICES ══════════════ -->
+      <section id="services" aria-labelledby="services-heading">
+        <div class="eyebrow reveal">
+          <span class="eyebrow-line" aria-hidden="true"></span>
+          <span class="eyebrow-text">What I Do</span>
+        </div>
+        <h2 class="sec-title reveal" id="services-heading">IT Services for <mark>Nepal &amp; Worldwide</mark></h2>
+        <div class="svc-grid">
+          <article class="svc-card reveal">
+            <div class="svc-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <span class="svc-num" aria-hidden="true">01</span>
+            <h3>Cloud Infrastructure &amp; DevOps</h3>
+            <p>Design, deploy, and manage scalable cloud environments on AWS — EC2, IAM, S3, VPC, CloudWatch — with automated CI/CD pipelines and infrastructure as code.</p>
+            <ul class="svc-tags" aria-label="Related technologies" role="list"><li>AWS</li><li>CI/CD</li><li>Docker</li><li>GitHub Actions</li></ul>
+          </article>
+          <article class="svc-card reveal">
+            <div class="svc-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M9 12h1m4 0h1"/></svg></div>
+            <span class="svc-num" aria-hidden="true">02</span>
+            <h3>SaaS &amp; CRM Administration</h3>
+            <p>Full-lifecycle CRM and SaaS platform management for teams of 50+, including RBAC, MFA, data governance, user onboarding/offboarding, and compliance.</p>
+            <ul class="svc-tags" aria-label="Related technologies" role="list"><li>Google Workspace</li><li>M365</li><li>CRM</li><li>RBAC</li></ul>
+          </article>
+          <article class="svc-card reveal">
+            <div class="svc-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span class="svc-num" aria-hidden="true">03</span>
+            <h3>Cybersecurity &amp; Data Protection</h3>
+            <p>Endpoint security hardening, SSL/TLS certificate management, vulnerability assessment, backup automation, disaster recovery planning, and security auditing.</p>
+            <ul class="svc-tags" aria-label="Related technologies" role="list"><li>SSL/TLS</li><li>Firewall</li><li>Backup &amp; DR</li><li>Security Audit</li></ul>
+          </article>
+          <article class="svc-card reveal">
+            <div class="svc-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <span class="svc-num" aria-hidden="true">04</span>
+            <h3>IT Mentoring — BIT, BCA, CSIT Nepal</h3>
+            <p>Career guidance, final-year project assistance, and technical mentoring for BIT, BCA, BSc CSIT, Computer Engineering, AI learners, and digital marketing learners in Nepal &amp; India.</p>
+            <ul class="svc-tags" aria-label="Related programs" role="list"><li>BIT Nepal</li><li>BCA Nepal</li><li>BSc CSIT</li><li>AI Learner</li></ul>
+          </article>
+          <article class="svc-card reveal">
+            <div class="svc-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <span class="svc-num" aria-hidden="true">05</span>
+            <h3>WordPress &amp; Web Hosting</h3>
+            <p>End-to-end WordPress setup, security hardening, speed optimisation, cPanel/Hostinger hosting configuration, DNS management, SSL certificates, and ongoing maintenance — 50+ deployed sites.</p>
+            <ul class="svc-tags" aria-label="Related technologies" role="list"><li>WordPress</li><li>cPanel</li><li>DNS / SSL</li><li>Hostinger</li></ul>
+          </article>
+          <article class="svc-card reveal">
+            <div class="svc-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2" width="9" height="9" rx="2"/><rect x="2" y="13" width="9" height="9" rx="2"/><rect x="13" y="13" width="9" height="9" rx="2"/></svg></div>
+            <span class="svc-num" aria-hidden="true">06</span>
+            <h3>IT Helpdesk &amp; Remote Support</h3>
+            <p>Reliable L1/L2 IT helpdesk support — hardware/software troubleshooting, user onboarding, remote desktop support, and system health monitoring with a sub-2-hour response SLA.</p>
+            <ul class="svc-tags" aria-label="Related services" role="list"><li>Remote Support</li><li>L1/L2</li><li>Monitoring</li><li>SLA</li></ul>
+          </article>
+        </div>
+        <div class="section-cta"><a href="services.html" class="btn-outline">All Services →</a></div>
+      </section>
+
+      <!-- ══════════════ PORTFOLIO ══════════════ -->
+      <section id="portfolio" aria-labelledby="portfolio-heading">
+        <div class="eyebrow reveal">
+          <span class="eyebrow-line" aria-hidden="true"></span>
+          <span class="eyebrow-text">Portfolio</span>
+        </div>
+        <h2 class="sec-title reveal" id="portfolio-heading">Featured <mark>Projects</mark></h2>
+        <div class="proj-grid">
+          <article class="proj-card reveal">
+            <div class="proj-thumb" aria-hidden="true">🎙️</div>
+            <div class="proj-body">
+              <div class="proj-meta"><span class="proj-type">Media &amp; Streaming</span><span class="proj-year"><time datetime="2023">2023</time></span></div>
+              <h3>KBM FM — Radio Streaming Platform</h3>
+              <p>Live radio streaming platform with real-time audio broadcasting, program scheduling, and audience engagement for Nepal listeners. Built and deployed on cloud infrastructure.</p>
+              <div class="proj-tech"><span>PHP</span><span>MySQL</span><span>Streaming API</span><span>AWS</span></div>
+              <a href="https://kbmfm.com/" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View KBM FM live (opens in new tab)">
+                View Live
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </article>
+          <article class="proj-card reveal">
+            <div class="proj-thumb" aria-hidden="true">📚</div>
+            <div class="proj-body">
+              <div class="proj-meta"><span class="proj-type">EdTech — Nepal</span><span class="proj-year"><time datetime="2022">2022</time></span></div>
+              <h3>Mega Loksewa — Exam Prep Platform</h3>
+              <p>Full-scale Nepal government exam preparation platform — mock tests, live classes, LMS, and student dashboards for Loksewa aspirants nationwide.</p>
+              <div class="proj-tech"><span>Laravel</span><span>MySQL</span><span>LMS</span><span>cPanel</span></div>
+              <a href="https://www.megaloksewa.com/" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View Mega Loksewa live (opens in new tab)">
+                View Live
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </article>
+          <article class="proj-card reveal">
+            <div class="proj-thumb" aria-hidden="true">☁️</div>
+            <div class="proj-body">
+              <div class="proj-meta"><span class="proj-type">Enterprise Cloud</span><span class="proj-year"><time datetime="2023">2023</time></span></div>
+              <h3>Cloud IT Management System</h3>
+              <p>Centralised cloud IT management platform for monitoring servers, user access control, backup automation, and real-time system health dashboards — built on AWS with Python automation.</p>
+              <div class="proj-tech"><span>AWS</span><span>Python</span><span>CloudWatch</span><span>IAM</span></div>
+              <span class="proj-done">Enterprise System ✓</span>
+            </div>
+          </article>
+        </div>
+        <div class="section-cta"><a href="projects.html" class="btn-outline">All Projects →</a></div>
+      </section>
+
+      <!-- ══════════════ BLOG ══════════════ -->
+      <section id="blog" aria-labelledby="blog-heading">
+        <div class="eyebrow reveal">
+          <span class="eyebrow-line" aria-hidden="true"></span>
+          <span class="eyebrow-text">Blog &amp; Guides</span>
+        </div>
+        <h2 class="sec-title reveal" id="blog-heading">IT Insights for <mark>Nepal Students</mark></h2>
+        <div class="blog-grid">
+          <a href="blog-aws-jobs-nepal.html" class="blog-card reveal">
+            <div class="blog-thumb" aria-hidden="true">☁️</div>
+            <div class="blog-body">
+              <div class="blog-meta"><span class="blog-cat">AWS Nepal</span><span class="blog-date">Cloud Career Guide</span></div>
+              <h3>How to Start an AWS Cloud Career in Nepal — BIT &amp; BSc CSIT Guide</h3>
+              <p>Step-by-step roadmap for Nepal IT students to break into cloud computing — free AWS resources, certification paths, and job market tips for 2025.</p>
+              <div class="blog-tags"><span>AWS</span><span>BIT Nepal</span><span>BSc CSIT</span><span>IT Career Nepal</span></div>
+              <span class="blog-read" aria-hidden="true">Read Guide →</span>
+            </div>
+          </a>
+          <a href="blog-linux-beginners-nepal.html" class="blog-card reveal">
+            <div class="blog-thumb" aria-hidden="true">🐧</div>
+            <div class="blog-body">
+              <div class="blog-meta"><span class="blog-cat">Linux Nepal</span><span class="blog-date">SysAdmin Guide</span></div>
+              <h3>Linux Administration Basics Every Nepal IT Student Must Know</h3>
+              <p>Essential Linux commands, file system management, user administration, and networking tools that BCA, BIT, and BSc CSIT students use every day on the job.</p>
+              <div class="blog-tags"><span>Linux</span><span>BCA Nepal</span><span>Sysadmin</span><span>Terminal</span></div>
+              <span class="blog-read" aria-hidden="true">Read Guide →</span>
+            </div>
+          </a>
+          <a href="blog-cybersecurity-nepal.html" class="blog-card reveal">
+            <div class="blog-thumb" aria-hidden="true">🔒</div>
+            <div class="blog-body">
+              <div class="blog-meta"><span class="blog-cat">Cybersecurity</span><span class="blog-date">Career Roadmap</span></div>
+              <h3>Cybersecurity Career in Nepal — Roadmap for CSIT &amp; BCA Students</h3>
+              <p>How to build a cybersecurity career from Nepal in 2025. Covers ethical hacking basics, certifications (CEH, CompTIA Security+), and career opportunities abroad.</p>
+              <div class="blog-tags"><span>Cybersecurity</span><span>Nepal IT</span><span>CEH</span><span>BSc CSIT</span></div>
+              <span class="blog-read" aria-hidden="true">Read Guide →</span>
+            </div>
+          </a>
+        </div>
+        <div class="blog-cta-bar reveal">
+          <p>More Nepal IT guides published regularly. <strong>Want a specific guide?</strong> Reach out and request a topic.</p>
+          <a href="contact.html" class="btn-primary">Request a Topic</a>
+        </div>
+      </section>
+
+      <!-- ══════════════ FAQ ══════════════ -->
+      <section id="faq" aria-labelledby="faq-heading">
+        <div class="eyebrow reveal">
+          <span class="eyebrow-line" aria-hidden="true"></span>
+          <span class="eyebrow-text">FAQ</span>
+        </div>
+        <h2 class="sec-title reveal" id="faq-heading">Frequently Asked <mark>Questions</mark></h2>
+        <div class="faq-grid reveal">
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              What IT services does Hemraj Adhikari offer?
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>AWS cloud infrastructure setup, Google Workspace &amp; Microsoft 365 administration, Linux system administration, CRM management, WordPress hosting and security, cybersecurity auditing, SSL/TLS management, and IT helpdesk support — available worldwide from Kathmandu, Nepal.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              Can Hemraj work with international clients outside Nepal?
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. Hemraj is fully available for remote freelance projects worldwide via Upwork, email, and WhatsApp. He accepts international payments through Wise, PayPal, and Payoneer, and responds within 24 hours.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              Does Hemraj mentor BIT, BCA, and BSc CSIT students?
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. Hemraj provides career guidance, final-year project assistance, and technical mentoring for BIT, BCA, BSc CSIT, Computer Engineering, AI learners, and digital marketing students across Nepal and India.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              What AWS cloud services does Hemraj specialise in?
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Hemraj specialises in AWS EC2, IAM, S3, VPC, CloudWatch, and automated CI/CD pipelines. He is currently pursuing the AWS Cloud Practitioner certification.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              How can I hire Hemraj for IT support or a freelance project?
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Via the <a href="contact.html">contact page</a>, emailing <a href="mailto:hemrajhadhikari@gmail.com">hemrajhadhikari@gmail.com</a>, WhatsApp at <a href="https://wa.me/9779865802093" target="_blank" rel="noopener noreferrer">+977-9865802093</a>, or <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer">Upwork</a>.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              What is Hemraj's hourly rate or freelance pricing?
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Pricing varies by project scope. Hemraj offers competitive rates for Nepal-based and international clients. Contact via the <a href="contact.html">contact page</a> or WhatsApp to discuss requirements and get a custom quote.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════ CONTACT ══════════════ -->
+      <section id="contact" aria-labelledby="contact-heading">
+        <div class="eyebrow reveal">
+          <span class="eyebrow-line" aria-hidden="true"></span>
+          <span class="eyebrow-text">Get in Touch</span>
+        </div>
+        <h2 class="sec-title reveal" id="contact-heading">Let's <mark>Connect</mark></h2>
+        <div class="contact-grid">
+          <div class="reveal">
+            <p class="contact-intro">Have a project, need IT support, or want mentoring for BIT, BCA, BSc CSIT, AI, or digital marketing careers? Available for freelance projects, consultations, and student mentoring — locally in Nepal, across India, and worldwide.</p>
+            <div class="contact-items">
+              <a href="mailto:hemrajhadhikari@gmail.com" class="c-item">
+                <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+                <div><span class="c-label">Email</span><span class="c-val">hemrajhadhikari@gmail.com</span></div>
+              </a>
+              <a href="tel:+9779865802093" class="c-item">
+                <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.11-1.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                <div><span class="c-label">Phone / WhatsApp</span><span class="c-val">+977-9865802093</span></div>
+              </a>
+              <div class="c-item">
+                <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                <div><span class="c-label">Location</span><span class="c-val">Kathmandu, Bagmati Province, Nepal</span></div>
+              </div>
+              <div class="c-item">
+                <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div><span class="c-label">Response Time</span><span class="c-val">Within 24 hours · Nepal &amp; Global</span></div>
+              </div>
+            </div>
+            <a href="https://wa.me/9779865802093?text=Hi%20Hemraj%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss."
+               target="_blank"
+               rel="noopener noreferrer"
+               class="wa-cta"
+               aria-label="Chat with Hemraj on WhatsApp (opens in new tab)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+              Chat on WhatsApp
+            </a>
+          </div>
+
+          <div class="reveal">
+            <div class="contact-form-panel">
+              <p>Want to send a full message, request a service quote, or ask specific questions?</p>
+              <a href="contact.html" class="btn-primary">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Open Full Contact Page
+              </a>
+              <p class="contact-form-note">Includes contact form, service selector, FAQ &amp; location map</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hire-cta-bar reveal">
+          <div class="hire-cta-text">
+            <h3>Ready to hire a reliable IT professional?</h3>
+            <p>Available for freelance IT projects worldwide — cloud, SaaS, Linux, WordPress &amp; more.</p>
+          </div>
+          <div class="hire-cta-actions">
+            <a href="contact.html" class="btn-primary">Hire Me Now</a>
+            <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="View Upwork profile (opens in new tab)">View Upwork Profile</a>
+          </div>
+        </div>
+      </section>
+
+    </main><!-- /main-content -->
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-accent-bar" aria-hidden="true"></div>
+
+      <div class="footer-main">
+        <!-- Brand column -->
+        <div class="footer-brand">
+          <a href="/" class="footer-logo"><em>Hemraj</em>.Adhikari</a>
+          <p class="footer-tagline">IT Officer &amp; Cloud Infrastructure Specialist based in Kathmandu, Nepal. Available for freelance IT projects worldwide. Mentor for BIT, BCA &amp; BSc CSIT students.</p>
+          <div class="footer-avail">
+            <div class="footer-avail-dot" aria-hidden="true"></div>
+            Open to freelance &amp; consulting
+          </div>
+          <!-- Footer social links (moved out of nav to avoid invalid nesting) -->
+          <div class="footer-social" role="list" aria-label="Social media links">
+            <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener noreferrer" aria-label="GitHub" role="listitem">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" role="listitem">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer" aria-label="Upwork" role="listitem">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+            </a>
+            <a href="mailto:hemrajhadhikari@gmail.com" aria-label="Email" role="listitem">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+            <a href="https://wa.me/9779865802093" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" role="listitem">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div><!-- /footer-brand -->
+
+        <!-- Pages column -->
+        <nav aria-label="Site pages" class="footer-col">
+          <div class="footer-col-title">Pages</div>
+          <ul class="footer-nav-list" role="list">
+            <li><a href="/">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Services column -->
+        <nav aria-label="Services navigation" class="footer-col">
+          <div class="footer-col-title">Services</div>
+          <ul class="footer-nav-list" role="list">
+            <li><a href="services.html">AWS Cloud &amp; DevOps</a></li>
+            <li><a href="services.html">SaaS &amp; CRM Admin</a></li>
+            <li><a href="services.html">Linux SysAdmin</a></li>
+            <li><a href="services.html">Cybersecurity</a></li>
+            <li><a href="services.html">WordPress &amp; Hosting</a></li>
+            <li><a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer">Hire on Upwork</a></li>
+          </ul>
+        </nav>
+
+        <!-- Students column -->
+        <nav aria-label="Student resources" class="footer-col">
+          <div class="footer-col-title">Students Nepal</div>
+          <ul class="footer-nav-list" role="list">
+            <li><a href="bit-mentor.html">BIT Nepal Guide</a></li>
+            <li><a href="bca-mentor.html">BCA Nepal Guide</a></li>
+            <li><a href="csit-mentor.html">BSc CSIT Guide</a></li>
+            <li><a href="services.html">AI Learner Mentoring</a></li>
+            <li><a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" target="_blank" rel="noopener noreferrer">Download CV (PDF)</a></li>
+          </ul>
+        </nav>
+      </div><!-- /footer-main -->
+
+      <!-- Contact strip -->
+      <div class="footer-contact-strip">
+        <a href="mailto:hemrajhadhikari@gmail.com" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          hemrajhadhikari@gmail.com
+        </a>
+        <div class="footer-contact-divider" aria-hidden="true"></div>
+        <a href="tel:+9779865802093" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.11-1.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +977-9865802093
+        </a>
+        <div class="footer-contact-divider" aria-hidden="true"></div>
+        <span class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Kathmandu, Nepal · Remote Worldwide
+        </span>
+      </div>
+
+      <!-- Footer bottom -->
+      <div class="footer-bottom">
+        <p class="footer-copy">© <span id="ft-year"></span> <strong>Hemraj Adhikari</strong> · Kathmandu, Nepal</p>
+        <nav class="footer-bottom-links" aria-label="Footer utility links">
+          <a href="/">Home</a>
+          <a href="contact.html">Contact</a>
+          <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener noreferrer">Upwork</a>
+          <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" target="_blank" rel="noopener noreferrer">Download CV</a>
+        </nav>
+        <p class="footer-made">Made with <span class="footer-heart" aria-hidden="true">♥</span> for Digital Nepal</p>
+      </div>
+    </footer>
+
+  </div><!-- /.page -->
+
+  <!-- Back to top -->
+  <button id="btt" aria-label="Back to top" type="button">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
+  <!-- JavaScript — deferred, single entry point -->
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
