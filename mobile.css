@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   Hemraj Adhikari Portfolio — mobile.css v1.1
+   Hemraj Adhikari Portfolio — mobile.css v1.2
    Responsive breakpoints & mobile-specific overrides
    ═══════════════════════════════════════════════════════════════ */
 
@@ -120,6 +120,36 @@
   min-height: 44px;
   display: flex;
   align-items: center;
+  gap: 6px;
+}
+
+/* ── MOBILE NAV SECTION LABELS ───────────────────────────────── */
+.mobile-nav-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--c-muted, #6b7280);
+  padding: 16px 0 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-nav-section:first-child .mobile-nav-label {
+  border-top: none;
+  padding-top: 4px;
+}
+
+/* ── MOBILE NAV COURSE TAGS ──────────────────────────────────── */
+.mobile-nav a .tag-sm {
+  margin-left: 6px;
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  opacity: 0.85;
+  white-space: nowrap;
 }
 
 /* ── GLOBAL SAFETY RULES ─────────────────────────────────────── */
