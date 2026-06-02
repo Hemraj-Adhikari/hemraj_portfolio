@@ -370,14 +370,248 @@
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: #334155; border-radius: 99px; }
 
+  /* Top navbar for home link */
+  .top-nav {
+    background: rgba(10,14,26,0.98);
+    border-bottom: 1px solid #1e293b;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+    backdrop-filter: blur(10px);
+  }
+
+  .top-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .top-nav a:hover { color: var(--accent); }
+
+  .top-nav .nav-breadcrumb {
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .top-nav .nav-breadcrumb span { color: #334155; }
+  .top-nav .nav-breadcrumb .current { color: var(--accent3); }
+
+  /* Mobile hamburger */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: var(--text);
+    font-size: 18px;
+    transition: border-color 0.2s;
+  }
+  .mobile-menu-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Mobile drawer */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 200;
+    backdrop-filter: blur(4px);
+  }
+  .sidebar-overlay.open { display: block; }
+
+  .sidebar-drawer {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: 280px;
+    background: var(--surface);
+    border-right: 1px solid #1e293b;
+    padding: 20px 0;
+    z-index: 201;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+  }
+  .sidebar-drawer.open { transform: translateX(0); }
+
+  .drawer-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: color 0.2s;
+  }
+  .drawer-close:hover { color: var(--text); }
+
+  .drawer-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0 20px 12px;
+    padding-top: 8px;
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--surface);
+    border-top: 1px solid #1e293b;
+    padding: 32px 40px;
+    margin-top: auto;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-brand .logo-icon {
+    width: 32px; height: 32px;
+    font-size: 14px;
+  }
+
+  .footer-brand-text h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .footer-brand-text p {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: #334155;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #1e293b;
+  }
+
+  .footer-copy a { color: var(--accent); text-decoration: none; }
+
+  /* Page wrapper */
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .page-content { flex: 1; }
+
   @media (max-width: 768px) {
     .sidebar { display: none; }
+    .mobile-menu-btn { display: flex; align-items: center; gap: 6px; font-size: 14px; }
     .main { padding: 20px 16px; }
-    .topic-header h2 { font-size: 24px; }
+    .topic-header h2 { font-size: 22px; }
+    .header { padding: 14px 16px; }
+    .logo-text h1 { font-size: 15px; }
+    .logo-text p { display: none; }
+    .exam-countdown { padding: 6px 12px; }
+    .exam-countdown .days { font-size: 20px; }
+    .card { padding: 16px; }
+    .code-block pre { font-size: 12px; padding: 14px; }
+    table { font-size: 12px; }
+    td, th { padding: 8px 10px; }
+    .top-nav .nav-breadcrumb { display: none; }
+    .footer { padding: 24px 16px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .footer-links { flex-wrap: wrap; gap: 14px; }
+    .container { min-height: unset; }
+  }
+
+  @media (max-width: 480px) {
+    .topic-header h2 { font-size: 20px; }
+    .card h3 { font-size: 15px; }
+    .header { padding: 12px 14px; }
   }
 </style>
 </head>
 <body>
+
+<!-- Mobile sidebar drawer overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMobileMenu()"></div>
+<div class="sidebar-drawer" id="sidebarDrawer">
+  <button class="drawer-close" onclick="closeMobileMenu()">✕</button>
+  <div class="drawer-title">📚 Topics</div>
+  <div class="nav-item active" id="drawer-intro" onclick="showSection('intro', true)"><span class="num">01</span> Introduction to C</div>
+  <div class="nav-item" id="drawer-basics" onclick="showSection('basics', true)"><span class="num">02</span> Variables & Data Types</div>
+  <div class="nav-item" id="drawer-operators" onclick="showSection('operators', true)"><span class="num">03</span> Operators</div>
+  <div class="nav-item" id="drawer-io" onclick="showSection('io', true)"><span class="num">04</span> Input / Output</div>
+  <div class="nav-item" id="drawer-control" onclick="showSection('control', true)"><span class="num">05</span> Control Flow</div>
+  <div class="nav-item" id="drawer-loops" onclick="showSection('loops', true)"><span class="num">06</span> Loops</div>
+  <div class="nav-item" id="drawer-functions" onclick="showSection('functions', true)"><span class="num">07</span> Functions</div>
+  <div class="nav-item" id="drawer-arrays" onclick="showSection('arrays', true)"><span class="num">08</span> Arrays</div>
+  <div class="nav-item" id="drawer-strings" onclick="showSection('strings', true)"><span class="num">09</span> Strings</div>
+  <div class="nav-item" id="drawer-pointers" onclick="showSection('pointers', true)"><span class="num">10</span> Pointers</div>
+  <div class="nav-item" id="drawer-structs" onclick="showSection('structs', true)"><span class="num">11</span> Structures</div>
+  <div class="nav-item" id="drawer-files" onclick="showSection('files', true)"><span class="num">12</span> File Handling</div>
+  <div class="nav-item" id="drawer-quiz" onclick="showSection('quiz', true)"><span class="num">🎯</span> Practice Quiz</div>
+</div>
+
+<div class="page-wrapper">
+
+<!-- Top nav bar with home link -->
+<nav class="top-nav">
+  <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener">
+    <span>←</span> Home — hemrajadhikari.info.np
+  </a>
+  <div class="nav-breadcrumb">
+    <span>hemrajadhikari.info.np</span>
+    <span>/</span>
+    <span>Study Notes</span>
+    <span>/</span>
+    <span class="current">C Language BIT 2081</span>
+  </div>
+</nav>
+
+<div class="page-content">
 
 <div class="header">
   <div class="logo">
@@ -387,9 +621,14 @@
       <p>जेठ २०८१ • Complete Study Guide</p>
     </div>
   </div>
-  <div class="exam-countdown">
-    <div class="days" id="daysLeft">--</div>
-    <div class="label">दिन बाँकी</div>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <button class="mobile-menu-btn" onclick="openMobileMenu()">
+      ☰ Topics
+    </button>
+    <div class="exam-countdown">
+      <div class="days" id="daysLeft">--</div>
+      <div class="label">दिन बाँकी</div>
+    </div>
   </div>
 </div>
 
@@ -1059,6 +1298,37 @@ Point *ptr = &amp;p1;
   </div>
 </div>
 
+</div><!-- end .page-content -->
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-icon">C</div>
+      <div class="footer-brand-text">
+        <h4>C Language — BIT Exam 2081</h4>
+        <p>Hemraj Adhikari को Study Notes</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener">
+        🏠 Home
+      </a>
+      <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener">
+        🐙 GitHub
+      </a>
+      <a href="#" onclick="document.querySelector('.nav-item').click(); window.scrollTo({top:0,behavior:'smooth'}); return false;">
+        ⬆ Back to Top
+      </a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    Made with ❤️ by <a href="https://hemrajadhikari.info.np/" target="_blank">Hemraj Adhikari</a> · BIT Students को लागि · Nepal 🇳🇵
+  </div>
+</footer>
+
+</div><!-- end .page-wrapper -->
+
 <script>
 // Countdown
 function updateCountdown() {
@@ -1069,12 +1339,35 @@ function updateCountdown() {
 }
 updateCountdown();
 
+// Mobile menu
+function openMobileMenu() {
+  document.getElementById('sidebarOverlay').classList.add('open');
+  document.getElementById('sidebarDrawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu() {
+  document.getElementById('sidebarOverlay').classList.remove('open');
+  document.getElementById('sidebarDrawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 // Navigation
-function showSection(id) {
+function showSection(id, fromDrawer) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  event.currentTarget.classList.add('active');
+
+  // Highlight sidebar nav item
+  document.querySelectorAll('.sidebar .nav-item').forEach(n => {
+    if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'"+id+"'")) {
+      n.classList.add('active');
+    }
+  });
+  // Highlight drawer nav item
+  const drawerItem = document.getElementById('drawer-' + id);
+  if (drawerItem) drawerItem.classList.add('active');
+
+  if (fromDrawer) closeMobileMenu();
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
