@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Logic - BIT Exam 2081</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Tiro+Devanagari+Hindi:ital@0;1&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --surface: #111827;
+    --surface2: #1a2234;
+    --accent: #00d4aa;
+    --accent2: #ff6b35;
+    --accent3: #a78bfa;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --code-bg: #0d1117;
+    --green: #22c55e;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0a0e1a 0%, #0a1a2e 50%, #0a1628 100%);
+    border-bottom: 1px solid #1e293b;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, #00d4aa, #a78bfa);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 15px;
+    color: #000;
+  }
+
+  .logo-text h1 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .logo-text p {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .exam-countdown {
+    background: linear-gradient(135deg, #1a0a0a, #2d1010);
+    border: 1px solid var(--accent2);
+    border-radius: 12px;
+    padding: 8px 16px;
+    text-align: center;
+  }
+
+  .exam-countdown .days {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent2);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .exam-countdown .label {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* Layout */
+  .container {
+    display: flex;
+    min-height: calc(100vh - 81px);
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 260px;
+    background: var(--surface);
+    border-right: 1px solid #1e293b;
+    padding: 20px 0;
+    position: sticky;
+    top: 81px;
+    height: calc(100vh - 81px);
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+
+  .sidebar-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0 20px 12px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+    font-size: 14px;
+  }
+
+  .nav-item:hover { background: var(--surface2); }
+  .nav-item.active {
+    background: rgba(0, 212, 170, 0.1);
+    border-left-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .nav-item .num {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    min-width: 24px;
+  }
+
+  /* Main Content */
+  .main {
+    flex: 1;
+    padding: 32px;
+    max-width: 860px;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* Topic Card */
+  .topic-header {
+    margin-bottom: 32px;
+  }
+
+  .topic-tag {
+    display: inline-block;
+    background: rgba(0,212,170,0.15);
+    color: var(--accent);
+    border: 1px solid rgba(0,212,170,0.3);
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .topic-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .topic-header p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--surface);
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover { border-color: #334155; }
+
+  .card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--accent3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card h3 span { font-size: 20px; }
+
+  .card p, .card li {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .card ul { padding-left: 20px; }
+  .card li { margin-bottom: 6px; }
+
+  /* Code Block */
+  .code-block {
+    background: var(--code-bg);
+    border: 1px solid #21262d;
+    border-radius: 12px;
+    margin: 16px 0;
+    overflow: hidden;
+  }
+
+  .code-header {
+    background: #161b22;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #21262d;
+  }
+
+  .code-header span {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.r { background: #ff5f56; }
+  .dot.y { background: #ffbd2e; }
+  .dot.g { background: #27c93f; }
+
+  .code-block pre {
+    padding: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-x: auto;
+    color: #e6edf3;
+  }
+
+  .kw { color: #ff7b72; }
+  .fn { color: #d2a8ff; }
+  .str { color: #a5d6ff; }
+  .cm { color: #8b949e; font-style: italic; }
+  .num { color: #79c0ff; }
+  .hd { color: #ffa657; }
+  .op { color: #ff7b72; }
+
+  /* Quiz Section */
+  .quiz-card {
+    background: var(--surface);
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .question {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .options {
+    display: grid;
+    gap: 10px;
+  }
+
+  .option {
+    padding: 12px 16px;
+    background: var(--surface2);
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .option:hover { border-color: var(--accent); color: var(--accent); }
+  .option.correct { background: rgba(34,197,94,0.15); border-color: var(--green); color: var(--green); }
+  .option.wrong { background: rgba(239,68,68,0.1); border-color: var(--red); color: var(--red); }
+
+  .option-label {
+    width: 26px; height: 26px;
+    border-radius: 6px;
+    background: #1e293b;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .quiz-result {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    display: none;
+  }
+
+  .quiz-result.show { display: block; }
+  .quiz-result.correct { background: rgba(34,197,94,0.1); border: 1px solid var(--green); color: var(--green); }
+  .quiz-result.wrong { background: rgba(239,68,68,0.1); border: 1px solid var(--red); color: var(--red); }
+
+  /* Info boxes */
+  .info-box {
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .info-box.tip { background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.3); color: #c4b5fd; }
+  .info-box.warn { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); color: #fcd34d; }
+  .info-box.imp { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; }
+
+  .info-box strong { display: block; margin-bottom: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: var(--surface2); padding: 10px 14px; text-align: left; color: var(--accent); font-weight: 600; border-bottom: 1px solid #1e293b; }
+  td { padding: 10px 14px; border-bottom: 1px solid #1e293b; color: #94a3b8; font-family: 'JetBrains Mono', monospace; }
+  tr:hover td { background: var(--surface2); }
+
+  /* Truth table center alignment */
+  .truth-table td, .truth-table th { text-align: center; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: #334155; border-radius: 99px; }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { padding: 20px 16px; }
+    .topic-header h2 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon">DL</div>
+    <div class="logo-text">
+      <h1>Digital Logic — BIT Exam</h1>
+      <p>जेठ २०८१ • Complete Study Guide</p>
+    </div>
+  </div>
+  <div class="exam-countdown">
+    <div class="days" id="daysLeft">--</div>
+    <div class="label">दिन बाँकी</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="sidebar">
+    <div class="sidebar-title">Topics</div>
+    <div class="nav-item active" onclick="showSection('intro')"><span class="num">01</span> Number Systems</div>
+    <div class="nav-item" onclick="showSection('codes')"><span class="num">02</span> Codes (BCD, Gray)</div>
+    <div class="nav-item" onclick="showSection('gates')"><span class="num">03</span> Logic Gates</div>
+    <div class="nav-item" onclick="showSection('boolean')"><span class="num">04</span> Boolean Algebra</div>
+    <div class="nav-item" onclick="showSection('kmap')"><span class="num">05</span> K-Map</div>
+    <div class="nav-item" onclick="showSection('combinational')"><span class="num">06</span> Combinational Circuits</div>
+    <div class="nav-item" onclick="showSection('sequential')"><span class="num">07</span> Sequential Circuits</div>
+    <div class="nav-item" onclick="showSection('flipflops')"><span class="num">08</span> Flip-Flops</div>
+    <div class="nav-item" onclick="showSection('registers')"><span class="num">09</span> Registers & Counters</div>
+    <div class="nav-item" onclick="showSection('memory')"><span class="num">10</span> Memory</div>
+    <div class="nav-item" onclick="showSection('quiz')"><span class="num">🎯</span> Practice Quiz</div>
+  </div>
+
+  <div class="main">
+
+    <!-- NUMBER SYSTEMS -->
+    <div class="section active" id="intro">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 01</div>
+        <h2>Number Systems</h2>
+        <p>Digital Logic को आधार — Binary, Octal, Decimal, Hexadecimal conversion र arithmetic।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🔢</span> Number System Bases</h3>
+        <table>
+          <tr><th>System</th><th>Base</th><th>Digits</th><th>Example</th></tr>
+          <tr><td>Binary</td><td>2</td><td>0, 1</td><td>(1010)₂</td></tr>
+          <tr><td>Octal</td><td>8</td><td>0–7</td><td>(12)₈</td></tr>
+          <tr><td>Decimal</td><td>10</td><td>0–9</td><td>(10)₁₀</td></tr>
+          <tr><td>Hexadecimal</td><td>16</td><td>0–9, A–F</td><td>(A)₁₆</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span>🔄</span> Decimal to Binary Conversion</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+            <span>decimal-to-binary</span>
+          </div>
+          <pre><span class="cm">// 25 लाई Binary मा convert गर्ने (2 ले भाग गर्दै)</span>
+25 ÷ 2 = 12  <span class="kw">remainder</span> <span class="num">1</span>   ← LSB (सबभन्दा तल्लो bit)
+12 ÷ 2 = 6   <span class="kw">remainder</span> <span class="num">0</span>
+6  ÷ 2 = 3   <span class="kw">remainder</span> <span class="num">0</span>
+3  ÷ 2 = 1   <span class="kw">remainder</span> <span class="num">1</span>
+1  ÷ 2 = 0   <span class="kw">remainder</span> <span class="num">1</span>   ← MSB (सबभन्दा माथिल्लो bit)
+
+<span class="cm">// तल्लोबाट माथि पढ्ने: (25)₁₀ = (11001)₂</span></pre>
+        </div>
+        <div class="info-box imp">
+          <strong>🔴 Exam Trick</strong>
+          Remainder तल्लोबाट माथि पढ्नुपर्छ! LSB पहिले, MSB अन्तमा। यो उल्टो नगर्नु।
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>➡️</span> Binary to Decimal Conversion</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+            <span>binary-to-decimal</span>
+          </div>
+          <pre><span class="cm">// (1101)₂ लाई Decimal मा convert गर्ने</span>
+Position:  3    2    1    0
+Bit:       1    1    0    1
+
+= 1×2³ + 1×2² + 0×2¹ + 1×2⁰
+= 1×8  + 1×4  + 0×2  + 1×1
+= 8    + 4    + 0    + 1
+= <span class="num">13</span>
+
+<span class="cm">// (1101)₂ = (13)₁₀</span></pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>⚡</span> Quick Reference: Powers of 2</h3>
+        <table>
+          <tr><th>2ⁿ</th><th>Value</th><th>2ⁿ</th><th>Value</th></tr>
+          <tr><td>2⁰</td><td>1</td><td>2⁴</td><td>16</td></tr>
+          <tr><td>2¹</td><td>2</td><td>2⁵</td><td>32</td></tr>
+          <tr><td>2²</td><td>4</td><td>2⁶</td><td>64</td></tr>
+          <tr><td>2³</td><td>8</td><td>2⁷</td><td>128</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span>🔁</span> 1's र 2's Complement</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+            <span>complement</span>
+          </div>
+          <pre><span class="cm">// (1010)₂ को 1's Complement: सबै bit flip गर्ने</span>
+1010  →  <span class="num">0101</span>  ← 1's Complement
+
+<span class="cm">// 2's Complement: 1's complement + 1 जोड्ने</span>
+0101
++  1
+────
+<span class="num">0110</span>  ← 2's Complement of (1010)₂
+
+<span class="cm">// Binary Subtraction को लागि 2's Complement प्रयोग हुन्छ!</span></pre>
+        </div>
+        <div class="info-box tip">
+          <strong>💡 Shortcut for 2's Complement</strong>
+          दाहिनेबाट पहिलो 1 सम्म copy गर्नु, त्यसपछि बाँकी सबै flip गर्नु। Example: 1010 → 0110
+        </div>
+      </div>
+    </div>
+
+    <!-- CODES -->
+    <div class="section" id="codes">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 02</div>
+        <h2>Codes — BCD, Gray, ASCII</h2>
+        <p>Digital systems मा data represent गर्ने विभिन्न coding techniques।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>📊</span> BCD (Binary Coded Decimal)</h3>
+        <p style="margin-bottom:12px;">प्रत्येक decimal digit लाई 4-bit binary मा represent गरिन्छ।</p>
+        <table>
+          <tr><th>Decimal</th><th>BCD</th><th>Decimal</th><th>BCD</th></tr>
+          <tr><td>0</td><td>0000</td><td>5</td><td>0101</td></tr>
+          <tr><td>1</td><td>0001</td><td>6</td><td>0110</td></tr>
+          <tr><td>2</td><td>0010</td><td>7</td><td>0111</td></tr>
+          <tr><td>3</td><td>0011</td><td>8</td><td>1000</td></tr>
+          <tr><td>4</td><td>0100</td><td>9</td><td>1001</td></tr>
+        </table>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>BCD example</span></div>
+          <pre><span class="cm">// (39)₁₀ को BCD:</span>
+3 → <span class="num">0011</span>
+9 → <span class="num">1001</span>
+Result: (0011 1001)_BCD
+
+<span class="cm">// BCD Addition: Sum > 9 भएमा 0110 (6) थप्नुपर्छ</span>
+  0111  (7)
++ 0110  (6)
+──────
+  1101  (13) → 9 भन्दा ठूलो!
++ 0110  (6 थप्ने)
+──────
+1 0011  = BCD of 13 ✓</pre>
+        </div>
+        <div class="info-box imp">
+          <strong>🔴 Exam Important</strong>
+          BCD invalid codes: 1010 (10) देखि 1111 (15) सम्म — यी 6 codes invalid हुन्।
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🔘</span> Gray Code</h3>
+        <p style="margin-bottom:12px;">Adjacent codes मा केवल <strong style="color:var(--accent)">एउटा bit मात्र</strong> फरक हुन्छ — यसैले error कम हुन्छ।</p>
+        <table class="truth-table">
+          <tr><th>Decimal</th><th>Binary</th><th>Gray Code</th></tr>
+          <tr><td>0</td><td>000</td><td>000</td></tr>
+          <tr><td>1</td><td>001</td><td>001</td></tr>
+          <tr><td>2</td><td>010</td><td>011</td></tr>
+          <tr><td>3</td><td>011</td><td>010</td></tr>
+          <tr><td>4</td><td>100</td><td>110</td></tr>
+          <tr><td>5</td><td>101</td><td>111</td></tr>
+          <tr><td>6</td><td>110</td><td>101</td></tr>
+          <tr><td>7</td><td>111</td><td>100</td></tr>
+        </table>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>Binary to Gray</span></div>
+          <pre><span class="cm">// Binary (1011) → Gray Code</span>
+MSB:     1  ← as it is राख्नु
+1 XOR 0: 1
+0 XOR 1: 1
+1 XOR 1: 0
+Gray Code = <span class="num">1110</span>
+
+<span class="cm">// Rule: MSB same राख्नु, बाँकी adjacent bits XOR गर्नु</span></pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>📝</span> ASCII Code</h3>
+        <ul>
+          <li>ASCII = American Standard Code for Information Interchange</li>
+          <li>7-bit code → 128 characters represent गर्न सक्छ (0–127)</li>
+          <li>'A' = 65, 'a' = 97, '0' = 48</li>
+          <li>Uppercase र lowercase को फरक = 32</li>
+        </ul>
+        <div class="info-box tip">
+          <strong>💡 याद गर्नु</strong>
+          'A'(65) + 32 = 'a'(97) | '0' = 48, '9' = 57 | Space = 32 | Enter = 13
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGIC GATES -->
+    <div class="section" id="gates">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 03</div>
+        <h2>Logic Gates</h2>
+        <p>Digital circuits को building blocks — AND, OR, NOT, NAND, NOR, XOR, XNOR।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🔵</span> Basic Gates Truth Tables</h3>
+        <table class="truth-table">
+          <tr><th>A</th><th>B</th><th>AND (A·B)</th><th>OR (A+B)</th><th>NOT (Ā)</th></tr>
+          <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+          <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+          <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+          <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+        </table>
+        <div class="info-box tip">
+          <strong>💡 सजिलो याद गर्ने तरिका</strong>
+          AND = दुवै 1 हुनुपर्छ | OR = कम्तिमा एउटा 1 भए पुग्छ | NOT = उल्टो
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🔴</span> Universal Gates — NAND र NOR</h3>
+        <table class="truth-table">
+          <tr><th>A</th><th>B</th><th>NAND</th><th>NOR</th><th>XOR</th><th>XNOR</th></tr>
+          <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+          <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+          <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+          <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+        </table>
+        <div class="info-box imp">
+          <strong>🔴 Exam Must Know</strong>
+          NAND र NOR दुवैलाई "Universal Gate" भनिन्छ किनभने यी दुईबाट नै सबै gates बनाउन सकिन्छ।
+          XOR: inputs फरक भएमा 1 | XNOR: inputs same भएमा 1
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>⚙️</span> Universal Gates बाट अरू Gates बनाउने</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>NAND implementation</span></div>
+          <pre><span class="cm">// NAND बाट NOT बनाउने</span>
+NOT(A) = NAND(A, A)
+
+<span class="cm">// NAND बाट AND बनाउने</span>
+AND(A,B) = NOT[NAND(A,B)] = NAND[NAND(A,B), NAND(A,B)]
+
+<span class="cm">// NAND बाट OR बनाउने</span>
+OR(A,B) = NAND[NAND(A,A), NAND(B,B)]
+
+<span class="cm">// NOR बाट NOT बनाउने</span>
+NOT(A) = NOR(A, A)</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOOLEAN ALGEBRA -->
+    <div class="section" id="boolean">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 04</div>
+        <h2>Boolean Algebra</h2>
+        <p>Logic expressions simplify गर्न प्रयोग हुने mathematical rules।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>📐</span> Boolean Laws</h3>
+        <table>
+          <tr><th>Law</th><th>AND Form</th><th>OR Form</th></tr>
+          <tr><td>Identity</td><td>A · 1 = A</td><td>A + 0 = A</td></tr>
+          <tr><td>Null/Dominance</td><td>A · 0 = 0</td><td>A + 1 = 1</td></tr>
+          <tr><td>Idempotent</td><td>A · A = A</td><td>A + A = A</td></tr>
+          <tr><td>Complement</td><td>A · Ā = 0</td><td>A + Ā = 1</td></tr>
+          <tr><td>Double Complement</td><td colspan="2">Ā̄ = A</td></tr>
+          <tr><td>Commutative</td><td>A·B = B·A</td><td>A+B = B+A</td></tr>
+          <tr><td>Associative</td><td>(A·B)·C = A·(B·C)</td><td>(A+B)+C = A+(B+C)</td></tr>
+          <tr><td>Distributive</td><td>A·(B+C) = A·B+A·C</td><td>A+(B·C) = (A+B)·(A+C)</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span>🔁</span> De Morgan's Theorem</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>De Morgan's Laws</span></div>
+          <pre><span class="cm">// First Theorem: NAND → NOT of AND</span>
+<span class="kw">̄(A·B) = Ā + B̄</span>
+NOT(AND) = OR of NOTs
+
+<span class="cm">// Second Theorem: NOR → NOT of OR</span>
+<span class="kw">̄(A+B) = Ā · B̄</span>
+NOT(OR) = AND of NOTs
+
+<span class="cm">// Example: Simplify ̄(A·B) + ̄(A+C)</span>
+= (Ā+B̄) + (Ā·C̄)
+= Ā + B̄ + Ā·C̄
+= Ā(1+C̄) + B̄
+= Ā + B̄</pre>
+        </div>
+        <div class="info-box imp">
+          <strong>🔴 Exam Must Know</strong>
+          De Morgan's: bar तोड्दा AND↔OR हुन्छ र हरेक variable complement हुन्छ।
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>✏️</span> SOP र POS Forms</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">SOP (Sum of Products):</strong> Minterm — 1 हुने rows AND गरेर OR गर्ने</li>
+          <li><strong style="color:var(--accent)">POS (Product of Sums):</strong> Maxterm — 0 हुने rows OR गरेर AND गर्ने</li>
+        </ul>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>SOP example</span></div>
+          <pre><span class="cm">// F = Σm(1,3,5,7) — output 1 हुने minterms</span>
+m₁ = ĀBC̄... wait, 3 variables A,B,C:
+m₁(001) = <span class="kw">Ā·B̄·C</span>
+m₃(011) = <span class="kw">Ā·B·C</span>
+m₅(101) = <span class="kw">A·B̄·C</span>
+m₇(111) = <span class="kw">A·B·C</span>
+
+F = Ā·B̄·C + Ā·B·C + A·B̄·C + A·B·C
+  = C(Ā·B̄ + Ā·B + A·B̄ + A·B)
+  = C·<span class="num">1</span> = <span class="num">C</span>   ← Simplified!</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- K-MAP -->
+    <div class="section" id="kmap">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 05</div>
+        <h2>Karnaugh Map (K-Map)</h2>
+        <p>Boolean expressions graphically simplify गर्ने method। Exam मा सबैभन्दा बढी आउने topic!</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🗺️</span> K-Map Rules</h3>
+        <ul>
+          <li>Groups: <strong style="color:var(--accent)">1, 2, 4, 8, 16</strong> — power of 2 मात्र</li>
+          <li>जति ठूलो group, उति simple expression</li>
+          <li>Groups overlap हुन सक्छन् — एउटा 1 धेरैपटक प्रयोग हुन सक्छ</li>
+          <li>Map wrap-around हुन्छ (edges र corners जोडिन्छन्)</li>
+          <li>Don't care (X/d) लाई 1 वा 0 जे convenient होस् treat गर्नु</li>
+        </ul>
+        <div class="info-box imp">
+          <strong>🔴 Grey Code Order याद गर्नु!</strong>
+          2-variable: 00, 01, 11, 10 (NOT 00, 01, 10, 11) — यो Gray Code order हो।
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>📐</span> 2-Variable K-Map</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>2-variable K-Map</span></div>
+          <pre>         B=0   B=1
+A=0  |  m₀  |  m₁  |
+A=1  |  m₂  |  m₃  |
+
+<span class="cm">// F = Σm(0,1,3) को K-Map:</span>
+         B=0   B=1
+A=0  |   1  |   1  |
+A=1  |   0  |   1  |
+
+Group 1: m₀,m₁ → <span class="kw">Ā</span>     (top row, B cancel)
+Group 2: m₁,m₃ → <span class="kw">B</span>      (right column, A cancel)
+F = <span class="num">Ā + B</span></pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>📐</span> 3-Variable K-Map Layout</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>3-variable K-Map</span></div>
+          <pre>        AB=00  AB=01  AB=11  AB=10
+C=0  |  m₀  |  m₂  |  m₆  |  m₄  |
+C=1  |  m₁  |  m₃  |  m₇  |  m₅  |
+
+<span class="cm">// Grouping rules:</span>
+<span class="cm">// Pair (2 cells)   → 1 variable eliminate</span>
+<span class="cm">// Quad (4 cells)   → 2 variables eliminate</span>
+<span class="cm">// Octet (8 cells)  → 3 variables eliminate</span></pre>
+        </div>
+        <div class="info-box tip">
+          <strong>💡 Exam Tip</strong>
+          K-Map मा AB=00, 01, 11, 10 order — 10, 11 को order बिर्सनु भएन! यो Gray Code हो।
+        </div>
+      </div>
+    </div>
+
+    <!-- COMBINATIONAL CIRCUITS -->
+    <div class="section" id="combinational">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 06</div>
+        <h2>Combinational Circuits</h2>
+        <p>Output केवल current inputs मा निर्भर — memory हुँदैन। Half Adder, Full Adder, Multiplexer, Decoder।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>➕</span> Half Adder</h3>
+        <table class="truth-table">
+          <tr><th>A</th><th>B</th><th>Sum (S)</th><th>Carry (C)</th></tr>
+          <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+          <tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+          <tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+        </table>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>Half Adder equations</span></div>
+          <pre>Sum   = A <span class="kw">XOR</span> B  = A⊕B
+Carry = A <span class="kw">AND</span> B  = A·B
+
+<span class="cm">// Limitation: Carry in लिन सक्दैन!</span></pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>➕</span> Full Adder</h3>
+        <p style="margin-bottom:12px;">3 inputs: A, B, Cin (previous carry). 2 outputs: Sum, Cout</p>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>Full Adder equations</span></div>
+          <pre>Sum  = A ⊕ B ⊕ Cin
+Cout = A·B + B·Cin + A·Cin
+     = A·B + Cin·(A⊕B)
+
+<span class="cm">// Full Adder = 2 Half Adders + 1 OR Gate</span>
+<span class="cm">// Multi-bit addition मा Full Adder chain गरिन्छ</span></pre>
+        </div>
+        <div class="info-box imp">
+          <strong>🔴 Exam Important</strong>
+          Half Adder: 2 inputs (no carry-in) | Full Adder: 3 inputs (with carry-in) | यो फरक बिर्सनु भएन!
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🔀</span> Multiplexer (MUX)</h3>
+        <ul>
+          <li>Many-to-one: <strong style="color:var(--accent)">2ⁿ inputs → 1 output</strong>, n selection lines</li>
+          <li>4:1 MUX = 4 data inputs, 2 select lines, 1 output</li>
+          <li>8:1 MUX = 8 data inputs, 3 select lines</li>
+          <li>MUX लाई "Data Selector" पनि भनिन्छ</li>
+        </ul>
+        <div class="info-box tip">
+          <strong>💡 MUX as Universal Circuit</strong>
+          MUX बाट जुनसुकै Boolean function implement गर्न सकिन्छ।
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🔢</span> Decoder र Encoder</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">Decoder:</strong> n inputs → 2ⁿ outputs। 3:8 decoder = 3 inputs, 8 outputs</li>
+          <li><strong style="color:var(--accent)">Encoder:</strong> 2ⁿ inputs → n outputs (Decoder को उल्टो)</li>
+          <li>Priority Encoder: Multiple inputs active भए highest priority लाई encode गर्छ</li>
+          <li>BCD to 7-segment decoder — display मा digit देखाउन</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SEQUENTIAL CIRCUITS -->
+    <div class="section" id="sequential">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 07</div>
+        <h2>Sequential Circuits</h2>
+        <p>Output = current inputs + previous state (memory हुन्छ)। Clock signal मा निर्भर।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>⚖️</span> Combinational vs Sequential</h3>
+        <table>
+          <tr><th>Feature</th><th>Combinational</th><th>Sequential</th></tr>
+          <tr><td>Memory</td><td>छैन</td><td>छ (state)</td></tr>
+          <tr><td>Output depends on</td><td>Current input only</td><td>Input + Past state</td></tr>
+          <tr><td>Clock</td><td>आवश्यक छैन</td><td>आवश्यक</td></tr>
+          <tr><td>Examples</td><td>Adder, MUX, Decoder</td><td>Flip-Flop, Counter, Register</td></tr>
+          <tr><td>Feedback</td><td>छैन</td><td>छ</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span>🕐</span> Synchronous vs Asynchronous</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">Synchronous:</strong> Clock edge मा trigger हुन्छ — predictable, common</li>
+          <li><strong style="color:var(--accent)">Asynchronous:</strong> Input change हुनासाथ trigger — faster तर design गाह्रो</li>
+          <li>Positive edge triggered: clock 0→1 जाँदा</li>
+          <li>Negative edge triggered: clock 1→0 जाँदा</li>
+        </ul>
+        <div class="info-box tip">
+          <strong>💡 Latch vs Flip-Flop</strong>
+          Latch = Level triggered (clock level 1 हुँदासम्म) | Flip-Flop = Edge triggered (clock edge मा मात्र)
+        </div>
+      </div>
+    </div>
+
+    <!-- FLIP-FLOPS -->
+    <div class="section" id="flipflops">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 08</div>
+        <h2>Flip-Flops</h2>
+        <p>Digital memory को basic unit — SR, D, JK, T flip-flops।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🔷</span> SR Flip-Flop</h3>
+        <table class="truth-table">
+          <tr><th>S</th><th>R</th><th>Q(next)</th><th>Condition</th></tr>
+          <tr><td>0</td><td>0</td><td>Q</td><td>No change</td></tr>
+          <tr><td>0</td><td>1</td><td>0</td><td>Reset</td></tr>
+          <tr><td>1</td><td>0</td><td>1</td><td>Set</td></tr>
+          <tr><td>1</td><td>1</td><td>?</td><td>Invalid (forbidden!)</td></tr>
+        </table>
+        <div class="info-box imp">
+          <strong>🔴 SR FF को Problem</strong>
+          S=1, R=1 = Invalid state — यो forbidden state हो। यही problem solve गर्न JK FF आयो।
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🔶</span> JK Flip-Flop</h3>
+        <table class="truth-table">
+          <tr><th>J</th><th>K</th><th>Q(next)</th><th>Operation</th></tr>
+          <tr><td>0</td><td>0</td><td>Q</td><td>No change</td></tr>
+          <tr><td>0</td><td>1</td><td>0</td><td>Reset</td></tr>
+          <tr><td>1</td><td>0</td><td>1</td><td>Set</td></tr>
+          <tr><td>1</td><td>1</td><td>Q̄</td><td>Toggle ← SR को problem solve!</td></tr>
+        </table>
+        <div class="info-box tip">
+          <strong>💡 JK = Most Versatile FF</strong>
+          J=K=1 → Toggle (Q complement हुन्छ) — SR को invalid state problem सोल्व! JK सबैभन्दा popular FF हो।
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🔸</span> D Flip-Flop र T Flip-Flop</h3>
+        <table class="truth-table">
+          <tr><th>D</th><th>Q(next)</th><th colspan="2">T FF</th><th>Q(next)</th></tr>
+          <tr><td>0</td><td>0</td><td>T=0</td><td>No change</td><td>Q</td></tr>
+          <tr><td>1</td><td>1</td><td>T=1</td><td>Toggle</td><td>Q̄</td></tr>
+        </table>
+        <ul style="margin-top:12px;">
+          <li><strong style="color:var(--accent)">D FF:</strong> Data/Delay — Q(next) = D। Data store गर्न प्रयोग। SR को S=D, R=D̄</li>
+          <li><strong style="color:var(--accent)">T FF:</strong> Toggle — T=1 भएमा state toggle हुन्छ। Counter design मा प्रयोग। JK को J=K=T</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span>🔄</span> FF Conversion याद गर्ने</h3>
+        <table>
+          <tr><th>Convert to</th><th>Method</th></tr>
+          <tr><td>JK → D</td><td>J=D, K=D̄</td></tr>
+          <tr><td>JK → T</td><td>J=T, K=T</td></tr>
+          <tr><td>JK → SR</td><td>J=S, K=R (invalid state remain)</td></tr>
+          <tr><td>D → T</td><td>D = T⊕Q</td></tr>
+          <tr><td>D → SR</td><td>D = S + R̄Q</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- REGISTERS & COUNTERS -->
+    <div class="section" id="registers">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 09</div>
+        <h2>Registers & Counters</h2>
+        <p>Flip-flops को combination — data store र count गर्न।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>📋</span> Shift Registers</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">SISO:</strong> Serial In Serial Out — एक-एक bit in, एक-एक bit out</li>
+          <li><strong style="color:var(--accent)">SIPO:</strong> Serial In Parallel Out — एक-एक bit in, सबै एकैपटक out</li>
+          <li><strong style="color:var(--accent)">PISO:</strong> Parallel In Serial Out — सबै एकैपटक in, एक-एक bit out</li>
+          <li><strong style="color:var(--accent)">PIPO:</strong> Parallel In Parallel Out — सबै एकैपटक in र out</li>
+        </ul>
+        <div class="info-box tip">
+          <strong>💡 Application</strong>
+          Shift Register: data transmission, serial-to-parallel conversion, delay element, ring counter।
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🔢</span> Counters</h3>
+        <table>
+          <tr><th>Type</th><th>Feature</th><th>Speed</th></tr>
+          <tr><td>Ripple/Asynchronous</td><td>Output एक-एकपटक change</td><td>Slow (propagation delay)</td></tr>
+          <tr><td>Synchronous</td><td>सबै FF एकैपटक clock पाउँछन्</td><td>Fast</td></tr>
+          <tr><td>Up Counter</td><td>0→1→2→...→Max→0</td><td>—</td></tr>
+          <tr><td>Down Counter</td><td>Max→...→1→0→Max</td><td>—</td></tr>
+          <tr><td>BCD Counter</td><td>0→9→0 (Mod-10)</td><td>—</td></tr>
+          <tr><td>Ring Counter</td><td>Shift register in loop</td><td>—</td></tr>
+        </table>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>Counter Modulus</span></div>
+          <pre><span class="cm">// n-bit counter को modulus = 2ⁿ states</span>
+2-bit counter: Mod-4   (0,1,2,3)
+3-bit counter: Mod-8   (0 to 7)
+4-bit counter: Mod-16  (0 to 15)
+
+<span class="cm">// Mod-N counter बनाउन:</span>
+<span class="cm">// N पुगेपछि reset गराउने</span>
+<span class="cm">// BCD = Mod-10 (0-9 पुगेपछि reset)</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEMORY -->
+    <div class="section" id="memory">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 10</div>
+        <h2>Memory</h2>
+        <p>Data permanently वा temporarily store गर्ने digital devices।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>💾</span> Memory Types</h3>
+        <table>
+          <tr><th>Type</th><th>Full Form</th><th>Volatile?</th><th>Writable?</th></tr>
+          <tr><td>RAM</td><td>Random Access Memory</td><td>Yes (data loss)</td><td>Yes</td></tr>
+          <tr><td>ROM</td><td>Read Only Memory</td><td>No (permanent)</td><td>No</td></tr>
+          <tr><td>PROM</td><td>Programmable ROM</td><td>No</td><td>Once only</td></tr>
+          <tr><td>EPROM</td><td>Erasable PROM</td><td>No</td><td>UV erase</td></tr>
+          <tr><td>EEPROM</td><td>Electrically Erasable PROM</td><td>No</td><td>Electrically</td></tr>
+          <tr><td>Flash</td><td>Flash Memory</td><td>No</td><td>Yes (sectors)</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span>🧠</span> RAM Types</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">SRAM (Static RAM):</strong> Flip-flops बाट बनेको। Fast, expensive, cache मा प्रयोग</li>
+          <li><strong style="color:var(--accent)">DRAM (Dynamic RAM):</strong> Capacitors बाट बनेको। Slow, cheap, main memory। Refresh गर्नुपर्छ</li>
+        </ul>
+        <div class="info-box tip">
+          <strong>💡 SRAM vs DRAM</strong>
+          SRAM = Fast, Expensive, No refresh needed, Cache | DRAM = Slow, Cheap, Refresh needed, Main RAM
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>📐</span> Memory Capacity Calculation</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>memory-calc</span></div>
+          <pre><span class="cm">// Memory size = 2^(address lines) × data width</span>
+
+<span class="cm">// Example: 12 address lines, 8 data lines</span>
+Locations = 2¹² = <span class="num">4096</span> = 4K locations
+Data width = 8 bits = 1 byte
+Total = 4K × 8 bits = <span class="num">4KB</span>
+
+<span class="cm">// 1KB = 1024 bytes = 2¹⁰</span>
+<span class="cm">// 1MB = 1024 KB   = 2²⁰</span>
+<span class="cm">// 1GB = 1024 MB   = 2³⁰</span></pre>
+        </div>
+        <div class="info-box imp">
+          <strong>🔴 Exam Formula</strong>
+          Address lines = n → 2ⁿ memory locations। 16 address lines = 64K locations।
+        </div>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="section" id="quiz">
+      <div class="topic-header">
+        <div class="topic-tag">Practice</div>
+        <h2>Digital Logic Quiz 🎯</h2>
+        <p>आफ्नो तयारी जाँच गर्नुस् — exam questions जस्तै!</p>
+      </div>
+
+      <div id="quizContainer"></div>
+
+      <div class="card" style="margin-top:24px; text-align:center;">
+        <div id="scoreDisplay" style="font-size:24px; font-weight:700; color:var(--accent); margin-bottom:8px;"></div>
+        <div id="scoreSub" style="color:var(--muted); font-size:14px;"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Countdown
+function updateCountdown() {
+  const exam = new Date('2025-06-25');
+  const now = new Date();
+  const diff = Math.ceil((exam - now) / (1000*60*60*24));
+  document.getElementById('daysLeft').textContent = diff > 0 ? diff : '🎉';
+}
+updateCountdown();
+
+// Navigation
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// Quiz Data
+const questions = [
+  {
+    q: "(25)₁₀ लाई Binary मा convert गर्दा के आउँछ?",
+    opts: ["(10101)₂", "(11001)₂", "(10011)₂", "(11011)₂"],
+    ans: 1,
+    exp: "25 ÷ 2 को remainder तल्लोबाट: 1,0,0,1,1 → (11001)₂। Check: 16+8+1 = 25 ✓"
+  },
+  {
+    q: "NAND gate लाई 'Universal Gate' किन भनिन्छ?",
+    opts: [
+      "यो सबैभन्दा पुरानो gate हो",
+      "यसबाट सबै basic gates बनाउन सकिन्छ",
+      "यो सबैभन्दा fast gate हो",
+      "यसको output हमेशा 1 हुन्छ"
+    ],
+    ans: 1,
+    exp: "NAND बाट NOT, AND, OR सबै gates बनाउन सकिन्छ। NOR पनि Universal Gate हो।"
+  },
+  {
+    q: "De Morgan's Theorem अनुसार ̄(A·B) बराबर के हुन्छ?",
+    opts: ["Ā·B̄", "A+B", "Ā+B̄", "Ā·B"],
+    ans: 2,
+    exp: "De Morgan's First Theorem: ̄(A·B) = Ā+B̄। Bar तोड्दा AND→OR हुन्छ र variables complement हुन्छन्।"
+  },
+  {
+    q: "SR Flip-Flop मा S=1, R=1 भएमा के हुन्छ?",
+    opts: ["Set state", "Reset state", "No change", "Invalid/Forbidden state"],
+    ans: 3,
+    exp: "S=R=1 SR FF मा forbidden state हो — output undefined हुन्छ। यही problem solve गर्न JK FF बनाइयो।"
+  },
+  {
+    q: "JK Flip-Flop मा J=1, K=1 भएमा output के हुन्छ?",
+    opts: ["0", "1", "Q (no change)", "Q̄ (Toggle)"],
+    ans: 3,
+    exp: "J=K=1 मा JK FF toggle हुन्छ — Q complement हुन्छ। यो नै JK FF को SR भन्दा advantage हो।"
+  },
+  {
+    q: "4-bit Ripple Counter ले maximum कति count गर्न सक्छ?",
+    opts: ["8", "15", "16", "32"],
+    ans: 1,
+    exp: "4-bit counter: 2⁴ = 16 states, तर 0 देखि 15 सम्म count गर्छ। Maximum count = 15 (1111)₂।"
+  },
+  {
+    q: "K-Map मा group size कति हुन सक्छ?",
+    opts: ["कुनै पनि number", "1, 2, 4, 8, 16 (power of 2)", "Odd numbers", "3, 5, 7"],
+    ans: 1,
+    exp: "K-Map groups always power of 2 हुनुपर्छ: 1, 2, 4, 8, 16। जति ठूलो group, उति terms simplify हुन्छ।"
+  },
+  {
+    q: "Half Adder र Full Adder मा मुख्य फरक के हो?",
+    opts: [
+      "Half Adder faster छ",
+      "Full Adder मा Carry input (Cin) हुन्छ",
+      "Half Adder 2 outputs दिन्छ",
+      "Full Adder केवल 1 bit add गर्छ"
+    ],
+    ans: 1,
+    exp: "Full Adder मा Carry-in (Cin) input हुन्छ जसले previous stage को carry लिन्छ। Half Adder मा Cin हुँदैन।"
+  },
+  {
+    q: "SRAM र DRAM मा के फरक छ?",
+    opts: [
+      "SRAM volatile छैन",
+      "DRAM faster छ",
+      "SRAM लाई periodic refresh चाहिँदैन",
+      "DRAM बढी expensive छ"
+    ],
+    ans: 2,
+    exp: "SRAM (Flip-flop based) लाई refresh चाहिँदैन र faster छ तर expensive। DRAM (Capacitor based) लाई periodic refresh चाहिन्छ।"
+  },
+  {
+    q: "XOR gate को output कहिले 1 हुन्छ?",
+    opts: [
+      "दुवै inputs 1 भएमा",
+      "दुवै inputs 0 भएमा",
+      "दुवै inputs different (odd number of 1s) भएमा",
+      "कम्तिमा एउटा input 1 भएमा"
+    ],
+    ans: 2,
+    exp: "XOR (Exclusive OR): inputs different भएमा 1 — A=0,B=1 वा A=1,B=0। दुवै same (00 वा 11) भएमा 0।"
+  }
+];
+
+let answered = 0, correct = 0;
+
+function buildQuiz() {
+  const container = document.getElementById('quizContainer');
+  questions.forEach((q, idx) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-card';
+    div.innerHTML = `
+      <div class="question"><strong style="color:var(--accent);font-family:'JetBrains Mono',monospace">Q${idx+1}.</strong> ${q.q}</div>
+      <div class="options">
+        ${q.opts.map((o,i) => `
+          <div class="option" onclick="answer(this,${idx},${i})">
+            <span class="option-label">${String.fromCharCode(65+i)}</span>
+            ${o}
+          </div>
+        `).join('')}
+      </div>
+      <div class="quiz-result" id="result-${idx}"></div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function answer(el, qIdx, optIdx) {
+  const opts = el.parentElement.querySelectorAll('.option');
+  if (el.classList.contains('correct') || el.classList.contains('wrong')) return;
+
+  const q = questions[qIdx];
+  const resultEl = document.getElementById(`result-${qIdx}`);
+
+  opts.forEach(o => o.style.pointerEvents = 'none');
+  opts[q.ans].classList.add('correct');
+
+  if (optIdx === q.ans) {
+    el.classList.add('correct');
+    resultEl.className = 'quiz-result show correct';
+    resultEl.innerHTML = '✅ सही! ' + q.exp;
+    correct++;
+  } else {
+    el.classList.add('wrong');
+    resultEl.className = 'quiz-result show wrong';
+    resultEl.innerHTML = '❌ गलत! ' + q.exp;
+  }
+
+  answered++;
+  updateScore();
+}
+
+function updateScore() {
+  const scoreEl = document.getElementById('scoreDisplay');
+  const subEl = document.getElementById('scoreSub');
+  scoreEl.textContent = `${correct} / ${answered} सही`;
+
+  const pct = Math.round((correct/answered)*100);
+  subEl.textContent = `${pct}% • ${answered === questions.length ? '🎉 सबै प्रश्न सकियो!' : `${questions.length - answered} प्रश्न बाँकी`}`;
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
