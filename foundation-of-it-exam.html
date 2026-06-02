@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foundation of IT - BIT CSIT BCA Exam 2081</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Tiro+Devanagari+Hindi:ital@0;1&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --surface: #111827;
+    --surface2: #1a2234;
+    --accent: #00d4aa;
+    --accent2: #ff6b35;
+    --accent3: #a78bfa;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --code-bg: #0d1117;
+    --green: #22c55e;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #0a0e1a 0%, #0d1a0a 50%, #0a1628 100%);
+    border-bottom: 1px solid #1e293b;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+
+  .logo { display: flex; align-items: center; gap: 12px; }
+
+  .logo-icon {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, #00d4aa, #22c55e);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 13px;
+    color: #000;
+  }
+
+  .logo-text h1 { font-size: 18px; font-weight: 700; color: var(--accent); }
+  .logo-text p { font-size: 12px; color: var(--muted); }
+
+  .exam-countdown {
+    background: linear-gradient(135deg, #1a0a0a, #2d1010);
+    border: 1px solid var(--accent2);
+    border-radius: 12px;
+    padding: 8px 16px;
+    text-align: center;
+  }
+  .exam-countdown .days { font-size: 24px; font-weight: 700; color: var(--accent2); font-family: 'JetBrains Mono', monospace; }
+  .exam-countdown .label { font-size: 11px; color: var(--muted); }
+
+  .container { display: flex; min-height: calc(100vh - 81px); }
+
+  .sidebar {
+    width: 260px;
+    background: var(--surface);
+    border-right: 1px solid #1e293b;
+    padding: 20px 0;
+    position: sticky;
+    top: 81px;
+    height: calc(100vh - 81px);
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+
+  .sidebar-title {
+    font-size: 11px; font-weight: 700; color: var(--muted);
+    letter-spacing: 2px; text-transform: uppercase; padding: 0 20px 12px;
+  }
+
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 20px; cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all 0.2s; font-size: 14px;
+  }
+  .nav-item:hover { background: var(--surface2); }
+  .nav-item.active { background: rgba(0,212,170,0.1); border-left-color: var(--accent); color: var(--accent); }
+  .nav-item .num { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; min-width: 24px; }
+
+  .main { flex: 1; padding: 32px; max-width: 860px; }
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .topic-header { margin-bottom: 32px; }
+  .topic-tag {
+    display: inline-block;
+    background: rgba(0,212,170,0.15); color: var(--accent);
+    border: 1px solid rgba(0,212,170,0.3); border-radius: 6px;
+    padding: 4px 12px; font-size: 12px; font-weight: 600;
+    margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+  }
+  .topic-header h2 { font-size: 32px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+  .topic-header p { color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+  .card {
+    background: var(--surface); border: 1px solid #1e293b;
+    border-radius: 16px; padding: 24px; margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #334155; }
+  .card h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--accent3); display: flex; align-items: center; gap: 8px; }
+  .card h3 span { font-size: 20px; }
+  .card p, .card li { color: #94a3b8; font-size: 14px; line-height: 1.8; }
+  .card ul { padding-left: 20px; }
+  .card li { margin-bottom: 6px; }
+
+  .code-block { background: var(--code-bg); border: 1px solid #21262d; border-radius: 12px; margin: 16px 0; overflow: hidden; }
+  .code-header { background: #161b22; padding: 8px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #21262d; }
+  .code-header span { font-size: 12px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.r { background: #ff5f56; } .dot.y { background: #ffbd2e; } .dot.g { background: #27c93f; }
+  .code-block pre { padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.8; overflow-x: auto; color: #e6edf3; }
+  .kw { color: #ff7b72; } .fn { color: #d2a8ff; } .str { color: #a5d6ff; }
+  .cm { color: #8b949e; font-style: italic; } .num { color: #79c0ff; } .hd { color: #ffa657; }
+
+  .quiz-card { background: var(--surface); border: 1px solid #1e293b; border-radius: 16px; padding: 24px; margin-bottom: 20px; }
+  .question { font-size: 16px; font-weight: 500; margin-bottom: 16px; line-height: 1.6; }
+  .options { display: grid; gap: 10px; }
+  .option { padding: 12px 16px; background: var(--surface2); border: 1px solid #1e293b; border-radius: 10px; cursor: pointer; font-size: 14px; transition: all 0.2s; display: flex; align-items: center; gap: 10px; }
+  .option:hover { border-color: var(--accent); color: var(--accent); }
+  .option.correct { background: rgba(34,197,94,0.15); border-color: var(--green); color: var(--green); }
+  .option.wrong { background: rgba(239,68,68,0.1); border-color: var(--red); color: var(--red); }
+  .option-label { width: 26px; height: 26px; border-radius: 6px; background: #1e293b; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; }
+  .quiz-result { margin-top: 12px; padding: 12px 16px; border-radius: 10px; font-size: 14px; display: none; }
+  .quiz-result.show { display: block; }
+  .quiz-result.correct { background: rgba(34,197,94,0.1); border: 1px solid var(--green); color: var(--green); }
+  .quiz-result.wrong { background: rgba(239,68,68,0.1); border: 1px solid var(--red); color: var(--red); }
+
+  .info-box { border-radius: 12px; padding: 16px; margin: 16px 0; font-size: 14px; line-height: 1.7; }
+  .info-box.tip { background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.3); color: #c4b5fd; }
+  .info-box.warn { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); color: #fcd34d; }
+  .info-box.imp { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; }
+  .info-box strong { display: block; margin-bottom: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: var(--surface2); padding: 10px 14px; text-align: left; color: var(--accent); font-weight: 600; border-bottom: 1px solid #1e293b; }
+  td { padding: 10px 14px; border-bottom: 1px solid #1e293b; color: #94a3b8; font-family: 'JetBrains Mono', monospace; }
+  tr:hover td { background: var(--surface2); }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: #334155; border-radius: 99px; }
+
+  /* Top navbar */
+  .top-nav {
+    background: rgba(10,14,26,0.98);
+    border-bottom: 1px solid #1e293b;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+    backdrop-filter: blur(10px);
+  }
+  .top-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .top-nav a:hover { color: var(--accent); }
+  .top-nav .nav-breadcrumb {
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .top-nav .nav-breadcrumb span { color: #334155; }
+  .top-nav .nav-breadcrumb .current { color: var(--accent3); }
+
+  /* Mobile hamburger */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: var(--text);
+    font-size: 14px;
+    align-items: center;
+    gap: 6px;
+    transition: border-color 0.2s;
+  }
+  .mobile-menu-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Mobile drawer */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 200;
+    backdrop-filter: blur(4px);
+  }
+  .sidebar-overlay.open { display: block; }
+  .sidebar-drawer {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: 280px;
+    background: var(--surface);
+    border-right: 1px solid #1e293b;
+    padding: 20px 0;
+    z-index: 201;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+  }
+  .sidebar-drawer.open { transform: translateX(0); }
+  .drawer-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: color 0.2s;
+  }
+  .drawer-close:hover { color: var(--text); }
+  .drawer-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 20px 12px;
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--surface);
+    border-top: 1px solid #1e293b;
+    padding: 32px 40px;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 10px; }
+  .footer-brand .logo-icon { width: 32px; height: 32px; font-size: 11px; }
+  .footer-brand-text h4 { font-size: 14px; font-weight: 700; color: var(--text); }
+  .footer-brand-text p { font-size: 12px; color: var(--muted); }
+  .footer-links { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-copy {
+    font-size: 12px;
+    color: #334155;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #1e293b;
+  }
+  .footer-copy a { color: var(--accent); text-decoration: none; }
+
+  /* Page wrapper */
+  .page-wrapper { display: flex; flex-direction: column; min-height: 100vh; }
+  .page-content { flex: 1; }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .mobile-menu-btn { display: flex; }
+    .main { padding: 20px 16px; }
+    .topic-header h2 { font-size: 22px; }
+    .header { padding: 14px 16px; }
+    .logo-text h1 { font-size: 15px; }
+    .logo-text p { display: none; }
+    .exam-countdown { padding: 6px 12px; }
+    .exam-countdown .days { font-size: 20px; }
+    .card { padding: 16px; }
+    .code-block pre { font-size: 12px; padding: 14px; }
+    table { font-size: 12px; }
+    td, th { padding: 8px 8px; }
+    .top-nav .nav-breadcrumb { display: none; }
+    .footer { padding: 24px 16px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .container { min-height: unset; }
+  }
+  @media (max-width: 480px) {
+    .topic-header h2 { font-size: 20px; }
+    .card h3 { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Mobile sidebar drawer -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMobileMenu()"></div>
+<div class="sidebar-drawer" id="sidebarDrawer">
+  <button class="drawer-close" onclick="closeMobileMenu()">✕</button>
+  <div class="drawer-title">📚 Topics</div>
+  <div class="nav-item active" id="drawer-intro" onclick="showSection('intro', true)"><span class="num">01</span> Introduction to IT</div>
+  <div class="nav-item" id="drawer-hardware" onclick="showSection('hardware', true)"><span class="num">02</span> Computer Hardware</div>
+  <div class="nav-item" id="drawer-software" onclick="showSection('software', true)"><span class="num">03</span> Software</div>
+  <div class="nav-item" id="drawer-os" onclick="showSection('os', true)"><span class="num">04</span> Operating System</div>
+  <div class="nav-item" id="drawer-network" onclick="showSection('network', true)"><span class="num">05</span> Networking</div>
+  <div class="nav-item" id="drawer-internet" onclick="showSection('internet', true)"><span class="num">06</span> Internet & Web</div>
+  <div class="nav-item" id="drawer-database" onclick="showSection('database', true)"><span class="num">07</span> Database</div>
+  <div class="nav-item" id="drawer-security" onclick="showSection('security', true)"><span class="num">08</span> Cyber Security</div>
+  <div class="nav-item" id="drawer-multimedia" onclick="showSection('multimedia', true)"><span class="num">09</span> Multimedia</div>
+  <div class="nav-item" id="drawer-ecommerce" onclick="showSection('ecommerce', true)"><span class="num">10</span> E-Commerce & AI</div>
+  <div class="nav-item" id="drawer-quiz" onclick="showSection('quiz', true)"><span class="num">🎯</span> Practice Quiz</div>
+</div>
+
+<div class="page-wrapper">
+
+<!-- Top nav with home link -->
+<nav class="top-nav">
+  <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener">
+    <span>←</span> Home — hemrajadhikari.info.np
+  </a>
+  <div class="nav-breadcrumb">
+    <span>hemrajadhikari.info.np</span>
+    <span>/</span>
+    <span>Study Notes</span>
+    <span>/</span>
+    <span class="current">Foundation of IT BIT 2081</span>
+  </div>
+</nav>
+
+<div class="page-content">
+
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon">FIT</div>
+    <div class="logo-text">
+      <h1>Foundation of IT — Exam</h1>
+      <p>जेठ २०८१ • BIT / CSIT / BCA Complete Guide</p>
+    </div>
+  </div>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <button class="mobile-menu-btn" onclick="openMobileMenu()">☰ Topics</button>
+    <div class="exam-countdown">
+      <div class="days" id="daysLeft">--</div>
+      <div class="label">दिन बाँकी</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="sidebar">
+    <div class="sidebar-title">Topics</div>
+    <div class="nav-item active" onclick="showSection('intro')"><span class="num">01</span> Introduction to IT</div>
+    <div class="nav-item" onclick="showSection('hardware')"><span class="num">02</span> Computer Hardware</div>
+    <div class="nav-item" onclick="showSection('software')"><span class="num">03</span> Software</div>
+    <div class="nav-item" onclick="showSection('os')"><span class="num">04</span> Operating System</div>
+    <div class="nav-item" onclick="showSection('network')"><span class="num">05</span> Networking</div>
+    <div class="nav-item" onclick="showSection('internet')"><span class="num">06</span> Internet & Web</div>
+    <div class="nav-item" onclick="showSection('database')"><span class="num">07</span> Database</div>
+    <div class="nav-item" onclick="showSection('security')"><span class="num">08</span> Cyber Security</div>
+    <div class="nav-item" onclick="showSection('multimedia')"><span class="num">09</span> Multimedia</div>
+    <div class="nav-item" onclick="showSection('ecommerce')"><span class="num">10</span> E-Commerce & AI</div>
+    <div class="nav-item" onclick="showSection('quiz')"><span class="num">🎯</span> Practice Quiz</div>
+  </div>
+
+  <div class="main">
+
+    <!-- INTRO -->
+    <div class="section active" id="intro">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 01</div>
+        <h2>Introduction to IT</h2>
+        <p>Information Technology भनेको data collect, store, process र communicate गर्न technology प्रयोग गर्ने विज्ञान हो।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>💡</span> IT को परिभाषा र महत्त्व</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">IT:</strong> Information Technology — hardware, software, network र data को combination</li>
+          <li><strong style="color:var(--accent)">ICT:</strong> Information and Communication Technology — IT + Communication</li>
+          <li>Education, Business, Health, Government सबैमा IT को प्रयोग</li>
+          <li>Nepal मा IT sector तीव्र गतिमा बढ्दै छ</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span>🖥️</span> Computer को परिभाषा र विशेषताहरू</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">Speed:</strong> Millions of operations per second (MIPS)</li>
+          <li><strong style="color:var(--accent)">Accuracy:</strong> GIGO — Garbage In Garbage Out</li>
+          <li><strong style="color:var(--accent)">Storage:</strong> Large amount of data store गर्न सक्छ</li>
+          <li><strong style="color:var(--accent)">Automation:</strong> Instructions follow गरेर automatic काम गर्छ</li>
+          <li><strong style="color:var(--accent)">Versatility:</strong> विभिन्न किसिमका काम गर्न सक्छ</li>
+          <li><strong style="color:var(--accent)">Diligence:</strong> थाक्दैन, लगातार काम गर्छ</li>
+        </ul>
+        <div class="info-box imp">
+          <strong>🔴 Exam Important</strong>
+          Computer को limitation: No Intelligence (आफैँ सोच्न सक्दैन), No Feeling, Dependent on Power।
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>📅</span> Computer Generations</h3>
+        <table>
+          <tr><th>Generation</th><th>Period</th><th>Technology</th><th>Example</th></tr>
+          <tr><td>1st</td><td>1946–1955</td><td>Vacuum Tubes</td><td>ENIAC, UNIVAC</td></tr>
+          <tr><td>2nd</td><td>1956–1963</td><td>Transistors</td><td>IBM 7094</td></tr>
+          <tr><td>3rd</td><td>1964–1971</td><td>IC (Integrated Circuit)</td><td>IBM 360</td></tr>
+          <tr><td>4th</td><td>1972–present</td><td>Microprocessor (VLSI)</td><td>Intel, AMD</td></tr>
+          <tr><td>5th</td><td>Future</td><td>AI, ULSI, Quantum</td><td>AI Computers</td></tr>
+        </table>
+        <div class="info-box tip">
+          <strong>💡 याद गर्ने Trick</strong>
+          Vacuum → Transistor → IC → Microprocessor → AI | "Very Tired IT Men Are"
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>📊</span> Computer को Classification</h3>
+        <table>
+          <tr><th>Type</th><th>Based on</th><th>Examples</th></tr>
+          <tr><td>Analog</td><td>Continuous data</td><td>Thermometer, Speedometer</td></tr>
+          <tr><td>Digital</td><td>Discrete (0,1) data</td><td>PC, Laptop, Mobile</td></tr>
+          <tr><td>Hybrid</td><td>Both analog + digital</td><td>Hospital ECG machines</td></tr>
+        </table>
+        <table style="margin-top:12px;">
+          <tr><th>Size by</th><th>Type</th><th>Use</th></tr>
+          <tr><td>Supercomputer</td><td>Fastest, most powerful</td><td>Weather forecast, Research</td></tr>
+          <tr><td>Mainframe</td><td>Large, multi-user</td><td>Banks, Airlines</td></tr>
+          <tr><td>Minicomputer</td><td>Medium size</td><td>Mid-size businesses</td></tr>
+          <tr><td>Microcomputer</td><td>Personal use</td><td>PC, Laptop, Tablet</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- HARDWARE -->
+    <div class="section" id="hardware">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 02</div>
+        <h2>Computer Hardware</h2>
+        <p>Computer को physical components — Input, Output, Processing, Storage devices।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>⚙️</span> Computer System Components</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>Computer Architecture</span></div>
+          <pre>Input Device → <span class="kw">CPU</span> (ALU + CU + Registers) → Output Device
+                    ↕
+              <span class="fn">Memory (RAM/ROM)</span>
+                    ↕
+           <span class="str">Secondary Storage (HDD/SSD)</span></pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🧠</span> CPU — Central Processing Unit</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">ALU (Arithmetic Logic Unit):</strong> Mathematical र logical operations गर्छ</li>
+          <li><strong style="color:var(--accent)">CU (Control Unit):</strong> सबै components लाई coordinate र control गर्छ</li>
+          <li><strong style="color:var(--accent)">Registers:</strong> CPU भित्रको fastest temporary storage</li>
+          <li><strong style="color:var(--accent)">Cache Memory:</strong> CPU र RAM बीचको fast buffer memory (L1, L2, L3)</li>
+        </ul>
+        <div class="info-box imp">
+          <strong>🔴 Exam Important</strong>
+          CPU = "Brain of Computer"। Clock speed GHz मा मापिन्छ। Cores: Dual core, Quad core, Octa core।
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>📥</span> Input Devices</h3>
+        <table>
+          <tr><th>Device</th><th>Type</th><th>Use</th></tr>
+          <tr><td>Keyboard</td><td>Text input</td><td>Type गर्न</td></tr>
+          <tr><td>Mouse</td><td>Pointing device</td><td>Click, drag गर्न</td></tr>
+          <tr><td>Scanner</td><td>Image input</td><td>Document scan</td></tr>
+          <tr><td>Microphone</td><td>Audio input</td><td>Voice input</td></tr>
+          <tr><td>Webcam</td><td>Video input</td><td>Video capture</td></tr>
+          <tr><td>Touchscreen</td><td>Touch input</td><td>Tablet, phone</td></tr>
+          <tr><td>Barcode Reader</td><td>Code reader</td><td>Shopping, library</td></tr>
+          <tr><td>OMR</td><td>Mark reader</td><td>MCQ answer sheet</td></tr>
+          <tr><td>OCR</td><td>Text reader</td><td>Printed text read</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span>📤</span> Output Devices</h3>
+        <table>
+          <tr><th>Device</th><th>Type</th><th>Use</th></tr>
+          <tr><td>Monitor</td><td>Visual output</td><td>Display गर्न</td></tr>
+          <tr><td>Printer</td><td>Hard copy</td><td>Paper print</td></tr>
+          <tr><td>Speaker</td><td>Audio output</td><td>Sound निकाल्न</td></tr>
+          <tr><td>Projector</td><td>Visual output</td><td>Presentation</td></tr>
+          <tr><td>Plotter</td><td>Drawing output</td><td>Engineering drawings</td></tr>
+        </table>
+        <div class="info-box tip">
+          <strong>💡 Printer Types याद गर्नु</strong>
+          Impact: Dot Matrix | Non-impact: Inkjet, Laser | Laser = fastest, best quality | Inkjet = color printing
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>💾</span> Memory र Storage</h3>
+        <table>
+          <tr><th>Memory</th><th>Type</th><th>Speed</th><th>Volatile?</th></tr>
+          <tr><td>Register</td><td>CPU internal</td><td>Fastest</td><td>Yes</td></tr>
+          <tr><td>Cache (L1/L2)</td><td>CPU near</td><td>Very fast</td><td>Yes</td></tr>
+          <tr><td>RAM</td><td>Primary</td><td>Fast</td><td>Yes</td></tr>
+          <tr><td>ROM</td><td>Primary</td><td>Fast</td><td>No</td></tr>
+          <tr><td>HDD/SSD</td><td>Secondary</td><td>Slow</td><td>No</td></tr>
+          <tr><td>USB/CD/DVD</td><td>Tertiary</td><td>Slowest</td><td>No</td></tr>
+        </table>
+        <div class="info-box imp">
+          <strong>🔴 Units याद गर्नु</strong>
+          1 KB = 1024 B | 1 MB = 1024 KB | 1 GB = 1024 MB | 1 TB = 1024 GB
+        </div>
+      </div>
+    </div>
+
+    <!-- SOFTWARE -->
+    <div class="section" id="software">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 03</div>
+        <h2>Software</h2>
+        <p>Computer चलाउने instructions र programs — System Software र Application Software।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>📦</span> Software Classification</h3>
+        <table>
+          <tr><th>Type</th><th>Subcategory</th><th>Examples</th></tr>
+          <tr><td rowspan="3">System Software</td><td>Operating System</td><td>Windows, Linux, macOS</td></tr>
+          <tr><td>Language Translator</td><td>Compiler, Interpreter, Assembler</td></tr>
+          <tr><td>Utility Software</td><td>Antivirus, Disk Cleanup, WinZip</td></tr>
+          <tr><td rowspan="3">Application Software</td><td>General Purpose</td><td>MS Word, Excel, Photoshop</td></tr>
+          <tr><td>Specific Purpose</td><td>Payroll, Inventory system</td></tr>
+          <tr><td>Custom Software</td><td>Bank software, Hospital system</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span>🔄</span> Language Translators</h3>
+        <table>
+          <tr><th>Translator</th><th>Converts</th><th>Execution</th></tr>
+          <tr><td>Compiler</td><td>High-level → Machine code (entire program)</td><td>Fast — सबै translate गरेर run</td></tr>
+          <tr><td>Interpreter</td><td>High-level → Machine code (line by line)</td><td>Slow — एक-एक line translate र run</td></tr>
+          <tr><td>Assembler</td><td>Assembly language → Machine code</td><td>Assembly programs को लागि</td></tr>
+        </table>
+        <div class="info-box tip">
+          <strong>💡 Compiler vs Interpreter</strong>
+          Compiler: C, C++, Java | Interpreter: Python, JavaScript, PHP | Compiler faster, Interpreter debug गर्न सजिलो
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🔤</span> Programming Languages Levels</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">Machine Language (1st gen):</strong> Binary (0,1) — fastest, hardware dependent</li>
+          <li><strong style="color:var(--accent)">Assembly Language (2nd gen):</strong> Mnemonics (MOV, ADD) — Assembler चाहिन्छ</li>
+          <li><strong style="color:var(--accent)">High-Level Language (3rd gen):</strong> English-like — C, Java, Python</li>
+          <li><strong style="color:var(--accent)">4GL:</strong> Database languages — SQL, MATLAB</li>
+          <li><strong style="color:var(--accent)">5GL:</strong> AI/Natural language — Prolog</li>
+        </ul>
+        <div class="info-box imp">
+          <strong>🔴 Exam याद गर्नु</strong>
+          Low-level = Machine dependent, Fast | High-level = Machine independent, Easy to program
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>📋</span> Software Licensing Types</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">Proprietary/Commercial:</strong> किन्नुपर्छ — MS Office, Adobe</li>
+          <li><strong style="color:var(--accent)">Freeware:</strong> Free तर source code नपाइने — VLC, Skype</li>
+          <li><strong style="color:var(--accent)">Shareware:</strong> Trial period — WinRAR</li>
+          <li><strong style="color:var(--accent)">Open Source:</strong> Free + source code पाइन्छ — Linux, Firefox, LibreOffice</li>
+          <li><strong style="color:var(--accent)">Public Domain:</strong> कुनै restriction छैन</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- OPERATING SYSTEM -->
+    <div class="section" id="os">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 04</div>
+        <h2>Operating System</h2>
+        <p>Hardware र User बीचको interface — सबैभन्दा important system software।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🖥️</span> OS को Functions</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">Process Management:</strong> Programs को execution manage गर्छ</li>
+          <li><strong style="color:var(--accent)">Memory Management:</strong> RAM allocate र deallocate गर्छ</li>
+          <li><strong style="color:var(--accent)">File Management:</strong> Files र folders manage गर्छ</li>
+          <li><strong style="color:var(--accent)">Device Management:</strong> Hardware devices control गर्छ</li>
+          <li><strong style="color:var(--accent)">Security:</strong> User authentication र data protection</li>
+          <li><strong style="color:var(--accent)">User Interface:</strong> CLI वा GUI provide गर्छ</li>
+        </ul>
+        <div class="info-box imp">
+          <strong>🔴 Exam Important</strong>
+          OS = "Soul of Computer" भनिन्छ। OS बिना computer चल्दैन।
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🔀</span> Types of Operating Systems</h3>
+        <table>
+          <tr><th>Type</th><th>Feature</th><th>Example</th></tr>
+          <tr><td>Batch OS</td><td>Jobs queue मा process गर्छ</td><td>Early IBM systems</td></tr>
+          <tr><td>Time-Sharing</td><td>Multiple users simultaneously</td><td>UNIX</td></tr>
+          <tr><td>Real-Time (RTOS)</td><td>Immediate response</td><td>Medical devices, ATM</td></tr>
+          <tr><td>Distributed OS</td><td>Multiple computers एउटा OS</td><td>Google systems</td></tr>
+          <tr><td>Network OS</td><td>Network manage गर्छ</td><td>Windows Server</td></tr>
+          <tr><td>Mobile OS</td><td>Smartphones</td><td>Android, iOS</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span>💻</span> Popular Operating Systems</h3>
+        <table>
+          <tr><th>OS</th><th>Developer</th><th>Type</th></tr>
+          <tr><td>Windows 11</td><td>Microsoft</td><td>Proprietary, GUI</td></tr>
+          <tr><td>macOS</td><td>Apple</td><td>Proprietary, Unix-based</td></tr>
+          <tr><td>Linux (Ubuntu)</td><td>Community</td><td>Open Source, Free</td></tr>
+          <tr><td>Android</td><td>Google</td><td>Open Source, Mobile</td></tr>
+          <tr><td>iOS</td><td>Apple</td><td>Proprietary, Mobile</td></tr>
+        </table>
+        <div class="info-box tip">
+          <strong>💡 GUI vs CLI</strong>
+          GUI (Graphical) = Windows, macOS — easy to use | CLI (Command Line) = Linux Terminal — powerful, faster
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>⚙️</span> Process States र Scheduling</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>Process States</span></div>
+          <pre>New → <span class="kw">Ready</span> → <span class="fn">Running</span> → <span class="str">Terminated</span>
+              ↑         ↓
+           <span class="cm">Waiting (I/O complete)</span>
+
+<span class="cm">// CPU Scheduling Algorithms:</span>
+<span class="kw">FCFS</span>  - First Come First Serve
+<span class="kw">SJF</span>   - Shortest Job First
+<span class="kw">Round Robin</span> - Time quantum दिन्छ
+<span class="kw">Priority</span> - High priority पहिले</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- NETWORKING -->
+    <div class="section" id="network">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 05</div>
+        <h2>Computer Networking</h2>
+        <p>Computers लाई एकआपसमा connect गरेर data share गर्ने technology।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🌐</span> Network Types</h3>
+        <table>
+          <tr><th>Type</th><th>Full Form</th><th>Coverage</th><th>Example</th></tr>
+          <tr><td>PAN</td><td>Personal Area Network</td><td>~10 meters</td><td>Bluetooth, USB</td></tr>
+          <tr><td>LAN</td><td>Local Area Network</td><td>Building/Campus</td><td>College network</td></tr>
+          <tr><td>MAN</td><td>Metropolitan Area Network</td><td>City</td><td>Cable TV</td></tr>
+          <tr><td>WAN</td><td>Wide Area Network</td><td>Country/World</td><td>Internet</td></tr>
+        </table>
+        <div class="info-box imp">
+          <strong>🔴 याद गर्नु</strong>
+          Internet = Largest WAN। Intranet = Private network (organization भित्र)। Extranet = Limited external access।
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🔷</span> Network Topologies</h3>
+        <table>
+          <tr><th>Topology</th><th>Shape</th><th>Advantage</th><th>Disadvantage</th></tr>
+          <tr><td>Bus</td><td>Single cable</td><td>Simple, cheap</td><td>Single point failure</td></tr>
+          <tr><td>Star</td><td>Central hub/switch</td><td>Easy troubleshoot</td><td>Hub failure = all fail</td></tr>
+          <tr><td>Ring</td><td>Circle</td><td>Equal access</td><td>One failure = all fail</td></tr>
+          <tr><td>Mesh</td><td>Every-to-every</td><td>Most reliable</td><td>Expensive, complex</td></tr>
+          <tr><td>Tree</td><td>Hierarchical</td><td>Scalable</td><td>Root failure = problem</td></tr>
+        </table>
+        <div class="info-box tip">
+          <strong>💡 Most Common</strong>
+          Star topology — office र school networks मा सबैभन्दा बढी प्रयोग हुन्छ।
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🔌</span> Network Devices</h3>
+        <table>
+          <tr><th>Device</th><th>Layer</th><th>Function</th></tr>
+          <tr><td>Hub</td><td>Physical (L1)</td><td>Broadcast to all ports</td></tr>
+          <tr><td>Switch</td><td>Data Link (L2)</td><td>Send to specific MAC</td></tr>
+          <tr><td>Router</td><td>Network (L3)</td><td>Connect different networks</td></tr>
+          <tr><td>Bridge</td><td>Data Link (L2)</td><td>Connect 2 LANs</td></tr>
+          <tr><td>Gateway</td><td>All layers</td><td>Protocol conversion</td></tr>
+          <tr><td>Modem</td><td>Physical (L1)</td><td>Analog↔Digital convert</td></tr>
+          <tr><td>NIC</td><td>Data Link (L2)</td><td>Network interface card</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span>📋</span> OSI Model — 7 Layers</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>OSI Layers</span></div>
+          <pre><span class="num">7</span> - <span class="kw">Application</span>  - HTTP, FTP, SMTP, DNS
+<span class="num">6</span> - <span class="fn">Presentation</span> - Encryption, Compression
+<span class="num">5</span> - <span class="str">Session</span>      - Session management
+<span class="num">4</span> - <span class="hd">Transport</span>    - TCP/UDP, Port numbers
+<span class="num">3</span> - <span class="kw">Network</span>      - IP address, Routing
+<span class="num">2</span> - <span class="fn">Data Link</span>    - MAC address, Switch
+<span class="num">1</span> - <span class="str">Physical</span>     - Cables, Bits, Hub
+
+<span class="cm">// Trick: "All People Seem To Need Data Processing"</span></pre>
+        </div>
+        <div class="info-box imp">
+          <strong>🔴 TCP/IP Model (4 layers)</strong>
+          Application → Transport → Internet → Network Access | यो OSI भन्दा simplify हो।
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERNET -->
+    <div class="section" id="internet">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 06</div>
+        <h2>Internet & Web Technology</h2>
+        <p>World को largest network र त्यसमा build भएका services।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🌍</span> Internet Services</h3>
+        <table>
+          <tr><th>Service</th><th>Protocol</th><th>Port</th><th>Use</th></tr>
+          <tr><td>WWW</td><td>HTTP/HTTPS</td><td>80/443</td><td>Web browsing</td></tr>
+          <tr><td>Email</td><td>SMTP/POP3/IMAP</td><td>25/110/143</td><td>Mail send/receive</td></tr>
+          <tr><td>FTP</td><td>FTP</td><td>21</td><td>File transfer</td></tr>
+          <tr><td>DNS</td><td>DNS</td><td>53</td><td>Name resolution</td></tr>
+          <tr><td>Telnet</td><td>Telnet</td><td>23</td><td>Remote access</td></tr>
+          <tr><td>SSH</td><td>SSH</td><td>22</td><td>Secure remote</td></tr>
+          <tr><td>VoIP</td><td>SIP/RTP</td><td>—</td><td>Voice calls</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span>🔗</span> IP Address र DNS</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>IP Address</span></div>
+          <pre><span class="cm">// IPv4 — 32 bit, 4 octets</span>
+<span class="num">192.168.1.1</span>  ← format: X.X.X.X (0-255 each)
+
+<span class="cm">// IPv6 — 128 bit, hexadecimal</span>
+<span class="kw">2001:0db8:85a3:0000:0000:8a2e:0370:7334</span>
+
+<span class="cm">// Classes of IPv4:</span>
+Class A: <span class="num">1-126</span>.x.x.x    (Large networks)
+Class B: <span class="num">128-191</span>.x.x.x  (Medium networks)
+Class C: <span class="num">192-223</span>.x.x.x  (Small networks)
+
+<span class="cm">// DNS: www.google.com → 172.217.160.46</span></pre>
+        </div>
+        <div class="info-box tip">
+          <strong>💡 याद गर्नु</strong>
+          127.0.0.1 = Localhost (आफ्नै computer) | 192.168.x.x = Private IP
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🌐</span> Web Technology</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">HTML:</strong> Structure — HyperText Markup Language</li>
+          <li><strong style="color:var(--accent)">CSS:</strong> Style — Cascading Style Sheets</li>
+          <li><strong style="color:var(--accent)">JavaScript:</strong> Behaviour — dynamic content</li>
+          <li><strong style="color:var(--accent)">URL:</strong> Uniform Resource Locator — https://www.example.com/page</li>
+          <li><strong style="color:var(--accent)">Domain:</strong> .com (commercial), .org (org), .edu (education), .np (Nepal)</li>
+          <li><strong style="color:var(--accent)">Hosting:</strong> Website को files internet मा store गर्ने server</li>
+        </ul>
+        <div class="info-box imp">
+          <strong>🔴 HTTP vs HTTPS</strong>
+          HTTP = Not secure | HTTPS = SSL/TLS encrypted, secure | Green padlock = HTTPS
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>📧</span> Email Architecture</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>Email flow</span></div>
+          <pre>Sender → <span class="kw">SMTP</span> (send) → Mail Server
+                              ↓
+Receiver ← <span class="fn">POP3/IMAP</span> (receive) ←
+
+<span class="cm">// SMTP = Simple Mail Transfer Protocol (send)</span>
+<span class="cm">// POP3 = Post Office Protocol (download & delete)</span>
+<span class="cm">// IMAP = Internet Message Access Protocol (sync)</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- DATABASE -->
+    <div class="section" id="database">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 07</div>
+        <h2>Database</h2>
+        <p>Organized collection of data जसलाई efficiently access, manage र update गर्न सकिन्छ।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🗄️</span> Database Concepts</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">Database:</strong> Related data को organized collection</li>
+          <li><strong style="color:var(--accent)">DBMS:</strong> Database Management System — Oracle, MySQL, MS Access</li>
+          <li><strong style="color:var(--accent)">Table:</strong> Rows (records) र Columns (fields) को collection</li>
+          <li><strong style="color:var(--accent)">Primary Key:</strong> Unique identifier — duplicate हुँदैन, NULL हुँदैन</li>
+          <li><strong style="color:var(--accent)">Foreign Key:</strong> अर्को table को primary key reference गर्छ</li>
+        </ul>
+        <div class="info-box imp">
+          <strong>🔴 DBMS Advantages</strong>
+          Data redundancy कम | Data integrity | Data security | Easy data sharing | Backup & Recovery
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🔍</span> Basic SQL Commands</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>SQL basics</span></div>
+          <pre><span class="cm">-- Table बनाउने</span>
+<span class="kw">CREATE TABLE</span> Students (
+    id <span class="fn">INT PRIMARY KEY</span>,
+    name <span class="str">VARCHAR(50)</span>,
+    marks <span class="fn">FLOAT</span>
+);
+
+<span class="cm">-- Data हाल्ने</span>
+<span class="kw">INSERT INTO</span> Students <span class="kw">VALUES</span>(<span class="num">1</span>, <span class="str">'Ram'</span>, <span class="num">85.5</span>);
+
+<span class="cm">-- Data हेर्ने</span>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> Students;
+<span class="kw">SELECT</span> name <span class="kw">FROM</span> Students <span class="kw">WHERE</span> marks > <span class="num">80</span>;
+
+<span class="cm">-- Data update गर्ने</span>
+<span class="kw">UPDATE</span> Students <span class="kw">SET</span> marks=<span class="num">90</span> <span class="kw">WHERE</span> id=<span class="num">1</span>;
+
+<span class="cm">-- Data delete गर्ने</span>
+<span class="kw">DELETE FROM</span> Students <span class="kw">WHERE</span> id=<span class="num">1</span>;</pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>📊</span> Database Models</h3>
+        <table>
+          <tr><th>Model</th><th>Structure</th><th>Example</th></tr>
+          <tr><td>Relational</td><td>Tables (rows & columns)</td><td>MySQL, Oracle, PostgreSQL</td></tr>
+          <tr><td>Hierarchical</td><td>Tree structure</td><td>IBM IMS</td></tr>
+          <tr><td>Network</td><td>Graph structure</td><td>IDS</td></tr>
+          <tr><td>Object-oriented</td><td>Objects</td><td>MongoDB (NoSQL)</td></tr>
+        </table>
+        <div class="info-box tip">
+          <strong>💡 Exam Tip</strong>
+          Relational DBMS (RDBMS) सबैभन्दा popular। SQL = Structured Query Language।
+        </div>
+      </div>
+    </div>
+
+    <!-- SECURITY -->
+    <div class="section" id="security">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 08</div>
+        <h2>Cyber Security</h2>
+        <p>Computer systems, networks र data लाई threats बाट protect गर्ने practice।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🦠</span> Malware Types</h3>
+        <table>
+          <tr><th>Malware</th><th>Description</th></tr>
+          <tr><td>Virus</td><td>Self-replicating, files मा attach हुन्छ, user action चाहिन्छ</td></tr>
+          <tr><td>Worm</td><td>Self-replicating, network बाट automatically spread हुन्छ</td></tr>
+          <tr><td>Trojan Horse</td><td>Legitimate software जस्तो देखिन्छ तर harmful</td></tr>
+          <tr><td>Spyware</td><td>User को activities secretly monitor गर्छ</td></tr>
+          <tr><td>Ransomware</td><td>Files encrypt गरेर ransom माग्छ</td></tr>
+          <tr><td>Adware</td><td>Unwanted advertisements देखाउँछ</td></tr>
+          <tr><td>Rootkit</td><td>OS level मा hide भएर system control गर्छ</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span>⚠️</span> Cyber Attacks</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">Phishing:</strong> Fake email/website बाट password चोर्ने</li>
+          <li><strong style="color:var(--accent)">DoS/DDoS:</strong> Server लाई requests flood गरेर down गर्ने</li>
+          <li><strong style="color:var(--accent)">Man-in-the-Middle:</strong> Communication बीचमा intercept गर्ने</li>
+          <li><strong style="color:var(--accent)">SQL Injection:</strong> Database मा malicious SQL code inject गर्ने</li>
+          <li><strong style="color:var(--accent)">Brute Force:</strong> सबै combinations try गरेर password crack</li>
+          <li><strong style="color:var(--accent)">Social Engineering:</strong> लोग्याएर information निकाल्ने</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span>🔒</span> Security Measures</h3>
+        <table>
+          <tr><th>Measure</th><th>Purpose</th></tr>
+          <tr><td>Firewall</td><td>Unauthorized network access block गर्छ</td></tr>
+          <tr><td>Antivirus</td><td>Malware detect र remove गर्छ</td></tr>
+          <tr><td>Encryption</td><td>Data लाई unreadable format मा convert गर्छ</td></tr>
+          <tr><td>VPN</td><td>Encrypted private tunnel बनाउँछ</td></tr>
+          <tr><td>2FA</td><td>Two-Factor Authentication — extra security layer</td></tr>
+          <tr><td>Backup</td><td>Data loss बाट protection</td></tr>
+          <tr><td>Digital Signature</td><td>Identity verify गर्छ</td></tr>
+        </table>
+        <div class="info-box imp">
+          <strong>🔴 Encryption Types</strong>
+          Symmetric: same key encrypt/decrypt (AES, DES) | Asymmetric: public/private key pair (RSA) | Hashing: one-way (MD5, SHA)
+        </div>
+      </div>
+    </div>
+
+    <!-- MULTIMEDIA -->
+    <div class="section" id="multimedia">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 09</div>
+        <h2>Multimedia</h2>
+        <p>Text, Image, Audio, Video र Animation को combination।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🎬</span> Multimedia Elements</h3>
+        <table>
+          <tr><th>Element</th><th>Formats</th><th>Use</th></tr>
+          <tr><td>Text</td><td>.txt, .doc, .pdf</td><td>Written content</td></tr>
+          <tr><td>Image</td><td>.jpg, .png, .gif, .bmp, .svg</td><td>Visual content</td></tr>
+          <tr><td>Audio</td><td>.mp3, .wav, .aac, .flac</td><td>Sound content</td></tr>
+          <tr><td>Video</td><td>.mp4, .avi, .mkv, .mov</td><td>Moving images</td></tr>
+          <tr><td>Animation</td><td>.gif, .swf, .css</td><td>Moving graphics</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span>🖼️</span> Image Types</h3>
+        <table>
+          <tr><th>Type</th><th>Description</th><th>Formats</th></tr>
+          <tr><td>Raster/Bitmap</td><td>Pixels बाट बनेको — zoom गर्दा blur</td><td>JPG, PNG, BMP, GIF</td></tr>
+          <tr><td>Vector</td><td>Mathematical paths — zoom गर्दा blur हुँदैन</td><td>SVG, AI, EPS</td></tr>
+        </table>
+        <div class="info-box tip">
+          <strong>💡 Image याद गर्नु</strong>
+          JPEG = lossy compression (quality loss) | PNG = lossless, transparency support | GIF = animation support | SVG = scalable
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🎵</span> Audio र Video Concepts</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">Sampling Rate:</strong> Audio quality — 44.1 kHz (CD quality)</li>
+          <li><strong style="color:var(--accent)">Bit Rate:</strong> Data per second — higher = better quality, larger file</li>
+          <li><strong style="color:var(--accent)">Resolution:</strong> Video quality — 720p, 1080p (Full HD), 4K</li>
+          <li><strong style="color:var(--accent)">FPS:</strong> Frames Per Second — 24fps (cinema), 60fps (gaming)</li>
+          <li><strong style="color:var(--accent)">Codec:</strong> Compress/decompress — H.264, H.265, MP3</li>
+          <li><strong style="color:var(--accent)">Streaming:</strong> Real-time delivery — YouTube, Netflix</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span>🖱️</span> Multimedia Applications</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">Education:</strong> E-learning, Virtual classroom</li>
+          <li><strong style="color:var(--accent)">Entertainment:</strong> Gaming, Movies, Music</li>
+          <li><strong style="color:var(--accent)">Business:</strong> Presentations, Video conferencing</li>
+          <li><strong style="color:var(--accent)">Healthcare:</strong> Medical imaging, Telemedicine</li>
+          <li><strong style="color:var(--accent)">Virtual Reality (VR):</strong> Immersive 3D environment</li>
+          <li><strong style="color:var(--accent)">Augmented Reality (AR):</strong> Real world + digital overlay</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- E-COMMERCE & AI -->
+    <div class="section" id="ecommerce">
+      <div class="topic-header">
+        <div class="topic-tag">Chapter 10</div>
+        <h2>E-Commerce, AI & Emerging Tech</h2>
+        <p>Digital business, Artificial Intelligence र new technologies।</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🛒</span> E-Commerce</h3>
+        <table>
+          <tr><th>Type</th><th>Full Form</th><th>Example</th></tr>
+          <tr><td>B2C</td><td>Business to Consumer</td><td>Daraz, Amazon</td></tr>
+          <tr><td>B2B</td><td>Business to Business</td><td>Alibaba, wholesalers</td></tr>
+          <tr><td>C2C</td><td>Consumer to Consumer</td><td>eBay, OLX</td></tr>
+          <tr><td>G2C</td><td>Government to Citizen</td><td>Online tax, e-passport</td></tr>
+        </table>
+        <div class="info-box tip">
+          <strong>💡 E-Commerce Advantages</strong>
+          24/7 available | Global reach | Low cost | Convenience | Easy comparison
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>🤖</span> Artificial Intelligence (AI)</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">AI:</strong> Machines लाई human-like intelligence दिने</li>
+          <li><strong style="color:var(--accent)">Machine Learning (ML):</strong> Data बाट automatically learn गर्ने</li>
+          <li><strong style="color:var(--accent)">Deep Learning:</strong> Neural networks बाट complex patterns learn</li>
+          <li><strong style="color:var(--accent)">NLP:</strong> Natural Language Processing — human language understand</li>
+          <li><strong style="color:var(--accent)">Computer Vision:</strong> Images/Videos बुझ्ने</li>
+          <li><strong style="color:var(--accent)">Robotics:</strong> Physical tasks perform गर्ने machines</li>
+        </ul>
+        <div class="info-box imp">
+          <strong>🔴 AI Applications</strong>
+          ChatGPT (NLP) | Self-driving cars | Face recognition | Medical diagnosis | Recommendation systems
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>☁️</span> Cloud Computing</h3>
+        <table>
+          <tr><th>Service Model</th><th>Full Form</th><th>Example</th></tr>
+          <tr><td>IaaS</td><td>Infrastructure as a Service</td><td>AWS EC2, Azure VM</td></tr>
+          <tr><td>PaaS</td><td>Platform as a Service</td><td>Google App Engine, Heroku</td></tr>
+          <tr><td>SaaS</td><td>Software as a Service</td><td>Gmail, Office 365, Zoom</td></tr>
+        </table>
+        <div class="info-box tip">
+          <strong>💡 Cloud Deployment</strong>
+          Public Cloud = Anyone use गर्न सक्छ (AWS, Google) | Private Cloud = Organization only | Hybrid = Both
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span>📱</span> Emerging Technologies</h3>
+        <ul>
+          <li><strong style="color:var(--accent)">IoT (Internet of Things):</strong> Physical devices internet connected — Smart home, wearables</li>
+          <li><strong style="color:var(--accent)">Blockchain:</strong> Decentralized, immutable ledger — Bitcoin, Ethereum</li>
+          <li><strong style="color:var(--accent)">5G:</strong> 5th generation mobile network — faster, low latency</li>
+          <li><strong style="color:var(--accent)">Big Data:</strong> Large volume, velocity, variety data — 3Vs</li>
+          <li><strong style="color:var(--accent)">Quantum Computing:</strong> Quantum bits (qubits) — exponentially faster</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="section" id="quiz">
+      <div class="topic-header">
+        <div class="topic-tag">Practice</div>
+        <h2>Foundation of IT Quiz 🎯</h2>
+        <p>आफ्नो तयारी जाँच गर्नुस् — BIT / CSIT / BCA exam questions जस्तै!</p>
+      </div>
+
+      <div id="quizContainer"></div>
+
+      <div class="card" style="margin-top:24px; text-align:center;">
+        <div id="scoreDisplay" style="font-size:24px; font-weight:700; color:var(--accent); margin-bottom:8px;"></div>
+        <div id="scoreSub" style="color:var(--muted); font-size:14px;"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end .page-content -->
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-icon">FIT</div>
+      <div class="footer-brand-text">
+        <h4>Foundation of IT — BIT Exam 2081</h4>
+        <p>Hemraj Adhikari को Study Notes</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener">🏠 Home</a>
+      <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener">🐙 GitHub</a>
+      <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">⬆ Back to Top</a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    Made with ❤️ by <a href="https://hemrajadhikari.info.np/" target="_blank">Hemraj Adhikari</a> · BIT / CSIT / BCA Students को लागि · Nepal 🇳🇵
+  </div>
+</footer>
+
+</div><!-- end .page-wrapper -->
+
+<script>
+function updateCountdown() {
+  const exam = new Date('2025-06-25');
+  const now = new Date();
+  const diff = Math.ceil((exam - now) / (1000*60*60*24));
+  document.getElementById('daysLeft').textContent = diff > 0 ? diff : '🎉';
+}
+updateCountdown();
+
+function openMobileMenu() {
+  document.getElementById('sidebarOverlay').classList.add('open');
+  document.getElementById('sidebarDrawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu() {
+  document.getElementById('sidebarOverlay').classList.remove('open');
+  document.getElementById('sidebarDrawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function showSection(id, fromDrawer) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.sidebar .nav-item').forEach(n => {
+    if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'"+id+"'")) n.classList.add('active');
+  });
+  const drawerItem = document.getElementById('drawer-' + id);
+  if (drawerItem) drawerItem.classList.add('active');
+  if (fromDrawer) closeMobileMenu();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+const questions = [
+  {
+    q: "Computer को कुन generation मा Transistor प्रयोग भयो?",
+    opts: ["First Generation", "Second Generation", "Third Generation", "Fourth Generation"],
+    ans: 1,
+    exp: "Second Generation (1956–1963) मा Vacuum Tubes को ठाउँमा Transistor प्रयोग भयो। यसले computer सानो, सस्तो र reliable बनायो।"
+  },
+  {
+    q: "CPU को 'Brain' कुन part लाई भनिन्छ?",
+    opts: ["RAM", "Hard Disk", "ALU", "Monitor"],
+    ans: 2,
+    exp: "ALU (Arithmetic Logic Unit) लाई CPU को brain भनिन्छ किनभने यसले सबै mathematical र logical operations गर्छ।"
+  },
+  {
+    q: "Compiler र Interpreter मा के मुख्य फरक छ?",
+    opts: [
+      "Compiler free हो, Interpreter paid",
+      "Compiler पूरो program एकैपटक translate गर्छ, Interpreter line-by-line",
+      "Compiler slow छ, Interpreter fast",
+      "कुनै फरक छैन"
+    ],
+    ans: 1,
+    exp: "Compiler: पूरो source code एकैपटक machine code मा translate गर्छ — execution fast। Interpreter: एक-एक line translate र execute गर्छ — debug गर्न सजिलो।"
+  },
+  {
+    q: "OSI Model मा कति layers छन्?",
+    opts: ["4", "5", "6", "7"],
+    ans: 3,
+    exp: "OSI (Open Systems Interconnection) Model मा 7 layers छन्: Physical, Data Link, Network, Transport, Session, Presentation, Application।"
+  },
+  {
+    q: "LAN, MAN, WAN मध्ये सबैभन्दा ठूलो coverage कुनले गर्छ?",
+    opts: ["LAN", "MAN", "WAN", "PAN"],
+    ans: 2,
+    exp: "WAN (Wide Area Network) सबैभन्दा ठूलो coverage गर्छ — देश वा विश्वभर। Internet नै सबैभन्दा ठूलो WAN हो।"
+  },
+  {
+    q: "Primary Key को विशेषता के हो?",
+    opts: [
+      "Duplicate हुन सक्छ",
+      "NULL हुन सक्छ",
+      "Unique र NULL हुन नहुने",
+      "Change गर्न सकिन्छ"
+    ],
+    ans: 2,
+    exp: "Primary Key: Unique (duplicate हुँदैन) र NOT NULL (empty हुँदैन) हुनुपर्छ। यसले table को हरेक row uniquely identify गर्छ।"
+  },
+  {
+    q: "Ransomware ले के गर्छ?",
+    opts: [
+      "Computer को speed बढाउँछ",
+      "Files encrypt गरेर ransom माग्छ",
+      "Network speed बढाउँछ",
+      "Antivirus install गर्छ"
+    ],
+    ans: 1,
+    exp: "Ransomware ले victim को files encrypt गरेर decrypt key को लागि payment (ransom) माग्छ। WannaCry, Petya famous ransomware examples हुन्।"
+  },
+  {
+    q: "JPEG र PNG image format मा के फरक छ?",
+    opts: [
+      "JPEG animated हुन्छ",
+      "PNG lossy compression प्रयोग गर्छ",
+      "JPEG lossy, PNG lossless र transparency support गर्छ",
+      "कुनै फरक छैन"
+    ],
+    ans: 2,
+    exp: "JPEG: lossy compression — quality थोरै lose हुन्छ तर file size सानो। PNG: lossless compression + transparency support — quality perfect रहन्छ।"
+  },
+  {
+    q: "Cloud Computing मा SaaS को example के हो?",
+    opts: ["AWS EC2", "Google App Engine", "Gmail र Office 365", "Docker"],
+    ans: 2,
+    exp: "SaaS (Software as a Service): Ready-made software internet मार्फत use गर्ने — Gmail, Office 365, Zoom, Salesforce। Install गर्नुपर्दैन।"
+  },
+  {
+    q: "Star topology मा central device के हुन्छ?",
+    opts: ["Router", "Hub वा Switch", "Bridge", "Modem"],
+    ans: 1,
+    exp: "Star topology मा सबै computers एउटा central Hub वा Switch मा connect हुन्छन्। Hub fail भए सबै fail हुन्छ, तर एउटा computer fail भए बाकी काम गर्छन्।"
+  }
+];
+
+let answered = 0, correct = 0;
+
+function buildQuiz() {
+  const container = document.getElementById('quizContainer');
+  questions.forEach((q, idx) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-card';
+    div.innerHTML = `
+      <div class="question"><strong style="color:var(--accent);font-family:'JetBrains Mono',monospace">Q${idx+1}.</strong> ${q.q}</div>
+      <div class="options">
+        ${q.opts.map((o,i) => `
+          <div class="option" onclick="answer(this,${idx},${i})">
+            <span class="option-label">${String.fromCharCode(65+i)}</span>
+            ${o}
+          </div>
+        `).join('')}
+      </div>
+      <div class="quiz-result" id="result-${idx}"></div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function answer(el, qIdx, optIdx) {
+  const opts = el.parentElement.querySelectorAll('.option');
+  if (el.classList.contains('correct') || el.classList.contains('wrong')) return;
+  const q = questions[qIdx];
+  const resultEl = document.getElementById(`result-${qIdx}`);
+  opts.forEach(o => o.style.pointerEvents = 'none');
+  opts[q.ans].classList.add('correct');
+  if (optIdx === q.ans) {
+    el.classList.add('correct');
+    resultEl.className = 'quiz-result show correct';
+    resultEl.innerHTML = '✅ सही! ' + q.exp;
+    correct++;
+  } else {
+    el.classList.add('wrong');
+    resultEl.className = 'quiz-result show wrong';
+    resultEl.innerHTML = '❌ गलत! ' + q.exp;
+  }
+  answered++;
+  updateScore();
+}
+
+function updateScore() {
+  const scoreEl = document.getElementById('scoreDisplay');
+  const subEl = document.getElementById('scoreSub');
+  scoreEl.textContent = `${correct} / ${answered} सही`;
+  const pct = Math.round((correct/answered)*100);
+  subEl.textContent = `${pct}% • ${answered === questions.length ? '🎉 सबै प्रश्न सकियो!' : `${questions.length - answered} प्रश्न बाँकी`}`;
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
