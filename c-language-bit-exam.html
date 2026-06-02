@@ -571,6 +571,153 @@
     .card h3 { font-size: 15px; }
     .header { padding: 12px 14px; }
   }
+  /* ═══════════════════════════════════════════════
+   MOBILE RESPONSIVE — c-language-bit-exam.html
+   ═══════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* Hide desktop sidebar, show hamburger */
+  .sidebar { display: none; }
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  /* Top nav breadcrumb hide */
+  .top-nav .nav-breadcrumb { display: none; }
+
+  /* Header compact */
+  .header {
+    padding: 12px 14px;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+  .logo-text h1 { font-size: 14px; }
+  .logo-text p  { display: none; }
+  .logo-icon    { width: 34px; height: 34px; font-size: 15px; }
+
+  /* Countdown compact */
+  .exam-countdown { padding: 5px 10px; }
+  .exam-countdown .days  { font-size: 18px; }
+  .exam-countdown .label { font-size: 10px; }
+
+  /* Container: remove flex, stack vertically */
+  .container {
+    display: block;
+    min-height: unset;
+  }
+
+  /* Main padding */
+  .main {
+    padding: 18px 14px;
+    max-width: 100%;
+  }
+
+  /* Topic header */
+  .topic-header h2 { font-size: 20px; line-height: 1.3; }
+  .topic-header p  { font-size: 13px; }
+
+  /* Cards */
+  .card {
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+  }
+  .card h3       { font-size: 14px; gap: 6px; }
+  .card h3 span  { font-size: 17px; }
+  .card p,
+  .card li       { font-size: 13px; line-height: 1.7; }
+
+  /* Code blocks */
+  .code-block { border-radius: 10px; margin: 12px 0; }
+  .code-block pre {
+    font-size: 11.5px;
+    padding: 12px;
+    line-height: 1.7;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .code-header { padding: 7px 12px; }
+  .code-header span { font-size: 11px; }
+
+  /* Info boxes */
+  .info-box { font-size: 13px; padding: 12px; border-radius: 10px; }
+  .info-box strong { font-size: 11px; }
+
+  /* Tables — horizontal scroll on mobile */
+  .card { overflow-x: auto; }
+  table  { font-size: 11.5px; min-width: 360px; }
+  th     { padding: 8px 10px; font-size: 11px; }
+  td     { padding: 8px 10px; }
+
+  /* Quiz cards */
+  .quiz-card    { padding: 14px; border-radius: 12px; }
+  .question     { font-size: 14px; }
+  .option       { padding: 10px 12px; font-size: 13px; gap: 8px; }
+  .option-label { width: 24px; height: 24px; font-size: 11px; }
+  .quiz-result  { font-size: 13px; padding: 10px 12px; }
+
+  /* Footer */
+  .footer { padding: 20px 14px; }
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .footer-links { flex-wrap: wrap; gap: 12px; }
+  .footer-links a { font-size: 13px; }
+  .footer-copy { font-size: 11px; text-align: left; }
+
+  /* Sidebar drawer width on small screens */
+  .sidebar-drawer { width: 260px; }
+}
+
+/* ── SMALL PHONES (≤480px) ─────────────────────── */
+@media (max-width: 480px) {
+
+  .top-nav { padding: 0 12px; }
+  .top-nav a { font-size: 12px; }
+
+  .header { padding: 10px 12px; }
+  .logo-icon { width: 30px; height: 30px; font-size: 13px; border-radius: 8px; }
+  .logo-text h1 { font-size: 13px; }
+
+  .main { padding: 14px 10px; }
+  .topic-header { margin-bottom: 20px; }
+  .topic-header h2 { font-size: 18px; }
+  .topic-tag { font-size: 10px; padding: 3px 10px; }
+
+  .card { padding: 12px; }
+  .card h3 { font-size: 13px; }
+
+  .code-block pre { font-size: 11px; padding: 10px; }
+
+  table  { font-size: 11px; }
+  th, td { padding: 7px 8px; }
+
+  .quiz-card  { padding: 12px; }
+  .question   { font-size: 13px; }
+  .option     { padding: 9px 10px; font-size: 12px; }
+
+  .footer { padding: 16px 10px; }
+  .footer-brand-text h4 { font-size: 13px; }
+  .footer-brand-text p  { font-size: 11px; }
+
+  /* Drawer full-width on very small phones */
+  .sidebar-drawer { width: 85vw; }
+}
+
+/* ── LANDSCAPE PHONES ──────────────────────────── */
+@media (max-width: 768px) and (orientation: landscape) {
+  .header { padding: 8px 14px; }
+  .logo-text h1 { font-size: 13px; }
+  .exam-countdown .days { font-size: 16px; }
+  .main { padding: 14px; }
+}
 </style>
 </head>
 <body>
