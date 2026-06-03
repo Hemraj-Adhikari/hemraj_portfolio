@@ -512,7 +512,7 @@
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMobileMenu()"></div>
 <div class="sidebar-drawer" id="sidebarDrawer">
   <button class="drawer-close" onclick="closeMobileMenu()">✕</button>
-  <div class="drawer-title">📚 Topics</div>
+  <div class="drawer-title"> Topics</div>
   <div class="nav-item" id="drawer-intro"     onclick="showSection('intro', true)"><span class="num">01</span> Introduction to C</div>
   <div class="nav-item" id="drawer-basics"    onclick="showSection('basics', true)"><span class="num">02</span> Variables & Data Types</div>
   <div class="nav-item" id="drawer-operators" onclick="showSection('operators', true)"><span class="num">03</span> Operators</div>
@@ -525,7 +525,7 @@
   <div class="nav-item" id="drawer-pointers"  onclick="showSection('pointers', true)"><span class="num">10</span> Pointers</div>
   <div class="nav-item" id="drawer-structs"   onclick="showSection('structs', true)"><span class="num">11</span> Structures</div>
   <div class="nav-item" id="drawer-files"     onclick="showSection('files', true)"><span class="num">12</span> File Handling</div>
-  <div class="nav-item" id="drawer-quiz"      onclick="showSection('quiz', true)"><span class="num">🎯</span> Practice Quiz</div>
+  <div class="nav-item" id="drawer-quiz"      onclick="showSection('quiz', true)"><span class="num"></span> Practice Quiz</div>
 </div>
 
 <div class="page-wrapper">
@@ -557,14 +557,14 @@
   <!-- Desktop nav buttons (hidden on mobile, shown via CSS) -->
   <nav class="header-nav" id="headerNav">
     <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener" class="header-nav-btn">
-      🏠 Home
+       Home
     </a>
     <a href="https://hemrajadhikari.info.np/contact.html" target="_blank" rel="noopener" class="header-nav-btn">
-      ✉️ Contact
+       Contact
     </a>
     <div class="header-nav-divider"></div>
     <a href="https://hemrajadhikari.info.np/programs.html" target="_blank" rel="noopener" class="header-nav-btn cta">
-      🎓 Buy Courses
+       Buy Courses
     </a>
   </nav>
 
@@ -578,9 +578,9 @@
 
   <!-- Mobile-only nav row (shown below on small screens) -->
   <div class="header-nav-mobile">
-    <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener" class="header-nav-btn">🏠 Home</a>
-    <a href="https://hemrajadhikari.info.np/contact.html" target="_blank" rel="noopener" class="header-nav-btn">✉️ Contact</a>
-    <a href="https://hemrajadhikari.info.np/programs.html" target="_blank" rel="noopener" class="header-nav-btn cta">🎓 Buy Courses</a>
+    <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener" class="header-nav-btn"> Home</a>
+    <a href="https://hemrajadhikari.info.np/contact.html" target="_blank" rel="noopener" class="header-nav-btn"> Contact</a>
+    <a href="https://hemrajadhikari.info.np/programs.html" target="_blank" rel="noopener" class="header-nav-btn cta"> Buy Courses</a>
   </div>
 </div>
 
@@ -599,7 +599,7 @@
     <div class="nav-item" onclick="showSection('pointers')"><span class="num">10</span> Pointers</div>
     <div class="nav-item" onclick="showSection('structs')"><span class="num">11</span> Structures</div>
     <div class="nav-item" onclick="showSection('files')"><span class="num">12</span> File Handling</div>
-    <div class="nav-item" onclick="showSection('quiz')"><span class="num">🎯</span> Practice Quiz</div>
+    <div class="nav-item" onclick="showSection('quiz')"><span class="num"></span> Practice Quiz</div>
   </div>
 
   <div class="main">
@@ -615,7 +615,7 @@
       </div>
 
       <div class="card">
-        <h3><span>📌</span> Why is C Important?</h3>
+        <h3><span></span> Why is C Important?</h3>
         <ul>
           <li>The oldest and most fundamental language — root of almost all modern languages</li>
           <li>Operating Systems (Linux, Windows, macOS) are written in C</li>
@@ -626,7 +626,7 @@
       </div>
 
       <div class="card">
-        <h3><span>📝</span> Basic Structure of a C Program</h3>
+        <h3><span></span> Basic Structure of a C Program</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>hello.c</span></div>
           <pre><span class="hd">#include &lt;stdio.h&gt;</span>    <span class="cm">// Header file — needed for input/output</span>
@@ -637,7 +637,7 @@
 }</pre>
         </div>
         <div class="info-box imp">
-          <strong>🔴 Exam Important</strong>
+          <strong> Exam Important</strong>
           Without <code>#include &lt;stdio.h&gt;</code>, <code>printf()</code> and <code>scanf()</code> will NOT work. Every C program must include this header.
         </div>
       </div>
@@ -646,7 +646,7 @@
         <h3><span>⚙️</span> How Does a C Program Run?</h3>
         <p>Source Code (.c) → <strong style="color:var(--accent)">Compiler (gcc)</strong> → Object Code (.o) → <strong style="color:var(--accent)">Linker</strong> → Executable (.exe / a.out)</p>
         <div class="info-box tip">
-          <strong>💡 Remember — 4 Compilation Stages</strong>
+          <strong> Remember — 4 Compilation Stages</strong>
           1. <strong>Preprocessing</strong> — handles #include, #define<br>
           2. <strong>Compilation</strong> — converts C to assembly<br>
           3. <strong>Assembly</strong> — converts assembly to machine code<br>
@@ -655,7 +655,7 @@
       </div>
 
       <div class="card">
-        <h3><span>🗝️</span> C Keywords (Reserved Words)</h3>
+        <h3><span></span> C Keywords (Reserved Words)</h3>
         <p style="margin-bottom:10px;">These words have special meaning in C and CANNOT be used as variable names:</p>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>keywords</span></div>
@@ -681,7 +681,7 @@ struct  union  typedef  enum  sizeof  static  extern</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>📊</span> Primary Data Types</h3>
+        <h3><span></span> Primary Data Types</h3>
         <table>
           <tr><th>Data Type</th><th>Size</th><th>Range</th><th>Example</th></tr>
           <tr><td>int</td><td>2/4 bytes</td><td>-32768 to 32767</td><td>int age = 20;</td></tr>
@@ -693,7 +693,7 @@ struct  union  typedef  enum  sizeof  static  extern</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>💻</span> Variable Declaration & Rules</h3>
+        <h3><span></span> Variable Declaration & Rules</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>variables.c</span></div>
           <pre><span class="kw">int</span> age = <span class="num">20</span>;           <span class="cm">// Integer variable</span>
@@ -703,7 +703,7 @@ struct  union  typedef  enum  sizeof  static  extern</span></pre>
 <span class="kw">long int</span> pop = <span class="num">1000000</span>; <span class="cm">// Larger integer</span></pre>
         </div>
         <div class="info-box warn">
-          <strong>⚠️ Variable Naming Rules</strong>
+          <strong> Variable Naming Rules</strong>
           ✔ Must start with a letter (a-z, A-Z) or underscore (_)<br>
           ✔ Can contain letters, digits (0-9), and underscores<br>
           ✘ Cannot start with a digit (e.g., 2marks is INVALID)<br>
@@ -713,7 +713,7 @@ struct  union  typedef  enum  sizeof  static  extern</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>🔤</span> Format Specifiers</h3>
+        <h3><span></span> Format Specifiers</h3>
         <table>
           <tr><th>Specifier</th><th>Data Type</th><th>Example</th></tr>
           <tr><td>%d</td><td>int</td><td>printf("%d", age);</td></tr>
@@ -741,7 +741,7 @@ struct  union  typedef  enum  sizeof  static  extern</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>➕</span> Arithmetic Operators</h3>
+        <h3><span></span> Arithmetic Operators</h3>
         <table>
           <tr><th>Operator</th><th>Name</th><th>Example</th><th>Result</th></tr>
           <tr><td>+</td><td>Addition</td><td>5 + 3</td><td>8</td></tr>
@@ -751,13 +751,13 @@ struct  union  typedef  enum  sizeof  static  extern</span></pre>
           <tr><td>%</td><td>Modulus</td><td>10 % 3</td><td>1 (remainder)</td></tr>
         </table>
         <div class="info-box imp">
-          <strong>🔴 Exam Trick</strong>
+          <strong> Exam Trick</strong>
           <code>10/3 = 3</code> (integer division, truncates decimal) BUT <code>10.0/3 = 3.333</code> (float division). Modulus (%) is used to check odd/even: <code>if(n % 2 == 0)</code> means even!
         </div>
       </div>
 
       <div class="card">
-        <h3><span>⚖️</span> Relational & Logical Operators</h3>
+        <h3><span></span> Relational & Logical Operators</h3>
         <table>
           <tr><th>Operator</th><th>Meaning</th><th>Example</th></tr>
           <tr><td>==</td><td>Equal to</td><td>a == b</td></tr>
@@ -770,7 +770,7 @@ struct  union  typedef  enum  sizeof  static  extern</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>🔄</span> Increment / Decrement Operators</h3>
+        <h3><span></span> Increment / Decrement Operators</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>increment.c</span></div>
           <pre><span class="kw">int</span> a = <span class="num">5</span>;
@@ -782,14 +782,14 @@ y = x--;             <span class="cm">// y=10, x=9  (post-decrement)</span>
 y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
         </div>
         <div class="info-box tip">
-          <strong>💡 Simple Rule</strong>
+          <strong> Simple Rule</strong>
           <strong>Pre</strong> (++a): change value FIRST, then use it.<br>
           <strong>Post</strong> (a++): use value FIRST, then change it.
         </div>
       </div>
 
       <div class="card">
-        <h3><span>🔢</span> Assignment & Bitwise Operators</h3>
+        <h3><span></span> Assignment & Bitwise Operators</h3>
         <table>
           <tr><th>Operator</th><th>Meaning</th><th>Equivalent</th></tr>
           <tr><td>+=</td><td>Add and assign</td><td>a = a + b</td></tr>
@@ -817,7 +817,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>📤</span> printf() — Formatted Output</h3>
+        <h3><span></span> printf() — Formatted Output</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>output.c</span></div>
           <pre><span class="fn">printf</span>(<span class="str">"Name: %s, Age: %d\n"</span>, name, age);
@@ -829,7 +829,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>📥</span> scanf() — Formatted Input</h3>
+        <h3><span></span> scanf() — Formatted Input</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>input.c</span></div>
           <pre><span class="kw">int</span> age;
@@ -845,14 +845,14 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
 <span class="fn">scanf</span>(<span class="str">"%d %d"</span>, &amp;a, &amp;b); <span class="cm">// Multiple inputs at once</span></pre>
         </div>
         <div class="info-box imp">
-          <strong>🔴 Most Common Exam Mistake</strong>
+          <strong> Most Common Exam Mistake</strong>
           <code>scanf("%d", age)</code> → ❌ WRONG — program may crash!<br>
           <code>scanf("%d", &amp;age)</code> → ✅ CORRECT — &amp; gives the memory address
         </div>
       </div>
 
       <div class="card">
-        <h3><span>⌨️</span> Other I/O Functions</h3>
+        <h3><span></span> Other I/O Functions</h3>
         <table>
           <tr><th>Function</th><th>Purpose</th><th>Note</th></tr>
           <tr><td>getchar()</td><td>Read single character</td><td>Returns int</td></tr>
@@ -877,7 +877,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>🔀</span> if-else Statement</h3>
+        <h3><span></span> if-else Statement</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>ifelse.c</span></div>
           <pre><span class="kw">int</span> marks = <span class="num">75</span>;
@@ -895,7 +895,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>🔃</span> switch Statement</h3>
+        <h3><span></span> switch Statement</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>switch.c</span></div>
           <pre><span class="kw">int</span> day = <span class="num">3</span>;
@@ -907,13 +907,13 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
 }</pre>
         </div>
         <div class="info-box warn">
-          <strong>⚠️ Don't Forget break!</strong>
+          <strong> Don't Forget break!</strong>
           Without <code>break</code>, execution "falls through" to the next case — all remaining cases run! This is called <strong>fall-through</strong> behavior.
         </div>
       </div>
 
       <div class="card">
-        <h3><span>❓</span> Ternary Operator</h3>
+        <h3><span></span> Ternary Operator</h3>
         <p style="margin-bottom:10px;">A compact one-line alternative to if-else: <code style="color:var(--accent3)">condition ? value_if_true : value_if_false</code></p>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>ternary.c</span></div>
@@ -938,7 +938,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>🔁</span> for Loop — Use when count is known</h3>
+        <h3><span></span> for Loop — Use when count is known</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>for_loop.c</span></div>
           <pre><span class="cm">// Syntax: for(initialization; condition; update)</span>
@@ -956,7 +956,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>🔄</span> while Loop — Use when condition is known</h3>
+        <h3><span></span> while Loop — Use when condition is known</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>while.c</span></div>
           <pre><span class="kw">int</span> i = <span class="num">1</span>;
@@ -976,7 +976,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>🔃</span> do-while — Executes at least once</h3>
+        <h3><span></span> do-while — Executes at least once</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>dowhile.c</span></div>
           <pre><span class="kw">int</span> i = <span class="num">1</span>;
@@ -993,7 +993,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
 } <span class="kw">while</span>(x &lt; <span class="num">5</span>);             <span class="cm">// Condition checked AFTER first run</span></pre>
         </div>
         <div class="info-box tip">
-          <strong>💡 Which Loop to Use?</strong>
+          <strong> Which Loop to Use?</strong>
           <strong>for</strong> — when you know the exact number of iterations<br>
           <strong>while</strong> — when you know the condition but not the count<br>
           <strong>do-while</strong> — when you need to run at least once (e.g., menus)
@@ -1001,7 +1001,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>⭐</span> Nested Loops — Pattern Printing</h3>
+        <h3><span></span> Nested Loops — Pattern Printing</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>pattern.c</span></div>
           <pre><span class="cm">// Right-angle triangle pattern</span>
@@ -1041,7 +1041,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>🧩</span> Function Syntax</h3>
+        <h3><span></span> Function Syntax</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>functions.c</span></div>
           <pre><span class="hd">#include &lt;stdio.h&gt;</span>
@@ -1064,7 +1064,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>🔂</span> Recursion</h3>
+        <h3><span></span> Recursion</h3>
         <p style="margin-bottom:10px;">A function that calls itself. Must have a <strong style="color:var(--red)">base case</strong> to stop, otherwise runs forever.</p>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>recursion.c</span></div>
@@ -1085,13 +1085,13 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
 }</pre>
         </div>
         <div class="info-box imp">
-          <strong>🔴 Exam Must Know</strong>
+          <strong> Exam Must Know</strong>
           Recursion MUST have a base case — without it, you get a stack overflow (infinite recursion). Trace factorial(3): 3→2→1→returns.
         </div>
       </div>
 
       <div class="card">
-        <h3><span>📮</span> Call by Value vs Call by Reference</h3>
+        <h3><span></span> Call by Value vs Call by Reference</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>callby.c</span></div>
           <pre><span class="cm">// Call by Value — original variable is NOT changed</span>
@@ -1126,7 +1126,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>📦</span> 1D Array</h3>
+        <h3><span></span> 1D Array</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>array.c</span></div>
           <pre><span class="kw">int</span> marks[<span class="num">5</span>] = {<span class="num">90</span>, <span class="num">85</span>, <span class="num">78</span>, <span class="num">92</span>, <span class="num">88</span>};
@@ -1144,13 +1144,13 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
 <span class="fn">printf</span>(<span class="str">"\nTotal = %d"</span>, sum);</pre>
         </div>
         <div class="info-box imp">
-          <strong>🔴 Remember!</strong>
+          <strong> Remember!</strong>
           Array index starts at <strong>0</strong>, not 1! An array of 5 elements uses indices 0, 1, 2, 3, 4. Accessing marks[5] is out-of-bounds — undefined behavior!
         </div>
       </div>
 
       <div class="card">
-        <h3><span>🔲</span> 2D Array (Matrix)</h3>
+        <h3><span></span> 2D Array (Matrix)</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>matrix.c</span></div>
           <pre><span class="kw">int</span> matrix[<span class="num">3</span>][<span class="num">3</span>] = {
@@ -1172,7 +1172,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>🔍</span> Array Searching & Sorting</h3>
+        <h3><span></span> Array Searching & Sorting</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>sort.c</span></div>
           <pre><span class="cm">// Bubble Sort — swap adjacent elements</span>
@@ -1206,7 +1206,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>📝</span> String Declaration & Input</h3>
+        <h3><span></span> String Declaration & Input</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>strings.c</span></div>
           <pre><span class="hd">#include &lt;string.h&gt;</span>  <span class="cm">// Required for string functions</span>
@@ -1223,7 +1223,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>🔧</span> String Functions (from string.h)</h3>
+        <h3><span></span> String Functions (from string.h)</h3>
         <table>
           <tr><th>Function</th><th>Purpose</th><th>Example</th></tr>
           <tr><td>strlen(s)</td><td>Returns length of string</td><td>strlen("Ram") = 3</td></tr>
@@ -1235,7 +1235,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
           <tr><td>strrev(s)</td><td>Reverses string</td><td>strrev("abc")="cba"</td></tr>
         </table>
         <div class="info-box tip">
-          <strong>💡 strcmp() Return Values</strong>
+          <strong> strcmp() Return Values</strong>
           Returns <strong>0</strong> if strings are equal<br>
           Returns <strong>negative</strong> if s1 &lt; s2 (alphabetically before)<br>
           Returns <strong>positive</strong> if s1 &gt; s2 (alphabetically after)
@@ -1256,7 +1256,7 @@ y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
       </div>
 
       <div class="card">
-        <h3><span>📍</span> Pointer Basics</h3>
+        <h3><span></span> Pointer Basics</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>pointers.c</span></div>
           <pre><span class="kw">int</span> num = <span class="num">10</span>;
@@ -1272,14 +1272,14 @@ ptr = &amp;num;         <span class="cm">// &amp; = "address of" operator</span>
 <span class="fn">printf</span>(<span class="str">"%d\n"</span>, num);   <span class="cm">// 20     — num is now changed!</span></pre>
         </div>
         <div class="info-box imp">
-          <strong>🔴 Two Key Operators</strong>
+          <strong> Two Key Operators</strong>
           <code>&amp;</code> — Address-of: gets the memory address of a variable<br>
           <code>*</code> — Dereference: gets the value at that memory address
         </div>
       </div>
 
       <div class="card">
-        <h3><span>🔗</span> Pointer & Arrays</h3>
+        <h3><span></span> Pointer & Arrays</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>ptr_array.c</span></div>
           <pre><span class="kw">int</span> arr[] = {<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>};
@@ -1295,7 +1295,7 @@ p++;                        <span class="cm">// Move pointer to next element</sp
       </div>
 
       <div class="card">
-        <h3><span>⚠️</span> Null Pointer & Pointer Rules</h3>
+        <h3><span></span> Null Pointer & Pointer Rules</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>null_ptr.c</span></div>
           <pre><span class="kw">int</span> *ptr = NULL;    <span class="cm">// Safe initialization — points to nothing</span>
@@ -1324,7 +1324,7 @@ p++;                        <span class="cm">// Move pointer to next element</sp
       </div>
 
       <div class="card">
-        <h3><span>🏗️</span> Structure Definition & Usage</h3>
+        <h3><span></span> Structure Definition & Usage</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>struct.c</span></div>
           <pre><span class="hd">#include &lt;stdio.h&gt;</span>
@@ -1350,7 +1350,7 @@ p++;                        <span class="cm">// Move pointer to next element</sp
       </div>
 
       <div class="card">
-        <h3><span>🔑</span> typedef & Arrow Operator</h3>
+        <h3><span></span> typedef & Arrow Operator</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>typedef.c</span></div>
           <pre><span class="cm">// typedef creates an alias — no need to write "struct" every time</span>
@@ -1367,14 +1367,14 @@ Point *ptr = &amp;p1;
 <span class="fn">printf</span>(<span class="str">"%d"</span>, (*ptr).y);     <span class="cm">// 4 — equivalent way (less readable)</span></pre>
         </div>
         <div class="info-box tip">
-          <strong>💡 Dot vs Arrow</strong>
+          <strong> Dot vs Arrow</strong>
           Use <code>.</code> when you have a struct variable: <code>s1.roll</code><br>
           Use <code>-&gt;</code> when you have a pointer to a struct: <code>ptr-&gt;roll</code>
         </div>
       </div>
 
       <div class="card">
-        <h3><span>📋</span> Array of Structures</h3>
+        <h3><span></span> Array of Structures</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>struct_array.c</span></div>
           <pre><span class="kw">struct</span> Student students[<span class="num">3</span>] = {
@@ -1403,7 +1403,7 @@ Point *ptr = &amp;p1;
       </div>
 
       <div class="card">
-        <h3><span>📁</span> File Opening Modes</h3>
+        <h3><span></span> File Opening Modes</h3>
         <table>
           <tr><th>Mode</th><th>Meaning</th><th>Note</th></tr>
           <tr><td>"r"</td><td>Read only</td><td>File must exist</td></tr>
@@ -1416,7 +1416,7 @@ Point *ptr = &amp;p1;
       </div>
 
       <div class="card">
-        <h3><span>💾</span> File Read & Write Example</h3>
+        <h3><span></span> File Read & Write Example</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>fileio.c</span></div>
           <pre><span class="hd">#include &lt;stdio.h&gt;</span>
@@ -1445,14 +1445,14 @@ Point *ptr = &amp;p1;
 }</pre>
         </div>
         <div class="info-box imp">
-          <strong>🔴 Exam Must Know</strong>
+          <strong> Exam Must Know</strong>
           <code>fopen()</code> returns NULL if file cannot be opened — always check!<br>
           <code>fclose()</code> is mandatory — without it, data may not be saved to disk.
         </div>
       </div>
 
       <div class="card">
-        <h3><span>🔤</span> File Functions Summary</h3>
+        <h3><span></span> File Functions Summary</h3>
         <table>
           <tr><th>Function</th><th>Purpose</th></tr>
           <tr><td>fopen(name, mode)</td><td>Open a file</td></tr>
@@ -1475,7 +1475,7 @@ Point *ptr = &amp;p1;
     <div class="section" id="quiz">
       <div class="topic-header">
         <div class="topic-tag">Practice</div>
-        <h2>BIT Exam Quiz 🎯</h2>
+        <h2>BIT Exam Quiz </h2>
         <p>Test your preparation with exam-style questions covering all 12 chapters!</p>
       </div>
 
@@ -1508,14 +1508,14 @@ Point *ptr = &amp;p1;
       </div>
     </div>
     <div class="footer-links">
-      <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener">🏠 Home</a>
-      <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener">🐙 GitHub</a>
-      <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener">💼 LinkedIn</a>
+      <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener"> Home</a>
+      <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener"> GitHub</a>
+      <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener"> LinkedIn</a>
       <a href="#" onclick="showSection('intro'); return false;">⬆ Back to Top</a>
     </div>
   </div>
   <div class="footer-copy">
-    Made with ❤️ by <a href="https://hemrajadhikari.info.np/" target="_blank">Hemraj Adhikari</a> · For BIT Students · Nepal 🇳🇵
+    Made with  by <a href="https://hemrajadhikari.info.np/" target="_blank">Hemraj Adhikari</a> · For BIT Students · Nepal 🇳🇵
   </div>
 </footer>
 
