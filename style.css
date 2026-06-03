@@ -347,6 +347,30 @@ ol {
 .search-results {
   margin-top: 12px;
 }
+.notes-mega-menu {
+  display: none;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  min-width: 560px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px;
+}
+.nav-dropdown.open .notes-mega-menu {
+  display: grid;
+}
+.notes-col {
+  padding: 4px 6px;
+  border-right: 0.5px solid rgba(255,255,255,0.07);
+}
+.notes-col:last-child { border-right: none; }
+.notes-col-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  padding: 6px 10px 8px;
+  letter-spacing: 0.03em;
+}
 
 .search-result-item {
   display: flex;
