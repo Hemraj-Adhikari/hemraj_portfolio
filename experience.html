@@ -1,408 +1,728 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Experience — Hemraj Adhikari</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    :root{
-      --bg:#05060f;--bg2:#080a18;--bg3:#0d1020;
-      --surface:rgba(255,255,255,.035);--surface2:rgba(255,255,255,.06);
-      --border:rgba(255,255,255,.06);
-      --accent:#64d2ff;--accent2:#a78bfa;--accent3:#34d399;--accent4:#f9a26c;
-      --text:#eef2ff;--text2:#8892b0;--text3:#3d4a6b;
-      --grad:linear-gradient(135deg,#64d2ff,#a78bfa);
-      --font-display:'DM Sans',sans-serif;--font-body:'DM Sans',sans-serif;
-      --font-mono:'DM Mono',monospace;--max:1140px;
-      --gutter:clamp(18px,5vw,64px);--t:.22s cubic-bezier(.4,0,.2,1);
-    }
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;line-height:1.7;-webkit-font-smoothing:antialiased}
-    ::-webkit-scrollbar{width:2px}
-    ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
-    .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(100,210,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(100,210,255,.018) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 90% 70% at 50% 30%,black,transparent)}
-    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);animation:orbFloat 14s ease-in-out infinite}
-    .orb1{width:600px;height:600px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(167,139,250,.09),transparent 70%)}
-    .orb2{width:400px;height:400px;bottom:-80px;left:-100px;background:radial-gradient(circle,rgba(100,210,255,.08),transparent 70%);animation-delay:-6s}
-    @keyframes orbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,-22px)}}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,6,15,.85);backdrop-filter:blur(28px);border-bottom:1px solid var(--border)}
-    .nav-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;height:58px}
-    .logo{font-family:var(--font-mono);font-size:15px;color:var(--text);text-decoration:none}
-    .logo em{color:var(--accent);font-style:normal}
-    .nav-links{display:flex;gap:2px;list-style:none}
-    .nav-links a{font-size:13px;color:var(--text2);text-decoration:none;padding:5px 11px;border-radius:6px;transition:var(--t)}
-    .nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(255,255,255,.05)}
-    .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
-    .nav-toggle span{display:block;width:20px;height:1.5px;background:var(--text2);border-radius:2px;transition:var(--t)}
-    .nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-    .nav-toggle.open span:nth-child(2){opacity:0}
-    .nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-    .mobile-nav{display:none;position:fixed;top:58px;inset-x:0;z-index:99;background:var(--bg2);border-bottom:1px solid var(--border);padding:12px var(--gutter) 20px}
-    .mobile-nav.open{display:block}
-    .mobile-nav a{display:flex;align-items:center;padding:13px 0;color:var(--text2);text-decoration:none;font-size:15px;min-height:44px;border-bottom:1px solid var(--border);transition:var(--t)}
-    .mobile-nav a:hover{color:var(--text)}
-    .page{position:relative;z-index:1}
-    main{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
-    .hero-section{padding:clamp(100px,12vw,150px) 0 clamp(60px,8vw,100px)}
-    .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-    .eyebrow-line{width:24px;height:1px;background:var(--accent);flex-shrink:0}
-    .eyebrow-text{font-family:var(--font-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent)}
-    h1.page-title{font-family:var(--font-display);font-size:clamp(36px,7vw,80px);font-weight:700;line-height:1;letter-spacing:-3px;margin-bottom:16px}
-    h1.page-title mark{background:none;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-image:var(--grad);background-clip:text}
-    .page-desc{font-size:15px;color:var(--text2);max-width:560px;line-height:1.8;margin-bottom:48px}
-    .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
-    .reveal.visible{opacity:1;transform:none}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Experience — Hemraj Adhikari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
-    /* Stats bar */
-    .stats-bar{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:48px}
-    .stat-pill{display:flex;align-items:center;gap:8px;padding:10px 18px;background:var(--surface);border:1px solid var(--border);border-radius:100px;font-size:13px}
-    .stat-pill .sv{font-family:var(--font-mono);color:var(--accent);font-size:14px;font-weight:500}
-    .stat-pill .sl{color:var(--text2)}
+:root{
+  --ink:#0a0b10;
+  --ink2:#111219;
+  --ink3:#181a24;
+  --surface:rgba(255,255,255,.032);
+  --surface2:rgba(255,255,255,.058);
+  --border:rgba(255,255,255,.055);
+  --border2:rgba(255,255,255,.1);
+  --c1:#5eead4;   /* teal */
+  --c2:#818cf8;   /* indigo */
+  --c3:#f472b6;   /* pink */
+  --c4:#fb923c;   /* orange */
+  --text:#f1f5f9;
+  --text2:#94a3b8;
+  --text3:#3e4a65;
+  --grad:linear-gradient(135deg,var(--c1),var(--c2));
+  --grad2:linear-gradient(135deg,var(--c2),var(--c3));
+  --grad3:linear-gradient(135deg,var(--c1),var(--c4));
+  --max:1160px;
+  --pad:clamp(20px,5vw,64px);
+  --t:.25s cubic-bezier(.4,0,.2,1);
+  --font-h:'Cormorant Garamond',serif;
+  --font-b:'DM Sans',sans-serif;
+  --font-m:'DM Mono',monospace;
+}
 
-    /* Timeline section */
-    .section-eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:20px}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--text);font-family:var(--font-b);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.7}
 
-    /* Experience accordion */
-    .exp-list{display:flex;flex-direction:column;gap:12px;margin-bottom:64px}
-    .exp-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:var(--t)}
-    .exp-card.current{border-color:rgba(100,210,255,.15)}
-    .exp-trigger{width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:14px;position:relative}
-    .exp-trigger::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:.3s}
-    .exp-card.current .exp-trigger::before,.exp-card.open .exp-trigger::before{transform:scaleX(1)}
-    .exp-trigger:hover::before{transform:scaleX(1)}
-    .exp-trigger-left{display:flex;flex-direction:column;gap:8px;flex:1}
-    .exp-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .exp-role{font-size:19px;font-weight:600;color:var(--text);letter-spacing:-.3px}
-    .exp-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:100px;font-family:var(--font-mono);font-size:9.5px}
-    .exp-badge.current-badge{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);color:var(--accent3)}
-    .exp-badge.past{background:rgba(100,210,255,.06);border:1px solid rgba(100,210,255,.15);color:rgba(100,210,255,.6)}
-    .exp-badge.freelance{background:rgba(249,162,108,.08);border:1px solid rgba(249,162,108,.2);color:var(--accent4)}
-    .exp-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-    .exp-company{font-size:13.5px;font-weight:500;color:var(--text2)}
-    .exp-location,.exp-date{font-family:var(--font-mono);font-size:10px;color:var(--text3)}
-    .exp-sep{color:var(--text3)}
-    .exp-chevron{width:30px;height:30px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--text3);transition:var(--t)}
-    .exp-chevron svg{transition:transform .3s}
-    .exp-card.open .exp-chevron svg{transform:rotate(180deg)}
-    .exp-card.open .exp-chevron{border-color:rgba(100,210,255,.2);color:var(--accent);background:rgba(100,210,255,.06)}
-    .exp-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .3s;padding:0 28px}
-    .exp-card.open .exp-body{max-height:800px;padding:0 28px 24px}
-    .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:8px}
-    .exp-bullets li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text2);line-height:1.75}
-    .exp-bullets li::before{content:'–';color:var(--text3);flex-shrink:0;margin-top:1px}
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--grad);border-radius:3px}
 
-    /* highlights tags inside bullets */
-    .exp-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;padding:1px 7px;border-radius:4px;background:rgba(100,210,255,.07);border:1px solid rgba(100,210,255,.12);color:var(--accent);margin-left:4px;vertical-align:middle}
-    .exp-tag.green{background:rgba(52,211,153,.07);border-color:rgba(52,211,153,.15);color:var(--accent3)}
-    .exp-tag.purple{background:rgba(167,139,250,.07);border-color:rgba(167,139,250,.15);color:var(--accent2)}
+/* ─── NOISE OVERLAY ─── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.025;background-size:256px 256px;
+}
 
-    /* Skills grid */
-    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:64px}
-    .skill-group{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
-    .skill-group-title{font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-    .skill-tags{display:flex;flex-wrap:wrap;gap:7px}
-    .skill-tag{font-family:var(--font-mono);font-size:10.5px;padding:4px 11px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text2);transition:var(--t)}
-    .skill-tag:hover{border-color:rgba(100,210,255,.2);color:var(--accent)}
+/* ─── ANIMATED MESH BG ─── */
+.mesh{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.mesh-blob{position:absolute;border-radius:50%;filter:blur(120px);animation:drift 20s ease-in-out infinite}
+.mesh-blob:nth-child(1){width:700px;height:700px;top:-200px;right:-150px;background:radial-gradient(circle,rgba(94,234,212,.055),transparent 65%);animation-duration:22s}
+.mesh-blob:nth-child(2){width:500px;height:500px;bottom:-100px;left:-150px;background:radial-gradient(circle,rgba(129,140,248,.05),transparent 65%);animation-delay:-8s;animation-duration:18s}
+.mesh-blob:nth-child(3){width:300px;height:300px;top:40%;left:40%;background:radial-gradient(circle,rgba(244,114,182,.04),transparent 65%);animation-delay:-14s;animation-duration:26s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(20px,-30px) scale(1.05)}66%{transform:translate(-15px,25px) scale(.97)}}
 
-    /* Education */
-    .edu-list{display:flex;flex-direction:column;gap:10px;margin-bottom:64px}
-    .edu-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;transition:var(--t)}
-    .edu-card:hover{border-color:rgba(100,210,255,.1);background:var(--surface2)}
-    .edu-degree{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
-    .edu-school{font-size:13px;color:var(--text2)}
-    .edu-date{font-family:var(--font-mono);font-size:10px;color:var(--text3);white-space:nowrap;margin-top:4px}
+/* ─── GRID ─── */
+.grid-lines{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(94,234,212,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(94,234,212,.012) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 100% 80% at 50% 20%,black,transparent)}
 
-    /* Certifications */
-    .cert-list{display:flex;flex-direction:column;gap:10px;margin-bottom:64px}
-    .cert-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 24px;display:flex;align-items:center;gap:14px;transition:var(--t)}
-    .cert-card:hover{border-color:rgba(100,210,255,.1)}
-    .cert-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-    .cert-icon.aws{background:rgba(249,162,108,.1);border:1px solid rgba(249,162,108,.2)}
-    .cert-icon.linux{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.15)}
-    .cert-icon.google{background:rgba(100,210,255,.07);border:1px solid rgba(100,210,255,.15)}
-    .cert-icon.ms{background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.15)}
-    .cert-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:2px}
-    .cert-status{font-family:var(--font-mono);font-size:10px;color:var(--text3)}
-    .cert-status.done{color:var(--accent3)}
-    .cert-status.progress{color:var(--accent4)}
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(10,11,16,.8);backdrop-filter:blur(30px) saturate(1.4);
+  border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;height:56px}
+.logo{font-family:var(--font-m);font-size:14px;color:var(--text);text-decoration:none;letter-spacing:-.3px}
+.logo em{color:var(--c1);font-style:normal}
+.nav-links{display:flex;gap:2px;list-style:none}
+.nav-links a{font-size:12.5px;color:var(--text2);text-decoration:none;padding:5px 12px;border-radius:7px;transition:var(--t);letter-spacing:.2px}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:var(--surface2)}
+.nav-cta{display:flex;align-items:center;gap:7px;padding:7px 18px;background:var(--grad);color:#0a0b10;font-size:12px;font-weight:600;font-family:var(--font-m);text-decoration:none;border-radius:8px;letter-spacing:.3px;transition:var(--t)}
+.nav-cta:hover{opacity:.85;transform:translateY(-1px)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.nav-toggle span{display:block;width:20px;height:1.5px;background:var(--text2);border-radius:2px;transition:var(--t)}
+.nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.nav-toggle.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+.mobile-nav{display:none;position:fixed;top:56px;inset-x:0;z-index:150;background:rgba(10,11,16,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px var(--pad) 24px}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;padding:13px 0;color:var(--text2);text-decoration:none;font-size:15px;border-bottom:1px solid var(--border);transition:var(--t)}
+.mobile-nav a:last-child{border:none}
+.mobile-nav a:hover{color:var(--text)}
 
-    footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px var(--gutter);text-align:center}
-    footer span{font-family:var(--font-mono);font-size:11px;color:var(--text3)}
-    @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:flex}}
-    @media(max-width:480px){h1.page-title{letter-spacing:-2px}.exp-trigger{padding:18px}.exp-body{padding:0 18px}.exp-card.open .exp-body{padding:0 18px 18px}.skills-grid{grid-template-columns:1fr}}
-  </style>
+/* ─── PAGE LAYOUT ─── */
+.page{position:relative;z-index:1}
+main{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+
+/* ─── HERO ─── */
+.hero{padding:clamp(110px,13vw,160px) 0 clamp(60px,8vw,80px);display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start}
+.hero-left{min-width:0}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--c1);box-shadow:0 0 10px var(--c1);animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.eyebrow-label{font-family:var(--font-m);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--c1)}
+h1{font-family:var(--font-h);font-size:clamp(52px,9vw,100px);font-weight:600;line-height:.92;letter-spacing:-2px;margin-bottom:20px;font-style:italic}
+h1 .line1{display:block;color:var(--text)}
+h1 .grad-text{display:block;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{font-size:15px;color:var(--text2);max-width:520px;line-height:1.9;margin-bottom:36px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;background:var(--grad);color:#0a0b10;font-family:var(--font-m);font-size:12px;font-weight:600;text-decoration:none;border-radius:10px;letter-spacing:.3px;transition:var(--t)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(94,234,212,.2)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:var(--surface);border:1px solid var(--border2);color:var(--text);font-family:var(--font-m);font-size:12px;font-weight:500;text-decoration:none;border-radius:10px;letter-spacing:.3px;transition:var(--t)}
+.btn-ghost:hover{background:var(--surface2);border-color:rgba(94,234,212,.2);color:var(--c1)}
+
+/* ─── FLOATING STAT CARD ─── */
+.hero-right{flex-shrink:0}
+.stat-card{background:rgba(17,18,25,.9);border:1px solid var(--border2);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;gap:20px;backdrop-filter:blur(20px);position:relative;overflow:hidden;min-width:200px}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
+.stat-item{display:flex;flex-direction:column;gap:2px}
+.stat-num{font-family:var(--font-h);font-size:36px;font-weight:600;letter-spacing:-1px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;font-style:italic}
+.stat-lbl{font-family:var(--font-m);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--text3)}
+.stat-divider{height:1px;background:var(--border)}
+.status-pill{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.15);border-radius:8px}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#34d399;flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+.status-txt{font-family:var(--font-m);font-size:10px;color:#34d399;letter-spacing:.5px}
+
+/* ─── SECTION HEADERS ─── */
+.section-header{display:flex;align-items:baseline;gap:16px;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.section-num{font-family:var(--font-m);font-size:10px;color:var(--text3);letter-spacing:1px}
+.section-title{font-family:var(--font-h);font-size:26px;font-weight:600;letter-spacing:-.5px;color:var(--text);font-style:italic}
+.section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+
+/* ─── TIMELINE ─── */
+.timeline-wrap{position:relative;margin-bottom:80px}
+.timeline-track{position:absolute;left:20px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--c1),var(--c2),var(--c3),transparent);opacity:.25}
+.tl-items{display:flex;flex-direction:column;gap:0;padding-left:56px}
+
+.tl-item{position:relative;padding:0 0 40px}
+.tl-item:last-child{padding-bottom:0}
+.tl-node{position:absolute;left:-44px;top:24px;width:16px;height:16px;border-radius:50%;background:var(--ink3);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;transition:var(--t);z-index:2}
+.tl-node::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid transparent;transition:var(--t)}
+.tl-item.current .tl-node{background:var(--c1);border-color:var(--c1);box-shadow:0 0 0 4px rgba(94,234,212,.1),0 0 16px rgba(94,234,212,.3)}
+.tl-item.current .tl-node::after{border-color:rgba(94,234,212,.2);animation:ripple 2.5s ease-in-out infinite}
+@keyframes ripple{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.5);opacity:0}}
+.tl-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:var(--t);cursor:pointer}
+.tl-card:hover{border-color:rgba(94,234,212,.12);background:var(--surface2)}
+.tl-item.current .tl-card{border-color:rgba(94,234,212,.15)}
+.tl-card.open{border-color:rgba(94,234,212,.18);background:rgba(255,255,255,.04)}
+
+/* card top stripe */
+.tl-stripe{height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:.35s ease}
+.tl-item.current .tl-stripe,.tl-card.open .tl-stripe,.tl-card:hover .tl-stripe{transform:scaleX(1)}
+.tl-card.freelance .tl-stripe{background:var(--grad3)}
+.tl-card.past .tl-stripe{background:var(--grad2)}
+
+.tl-header{padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.tl-header-left{flex:1;min-width:0}
+.tl-role-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:7px}
+.tl-role{font-family:var(--font-h);font-size:22px;font-weight:600;letter-spacing:-.3px;color:var(--text);font-style:italic}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:100px;font-family:var(--font-m);font-size:9px;letter-spacing:.5px}
+.badge.current{background:rgba(94,234,212,.08);border:1px solid rgba(94,234,212,.2);color:var(--c1)}
+.badge.past{background:rgba(129,140,248,.07);border:1px solid rgba(129,140,248,.15);color:var(--c2)}
+.badge.freelance{background:rgba(251,146,60,.07);border:1px solid rgba(251,146,60,.18);color:var(--c4)}
+.tl-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tl-company{font-size:13px;font-weight:500;color:var(--text2)}
+.tl-dot{color:var(--text3);font-size:10px}
+.tl-loc,.tl-date{font-family:var(--font-m);font-size:10px;color:var(--text3)}
+.tl-toggle{width:32px;height:32px;flex-shrink:0;background:var(--surface2);border:1px solid var(--border);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:var(--t)}
+.tl-toggle svg{transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.tl-card.open .tl-toggle svg{transform:rotate(180deg)}
+.tl-card.open .tl-toggle{border-color:rgba(94,234,212,.25);color:var(--c1);background:rgba(94,234,212,.07)}
+
+.tl-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1)}
+.tl-card.open .tl-body{grid-template-rows:1fr}
+.tl-body-inner{overflow:hidden}
+.tl-content{padding:0 26px 24px;border-top:1px solid var(--border)}
+.tl-bullets{list-style:none;display:flex;flex-direction:column;gap:9px;padding-top:20px}
+.tl-bullets li{display:flex;align-items:flex-start;gap:12px;font-size:13.5px;color:var(--text2);line-height:1.8}
+.bullet-icon{width:20px;height:20px;border-radius:6px;background:rgba(94,234,212,.06);border:1px solid rgba(94,234,212,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+.bullet-icon svg{color:var(--c1);width:10px;height:10px}
+.tl-tag{display:inline-block;font-family:var(--font-m);font-size:9.5px;padding:1px 8px;border-radius:4px;background:rgba(94,234,212,.06);border:1px solid rgba(94,234,212,.1);color:var(--c1);margin:2px 2px 0;vertical-align:middle}
+.tl-tag.purple{background:rgba(129,140,248,.07);border-color:rgba(129,140,248,.15);color:var(--c2)}
+.tl-tag.pink{background:rgba(244,114,182,.07);border-color:rgba(244,114,182,.15);color:var(--c3)}
+.tl-tag.orange{background:rgba(251,146,60,.07);border-color:rgba(251,146,60,.15);color:var(--c4)}
+.tl-tag.green{background:rgba(52,211,153,.07);border-color:rgba(52,211,153,.15);color:#34d399}
+
+/* ─── SKILLS ─── */
+.skills-section{margin-bottom:80px}
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+
+/* skill bars */
+.skill-bars{display:flex;flex-direction:column;gap:16px}
+.sbar-item{display:flex;flex-direction:column;gap:6px}
+.sbar-meta{display:flex;justify-content:space-between;align-items:center}
+.sbar-name{font-size:13px;font-weight:500;color:var(--text)}
+.sbar-pct{font-family:var(--font-m);font-size:10px;color:var(--text3)}
+.sbar-track{height:3px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden}
+.sbar-fill{height:100%;border-radius:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.4,0,.2,1)}
+.sbar-item.animated .sbar-fill{transform:scaleX(1)}
+
+/* skill chips cloud */
+.skill-cloud-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.skill-group-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;transition:var(--t)}
+.skill-group-box:hover{border-color:rgba(94,234,212,.12);background:var(--surface2)}
+.sgb-title{font-family:var(--font-m);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--c1);margin-bottom:12px}
+.chip-cloud{display:flex;flex-wrap:wrap;gap:5px}
+.chip{font-family:var(--font-m);font-size:10px;padding:3px 9px;border-radius:5px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text2);transition:var(--t);cursor:default}
+.chip:hover{border-color:rgba(94,234,212,.2);color:var(--c1);background:rgba(94,234,212,.05)}
+
+/* ─── EDUCATION ─── */
+.edu-section{margin-bottom:80px}
+.edu-timeline{display:flex;flex-direction:column;gap:2px}
+.edu-item{display:flex;gap:20px;align-items:stretch}
+.edu-spine{display:flex;flex-direction:column;align-items:center;gap:0;flex-shrink:0}
+.edu-dot{width:10px;height:10px;border-radius:50%;background:var(--c2);border:2px solid var(--ink3);flex-shrink:0;margin-top:22px;box-shadow:0 0 8px rgba(129,140,248,.3)}
+.edu-line{flex:1;width:1px;background:linear-gradient(180deg,rgba(129,140,248,.2),transparent);margin-top:4px}
+.edu-item:last-child .edu-line{display:none}
+.edu-card{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;transition:var(--t)}
+.edu-card:hover{border-color:rgba(129,140,248,.15);background:var(--surface2)}
+.edu-degree{font-family:var(--font-h);font-size:17px;font-weight:600;color:var(--text);margin-bottom:4px;letter-spacing:-.2px;font-style:italic}
+.edu-school{font-size:12.5px;color:var(--text2)}
+.edu-yr{font-family:var(--font-m);font-size:10px;color:var(--text3);white-space:nowrap;margin-top:2px}
+
+/* ─── CERTS ─── */
+.cert-section{margin-bottom:80px}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.cert-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;gap:14px;align-items:flex-start;position:relative;overflow:hidden;transition:var(--t)}
+.cert-card::after{content:'';position:absolute;inset:0;border-radius:14px;background:var(--grad);opacity:0;transition:var(--t)}
+.cert-card:hover{transform:translateY(-2px);border-color:rgba(94,234,212,.15)}
+.cert-card:hover::after{opacity:.03}
+.cert-card-content{position:relative;z-index:1;display:flex;gap:14px;align-items:flex-start;width:100%}
+.cert-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.cert-icon.aws{background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.2)}
+.cert-icon.linux{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.15)}
+.cert-icon.google{background:rgba(94,234,212,.07);border:1px solid rgba(94,234,212,.15)}
+.cert-icon.ms{background:rgba(129,140,248,.08);border:1px solid rgba(129,140,248,.15)}
+.cert-name{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:5px;letter-spacing:-.2px}
+.cert-status{font-family:var(--font-m);font-size:10px}
+.cert-status.done{color:#34d399}
+.cert-status.progress{color:var(--c4)}
+
+/* ─── FLOATING TOC ─── */
+.toc{position:fixed;right:clamp(12px,2vw,40px);top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:8px}
+.toc-item{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 0}
+.toc-dot{width:5px;height:5px;border-radius:50%;background:var(--text3);transition:var(--t);flex-shrink:0}
+.toc-lbl{font-family:var(--font-m);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--text3);transition:var(--t);white-space:nowrap;opacity:0;transform:translateX(6px)}
+.toc-item:hover .toc-dot,.toc-item.active .toc-dot{background:var(--c1);box-shadow:0 0 6px var(--c1);width:7px;height:7px}
+.toc-item:hover .toc-lbl,.toc-item.active .toc-lbl{opacity:1;transform:translateX(0);color:var(--c1)}
+
+/* ─── REVEAL ANIMATION ─── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* ─── FOOTER ─── */
+footer{background:var(--ink2);border-top:1px solid var(--border);padding:24px var(--pad);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-m);font-size:13px;color:var(--text)}
+.footer-logo em{color:var(--c1);font-style:normal}
+footer span{font-family:var(--font-m);font-size:10.5px;color:var(--text3)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:32px}
+  .hero-right{display:flex;gap:16px;flex-wrap:wrap}
+  .stat-card{flex-direction:row;flex-wrap:wrap;gap:20px 32px;min-width:auto}
+  .stat-divider{display:none}
+  .skills-layout{grid-template-columns:1fr}
+  .skill-cloud-grid{grid-template-columns:1fr 1fr}
+  .toc{display:none}
+}
+@media(max-width:640px){
+  .nav-links,.nav-cta{display:none}
+  .nav-toggle{display:flex}
+  h1{letter-spacing:-2.5px}
+  .tl-header{padding:18px}
+  .tl-content{padding:0 18px 20px}
+  .skill-cloud-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
-  <div class="grid-bg"></div>
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
 
-  <nav>
-    <div class="nav-inner">
-      <a href="../index.html" class="logo">hem<em>raj</em>.dev</a>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="experience.html" class="active">Experience</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+<div class="mesh">
+  <div class="mesh-blob"></div>
+  <div class="mesh-blob"></div>
+  <div class="mesh-blob"></div>
+</div>
+<div class="grid-lines"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="logo">hem<em>raj</em>.dev</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="experience.html" class="active">Experience</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Hire Me →</a>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="../index.html">Home</a>
+  <a href="experience.html">Experience</a>
+  <a href="services.html">Services</a>
+  <a href="projects.html">Projects</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- FLOATING TOC -->
+<nav class="toc" aria-label="Page sections">
+  <div class="toc-item" data-target="work"><div class="toc-dot"></div><span class="toc-lbl">Work</span></div>
+  <div class="toc-item" data-target="skills"><div class="toc-dot"></div><span class="toc-lbl">Skills</span></div>
+  <div class="toc-item" data-target="education"><div class="toc-dot"></div><span class="toc-lbl">Education</span></div>
+  <div class="toc-item" data-target="certs"><div class="toc-dot"></div><span class="toc-lbl">Certs</span></div>
+</nav>
+
+<div class="page">
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow reveal">
+        <div class="eyebrow-dot"></div>
+        <span class="eyebrow-label">Work History</span>
+      </div>
+      <h1 class="reveal reveal-delay-1">
+        <span class="line1">Career</span>
+        <span class="grad-text">Experience</span>
+      </h1>
+      <p class="hero-desc reveal reveal-delay-2">IT Officer & Cloud Infrastructure Specialist with 3.5+ years building robust systems, managing SaaS platforms, and delivering sub-2hr support — across Kathmandu's most demanding tech environments.</p>
+      <div class="hero-actions reveal reveal-delay-3">
+        <a href="https://drive.google.com/uc?export=download&id=1go-pYbCBa8QAMNbdCFx25zDR_qNL3-Wy" class="btn-primary">⬇ Download CV</a>
+        <a href="contact.html" class="btn-ghost">Let's Talk →</a>
+      </div>
     </div>
-  </nav>
-  <div class="mobile-nav">
-    <a href="../index.html">Home</a>
-    <a href="experience.html">Experience</a>
-    <a href="services.html">Services</a>
-    <a href="projects.html">Projects</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
+    <div class="hero-right reveal reveal-delay-2">
+      <div class="stat-card">
+        <div class="status-pill">
+          <div class="status-dot"></div>
+          <span class="status-txt">Available for hire</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="3.5">0</div>
+          <div class="stat-lbl">Years Experience</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="50">0</div>
+          <div class="stat-lbl">Sites Deployed</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="100">0</div>
+          <div class="stat-lbl">Users Supported</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">99%+</div>
+          <div class="stat-lbl">Uptime Maintained</div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="page">
-    <main>
-      <div class="hero-section">
-        <div class="eyebrow reveal"><div class="eyebrow-line"></div><span class="eyebrow-text">Experience</span></div>
-        <h1 class="page-title reveal">Work <mark>History</mark></h1>
-        <p class="page-desc reveal">IT Officer and System Administrator with 3.5+ years building cloud infrastructure, SaaS platforms, and supporting end-users — across Kathmandu's fastest-moving tech environments.</p>
+  <!-- WORK EXPERIENCE -->
+  <section id="work">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <span class="section-title">Work Experience</span>
+      <div class="section-line"></div>
+    </div>
 
-        <!-- Stats -->
-        <div class="stats-bar reveal">
-          <div class="stat-pill"><span class="sv">3.5+</span><span class="sl">Years Experience</span></div>
-          <div class="stat-pill"><span class="sv">99%+</span><span class="sl">Uptime Maintained</span></div>
-          <div class="stat-pill"><span class="sv">50+</span><span class="sl">Websites Deployed</span></div>
-          <div class="stat-pill"><span class="sv">100+</span><span class="sl">Users Supported</span></div>
-        </div>
+    <div class="timeline-wrap reveal">
+      <div class="timeline-track"></div>
+      <div class="tl-items">
 
-        <!-- Work Experience -->
-        <div class="section-eyebrow reveal">Work Experience</div>
-        <div class="exp-list reveal">
-
-          <!-- IT Officer – Route 2 Uni -->
-          <div class="exp-card current open">
-            <button class="exp-trigger" aria-expanded="true">
-              <div class="exp-trigger-left">
-                <div class="exp-head">
-                  <span class="exp-role">IT Officer</span>
-                  <span class="exp-badge current-badge">● Current</span>
+        <!-- Route 2 Uni -->
+        <div class="tl-item current">
+          <div class="tl-node"></div>
+          <div class="tl-card current open">
+            <div class="tl-stripe"></div>
+            <div class="tl-header">
+              <div class="tl-header-left">
+                <div class="tl-role-row">
+                  <span class="tl-role">IT Officer</span>
+                  <span class="badge current">● Current</span>
                 </div>
-                <div class="exp-meta">
-                  <span class="exp-company">Route 2 Uni International Group</span>
-                  <span class="exp-sep">·</span>
-                  <span class="exp-location">Putalisadak, Kathmandu</span>
-                  <span class="exp-sep">·</span>
-                  <span class="exp-date">May 2026 – Present</span>
+                <div class="tl-meta">
+                  <span class="tl-company">Route 2 Uni International Group</span>
+                  <span class="tl-dot">·</span>
+                  <span class="tl-loc">Putalisadak, Kathmandu</span>
+                  <span class="tl-dot">·</span>
+                  <span class="tl-date">May 2026 – Present</span>
                 </div>
               </div>
-              <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-            </button>
-            <div class="exp-body">
-              <ul class="exp-bullets">
-                <li>Administer cloud-based CRM and SaaS platforms for 50+ staff, enforcing RBAC, MFA, and data governance policies — maintaining 100% compliance with internal security standards.<span class="exp-tag">RBAC</span><span class="exp-tag">MFA</span></li>
-                <li>Manage university partner portals and integration workflows, ensuring real-time data accuracy across 30+ partner institutions.</li>
-                <li>Built operational and student-progress reporting dashboards for leadership, reducing manual reporting overhead by 40%.<span class="exp-tag green">–40% overhead</span></li>
-                <li>Coordinated IT workflows across student support, admissions, and infrastructure teams — cutting average ticket resolution time by 25%.<span class="exp-tag green">–25% TTR</span></li>
-                <li>Provide L1/L2 technical support for all staff, maintaining a sub-2-hour SLA in a high-throughput consultancy environment.</li>
-              </ul>
+              <div class="tl-toggle" aria-label="Toggle details">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
             </div>
-          </div>
-
-          <!-- IT Officer – Citizen Infotech -->
-          <div class="exp-card">
-            <button class="exp-trigger" aria-expanded="false">
-              <div class="exp-trigger-left">
-                <div class="exp-head">
-                  <span class="exp-role">IT Officer</span>
-                  <span class="exp-badge past">Past</span>
-                </div>
-                <div class="exp-meta">
-                  <span class="exp-company">Citizen Infotech</span>
-                  <span class="exp-sep">·</span>
-                  <span class="exp-location">Mid Baneshwor, Kathmandu</span>
-                  <span class="exp-sep">·</span>
-                  <span class="exp-date">Aug 2024 – May 2026</span>
+            <div class="tl-body">
+              <div class="tl-body-inner">
+                <div class="tl-content">
+                  <ul class="tl-bullets">
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Administer cloud-based CRM and SaaS platforms for 50+ staff, enforcing RBAC, MFA, and data governance policies — maintaining 100% compliance with internal security standards.<span class="tl-tag">RBAC</span><span class="tl-tag">MFA</span><span class="tl-tag green">100% Compliance</span></span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Manage university partner portals and integration workflows, ensuring real-time data accuracy across 30+ partner institutions.<span class="tl-tag">30+ Partners</span></span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Built operational and student-progress reporting dashboards for leadership, reducing manual reporting overhead by 40%.<span class="tl-tag green">–40% Overhead</span></span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Coordinated IT workflows across student support, admissions, and infrastructure teams — cutting average ticket resolution time by 25%.<span class="tl-tag green">–25% TTR</span></span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Provide L1/L2 technical support for all staff, maintaining sub-2-hour SLA in a high-throughput consultancy environment.<span class="tl-tag purple">Sub-2hr SLA</span></span></li>
+                  </ul>
                 </div>
               </div>
-              <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-            </button>
-            <div class="exp-body">
-              <ul class="exp-bullets">
-                <li>Owned full-lifecycle CRM administration for 50+ users — data entry standards, system integrity checks, and user access governance — reducing data discrepancies by 35%.<span class="exp-tag green">–35% discrepancies</span></li>
-                <li>Enforced data verification and quality assurance workflows, achieving full compliance with internal governance standards across all active records.</li>
-                <li>Automated operational and performance reporting for management, saving an estimated 6 hours of manual effort per week.<span class="exp-tag green">6 hrs/wk saved</span></li>
-                <li>Managed client and partner portals — ensuring content accuracy, access control, and consistent uptime for internal and external stakeholders.</li>
-                <li>Provided system troubleshooting and IT support for all staff, sustaining 98%+ ticket resolution rate.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- IT Support Specialist – Percoid -->
-          <div class="exp-card">
-            <button class="exp-trigger" aria-expanded="false">
-              <div class="exp-trigger-left">
-                <div class="exp-head">
-                  <span class="exp-role">IT Support Specialist</span>
-                  <span class="exp-badge past">Past</span>
-                </div>
-                <div class="exp-meta">
-                  <span class="exp-company">Percoid IT Solution</span>
-                  <span class="exp-sep">·</span>
-                  <span class="exp-location">Manbhawan, Lalitpur</span>
-                  <span class="exp-sep">·</span>
-                  <span class="exp-date">Feb 2022 – Jul 2024</span>
-                </div>
-              </div>
-              <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-            </button>
-            <div class="exp-body">
-              <ul class="exp-bullets">
-                <li>Delivered L1/L2 helpdesk support to 100+ users across hardware, software, OS, and network issues — achieving a 95% first-call resolution rate while meeting SLA targets.<span class="exp-tag green">95% FCR</span></li>
-                <li>Deployed and maintained Windows 10/11 endpoints; managed OS patching, software distribution, and system hardening for endpoint security compliance.<span class="exp-tag">Windows Server</span></li>
-                <li>Administered Windows Server and Active Directory — user lifecycle management, Group Policy configuration, and access provisioning/de-provisioning.<span class="exp-tag purple">AD / GPO</span></li>
-                <li>Overhauled IT asset inventory and hardware lifecycle documentation, improving asset tracking accuracy by 25% and reducing procurement delays.</li>
-                <li>Supported Google Workspace and Microsoft 365 tenant administration: onboarding, license assignments, permissions, and email security configurations.<span class="exp-tag">M365</span><span class="exp-tag">GWS</span></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Web & Hosting Specialist – Freelance -->
-          <div class="exp-card">
-            <button class="exp-trigger" aria-expanded="false">
-              <div class="exp-trigger-left">
-                <div class="exp-head">
-                  <span class="exp-role">Web & Hosting Specialist</span>
-                  <span class="exp-badge freelance">⟳ Ongoing</span>
-                </div>
-                <div class="exp-meta">
-                  <span class="exp-company">Self-Employed / Freelance</span>
-                  <span class="exp-sep">·</span>
-                  <span class="exp-location">Nepal (Remote)</span>
-                  <span class="exp-sep">·</span>
-                  <span class="exp-date">Jan 2021 – Present</span>
-                </div>
-              </div>
-              <div class="exp-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-            </button>
-            <div class="exp-body">
-              <ul class="exp-bullets">
-                <li>Deployed and managed 50+ client websites across AWS EC2, cPanel, and Hostinger — maintaining uptime SLAs and resolving hosting incidents within agreed windows.<span class="exp-tag">AWS EC2</span></li>
-                <li>Managed end-to-end DNS and domain operations: A/CNAME/MX/TXT records, SPF/DKIM/DMARC, and SSL/TLS certificate lifecycle.<span class="exp-tag">DNS</span><span class="exp-tag">SSL/TLS</span></li>
-                <li>Hardened WordPress sites against XSS, brute-force, and injection attacks; ran plugin audits and automated security scans.<span class="exp-tag purple">Security</span></li>
-                <li>Executed site migrations and backup automation with restoration drills, achieving average page load times under 2 seconds.</li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Skills -->
-        <div class="section-eyebrow reveal">Technical Skills</div>
-        <div class="skills-grid reveal">
-          <div class="skill-group">
-            <div class="skill-group-title">Cloud</div>
-            <div class="skill-tags">
-              <span class="skill-tag">AWS EC2</span><span class="skill-tag">IAM</span><span class="skill-tag">S3</span><span class="skill-tag">VPC</span><span class="skill-tag">CloudWatch</span><span class="skill-tag">Azure</span><span class="skill-tag">Google Cloud</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-title">SaaS Admin</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Google Workspace</span><span class="skill-tag">Microsoft 365</span><span class="skill-tag">Exchange</span><span class="skill-tag">Teams</span><span class="skill-tag">SharePoint</span><span class="skill-tag">Intune</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-title">OS & Servers</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Windows Server</span><span class="skill-tag">Ubuntu</span><span class="skill-tag">CentOS</span><span class="skill-tag">Active Directory</span><span class="skill-tag">Group Policy</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-title">Networking</div>
-            <div class="skill-tags">
-              <span class="skill-tag">TCP/IP</span><span class="skill-tag">DNS</span><span class="skill-tag">DHCP</span><span class="skill-tag">VPN</span><span class="skill-tag">Firewall</span><span class="skill-tag">VLANs</span><span class="skill-tag">LAN/WAN</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-title">Security</div>
-            <div class="skill-tags">
-              <span class="skill-tag">RBAC</span><span class="skill-tag">MFA</span><span class="skill-tag">Endpoint Security</span><span class="skill-tag">Hardening</span><span class="skill-tag">Vulnerability Mgmt</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-title">Scripting</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Bash</span><span class="skill-tag">PowerShell</span><span class="skill-tag">Python</span><span class="skill-tag">Task Scheduling</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-title">IT Operations</div>
-            <div class="skill-tags">
-              <span class="skill-tag">ITIL</span><span class="skill-tag">Helpdesk L1/L2</span><span class="skill-tag">Incident Mgmt</span><span class="skill-tag">Backup & DR</span><span class="skill-tag">Patch Mgmt</span><span class="skill-tag">SLA</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-title">Web & Hosting</div>
-            <div class="skill-tags">
-              <span class="skill-tag">WordPress</span><span class="skill-tag">cPanel</span><span class="skill-tag">SSL/TLS</span><span class="skill-tag">DNS Mgmt</span><span class="skill-tag">React</span><span class="skill-tag">Node.js</span>
             </div>
           </div>
         </div>
 
-        <!-- Education -->
-        <div class="section-eyebrow reveal">Education</div>
-        <div class="edu-list reveal">
+        <!-- Citizen Infotech -->
+        <div class="tl-item">
+          <div class="tl-node"></div>
+          <div class="tl-card past">
+            <div class="tl-stripe"></div>
+            <div class="tl-header">
+              <div class="tl-header-left">
+                <div class="tl-role-row">
+                  <span class="tl-role">IT Officer</span>
+                  <span class="badge past">Past</span>
+                </div>
+                <div class="tl-meta">
+                  <span class="tl-company">Citizen Infotech</span>
+                  <span class="tl-dot">·</span>
+                  <span class="tl-loc">Mid Baneshwor, Kathmandu</span>
+                  <span class="tl-dot">·</span>
+                  <span class="tl-date">Aug 2024 – May 2026</span>
+                </div>
+              </div>
+              <div class="tl-toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-body-inner">
+                <div class="tl-content">
+                  <ul class="tl-bullets">
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Owned full-lifecycle CRM administration for 50+ users — data entry standards, system integrity checks, and user access governance — reducing data discrepancies by 35%.<span class="tl-tag green">–35% Discrepancies</span></span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Enforced data verification and quality assurance workflows, achieving full compliance with internal governance standards across all active records.</span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Automated operational and performance reporting for management, saving an estimated 6 hours of manual effort per week.<span class="tl-tag green">6 hrs/wk saved</span></span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Managed client and partner portals — ensuring content accuracy, access control, and consistent uptime for internal and external stakeholders.<span class="tl-tag">98%+ Uptime</span></span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Percoid -->
+        <div class="tl-item">
+          <div class="tl-node"></div>
+          <div class="tl-card past">
+            <div class="tl-stripe"></div>
+            <div class="tl-header">
+              <div class="tl-header-left">
+                <div class="tl-role-row">
+                  <span class="tl-role">IT Support Specialist</span>
+                  <span class="badge past">Past</span>
+                </div>
+                <div class="tl-meta">
+                  <span class="tl-company">Percoid IT Solution</span>
+                  <span class="tl-dot">·</span>
+                  <span class="tl-loc">Manbhawan, Lalitpur</span>
+                  <span class="tl-dot">·</span>
+                  <span class="tl-date">Feb 2022 – Jul 2024</span>
+                </div>
+              </div>
+              <div class="tl-toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-body-inner">
+                <div class="tl-content">
+                  <ul class="tl-bullets">
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Delivered L1/L2 helpdesk support to 100+ users across hardware, software, OS, and network issues — achieving a 95% first-call resolution rate while meeting all SLA targets.<span class="tl-tag green">95% FCR</span></span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Deployed and maintained Windows 10/11 endpoints; managed OS patching, software distribution, and system hardening for endpoint security compliance.<span class="tl-tag">Windows Server</span></span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Administered Windows Server and Active Directory — user lifecycle management, Group Policy configuration, and access provisioning/de-provisioning.<span class="tl-tag purple">AD</span><span class="tl-tag purple">GPO</span></span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Overhauled IT asset inventory and hardware lifecycle documentation, improving asset tracking accuracy by 25% and reducing procurement delays.<span class="tl-tag green">+25% Accuracy</span></span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Supported Google Workspace and Microsoft 365 tenant administration: onboarding, license assignments, permissions, and email security configurations.<span class="tl-tag">M365</span><span class="tl-tag">GWS</span></span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Freelance -->
+        <div class="tl-item">
+          <div class="tl-node"></div>
+          <div class="tl-card freelance">
+            <div class="tl-stripe"></div>
+            <div class="tl-header">
+              <div class="tl-header-left">
+                <div class="tl-role-row">
+                  <span class="tl-role">Web & Hosting Specialist</span>
+                  <span class="badge freelance">⟳ Ongoing</span>
+                </div>
+                <div class="tl-meta">
+                  <span class="tl-company">Self-Employed / Freelance</span>
+                  <span class="tl-dot">·</span>
+                  <span class="tl-loc">Nepal (Remote)</span>
+                  <span class="tl-dot">·</span>
+                  <span class="tl-date">Jan 2021 – Present</span>
+                </div>
+              </div>
+              <div class="tl-toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-body-inner">
+                <div class="tl-content">
+                  <ul class="tl-bullets">
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Deployed and managed 50+ client websites across AWS EC2, cPanel, and Hostinger — maintaining uptime SLAs and resolving hosting incidents within agreed windows.<span class="tl-tag orange">AWS EC2</span><span class="tl-tag orange">50+ Sites</span></span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Managed end-to-end DNS and domain operations: A/CNAME/MX/TXT records, SPF/DKIM/DMARC, and SSL/TLS certificate lifecycle.<span class="tl-tag">DNS</span><span class="tl-tag">SSL/TLS</span></span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Hardened WordPress sites against XSS, brute-force, and injection attacks; ran plugin audits and automated security scans.<span class="tl-tag pink">Security</span></span></li>
+                    <li><div class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Executed site migrations and backup automation with restoration drills, achieving average page load times under 2 seconds.<span class="tl-tag green">&lt;2s Load</span></span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <span class="section-title">Technical Skills</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-section">
+      <div class="skills-layout">
+
+        <!-- Skill bars -->
+        <div class="reveal">
+          <div class="skill-bars">
+            <div class="sbar-item">
+              <div class="sbar-meta"><span class="sbar-name">AWS Cloud (EC2, IAM, S3, VPC)</span><span class="sbar-pct">85%</span></div>
+              <div class="sbar-track"><div class="sbar-fill" style="--w:.85"></div></div>
+            </div>
+            <div class="sbar-item">
+              <div class="sbar-meta"><span class="sbar-name">Linux Administration</span><span class="sbar-pct">90%</span></div>
+              <div class="sbar-track"><div class="sbar-fill" style="--w:.90"></div></div>
+            </div>
+            <div class="sbar-item">
+              <div class="sbar-meta"><span class="sbar-name">Google Workspace Admin</span><span class="sbar-pct">95%</span></div>
+              <div class="sbar-track"><div class="sbar-fill" style="--w:.95"></div></div>
+            </div>
+            <div class="sbar-item">
+              <div class="sbar-meta"><span class="sbar-name">Microsoft 365 Admin</span><span class="sbar-pct">93%</span></div>
+              <div class="sbar-track"><div class="sbar-fill" style="--w:.93"></div></div>
+            </div>
+            <div class="sbar-item">
+              <div class="sbar-meta"><span class="sbar-name">CRM Administration</span><span class="sbar-pct">92%</span></div>
+              <div class="sbar-track"><div class="sbar-fill" style="--w:.92"></div></div>
+            </div>
+            <div class="sbar-item">
+              <div class="sbar-meta"><span class="sbar-name">Networking & DNS</span><span class="sbar-pct">88%</span></div>
+              <div class="sbar-track"><div class="sbar-fill" style="--w:.88"></div></div>
+            </div>
+            <div class="sbar-item">
+              <div class="sbar-meta"><span class="sbar-name">Cybersecurity & Hardening</span><span class="sbar-pct">80%</span></div>
+              <div class="sbar-track"><div class="sbar-fill" style="--w:.80"></div></div>
+            </div>
+            <div class="sbar-item">
+              <div class="sbar-meta"><span class="sbar-name">Python / Bash Scripting</span><span class="sbar-pct">72%</span></div>
+              <div class="sbar-track"><div class="sbar-fill" style="--w:.72"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill chips -->
+        <div class="skill-cloud-grid reveal reveal-delay-1">
+          <div class="skill-group-box">
+            <div class="sgb-title">Cloud</div>
+            <div class="chip-cloud">
+              <span class="chip">AWS EC2</span><span class="chip">IAM</span><span class="chip">S3</span><span class="chip">VPC</span><span class="chip">CloudWatch</span><span class="chip">Azure</span><span class="chip">GCP</span>
+            </div>
+          </div>
+          <div class="skill-group-box">
+            <div class="sgb-title">SaaS Admin</div>
+            <div class="chip-cloud">
+              <span class="chip">Google Workspace</span><span class="chip">M365</span><span class="chip">Exchange</span><span class="chip">Teams</span><span class="chip">SharePoint</span><span class="chip">Intune</span>
+            </div>
+          </div>
+          <div class="skill-group-box">
+            <div class="sgb-title">OS & Servers</div>
+            <div class="chip-cloud">
+              <span class="chip">Windows Server</span><span class="chip">Ubuntu</span><span class="chip">CentOS</span><span class="chip">Active Directory</span><span class="chip">GPO</span>
+            </div>
+          </div>
+          <div class="skill-group-box">
+            <div class="sgb-title">Networking</div>
+            <div class="chip-cloud">
+              <span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">DHCP</span><span class="chip">VPN</span><span class="chip">Firewall</span><span class="chip">VLANs</span>
+            </div>
+          </div>
+          <div class="skill-group-box">
+            <div class="sgb-title">Security</div>
+            <div class="chip-cloud">
+              <span class="chip">RBAC</span><span class="chip">MFA</span><span class="chip">Endpoint Sec.</span><span class="chip">Hardening</span><span class="chip">Vuln Mgmt</span>
+            </div>
+          </div>
+          <div class="skill-group-box">
+            <div class="sgb-title">Web & Hosting</div>
+            <div class="chip-cloud">
+              <span class="chip">WordPress</span><span class="chip">cPanel</span><span class="chip">SSL/TLS</span><span class="chip">DNS Mgmt</span><span class="chip">React</span><span class="chip">Node.js</span>
+            </div>
+          </div>
+          <div class="skill-group-box">
+            <div class="sgb-title">Scripting</div>
+            <div class="chip-cloud">
+              <span class="chip">Bash</span><span class="chip">PowerShell</span><span class="chip">Python</span><span class="chip">Task Scheduling</span>
+            </div>
+          </div>
+          <div class="skill-group-box">
+            <div class="sgb-title">IT Ops</div>
+            <div class="chip-cloud">
+              <span class="chip">ITIL</span><span class="chip">Helpdesk L1/L2</span><span class="chip">Incident Mgmt</span><span class="chip">Backup & DR</span><span class="chip">SLA</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <span class="section-title">Education</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="edu-section">
+      <div class="edu-timeline reveal">
+        <div class="edu-item">
+          <div class="edu-spine"><div class="edu-dot" style="background:var(--c1)"></div><div class="edu-line"></div></div>
           <div class="edu-card">
             <div>
               <div class="edu-degree">Bachelor of Information Technology (B.I.T)</div>
               <div class="edu-school">JMC College · Bagmati Pradesh University · Kathmandu, Nepal</div>
             </div>
-            <div class="edu-date">2023 – Jun 2026</div>
+            <div class="edu-yr">2023 – Jun 2026</div>
           </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-spine"><div class="edu-dot" style="background:var(--c2)"></div><div class="edu-line"></div></div>
           <div class="edu-card">
             <div>
               <div class="edu-degree">Higher Secondary Certificate (+2) — Computer Science</div>
               <div class="edu-school">Sodsha Devi School · National Examination Board · Kathmandu, Nepal</div>
             </div>
-            <div class="edu-date">Completed 2022</div>
+            <div class="edu-yr">Completed 2022</div>
           </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-spine"><div class="edu-dot" style="background:var(--c3)"></div><div class="edu-line"></div></div>
           <div class="edu-card">
             <div>
               <div class="edu-degree">School Leaving Certificate (SLC)</div>
               <div class="edu-school">Manakamana Maavi Secondary School · NEB · Achham, Nepal</div>
             </div>
-            <div class="edu-date">Completed 2019</div>
+            <div class="edu-yr">Completed 2019</div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Certifications -->
-        <div class="section-eyebrow reveal">Certifications</div>
-        <div class="cert-list reveal">
-          <div class="cert-card">
-            <div class="cert-icon aws">☁</div>
+  <!-- CERTIFICATIONS -->
+  <section id="certs">
+    <div class="section-header reveal">
+      <span class="section-num">04</span>
+      <span class="section-title">Certifications</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cert-section">
+      <div class="cert-grid reveal">
+        <div class="cert-card">
+          <div class="cert-card-content">
+            <div class="cert-icon aws">☁️</div>
             <div>
               <div class="cert-name">AWS Certified Cloud Practitioner</div>
               <div class="cert-status progress">⟳ In Progress — Expected 2025</div>
             </div>
           </div>
-          <div class="cert-card">
+        </div>
+        <div class="cert-card">
+          <div class="cert-card-content">
             <div class="cert-icon linux">🐧</div>
             <div>
               <div class="cert-name">Linux Administration Fundamentals</div>
               <div class="cert-status done">✓ Completed</div>
             </div>
           </div>
-          <div class="cert-card">
+        </div>
+        <div class="cert-card">
+          <div class="cert-card-content">
             <div class="cert-icon google">G</div>
             <div>
               <div class="cert-name">Google Workspace Administrator</div>
               <div class="cert-status done">✓ Hands-On Proficiency</div>
             </div>
           </div>
-          <div class="cert-card">
+        </div>
+        <div class="cert-card">
+          <div class="cert-card-content">
             <div class="cert-icon ms">⊞</div>
             <div>
               <div class="cert-name">Microsoft 365 Administration</div>
@@ -410,27 +730,102 @@
             </div>
           </div>
         </div>
-
       </div>
-    </main>
-    <footer><span>© 2025 Hemraj Adhikari · Made with ♥ in Kathmandu 🇳🇵</span></footer>
-  </div>
+    </div>
+  </section>
 
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const mNav = document.querySelector('.mobile-nav');
-    toggle.addEventListener('click', () => { toggle.classList.toggle('open'); mNav.classList.toggle('open'); });
-    mNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { toggle.classList.remove('open'); mNav.classList.remove('open'); }));
-    const revObs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);} }), {threshold:.08});
-    document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
-    document.querySelectorAll('.exp-trigger').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const card = btn.closest('.exp-card');
-        const isOpen = card.classList.contains('open');
-        document.querySelectorAll('.exp-card').forEach(c => { c.classList.remove('open'); c.querySelector('.exp-trigger').setAttribute('aria-expanded',false); });
-        if(!isOpen){ card.classList.add('open'); btn.setAttribute('aria-expanded',true); }
+</main>
+
+<footer>
+  <div class="footer-logo">hem<em>raj</em>.adhikari</div>
+  <span>© 2025 Hemraj Adhikari · Made with ♥ in Kathmandu 🇳🇵</span>
+</footer>
+</div>
+
+<script>
+// ── Mobile nav ──
+const toggle = document.querySelector('.nav-toggle');
+const mNav = document.querySelector('.mobile-nav');
+toggle.addEventListener('click', () => { toggle.classList.toggle('open'); mNav.classList.toggle('open'); });
+mNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { toggle.classList.remove('open'); mNav.classList.remove('open'); }));
+
+// ── Intersection reveal ──
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); revObs.unobserve(e.target); }});
+}, {threshold:.08});
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+// ── Skill bar animation ──
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.sbar-item').forEach((item,i) => {
+        setTimeout(() => {
+          item.classList.add('animated');
+          const fill = item.querySelector('.sbar-fill');
+          const w = getComputedStyle(fill).getPropertyValue('--w').trim();
+          fill.style.transform = `scaleX(${w})`;
+        }, i * 80);
       });
-    });
-  </script>
+      barObs.unobserve(e.target);
+    }
+  });
+}, {threshold:.1});
+document.querySelectorAll('.skill-bars').forEach(el => barObs.observe(el));
+
+// ── Accordion ──
+document.querySelectorAll('.tl-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.tl-card');
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.tl-card').forEach(c => c.classList.remove('open'));
+    if(!isOpen) card.classList.add('open');
+  });
+});
+
+// ── Stat counter animation ──
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-target]').forEach(el => {
+        const target = parseFloat(el.dataset.target);
+        const isDecimal = target % 1 !== 0;
+        const duration = 1800;
+        const start = performance.now();
+        function tick(now){
+          const p = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          const val = target * ease;
+          el.textContent = isDecimal ? val.toFixed(1) + '+' : Math.floor(val) + '+';
+          if(p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+      countObs.unobserve(e.target);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('.stat-card').forEach(el => countObs.observe(el));
+
+// ── Floating TOC ──
+const sections = ['work','skills','education','certs'];
+const tocItems = document.querySelectorAll('.toc-item');
+const tocObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      tocItems.forEach(t => t.classList.remove('active'));
+      const match = document.querySelector(`.toc-item[data-target="${e.target.id}"]`);
+      if(match) match.classList.add('active');
+    }
+  });
+},{rootMargin:'-40% 0px -40% 0px'});
+sections.forEach(id => { const el = document.getElementById(id); if(el) tocObs.observe(el); });
+tocItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const target = document.getElementById(item.dataset.target);
+    if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
 </body>
 </html>
