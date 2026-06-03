@@ -154,31 +154,7 @@
       }).join('');
     });
   }
-
-  /* ── NOTES & GUIDES DROPDOWN ── */
-  var notesDropdown = document.getElementById('notesDropdown');
-  var notesDropdownBtn = document.getElementById('notesDropdownBtn');
-
-  if (notesDropdown && notesDropdownBtn) {
-    notesDropdownBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var open = notesDropdown.classList.toggle('open');
-      notesDropdownBtn.setAttribute('aria-expanded', String(open));
-    });
-    document.addEventListener('click', function (e) {
-      if (!notesDropdown.contains(e.target)) {
-        notesDropdown.classList.remove('open');
-        notesDropdownBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && notesDropdown.classList.contains('open')) {
-        notesDropdown.classList.remove('open');
-        notesDropdownBtn.setAttribute('aria-expanded', 'false');
-        notesDropdownBtn.focus();
-      }
-    });
-  }
+  
 
   /* ── ACTIVE NAV HIGHLIGHT ── */
   var sections = document.querySelectorAll('section[id]');
