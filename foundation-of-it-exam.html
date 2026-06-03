@@ -42,6 +42,9 @@
     top: 0;
     z-index: 100;
     backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+    gap: 0;
+    row-gap: 0;
   }
 
   .logo { display: flex; align-items: center; gap: 12px; }
@@ -69,6 +72,54 @@
   }
   .exam-countdown .days { font-size: 24px; font-weight: 700; color: var(--accent2); font-family: 'JetBrains Mono', monospace; }
   .exam-countdown .label { font-size: 11px; color: var(--muted); }
+
+  /* ═══════════════════════════════
+     HEADER NAV BUTTONS
+  ═══════════════════════════════ */
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .header-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 9px;
+    border: 1px solid #1e293b;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .header-nav-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,212,170,0.07);
+  }
+  .header-nav-btn.cta {
+    border-color: var(--accent2);
+    color: var(--accent2);
+    background: rgba(255,107,53,0.1);
+    font-weight: 600;
+  }
+  .header-nav-btn.cta:hover {
+    background: rgba(255,107,53,0.2);
+    transform: translateY(-1px);
+  }
+  .header-nav-divider {
+    width: 1px;
+    height: 20px;
+    background: #1e293b;
+    margin: 0 4px;
+  }
+  .header-nav-mobile { display: none; }
 
   .container { display: flex; min-height: calc(100vh - 81px); }
 
@@ -159,9 +210,80 @@
   td { padding: 10px 14px; border-bottom: 1px solid #1e293b; color: #94a3b8; font-family: 'JetBrains Mono', monospace; }
   tr:hover td { background: var(--surface2); }
 
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: #334155; border-radius: 99px; }
+  /* ═══════════════════════════════════════
+     PREV / NEXT / QUIZ NAVIGATION BAR
+  ═══════════════════════════════════════ */
+  .lesson-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 40px;
+    margin-bottom: 8px;
+    padding: 20px 0 0;
+    border-top: 1px solid #1e293b;
+    flex-wrap: wrap;
+  }
+  .lesson-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid #1e293b;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    text-decoration: none;
+    min-width: 0;
+    flex: 1;
+    max-width: 240px;
+  }
+  .lesson-nav-btn:hover {
+    border-color: var(--accent);
+    background: rgba(0,212,170,0.08);
+    color: var(--accent);
+  }
+  .lesson-nav-btn.prev { justify-content: flex-start; }
+  .lesson-nav-btn.next { justify-content: flex-end; margin-left: auto; }
+  .lesson-nav-btn .nav-arrow { font-size: 18px; flex-shrink: 0; }
+  .lesson-nav-btn .nav-label { font-size: 11px; color: var(--muted); display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 1px; }
+  .lesson-nav-btn .nav-title { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 160px; }
+  .lesson-nav-btn:hover .nav-label { color: inherit; }
+
+  .lesson-nav-quiz-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(167,139,250,0.4);
+    background: rgba(167,139,250,0.1);
+    color: var(--accent3);
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .lesson-nav-quiz-btn:hover {
+    background: rgba(167,139,250,0.2);
+    border-color: var(--accent3);
+    transform: translateY(-1px);
+  }
+  .lesson-nav-progress {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .lesson-nav-progress span { color: var(--accent); }
 
   /* Top navbar */
   .top-nav {
@@ -195,7 +317,6 @@
   .top-nav .nav-breadcrumb span { color: #334155; }
   .top-nav .nav-breadcrumb .current { color: var(--accent3); }
 
-  /* Mobile hamburger */
   .mobile-menu-btn {
     display: none;
     background: none;
@@ -211,7 +332,6 @@
   }
   .mobile-menu-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* Mobile drawer */
   .sidebar-overlay {
     display: none;
     position: fixed;
@@ -256,7 +376,6 @@
     padding: 8px 20px 12px;
   }
 
-  /* Footer */
   .footer {
     background: var(--surface);
     border-top: 1px solid #1e293b;
@@ -296,180 +415,79 @@
   }
   .footer-copy a { color: var(--accent); text-decoration: none; }
 
-  /* Page wrapper */
   .page-wrapper { display: flex; flex-direction: column; min-height: 100vh; }
   .page-content { flex: 1; }
 
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: #334155; border-radius: 99px; }
+
+  /* ═══════════════════════════════
+     MOBILE RESPONSIVE
+  ═══════════════════════════════ */
   @media (max-width: 768px) {
     .sidebar { display: none; }
-    .mobile-menu-btn { display: flex; }
-    .main { padding: 20px 16px; }
-    .topic-header h2 { font-size: 22px; }
-    .header { padding: 14px 16px; }
-    .logo-text h1 { font-size: 15px; }
-    .logo-text p { display: none; }
-    .exam-countdown { padding: 6px 12px; }
-    .exam-countdown .days { font-size: 20px; }
-    .card { padding: 16px; }
-    .code-block pre { font-size: 12px; padding: 14px; }
-    table { font-size: 12px; }
-    td, th { padding: 8px 8px; }
+    .mobile-menu-btn { display: flex; align-items: center; gap: 6px; }
     .top-nav .nav-breadcrumb { display: none; }
-    .footer { padding: 24px 16px; }
+    .header { padding: 12px 14px; }
+    .logo-text h1 { font-size: 14px; }
+    .logo-text p { display: none; }
+    .logo-icon { width: 34px; height: 34px; font-size: 11px; }
+    .exam-countdown { padding: 5px 10px; }
+    .exam-countdown .days { font-size: 18px; }
+    /* Hide desktop nav, show mobile row */
+    .header-nav { display: none !important; }
+    .header-nav-mobile {
+      display: flex;
+      width: 100%;
+      gap: 6px;
+      padding: 10px 0 2px;
+      border-top: 1px solid #1e293b;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .header-nav-mobile .header-nav-btn { padding: 7px 12px; font-size: 12px; flex: 1; justify-content: center; text-align: center; }
+    .container { display: block; min-height: unset; }
+    .main { padding: 18px 14px; max-width: 100%; }
+    .topic-header h2 { font-size: 20px; }
+    .topic-header p { font-size: 13px; }
+    .card { padding: 14px; border-radius: 12px; margin-bottom: 14px; overflow-x: auto; }
+    .card h3 { font-size: 14px; }
+    .card p, .card li { font-size: 13px; }
+    .code-block pre { font-size: 11.5px; padding: 12px; }
+    .info-box { font-size: 13px; padding: 12px; }
+    table { font-size: 11.5px; min-width: 360px; }
+    th, td { padding: 8px 10px; }
+    .quiz-card { padding: 14px; }
+    .question { font-size: 14px; }
+    .option { padding: 10px 12px; font-size: 13px; }
+    .sidebar-drawer { width: 260px; }
+    .lesson-nav { gap: 10px; }
+    .lesson-nav-btn { padding: 10px 14px; font-size: 13px; max-width: 100%; }
+    .lesson-nav-btn .nav-title { max-width: 120px; }
+    .lesson-nav-quiz-btn { padding: 10px 14px; font-size: 13px; }
+    .lesson-nav-progress { width: 100%; order: -1; text-align: center; }
+    .footer { padding: 20px 14px; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
-    .container { min-height: unset; }
+    .footer-links { flex-wrap: wrap; gap: 12px; }
   }
   @media (max-width: 480px) {
-    .topic-header h2 { font-size: 20px; }
-    .card h3 { font-size: 15px; }
+    .main { padding: 14px 10px; }
+    .topic-header h2 { font-size: 18px; }
+    .topic-tag { font-size: 10px; padding: 3px 10px; }
+    .card { padding: 12px; }
+    .lesson-nav { flex-direction: column; }
+    .lesson-nav-btn { max-width: 100%; width: 100%; }
+    .lesson-nav-quiz-btn { width: 100%; justify-content: center; }
+    .lesson-nav-progress { order: 0; }
+    .sidebar-drawer { width: 85vw; }
   }
-  /* ═══════════════════════════════════════════════
-   MOBILE RESPONSIVE — c-language-bit-exam.html
-   ═══════════════════════════════════════════════ */
-
-@media (max-width: 768px) {
-
-  /* Hide desktop sidebar, show hamburger */
-  .sidebar { display: none; }
-  .mobile-menu-btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    padding: 8px 12px;
+  @media (max-width: 768px) and (orientation: landscape) {
+    .header { padding: 8px 14px; }
+    .logo-text h1 { font-size: 13px; }
+    .exam-countdown .days { font-size: 16px; }
+    .main { padding: 14px; }
   }
-
-  /* Top nav breadcrumb hide */
-  .top-nav .nav-breadcrumb { display: none; }
-
-  /* Header compact */
-  .header {
-    padding: 12px 14px;
-    flex-wrap: nowrap;
-    gap: 10px;
-  }
-  .logo-text h1 { font-size: 14px; }
-  .logo-text p  { display: none; }
-  .logo-icon    { width: 34px; height: 34px; font-size: 15px; }
-
-  /* Countdown compact */
-  .exam-countdown { padding: 5px 10px; }
-  .exam-countdown .days  { font-size: 18px; }
-  .exam-countdown .label { font-size: 10px; }
-
-  /* Container: remove flex, stack vertically */
-  .container {
-    display: block;
-    min-height: unset;
-  }
-
-  /* Main padding */
-  .main {
-    padding: 18px 14px;
-    max-width: 100%;
-  }
-
-  /* Topic header */
-  .topic-header h2 { font-size: 20px; line-height: 1.3; }
-  .topic-header p  { font-size: 13px; }
-
-  /* Cards */
-  .card {
-    padding: 14px;
-    border-radius: 12px;
-    margin-bottom: 14px;
-  }
-  .card h3       { font-size: 14px; gap: 6px; }
-  .card h3 span  { font-size: 17px; }
-  .card p,
-  .card li       { font-size: 13px; line-height: 1.7; }
-
-  /* Code blocks */
-  .code-block { border-radius: 10px; margin: 12px 0; }
-  .code-block pre {
-    font-size: 11.5px;
-    padding: 12px;
-    line-height: 1.7;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .code-header { padding: 7px 12px; }
-  .code-header span { font-size: 11px; }
-
-  /* Info boxes */
-  .info-box { font-size: 13px; padding: 12px; border-radius: 10px; }
-  .info-box strong { font-size: 11px; }
-
-  /* Tables — horizontal scroll on mobile */
-  .card { overflow-x: auto; }
-  table  { font-size: 11.5px; min-width: 360px; }
-  th     { padding: 8px 10px; font-size: 11px; }
-  td     { padding: 8px 10px; }
-
-  /* Quiz cards */
-  .quiz-card    { padding: 14px; border-radius: 12px; }
-  .question     { font-size: 14px; }
-  .option       { padding: 10px 12px; font-size: 13px; gap: 8px; }
-  .option-label { width: 24px; height: 24px; font-size: 11px; }
-  .quiz-result  { font-size: 13px; padding: 10px 12px; }
-
-  /* Footer */
-  .footer { padding: 20px 14px; }
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  .footer-links { flex-wrap: wrap; gap: 12px; }
-  .footer-links a { font-size: 13px; }
-  .footer-copy { font-size: 11px; text-align: left; }
-
-  /* Sidebar drawer width on small screens */
-  .sidebar-drawer { width: 260px; }
-}
-
-/* ── SMALL PHONES (≤480px) ─────────────────────── */
-@media (max-width: 480px) {
-
-  .top-nav { padding: 0 12px; }
-  .top-nav a { font-size: 12px; }
-
-  .header { padding: 10px 12px; }
-  .logo-icon { width: 30px; height: 30px; font-size: 13px; border-radius: 8px; }
-  .logo-text h1 { font-size: 13px; }
-
-  .main { padding: 14px 10px; }
-  .topic-header { margin-bottom: 20px; }
-  .topic-header h2 { font-size: 18px; }
-  .topic-tag { font-size: 10px; padding: 3px 10px; }
-
-  .card { padding: 12px; }
-  .card h3 { font-size: 13px; }
-
-  .code-block pre { font-size: 11px; padding: 10px; }
-
-  table  { font-size: 11px; }
-  th, td { padding: 7px 8px; }
-
-  .quiz-card  { padding: 12px; }
-  .question   { font-size: 13px; }
-  .option     { padding: 9px 10px; font-size: 12px; }
-
-  .footer { padding: 16px 10px; }
-  .footer-brand-text h4 { font-size: 13px; }
-  .footer-brand-text p  { font-size: 11px; }
-
-  /* Drawer full-width on very small phones */
-  .sidebar-drawer { width: 85vw; }
-}
-
-/* ── LANDSCAPE PHONES ──────────────────────────── */
-@media (max-width: 768px) and (orientation: landscape) {
-  .header { padding: 8px 14px; }
-  .logo-text h1 { font-size: 13px; }
-  .exam-countdown .days { font-size: 16px; }
-  .main { padding: 14px; }
-}
 </style>
 </head>
 <body>
@@ -479,22 +497,21 @@
 <div class="sidebar-drawer" id="sidebarDrawer">
   <button class="drawer-close" onclick="closeMobileMenu()">✕</button>
   <div class="drawer-title">📚 Topics</div>
-  <div class="nav-item active" id="drawer-intro" onclick="showSection('intro', true)"><span class="num">01</span> Introduction to IT</div>
-  <div class="nav-item" id="drawer-hardware" onclick="showSection('hardware', true)"><span class="num">02</span> Computer Hardware</div>
-  <div class="nav-item" id="drawer-software" onclick="showSection('software', true)"><span class="num">03</span> Software</div>
-  <div class="nav-item" id="drawer-os" onclick="showSection('os', true)"><span class="num">04</span> Operating System</div>
-  <div class="nav-item" id="drawer-network" onclick="showSection('network', true)"><span class="num">05</span> Networking</div>
-  <div class="nav-item" id="drawer-internet" onclick="showSection('internet', true)"><span class="num">06</span> Internet & Web</div>
-  <div class="nav-item" id="drawer-database" onclick="showSection('database', true)"><span class="num">07</span> Database</div>
-  <div class="nav-item" id="drawer-security" onclick="showSection('security', true)"><span class="num">08</span> Cyber Security</div>
+  <div class="nav-item" id="drawer-intro"      onclick="showSection('intro', true)"><span class="num">01</span> Introduction to IT</div>
+  <div class="nav-item" id="drawer-hardware"   onclick="showSection('hardware', true)"><span class="num">02</span> Computer Hardware</div>
+  <div class="nav-item" id="drawer-software"   onclick="showSection('software', true)"><span class="num">03</span> Software</div>
+  <div class="nav-item" id="drawer-os"         onclick="showSection('os', true)"><span class="num">04</span> Operating System</div>
+  <div class="nav-item" id="drawer-network"    onclick="showSection('network', true)"><span class="num">05</span> Networking</div>
+  <div class="nav-item" id="drawer-internet"   onclick="showSection('internet', true)"><span class="num">06</span> Internet & Web</div>
+  <div class="nav-item" id="drawer-database"   onclick="showSection('database', true)"><span class="num">07</span> Database</div>
+  <div class="nav-item" id="drawer-security"   onclick="showSection('security', true)"><span class="num">08</span> Cyber Security</div>
   <div class="nav-item" id="drawer-multimedia" onclick="showSection('multimedia', true)"><span class="num">09</span> Multimedia</div>
-  <div class="nav-item" id="drawer-ecommerce" onclick="showSection('ecommerce', true)"><span class="num">10</span> E-Commerce & AI</div>
-  <div class="nav-item" id="drawer-quiz" onclick="showSection('quiz', true)"><span class="num">🎯</span> Practice Quiz</div>
+  <div class="nav-item" id="drawer-ecommerce"  onclick="showSection('ecommerce', true)"><span class="num">10</span> E-Commerce & AI</div>
+  <div class="nav-item" id="drawer-quiz"       onclick="showSection('quiz', true)"><span class="num">🎯</span> Practice Quiz</div>
 </div>
 
 <div class="page-wrapper">
 
-<!-- Top nav with home link -->
 <nav class="top-nav">
   <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener">
     <span>←</span> Home — hemrajadhikari.info.np
@@ -518,19 +535,41 @@
       <p>जेठ २०८१ • BIT / CSIT / BCA Complete Guide</p>
     </div>
   </div>
-  <div style="display:flex; align-items:center; gap:12px;">
+
+  <!-- Desktop nav buttons -->
+  <nav class="header-nav" id="headerNav">
+    <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener" class="header-nav-btn">
+      🏠 Home
+    </a>
+    <a href="https://hemrajadhikari.info.np/contact.html" target="_blank" rel="noopener" class="header-nav-btn">
+      ✉️ Contact
+    </a>
+    <div class="header-nav-divider"></div>
+    <a href="https://hemrajadhikari.info.np/programs.html" target="_blank" rel="noopener" class="header-nav-btn cta">
+      🎓 Buy Courses
+    </a>
+  </nav>
+
+  <div style="display:flex; align-items:center; gap:10px;">
     <button class="mobile-menu-btn" onclick="openMobileMenu()">☰ Topics</button>
     <div class="exam-countdown">
       <div class="days" id="daysLeft">--</div>
       <div class="label">दिन बाँकी</div>
     </div>
   </div>
+
+  <!-- Mobile-only nav row -->
+  <div class="header-nav-mobile">
+    <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener" class="header-nav-btn">🏠 Home</a>
+    <a href="https://hemrajadhikari.info.np/contact.html" target="_blank" rel="noopener" class="header-nav-btn">✉️ Contact</a>
+    <a href="https://hemrajadhikari.info.np/programs.html" target="_blank" rel="noopener" class="header-nav-btn cta">🎓 Buy Courses</a>
+  </div>
 </div>
 
 <div class="container">
   <div class="sidebar">
     <div class="sidebar-title">Topics</div>
-    <div class="nav-item active" onclick="showSection('intro')"><span class="num">01</span> Introduction to IT</div>
+    <div class="nav-item" onclick="showSection('intro')"><span class="num">01</span> Introduction to IT</div>
     <div class="nav-item" onclick="showSection('hardware')"><span class="num">02</span> Computer Hardware</div>
     <div class="nav-item" onclick="showSection('software')"><span class="num">03</span> Software</div>
     <div class="nav-item" onclick="showSection('os')"><span class="num">04</span> Operating System</div>
@@ -611,6 +650,8 @@
           <tr><td>Microcomputer</td><td>Personal use</td><td>PC, Laptop, Tablet</td></tr>
         </table>
       </div>
+
+      <div class="lesson-nav" id="nav-intro"></div>
     </div>
 
     <!-- HARDWARE -->
@@ -695,6 +736,8 @@
           1 KB = 1024 B | 1 MB = 1024 KB | 1 GB = 1024 MB | 1 TB = 1024 GB
         </div>
       </div>
+
+      <div class="lesson-nav" id="nav-hardware"></div>
     </div>
 
     <!-- SOFTWARE -->
@@ -757,6 +800,8 @@
           <li><strong style="color:var(--accent)">Public Domain:</strong> कुनै restriction छैन</li>
         </ul>
       </div>
+
+      <div class="lesson-nav" id="nav-software"></div>
     </div>
 
     <!-- OPERATING SYSTEM -->
@@ -827,6 +872,8 @@
 <span class="kw">Priority</span> - High priority पहिले</pre>
         </div>
       </div>
+
+      <div class="lesson-nav" id="nav-os"></div>
     </div>
 
     <!-- NETWORKING -->
@@ -901,6 +948,8 @@
           Application → Transport → Internet → Network Access | यो OSI भन्दा simplify हो।
         </div>
       </div>
+
+      <div class="lesson-nav" id="nav-network"></div>
     </div>
 
     <!-- INTERNET -->
@@ -977,6 +1026,8 @@ Receiver ← <span class="fn">POP3/IMAP</span> (receive) ←
 <span class="cm">// IMAP = Internet Message Access Protocol (sync)</span></pre>
         </div>
       </div>
+
+      <div class="lesson-nav" id="nav-internet"></div>
     </div>
 
     <!-- DATABASE -->
@@ -998,7 +1049,7 @@ Receiver ← <span class="fn">POP3/IMAP</span> (receive) ←
         </ul>
         <div class="info-box imp">
           <strong>🔴 DBMS Advantages</strong>
-          Data redundancy कम | Data integrity | Data security | Easy data sharing | Backup & Recovery
+          Data redundancy कम | Data integrity | Data security | Easy data sharing | Backup &amp; Recovery
         </div>
       </div>
 
@@ -1032,7 +1083,7 @@ Receiver ← <span class="fn">POP3/IMAP</span> (receive) ←
         <h3><span>📊</span> Database Models</h3>
         <table>
           <tr><th>Model</th><th>Structure</th><th>Example</th></tr>
-          <tr><td>Relational</td><td>Tables (rows & columns)</td><td>MySQL, Oracle, PostgreSQL</td></tr>
+          <tr><td>Relational</td><td>Tables (rows &amp; columns)</td><td>MySQL, Oracle, PostgreSQL</td></tr>
           <tr><td>Hierarchical</td><td>Tree structure</td><td>IBM IMS</td></tr>
           <tr><td>Network</td><td>Graph structure</td><td>IDS</td></tr>
           <tr><td>Object-oriented</td><td>Objects</td><td>MongoDB (NoSQL)</td></tr>
@@ -1042,6 +1093,8 @@ Receiver ← <span class="fn">POP3/IMAP</span> (receive) ←
           Relational DBMS (RDBMS) सबैभन्दा popular। SQL = Structured Query Language।
         </div>
       </div>
+
+      <div class="lesson-nav" id="nav-database"></div>
     </div>
 
     <!-- SECURITY -->
@@ -1095,6 +1148,8 @@ Receiver ← <span class="fn">POP3/IMAP</span> (receive) ←
           Symmetric: same key encrypt/decrypt (AES, DES) | Asymmetric: public/private key pair (RSA) | Hashing: one-way (MD5, SHA)
         </div>
       </div>
+
+      <div class="lesson-nav" id="nav-security"></div>
     </div>
 
     <!-- MULTIMEDIA -->
@@ -1153,6 +1208,8 @@ Receiver ← <span class="fn">POP3/IMAP</span> (receive) ←
           <li><strong style="color:var(--accent)">Augmented Reality (AR):</strong> Real world + digital overlay</li>
         </ul>
       </div>
+
+      <div class="lesson-nav" id="nav-multimedia"></div>
     </div>
 
     <!-- E-COMMERCE & AI -->
@@ -1218,6 +1275,8 @@ Receiver ← <span class="fn">POP3/IMAP</span> (receive) ←
           <li><strong style="color:var(--accent)">Quantum Computing:</strong> Quantum bits (qubits) — exponentially faster</li>
         </ul>
       </div>
+
+      <div class="lesson-nav" id="nav-ecommerce"></div>
     </div>
 
     <!-- QUIZ -->
@@ -1233,7 +1292,12 @@ Receiver ← <span class="fn">POP3/IMAP</span> (receive) ←
       <div class="card" style="margin-top:24px; text-align:center;">
         <div id="scoreDisplay" style="font-size:24px; font-weight:700; color:var(--accent); margin-bottom:8px;"></div>
         <div id="scoreSub" style="color:var(--muted); font-size:14px;"></div>
+        <div id="retryBtn" style="display:none; margin-top:16px;">
+          <button onclick="resetQuiz()" style="padding:12px 28px; background:rgba(0,212,170,0.15); border:1px solid var(--accent); color:var(--accent); border-radius:10px; cursor:pointer; font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:600; transition:all 0.2s;" onmouseover="this.style.background='rgba(0,212,170,0.25)'" onmouseout="this.style.background='rgba(0,212,170,0.15)'">🔄 Retry Quiz</button>
+        </div>
       </div>
+
+      <div class="lesson-nav" id="nav-quiz"></div>
     </div>
 
   </div>
@@ -1241,7 +1305,6 @@ Receiver ← <span class="fn">POP3/IMAP</span> (receive) ←
 
 </div><!-- end .page-content -->
 
-<!-- Footer -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
@@ -1254,7 +1317,8 @@ Receiver ← <span class="fn">POP3/IMAP</span> (receive) ←
     <div class="footer-links">
       <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener">🏠 Home</a>
       <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener">🐙 GitHub</a>
-      <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">⬆ Back to Top</a>
+      <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener">💼 LinkedIn</a>
+      <a href="#" onclick="showSection('intro'); return false;">⬆ Back to Top</a>
     </div>
   </div>
   <div class="footer-copy">
@@ -1265,14 +1329,103 @@ Receiver ← <span class="fn">POP3/IMAP</span> (receive) ←
 </div><!-- end .page-wrapper -->
 
 <script>
-function updateCountdown() {
-  const exam = new Date('2025-06-25');
-  const now = new Date();
-  const diff = Math.ceil((exam - now) / (1000*60*60*24));
-  document.getElementById('daysLeft').textContent = diff > 0 ? diff : '🎉';
-}
-updateCountdown();
+// ══════════════════════════════════════
+// SECTION DATA
+// ══════════════════════════════════════
+const sections = [
+  { id: 'intro',      title: 'Introduction to IT',   num: '01' },
+  { id: 'hardware',   title: 'Computer Hardware',     num: '02' },
+  { id: 'software',   title: 'Software',              num: '03' },
+  { id: 'os',         title: 'Operating System',      num: '04' },
+  { id: 'network',    title: 'Networking',            num: '05' },
+  { id: 'internet',   title: 'Internet & Web',        num: '06' },
+  { id: 'database',   title: 'Database',              num: '07' },
+  { id: 'security',   title: 'Cyber Security',        num: '08' },
+  { id: 'multimedia', title: 'Multimedia',            num: '09' },
+  { id: 'ecommerce',  title: 'E-Commerce & AI',       num: '10' },
+  { id: 'quiz',       title: 'Practice Quiz',         num: '🎯' },
+];
 
+// ══════════════════════════════════════
+// BUILD LESSON NAV BARS
+// ══════════════════════════════════════
+function buildLessonNavs() {
+  sections.forEach((sec, idx) => {
+    const container = document.getElementById('nav-' + sec.id);
+    if (!container) return;
+
+    const prev = idx > 0 ? sections[idx - 1] : null;
+    const next = idx < sections.length - 1 ? sections[idx + 1] : null;
+    const isQuiz = sec.id === 'quiz';
+
+    let html = '';
+
+    html += `<div class="lesson-nav-progress">
+      <span>${idx + 1}</span> / ${sections.length} — ${sec.title}
+    </div>`;
+
+    if (prev) {
+      html += `<button class="lesson-nav-btn prev" onclick="showSection('${prev.id}')">
+        <span class="nav-arrow">←</span>
+        <div>
+          <span class="nav-label">Previous</span>
+          <span class="nav-title">${prev.num} ${prev.title}</span>
+        </div>
+      </button>`;
+    } else {
+      html += `<div style="flex:1;max-width:240px;"></div>`;
+    }
+
+    if (!isQuiz) {
+      html += `<button class="lesson-nav-quiz-btn" onclick="showSection('quiz')">
+        🎯 Practice Quiz
+      </button>`;
+    }
+
+    if (next) {
+      html += `<button class="lesson-nav-btn next" onclick="showSection('${next.id}')">
+        <div style="text-align:right;">
+          <span class="nav-label">Next</span>
+          <span class="nav-title">${next.num} ${next.title}</span>
+        </div>
+        <span class="nav-arrow">→</span>
+      </button>`;
+    } else {
+      html += `<div style="flex:1;max-width:240px;"></div>`;
+    }
+
+    container.innerHTML = html;
+  });
+}
+
+// ══════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════
+function showSection(id, fromDrawer) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('.sidebar .nav-item').forEach(n => {
+    if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'"+id+"'")) {
+      n.classList.add('active');
+    }
+  });
+  const drawerItem = document.getElementById('drawer-' + id);
+  if (drawerItem) drawerItem.classList.add('active');
+
+  if (fromDrawer) closeMobileMenu();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Set first sidebar item active on load
+document.querySelector('.sidebar .nav-item').classList.add('active');
+document.getElementById('drawer-intro').classList.add('active');
+
+// ══════════════════════════════════════
+// MOBILE DRAWER
+// ══════════════════════════════════════
 function openMobileMenu() {
   document.getElementById('sidebarOverlay').classList.add('open');
   document.getElementById('sidebarDrawer').classList.add('open');
@@ -1284,19 +1437,20 @@ function closeMobileMenu() {
   document.body.style.overflow = '';
 }
 
-function showSection(id, fromDrawer) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.sidebar .nav-item').forEach(n => {
-    if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'"+id+"'")) n.classList.add('active');
-  });
-  const drawerItem = document.getElementById('drawer-' + id);
-  if (drawerItem) drawerItem.classList.add('active');
-  if (fromDrawer) closeMobileMenu();
-  window.scrollTo({top:0, behavior:'smooth'});
+// ══════════════════════════════════════
+// COUNTDOWN
+// ══════════════════════════════════════
+function updateCountdown() {
+  const exam = new Date('2025-06-25');
+  const now = new Date();
+  const diff = Math.ceil((exam - now) / (1000*60*60*24));
+  document.getElementById('daysLeft').textContent = diff > 0 ? diff : '🎉';
 }
+updateCountdown();
 
+// ══════════════════════════════════════
+// QUIZ DATA
+// ══════════════════════════════════════
 const questions = [
   {
     q: "Computer को कुन generation मा Transistor प्रयोग भयो?",
@@ -1384,6 +1538,10 @@ let answered = 0, correct = 0;
 
 function buildQuiz() {
   const container = document.getElementById('quizContainer');
+  container.innerHTML = '';
+  answered = 0; correct = 0;
+  updateScore();
+
   questions.forEach((q, idx) => {
     const div = document.createElement('div');
     div.className = 'quiz-card';
@@ -1401,6 +1559,7 @@ function buildQuiz() {
     `;
     container.appendChild(div);
   });
+  document.getElementById('retryBtn').style.display = 'none';
 }
 
 function answer(el, qIdx, optIdx) {
@@ -1427,11 +1586,32 @@ function answer(el, qIdx, optIdx) {
 function updateScore() {
   const scoreEl = document.getElementById('scoreDisplay');
   const subEl = document.getElementById('scoreSub');
+  const retryBtn = document.getElementById('retryBtn');
+
+  if (answered === 0) {
+    scoreEl.textContent = '';
+    subEl.textContent = `${questions.length} questions — answer to see your score`;
+    return;
+  }
+
+  const pct = Math.round((correct / answered) * 100);
   scoreEl.textContent = `${correct} / ${answered} सही`;
-  const pct = Math.round((correct/answered)*100);
   subEl.textContent = `${pct}% • ${answered === questions.length ? '🎉 सबै प्रश्न सकियो!' : `${questions.length - answered} प्रश्न बाँकी`}`;
+
+  if (answered === questions.length) {
+    retryBtn.style.display = 'block';
+  }
 }
 
+function resetQuiz() {
+  buildQuiz();
+  window.scrollTo({ top: document.getElementById('quiz').offsetTop - 100, behavior: 'smooth' });
+}
+
+// ══════════════════════════════════════
+// INIT
+// ══════════════════════════════════════
+buildLessonNavs();
 buildQuiz();
 </script>
 </body>
