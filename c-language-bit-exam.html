@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ne">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C Language - BIT Exam 2081</title>
+<title>C Language — BIT Exam 2081 | Hemraj Adhikari</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Tiro+Devanagari+Hindi:ital@0;1&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -45,11 +45,7 @@
     backdrop-filter: blur(10px);
   }
 
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .logo { display: flex; align-items: center; gap: 12px; }
 
   .logo-icon {
     width: 40px; height: 40px;
@@ -62,16 +58,8 @@
     color: #000;
   }
 
-  .logo-text h1 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  .logo-text p {
-    font-size: 12px;
-    color: var(--muted);
-  }
+  .logo-text h1 { font-size: 18px; font-weight: 700; color: var(--accent); }
+  .logo-text p { font-size: 12px; color: var(--muted); }
 
   .exam-countdown {
     background: linear-gradient(135deg, #1a0a0a, #2d1010);
@@ -80,24 +68,11 @@
     padding: 8px 16px;
     text-align: center;
   }
-
-  .exam-countdown .days {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--accent2);
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .exam-countdown .label {
-    font-size: 11px;
-    color: var(--muted);
-  }
+  .exam-countdown .days { font-size: 24px; font-weight: 700; color: var(--accent2); font-family: 'JetBrains Mono', monospace; }
+  .exam-countdown .label { font-size: 11px; color: var(--muted); }
 
   /* Layout */
-  .container {
-    display: flex;
-    min-height: calc(100vh - 81px);
-  }
+  .container { display: flex; min-height: calc(100vh - 81px); }
 
   /* Sidebar */
   .sidebar {
@@ -112,14 +87,7 @@
     flex-shrink: 0;
   }
 
-  .sidebar-title {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 0 20px 12px;
-  }
+  .sidebar-title { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; padding: 0 20px 12px; }
 
   .nav-item {
     display: flex;
@@ -131,35 +99,18 @@
     transition: all 0.2s;
     font-size: 14px;
   }
-
   .nav-item:hover { background: var(--surface2); }
-  .nav-item.active {
-    background: rgba(0, 212, 170, 0.1);
-    border-left-color: var(--accent);
-    color: var(--accent);
-  }
+  .nav-item.active { background: rgba(0, 212, 170, 0.1); border-left-color: var(--accent); color: var(--accent); }
+  .nav-item .num { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; min-width: 24px; }
 
-  .nav-item .num {
-    font-size: 11px;
-    color: var(--muted);
-    font-family: 'JetBrains Mono', monospace;
-    min-width: 24px;
-  }
-
-  /* Main Content */
-  .main {
-    flex: 1;
-    padding: 32px;
-    max-width: 860px;
-  }
+  /* Main */
+  .main { flex: 1; padding: 32px; max-width: 860px; }
 
   .section { display: none; }
   .section.active { display: block; }
 
   /* Topic Card */
-  .topic-header {
-    margin-bottom: 32px;
-  }
+  .topic-header { margin-bottom: 32px; }
 
   .topic-tag {
     display: inline-block;
@@ -175,18 +126,8 @@
     letter-spacing: 1px;
   }
 
-  .topic-header h2 {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 8px;
-  }
-
-  .topic-header p {
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.6;
-  }
+  .topic-header h2 { font-size: 32px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+  .topic-header p { color: var(--muted); font-size: 15px; line-height: 1.6; }
 
   /* Cards */
   .card {
@@ -197,27 +138,10 @@
     margin-bottom: 20px;
     transition: border-color 0.2s;
   }
-
   .card:hover { border-color: #334155; }
-
-  .card h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: var(--accent3);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
+  .card h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--accent3); display: flex; align-items: center; gap: 8px; }
   .card h3 span { font-size: 20px; }
-
-  .card p, .card li {
-    color: #94a3b8;
-    font-size: 14px;
-    line-height: 1.8;
-  }
-
+  .card p, .card li { color: #94a3b8; font-size: 14px; line-height: 1.8; }
   .card ul { padding-left: 20px; }
   .card li { margin-bottom: 6px; }
 
@@ -229,35 +153,13 @@
     margin: 16px 0;
     overflow: hidden;
   }
-
-  .code-header {
-    background: #161b22;
-    padding: 8px 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 1px solid #21262d;
-  }
-
-  .code-header span {
-    font-size: 12px;
-    color: var(--muted);
-    font-family: 'JetBrains Mono', monospace;
-  }
-
+  .code-header { background: #161b22; padding: 8px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #21262d; }
+  .code-header span { font-size: 12px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
   .dot { width: 10px; height: 10px; border-radius: 50%; }
   .dot.r { background: #ff5f56; }
   .dot.y { background: #ffbd2e; }
   .dot.g { background: #27c93f; }
-
-  .code-block pre {
-    padding: 20px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    line-height: 1.8;
-    overflow-x: auto;
-    color: #e6edf3;
-  }
+  .code-block pre { padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.8; overflow-x: auto; color: #e6edf3; }
 
   .kw { color: #ff7b72; }
   .fn { color: #d2a8ff; }
@@ -267,27 +169,10 @@
   .hd { color: #ffa657; }
   .op { color: #ff7b72; }
 
-  /* Quiz Section */
-  .quiz-card {
-    background: var(--surface);
-    border: 1px solid #1e293b;
-    border-radius: 16px;
-    padding: 24px;
-    margin-bottom: 20px;
-  }
-
-  .question {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 16px;
-    line-height: 1.6;
-  }
-
-  .options {
-    display: grid;
-    gap: 10px;
-  }
-
+  /* Quiz */
+  .quiz-card { background: var(--surface); border: 1px solid #1e293b; border-radius: 16px; padding: 24px; margin-bottom: 20px; }
+  .question { font-size: 16px; font-weight: 500; margin-bottom: 16px; line-height: 1.6; }
+  .options { display: grid; gap: 10px; }
   .option {
     padding: 12px 16px;
     background: var(--surface2);
@@ -300,66 +185,31 @@
     align-items: center;
     gap: 10px;
   }
-
   .option:hover { border-color: var(--accent); color: var(--accent); }
   .option.correct { background: rgba(34,197,94,0.15); border-color: var(--green); color: var(--green); }
   .option.wrong { background: rgba(239,68,68,0.1); border-color: var(--red); color: var(--red); }
-
   .option-label {
     width: 26px; height: 26px;
     border-radius: 6px;
     background: #1e293b;
     display: flex; align-items: center; justify-content: center;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 12px; font-weight: 700;
     flex-shrink: 0;
     font-family: 'JetBrains Mono', monospace;
   }
-
-  .quiz-result {
-    margin-top: 12px;
-    padding: 12px 16px;
-    border-radius: 10px;
-    font-size: 14px;
-    display: none;
-  }
-
+  .quiz-result { margin-top: 12px; padding: 12px 16px; border-radius: 10px; font-size: 14px; display: none; }
   .quiz-result.show { display: block; }
   .quiz-result.correct { background: rgba(34,197,94,0.1); border: 1px solid var(--green); color: var(--green); }
   .quiz-result.wrong { background: rgba(239,68,68,0.1); border: 1px solid var(--red); color: var(--red); }
 
-  /* Progress */
-  .progress-bar {
-    background: #1e293b;
-    border-radius: 99px;
-    height: 6px;
-    margin-top: 6px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    border-radius: 99px;
-    background: linear-gradient(90deg, var(--accent), var(--accent3));
-    transition: width 0.4s ease;
-  }
-
   /* Info boxes */
-  .info-box {
-    border-radius: 12px;
-    padding: 16px;
-    margin: 16px 0;
-    font-size: 14px;
-    line-height: 1.7;
-  }
-
+  .info-box { border-radius: 12px; padding: 16px; margin: 16px 0; font-size: 14px; line-height: 1.7; }
   .info-box.tip { background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.3); color: #c4b5fd; }
   .info-box.warn { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); color: #fcd34d; }
   .info-box.imp { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; }
-
   .info-box strong { display: block; margin-bottom: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
 
-  /* Table */
+  /* Tables */
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th { background: var(--surface2); padding: 10px 14px; text-align: left; color: var(--accent); font-weight: 600; border-bottom: 1px solid #1e293b; }
   td { padding: 10px 14px; border-bottom: 1px solid #1e293b; color: #94a3b8; font-family: 'JetBrains Mono', monospace; }
@@ -370,7 +220,7 @@
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: #334155; border-radius: 99px; }
 
-  /* Top navbar for home link */
+  /* Top navbar */
   .top-nav {
     background: rgba(10,14,26,0.98);
     border-bottom: 1px solid #1e293b;
@@ -381,32 +231,13 @@
     height: 44px;
     backdrop-filter: blur(10px);
   }
-
-  .top-nav a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: color 0.2s;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
+  .top-nav a { color: var(--muted); text-decoration: none; font-size: 13px; display: flex; align-items: center; gap: 6px; transition: color 0.2s; font-family: 'JetBrains Mono', monospace; }
   .top-nav a:hover { color: var(--accent); }
-
-  .top-nav .nav-breadcrumb {
-    font-size: 12px;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
+  .top-nav .nav-breadcrumb { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
   .top-nav .nav-breadcrumb span { color: #334155; }
   .top-nav .nav-breadcrumb .current { color: var(--accent3); }
 
-  /* Mobile hamburger */
+  /* Mobile */
   .mobile-menu-btn {
     display: none;
     background: none;
@@ -415,12 +246,11 @@
     padding: 8px 12px;
     cursor: pointer;
     color: var(--text);
-    font-size: 18px;
+    font-size: 14px;
     transition: border-color 0.2s;
   }
   .mobile-menu-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* Mobile drawer */
   .sidebar-overlay {
     display: none;
     position: fixed;
@@ -458,293 +288,248 @@
     transition: color 0.2s;
   }
   .drawer-close:hover { color: var(--text); }
+  .drawer-title { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; padding: 0 20px 12px; padding-top: 8px; }
 
-  .drawer-title {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 0 20px 12px;
-    padding-top: 8px;
-  }
-
-  /* Footer */
-  .footer {
-    background: var(--surface);
-    border-top: 1px solid #1e293b;
-    padding: 32px 40px;
-    margin-top: auto;
-  }
-
-  .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
+  /* ═══════════════════════════════════
+     PREV / NEXT / QUIZ NAVIGATION BAR
+     ═══════════════════════════════════ */
+  .lesson-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
+    margin-top: 40px;
+    margin-bottom: 8px;
+    padding: 20px 0 0;
+    border-top: 1px solid #1e293b;
     flex-wrap: wrap;
-    gap: 16px;
   }
 
-  .footer-brand {
+  .lesson-nav-btn {
     display: flex;
     align-items: center;
     gap: 10px;
-  }
-
-  .footer-brand .logo-icon {
-    width: 32px; height: 32px;
-    font-size: 14px;
-  }
-
-  .footer-brand-text h4 {
-    font-size: 14px;
-    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid #1e293b;
+    background: var(--surface);
     color: var(--text);
-  }
-
-  .footer-brand-text p {
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .footer-links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .footer-links a {
-    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
     text-decoration: none;
-    font-size: 13px;
+    min-width: 0;
+    flex: 1;
+    max-width: 240px;
+  }
+  .lesson-nav-btn:hover {
+    border-color: var(--accent);
+    background: rgba(0,212,170,0.08);
+    color: var(--accent);
+  }
+  .lesson-nav-btn.prev { justify-content: flex-start; }
+  .lesson-nav-btn.next { justify-content: flex-end; margin-left: auto; }
+  .lesson-nav-btn .nav-arrow { font-size: 18px; flex-shrink: 0; }
+  .lesson-nav-btn .nav-label { font-size: 11px; color: var(--muted); display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 1px; }
+  .lesson-nav-btn .nav-title { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 160px; }
+  .lesson-nav-btn:hover .nav-label { color: inherit; }
+
+  .lesson-nav-quiz-btn {
     display: flex;
     align-items: center;
-    gap: 5px;
-    transition: color 0.2s;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(167,139,250,0.4);
+    background: rgba(167,139,250,0.1);
+    color: var(--accent3);
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+    flex-shrink: 0;
   }
-  .footer-links a:hover { color: var(--accent); }
+  .lesson-nav-quiz-btn:hover {
+    background: rgba(167,139,250,0.2);
+    border-color: var(--accent3);
+    transform: translateY(-1px);
+  }
 
-  .footer-copy {
-    font-size: 12px;
-    color: #334155;
+  /* Progress indicator in lesson nav */
+  .lesson-nav-progress {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
     text-align: center;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #1e293b;
+    flex-shrink: 0;
   }
+  .lesson-nav-progress span { color: var(--accent); }
 
+  /* Footer */
+  .footer { background: var(--surface); border-top: 1px solid #1e293b; padding: 32px 40px; margin-top: auto; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-brand { display: flex; align-items: center; gap: 10px; }
+  .footer-brand .logo-icon { width: 32px; height: 32px; font-size: 14px; }
+  .footer-brand-text h4 { font-size: 14px; font-weight: 700; color: var(--text); }
+  .footer-brand-text p { font-size: 12px; color: var(--muted); }
+  .footer-links { display: flex; align-items: center; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; display: flex; align-items: center; gap: 5px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-copy { font-size: 12px; color: #334155; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #1e293b; }
   .footer-copy a { color: var(--accent); text-decoration: none; }
 
-  /* Page wrapper */
-  .page-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
+  .page-wrapper { display: flex; flex-direction: column; min-height: 100vh; }
   .page-content { flex: 1; }
 
-  @media (max-width: 768px) {
-    .sidebar { display: none; }
-    .mobile-menu-btn { display: flex; align-items: center; gap: 6px; font-size: 14px; }
-    .main { padding: 20px 16px; }
-    .topic-header h2 { font-size: 22px; }
-    .header { padding: 14px 16px; }
-    .logo-text h1 { font-size: 15px; }
-    .logo-text p { display: none; }
-    .exam-countdown { padding: 6px 12px; }
-    .exam-countdown .days { font-size: 20px; }
-    .card { padding: 16px; }
-    .code-block pre { font-size: 12px; padding: 14px; }
-    table { font-size: 12px; }
-    td, th { padding: 8px 10px; }
-    .top-nav .nav-breadcrumb { display: none; }
-    .footer { padding: 24px 16px; }
-    .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
-    .footer-links { flex-wrap: wrap; gap: 14px; }
-    .container { min-height: unset; }
-  }
-
-  @media (max-width: 480px) {
-    .topic-header h2 { font-size: 20px; }
-    .card h3 { font-size: 15px; }
-    .header { padding: 12px 14px; }
-  }
-  /* ═══════════════════════════════════════════════
-   MOBILE RESPONSIVE — c-language-bit-exam.html
-   ═══════════════════════════════════════════════ */
-
-@media (max-width: 768px) {
-
-  /* Hide desktop sidebar, show hamburger */
-  .sidebar { display: none; }
-  .mobile-menu-btn {
+  /* ═══════════════════════════════
+     HEADER NAV BUTTONS
+     ═══════════════════════════════ */
+  .header-nav {
     display: flex;
     align-items: center;
     gap: 6px;
+  }
+  .header-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 9px;
+    border: 1px solid #1e293b;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 13px;
-    padding: 8px 12px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .header-nav-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,212,170,0.07);
+  }
+  .header-nav-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,212,170,0.1);
+  }
+  .header-nav-btn.cta {
+    border-color: var(--accent2);
+    color: var(--accent2);
+    background: rgba(255,107,53,0.1);
+    font-weight: 600;
+  }
+  .header-nav-btn.cta:hover {
+    background: rgba(255,107,53,0.2);
+    border-color: var(--accent2);
+    color: var(--accent2);
+    transform: translateY(-1px);
+  }
+  .header-nav-divider {
+    width: 1px;
+    height: 20px;
+    background: #1e293b;
+    margin: 0 4px;
   }
 
-  /* Top nav breadcrumb hide */
-  .top-nav .nav-breadcrumb { display: none; }
-
-  /* Header compact */
-  .header {
-    padding: 12px 14px;
-    flex-wrap: nowrap;
-    gap: 10px;
-  }
-  .logo-text h1 { font-size: 14px; }
-  .logo-text p  { display: none; }
-  .logo-icon    { width: 34px; height: 34px; font-size: 15px; }
-
-  /* Countdown compact */
-  .exam-countdown { padding: 5px 10px; }
-  .exam-countdown .days  { font-size: 18px; }
-  .exam-countdown .label { font-size: 10px; }
-
-  /* Container: remove flex, stack vertically */
-  .container {
-    display: block;
-    min-height: unset;
+  .header-nav-mobile {
+    display: none;
   }
 
-  /* Main padding */
-  .main {
-    padding: 18px 14px;
-    max-width: 100%;
+  /* ═══════════════════════════════
+     MOBILE RESPONSIVE
+     ═══════════════════════════════ */
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .mobile-menu-btn { display: flex; align-items: center; gap: 6px; }
+    .top-nav .nav-breadcrumb { display: none; }
+    .header { padding: 12px 14px; flex-wrap: wrap; gap: 0; row-gap: 0; }
+    .logo-text h1 { font-size: 14px; }
+    .logo-text p { display: none; }
+    .logo-icon { width: 34px; height: 34px; font-size: 15px; }
+    .exam-countdown { padding: 5px 10px; }
+    .exam-countdown .days { font-size: 18px; }
+    /* Hide desktop nav, show mobile nav row */
+    .header-nav { display: none !important; }
+    .header-nav-mobile {
+      display: flex;
+      width: 100%;
+      gap: 6px;
+      padding: 10px 0 2px;
+      border-top: 1px solid #1e293b;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .header-nav-mobile .header-nav-btn { padding: 7px 12px; font-size: 12px; flex: 1; justify-content: center; text-align: center; }
+    .container { display: block; min-height: unset; }
+    .main { padding: 18px 14px; max-width: 100%; }
+    .topic-header h2 { font-size: 20px; }
+    .topic-header p { font-size: 13px; }
+    .card { padding: 14px; border-radius: 12px; margin-bottom: 14px; overflow-x: auto; }
+    .card h3 { font-size: 14px; }
+    .card p, .card li { font-size: 13px; }
+    .code-block pre { font-size: 11.5px; padding: 12px; }
+    .info-box { font-size: 13px; padding: 12px; }
+    table { font-size: 11.5px; min-width: 360px; }
+    th, td { padding: 8px 10px; }
+    .quiz-card { padding: 14px; }
+    .question { font-size: 14px; }
+    .option { padding: 10px 12px; font-size: 13px; }
+    .sidebar-drawer { width: 260px; }
+
+    /* Lesson nav mobile */
+    .lesson-nav { gap: 10px; }
+    .lesson-nav-btn { padding: 10px 14px; font-size: 13px; max-width: 100%; }
+    .lesson-nav-btn .nav-title { max-width: 120px; }
+    .lesson-nav-quiz-btn { padding: 10px 14px; font-size: 13px; }
+    .lesson-nav-progress { width: 100%; order: -1; text-align: center; }
+    .footer { padding: 20px 14px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-links { flex-wrap: wrap; gap: 12px; }
   }
 
-  /* Topic header */
-  .topic-header h2 { font-size: 20px; line-height: 1.3; }
-  .topic-header p  { font-size: 13px; }
-
-  /* Cards */
-  .card {
-    padding: 14px;
-    border-radius: 12px;
-    margin-bottom: 14px;
+  @media (max-width: 480px) {
+    .main { padding: 14px 10px; }
+    .topic-header h2 { font-size: 18px; }
+    .lesson-nav-btn .nav-title { max-width: 100px; }
+    .sidebar-drawer { width: 85vw; }
+    .lesson-nav { flex-direction: column; }
+    .lesson-nav-btn { max-width: 100%; width: 100%; }
+    .lesson-nav-quiz-btn { width: 100%; justify-content: center; }
+    .lesson-nav-progress { order: 0; }
   }
-  .card h3       { font-size: 14px; gap: 6px; }
-  .card h3 span  { font-size: 17px; }
-  .card p,
-  .card li       { font-size: 13px; line-height: 1.7; }
-
-  /* Code blocks */
-  .code-block { border-radius: 10px; margin: 12px 0; }
-  .code-block pre {
-    font-size: 11.5px;
-    padding: 12px;
-    line-height: 1.7;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .code-header { padding: 7px 12px; }
-  .code-header span { font-size: 11px; }
-
-  /* Info boxes */
-  .info-box { font-size: 13px; padding: 12px; border-radius: 10px; }
-  .info-box strong { font-size: 11px; }
-
-  /* Tables — horizontal scroll on mobile */
-  .card { overflow-x: auto; }
-  table  { font-size: 11.5px; min-width: 360px; }
-  th     { padding: 8px 10px; font-size: 11px; }
-  td     { padding: 8px 10px; }
-
-  /* Quiz cards */
-  .quiz-card    { padding: 14px; border-radius: 12px; }
-  .question     { font-size: 14px; }
-  .option       { padding: 10px 12px; font-size: 13px; gap: 8px; }
-  .option-label { width: 24px; height: 24px; font-size: 11px; }
-  .quiz-result  { font-size: 13px; padding: 10px 12px; }
-
-  /* Footer */
-  .footer { padding: 20px 14px; }
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  .footer-links { flex-wrap: wrap; gap: 12px; }
-  .footer-links a { font-size: 13px; }
-  .footer-copy { font-size: 11px; text-align: left; }
-
-  /* Sidebar drawer width on small screens */
-  .sidebar-drawer { width: 260px; }
-}
-
-/* ── SMALL PHONES (≤480px) ─────────────────────── */
-@media (max-width: 480px) {
-
-  .top-nav { padding: 0 12px; }
-  .top-nav a { font-size: 12px; }
-
-  .header { padding: 10px 12px; }
-  .logo-icon { width: 30px; height: 30px; font-size: 13px; border-radius: 8px; }
-  .logo-text h1 { font-size: 13px; }
-
-  .main { padding: 14px 10px; }
-  .topic-header { margin-bottom: 20px; }
-  .topic-header h2 { font-size: 18px; }
-  .topic-tag { font-size: 10px; padding: 3px 10px; }
-
-  .card { padding: 12px; }
-  .card h3 { font-size: 13px; }
-
-  .code-block pre { font-size: 11px; padding: 10px; }
-
-  table  { font-size: 11px; }
-  th, td { padding: 7px 8px; }
-
-  .quiz-card  { padding: 12px; }
-  .question   { font-size: 13px; }
-  .option     { padding: 9px 10px; font-size: 12px; }
-
-  .footer { padding: 16px 10px; }
-  .footer-brand-text h4 { font-size: 13px; }
-  .footer-brand-text p  { font-size: 11px; }
-
-  /* Drawer full-width on very small phones */
-  .sidebar-drawer { width: 85vw; }
-}
-
-/* ── LANDSCAPE PHONES ──────────────────────────── */
-@media (max-width: 768px) and (orientation: landscape) {
-  .header { padding: 8px 14px; }
-  .logo-text h1 { font-size: 13px; }
-  .exam-countdown .days { font-size: 16px; }
-  .main { padding: 14px; }
-}
 </style>
 </head>
 <body>
 
-<!-- Mobile sidebar drawer overlay -->
+<!-- Mobile drawer overlay -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMobileMenu()"></div>
 <div class="sidebar-drawer" id="sidebarDrawer">
   <button class="drawer-close" onclick="closeMobileMenu()">✕</button>
   <div class="drawer-title">📚 Topics</div>
-  <div class="nav-item active" id="drawer-intro" onclick="showSection('intro', true)"><span class="num">01</span> Introduction to C</div>
-  <div class="nav-item" id="drawer-basics" onclick="showSection('basics', true)"><span class="num">02</span> Variables & Data Types</div>
+  <div class="nav-item" id="drawer-intro"     onclick="showSection('intro', true)"><span class="num">01</span> Introduction to C</div>
+  <div class="nav-item" id="drawer-basics"    onclick="showSection('basics', true)"><span class="num">02</span> Variables & Data Types</div>
   <div class="nav-item" id="drawer-operators" onclick="showSection('operators', true)"><span class="num">03</span> Operators</div>
-  <div class="nav-item" id="drawer-io" onclick="showSection('io', true)"><span class="num">04</span> Input / Output</div>
-  <div class="nav-item" id="drawer-control" onclick="showSection('control', true)"><span class="num">05</span> Control Flow</div>
-  <div class="nav-item" id="drawer-loops" onclick="showSection('loops', true)"><span class="num">06</span> Loops</div>
+  <div class="nav-item" id="drawer-io"        onclick="showSection('io', true)"><span class="num">04</span> Input / Output</div>
+  <div class="nav-item" id="drawer-control"   onclick="showSection('control', true)"><span class="num">05</span> Control Flow</div>
+  <div class="nav-item" id="drawer-loops"     onclick="showSection('loops', true)"><span class="num">06</span> Loops</div>
   <div class="nav-item" id="drawer-functions" onclick="showSection('functions', true)"><span class="num">07</span> Functions</div>
-  <div class="nav-item" id="drawer-arrays" onclick="showSection('arrays', true)"><span class="num">08</span> Arrays</div>
-  <div class="nav-item" id="drawer-strings" onclick="showSection('strings', true)"><span class="num">09</span> Strings</div>
-  <div class="nav-item" id="drawer-pointers" onclick="showSection('pointers', true)"><span class="num">10</span> Pointers</div>
-  <div class="nav-item" id="drawer-structs" onclick="showSection('structs', true)"><span class="num">11</span> Structures</div>
-  <div class="nav-item" id="drawer-files" onclick="showSection('files', true)"><span class="num">12</span> File Handling</div>
-  <div class="nav-item" id="drawer-quiz" onclick="showSection('quiz', true)"><span class="num">🎯</span> Practice Quiz</div>
+  <div class="nav-item" id="drawer-arrays"    onclick="showSection('arrays', true)"><span class="num">08</span> Arrays</div>
+  <div class="nav-item" id="drawer-strings"   onclick="showSection('strings', true)"><span class="num">09</span> Strings</div>
+  <div class="nav-item" id="drawer-pointers"  onclick="showSection('pointers', true)"><span class="num">10</span> Pointers</div>
+  <div class="nav-item" id="drawer-structs"   onclick="showSection('structs', true)"><span class="num">11</span> Structures</div>
+  <div class="nav-item" id="drawer-files"     onclick="showSection('files', true)"><span class="num">12</span> File Handling</div>
+  <div class="nav-item" id="drawer-quiz"      onclick="showSection('quiz', true)"><span class="num">🎯</span> Practice Quiz</div>
 </div>
 
 <div class="page-wrapper">
 
-<!-- Top nav bar with home link -->
 <nav class="top-nav">
   <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener">
     <span>←</span> Home — hemrajadhikari.info.np
@@ -765,24 +550,44 @@
     <div class="logo-icon">C</div>
     <div class="logo-text">
       <h1>C Language — BIT Exam</h1>
-      <p>जेठ २०८१ • Complete Study Guide</p>
+      <p>2081 BS • Complete Study Guide • English + नेपाली</p>
     </div>
   </div>
-  <div style="display:flex; align-items:center; gap:12px;">
-    <button class="mobile-menu-btn" onclick="openMobileMenu()">
-      ☰ Topics
-    </button>
+
+  <!-- Desktop nav buttons (hidden on mobile, shown via CSS) -->
+  <nav class="header-nav" id="headerNav">
+    <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener" class="header-nav-btn">
+      🏠 Home
+    </a>
+    <a href="https://hemrajadhikari.info.np/contact.html" target="_blank" rel="noopener" class="header-nav-btn">
+      ✉️ Contact
+    </a>
+    <div class="header-nav-divider"></div>
+    <a href="https://hemrajadhikari.info.np/programs.html" target="_blank" rel="noopener" class="header-nav-btn cta">
+      🎓 Buy Courses
+    </a>
+  </nav>
+
+  <div style="display:flex; align-items:center; gap:10px;">
+    <button class="mobile-menu-btn" onclick="openMobileMenu()">☰ Topics</button>
     <div class="exam-countdown">
       <div class="days" id="daysLeft">--</div>
       <div class="label">दिन बाँकी</div>
     </div>
+  </div>
+
+  <!-- Mobile-only nav row (shown below on small screens) -->
+  <div class="header-nav-mobile">
+    <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener" class="header-nav-btn">🏠 Home</a>
+    <a href="https://hemrajadhikari.info.np/contact.html" target="_blank" rel="noopener" class="header-nav-btn">✉️ Contact</a>
+    <a href="https://hemrajadhikari.info.np/programs.html" target="_blank" rel="noopener" class="header-nav-btn cta">🎓 Buy Courses</a>
   </div>
 </div>
 
 <div class="container">
   <div class="sidebar">
     <div class="sidebar-title">Topics</div>
-    <div class="nav-item active" onclick="showSection('intro')"><span class="num">01</span> Introduction to C</div>
+    <div class="nav-item" onclick="showSection('intro')"><span class="num">01</span> Introduction to C</div>
     <div class="nav-item" onclick="showSection('basics')"><span class="num">02</span> Variables & Data Types</div>
     <div class="nav-item" onclick="showSection('operators')"><span class="num">03</span> Operators</div>
     <div class="nav-item" onclick="showSection('io')"><span class="num">04</span> Input / Output</div>
@@ -799,60 +604,80 @@
 
   <div class="main">
 
-    <!-- INTRO -->
+    <!-- ══════════════════════════════
+         SECTION 01 — INTRO
+    ══════════════════════════════ -->
     <div class="section active" id="intro">
       <div class="topic-header">
         <div class="topic-tag">Chapter 01</div>
         <h2>Introduction to C Language</h2>
-        <p>C एउटा general-purpose, procedural programming language हो जुन 1972 मा Dennis Ritchie ले Bell Labs मा बनाएका थिए।</p>
+        <p>C is a general-purpose, procedural programming language developed in 1972 by <strong style="color:var(--accent)">Dennis Ritchie</strong> at Bell Labs. It is the foundation of modern computing and the most important language for BIT students.</p>
       </div>
 
       <div class="card">
-        <h3><span>📌</span> C Language किन महत्त्वपूर्ण छ?</h3>
+        <h3><span>📌</span> Why is C Important?</h3>
         <ul>
-          <li>सबैभन्दा पुरानो र आधारभूत language — सबै language को जड</li>
-          <li>Operating Systems (Linux, Windows) C मा लेखिएका छन्</li>
-          <li>Fast र efficient — hardware नजिक काम गर्छ</li>
-          <li>BIT को foundation subject — यो बुझ्यो भने बाकी सब सजिलो</li>
+          <li>The oldest and most fundamental language — root of almost all modern languages</li>
+          <li>Operating Systems (Linux, Windows, macOS) are written in C</li>
+          <li>Fast and efficient — works close to hardware</li>
+          <li>Foundation subject for BIT — master C, everything else becomes easier</li>
+          <li>Used in embedded systems, drivers, game engines, and system software</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3><span>📝</span> C Program को Basic Structure</h3>
+        <h3><span>📝</span> Basic Structure of a C Program</h3>
         <div class="code-block">
-          <div class="code-header">
-            <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-            <span>hello.c</span>
-          </div>
-          <pre><span class="hd">#include &lt;stdio.h&gt;</span>    <span class="cm">// Header file — input/output ko lagi</span>
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>hello.c</span></div>
+          <pre><span class="hd">#include &lt;stdio.h&gt;</span>    <span class="cm">// Header file — needed for input/output</span>
 
-<span class="kw">int</span> <span class="fn">main</span>() {          <span class="cm">// Main function — program yahi bata suru</span>
-    <span class="fn">printf</span>(<span class="str">"Namaste Duniya!\n"</span>);  <span class="cm">// Output print garne</span>
-    <span class="kw">return</span> <span class="num">0</span>;           <span class="cm">// 0 = success</span>
+<span class="kw">int</span> <span class="fn">main</span>() {          <span class="cm">// Main function — execution starts here</span>
+    <span class="fn">printf</span>(<span class="str">"Hello, World!\n"</span>);  <span class="cm">// Print output to screen</span>
+    <span class="kw">return</span> <span class="num">0</span>;           <span class="cm">// 0 = program ran successfully</span>
 }</pre>
         </div>
         <div class="info-box imp">
           <strong>🔴 Exam Important</strong>
-          <code>#include &lt;stdio.h&gt;</code> बिना <code>printf()</code> र <code>scanf()</code> काम गर्दैन। हरेक C program मा यो हुनुपर्छ।
+          Without <code>#include &lt;stdio.h&gt;</code>, <code>printf()</code> and <code>scanf()</code> will NOT work. Every C program must include this header.
         </div>
       </div>
 
       <div class="card">
-        <h3><span>⚙️</span> C Program कसरी Run हुन्छ?</h3>
-        <p>Source Code (.c) → <strong style="color:var(--accent)">Compiler</strong> (gcc) → Object Code → <strong style="color:var(--accent)">Linker</strong> → Executable (.exe)</p>
+        <h3><span>⚙️</span> How Does a C Program Run?</h3>
+        <p>Source Code (.c) → <strong style="color:var(--accent)">Compiler (gcc)</strong> → Object Code (.o) → <strong style="color:var(--accent)">Linker</strong> → Executable (.exe / a.out)</p>
         <div class="info-box tip">
-          <strong>💡 याद गर्नु</strong>
-          Compilation steps: Preprocessing → Compilation → Assembly → Linking
+          <strong>💡 Remember — 4 Compilation Stages</strong>
+          1. <strong>Preprocessing</strong> — handles #include, #define<br>
+          2. <strong>Compilation</strong> — converts C to assembly<br>
+          3. <strong>Assembly</strong> — converts assembly to machine code<br>
+          4. <strong>Linking</strong> — combines object files into executable
         </div>
       </div>
+
+      <div class="card">
+        <h3><span>🗝️</span> C Keywords (Reserved Words)</h3>
+        <p style="margin-bottom:10px;">These words have special meaning in C and CANNOT be used as variable names:</p>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>keywords</span></div>
+          <pre><span class="kw">int  float  double  char  void  long  short  unsigned
+if   else   switch  case  break  default  return
+for  while  do  goto  continue
+struct  union  typedef  enum  sizeof  static  extern</span></pre>
+        </div>
+      </div>
+
+      <!-- LESSON NAV -->
+      <div class="lesson-nav" id="nav-intro"></div>
     </div>
 
-    <!-- BASICS -->
+    <!-- ══════════════════════════════
+         SECTION 02 — BASICS
+    ══════════════════════════════ -->
     <div class="section" id="basics">
       <div class="topic-header">
         <div class="topic-tag">Chapter 02</div>
         <h2>Variables & Data Types</h2>
-        <p>Variable भनेको memory मा data store गर्ने container हो।</p>
+        <p>A variable is a named container in memory that stores data. Every variable must be declared with a data type before use.</p>
       </div>
 
       <div class="card">
@@ -861,148 +686,206 @@
           <tr><th>Data Type</th><th>Size</th><th>Range</th><th>Example</th></tr>
           <tr><td>int</td><td>2/4 bytes</td><td>-32768 to 32767</td><td>int age = 20;</td></tr>
           <tr><td>float</td><td>4 bytes</td><td>3.4e-38 to 3.4e+38</td><td>float gpa = 3.8;</td></tr>
-          <tr><td>double</td><td>8 bytes</td><td>float भन्दा ठूलो</td><td>double pi = 3.14;</td></tr>
+          <tr><td>double</td><td>8 bytes</td><td>Larger than float</td><td>double pi = 3.14;</td></tr>
           <tr><td>char</td><td>1 byte</td><td>-128 to 127</td><td>char grade = 'A';</td></tr>
-          <tr><td>void</td><td>0</td><td>कुनै value छैन</td><td>void main()</td></tr>
+          <tr><td>void</td><td>0</td><td>No value</td><td>void main()</td></tr>
         </table>
       </div>
 
       <div class="card">
-        <h3><span>💻</span> Variable Declaration</h3>
+        <h3><span>💻</span> Variable Declaration & Rules</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>variables.c</span></div>
           <pre><span class="kw">int</span> age = <span class="num">20</span>;           <span class="cm">// Integer variable</span>
-<span class="kw">float</span> marks = <span class="num">85.5</span>;    <span class="cm">// Float variable</span>
-<span class="kw">char</span> grade = <span class="str">'A'</span>;      <span class="cm">// Character variable</span>
-<span class="kw">const int</span> MAX = <span class="num">100</span>;  <span class="cm">// Constant — change hudaina</span></pre>
+<span class="kw">float</span> marks = <span class="num">85.5</span>;    <span class="cm">// Floating-point variable</span>
+<span class="kw">char</span> grade = <span class="str">'A'</span>;      <span class="cm">// Character variable (single quotes)</span>
+<span class="kw">const int</span> MAX = <span class="num">100</span>;  <span class="cm">// Constant — cannot be changed later</span>
+<span class="kw">long int</span> pop = <span class="num">1000000</span>; <span class="cm">// Larger integer</span></pre>
         </div>
         <div class="info-box warn">
-          <strong>⚠️ Rules</strong>
-          Variable name: letter वा _ बाट सुरु हुनुपर्छ। Space हुँदैन। Keywords use गर्न मिल्दैन।
+          <strong>⚠️ Variable Naming Rules</strong>
+          ✔ Must start with a letter (a-z, A-Z) or underscore (_)<br>
+          ✔ Can contain letters, digits (0-9), and underscores<br>
+          ✘ Cannot start with a digit (e.g., 2marks is INVALID)<br>
+          ✘ Cannot use keywords (e.g., int, float)<br>
+          ✘ Cannot contain spaces (use_underscore instead)
         </div>
       </div>
 
       <div class="card">
         <h3><span>🔤</span> Format Specifiers</h3>
         <table>
-          <tr><th>Specifier</th><th>Data Type</th></tr>
-          <tr><td>%d</td><td>int</td></tr>
-          <tr><td>%f</td><td>float</td></tr>
-          <tr><td>%lf</td><td>double</td></tr>
-          <tr><td>%c</td><td>char</td></tr>
-          <tr><td>%s</td><td>string</td></tr>
-          <tr><td>%o</td><td>octal</td></tr>
-          <tr><td>%x</td><td>hexadecimal</td></tr>
+          <tr><th>Specifier</th><th>Data Type</th><th>Example</th></tr>
+          <tr><td>%d</td><td>int</td><td>printf("%d", age);</td></tr>
+          <tr><td>%f</td><td>float</td><td>printf("%f", gpa);</td></tr>
+          <tr><td>%lf</td><td>double</td><td>printf("%lf", pi);</td></tr>
+          <tr><td>%c</td><td>char</td><td>printf("%c", grade);</td></tr>
+          <tr><td>%s</td><td>string</td><td>printf("%s", name);</td></tr>
+          <tr><td>%o</td><td>octal int</td><td>printf("%o", 8); → 10</td></tr>
+          <tr><td>%x</td><td>hexadecimal</td><td>printf("%x", 255); → ff</td></tr>
+          <tr><td>%p</td><td>pointer address</td><td>printf("%p", ptr);</td></tr>
         </table>
       </div>
+
+      <div class="lesson-nav" id="nav-basics"></div>
     </div>
 
-    <!-- OPERATORS -->
+    <!-- ══════════════════════════════
+         SECTION 03 — OPERATORS
+    ══════════════════════════════ -->
     <div class="section" id="operators">
       <div class="topic-header">
         <div class="topic-tag">Chapter 03</div>
         <h2>Operators</h2>
-        <p>Operators ले variables र values मा operations perform गर्छ।</p>
+        <p>Operators perform operations on variables and values. C has a rich set of operators grouped by purpose.</p>
       </div>
 
       <div class="card">
         <h3><span>➕</span> Arithmetic Operators</h3>
         <table>
           <tr><th>Operator</th><th>Name</th><th>Example</th><th>Result</th></tr>
-          <tr><td>+</td><td>Addition</td><td>5+3</td><td>8</td></tr>
-          <tr><td>-</td><td>Subtraction</td><td>5-3</td><td>2</td></tr>
-          <tr><td>*</td><td>Multiplication</td><td>5*3</td><td>15</td></tr>
-          <tr><td>/</td><td>Division</td><td>10/3</td><td>3 (int)</td></tr>
-          <tr><td>%</td><td>Modulus</td><td>10%3</td><td>1</td></tr>
+          <tr><td>+</td><td>Addition</td><td>5 + 3</td><td>8</td></tr>
+          <tr><td>-</td><td>Subtraction</td><td>5 - 3</td><td>2</td></tr>
+          <tr><td>*</td><td>Multiplication</td><td>5 * 3</td><td>15</td></tr>
+          <tr><td>/</td><td>Division</td><td>10 / 3</td><td>3 (integer)</td></tr>
+          <tr><td>%</td><td>Modulus</td><td>10 % 3</td><td>1 (remainder)</td></tr>
         </table>
         <div class="info-box imp">
           <strong>🔴 Exam Trick</strong>
-          <code>10/3 = 3</code> (int division) तर <code>10.0/3 = 3.333</code> (float division). Modulus (%) जो odd/even check गर्न प्रयोग हुन्छ!
+          <code>10/3 = 3</code> (integer division, truncates decimal) BUT <code>10.0/3 = 3.333</code> (float division). Modulus (%) is used to check odd/even: <code>if(n % 2 == 0)</code> means even!
         </div>
       </div>
 
       <div class="card">
         <h3><span>⚖️</span> Relational & Logical Operators</h3>
         <table>
-          <tr><th>Operator</th><th>Meaning</th></tr>
-          <tr><td>== != &lt; &gt; &lt;= &gt;=</td><td>Relational (comparison)</td></tr>
-          <tr><td>&amp;&amp;</td><td>Logical AND — दुवै true हुनुपर्छ</td></tr>
-          <tr><td>||</td><td>Logical OR — एउटा true भए पुग्छ</td></tr>
-          <tr><td>!</td><td>Logical NOT — opposite</td></tr>
+          <tr><th>Operator</th><th>Meaning</th><th>Example</th></tr>
+          <tr><td>==</td><td>Equal to</td><td>a == b</td></tr>
+          <tr><td>!=</td><td>Not equal to</td><td>a != b</td></tr>
+          <tr><td>&lt; &gt; &lt;= &gt;=</td><td>Less/Greater than</td><td>a &lt; b</td></tr>
+          <tr><td>&amp;&amp;</td><td>Logical AND — both must be true</td><td>a&gt;0 &amp;&amp; b&gt;0</td></tr>
+          <tr><td>||</td><td>Logical OR — one must be true</td><td>a&gt;0 || b&gt;0</td></tr>
+          <tr><td>!</td><td>Logical NOT — reverses truth</td><td>!(a==b)</td></tr>
         </table>
       </div>
 
       <div class="card">
-        <h3><span>🔄</span> Increment / Decrement</h3>
+        <h3><span>🔄</span> Increment / Decrement Operators</h3>
         <div class="code-block">
-          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>operators.c</span></div>
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>increment.c</span></div>
           <pre><span class="kw">int</span> a = <span class="num">5</span>;
-<span class="fn">printf</span>(<span class="str">"%d"</span>, a++);  <span class="cm">// Output: 5 (pahile print, pacchi increase)</span>
-<span class="fn">printf</span>(<span class="str">"%d"</span>, ++a);  <span class="cm">// Output: 7 (pahile increase, pacchi print)</span>
+<span class="fn">printf</span>(<span class="str">"%d"</span>, a++);  <span class="cm">// Output: 5  (post-increment: print first, then increase)</span>
+<span class="fn">printf</span>(<span class="str">"%d"</span>, ++a);  <span class="cm">// Output: 7  (pre-increment: increase first, then print)</span>
 
 <span class="kw">int</span> x = <span class="num">10</span>, y;
-y = x--;             <span class="cm">// y=10, x=9</span>
-y = --x;             <span class="cm">// y=8, x=8</span></pre>
+y = x--;             <span class="cm">// y=10, x=9  (post-decrement)</span>
+y = --x;             <span class="cm">// y=8,  x=8  (pre-decrement)</span></pre>
+        </div>
+        <div class="info-box tip">
+          <strong>💡 Simple Rule</strong>
+          <strong>Pre</strong> (++a): change value FIRST, then use it.<br>
+          <strong>Post</strong> (a++): use value FIRST, then change it.
         </div>
       </div>
+
+      <div class="card">
+        <h3><span>🔢</span> Assignment & Bitwise Operators</h3>
+        <table>
+          <tr><th>Operator</th><th>Meaning</th><th>Equivalent</th></tr>
+          <tr><td>+=</td><td>Add and assign</td><td>a = a + b</td></tr>
+          <tr><td>-=</td><td>Subtract and assign</td><td>a = a - b</td></tr>
+          <tr><td>*=</td><td>Multiply and assign</td><td>a = a * b</td></tr>
+          <tr><td>/=</td><td>Divide and assign</td><td>a = a / b</td></tr>
+          <tr><td>&amp;</td><td>Bitwise AND</td><td>—</td></tr>
+          <tr><td>|</td><td>Bitwise OR</td><td>—</td></tr>
+          <tr><td>^</td><td>Bitwise XOR</td><td>—</td></tr>
+          <tr><td>&lt;&lt; &gt;&gt;</td><td>Left/Right Shift</td><td>—</td></tr>
+        </table>
+      </div>
+
+      <div class="lesson-nav" id="nav-operators"></div>
     </div>
 
-    <!-- I/O -->
+    <!-- ══════════════════════════════
+         SECTION 04 — I/O
+    ══════════════════════════════ -->
     <div class="section" id="io">
       <div class="topic-header">
         <div class="topic-tag">Chapter 04</div>
         <h2>Input / Output</h2>
-        <p>User सँग data लिने र display गर्ने functions।</p>
+        <p>Functions to receive data from the user and display results on screen. All require <code style="color:var(--accent)">#include &lt;stdio.h&gt;</code>.</p>
       </div>
 
       <div class="card">
-        <h3><span>📤</span> printf() — Output</h3>
+        <h3><span>📤</span> printf() — Formatted Output</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>output.c</span></div>
           <pre><span class="fn">printf</span>(<span class="str">"Name: %s, Age: %d\n"</span>, name, age);
-<span class="fn">printf</span>(<span class="str">"Marks: %.2f\n"</span>, marks);  <span class="cm">// 2 decimal places</span>
-<span class="fn">printf</span>(<span class="str">"%10d\n"</span>, num);           <span class="cm">// Right-aligned, width 10</span></pre>
+<span class="fn">printf</span>(<span class="str">"Marks: %.2f\n"</span>, marks);  <span class="cm">// .2f = 2 decimal places</span>
+<span class="fn">printf</span>(<span class="str">"%10d\n"</span>, num);           <span class="cm">// Right-aligned, field width 10</span>
+<span class="fn">printf</span>(<span class="str">"%-10d\n"</span>, num);          <span class="cm">// Left-aligned, field width 10</span>
+<span class="fn">printf</span>(<span class="str">"%05d\n"</span>, num);           <span class="cm">// Zero-padded, width 5</span></pre>
         </div>
       </div>
 
       <div class="card">
-        <h3><span>📥</span> scanf() — Input</h3>
+        <h3><span>📥</span> scanf() — Formatted Input</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>input.c</span></div>
           <pre><span class="kw">int</span> age;
-<span class="fn">scanf</span>(<span class="str">"%d"</span>, &amp;age);    <span class="cm">// &amp; (address-of) important!</span>
+<span class="fn">scanf</span>(<span class="str">"%d"</span>, &amp;age);      <span class="cm">// &amp; (address-of) is MANDATORY for scanf!</span>
 
 <span class="kw">float</span> marks;
 <span class="fn">scanf</span>(<span class="str">"%f"</span>, &amp;marks);
 
 <span class="kw">char</span> name[<span class="num">50</span>];
-<span class="fn">scanf</span>(<span class="str">"%s"</span>, name);    <span class="cm">// String ma & chainan</span></pre>
+<span class="fn">scanf</span>(<span class="str">"%s"</span>, name);      <span class="cm">// Arrays don't need & — name is already an address</span>
+<span class="fn">scanf</span>(<span class="str">"%49s"</span>, name);    <span class="cm">// Safer — limits input to 49 chars</span>
+
+<span class="fn">scanf</span>(<span class="str">"%d %d"</span>, &amp;a, &amp;b); <span class="cm">// Multiple inputs at once</span></pre>
         </div>
         <div class="info-box imp">
-          <strong>🔴 Common Mistake</strong>
-          <code>scanf("%d", age)</code> → WRONG! <code>scanf("%d", &amp;age)</code> → CORRECT! &amp; बिना program crash हुन्छ।
+          <strong>🔴 Most Common Exam Mistake</strong>
+          <code>scanf("%d", age)</code> → ❌ WRONG — program may crash!<br>
+          <code>scanf("%d", &amp;age)</code> → ✅ CORRECT — &amp; gives the memory address
         </div>
       </div>
+
+      <div class="card">
+        <h3><span>⌨️</span> Other I/O Functions</h3>
+        <table>
+          <tr><th>Function</th><th>Purpose</th><th>Note</th></tr>
+          <tr><td>getchar()</td><td>Read single character</td><td>Returns int</td></tr>
+          <tr><td>putchar(c)</td><td>Print single character</td><td>—</td></tr>
+          <tr><td>gets(s)</td><td>Read full line (with spaces)</td><td>Unsafe — use fgets</td></tr>
+          <tr><td>puts(s)</td><td>Print string + newline</td><td>Simpler than printf</td></tr>
+          <tr><td>fgets(s,n,stdin)</td><td>Safe line input</td><td>Recommended</td></tr>
+        </table>
+      </div>
+
+      <div class="lesson-nav" id="nav-io"></div>
     </div>
 
-    <!-- CONTROL -->
+    <!-- ══════════════════════════════
+         SECTION 05 — CONTROL
+    ══════════════════════════════ -->
     <div class="section" id="control">
       <div class="topic-header">
         <div class="topic-tag">Chapter 05</div>
-        <h2>Control Flow — if/else, switch</h2>
-        <p>Conditions हेरेर program को direction तय गर्ने।</p>
+        <h2>Control Flow — if / else / switch</h2>
+        <p>Control flow statements decide which block of code runs based on conditions. They are the decision-making tools of C.</p>
       </div>
 
       <div class="card">
         <h3><span>🔀</span> if-else Statement</h3>
         <div class="code-block">
-          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>iffelse.c</span></div>
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>ifelse.c</span></div>
           <pre><span class="kw">int</span> marks = <span class="num">75</span>;
 
 <span class="kw">if</span> (marks >= <span class="num">80</span>) {
     <span class="fn">printf</span>(<span class="str">"Distinction!\n"</span>);
 } <span class="kw">else if</span> (marks >= <span class="num">60</span>) {
-    <span class="fn">printf</span>(<span class="str">"First Division\n"</span>);
+    <span class="fn">printf</span>(<span class="str">"First Division\n"</span>);    <span class="cm">// This block runs</span>
 } <span class="kw">else if</span> (marks >= <span class="num">45</span>) {
     <span class="fn">printf</span>(<span class="str">"Second Division\n"</span>);
 } <span class="kw">else</span> {
@@ -1017,70 +900,83 @@ y = --x;             <span class="cm">// y=8, x=8</span></pre>
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>switch.c</span></div>
           <pre><span class="kw">int</span> day = <span class="num">3</span>;
 <span class="kw">switch</span>(day) {
-    <span class="kw">case</span> <span class="num">1</span>: <span class="fn">printf</span>(<span class="str">"Aaitabar"</span>); <span class="kw">break</span>;
-    <span class="kw">case</span> <span class="num">2</span>: <span class="fn">printf</span>(<span class="str">"Sombar"</span>);  <span class="kw">break</span>;
-    <span class="kw">case</span> <span class="num">3</span>: <span class="fn">printf</span>(<span class="str">"Mangalbar"</span>); <span class="kw">break</span>;
-    <span class="kw">default</span>: <span class="fn">printf</span>(<span class="str">"Invalid"</span>);
+    <span class="kw">case</span> <span class="num">1</span>: <span class="fn">printf</span>(<span class="str">"Sunday"</span>);    <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="num">2</span>: <span class="fn">printf</span>(<span class="str">"Monday"</span>);    <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="num">3</span>: <span class="fn">printf</span>(<span class="str">"Tuesday"</span>);   <span class="kw">break</span>;  <span class="cm">// This runs</span>
+    <span class="kw">default</span>: <span class="fn">printf</span>(<span class="str">"Invalid day"</span>);
 }</pre>
         </div>
         <div class="info-box warn">
-          <strong>⚠️ break बिर्सनु नहोस्!</strong>
-          break नभएमा सबै case execute हुन्छन् — यसलाई "fall-through" भनिन्छ।
+          <strong>⚠️ Don't Forget break!</strong>
+          Without <code>break</code>, execution "falls through" to the next case — all remaining cases run! This is called <strong>fall-through</strong> behavior.
         </div>
       </div>
 
       <div class="card">
         <h3><span>❓</span> Ternary Operator</h3>
+        <p style="margin-bottom:10px;">A compact one-line alternative to if-else: <code style="color:var(--accent3)">condition ? value_if_true : value_if_false</code></p>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>ternary.c</span></div>
-          <pre><span class="cm">// condition ? value_if_true : value_if_false</span>
-<span class="kw">int</span> a = <span class="num">10</span>, b = <span class="num">20</span>;
-<span class="kw">int</span> max = (a > b) ? a : b;   <span class="cm">// max = 20</span>
-<span class="fn">printf</span>(<span class="str">"%s"</span>, (a%<span class="num">2</span>==<span class="num">0</span>) ? <span class="str">"Even"</span> : <span class="str">"Odd"</span>);</pre>
+          <pre><span class="kw">int</span> a = <span class="num">10</span>, b = <span class="num">20</span>;
+<span class="kw">int</span> max = (a > b) ? a : b;        <span class="cm">// max = 20</span>
+<span class="fn">printf</span>(<span class="str">"%s"</span>, (a%<span class="num">2</span>==<span class="num">0</span>) ? <span class="str">"Even"</span> : <span class="str">"Odd"</span>);  <span class="cm">// "Even"</span>
+<span class="kw">int</span> abs_val = (a < <span class="num">0</span>) ? -a : a;   <span class="cm">// Absolute value</span></pre>
         </div>
       </div>
+
+      <div class="lesson-nav" id="nav-control"></div>
     </div>
 
-    <!-- LOOPS -->
+    <!-- ══════════════════════════════
+         SECTION 06 — LOOPS
+    ══════════════════════════════ -->
     <div class="section" id="loops">
       <div class="topic-header">
         <div class="topic-tag">Chapter 06</div>
         <h2>Loops — for, while, do-while</h2>
-        <p>Code लाई repeatedly execute गर्ने mechanism।</p>
+        <p>Loops execute a block of code repeatedly as long as a condition is true. They are essential for repetitive tasks.</p>
       </div>
 
       <div class="card">
-        <h3><span>🔁</span> for Loop</h3>
+        <h3><span>🔁</span> for Loop — Use when count is known</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>for_loop.c</span></div>
-          <pre><span class="cm">// 1 देखि 10 सम्म print गर्ने</span>
+          <pre><span class="cm">// Syntax: for(initialization; condition; update)</span>
 <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">1</span>; i&lt;=<span class="num">10</span>; i++) {
-    <span class="fn">printf</span>(<span class="str">"%d "</span>, i);
+    <span class="fn">printf</span>(<span class="str">"%d "</span>, i);   <span class="cm">// Prints 1 2 3 4 5 6 7 8 9 10</span>
 }
 
-<span class="cm">// Factorial</span>
+<span class="cm">// Factorial of n</span>
 <span class="kw">int</span> n=<span class="num">5</span>, fact=<span class="num">1</span>;
 <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">1</span>; i&lt;=n; i++) {
-    fact *= i;
+    fact *= i;           <span class="cm">// fact = 1*2*3*4*5 = 120</span>
 }
-<span class="fn">printf</span>(<span class="str">"Factorial: %d"</span>, fact);  <span class="cm">// 120</span></pre>
+<span class="fn">printf</span>(<span class="str">"Factorial = %d"</span>, fact);</pre>
         </div>
       </div>
 
       <div class="card">
-        <h3><span>🔄</span> while Loop</h3>
+        <h3><span>🔄</span> while Loop — Use when condition is known</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>while.c</span></div>
           <pre><span class="kw">int</span> i = <span class="num">1</span>;
 <span class="kw">while</span>(i &lt;= <span class="num">5</span>) {
     <span class="fn">printf</span>(<span class="str">"%d\n"</span>, i);
-    i++;    <span class="cm">// Yo bhulyo bhaney infinite loop!</span>
-}</pre>
+    i++;    <span class="cm">// WARNING: Forgetting this creates an infinite loop!</span>
+}
+
+<span class="cm">// Sum of digits of a number</span>
+<span class="kw">int</span> num = <span class="num">1234</span>, sum = <span class="num">0</span>;
+<span class="kw">while</span>(num > <span class="num">0</span>) {
+    sum += num % <span class="num">10</span>;   <span class="cm">// Get last digit</span>
+    num /= <span class="num">10</span>;          <span class="cm">// Remove last digit</span>
+}
+<span class="fn">printf</span>(<span class="str">"Sum = %d"</span>, sum);  <span class="cm">// 10</span></pre>
         </div>
       </div>
 
       <div class="card">
-        <h3><span>🔃</span> do-while Loop</h3>
+        <h3><span>🔃</span> do-while — Executes at least once</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>dowhile.c</span></div>
           <pre><span class="kw">int</span> i = <span class="num">1</span>;
@@ -1088,42 +984,60 @@ y = --x;             <span class="cm">// y=8, x=8</span></pre>
     <span class="fn">printf</span>(<span class="str">"%d\n"</span>, i);
     i++;
 } <span class="kw">while</span>(i &lt;= <span class="num">5</span>);
-<span class="cm">// Farak: Condition false bhaye pani EKPALTA execute huncha!</span></pre>
+
+<span class="cm">/* KEY DIFFERENCE: Even if condition is false from start,
+   do-while executes the body at least ONCE */</span>
+<span class="kw">int</span> x = <span class="num">10</span>;
+<span class="kw">do</span> {
+    <span class="fn">printf</span>(<span class="str">"Runs once!"</span>);   <span class="cm">// This prints even though 10 > 5 is false below</span>
+} <span class="kw">while</span>(x &lt; <span class="num">5</span>);             <span class="cm">// Condition checked AFTER first run</span></pre>
         </div>
         <div class="info-box tip">
-          <strong>💡 Kura Yaad Garnu</strong>
-          for = count थाहा छ | while = condition थाहा छ | do-while = कम्तिमा एकपटक run गर्नुपर्छ
+          <strong>💡 Which Loop to Use?</strong>
+          <strong>for</strong> — when you know the exact number of iterations<br>
+          <strong>while</strong> — when you know the condition but not the count<br>
+          <strong>do-while</strong> — when you need to run at least once (e.g., menus)
         </div>
       </div>
 
       <div class="card">
-        <h3><span>⭐</span> Nested Loop — Pattern Printing</h3>
+        <h3><span>⭐</span> Nested Loops — Pattern Printing</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>pattern.c</span></div>
-          <pre><span class="cm">// Triangle pattern</span>
-<span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">1</span>; i&lt;=<span class="num">5</span>; i++) {
-    <span class="kw">for</span>(<span class="kw">int</span> j=<span class="num">1</span>; j&lt;=i; j++) {
+          <pre><span class="cm">// Right-angle triangle pattern</span>
+<span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">1</span>; i&lt;=<span class="num">5</span>; i++) {       <span class="cm">// Outer: controls rows</span>
+    <span class="kw">for</span>(<span class="kw">int</span> j=<span class="num">1</span>; j&lt;=i; j++) {   <span class="cm">// Inner: controls columns</span>
         <span class="fn">printf</span>(<span class="str">"* "</span>);
     }
     <span class="fn">printf</span>(<span class="str">"\n"</span>);
 }
-<span class="cm">/*
+<span class="cm">/* Output:
 *
 * *
 * * *
 * * * *
-* * * * *
-*/</span></pre>
+* * * * *    */</span>
+
+<span class="cm">// break and continue</span>
+<span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">1</span>; i&lt;=<span class="num">10</span>; i++) {
+    <span class="kw">if</span>(i == <span class="num">5</span>) <span class="kw">break</span>;      <span class="cm">// Exits loop entirely</span>
+    <span class="kw">if</span>(i % <span class="num">2</span> == <span class="num">0</span>) <span class="kw">continue</span>; <span class="cm">// Skips even numbers</span>
+    <span class="fn">printf</span>(<span class="str">"%d "</span>, i);        <span class="cm">// Prints: 1 3</span>
+}</pre>
         </div>
       </div>
+
+      <div class="lesson-nav" id="nav-loops"></div>
     </div>
 
-    <!-- FUNCTIONS -->
+    <!-- ══════════════════════════════
+         SECTION 07 — FUNCTIONS
+    ══════════════════════════════ -->
     <div class="section" id="functions">
       <div class="topic-header">
         <div class="topic-tag">Chapter 07</div>
         <h2>Functions</h2>
-        <p>Code लाई reusable blocks मा organize गर्ने तरिका।</p>
+        <p>A function is a reusable block of code that performs a specific task. Functions make programs modular, readable, and maintainable.</p>
       </div>
 
       <div class="card">
@@ -1132,17 +1046,18 @@ y = --x;             <span class="cm">// y=8, x=8</span></pre>
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>functions.c</span></div>
           <pre><span class="hd">#include &lt;stdio.h&gt;</span>
 
-<span class="cm">// Function Declaration (Prototype)</span>
+<span class="cm">// 1. Function Declaration (Prototype) — tells compiler about the function</span>
 <span class="kw">int</span> <span class="fn">add</span>(<span class="kw">int</span> a, <span class="kw">int</span> b);
 
-<span class="cm">// Function Definition</span>
+<span class="cm">// 2. Function Definition — the actual code</span>
 <span class="kw">int</span> <span class="fn">add</span>(<span class="kw">int</span> a, <span class="kw">int</span> b) {
-    <span class="kw">return</span> a + b;
+    <span class="kw">return</span> a + b;          <span class="cm">// Returns the sum</span>
 }
 
+<span class="cm">// 3. Function Call — executing the function</span>
 <span class="kw">int</span> <span class="fn">main</span>() {
-    <span class="kw">int</span> result = <span class="fn">add</span>(<span class="num">5</span>, <span class="num">3</span>);   <span class="cm">// Function Call</span>
-    <span class="fn">printf</span>(<span class="str">"Sum = %d"</span>, result);  <span class="cm">// 8</span>
+    <span class="kw">int</span> result = <span class="fn">add</span>(<span class="num">5</span>, <span class="num">3</span>);
+    <span class="fn">printf</span>(<span class="str">"Sum = %d"</span>, result);  <span class="cm">// Output: Sum = 8</span>
     <span class="kw">return</span> <span class="num">0</span>;
 }</pre>
         </div>
@@ -1150,19 +1065,28 @@ y = --x;             <span class="cm">// y=8, x=8</span></pre>
 
       <div class="card">
         <h3><span>🔂</span> Recursion</h3>
+        <p style="margin-bottom:10px;">A function that calls itself. Must have a <strong style="color:var(--red)">base case</strong> to stop, otherwise runs forever.</p>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>recursion.c</span></div>
-          <pre><span class="cm">// Recursive Factorial</span>
+          <pre><span class="cm">// Factorial using recursion</span>
 <span class="kw">int</span> <span class="fn">factorial</span>(<span class="kw">int</span> n) {
     <span class="kw">if</span>(n == <span class="num">0</span> || n == <span class="num">1</span>)
-        <span class="kw">return</span> <span class="num">1</span>;           <span class="cm">// Base case — must have!</span>
-    <span class="kw">return</span> n * <span class="fn">factorial</span>(n-<span class="num">1</span>);  <span class="cm">// Recursive call</span>
+        <span class="kw">return</span> <span class="num">1</span>;                    <span class="cm">// Base case — MUST have this!</span>
+    <span class="kw">return</span> n * <span class="fn">factorial</span>(n - <span class="num">1</span>);   <span class="cm">// Recursive call</span>
 }
-<span class="cm">// factorial(5) = 5*4*3*2*1 = 120</span></pre>
+<span class="cm">// factorial(5) = 5 * factorial(4)
+//              = 5 * 4 * factorial(3)
+//              = 5 * 4 * 3 * 2 * 1 = 120</span>
+
+<span class="cm">// Fibonacci using recursion</span>
+<span class="kw">int</span> <span class="fn">fib</span>(<span class="kw">int</span> n) {
+    <span class="kw">if</span>(n &lt;= <span class="num">1</span>) <span class="kw">return</span> n;
+    <span class="kw">return</span> <span class="fn">fib</span>(n-<span class="num">1</span>) + <span class="fn">fib</span>(n-<span class="num">2</span>);
+}</pre>
         </div>
         <div class="info-box imp">
           <strong>🔴 Exam Must Know</strong>
-          Recursion को base case बिर्सनु भएन — नत्र infinite loop आउँछ।
+          Recursion MUST have a base case — without it, you get a stack overflow (infinite recursion). Trace factorial(3): 3→2→1→returns.
         </div>
       </div>
 
@@ -1170,27 +1094,35 @@ y = --x;             <span class="cm">// y=8, x=8</span></pre>
         <h3><span>📮</span> Call by Value vs Call by Reference</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>callby.c</span></div>
-          <pre><span class="cm">// Call by Value — original change hudaina</span>
-<span class="kw">void</span> <span class="fn">byValue</span>(<span class="kw">int</span> x) { x = <span class="num">100</span>; }
+          <pre><span class="cm">// Call by Value — original variable is NOT changed</span>
+<span class="kw">void</span> <span class="fn">byValue</span>(<span class="kw">int</span> x) {
+    x = <span class="num">100</span>;               <span class="cm">// Only local copy changes</span>
+}
 
-<span class="cm">// Call by Reference — original change huncha</span>
-<span class="kw">void</span> <span class="fn">byRef</span>(<span class="kw">int</span> *x) { *x = <span class="num">100</span>; }
+<span class="cm">// Call by Reference — original variable IS changed</span>
+<span class="kw">void</span> <span class="fn">byRef</span>(<span class="kw">int</span> *x) {
+    *x = <span class="num">100</span>;              <span class="cm">// Dereferences pointer — changes original</span>
+}
 
 <span class="kw">int</span> <span class="fn">main</span>() {
     <span class="kw">int</span> a = <span class="num">5</span>;
-    <span class="fn">byValue</span>(a);     <span class="cm">// a still 5</span>
-    <span class="fn">byRef</span>(&amp;a);      <span class="cm">// a is now 100</span>
+    <span class="fn">byValue</span>(a);             <span class="cm">// a is still 5 after this call</span>
+    <span class="fn">byRef</span>(&amp;a);              <span class="cm">// a is now 100 after this call</span>
 }</pre>
         </div>
       </div>
+
+      <div class="lesson-nav" id="nav-functions"></div>
     </div>
 
-    <!-- ARRAYS -->
+    <!-- ══════════════════════════════
+         SECTION 08 — ARRAYS
+    ══════════════════════════════ -->
     <div class="section" id="arrays">
       <div class="topic-header">
         <div class="topic-tag">Chapter 08</div>
         <h2>Arrays</h2>
-        <p>Same data type को multiple values एउटै variable मा store गर्ने।</p>
+        <p>An array stores multiple values of the same data type under a single variable name. Elements are accessed via an index starting from 0.</p>
       </div>
 
       <div class="card">
@@ -1198,19 +1130,22 @@ y = --x;             <span class="cm">// y=8, x=8</span></pre>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>array.c</span></div>
           <pre><span class="kw">int</span> marks[<span class="num">5</span>] = {<span class="num">90</span>, <span class="num">85</span>, <span class="num">78</span>, <span class="num">92</span>, <span class="num">88</span>};
+<span class="cm">//            [0]  [1]  [2]  [3]  [4]   ← indices</span>
 
-<span class="cm">// Access: index 0 bata suru</span>
-<span class="fn">printf</span>(<span class="str">"%d"</span>, marks[<span class="num">0</span>]);   <span class="cm">// 90</span>
-<span class="fn">printf</span>(<span class="str">"%d"</span>, marks[<span class="num">4</span>]);   <span class="cm">// 88</span>
+<span class="fn">printf</span>(<span class="str">"%d"</span>, marks[<span class="num">0</span>]);   <span class="cm">// 90 — first element</span>
+<span class="fn">printf</span>(<span class="str">"%d"</span>, marks[<span class="num">4</span>]);   <span class="cm">// 88 — last element</span>
 
-<span class="cm">// Loop bata print garne</span>
+<span class="cm">// Print all elements using a loop</span>
+<span class="kw">int</span> sum = <span class="num">0</span>;
 <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>; i&lt;<span class="num">5</span>; i++) {
     <span class="fn">printf</span>(<span class="str">"%d "</span>, marks[i]);
-}</pre>
+    sum += marks[i];
+}
+<span class="fn">printf</span>(<span class="str">"\nTotal = %d"</span>, sum);</pre>
         </div>
         <div class="info-box imp">
-          <strong>🔴 याद गर्नु!</strong>
-          Array index 0 बाट सुरु हुन्छ! 5 elements भएको array: marks[0] देखि marks[4] सम्म।
+          <strong>🔴 Remember!</strong>
+          Array index starts at <strong>0</strong>, not 1! An array of 5 elements uses indices 0, 1, 2, 3, 4. Accessing marks[5] is out-of-bounds — undefined behavior!
         </div>
       </div>
 
@@ -1219,14 +1154,14 @@ y = --x;             <span class="cm">// y=8, x=8</span></pre>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>matrix.c</span></div>
           <pre><span class="kw">int</span> matrix[<span class="num">3</span>][<span class="num">3</span>] = {
-    {<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>},
-    {<span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>},
-    {<span class="num">7</span>, <span class="num">8</span>, <span class="num">9</span>}
+    {<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>},     <span class="cm">// Row 0</span>
+    {<span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>},     <span class="cm">// Row 1</span>
+    {<span class="num">7</span>, <span class="num">8</span>, <span class="num">9</span>}      <span class="cm">// Row 2</span>
 };
 
-<span class="cm">// matrix[row][column]</span>
-<span class="fn">printf</span>(<span class="str">"%d"</span>, matrix[<span class="num">1</span>][<span class="num">2</span>]);  <span class="cm">// 6</span>
+<span class="fn">printf</span>(<span class="str">"%d"</span>, matrix[<span class="num">1</span>][<span class="num">2</span>]);  <span class="cm">// 6 — Row 1, Column 2</span>
 
+<span class="cm">// Print full matrix</span>
 <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>; i&lt;<span class="num">3</span>; i++) {
     <span class="kw">for</span>(<span class="kw">int</span> j=<span class="num">0</span>; j&lt;<span class="num">3</span>; j++) {
         <span class="fn">printf</span>(<span class="str">"%d "</span>, matrix[i][j]);
@@ -1235,55 +1170,89 @@ y = --x;             <span class="cm">// y=8, x=8</span></pre>
 }</pre>
         </div>
       </div>
+
+      <div class="card">
+        <h3><span>🔍</span> Array Searching & Sorting</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>sort.c</span></div>
+          <pre><span class="cm">// Bubble Sort — swap adjacent elements</span>
+<span class="kw">int</span> arr[] = {<span class="num">64</span>, <span class="num">34</span>, <span class="num">25</span>, <span class="num">12</span>, <span class="num">22</span>};
+<span class="kw">int</span> n = <span class="num">5</span>;
+
+<span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>; i&lt;n-<span class="num">1</span>; i++) {
+    <span class="kw">for</span>(<span class="kw">int</span> j=<span class="num">0</span>; j&lt;n-i-<span class="num">1</span>; j++) {
+        <span class="kw">if</span>(arr[j] > arr[j+<span class="num">1</span>]) {
+            <span class="kw">int</span> temp = arr[j];    <span class="cm">// Swap</span>
+            arr[j] = arr[j+<span class="num">1</span>];
+            arr[j+<span class="num">1</span>] = temp;
+        }
+    }
+}
+<span class="cm">// Result: {12, 22, 25, 34, 64}</span></pre>
+        </div>
+      </div>
+
+      <div class="lesson-nav" id="nav-arrays"></div>
     </div>
 
-    <!-- STRINGS -->
+    <!-- ══════════════════════════════
+         SECTION 09 — STRINGS
+    ══════════════════════════════ -->
     <div class="section" id="strings">
       <div class="topic-header">
         <div class="topic-tag">Chapter 09</div>
         <h2>Strings</h2>
-        <p>C मा string = character array जसको अन्तमा '\0' (null character) हुन्छ।</p>
+        <p>In C, a string is a character array terminated by a null character <code style="color:var(--accent)">\0</code>. There is no dedicated string data type — strings are built using <code>char</code> arrays.</p>
       </div>
 
       <div class="card">
         <h3><span>📝</span> String Declaration & Input</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>strings.c</span></div>
-          <pre><span class="hd">#include &lt;string.h&gt;</span>  <span class="cm">// String functions ko lagi</span>
+          <pre><span class="hd">#include &lt;string.h&gt;</span>  <span class="cm">// Required for string functions</span>
 
-<span class="kw">char</span> name[<span class="num">50</span>] = <span class="str">"Ram Bahadur"</span>;
+<span class="kw">char</span> name[<span class="num">50</span>] = <span class="str">"Ram Bahadur"</span>;   <span class="cm">// Stored as: R a m ... r \0</span>
 <span class="kw">char</span> city[<span class="num">20</span>];
 
-<span class="fn">scanf</span>(<span class="str">"%s"</span>, city);        <span class="cm">// Space na khane</span>
-<span class="fn">gets</span>(city);               <span class="cm">// Pura line line (space sanga)</span>
-<span class="fn">fgets</span>(city, <span class="num">20</span>, stdin);   <span class="cm">// Secure version of gets</span></pre>
+<span class="fn">scanf</span>(<span class="str">"%s"</span>, city);          <span class="cm">// Stops at space — only gets first word</span>
+<span class="fn">fgets</span>(city, <span class="num">20</span>, stdin);    <span class="cm">// Reads full line — recommended!</span>
+
+<span class="cm">// String stored as array of chars with \0 at end</span>
+<span class="cm">// "Hello" = {'H','e','l','l','o','\0'}</span></pre>
         </div>
       </div>
 
       <div class="card">
-        <h3><span>🔧</span> String Functions (string.h)</h3>
+        <h3><span>🔧</span> String Functions (from string.h)</h3>
         <table>
-          <tr><th>Function</th><th>Kaam</th><th>Example</th></tr>
-          <tr><td>strlen(s)</td><td>Length find garne</td><td>strlen("Ram") = 3</td></tr>
-          <tr><td>strcpy(d,s)</td><td>Copy garne</td><td>strcpy(a, "Hello")</td></tr>
-          <tr><td>strcat(d,s)</td><td>Join garne</td><td>strcat("Ram","Bahadur")</td></tr>
-          <tr><td>strcmp(s1,s2)</td><td>Compare garne</td><td>strcmp("a","b") = -1</td></tr>
-          <tr><td>strupr(s)</td><td>Uppercase</td><td>strupr("hello")="HELLO"</td></tr>
-          <tr><td>strlwr(s)</td><td>Lowercase</td><td>strlwr("HELLO")="hello"</td></tr>
+          <tr><th>Function</th><th>Purpose</th><th>Example</th></tr>
+          <tr><td>strlen(s)</td><td>Returns length of string</td><td>strlen("Ram") = 3</td></tr>
+          <tr><td>strcpy(dest, src)</td><td>Copies string src to dest</td><td>strcpy(a, "Hello")</td></tr>
+          <tr><td>strcat(dest, src)</td><td>Appends src to dest</td><td>strcat("Ram ", "Bdr")</td></tr>
+          <tr><td>strcmp(s1, s2)</td><td>Compares two strings</td><td>Returns 0 if equal</td></tr>
+          <tr><td>strupr(s)</td><td>Converts to uppercase</td><td>strupr("hello")="HELLO"</td></tr>
+          <tr><td>strlwr(s)</td><td>Converts to lowercase</td><td>strlwr("HI")="hi"</td></tr>
+          <tr><td>strrev(s)</td><td>Reverses string</td><td>strrev("abc")="cba"</td></tr>
         </table>
         <div class="info-box tip">
-          <strong>💡 strcmp() याद गर्नु</strong>
-          Returns 0 if equal, negative if s1 &lt; s2, positive if s1 &gt; s2
+          <strong>💡 strcmp() Return Values</strong>
+          Returns <strong>0</strong> if strings are equal<br>
+          Returns <strong>negative</strong> if s1 &lt; s2 (alphabetically before)<br>
+          Returns <strong>positive</strong> if s1 &gt; s2 (alphabetically after)
         </div>
       </div>
+
+      <div class="lesson-nav" id="nav-strings"></div>
     </div>
 
-    <!-- POINTERS -->
+    <!-- ══════════════════════════════
+         SECTION 10 — POINTERS
+    ══════════════════════════════ -->
     <div class="section" id="pointers">
       <div class="topic-header">
         <div class="topic-tag">Chapter 10</div>
         <h2>Pointers</h2>
-        <p>Pointer = variable को memory address store गर्ने variable। C को सबैभन्दा महत्त्वपूर्ण concept!</p>
+        <p>A pointer is a variable that stores the <strong>memory address</strong> of another variable. Pointers are C's most powerful feature — essential for dynamic memory, arrays, and functions.</p>
       </div>
 
       <div class="card">
@@ -1291,53 +1260,76 @@ y = --x;             <span class="cm">// y=8, x=8</span></pre>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>pointers.c</span></div>
           <pre><span class="kw">int</span> num = <span class="num">10</span>;
-<span class="kw">int</span> *ptr;          <span class="cm">// Pointer declaration</span>
+<span class="kw">int</span> *ptr;           <span class="cm">// Pointer declaration — stores address of int</span>
 
-ptr = &amp;num;        <span class="cm">// &amp; = address-of operator</span>
+ptr = &amp;num;         <span class="cm">// &amp; = "address of" operator</span>
 
-<span class="fn">printf</span>(<span class="str">"%d"</span>, num);   <span class="cm">// 10 (value)</span>
-<span class="fn">printf</span>(<span class="str">"%p"</span>, ptr);   <span class="cm">// Address (eg: 0x7fff...)</span>
-<span class="fn">printf</span>(<span class="str">"%d"</span>, *ptr);  <span class="cm">// 10 (* = dereference = value at address)</span>
+<span class="fn">printf</span>(<span class="str">"%d\n"</span>, num);   <span class="cm">// 10     — value of num</span>
+<span class="fn">printf</span>(<span class="str">"%p\n"</span>, ptr);   <span class="cm">// 0x7fff — memory address (varies)</span>
+<span class="fn">printf</span>(<span class="str">"%d\n"</span>, *ptr);  <span class="cm">// 10     — * dereference = value at address</span>
 
-*ptr = <span class="num">20</span>;          <span class="cm">// num ko value change huncha!</span>
-<span class="fn">printf</span>(<span class="str">"%d"</span>, num);   <span class="cm">// 20</span></pre>
+*ptr = <span class="num">20</span>;            <span class="cm">// Change value via pointer</span>
+<span class="fn">printf</span>(<span class="str">"%d\n"</span>, num);   <span class="cm">// 20     — num is now changed!</span></pre>
         </div>
         <div class="info-box imp">
-          <strong>🔴 Key Points</strong>
-          &amp; = address linu | * = value herna (dereference) | Pointer le address store garcha
+          <strong>🔴 Two Key Operators</strong>
+          <code>&amp;</code> — Address-of: gets the memory address of a variable<br>
+          <code>*</code> — Dereference: gets the value at that memory address
         </div>
       </div>
 
       <div class="card">
-        <h3><span>🔗</span> Pointer & Array</h3>
+        <h3><span>🔗</span> Pointer & Arrays</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>ptr_array.c</span></div>
           <pre><span class="kw">int</span> arr[] = {<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>};
-<span class="kw">int</span> *p = arr;     <span class="cm">// arr ko first element ko address</span>
+<span class="kw">int</span> *p = arr;       <span class="cm">// arr already represents the address of arr[0]</span>
 
-<span class="fn">printf</span>(<span class="str">"%d"</span>, *p);       <span class="cm">// 10</span>
-<span class="fn">printf</span>(<span class="str">"%d"</span>, *(p+<span class="num">1</span>));   <span class="cm">// 20</span>
-<span class="fn">printf</span>(<span class="str">"%d"</span>, *(p+<span class="num">2</span>));   <span class="cm">// 30</span>
-p++;                      <span class="cm">// Next element ma jaancha</span></pre>
+<span class="fn">printf</span>(<span class="str">"%d\n"</span>, *p);       <span class="cm">// 10 — arr[0]</span>
+<span class="fn">printf</span>(<span class="str">"%d\n"</span>, *(p+<span class="num">1</span>));   <span class="cm">// 20 — arr[1]</span>
+<span class="fn">printf</span>(<span class="str">"%d\n"</span>, *(p+<span class="num">2</span>));   <span class="cm">// 30 — arr[2]</span>
+
+p++;                        <span class="cm">// Move pointer to next element</span>
+<span class="fn">printf</span>(<span class="str">"%d\n"</span>, *p);        <span class="cm">// 20 — now points to arr[1]</span></pre>
         </div>
       </div>
+
+      <div class="card">
+        <h3><span>⚠️</span> Null Pointer & Pointer Rules</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>null_ptr.c</span></div>
+          <pre><span class="kw">int</span> *ptr = NULL;    <span class="cm">// Safe initialization — points to nothing</span>
+
+<span class="kw">if</span>(ptr != NULL) {   <span class="cm">// Always check before dereferencing!</span>
+    <span class="fn">printf</span>(<span class="str">"%d"</span>, *ptr);
+}
+
+<span class="cm">// Dangling pointer — AVOID this!</span>
+<span class="kw">int</span> *dp;
+<span class="cm">// printf("%d", *dp);  ← Undefined behavior! Never use uninitialized pointer</span></pre>
+        </div>
+      </div>
+
+      <div class="lesson-nav" id="nav-pointers"></div>
     </div>
 
-    <!-- STRUCTS -->
+    <!-- ══════════════════════════════
+         SECTION 11 — STRUCTS
+    ══════════════════════════════ -->
     <div class="section" id="structs">
       <div class="topic-header">
         <div class="topic-tag">Chapter 11</div>
         <h2>Structures</h2>
-        <p>Different data types लाई एकसाथ राख्ने user-defined data type।</p>
+        <p>A structure is a user-defined data type that groups variables of <strong>different data types</strong> under one name. Perfect for modeling real-world entities like students, employees, or products.</p>
       </div>
 
       <div class="card">
-        <h3><span>🏗️</span> Structure Definition & Use</h3>
+        <h3><span>🏗️</span> Structure Definition & Usage</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>struct.c</span></div>
           <pre><span class="hd">#include &lt;stdio.h&gt;</span>
 
-<span class="cm">// Structure define garne</span>
+<span class="cm">// Define structure blueprint</span>
 <span class="kw">struct</span> Student {
     <span class="kw">char</span> name[<span class="num">50</span>];
     <span class="kw">int</span> roll;
@@ -1345,74 +1337,107 @@ p++;                      <span class="cm">// Next element ma jaancha</span></pr
 };
 
 <span class="kw">int</span> <span class="fn">main</span>() {
-    <span class="kw">struct</span> Student s1;    <span class="cm">// Variable banauney</span>
+    <span class="kw">struct</span> Student s1;        <span class="cm">// Create a variable of type Student</span>
+    <span class="kw">struct</span> Student s2 = {<span class="str">"Hari"</span>, <span class="num">102</span>, <span class="num">90.5</span>};  <span class="cm">// Initialize directly</span>
 
-    s1.roll = <span class="num">101</span>;       <span class="cm">// . (dot) operator bata access</span>
+    s1.roll = <span class="num">101</span>;            <span class="cm">// Access with dot (.) operator</span>
     s1.marks = <span class="num">85.5</span>;
 
-    <span class="fn">printf</span>(<span class="str">"Roll: %d, Marks: %.1f"</span>, s1.roll, s1.marks);
+    <span class="fn">printf</span>(<span class="str">"Roll: %d, Marks: %.1f\n"</span>, s1.roll, s1.marks);
     <span class="kw">return</span> <span class="num">0</span>;
 }</pre>
         </div>
       </div>
 
       <div class="card">
-        <h3><span>🔑</span> typedef & Struct Pointer</h3>
+        <h3><span>🔑</span> typedef & Arrow Operator</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>typedef.c</span></div>
-          <pre><span class="cm">// typedef bata shortcut</span>
+          <pre><span class="cm">// typedef creates an alias — no need to write "struct" every time</span>
 <span class="kw">typedef struct</span> {
     <span class="kw">int</span> x, y;
 } Point;
 
-Point p1 = {<span class="num">3</span>, <span class="num">4</span>};     <span class="cm">// "struct" likhnu pardaina</span>
+Point p1 = {<span class="num">3</span>, <span class="num">4</span>};          <span class="cm">// Cleaner — no "struct" keyword needed</span>
+<span class="fn">printf</span>(<span class="str">"%d"</span>, p1.x);         <span class="cm">// 3 — dot operator for direct variable</span>
 
-<span class="cm">// Pointer bata access: -> operator</span>
+<span class="cm">// Pointer to struct — use arrow (->) operator</span>
 Point *ptr = &amp;p1;
-<span class="fn">printf</span>(<span class="str">"%d"</span>, ptr->x);    <span class="cm">// 3 (dot ko saatta arrow)</span></pre>
+<span class="fn">printf</span>(<span class="str">"%d"</span>, ptr->x);       <span class="cm">// 3 — arrow replaces (*ptr).x</span>
+<span class="fn">printf</span>(<span class="str">"%d"</span>, (*ptr).y);     <span class="cm">// 4 — equivalent way (less readable)</span></pre>
+        </div>
+        <div class="info-box tip">
+          <strong>💡 Dot vs Arrow</strong>
+          Use <code>.</code> when you have a struct variable: <code>s1.roll</code><br>
+          Use <code>-&gt;</code> when you have a pointer to a struct: <code>ptr-&gt;roll</code>
         </div>
       </div>
+
+      <div class="card">
+        <h3><span>📋</span> Array of Structures</h3>
+        <div class="code-block">
+          <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>struct_array.c</span></div>
+          <pre><span class="kw">struct</span> Student students[<span class="num">3</span>] = {
+    {<span class="str">"Ram"</span>,  <span class="num">101</span>, <span class="num">85.5</span>},
+    {<span class="str">"Sita"</span>, <span class="num">102</span>, <span class="num">92.0</span>},
+    {<span class="str">"Hari"</span>, <span class="num">103</span>, <span class="num">78.5</span>}
+};
+
+<span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>; i&lt;<span class="num">3</span>; i++) {
+    <span class="fn">printf</span>(<span class="str">"Name: %s, Marks: %.1f\n"</span>, students[i].name, students[i].marks);
+}</pre>
+        </div>
+      </div>
+
+      <div class="lesson-nav" id="nav-structs"></div>
     </div>
 
-    <!-- FILES -->
+    <!-- ══════════════════════════════
+         SECTION 12 — FILES
+    ══════════════════════════════ -->
     <div class="section" id="files">
       <div class="topic-header">
         <div class="topic-tag">Chapter 12</div>
         <h2>File Handling</h2>
-        <p>Program बाट files read/write गर्ने।</p>
+        <p>File handling allows C programs to permanently store and retrieve data by reading from and writing to files on disk.</p>
       </div>
 
       <div class="card">
-        <h3><span>📁</span> File Operations</h3>
+        <h3><span>📁</span> File Opening Modes</h3>
         <table>
-          <tr><th>Mode</th><th>Meaning</th></tr>
-          <tr><td>"r"</td><td>Read — file parhna</td></tr>
-          <tr><td>"w"</td><td>Write — file ma lekhna (overwrite)</td></tr>
-          <tr><td>"a"</td><td>Append — file ko antima add garne</td></tr>
-          <tr><td>"r+"</td><td>Read + Write</td></tr>
-          <tr><td>"w+"</td><td>Write + Read (overwrite)</td></tr>
+          <tr><th>Mode</th><th>Meaning</th><th>Note</th></tr>
+          <tr><td>"r"</td><td>Read only</td><td>File must exist</td></tr>
+          <tr><td>"w"</td><td>Write (create/overwrite)</td><td>Creates new or erases existing</td></tr>
+          <tr><td>"a"</td><td>Append</td><td>Adds to end of file</td></tr>
+          <tr><td>"r+"</td><td>Read + Write</td><td>File must exist</td></tr>
+          <tr><td>"w+"</td><td>Write + Read</td><td>Overwrites existing</td></tr>
+          <tr><td>"a+"</td><td>Append + Read</td><td>Preserves existing data</td></tr>
         </table>
       </div>
 
       <div class="card">
-        <h3><span>💾</span> File Read & Write</h3>
+        <h3><span>💾</span> File Read & Write Example</h3>
         <div class="code-block">
           <div class="code-header"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>fileio.c</span></div>
           <pre><span class="hd">#include &lt;stdio.h&gt;</span>
 
 <span class="kw">int</span> <span class="fn">main</span>() {
-    FILE *fp;                   <span class="cm">// File pointer</span>
+    FILE *fp;                        <span class="cm">// FILE pointer — declared in stdio.h</span>
 
-    <span class="cm">// Write to file</span>
+    <span class="cm">// ── Write to file ──────────────────────────</span>
     fp = <span class="fn">fopen</span>(<span class="str">"data.txt"</span>, <span class="str">"w"</span>);
-    <span class="fn">fprintf</span>(fp, <span class="str">"Namaste BIT!\n"</span>);
-    <span class="fn">fclose</span>(fp);                 <span class="cm">// File close garna na birse!</span>
+    <span class="kw">if</span>(fp == NULL) {
+        <span class="fn">printf</span>(<span class="str">"Error opening file!\n"</span>);
+        <span class="kw">return</span> <span class="num">1</span>;
+    }
+    <span class="fn">fprintf</span>(fp, <span class="str">"Roll: %d, Marks: %.2f\n"</span>, <span class="num">101</span>, <span class="num">85.5</span>);
+    <span class="fn">fclose</span>(fp);                      <span class="cm">// Always close the file!</span>
 
-    <span class="cm">// Read from file</span>
+    <span class="cm">// ── Read from file ─────────────────────────</span>
     <span class="kw">char</span> buffer[<span class="num">100</span>];
     fp = <span class="fn">fopen</span>(<span class="str">"data.txt"</span>, <span class="str">"r"</span>);
     <span class="kw">while</span>(<span class="fn">fgets</span>(buffer, <span class="num">100</span>, fp) != NULL) {
-        <span class="fn">printf</span>(<span class="str">"%s"</span>, buffer);
+        <span class="fn">printf</span>(<span class="str">"%s"</span>, buffer);         <span class="cm">// Print each line</span>
     }
     <span class="fn">fclose</span>(fp);
 
@@ -1420,18 +1445,38 @@ Point *ptr = &amp;p1;
 }</pre>
         </div>
         <div class="info-box imp">
-          <strong>🔴 Exam याद गर्नु</strong>
-          fopen() fail भएमा NULL return गर्छ। fclose() नगरे data lose हुन सक्छ!
+          <strong>🔴 Exam Must Know</strong>
+          <code>fopen()</code> returns NULL if file cannot be opened — always check!<br>
+          <code>fclose()</code> is mandatory — without it, data may not be saved to disk.
         </div>
       </div>
+
+      <div class="card">
+        <h3><span>🔤</span> File Functions Summary</h3>
+        <table>
+          <tr><th>Function</th><th>Purpose</th></tr>
+          <tr><td>fopen(name, mode)</td><td>Open a file</td></tr>
+          <tr><td>fclose(fp)</td><td>Close a file</td></tr>
+          <tr><td>fprintf(fp, ...)</td><td>Write formatted data</td></tr>
+          <tr><td>fscanf(fp, ...)</td><td>Read formatted data</td></tr>
+          <tr><td>fgets(s, n, fp)</td><td>Read a line</td></tr>
+          <tr><td>fputs(s, fp)</td><td>Write a string</td></tr>
+          <tr><td>feof(fp)</td><td>Check end of file</td></tr>
+          <tr><td>rewind(fp)</td><td>Go back to beginning of file</td></tr>
+        </table>
+      </div>
+
+      <div class="lesson-nav" id="nav-files"></div>
     </div>
 
-    <!-- QUIZ -->
+    <!-- ══════════════════════════════
+         SECTION — QUIZ
+    ══════════════════════════════ -->
     <div class="section" id="quiz">
       <div class="topic-header">
         <div class="topic-tag">Practice</div>
         <h2>BIT Exam Quiz 🎯</h2>
-        <p>आफ्नो तयारी जाँच गर्नुस् — exam questions जस्तै!</p>
+        <p>Test your preparation with exam-style questions covering all 12 chapters!</p>
       </div>
 
       <div id="quizContainer"></div>
@@ -1439,11 +1484,16 @@ Point *ptr = &amp;p1;
       <div class="card" style="margin-top:24px; text-align:center;">
         <div id="scoreDisplay" style="font-size:24px; font-weight:700; color:var(--accent); margin-bottom:8px;"></div>
         <div id="scoreSub" style="color:var(--muted); font-size:14px;"></div>
+        <div id="retryBtn" style="display:none; margin-top:16px;">
+          <button onclick="resetQuiz()" style="padding:12px 28px; background:rgba(0,212,170,0.15); border:1px solid var(--accent); color:var(--accent); border-radius:10px; cursor:pointer; font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:600; transition:all 0.2s;" onmouseover="this.style.background='rgba(0,212,170,0.25)'" onmouseout="this.style.background='rgba(0,212,170,0.15)'">🔄 Retry Quiz</button>
+        </div>
       </div>
+
+      <div class="lesson-nav" id="nav-quiz"></div>
     </div>
 
-  </div>
-</div>
+  </div><!-- end .main -->
+</div><!-- end .container -->
 
 </div><!-- end .page-content -->
 
@@ -1454,39 +1504,129 @@ Point *ptr = &amp;p1;
       <div class="logo-icon">C</div>
       <div class="footer-brand-text">
         <h4>C Language — BIT Exam 2081</h4>
-        <p>Hemraj Adhikari को Study Notes</p>
+        <p>Study Notes by Hemraj Adhikari</p>
       </div>
     </div>
     <div class="footer-links">
-      <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener">
-        🏠 Home
-      </a>
-      <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener">
-        🐙 GitHub
-      </a>
-      <a href="#" onclick="document.querySelector('.nav-item').click(); window.scrollTo({top:0,behavior:'smooth'}); return false;">
-        ⬆ Back to Top
-      </a>
+      <a href="https://hemrajadhikari.info.np/" target="_blank" rel="noopener">🏠 Home</a>
+      <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener">🐙 GitHub</a>
+      <a href="https://www.linkedin.com/in/hemraajadhikari" target="_blank" rel="noopener">💼 LinkedIn</a>
+      <a href="#" onclick="showSection('intro'); return false;">⬆ Back to Top</a>
     </div>
   </div>
   <div class="footer-copy">
-    Made with ❤️ by <a href="https://hemrajadhikari.info.np/" target="_blank">Hemraj Adhikari</a> · BIT Students को लागि · Nepal 🇳🇵
+    Made with ❤️ by <a href="https://hemrajadhikari.info.np/" target="_blank">Hemraj Adhikari</a> · For BIT Students · Nepal 🇳🇵
   </div>
 </footer>
 
 </div><!-- end .page-wrapper -->
 
 <script>
-// Countdown
-function updateCountdown() {
-  const exam = new Date('2025-06-25');
-  const now = new Date();
-  const diff = Math.ceil((exam - now) / (1000*60*60*24));
-  document.getElementById('daysLeft').textContent = diff > 0 ? diff : '🎉';
-}
-updateCountdown();
+// ══════════════════════════════════════
+// SECTION DATA
+// ══════════════════════════════════════
+const sections = [
+  { id: 'intro',     title: 'Introduction to C',   num: '01' },
+  { id: 'basics',    title: 'Variables & Data Types', num: '02' },
+  { id: 'operators', title: 'Operators',             num: '03' },
+  { id: 'io',        title: 'Input / Output',        num: '04' },
+  { id: 'control',   title: 'Control Flow',          num: '05' },
+  { id: 'loops',     title: 'Loops',                 num: '06' },
+  { id: 'functions', title: 'Functions',             num: '07' },
+  { id: 'arrays',    title: 'Arrays',                num: '08' },
+  { id: 'strings',   title: 'Strings',               num: '09' },
+  { id: 'pointers',  title: 'Pointers',              num: '10' },
+  { id: 'structs',   title: 'Structures',            num: '11' },
+  { id: 'files',     title: 'File Handling',         num: '12' },
+  { id: 'quiz',      title: 'Practice Quiz',         num: '🎯' },
+];
 
-// Mobile menu
+// ══════════════════════════════════════
+// BUILD LESSON NAV BARS
+// ══════════════════════════════════════
+function buildLessonNavs() {
+  sections.forEach((sec, idx) => {
+    const container = document.getElementById('nav-' + sec.id);
+    if (!container) return;
+
+    const prev = idx > 0 ? sections[idx - 1] : null;
+    const next = idx < sections.length - 1 ? sections[idx + 1] : null;
+    const isQuiz = sec.id === 'quiz';
+
+    let html = '';
+
+    // Progress indicator
+    html += `<div class="lesson-nav-progress">
+      <span>${idx + 1}</span> / ${sections.length} — ${sec.title}
+    </div>`;
+
+    // Previous button
+    if (prev) {
+      html += `<button class="lesson-nav-btn prev" onclick="showSection('${prev.id}')">
+        <span class="nav-arrow">←</span>
+        <div>
+          <span class="nav-label">Previous</span>
+          <span class="nav-title">${prev.num} ${prev.title}</span>
+        </div>
+      </button>`;
+    } else {
+      html += `<div style="flex:1;max-width:240px;"></div>`;
+    }
+
+    // Quiz shortcut button (not shown on quiz page itself)
+    if (!isQuiz) {
+      html += `<button class="lesson-nav-quiz-btn" onclick="showSection('quiz')">
+        🎯 Take Quiz
+      </button>`;
+    }
+
+    // Next button
+    if (next) {
+      html += `<button class="lesson-nav-btn next" onclick="showSection('${next.id}')">
+        <div style="text-align:right;">
+          <span class="nav-label">Next</span>
+          <span class="nav-title">${next.num} ${next.title}</span>
+        </div>
+        <span class="nav-arrow">→</span>
+      </button>`;
+    } else {
+      html += `<div style="flex:1;max-width:240px;"></div>`;
+    }
+
+    container.innerHTML = html;
+  });
+}
+
+// ══════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════
+function showSection(id, fromDrawer) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+  document.getElementById(id).classList.add('active');
+
+  // Highlight sidebar nav
+  document.querySelectorAll('.sidebar .nav-item').forEach(n => {
+    if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'"+id+"'")) {
+      n.classList.add('active');
+    }
+  });
+  // Highlight drawer nav
+  const drawerItem = document.getElementById('drawer-' + id);
+  if (drawerItem) drawerItem.classList.add('active');
+
+  if (fromDrawer) closeMobileMenu();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Set first sidebar item active on load
+document.querySelector('.sidebar .nav-item').classList.add('active');
+document.getElementById('drawer-intro').classList.add('active');
+
+// ══════════════════════════════════════
+// MOBILE DRAWER
+// ══════════════════════════════════════
 function openMobileMenu() {
   document.getElementById('sidebarOverlay').classList.add('open');
   document.getElementById('sidebarDrawer').classList.add('open');
@@ -1498,107 +1638,116 @@ function closeMobileMenu() {
   document.body.style.overflow = '';
 }
 
-// Navigation
-function showSection(id, fromDrawer) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-
-  // Highlight sidebar nav item
-  document.querySelectorAll('.sidebar .nav-item').forEach(n => {
-    if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'"+id+"'")) {
-      n.classList.add('active');
-    }
-  });
-  // Highlight drawer nav item
-  const drawerItem = document.getElementById('drawer-' + id);
-  if (drawerItem) drawerItem.classList.add('active');
-
-  if (fromDrawer) closeMobileMenu();
-  window.scrollTo({top:0, behavior:'smooth'});
+// ══════════════════════════════════════
+// COUNTDOWN
+// ══════════════════════════════════════
+function updateCountdown() {
+  const exam = new Date('2025-06-25');
+  const now = new Date();
+  const diff = Math.ceil((exam - now) / (1000*60*60*24));
+  document.getElementById('daysLeft').textContent = diff > 0 ? diff : '🎉';
 }
+updateCountdown();
 
-// Quiz Data
+// ══════════════════════════════════════
+// QUIZ DATA
+// ══════════════════════════════════════
 const questions = [
   {
-    q: "C मा string को end मा कुन character हुन्छ?",
-    opts: ["'.'", "'\\0'", "'\\n'", "' '"],
+    q: "What character terminates a string in C?",
+    opts: ["'.'", "'\\\\0'", "'\\\\n'", "' '"],
     ans: 1,
-    exp: "String को अन्तमा null character '\\0' हुन्छ जसले string को end indicate गर्छ।"
+    exp: "Strings in C end with the null character '\\0'. This tells functions like printf and strlen where the string ends."
   },
   {
-    q: "scanf() मा integer input लिन कुन format specifier प्रयोग हुन्छ?",
+    q: "Which format specifier is used to read an integer with scanf()?",
     opts: ["%f", "%s", "%d", "%c"],
     ans: 2,
-    exp: "%d integer को लागि, %f float को, %s string को, %c char को।"
+    exp: "%d is for integers, %f for float, %s for strings, %c for characters."
   },
   {
-    q: "निम्नमध्ये कुन Recursion को लागि आवश्यक छ?",
-    opts: ["Loop", "Base Case", "Array", "Pointer"],
+    q: "What is essential in a recursive function to prevent infinite recursion?",
+    opts: ["A loop", "A base case", "An array", "A pointer"],
     ans: 1,
-    exp: "Base case बिना recursion infinite loop बन्छ। Base case नै recursion को end condition हो।"
+    exp: "A base case defines when recursion stops. Without it, the function calls itself forever, causing a stack overflow."
   },
   {
-    q: "10 % 3 को result के हुन्छ?",
+    q: "What does 10 % 3 evaluate to in C?",
     opts: ["3", "1", "0", "3.33"],
     ans: 1,
-    exp: "Modulus (%) operator remainder दिन्छ। 10 ÷ 3 = 3 बाँकी 1, त्यसैले 10%3 = 1।"
+    exp: "The modulus operator (%) returns the remainder. 10 ÷ 3 = 3 remainder 1, so 10 % 3 = 1."
   },
   {
-    q: "Array को index कुन नम्बरबाट सुरु हुन्छ?",
-    opts: ["1", "-1", "0", "Compiler मा निर्भर"],
+    q: "Array indexing in C starts from which number?",
+    opts: ["1", "-1", "0", "Compiler-dependent"],
     ans: 2,
-    exp: "C मा array index हमेशा 0 बाट सुरु हुन्छ। 5 elements: index 0,1,2,3,4।"
+    exp: "Array indices in C always start from 0. A 5-element array has valid indices 0, 1, 2, 3, 4."
   },
   {
-    q: "Pointer variable कसरी declare गरिन्छ?",
+    q: "How do you declare a pointer to an integer in C?",
     opts: ["int ptr;", "pointer ptr;", "int *ptr;", "&int ptr;"],
     ans: 2,
-    exp: "Pointer declare गर्न data type अगाडि * राखिन्छ: int *ptr;"
+    exp: "Pointer declaration uses * before the name: int *ptr; declares a pointer that stores the address of an integer."
   },
   {
-    q: "Structure को member access गर्न कुन operator प्रयोग हुन्छ?",
+    q: "Which operator accesses struct members through a direct variable?",
     opts: ["->", "::", "*", "."],
     ans: 3,
-    exp: "Direct structure variable को member access गर्न dot (.) operator। Pointer मार्फत access गर्न arrow (->) operator।"
+    exp: "The dot (.) operator is used with a struct variable (s1.roll). The arrow (->) is used with a pointer to a struct (ptr->roll)."
   },
   {
-    q: "fopen() ले file open गर्न fail भएमा के return गर्छ?",
+    q: "What does fopen() return when it fails to open a file?",
     opts: ["0", "-1", "NULL", "FALSE"],
     ans: 2,
-    exp: "fopen() fail भएमा NULL return गर्छ। त्यसैले if(fp == NULL) check गर्नु जरुरी छ।"
+    exp: "fopen() returns NULL on failure. Always check if(fp == NULL) before using the file pointer."
   },
   {
-    q: "do-while र while loop मा के फरक छ?",
+    q: "What is the key difference between while and do-while?",
     opts: [
-      "do-while मा condition check हुँदैन",
-      "do-while कम्तिमा एकपटक execute हुन्छ",
-      "while loop faster छ",
-      "केही फरक छैन"
+      "do-while doesn't check conditions",
+      "do-while executes at least once",
+      "while is always faster",
+      "There is no difference"
     ],
     ans: 1,
-    exp: "do-while मा body पहिले execute हुन्छ, condition पछि check हुन्छ। त्यसैले condition false भए पनि एकपटक चल्छ।"
+    exp: "In do-while, the body runs first and the condition is checked after. So even if the condition is false initially, the body runs at least once."
   },
   {
-    q: "निम्नमध्ये कुन valid variable name हो?",
+    q: "Which of the following is a valid variable name in C?",
     opts: ["2marks", "my marks", "_rollNo", "int"],
     ans: 2,
-    exp: "_rollNo valid छ। Variable name letter वा _ बाट सुरु हुनुपर्छ। 2marks digit बाट, my marks मा space, int keyword हो।"
-  }
+    exp: "_rollNo is valid — starts with underscore. '2marks' starts with a digit, 'my marks' has a space, and 'int' is a reserved keyword."
+  },
+  {
+    q: "What is the output of: int a = 5; printf(\"%d\", a++);",
+    opts: ["4", "5", "6", "Undefined"],
+    ans: 1,
+    exp: "Post-increment (a++) uses the current value first, then increments. So printf prints 5, then a becomes 6."
+  },
+  {
+    q: "Which header file is required for string functions like strlen() and strcpy()?",
+    opts: ["stdio.h", "stdlib.h", "string.h", "math.h"],
+    ans: 2,
+    exp: "string.h contains all string manipulation functions: strlen, strcpy, strcat, strcmp, etc."
+  },
 ];
 
 let answered = 0, correct = 0;
 
 function buildQuiz() {
   const container = document.getElementById('quizContainer');
+  container.innerHTML = '';
+  answered = 0; correct = 0;
+  updateScore();
+
   questions.forEach((q, idx) => {
     const div = document.createElement('div');
     div.className = 'quiz-card';
     div.innerHTML = `
       <div class="question"><strong style="color:var(--accent);font-family:'JetBrains Mono',monospace">Q${idx+1}.</strong> ${q.q}</div>
       <div class="options">
-        ${q.opts.map((o,i) => `
-          <div class="option" onclick="answer(this,${idx},${i})">
+        ${q.opts.map((o, i) => `
+          <div class="option" onclick="answer(this, ${idx}, ${i})">
             <span class="option-label">${String.fromCharCode(65+i)}</span>
             ${o}
           </div>
@@ -1608,29 +1757,30 @@ function buildQuiz() {
     `;
     container.appendChild(div);
   });
+  document.getElementById('retryBtn').style.display = 'none';
 }
 
 function answer(el, qIdx, optIdx) {
   const opts = el.parentElement.querySelectorAll('.option');
   if (el.classList.contains('correct') || el.classList.contains('wrong')) return;
-  
+
   const q = questions[qIdx];
   const resultEl = document.getElementById(`result-${qIdx}`);
-  
+
   opts.forEach(o => o.style.pointerEvents = 'none');
   opts[q.ans].classList.add('correct');
-  
+
   if (optIdx === q.ans) {
     el.classList.add('correct');
     resultEl.className = 'quiz-result show correct';
-    resultEl.innerHTML = '✅ सही! ' + q.exp;
+    resultEl.innerHTML = '✅ Correct! ' + q.exp;
     correct++;
   } else {
     el.classList.add('wrong');
     resultEl.className = 'quiz-result show wrong';
-    resultEl.innerHTML = '❌ गलत! ' + q.exp;
+    resultEl.innerHTML = '❌ Incorrect. ' + q.exp;
   }
-  
+
   answered++;
   updateScore();
 }
@@ -1638,12 +1788,32 @@ function answer(el, qIdx, optIdx) {
 function updateScore() {
   const scoreEl = document.getElementById('scoreDisplay');
   const subEl = document.getElementById('scoreSub');
-  scoreEl.textContent = `${correct} / ${answered} सही`;
-  
-  const pct = Math.round((correct/answered)*100);
-  subEl.textContent = `${pct}% • ${answered === questions.length ? '🎉 सबै प्रश्न सकियो!' : `${questions.length - answered} प्रश्न बाँकी`}`;
+  const retryBtn = document.getElementById('retryBtn');
+
+  if (answered === 0) {
+    scoreEl.textContent = '';
+    subEl.textContent = `${questions.length} questions — answer to see your score`;
+    return;
+  }
+
+  const pct = Math.round((correct / answered) * 100);
+  scoreEl.textContent = `${correct} / ${answered} Correct`;
+  subEl.textContent = `${pct}% • ${answered === questions.length ? '🎉 All questions done!' : `${questions.length - answered} remaining`}`;
+
+  if (answered === questions.length) {
+    retryBtn.style.display = 'block';
+  }
 }
 
+function resetQuiz() {
+  buildQuiz();
+  window.scrollTo({ top: document.getElementById('quiz').offsetTop - 100, behavior: 'smooth' });
+}
+
+// ══════════════════════════════════════
+// INIT
+// ══════════════════════════════════════
+buildLessonNavs();
 buildQuiz();
 </script>
 </body>
