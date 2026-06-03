@@ -1,5 +1,5 @@
 /**
- * Hemraj Adhikari Portfolio — main.js v6.0
+ * Hemraj Adhikari Portfolio — main.js v6.1
  * Production-ready: no inline scripts, all features unified.
  */
 (function () {
@@ -121,15 +121,17 @@
 
   /* Search index */
   var searchableContent = [
-    { title: 'About Hemraj',         section: '#about',     keywords: 'about hemraj it officer cloud kathmandu nepal' },
-    { title: 'Skills & Tech Stack',  section: '#skills',    keywords: 'aws linux python devops docker cybersecurity crm google workspace microsoft 365' },
-    { title: 'Work Experience',      section: '#experience',keywords: 'experience route2uni citizen infotech it officer work history' },
-    { title: 'Services',             section: '#services',  keywords: 'cloud infrastructure saas crm wordpress hosting cybersecurity helpdesk mentoring' },
-    { title: 'Projects',             section: '#portfolio', keywords: 'kbm fm mega loksewa cloud management projects portfolio' },
-    { title: 'Blog & IT Guides',     section: '#blog',      keywords: 'aws cloud career linux nepal cybersecurity csit bca bit blog guide' },
-    { title: 'BIT / BCA / CSIT Mentoring', section: '#services', keywords: 'bit bca csit mentoring nepal students career guidance computer engineering' },
-    { title: 'FAQ',                  section: '#faq',       keywords: 'faq hire freelance pricing upwork whatsapp international' },
-    { title: 'Contact',              section: '#contact',   keywords: 'contact hire email whatsapp upwork kathmandu nepal freelance' },
+    { title: 'About Hemraj',               section: '#about',     keywords: 'about hemraj it officer cloud kathmandu nepal' },
+    { title: 'Skills & Tech Stack',        section: '#skills',    keywords: 'aws linux python devops docker cybersecurity crm google workspace microsoft 365' },
+    { title: 'Work Experience',            section: '#experience',keywords: 'experience route2uni citizen infotech it officer work history' },
+    { title: 'Services',                   section: '#services',  keywords: 'cloud infrastructure saas crm wordpress hosting cybersecurity helpdesk mentoring' },
+    { title: 'Projects',                   section: '#portfolio', keywords: 'kbm fm mega loksewa cloud management projects portfolio' },
+    { title: 'Blog & IT Guides',           section: '#blog',      keywords: 'aws cloud career linux nepal cybersecurity csit bca bit blog guide' },
+    { title: 'BIT Notes & Career Guide',   section: '#services',  keywords: 'bit nepal notes c language digital logic foundation of it bagmati pradesh university janamaitri' },
+    { title: 'BCA Notes & Career Guide',   section: '#services',  keywords: 'bca nepal notes c language digital logic foundation of it tribhuvan university' },
+    { title: 'BSc CSIT Notes & Guide',     section: '#services',  keywords: 'bsc csit nepal notes c language digital logic foundation of it csit mentor' },
+    { title: 'FAQ',                        section: '#faq',       keywords: 'faq hire freelance pricing upwork whatsapp international' },
+    { title: 'Contact',                    section: '#contact',   keywords: 'contact hire email whatsapp upwork kathmandu nepal freelance' },
   ];
 
   if (searchInput) {
@@ -153,26 +155,27 @@
     });
   }
 
-  /* ── DROPDOWN NAV ── */
-  var dropdown = document.getElementById('studentsDropdown');
-  var dropBtn  = document.getElementById('studentsDropdownBtn');
-  if (dropdown && dropBtn) {
-    dropBtn.addEventListener('click', function (e) {
+  /* ── NOTES & GUIDES DROPDOWN ── */
+  var notesDropdown = document.getElementById('notesDropdown');
+  var notesDropdownBtn = document.getElementById('notesDropdownBtn');
+
+  if (notesDropdown && notesDropdownBtn) {
+    notesDropdownBtn.addEventListener('click', function (e) {
       e.stopPropagation();
-      var open = dropdown.classList.toggle('open');
-      dropBtn.setAttribute('aria-expanded', open);
+      var open = notesDropdown.classList.toggle('open');
+      notesDropdownBtn.setAttribute('aria-expanded', String(open));
     });
     document.addEventListener('click', function (e) {
-      if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove('open');
-        dropBtn.setAttribute('aria-expanded', 'false');
+      if (!notesDropdown.contains(e.target)) {
+        notesDropdown.classList.remove('open');
+        notesDropdownBtn.setAttribute('aria-expanded', 'false');
       }
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && dropdown.classList.contains('open')) {
-        dropdown.classList.remove('open');
-        dropBtn.setAttribute('aria-expanded', 'false');
-        dropBtn.focus();
+      if (e.key === 'Escape' && notesDropdown.classList.contains('open')) {
+        notesDropdown.classList.remove('open');
+        notesDropdownBtn.setAttribute('aria-expanded', 'false');
+        notesDropdownBtn.focus();
       }
     });
   }
