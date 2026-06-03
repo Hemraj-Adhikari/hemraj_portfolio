@@ -350,9 +350,9 @@ ol {
 .notes-mega-menu {
   min-width: 560px;
   left: 50%;
-  transform: translateX(-50%) translateY(-6px);
+  transform: translateX(-50%);
   padding: 8px;
-  display: grid;
+  display: none;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0;
   position: absolute;
@@ -365,12 +365,6 @@ ol {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.15s, transform 0.15s;
-}
-
-.nav-dropdown.open .notes-mega-menu {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
 }
 
 .nav-dropdown.open .notes-mega-menu {
@@ -411,6 +405,7 @@ ol {
 .notes-col a:hover {
   background: rgba(255,255,255,0.06);
   color: var(--text1);
+}
 }
 .search-result-item {
   display: flex;
