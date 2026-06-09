@@ -1,11 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  </head>
-  <body>
-    import { useState, useMemo } from "react";
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BIT412 — C Programming Q&amp;A Bank</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080c14;--surface:#0f1724;--surface2:#162032;--surface3:#1c2840;
+  --accent:#00e5b8;--accent2:#ff6b35;--accent3:#a78bfa;--accent4:#38bdf8;
+  --text:#dde6f0;--muted:#5a7080;--border:#1a2535;
+}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,sans-serif;min-height:100vh}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:#1e3040;border-radius:99px}
+header{background:linear-gradient(135deg,#080c14 0%,#130824 50%,#080c14 100%);border-bottom:1px solid var(--border);padding:16px 24px;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;gap:12}
+.logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent3));display:flex;align-items:center;justify-content:center;font-family:monospace;font-weight:700;font-size:20px;color:#000;flex-shrink:0}
+.header-title{font-size:17px;font-weight:700;color:var(--accent)}
+.header-sub{font-size:12px;color:var(--muted)}
+.exam-badge{background:rgba(255,107,53,.15);border:1px solid rgba(255,107,53,.4);border-radius:10px;padding:7px 16px;font-size:12px;font-weight:700;color:var(--accent2);font-family:monospace}
+.menu-btn{background:none;border:1px solid var(--border);border-radius:8px;padding:7px 14px;cursor:pointer;color:var(--text);font-size:13px;display:none}
+.layout{display:flex;min-height:calc(100vh - 77px)}
+nav{width:260px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);position:sticky;top:77px;height:calc(100vh - 77px);overflow-y:auto}
+main{flex:1;padding:32px 28px;max-width:880px;overflow-x:hidden}
+.nav-section-label{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:2px;text-transform:uppercase;padding:0 18px 12px;display:block}
+.unit-label{font-size:9px;font-weight:700;color:var(--accent3);letter-spacing:1.5px;text-transform:uppercase;padding:10px 18px 4px;margin-top:4px;display:block}
+.nav-item{display:flex;align-items:center;gap:8px;padding:8px 18px;cursor:pointer;border-left:3px solid transparent;color:var(--muted);font-size:13px;transition:all .15s}
+.nav-item:hover{color:var(--text);background:rgba(255,255,255,.03)}
+.nav-item.active{border-left-color:var(--accent);background:rgba(0,229,184,.07);color:var(--accent)}
+.nav-badge{flex-shrink:0;width:22px;text-align:center;background:var(--surface3);border-radius:4px;padding:1px 5px;font-size:10px;font-family:monospace;font-weight:700;color:var(--muted)}
+.nav-item.active .nav-badge{background:rgba(0,229,184,.2);color:var(--accent)}
+.search-bar{width:100%;padding:10px 16px;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;outline:none;margin-bottom:10px}
+.search-bar:focus{border-color:var(--accent)}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filter-btn{padding:5px 14px;border-radius:7px;font-size:12px;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-weight:400;font-family:inherit;transition:all .15s}
+.filter-btn.active{border-color:var(--accent);background:rgba(0,229,184,.1);color:var(--accent);font-weight:700}
+.search-count{margin-left:auto;font-size:13px;color:var(--muted);display:flex;align-items:center}
+.page-eyebrow{display:inline-block;background:rgba(0,229,184,.12);color:var(--accent);border:1px solid rgba(0,229,184,.25);border-radius:6px;padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.page-title{font-size:26px;font-weight:700;line-height:1.25;margin-bottom:6px;color:var(--text)}
+.page-sub{color:var(--muted);font-size:13px;margin-bottom:24px}
+.group-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:9px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
+.qcard{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:12px;overflow:hidden;transition:border-color .2s}
+.qcard-header{display:flex;align-items:flex-start;gap:12px;padding:16px 18px;cursor:pointer;transition:background .15s}
+.qcard-header:hover{background:var(--surface2)}
+.qcard.open .qcard-header{background:var(--surface2)}
+.qcard.open{border-color:var(--surface3)}
+.q-num{flex-shrink:0;width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:11px;font-weight:700;margin-top:1px}
+.q-text{flex:1;font-size:14px;font-weight:600;line-height:1.55;color:var(--text)}
+.q-chevron{flex-shrink:0;font-size:16px;color:var(--muted);transition:transform .25s;margin-top:2px}
+.qcard.open .q-chevron{transform:rotate(180deg)}
+.qcard-body{border-top:1px solid var(--border);padding:18px 20px;display:none}
+.qcard.open .qcard-body{display:block}
+.qcard-body pre{background:#060a10;border:1px solid var(--border);border-radius:10px;padding:14px;font-family:'JetBrains Mono',Consolas,monospace;font-size:12px;line-height:1.8;overflow-x:auto;white-space:pre;margin:10px 0;color:#e6edf3}
+.qcard-body table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+.qcard-body th{background:var(--surface3);padding:8px 12px;text-align:left;color:var(--accent);font-weight:700;border-bottom:1px solid var(--border);font-size:12px}
+.qcard-body td{padding:8px 12px;border-bottom:1px solid var(--border);color:#94a3b8;font-size:12px}
+.qcard-body tr:last-child td{border-bottom:none}
+.qcard-body tr:hover td{background:var(--surface2)}
+.qcard-body h4{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.6px;margin:14px 0 5px}
+.qcard-body p{font-size:14px;line-height:1.75;color:#94a3b8;margin-bottom:6px}
+.qcard-body ul,.qcard-body ol{padding-left:22px;margin:6px 0}
+.qcard-body li{font-size:14px;line-height:1.75;color:#94a3b8;margin-bottom:4px}
+.qcard-body code{background:var(--surface3);padding:1px 6px;border-radius:4px;font-family:monospace;font-size:12px;color:var(--accent4)}
+.qcard-body b,.qcard-body strong{color:var(--text)}
+.ib{border-radius:8px;padding:10px 14px;margin:10px 0;font-size:13px;line-height:1.65}
+.ib.tip{background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.3);color:#c4b5fd}
+.ib.warn{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);color:#fcd34d}
+.ib.imp{background:rgba(0,229,184,.1);border:1px solid rgba(0,229,184,.3);color:#6ee7d4}
+.nav-buttons{display:flex;align-items:center;justify-content:space-between;margin-top:36px;padding-top:20px;border-top:1px solid var(--border);flex-wrap:wrap;gap:10px}
+.nav-page-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;font-family:inherit;font-size:13px;transition:all .2s}
+.nav-page-btn:hover{border-color:var(--accent);background:rgba(0,229,184,.05)}
+.btn-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.btn-title{font-weight:700;font-size:12px}
+.nav-counter{font-size:11px;color:var(--muted);font-family:monospace}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:300}
+.mobile-nav{position:fixed;top:0;left:0;bottom:0;width:270px;background:var(--surface);border-right:1px solid var(--border);z-index:301;overflow-y:auto;transform:translateX(-100%);transition:transform .25s}
+.mobile-nav.open{transform:translateX(0)}
+.overlay.open{display:block}
+.mobile-close{position:absolute;top:12px;right:12px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer}
+.search-result-unit{font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+.no-results{text-align:center;padding:60px;color:var(--muted)}
+@media(max-width:768px){
+  nav{display:none}
+  .menu-btn{display:block}
+  main{padding:20px 16px}
+}
+</style>
+</head>
+<body>
 
-/* ─── COMPLETE VERIFIED DATA ──────────────────────────────── */
+<header>
+  <div style="display:flex;align-items:center;gap:14px">
+    <div class="logo">C</div>
+    <div>
+      <div class="header-title">BIT412 — C Programming</div>
+      <div class="header-sub">Complete Q&amp;A Answer Bank · All 9 Units · Group A / B / C</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center">
+    <button class="menu-btn" onclick="toggleMobileNav()">☰ Units</button>
+    <div class="exam-badge">90%+ EXAM PREP</div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav id="sidebar"></nav>
+  <main>
+    <input class="search-bar" type="text" id="searchInput" placeholder="🔍  Search questions... (e.g. pointer, recursion, array)" oninput="handleSearch()"/>
+    <div class="filter-row">
+      <button class="filter-btn active" id="filter-all" onclick="setFilter('all')">All Groups</button>
+      <button class="filter-btn" id="filter-A" onclick="setFilter('A')">Group A</button>
+      <button class="filter-btn" id="filter-B" onclick="setFilter('B')">Group B</button>
+      <button class="filter-btn" id="filter-C" onclick="setFilter('C')">Group C</button>
+      <span class="search-count" id="searchCount" style="display:none"></span>
+    </div>
+    <div id="content-area"></div>
+  </main>
+</div>
+
+<div class="overlay" id="overlay" onclick="toggleMobileNav()"></div>
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" onclick="toggleMobileNav()">✕</button>
+  <div id="mobileSidebar" style="padding-top:16px"></div>
+</div>
+
+<script>
 const units = [
   {
     id:"u1", title:"Introduction to Programming & Problem Solving", short:"Intro & Problem Solving",
@@ -220,7 +338,7 @@ float r = (float)3 / 2;  /* r = 1.5 (cast before division) */</pre>` },
 <li>✘ No spaces or special characters (except _)</li></ul>` },
       ]},
       { label:"B", marks:5, qs:[
-        { q:"Predict the output: int a=10, b=3; printf(\"%d %d\", a/b, a%b);",
+        { q:'Predict the output: int a=10, b=3; printf("%d %d", a/b, a%b);',
           a:`<p>Integer division: <code>10 / 3 = 3</code> (decimal part discarded)</p>
 <p>Modulo (remainder): <code>10 % 3 = 1</code></p>
 <div class="ib imp">Output: <code>3 1</code></div>
@@ -442,9 +560,6 @@ int main() {
     printf("Enter year: ");
     scanf("%d", &year);
 
-    /* Leap year rules:
-       1. Divisible by 4 AND NOT by 100 → leap
-       2. OR divisible by 400 → leap */
     if ((year%4==0 &amp;&amp; year%100!=0) || (year%400==0))
         printf("%d is a Leap Year\n", year);
     else
@@ -479,14 +594,12 @@ int main() {
         { q:"Analyze the use of break and continue statements with traced output.",
           a:`<pre>#include &lt;stdio.h&gt;
 int main() {
-    /* break example */
     printf("break:    ");
     for(int i=1; i&lt;=10; i++) {
         if(i==6) break;
         printf("%d ", i);   /* 1 2 3 4 5 */
     }
 
-    /* continue example */
     printf("\ncontinue: ");
     for(int i=1; i&lt;=10; i++) {
         if(i%2==0) continue;
@@ -505,25 +618,19 @@ int main() {
     scanf("%d", &n);
 
     if (n &lt;= 1) {
-        isPrime = 0;  /* 0 and 1 are not prime */
+        isPrime = 0;
     } else {
-        /* Check only up to √n — major optimisation */
         for (int i = 2; i*i &lt;= n; i++) {
-            if (n % i == 0) {
-                isPrime = 0;
-                break;
-            }
+            if (n % i == 0) { isPrime = 0; break; }
         }
     }
 
-    if (isPrime)
-        printf("%d is a Prime number\n", n);
-    else
-        printf("%d is NOT a Prime number\n", n);
+    if (isPrime) printf("%d is a Prime number\n", n);
+    else         printf("%d is NOT a Prime number\n", n);
     return 0;
 }
 /* 7 → Prime | 9 → Not Prime (9 = 3×3) */</pre>
-<div class="ib tip">Why check only up to √n? If n has a factor greater than √n, it must also have one less than √n. So checking up to √n is sufficient.</div>` },
+<div class="ib tip">Why check only up to √n? If n has a factor greater than √n, it must also have one less than √n.</div>` },
         { q:"Write a program to print the Fibonacci series up to N terms.",
           a:`<pre>#include &lt;stdio.h&gt;
 int main() {
@@ -534,7 +641,7 @@ int main() {
     printf("Fibonacci Series: ");
     for (int i = 1; i &lt;= n; i++) {
         printf("%d ", a);
-        c = a + b;   /* next term */
+        c = a + b;
         a = b;
         b = c;
     }
@@ -553,10 +660,7 @@ int main() {
         }
     }
     return 0;
-}
-/* Table of 2:
-   2 × 1 = 2
-   2 × 2 = 4  ... */</pre>` },
+}</pre>` },
         { q:"Explain all conditional (decision-making) statements in C with syntax and examples.",
           a:`<h4>1. if statement</h4>
 <pre>if (marks &gt;= 40)
@@ -579,7 +683,7 @@ else                   printf("Fail\n");</pre>
 }</pre>
 <h4>5. Ternary operator</h4>
 <pre>int max = (a &gt; b) ? a : b;  /* compact if-else */</pre>` },
-        { q:"Write a program to print all prime numbers between 1 and 100 (Sieve logic).",
+        { q:"Write a program to print all prime numbers between 1 and 100.",
           a:`<pre>#include &lt;stdio.h&gt;
 int isPrime(int n) {
     if (n &lt;= 1) return 0;
@@ -643,12 +747,12 @@ int main() {
 <pre>int add(int a, int b);    /* prototype — semicolon at end! */
 
 int main() {
-    int result = add(5, 3);   /* compiler knows what to expect */
+    int result = add(5, 3);
     printf("%d\n", result);
     return 0;
 }
 
-int add(int a, int b) {   /* actual definition */
+int add(int a, int b) {
     return a + b;
 }</pre>
 <div class="ib imp">Without a prototype, calling a function before its definition causes a compiler warning or error.</div>` },
@@ -667,8 +771,8 @@ int add(int a, int b) {   /* actual definition */
 <tr><td>Uses more memory (copy created)</td><td>More efficient (no copy)</td></tr>
 <tr><td>Default in C</td><td>Done using pointers in C</td></tr></table>
 <pre>#include &lt;stdio.h&gt;
-void byValue(int x)  { x = 100; }    /* a unchanged */
-void byRef(int *x)   { *x = 100; }   /* a changed! */
+void byValue(int x)  { x = 100; }
+void byRef(int *x)   { *x = 100; }
 int main() {
     int a = 5;
     byValue(a);
@@ -703,8 +807,8 @@ Final result = 24</pre>
 
 long factorial(int n) {
     if (n == 0 || n == 1)
-        return 1;              /* base case */
-    return n * factorial(n-1); /* recursive call */
+        return 1;
+    return n * factorial(n-1);
 }
 
 int main() {
@@ -731,17 +835,16 @@ int main() {
 /* Call 3 times: 1, 2, 3 */</pre>
 <h4>extern — share variable across files</h4>
 <pre>/* file1.c */  int score = 0;
-/* file2.c */  extern int score;  /* use file1's score */</pre>
+/* file2.c */  extern int score;</pre>
 <h4>register — suggest CPU register storage</h4>
 <pre>void sum(int n) {
-    register int i, s=0;   /* fast loop counter */
+    register int i, s=0;
     for(i=1; i&lt;=n; i++) s+=i;
     printf("%d\n", s);
 }</pre>` },
         { q:"Write a program to find GCD and LCM using user-defined functions.",
           a:`<pre>#include &lt;stdio.h&gt;
 
-/* Euclidean algorithm */
 int gcd(int a, int b) {
     if (b == 0) return a;
     return gcd(b, a % b);
@@ -763,13 +866,11 @@ int main() {
         { q:"Compare recursive and iterative approaches with a factorial example.",
           a:`<pre>#include &lt;stdio.h&gt;
 
-/* Recursive */
 long fact_recursive(int n) {
     if (n &lt;= 1) return 1;
     return n * fact_recursive(n-1);
 }
 
-/* Iterative */
 long fact_iterative(int n) {
     long result = 1;
     for (int i = 2; i &lt;= n; i++)
@@ -796,24 +897,22 @@ int main() {
       { label:"A", marks:3, qs:[
         { q:"Define one-dimensional array with syntax and example.",
           a:`<p>A <b>1D array</b> is a collection of elements of the <b>same data type</b> stored in <b>contiguous memory</b> locations, accessed via a single index starting at 0.</p>
-<pre>/* Declaration and initialisation */
-int marks[5] = {80, 75, 90, 85, 95};
+<pre>int marks[5] = {80, 75, 90, 85, 95};
 
-/* Accessing elements */
 printf("%d\n", marks[0]);  /* 80 — first element */
 printf("%d\n", marks[2]);  /* 90 — third element */
 printf("%d\n", marks[4]);  /* 95 — last element */</pre>
 <div class="ib warn">Array index runs from 0 to (size−1). Accessing marks[5] is out-of-bounds — undefined behavior!</div>` },
         { q:"What is a string in C? How is it stored?",
-          a:`<p>A <b>string</b> in C is a one-dimensional array of characters that is terminated by the null character <code>'\\0'</code> (ASCII value 0).</p>
+          a:`<p>A <b>string</b> in C is a one-dimensional array of characters terminated by the null character <code>'\\0'</code> (ASCII value 0).</p>
 <pre>char name[] = "Ram";
 /* Memory layout:
    Index:  0    1    2    3
-   Value: 'R'  'a'  'm'  '\0'   ← null terminator */
+   Value: 'R'  'a'  'm'  '\\0' */
 
-char city[10] = "KTM";    /* remaining bytes are '\0' */
-char ch[] = {'H','i','\0'};  /* manual null terminator */</pre>
-<div class="ib imp">The null character <code>'\\0'</code> marks the end of the string. strlen() counts characters up to (not including) <code>'\\0'</code>.</div>` },
+char city[10] = "KTM";
+char ch[] = {'H','i','\\0'};</pre>
+<div class="ib imp">The null character <code>'\\0'</code> marks the end. strlen() counts characters up to (not including) <code>'\\0'</code>.</div>` },
         { q:"Name and explain any three string handling functions.",
           a:`<p>Require: <code>#include &lt;string.h&gt;</code></p>
 <table><tr><th>Function</th><th>Purpose</th><th>Example</th></tr>
@@ -825,16 +924,15 @@ char ch[] = {'H','i','\0'};  /* manual null terminator */</pre>
 <tr><td>strrev(s)</td><td>Reverses the string</td><td>strrev("ABC") → "CBA"</td></tr></table>` },
         { q:"What is a two-dimensional array? Give its syntax and example.",
           a:`<p>A <b>2D array</b> is a matrix (table) with rows and columns, stored in row-major order in memory.</p>
-<pre>/* Syntax: type name[rows][cols]; */
-int mat[3][3] = {
-    {1, 2, 3},   /* row 0 */
-    {4, 5, 6},   /* row 1 */
-    {7, 8, 9}    /* row 2 */
+<pre>int mat[3][3] = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
 };
 
-printf("%d\n", mat[0][0]);  /* 1 — row 0, col 0 */
-printf("%d\n", mat[1][2]);  /* 6 — row 1, col 2 */
-printf("%d\n", mat[2][1]);  /* 8 — row 2, col 1 */</pre>` },
+printf("%d\n", mat[0][0]);  /* 1 */
+printf("%d\n", mat[1][2]);  /* 6 */
+printf("%d\n", mat[2][1]);  /* 8 */</pre>` },
       ]},
       { label:"B", marks:5, qs:[
         { q:"Analyze the memory representation of arrays with an example.",
@@ -847,7 +945,7 @@ printf("%d\n", mat[2][1]);  /* 8 — row 2, col 1 */</pre>` },
 
    Address formula: addr(arr[i]) = base + i × sizeof(int)
    arr[3] = 1000 + 3×4 = 1012 → value 40  ✔ */</pre>
-<div class="ib imp">Array name <code>arr</code> is a constant pointer to the first element. <code>arr == &arr[0] == 1000</code></div>` },
+<div class="ib imp">Array name <code>arr</code> is a constant pointer to the first element. <code>arr == &amp;arr[0]</code></div>` },
         { q:"Explain all major string manipulation functions with examples.",
           a:`<pre>#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
@@ -884,11 +982,11 @@ int b[5] = {1, 2};         /* {1, 2, 0, 0, 0} */
 int d[] = {10, 20, 30};    /* size = 3 automatically */
 
 /* 4. All zeros */
-int e[100] = {0};          /* safe way to zero-initialise */
+int e[100] = {0};
 
 /* 5. String initialisation */
 char s[] = "Hello";        /* '\\0' added automatically */
-char t[6] = {'H','e','l','l','o','\\0'};  /* manual */
+char t[6] = {'H','e','l','l','o','\\0'};
 
 /* 6. 2D array */
 int mat[2][3] = {{1,2,3},{4,5,6}};</pre>` },
@@ -968,7 +1066,7 @@ int main() {
     return 0;
 }
 /* Input: 5 3 1 4 2 → Output: 1 2 3 4 5 */</pre>
-<div class="ib tip">Bubble sort: in each pass the largest unsorted element "bubbles up" to its correct position. After (n−1) passes the array is sorted.</div>` },
+<div class="ib tip">Bubble sort: in each pass the largest unsorted element "bubbles up" to its correct position.</div>` },
         { q:"Develop a program for matrix addition using 2D arrays.",
           a:`<pre>#include &lt;stdio.h&gt;
 int main() {
@@ -985,7 +1083,6 @@ int main() {
     for (int i=0; i&lt;r; i++)
         for (int j=0; j&lt;c; j++) scanf("%d", &B[i][j]);
 
-    /* Addition */
     printf("Sum Matrix (A+B):\n");
     for (int i=0; i&lt;r; i++) {
         for (int j=0; j&lt;c; j++) {
@@ -1006,27 +1103,26 @@ int main() {
         { q:"Define pointer. How is it declared and used?",
           a:`<p>A <b>pointer</b> is a variable that stores the <b>memory address</b> of another variable.</p>
 <pre>int x = 10;
-int *ptr = &x;    /* ptr stores ADDRESS of x */
+int *ptr = &x;
 
 printf("%p\n",  ptr);   /* address e.g. 0x7fff1234 */
 printf("%d\n",  *ptr);  /* dereference → value = 10 */
-printf("%d\n",  x);     /* 10 */
 
-*ptr = 50;              /* modify x through pointer */
+*ptr = 50;
 printf("%d\n",  x);     /* 50 — x changed! */</pre>
 <table><tr><th>Operator</th><th>Name</th><th>Meaning</th></tr>
 <tr><td>&amp;</td><td>Address-of</td><td>Gets the address of a variable</td></tr>
 <tr><td>*</td><td>Dereference</td><td>Gets the value at an address</td></tr></table>` },
         { q:"What is a NULL pointer? Why is it used?",
           a:`<p>A <b>NULL pointer</b> is a pointer that points to <b>nothing</b> — its address value is 0 (or NULL).</p>
-<pre>int *ptr = NULL;   /* safe initialisation */
+<pre>int *ptr = NULL;
 
 if (ptr != NULL) {
-    printf("%d\n", *ptr);   /* safe to dereference */
+    printf("%d\n", *ptr);
 } else {
     printf("Pointer is NULL — cannot dereference!\n");
 }</pre>
-<div class="ib imp">Always initialise pointers to NULL. Dereferencing a NULL pointer causes a segmentation fault (program crash).</div>
+<div class="ib imp">Always initialise pointers to NULL. Dereferencing a NULL pointer causes a segmentation fault.</div>
 <h4>Uses of NULL pointer</h4>
 <ul><li>Indicate that a pointer doesn't point to valid memory</li>
 <li>Mark the end of a linked list</li>
@@ -1034,27 +1130,21 @@ if (ptr != NULL) {
         { q:"What is pointer arithmetic? Explain with an example.",
           a:`<p>Pointer arithmetic works in units of the <b>size of the pointed-to type</b>, not in raw bytes.</p>
 <pre>int arr[] = {10, 20, 30, 40, 50};
-int *p = arr;       /* p points to arr[0] = 10 */
+int *p = arr;
 
 printf("%d\n", *p);       /* 10 */
-p++;                       /* p moves 4 bytes (sizeof int) */
+p++;
 printf("%d\n", *p);       /* 20 */
-printf("%d\n", *(p+2));   /* 40 — arr[3] */
-
-/* Valid: +, -, ++, --, comparison */
-/* Invalid: *, /, % on pointers */</pre>` },
+printf("%d\n", *(p+2));   /* 40 */</pre>` },
         { q:"What is dereferencing? Give an example.",
           a:`<p><b>Dereferencing</b> means using the <code>*</code> operator to <b>access or modify the value</b> stored at the memory address held by a pointer.</p>
 <pre>int x = 42;
 int *p = &x;
 
-/* Read through pointer */
 printf("%d\n", *p);   /* 42 */
 
-/* Write through pointer */
 *p = 100;
-printf("%d\n", x);    /* 100 — x is changed! */
-printf("%d\n", *p);   /* 100 — same memory location */</pre>` },
+printf("%d\n", x);    /* 100 — x is changed! */</pre>` },
       ]},
       { label:"B", marks:5, qs:[
         { q:"Explain pointer arithmetic with detailed examples.",
@@ -1063,21 +1153,17 @@ int main() {
     int arr[] = {100, 200, 300, 400, 500};
     int *p = arr;
 
-    /* Forward traversal */
     for (int i = 0; i &lt; 5; i++)
-        printf("arr[%d] = %d (addr: %p)\n", i, *(p+i), (p+i));
+        printf("arr[%d] = %d\n", i, *(p+i));
 
-    /* Increment */
     p++;
     printf("After p++: *p = %d\n", *p);   /* 200 */
 
-    /* Pointer difference */
     int *q = &arr[4];
     printf("q - p = %ld elements\n", q - p);  /* 3 */
 
-    /* String traversal with pointer */
     char *s = "Hello";
-    while (*s) printf("%c", *s++);   /* Hello */
+    while (*s) printf("%c", *s++);
     return 0;
 }</pre>` },
         { q:"Analyze the relationship between arrays and pointers.",
@@ -1085,28 +1171,18 @@ int main() {
 <pre>int arr[] = {10, 20, 30};
 int *p = arr;
 
-/* These four expressions are all EQUIVALENT */
-arr[1]    == *(arr+1) == p[1] == *(p+1)   /* all = 20 */
+/* All EQUIVALENT */
+arr[1] == *(arr+1) == p[1] == *(p+1)   /* all = 20 */
 
-/* Address access */
-&arr[0] == arr == p   /* all point to first element */
-
-/* Key difference */
 arr++;    /* ERROR — arr is constant pointer */
 p++;      /* OK    — p is a regular pointer  */</pre>
-<div class="ib tip">Passing an array to a function passes the base address (pointer). Changes inside the function affect the original array.</div>` },
+<div class="ib tip">Passing an array to a function passes the base address. Changes inside the function affect the original array.</div>` },
         { q:"Compare call by value and call by reference (pointer-based) parameter passing.",
           a:`<pre>#include &lt;stdio.h&gt;
 
-/* Call by value — copy passed, original unchanged */
-void doubleVal(int x) {
-    x *= 2;
-}
+void doubleVal(int x) { x *= 2; }
 
-/* Call by reference — address passed, original changed */
-void doubleRef(int *x) {
-    *x *= 2;
-}
+void doubleRef(int *x) { *x *= 2; }
 
 int main() {
     int a = 5, b = 5;
@@ -1141,7 +1217,7 @@ int main() {
           a:`<pre>#include &lt;stdio.h&gt;
 
 int findMax(int *arr, int n) {
-    int max = *arr;          /* start with first element */
+    int max = *arr;
     for (int i = 1; i &lt; n; i++)
         if (*(arr+i) &gt; max)
             max = *(arr+i);
@@ -1150,7 +1226,7 @@ int findMax(int *arr, int n) {
 
 int main() {
     int arr[] = {45, 12, 78, 34, 90, 23};
-    int n = sizeof(arr) / sizeof(arr[0]);   /* 6 */
+    int n = sizeof(arr) / sizeof(arr[0]);
     printf("Array: ");
     for (int i = 0; i &lt; n; i++) printf("%d ", arr[i]);
     printf("\nLargest element = %d\n", findMax(arr, n));  /* 90 */
@@ -1159,7 +1235,7 @@ int main() {
         { q:"Compare static and dynamic memory allocation with programs.",
           a:`<table><tr><th>Static Allocation</th><th>Dynamic Allocation</th></tr>
 <tr><td>Done at <b>compile time</b></td><td>Done at <b>run time</b></td></tr>
-<tr><td>Fixed size determined in code</td><td>Size decided by user/program at runtime</td></tr>
+<tr><td>Fixed size</td><td>Size decided at runtime</td></tr>
 <tr><td>Stored on <b>Stack</b></td><td>Stored on <b>Heap</b></td></tr>
 <tr><td>Freed automatically</td><td>Must call <code>free()</code> manually</td></tr>
 <tr><td>int arr[10];</td><td>int *p = malloc(10*sizeof(int));</td></tr></table>
@@ -1171,7 +1247,6 @@ int main() {
     printf("How many elements? ");
     scanf("%d", &n);
 
-    /* Dynamic allocation */
     int *arr = (int*) malloc(n * sizeof(int));
     if (arr == NULL) { printf("Memory error!\n"); return 1; }
 
@@ -1179,20 +1254,18 @@ int main() {
         arr[i] = (i+1) * 10;
         printf("%d ", arr[i]);
     }
-    free(arr);    /* MUST free to avoid memory leak */
+    free(arr);
     return 0;
 }</pre>` },
         { q:"Explain pointers and functions — returning a pointer, pointer to pointer.",
           a:`<pre>#include &lt;stdio.h&gt;
 
-/* Function returning pointer */
 int* larger(int *a, int *b) {
     return (*a &gt; *b) ? a : b;
 }
 
-/* Pointer to pointer */
 void modify(int **pp) {
-    **pp = 999;  /* modify value through double pointer */
+    **pp = 999;
 }
 
 int main() {
@@ -1202,7 +1275,6 @@ int main() {
 
     int val = 5;
     int *ptr = &val;
-    int **pptr = &ptr;    /* pointer to pointer */
     modify(&ptr);
     printf("val = %d\n", val);       /* 999 */
     return 0;
@@ -1215,14 +1287,14 @@ int main() {
     groups:[
       { label:"A", marks:3, qs:[
         { q:"Define structure. Give syntax and example.",
-          a:`<p>A <b>structure</b> is a user-defined data type that groups variables of <b>different data types</b> under a single name. Each member has its own separate memory allocation.</p>
+          a:`<p>A <b>structure</b> is a user-defined data type that groups variables of <b>different data types</b> under a single name.</p>
 <pre>struct Student {
     int   roll;
     char  name[50];
     float marks;
 };
 
-struct Student s1;        /* declare variable */
+struct Student s1;
 s1.roll = 101;
 strcpy(s1.name, "Ram");
 s1.marks = 85.5;
@@ -1238,9 +1310,9 @@ printf("%d %s %.1f\n", s1.roll, s1.name, s1.marks);</pre>` },
 
 union Data d;
 d.i = 65;
-printf("%d\n",  d.i);   /* 65 */
-d.f = 3.14;             /* overwrites d.i! */
-printf("%.2f\n", d.f);  /* 3.14 */</pre>` },
+printf("%d\n",  d.i);
+d.f = 3.14;     /* overwrites d.i! */
+printf("%.2f\n", d.f);</pre>` },
         { q:"Differentiate structure and union.",
           a:`<table><tr><th>Structure</th><th>Union</th></tr>
 <tr><td>Each member has <b>its own memory</b></td><td>All members <b>share the same memory</b></td></tr>
@@ -1249,14 +1321,12 @@ printf("%.2f\n", d.f);  /* 3.14 */</pre>` },
 <tr><td>Used for grouping related data (student record)</td><td>Used for memory-saving, type-punning</td></tr>
 <tr><td>keyword: <code>struct</code></td><td>keyword: <code>union</code></td></tr></table>` },
         { q:"Define enumeration with syntax and example.",
-          a:`<p>An <b>enum (enumeration)</b> is a user-defined type that assigns symbolic names to a sequence of integer constants, making code more readable.</p>
+          a:`<p>An <b>enum</b> assigns symbolic names to a sequence of integer constants.</p>
 <pre>enum Day { SUN=0, MON, TUE, WED, THU, FRI, SAT };
-/* SUN=0, MON=1, TUE=2, ... SAT=6 */
 
-enum Day today = WED;      /* today = 3 */
+enum Day today = WED;
 printf("%d\n", today);     /* 3 */
 
-/* Custom starting value */
 enum Season { SPRING=1, SUMMER, AUTUMN, WINTER };
 /* SPRING=1, SUMMER=2, AUTUMN=3, WINTER=4 */</pre>` },
         { q:"What is a nested structure? Give an example.",
@@ -1268,8 +1338,7 @@ enum Season { SPRING=1, SUMMER, AUTUMN, WINTER };
 struct Employee {
     char       name[50];
     int        id;
-    struct Date dob;       /* nested structure */
-    struct Date joinDate;
+    struct Date dob;
 };
 
 struct Employee e;
@@ -1293,12 +1362,9 @@ int main() {
     /* max(1,4,4) = 4 bytes */
     return 0;
 }</pre>
-<div class="ib warn"><b>Padding:</b> The compiler adds extra bytes between struct members to align them at natural boundaries (int at 4-byte boundary). This is why sizeof(struct) may be larger than the sum of member sizes.</div>` },
+<div class="ib warn"><b>Padding:</b> The compiler adds extra bytes between struct members to align them at natural boundaries.</div>` },
         { q:"Explain enumeration with custom values and usage in switch.",
           a:`<pre>#include &lt;stdio.h&gt;
-enum Color { RED=1, GREEN=2, BLUE=4 };
-/* Bit flags — can combine: RED|BLUE = 5 */
-
 enum Month { JAN=1, FEB, MAR, APR, MAY, JUN,
              JUL, AUG, SEP, OCT, NOV, DEC };
 
@@ -1325,7 +1391,7 @@ struct Address {
 struct Person {
     char           name[50];
     int            age;
-    struct Address addr;   /* nested */
+    struct Address addr;
 };
 int main() {
     struct Person p;
@@ -1394,15 +1460,14 @@ union  U { int i; float f; char c; };
 int main() {
     struct S sv;
     sv.i = 65;  sv.f = 3.14f;  sv.c = 'A';
-    /* ALL three are valid simultaneously */
     printf("Struct — i=%d f=%.2f c=%c\n",
            sv.i, sv.f, sv.c);  /* 65  3.14  A */
 
     union U uv;
     uv.i = 65;
-    printf("Union  — i=%d\n", uv.i);   /* 65 */
-    uv.f = 3.14f;   /* OVERWRITES i! */
-    printf("Union  — f=%.2f (i is now garbage)\n", uv.f);
+    printf("Union  — i=%d\n", uv.i);
+    uv.f = 3.14f;
+    printf("Union  — f=%.2f (i now garbage)\n", uv.f);
 
     printf("sizeof struct = %lu\n", sizeof(sv));  /* ~12 */
     printf("sizeof union  = %lu\n", sizeof(uv));  /*   4 */
@@ -1445,13 +1510,12 @@ int main() {
     groups:[
       { label:"A", marks:3, qs:[
         { q:"Define file handling. Why is it needed?",
-          a:`<p><b>File handling</b> refers to the set of operations that can be performed on files stored on disk — creating, reading, writing, modifying, and deleting — so that data <b>persists</b> after the program ends.</p>
+          a:`<p><b>File handling</b> refers to operations on files stored on disk — creating, reading, writing, modifying, and deleting — so that data <b>persists</b> after the program ends.</p>
 <h4>Why needed?</h4>
 <ul><li>Data entered via keyboard is lost when the program ends — files preserve it</li>
 <li>Large amounts of data can be stored permanently</li>
 <li>Data can be shared between programs</li>
-<li>Avoids re-entering data every time the program runs</li></ul>
-<p>Uses the <code>FILE</code> pointer from <code>&lt;stdio.h&gt;</code>.</p>` },
+<li>Avoids re-entering data every time</li></ul>` },
         { q:"What is fopen()? List all file opening modes.",
           a:`<p><code>fopen()</code> opens a file and returns a <code>FILE*</code> pointer. Returns <code>NULL</code> if the file cannot be opened.</p>
 <pre>FILE *fp = fopen("data.txt", "w");
@@ -1474,19 +1538,12 @@ if (fp == NULL) { printf("Error opening file!\n"); return 1; }</pre>
 <tr><td>Use: config files, CSV, logs</td><td>Use: images, executables, audio</td></tr></table>` },
         { q:"What is EOF? How is it used?",
           a:`<p><b>EOF</b> (End of File) is a special value (−1) returned by file reading functions when there is no more data to read.</p>
-<pre>/* Method 1: using fgetc */
-int ch;
+<pre>int ch;
 FILE *fp = fopen("file.txt", "r");
 while ((ch = fgetc(fp)) != EOF)
     putchar(ch);
-fclose(fp);
-
-/* Method 2: using feof() */
-while (!feof(fp)) {
-    ch = fgetc(fp);
-    if (ch != EOF) putchar(ch);
-}</pre>
-<div class="ib warn">Always use <code>int</code> (not <code>char</code>) to store the return value of fgetc(), because EOF = −1 won't fit in a char on some systems.</div>` },
+fclose(fp);</pre>
+<div class="ib warn">Always use <code>int</code> (not <code>char</code>) to store the return value of fgetc(), because EOF = −1 won't fit in a char.</div>` },
         { q:"List and explain common file handling functions in C.",
           a:`<table><tr><th>Function</th><th>Purpose</th></tr>
 <tr><td>fopen(name, mode)</td><td>Open a file; returns FILE*</td></tr>
@@ -1504,9 +1561,8 @@ while (!feof(fp)) {
       { label:"B", marks:5, qs:[
         { q:"Explain sequential and random file access with examples.",
           a:`<h4>Sequential Access</h4>
-<p>Read or write records one after another from the beginning to the end. Simple but slow for large files.</p>
-<pre>/* Sequential read */
-char line[100];
+<p>Read or write records one after another from beginning to end.</p>
+<pre>char line[100];
 while (fgets(line, 100, fp))
     printf("%s", line);</pre>
 <h4>Random Access — Jump to any position</h4>
@@ -1515,8 +1571,8 @@ fseek(fp, 0, SEEK_END);    /* go to end of file */
 fseek(fp, 10, SEEK_SET);   /* byte 10 from start */
 fseek(fp, -5, SEEK_CUR);   /* 5 bytes backward */
 
-long pos = ftell(fp);       /* current position in bytes */
-rewind(fp);                 /* same as fseek(fp,0,SEEK_SET) */</pre>
+long pos = ftell(fp);
+rewind(fp);</pre>
 <table><tr><th>Constant</th><th>Value</th><th>Meaning</th></tr>
 <tr><td>SEEK_SET</td><td>0</td><td>From beginning of file</td></tr>
 <tr><td>SEEK_CUR</td><td>1</td><td>From current position</td></tr>
@@ -1527,35 +1583,29 @@ rewind(fp);                 /* same as fseek(fp,0,SEEK_SET) */</pre>
 <li><b>Permission denied</b> — no read/write access to the directory/file</li>
 <li><b>Not closing the file</b> — buffered data may not be written to disk; use fclose()</li>
 <li><b>Buffer overflow</b> — use fgets(buf, SIZE, fp) instead of gets()</li>
-<li><b>Reading past EOF</b> — always check feof() or the return value</li>
-<li><b>Disk full</b> — fwrite() returns fewer items than requested; check return value</li></ul>
+<li><b>Reading past EOF</b> — always check feof() or the return value</li></ul>
 <pre>FILE *fp = fopen("data.txt", "r");
 if (fp == NULL) {
-    perror("Error");   /* prints system error message */
+    perror("Error");
     return 1;
 }
-/* ... use file ... */
 fclose(fp);</pre>` },
         { q:"Explain file pointer operations: fseek, ftell, rewind with examples.",
           a:`<pre>#include &lt;stdio.h&gt;
 int main() {
     FILE *fp = fopen("test.txt", "r");
 
-    /* Get file size using fseek + ftell */
     fseek(fp, 0, SEEK_END);
     long size = ftell(fp);
     printf("File size = %ld bytes\n", size);
 
-    /* Go back to beginning */
-    rewind(fp);  /* same as fseek(fp, 0, SEEK_SET) */
+    rewind(fp);
 
-    /* Skip first 5 bytes */
     fseek(fp, 5, SEEK_SET);
-    printf("Current position: %ld\n", ftell(fp));  /* 5 */
+    printf("Position: %ld\n", ftell(fp));  /* 5 */
 
-    /* Go back 2 bytes from current */
     fseek(fp, -2, SEEK_CUR);
-    printf("Current position: %ld\n", ftell(fp));  /* 3 */
+    printf("Position: %ld\n", ftell(fp));  /* 3 */
 
     fclose(fp);
     return 0;
@@ -1580,7 +1630,7 @@ void writeRecords() {
         fprintf(fp, "%d %s %.2f\n", s.roll, s.name, s.marks);
     }
     fclose(fp);
-    printf("Records saved to students.txt\n");
+    printf("Records saved!\n");
 }
 
 void readRecords() {
@@ -1588,17 +1638,12 @@ void readRecords() {
     if (!fp) { printf("File not found!\n"); return; }
     struct Student s;
     printf("\n%-6s %-15s %s\n", "Roll", "Name", "Marks");
-    printf("----------------------------\n");
     while (fscanf(fp, "%d %s %f", &s.roll, s.name, &s.marks) == 3)
         printf("%-6d %-15s %.2f\n", s.roll, s.name, s.marks);
     fclose(fp);
 }
 
-int main() {
-    writeRecords();
-    readRecords();
-    return 0;
-}</pre>` },
+int main() { writeRecords(); readRecords(); return 0; }</pre>` },
         { q:"Write a program to count characters, words, and lines in a file.",
           a:`<pre>#include &lt;stdio.h&gt;
 int main() {
@@ -1613,7 +1658,6 @@ int main() {
     while ((ch = fgetc(fp)) != EOF) {
         chars++;
         if (ch == '\n') lines++;
-        /* Word: transition from whitespace to non-whitespace */
         if (ch==' ' || ch=='\t' || ch=='\n')
             inWord = 0;
         else if (!inWord) {
@@ -1640,10 +1684,9 @@ int main() {
     if (!fs) { printf("Source file not found!\n"); return 1; }
 
     FILE *fd = fopen(dst, "w");
-    if (!fd) { printf("Cannot create destination!\n"); fclose(fs); return 1; }
+    if (!fd) { fclose(fs); return 1; }
 
-    int ch;
-    int count = 0;
+    int ch, count = 0;
     while ((ch = fgetc(fs)) != EOF) {
         fputc(ch, fd);
         count++;
@@ -1676,28 +1719,27 @@ int main() {
     groups:[
       { label:"A", marks:3, qs:[
         { q:"What is a preprocessor directive? Give examples.",
-          a:`<p>Preprocessor directives are commands that begin with <code>#</code> and are processed by the <b>preprocessor before compilation</b>. They do NOT end with a semicolon.</p>
-<pre>#include &lt;stdio.h&gt;     /* include system header */
-#include "myfile.h"    /* include user header */
-#define MAX 100        /* define constant */
-#define SQUARE(x) ((x)*(x))  /* function-like macro */
-#undef MAX             /* remove a macro */
-#ifdef DEBUG           /* conditional compilation */
+          a:`<p>Preprocessor directives begin with <code>#</code> and are processed <b>before compilation</b>. They do NOT end with a semicolon.</p>
+<pre>#include &lt;stdio.h&gt;
+#include "myfile.h"
+#define MAX 100
+#define SQUARE(x) ((x)*(x))
+#undef MAX
+#ifdef DEBUG
     printf("Debug mode\n");
 #endif</pre>` },
         { q:"Define macro. How is it different from a function?",
-          a:`<p>A <b>macro</b> is an identifier defined via <code>#define</code> that is replaced by the preprocessor through <b>pure text substitution</b> before compilation — not a function call at runtime.</p>
+          a:`<p>A <b>macro</b> is an identifier defined via <code>#define</code> that is replaced by the preprocessor through <b>pure text substitution</b> before compilation.</p>
 <pre>#define PI    3.14159
 #define SQUARE(x)  ((x)*(x))
-#define MAX(a,b)   ((a)>(b)?(a):(b))
-#define ABS(x)     ((x)<0 ? -(x) : (x))</pre>
+#define MAX(a,b)   ((a)>(b)?(a):(b))</pre>
 <table><tr><th>Macro</th><th>Function</th></tr>
 <tr><td>Text substitution (compile time)</td><td>Compiled code (run time)</td></tr>
 <tr><td>No type checking</td><td>Type-checked</td></tr>
 <tr><td>Faster (inline, no call)</td><td>Slight overhead (call/return)</td></tr>
 <tr><td>SQUARE(x++) → double-increment bug!</td><td>Safe with any argument</td></tr></table>` },
         { q:"What is a header file? List common C header files.",
-          a:`<p>A <b>header file</b> (extension <code>.h</code>) contains function declarations (prototypes), macro definitions, type definitions, and constants that can be shared across multiple source files using <code>#include</code>.</p>
+          a:`<p>A <b>header file</b> (.h) contains function declarations, macro definitions, type definitions, and constants shared via <code>#include</code>.</p>
 <table><tr><th>Header</th><th>Contents</th></tr>
 <tr><td>stdio.h</td><td>printf, scanf, FILE, fopen, EOF</td></tr>
 <tr><td>stdlib.h</td><td>malloc, free, exit, atoi, rand</td></tr>
@@ -1706,68 +1748,59 @@ int main() {
 <tr><td>ctype.h</td><td>isalpha, isdigit, toupper, tolower</td></tr>
 <tr><td>time.h</td><td>time, clock, localtime</td></tr></table>` },
         { q:"What is conditional compilation? Why is it used?",
-          a:`<p><b>Conditional compilation</b> allows parts of the source code to be included or excluded during compilation based on conditions.</p>
-<pre>#define DEBUG    /* define to enable debug output */
+          a:`<p><b>Conditional compilation</b> allows parts of source code to be included or excluded during compilation based on conditions.</p>
+<pre>#define DEBUG
 
 #ifdef DEBUG
-    printf("x = %d\n", x);   /* compiled only if DEBUG defined */
+    printf("x = %d\n", x);
 #endif
 
-/* Header guard — prevents double inclusion */
+/* Header guard */
 #ifndef MYHEADER_H
 #define MYHEADER_H
     /* header content */
 #endif
 
-/* Platform-specific code */
+/* Platform-specific */
 #ifdef _WIN32
     printf("Windows\n");
 #else
     printf("Linux/Mac\n");
 #endif</pre>` },
         { q:"Define command-line argument. Give syntax and example.",
-          a:`<p><b>Command-line arguments</b> are values passed to the program from the terminal when it is executed. Accessed via <code>argc</code> and <code>argv[]</code>.</p>
+          a:`<p><b>Command-line arguments</b> are values passed to the program from the terminal when it is executed.</p>
 <pre>int main(int argc, char *argv[]) {
     /* argc = argument count (includes program name)
        argv[0] = program name
-       argv[1] = first argument
-       argv[2] = second argument ... */
-    printf("Program: %s\n", argv[0]);
-    printf("Arg count: %d\n", argc - 1);
+       argv[1] = first argument ... */
     for (int i = 1; i &lt; argc; i++)
         printf("argv[%d] = %s\n", i, argv[i]);
     return 0;
 }
 /* Run: ./prog Hello 42
-   Output: Program: ./prog
-           Arg count: 2
-           argv[1] = Hello
-           argv[2] = 42 */</pre>` },
+   Output: argv[1] = Hello, argv[2] = 42 */</pre>` },
       ]},
       { label:"B", marks:5, qs:[
         { q:"Compare macros and functions with examples.",
           a:`<table><tr><th>Macro</th><th>Function</th></tr>
 <tr><td>Text substitution at preprocessing</td><td>Compiled code, called at runtime</td></tr>
-<tr><td>No type checking — any type works</td><td>Type-checked by compiler</td></tr>
-<tr><td>Faster — no call/return overhead</td><td>Slightly slower (call overhead)</td></tr>
+<tr><td>No type checking</td><td>Type-checked by compiler</td></tr>
+<tr><td>Faster — no call overhead</td><td>Slightly slower</td></tr>
 <tr><td>Cannot return a value (expression only)</td><td>Can return a value</td></tr>
 <tr><td>Dangerous with side effects</td><td>Safe with any argument</td></tr></table>
-<pre>/* Macro danger */
-#define SQUARE(x) ((x)*(x))
+<pre>#define SQUARE(x) ((x)*(x))
 int a = 3;
 printf("%d\n", SQUARE(a++));
 /* expands to ((a++)*(a++)) → undefined behavior! */
 
-/* Function — safe */
 int square(int x) { return x * x; }
-printf("%d\n", square(a++));  /* safe — a passed as copy */</pre>` },
+printf("%d\n", square(a++));  /* safe */</pre>` },
         { q:"Explain conditional compilation with platform and version examples.",
           a:`<pre>#include &lt;stdio.h&gt;
 #define VERSION 2
 #define WINDOWS
 
 int main() {
-    /* Version-based compilation */
     #if VERSION == 1
         printf("Version 1: basic features\n");
     #elif VERSION == 2
@@ -1776,7 +1809,6 @@ int main() {
         printf("Unknown version\n");
     #endif
 
-    /* Platform-based compilation */
     #ifdef WINDOWS
         printf("Building for Windows\n");
     #elif defined(LINUX)
@@ -1789,7 +1821,7 @@ int main() {
 }</pre>` },
         { q:"Explain command-line arguments with a practical program.",
           a:`<pre>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;   /* for atoi() */
+#include &lt;stdlib.h&gt;
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
@@ -1797,7 +1829,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    int a = atoi(argv[1]);   /* string to integer */
+    int a = atoi(argv[1]);
     int b = atoi(argv[2]);
 
     printf("Sum        = %d\n", a + b);
@@ -1813,52 +1845,47 @@ int main(int argc, char *argv[]) {
           a:`<h4>Advantages</h4>
 <ul>
 <li><b>Speed</b> — inline substitution, zero call overhead</li>
-<li><b>Generic</b> — works with any data type (int, float, double)</li>
+<li><b>Generic</b> — works with any data type</li>
 <li><b>Named constants</b> — MAX=100 is more readable than bare 100</li>
 <li><b>Conditional compilation</b> — include/exclude code blocks at compile time</li></ul>
 <h4>Dangers (always use parentheses!)</h4>
-<pre>#define BAD_SQUARE(x)  x*x          /* wrong! */
-#define GOOD_SQUARE(x) ((x)*(x))    /* correct */
+<pre>#define BAD_SQUARE(x)  x*x
+#define GOOD_SQUARE(x) ((x)*(x))
 
-BAD_SQUARE(2+3) → 2+3*2+3 = 11     /* bug! */
-GOOD_SQUARE(2+3) → ((2+3)*(2+3)) = 25  /* correct */
+BAD_SQUARE(2+3)  → 2+3*2+3 = 11     /* bug! */
+GOOD_SQUARE(2+3) → ((2+3)*(2+3)) = 25
 
 /* Side effect danger */
-GOOD_SQUARE(x++) → ((x++)*(x++))   /* x incremented twice! */</pre>` },
+GOOD_SQUARE(x++) → ((x++)*(x++))  /* x incremented twice! */</pre>` },
       ]},
       { label:"C", marks:10, qs:[
         { q:"Explain all major preprocessor directives with complete examples.",
           a:`<pre>#include &lt;stdio.h&gt;          /* 1. Include system header */
 #include "mylib.h"          /* 2. Include user header */
 
-#define PI      3.14159     /* 3. Object-like macro (constant) */
+#define PI      3.14159     /* 3. Object-like macro */
 #define AREA(r) (PI*(r)*(r))/* 4. Function-like macro */
 
-#undef PI                   /* 5. Remove a macro definition */
-#define PI 3.14159265       /*    Redefine with more precision */
+#undef PI
+#define PI 3.14159265       /* 5. Redefine */
 
-#define DEBUG               /* 6. Define a flag */
-#ifdef DEBUG                /* 7. If DEBUG is defined */
+#define DEBUG
+#ifdef DEBUG
     #define LOG(x) printf("LOG: %s\n", x)
 #else
-    #define LOG(x)          /*    Empty macro — no output */
+    #define LOG(x)
 #endif
 
 #define VERSION 2
-#if VERSION == 1            /* 8. #if / #elif / #else */
+#if VERSION == 1
     #define FEATURES "basic"
 #elif VERSION == 2
     #define FEATURES "advanced"
-#else
-    #define FEATURES "unknown"
 #endif
 
-#ifndef GUARD_H             /* 9. Include guard */
+#ifndef GUARD_H
 #define GUARD_H
-    /* header content here */
 #endif
-
-#pragma once                /* 10. Modern include guard (compiler-specific) */
 
 int main() {
     printf("PI = %f\n", PI);
@@ -1871,50 +1898,42 @@ int main() {
           a:`<pre>#include &lt;stdio.h&gt;
 
 #define PI          3.14159265
-#define E           2.71828182
-
 #define SQUARE(x)   ((x)*(x))
 #define CUBE(x)     ((x)*(x)*(x))
 #define MAX(a,b)    ((a)&gt;(b)?(a):(b))
 #define MIN(a,b)    ((a)&lt;(b)?(a):(b))
 #define ABS(x)      ((x)&lt;0 ? -(x) : (x))
-#define CLAMP(x,lo,hi) ((x)&lt;(lo)?(lo):((x)&gt;(hi)?(hi):(x)))
-
-#define CIRCLE_AREA(r)    (PI * SQUARE(r))
-#define CIRCLE_PERIM(r)   (2 * PI * (r))
-#define RECT_AREA(l,b)    ((l)*(b))
-
+#define CIRCLE_AREA(r)  (PI * SQUARE(r))
 #define IS_EVEN(n)  ((n)%2==0)
 #define IS_ODD(n)   ((n)%2!=0)
 
 int main() {
     printf("PI            = %.5f\n", PI);
-    printf("SQUARE(7)     = %d\n",   SQUARE(7));      /* 49  */
-    printf("CUBE(3)       = %d\n",   CUBE(3));         /* 27  */
-    printf("MAX(10,20)    = %d\n",   MAX(10,20));      /* 20  */
-    printf("MIN(10,20)    = %d\n",   MIN(10,20));      /* 10  */
-    printf("ABS(-5)       = %d\n",   ABS(-5));         /* 5   */
-    printf("CLAMP(15,1,10)= %d\n",   CLAMP(15,1,10)); /* 10  */
-    printf("Circle area(5)= %.2f\n", CIRCLE_AREA(5.0));/* 78.54 */
-    printf("Is 4 even?    = %d\n",   IS_EVEN(4));      /* 1   */
-    printf("Is 7 odd?     = %d\n",   IS_ODD(7));       /* 1   */
+    printf("SQUARE(7)     = %d\n",   SQUARE(7));
+    printf("CUBE(3)       = %d\n",   CUBE(3));
+    printf("MAX(10,20)    = %d\n",   MAX(10,20));
+    printf("MIN(10,20)    = %d\n",   MIN(10,20));
+    printf("ABS(-5)       = %d\n",   ABS(-5));
+    printf("Circle area(5)= %.2f\n", CIRCLE_AREA(5.0));
+    printf("Is 4 even?    = %d\n",   IS_EVEN(4));
+    printf("Is 7 odd?     = %d\n",   IS_ODD(7));
     return 0;
 }</pre>` },
         { q:"Explain the complete preprocessing phase in C program compilation.",
           a:`<ol>
-<li><b>Trigraph Replacement</b> — Special 3-character sequences (??=, ??/, etc.) replaced with single characters.</li>
-<li><b>Line Splicing</b> — Lines ending with backslash (\\) are joined with the next line for multi-line macros.</li>
-<li><b>Tokenisation</b> — Source code is split into meaningful tokens: keywords, identifiers, literals, operators.</li>
+<li><b>Trigraph Replacement</b> — Special 3-character sequences replaced with single characters.</li>
+<li><b>Line Splicing</b> — Lines ending with backslash (\\) joined with the next line.</li>
+<li><b>Tokenisation</b> — Source code split into tokens: keywords, identifiers, literals, operators.</li>
 <li><b>Directive Processing</b><ul>
-<li><code>#include</code> — inserts the entire content of the specified file</li>
+<li><code>#include</code> — inserts entire content of the specified file</li>
 <li><code>#define</code> — stores macro name and replacement text</li>
 <li><code>#ifdef / #ifndef / #if</code> — includes or skips code sections</li>
 <li><code>#undef</code> — removes a macro definition</li></ul></li>
-<li><b>Macro Expansion</b> — Every occurrence of a macro identifier is replaced with its definition text. This is pure textual substitution.</li>
-<li><b>Output</b> — The resulting preprocessed source (a .i file) contains no # directives. This is passed to the compiler.</li></ol>
-<div class="ib imp">View the preprocessor output:<br/><code>gcc -E program.c -o program.i</code><br/>Then open program.i to see all macro expansions and file inclusions.</div>
+<li><b>Macro Expansion</b> — Every macro identifier replaced with its definition text.</li>
+<li><b>Output</b> — Resulting .i file contains no # directives; passed to compiler.</li></ol>
+<div class="ib imp">View preprocessor output:<br/><code>gcc -E program.c -o program.i</code></div>
 <table><tr><th>Phase</th><th>Tool</th><th>Input</th><th>Output</th></tr>
-<tr><td>Preprocessing</td><td>cpp (C Preprocessor)</td><td>program.c</td><td>program.i</td></tr>
+<tr><td>Preprocessing</td><td>cpp</td><td>program.c</td><td>program.i</td></tr>
 <tr><td>Compilation</td><td>cc1</td><td>program.i</td><td>program.s (assembly)</td></tr>
 <tr><td>Assembly</td><td>as</td><td>program.s</td><td>program.o (object)</td></tr>
 <tr><td>Linking</td><td>ld</td><td>program.o + libs</td><td>a.out (executable)</td></tr></table>` },
@@ -1923,238 +1942,204 @@ int main() {
   },
 ];
 
-/* ─── STYLES ──────────────────────────────────────────────── */
-const C = {
-  bg:"#080c14", surface:"#0f1724", surface2:"#162032", surface3:"#1c2840",
-  accent:"#00e5b8", accent2:"#ff6b35", accent3:"#a78bfa", accent4:"#38bdf8",
-  text:"#dde6f0", muted:"#5a7080", border:"#1a2535",
-};
+/* ── State ── */
+let activeSection = 'u1_A';
+let openCards = new Set();
+let currentFilter = 'all';
 
-/* ─── CARD ────────────────────────────────────────────────── */
-function QCard({ item, gLabel, idx, open, onToggle }) {
-  const numBg = gLabel==="A"?"rgba(56,189,248,.15)":gLabel==="B"?"rgba(167,139,250,.15)":"rgba(255,107,53,.15)";
-  const numC  = gLabel==="A"?C.accent4:gLabel==="B"?C.accent3:C.accent2;
-  return (
-    <div style={{ background:C.surface, border:`1px solid ${open?C.surface3:C.border}`, borderRadius:14, marginBottom:12, overflow:"hidden", transition:"border-color .2s" }}>
-      <div onClick={onToggle} style={{ display:"flex", alignItems:"flex-start", gap:12, padding:"16px 18px", cursor:"pointer", background: open?C.surface2:C.surface }}>
-        <div style={{ flexShrink:0, width:28, height:28, borderRadius:7, background:numBg, color:numC, display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"monospace", fontSize:11, fontWeight:700, marginTop:1 }}>Q{idx}</div>
-        <span style={{ flex:1, fontSize:14, fontWeight:600, lineHeight:1.55, color:C.text }}>{item.q}</span>
-        <span style={{ flexShrink:0, fontSize:16, color:C.muted, transition:"transform .25s", transform: open?"rotate(180deg)":"rotate(0deg)", marginTop:2 }}>▾</span>
-      </div>
-      {open && (
-        <div style={{ borderTop:`1px solid ${C.border}`, padding:"18px 20px" }}
-             dangerouslySetInnerHTML={{ __html: item.a }} />
-      )}
-    </div>
-  );
+/* ── Helpers ── */
+function groupColor(l) {
+  return l==='A' ? 'var(--accent4)' : l==='B' ? 'var(--accent3)' : 'var(--accent2)';
+}
+function groupBg(l) {
+  return l==='A' ? 'rgba(56,189,248,.12)' : l==='B' ? 'rgba(167,139,250,.12)' : 'rgba(255,107,53,.12)';
+}
+function groupBorder(l) {
+  return l==='A' ? 'rgba(56,189,248,.3)' : l==='B' ? 'rgba(167,139,250,.3)' : 'rgba(255,107,53,.3)';
+}
+function qNumBg(l) {
+  return l==='A' ? 'rgba(56,189,248,.15)' : l==='B' ? 'rgba(167,139,250,.15)' : 'rgba(255,107,53,.15)';
+}
+function groupEmoji(l) {
+  return l==='A' ? '📝' : l==='B' ? '⚡' : '🔥';
 }
 
-/* ─── MAIN APP ────────────────────────────────────────────── */
-export default function App() {
-  const [activeSection, setActiveSection] = useState("u1_A");
-  const [openCards, setOpenCards] = useState(new Set());
-  const [search, setSearch] = useState("");
-  const [filterG, setFilterG] = useState("all");
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+/* flat sections list */
+const allSections = units.flatMap(u => u.groups.map(g => ({
+  key: `${u.id}_${g.label}`, unitId: u.id, label: g.label, marks: g.marks, unitTitle: u.short
+})));
 
-  const toggleCard = id => setOpenCards(p => { const n=new Set(p); n.has(id)?n.delete(id):n.add(id); return n; });
+/* ── Build Sidebar ── */
+function buildSidebar(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  let html = '<span class="nav-section-label">All Units</span>';
+  units.forEach(u => {
+    html += `<span class="unit-label">${u.short}</span>`;
+    u.groups.forEach(g => {
+      const key = `${u.id}_${g.label}`;
+      const active = activeSection === key ? 'active' : '';
+      html += `<div class="nav-item ${active}" data-key="${key}" onclick="navigate('${key}')">
+        <span class="nav-badge">${g.label}</span>
+        Group ${g.label} (${g.marks} marks)
+      </div>`;
+    });
+  });
+  el.innerHTML = html;
+}
 
-  /* flat list of all sections */
-  const allSections = useMemo(() =>
-    units.flatMap(u => u.groups.map(g => ({ key:`${u.id}_${g.label}`, unitId:u.id, label:g.label, marks:g.marks, unitTitle:u.short }))), []);
+/* ── Render Section ── */
+function renderSection() {
+  const parts = activeSection.split('_');
+  const activeUnit = units.find(u => u.id === parts[0]);
+  const activeGroup = activeUnit && activeUnit.groups.find(g => g.label === parts[1]);
+  if (!activeUnit || !activeGroup) return;
 
   const curIdx = allSections.findIndex(s => s.key === activeSection);
   const prev = curIdx > 0 ? allSections[curIdx-1] : null;
   const next = curIdx < allSections.length-1 ? allSections[curIdx+1] : null;
 
-  /* search mode: show filtered results across all units */
-  const isSearching = search.trim().length > 0;
-  const searchResults = useMemo(() => {
-    if (!isSearching) return [];
-    const q = search.toLowerCase();
-    const res = [];
-    units.forEach(u => u.groups.forEach(g => {
-      if (filterG !== "all" && g.label !== filterG) return;
-      g.qs.forEach((item, qi) => {
-        if (item.q.toLowerCase().includes(q) || item.a.toLowerCase().includes(q))
-          res.push({ unitTitle:u.short, item, gLabel:g.label, id:`${u.id}_${g.label}_${qi}` });
-      });
-    }));
-    return res;
-  }, [search, filterG, isSearching]);
-
-  const activeUnit = units.find(u => u.id === activeSection.split("_")[0]);
-  const activeGroup = activeUnit?.groups.find(g => g.label === activeSection.split("_")[1]);
-
-  const groupColor = l => l==="A"?C.accent4:l==="B"?C.accent3:C.accent2;
-  const groupBg    = l => l==="A"?"rgba(56,189,248,.12)":l==="B"?"rgba(167,139,250,.12)":"rgba(255,107,53,.12)";
-
-  const navigate = key => { setActiveSection(key); setSidebarOpen(false); setSearch(""); window.scrollTo({top:0,behavior:"smooth"}); };
-
-  const Sidebar = ({ inDrawer }) => (
-    <div style={{ padding:"16px 0" }}>
-      <div style={{ fontSize:10, fontWeight:700, color:C.muted, letterSpacing:2, textTransform:"uppercase", padding:"0 18px 12px" }}>All Units</div>
-      {units.map(u => (
-        <div key={u.id}>
-          <div style={{ fontSize:9, fontWeight:700, color:C.accent3, letterSpacing:1.5, textTransform:"uppercase", padding:"10px 18px 4px", marginTop:4 }}>{u.short}</div>
-          {u.groups.map(g => {
-            const key = `${u.id}_${g.label}`;
-            const active = activeSection === key && !isSearching;
-            return (
-              <div key={key} onClick={() => navigate(key)}
-                style={{ display:"flex", alignItems:"center", gap:8, padding:"8px 18px", cursor:"pointer", borderLeft:`3px solid ${active?C.accent:"transparent"}`, background: active?"rgba(0,229,184,.07)":"transparent", color: active?C.accent:C.muted, fontSize:13, transition:"all .15s" }}>
-                <span style={{ flexShrink:0, width:22, textAlign:"center", background: active?"rgba(0,229,184,.2)":C.surface3, borderRadius:4, padding:"1px 5px", fontSize:10, fontFamily:"monospace", fontWeight:700, color: active?C.accent:C.muted }}>{g.label}</span>
-                Group {g.label} ({g.marks} marks)
-              </div>
-            );
-          })}
+  let cardsHTML = '';
+  activeGroup.qs.forEach((item, qi) => {
+    const id = `${activeSection}_${qi}`;
+    const open = openCards.has(id) ? 'open' : '';
+    const numBg = qNumBg(activeGroup.label);
+    const numC = groupColor(activeGroup.label);
+    cardsHTML += `
+      <div class="qcard ${open}" id="card-${id}">
+        <div class="qcard-header" onclick="toggleCard('${id}')">
+          <div class="q-num" style="background:${numBg};color:${numC}">Q${qi+1}</div>
+          <span class="q-text">${item.q}</span>
+          <span class="q-chevron">▾</span>
         </div>
-      ))}
+        <div class="qcard-body">${item.a}</div>
+      </div>`;
+  });
+
+  const prevBtn = prev ? `<button class="nav-page-btn" onclick="navigate('${prev.key}')">
+    ← <div><div class="btn-label">Previous</div><div class="btn-title">${prev.unitTitle} · ${prev.label}</div></div>
+  </button>` : '<div></div>';
+
+  const nextBtn = next ? `<button class="nav-page-btn" onclick="navigate('${next.key}')">
+    <div style="text-align:right"><div class="btn-label">Next</div><div class="btn-title">${next.unitTitle} · ${next.label}</div></div> →
+  </button>` : '<div></div>';
+
+  document.getElementById('content-area').innerHTML = `
+    <div>
+      <div class="page-eyebrow">${activeUnit.short}</div>
+      <h2 class="page-title">${activeUnit.title}</h2>
+      <p class="page-sub">${activeUnit.id.replace('u','Unit ')} — Group ${activeGroup.label} Questions (${activeGroup.marks} marks each) — ${activeGroup.qs.length} questions</p>
     </div>
-  );
-
-  return (
-    <div style={{ background:C.bg, color:C.text, minHeight:"100vh", fontFamily:"system-ui,sans-serif" }}>
-
-      {/* Global CSS for answer HTML */}
-      <style>{`
-        pre { background:#060a10; border:1px solid ${C.border}; border-radius:10px; padding:14px; font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.8; overflow-x:auto; white-space:pre; margin:10px 0; color:#e6edf3; }
-        table { width:100%; border-collapse:collapse; font-size:13px; margin:10px 0; }
-        th { background:${C.surface3}; padding:8px 12px; text-align:left; color:${C.accent}; font-weight:700; border-bottom:1px solid ${C.border}; font-size:12px; }
-        td { padding:8px 12px; border-bottom:1px solid ${C.border}; color:#94a3b8; font-size:12px; }
-        tr:last-child td { border-bottom:none; }
-        tr:hover td { background:${C.surface2}; }
-        h4 { font-size:12px; font-weight:700; color:${C.accent}; text-transform:uppercase; letter-spacing:.6px; margin:14px 0 5px; }
-        p { font-size:14px; line-height:1.75; color:#94a3b8; margin-bottom:6px; }
-        ul,ol { padding-left:22px; margin:6px 0; }
-        li { font-size:14px; line-height:1.75; color:#94a3b8; margin-bottom:4px; }
-        code { background:${C.surface3}; padding:1px 6px; border-radius:4px; font-family:monospace; font-size:12px; color:${C.accent4}; }
-        b,strong { color:${C.text}; }
-        .ib { border-radius:8px; padding:10px 14px; margin:10px 0; font-size:13px; line-height:1.65; }
-        .ib.tip  { background:rgba(167,139,250,.1); border:1px solid rgba(167,139,250,.3); color:#c4b5fd; }
-        .ib.warn { background:rgba(245,158,11,.1);  border:1px solid rgba(245,158,11,.3);  color:#fcd34d; }
-        .ib.imp  { background:rgba(0,229,184,.1);   border:1px solid rgba(0,229,184,.3);   color:#6ee7d4; }
-        ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:${C.bg}} ::-webkit-scrollbar-thumb{background:#1e3040;border-radius:99px}
-      `}</style>
-
-      {/* ── HEADER ── */}
-      <header style={{ background:"linear-gradient(135deg,#080c14 0%,#130824 50%,#080c14 100%)", borderBottom:`1px solid ${C.border}`, padding:"16px 24px", position:"sticky", top:0, zIndex:200, display:"flex", alignItems:"center", justifyContent:"space-between", gap:12 }}>
-        <div style={{ display:"flex", alignItems:"center", gap:14 }}>
-          <div style={{ width:44, height:44, borderRadius:12, background:`linear-gradient(135deg,${C.accent},${C.accent3})`, display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"monospace", fontWeight:700, fontSize:20, color:"#000", flexShrink:0 }}>C</div>
-          <div>
-            <div style={{ fontSize:17, fontWeight:700, color:C.accent }}>BIT412 — C Programming</div>
-            <div style={{ fontSize:12, color:C.muted }}>Complete Q&amp;A Answer Bank · All 9 Units · Group A / B / C</div>
-          </div>
-        </div>
-        <div style={{ display:"flex", gap:10, alignItems:"center" }}>
-          <button onClick={() => setSidebarOpen(o=>!o)}
-            style={{ display:"none", background:"none", border:`1px solid ${C.border}`, borderRadius:8, padding:"7px 14px", cursor:"pointer", color:C.text, fontSize:13, fontFamily:"inherit",
-            // show on narrow
-            "@media(max-width:768px)":{ display:"block" }
-            }}
-            className="menu-btn">☰ Units</button>
-          <div style={{ background:"rgba(255,107,53,.15)", border:"1px solid rgba(255,107,53,.4)", borderRadius:10, padding:"7px 16px", fontSize:12, fontWeight:700, color:C.accent2, fontFamily:"monospace" }}>90%+ EXAM PREP</div>
-        </div>
-      </header>
-
-      <div style={{ display:"flex", minHeight:"calc(100vh - 77px)" }}>
-
-        {/* ── SIDEBAR (desktop) ── */}
-        <nav style={{ width:260, flexShrink:0, background:C.surface, borderRight:`1px solid ${C.border}`, position:"sticky", top:77, height:"calc(100vh - 77px)", overflowY:"auto" }}>
-          <Sidebar />
-        </nav>
-
-        {/* ── MAIN ── */}
-        <main style={{ flex:1, padding:"32px 28px", maxWidth:880, overflowX:"hidden" }}>
-
-          {/* Search + filter bar */}
-          <div style={{ marginBottom:24 }}>
-            <input value={search} onChange={e=>setSearch(e.target.value)}
-              placeholder="🔍  Search questions... (e.g. pointer, recursion, array)"
-              style={{ width:"100%", padding:"10px 16px", background:C.surface, border:`1px solid ${C.border}`, borderRadius:10, color:C.text, fontSize:14, outline:"none", boxSizing:"border-box", marginBottom:10 }} />
-            <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
-              {["all","A","B","C"].map(g => (
-                <button key={g} onClick={() => setFilterG(g)}
-                  style={{ padding:"5px 14px", borderRadius:7, fontSize:12, cursor:"pointer", border: filterG===g?`1.5px solid ${C.accent}`:`1px solid ${C.border}`, background: filterG===g?"rgba(0,229,184,.1)":C.surface, color: filterG===g?C.accent:C.muted, fontWeight: filterG===g?700:400, fontFamily:"inherit" }}>
-                  {g==="all"?"All Groups":`Group ${g}`}
-                </button>
-              ))}
-              {isSearching && <span style={{ marginLeft:"auto", fontSize:13, color:C.muted, display:"flex", alignItems:"center" }}>Found <b style={{color:C.text,margin:"0 4px"}}>{searchResults.length}</b> results</span>}
-            </div>
-          </div>
-
-          {/* ── SEARCH RESULTS ── */}
-          {isSearching ? (
-            searchResults.length === 0
-              ? <div style={{ textAlign:"center", padding:"60px", color:C.muted }}>No questions found. Try a different term.</div>
-              : searchResults.map(({ unitTitle, item, gLabel, id }) => (
-                  <div key={id}>
-                    <div style={{ fontSize:11, color:C.muted, marginBottom:4, textTransform:"uppercase", letterSpacing:1 }}>{unitTitle} · Group {gLabel}</div>
-                    <QCard item={item} gLabel={gLabel} idx={""} open={openCards.has(id)} onToggle={() => toggleCard(id)} />
-                  </div>
-                ))
-          ) : (
-          /* ── NORMAL SECTION VIEW ── */
-          activeUnit && activeGroup && (
-            <>
-              {/* Page header */}
-              <div style={{ marginBottom:28 }}>
-                <div style={{ display:"inline-block", background:"rgba(0,229,184,.12)", color:C.accent, border:`1px solid rgba(0,229,184,.25)`, borderRadius:6, padding:"4px 12px", fontSize:11, fontWeight:700, letterSpacing:1.5, textTransform:"uppercase", marginBottom:10 }}>
-                  {activeUnit.short}
-                </div>
-                <h2 style={{ fontSize:26, fontWeight:700, lineHeight:1.25, marginBottom:6, color:C.text }}>{activeUnit.title}</h2>
-                <p style={{ color:C.muted, fontSize:13 }}>
-                  {activeUnit.id.replace("u","Unit ")} — Group {activeGroup.label} Questions ({activeGroup.marks} marks each) — {activeGroup.qs.length} questions
-                </p>
-              </div>
-
-              {/* Group badge */}
-              <div style={{ display:"inline-flex", alignItems:"center", gap:8, padding:"6px 16px", borderRadius:9, background:groupBg(activeGroup.label), border:`1px solid ${groupColor(activeGroup.label)}33`, color:groupColor(activeGroup.label), fontSize:12, fontWeight:700, letterSpacing:1, textTransform:"uppercase", marginBottom:20 }}>
-                {activeGroup.label==="A"?"📝":activeGroup.label==="B"?"⚡":"🔥"} Group {activeGroup.label} — {activeGroup.marks} Marks Each
-              </div>
-
-              {/* Q&A Cards */}
-              {activeGroup.qs.map((item, qi) => {
-                const id = `${activeSection}_${qi}`;
-                return <QCard key={id} item={item} gLabel={activeGroup.label} idx={qi+1} open={openCards.has(id)} onToggle={() => toggleCard(id)} />;
-              })}
-
-              {/* Nav */}
-              <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginTop:36, paddingTop:20, borderTop:`1px solid ${C.border}`, flexWrap:"wrap", gap:10 }}>
-                <div style={{ fontSize:11, color:C.muted, fontFamily:"monospace" }}>
-                  <span style={{ color:C.accent }}>{curIdx+1}</span> / {allSections.length}
-                </div>
-                {prev
-                  ? <button onClick={() => navigate(prev.key)}
-                      style={{ display:"flex", alignItems:"center", gap:8, padding:"10px 18px", borderRadius:10, border:`1px solid ${C.border}`, background:C.surface, color:C.text, cursor:"pointer", fontFamily:"inherit", fontSize:13, transition:"all .2s" }}>
-                      ← <div style={{ textAlign:"left" }}><div style={{ fontSize:10, color:C.muted, textTransform:"uppercase", letterSpacing:1 }}>Previous</div><div style={{ fontWeight:700, fontSize:12 }}>{prev.unitTitle} · {prev.label}</div></div>
-                    </button>
-                  : <div/>}
-                {next
-                  ? <button onClick={() => navigate(next.key)}
-                      style={{ display:"flex", alignItems:"center", gap:8, padding:"10px 18px", borderRadius:10, border:`1px solid ${C.border}`, background:C.surface, color:C.text, cursor:"pointer", fontFamily:"inherit", fontSize:13, transition:"all .2s" }}>
-                      <div style={{ textAlign:"right" }}><div style={{ fontSize:10, color:C.muted, textTransform:"uppercase", letterSpacing:1 }}>Next</div><div style={{ fontWeight:700, fontSize:12 }}>{next.unitTitle} · {next.label}</div></div> →
-                    </button>
-                  : <div/>}
-              </div>
-            </>
-          ))}
-        </main>
-      </div>
-
-      {/* Mobile sidebar overlay */}
-      {sidebarOpen && (
-        <>
-          <div onClick={() => setSidebarOpen(false)} style={{ position:"fixed", inset:0, background:"rgba(0,0,0,.75)", zIndex:300 }} />
-          <div style={{ position:"fixed", top:0, left:0, bottom:0, width:270, background:C.surface, borderRight:`1px solid ${C.border}`, zIndex:301, overflowY:"auto" }}>
-            <button onClick={() => setSidebarOpen(false)} style={{ position:"absolute", top:12, right:12, background:"none", border:"none", color:C.muted, fontSize:20, cursor:"pointer" }}>✕</button>
-            <Sidebar inDrawer />
-          </div>
-        </>
-      )}
-      <style>{`.menu-btn { display: block !important; } @media(min-width:769px){ .menu-btn { display: none !important; } }`}</style>
+    <div class="group-badge" style="background:${groupBg(activeGroup.label)};border:1px solid ${groupBorder(activeGroup.label)};color:${groupColor(activeGroup.label)}">
+      ${groupEmoji(activeGroup.label)} Group ${activeGroup.label} — ${activeGroup.marks} Marks Each
     </div>
-  );
+    ${cardsHTML}
+    <div class="nav-buttons">
+      <span class="nav-counter"><span style="color:var(--accent)">${curIdx+1}</span> / ${allSections.length}</span>
+      ${prevBtn}
+      ${nextBtn}
+    </div>`;
 }
+
+/* ── Search ── */
+function renderSearch(query) {
+  const q = query.toLowerCase().trim();
+  const results = [];
+  units.forEach(u => u.groups.forEach(g => {
+    if (currentFilter !== 'all' && g.label !== currentFilter) return;
+    g.qs.forEach((item, qi) => {
+      if (item.q.toLowerCase().includes(q) || item.a.toLowerCase().includes(q)) {
+        results.push({ unitTitle: u.short, item, gLabel: g.label, id: `${u.id}_${g.label}_${qi}` });
+      }
+    });
+  }));
+
+  document.getElementById('searchCount').style.display = 'flex';
+  document.getElementById('searchCount').innerHTML = `Found <b style="color:var(--text);margin:0 4px">${results.length}</b> results`;
+
+  if (results.length === 0) {
+    document.getElementById('content-area').innerHTML = '<div class="no-results">No questions found. Try a different term.</div>';
+    return;
+  }
+
+  let html = '';
+  results.forEach(({ unitTitle, item, gLabel, id }) => {
+    const open = openCards.has(id) ? 'open' : '';
+    const numBg = qNumBg(gLabel);
+    const numC = groupColor(gLabel);
+    html += `
+      <div class="search-result-unit">${unitTitle} · Group ${gLabel}</div>
+      <div class="qcard ${open}" id="card-${id}">
+        <div class="qcard-header" onclick="toggleCard('${id}')">
+          <div class="q-num" style="background:${numBg};color:${numC}">Q</div>
+          <span class="q-text">${item.q}</span>
+          <span class="q-chevron">▾</span>
+        </div>
+        <div class="qcard-body">${item.a}</div>
+      </div>`;
+  });
+  document.getElementById('content-area').innerHTML = html;
+}
+
+/* ── Actions ── */
+function toggleCard(id) {
+  const card = document.getElementById('card-' + id);
+  if (!card) return;
+  if (openCards.has(id)) {
+    openCards.delete(id);
+    card.classList.remove('open');
+  } else {
+    openCards.add(id);
+    card.classList.add('open');
+  }
+}
+
+function navigate(key) {
+  activeSection = key;
+  document.getElementById('searchInput').value = '';
+  document.getElementById('searchCount').style.display = 'none';
+  currentFilter = 'all';
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('filter-all').classList.add('active');
+  buildSidebar('sidebar');
+  buildSidebar('mobileSidebar');
+  renderSection();
+  closeMobileNav();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function setFilter(f) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('filter-' + f).classList.add('active');
+  const q = document.getElementById('searchInput').value;
+  if (q.trim()) renderSearch(q);
+}
+
+function handleSearch() {
+  const q = document.getElementById('searchInput').value;
+  if (q.trim()) {
+    renderSearch(q);
+  } else {
+    document.getElementById('searchCount').style.display = 'none';
+    renderSection();
+  }
+}
+
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+
+/* ── Init ── */
+buildSidebar('sidebar');
+buildSidebar('mobileSidebar');
+renderSection();
+</script>
 </body>
 </html>
