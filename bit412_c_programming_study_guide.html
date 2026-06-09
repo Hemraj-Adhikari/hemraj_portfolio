@@ -1,0 +1,847 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-sans);}
+.wrap{padding:1rem 0;}
+.header-top{margin-bottom:1.5rem;}
+.header-top h1{font-size:22px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;}
+.header-top p{font-size:14px;color:var(--color-text-secondary);}
+.search-row{display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap;}
+.search-row input{flex:1;min-width:160px;}
+.filter-row{display:flex;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap;}
+.filter-btn{padding:5px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-secondary);font-size:13px;cursor:pointer;transition:all .15s;}
+.filter-btn.active{background:var(--color-background-info);color:var(--color-text-info);border-color:var(--color-border-info);}
+.unit-section{margin-bottom:2rem;}
+.unit-title{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px;padding-bottom:6px;border-bottom:0.5px solid var(--color-border-tertiary);}
+.unit-meta{font-size:12px;color:var(--color-text-secondary);margin-bottom:12px;}
+.q-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);margin-bottom:10px;overflow:hidden;}
+.q-card:hover{border-color:var(--color-border-secondary);}
+.q-head{display:flex;align-items:flex-start;gap:10px;padding:13px 16px;cursor:pointer;user-select:none;}
+.q-badge{flex-shrink:0;padding:2px 8px;border-radius:var(--border-radius-md);font-size:11px;font-weight:500;margin-top:1px;}
+.badge-a{background:var(--color-background-info);color:var(--color-text-info);}
+.badge-b{background:#EAF3DE;color:#27500A;}
+.badge-c{background:#FAECE7;color:#712B13;}
+.q-text{flex:1;font-size:14px;color:var(--color-text-primary);line-height:1.5;}
+.q-chevron{flex-shrink:0;font-size:14px;color:var(--color-text-secondary);transition:transform .2s;margin-top:2px;}
+.q-body{display:none;padding:0 16px 16px;border-top:0.5px solid var(--color-border-tertiary);}
+.q-body.open{display:block;}
+.q-body p{font-size:14px;line-height:1.7;color:var(--color-text-secondary);margin-top:10px;}
+.q-body ul,.q-body ol{padding-left:20px;margin-top:8px;}
+.q-body li{font-size:14px;line-height:1.7;color:var(--color-text-secondary);margin-bottom:4px;}
+.q-body strong{color:var(--color-text-primary);font-weight:500;}
+.q-body h4{font-size:12px;font-weight:500;color:var(--color-text-info);text-transform:uppercase;letter-spacing:.5px;margin:14px 0 4px;}
+.code-block{background:var(--color-background-tertiary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px;margin:10px 0;font-family:var(--font-mono);font-size:12px;line-height:1.7;color:var(--color-text-primary);overflow-x:auto;white-space:pre;}
+.tbl-wrap{overflow-x:auto;margin:10px 0;}
+.tbl-wrap table{width:100%;border-collapse:collapse;font-size:13px;}
+.tbl-wrap th{background:var(--color-background-secondary);padding:7px 10px;text-align:left;color:var(--color-text-primary);font-weight:500;border-bottom:0.5px solid var(--color-border-secondary);}
+.tbl-wrap td{padding:7px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);}
+.tbl-wrap tr:last-child td{border-bottom:none;}
+.info-box{border-radius:var(--border-radius-md);padding:10px 12px;margin:8px 0;font-size:13px;line-height:1.6;}
+.info-imp{background:var(--color-background-info);color:var(--color-text-info);}
+.info-warn{background:var(--color-background-warning);color:var(--color-text-warning);}
+.info-tip{background:#EAF3DE;color:#27500A;}
+.empty{text-align:center;padding:3rem;color:var(--color-text-secondary);font-size:14px;}
+.count-bar{font-size:13px;color:var(--color-text-secondary);margin-bottom:1rem;}
+.count-bar span{color:var(--color-text-primary);font-weight:500;}
+</style>
+
+<div class="wrap">
+<h2 class="sr-only">BIT412 C Programming — Complete Q&A Study Guide with all 9 units</h2>
+
+<div class="header-top">
+  <h1>BIT412 — C Programming study guide</h1>
+  <p>All 9 units · Group A (3 marks) · Group B (5 marks) · Group C (10 marks)</p>
+</div>
+
+<div class="search-row">
+  <input type="text" id="searchInput" placeholder="Search questions... (e.g. pointer, recursion, array)" oninput="filterAll()">
+</div>
+
+<div class="filter-row">
+  <button class="filter-btn active" onclick="setGroup('all')">All groups</button>
+  <button class="filter-btn" onclick="setGroup('A')">Group A — 3 marks</button>
+  <button class="filter-btn" onclick="setGroup('B')">Group B — 5 marks</button>
+  <button class="filter-btn" onclick="setGroup('C')">Group C — 10 marks</button>
+</div>
+
+<div class="count-bar" id="countBar"></div>
+<div id="content"></div>
+</div>
+
+<script>
+const data = [
+{unit:"Unit 1 — Introduction & Problem Solving", groups:[
+{g:"A",qs:[
+{q:"Define algorithm with an example.",a:`<p>An <strong>algorithm</strong> is a finite, ordered set of well-defined steps to solve a specific problem.</p><h4>Example — Area of rectangle</h4><p>Step 1: Start<br>Step 2: Input length (l) and breadth (b)<br>Step 3: area = l × b<br>Step 4: Print area<br>Step 5: Stop</p><div class="info-box info-imp">Key properties: Finite, Definite, has Input/Output, Effective</div>`},
+{q:"Differentiate between compiler and interpreter.",a:`<div class="tbl-wrap"><table><tr><th>Compiler</th><th>Interpreter</th></tr><tr><td>Translates whole program at once</td><td>Translates line by line</td></tr><tr><td>Faster after compilation</td><td>Slower execution</td></tr><tr><td>Errors shown after full scan</td><td>Errors shown immediately</td></tr><tr><td>Generates object code (.exe)</td><td>No object code generated</td></tr><tr><td>Example: GCC</td><td>Example: Python</td></tr></table></div>`},
+{q:"List three characteristics of a good program.",a:`<ul><li><strong>Reliability</strong> — produces correct output for all valid inputs</li><li><strong>Readability</strong> — easy to understand with proper naming and comments</li><li><strong>Efficiency</strong> — uses minimum memory and time</li><li><strong>Portability</strong> — runs on different hardware/OS platforms</li></ul>`},
+{q:"What is a flowchart? Mention two advantages.",a:`<p>A <strong>flowchart</strong> is a diagram using standardized symbols to show the steps in a program or process.</p><p>Common symbols: Oval = Start/Stop, Rectangle = Process, Diamond = Decision, Parallelogram = Input/Output</p><h4>Two advantages</h4><ul><li>Makes logic easy to visualize before writing code</li><li>Helps in debugging by showing decision flow clearly</li></ul>`},
+{q:"Explain the program development life cycle (PDLC).",a:`<ol><li><strong>Problem Definition</strong> — clearly state what to solve</li><li><strong>Problem Analysis</strong> — identify inputs, outputs, constraints</li><li><strong>Algorithm Design</strong> — write step-by-step solution</li><li><strong>Coding</strong> — convert algorithm into C language</li><li><strong>Testing & Debugging</strong> — run program, fix errors</li><li><strong>Documentation</strong> — write manuals, note maintenance guidelines</li></ol>`},
+]},
+{g:"B",qs:[
+{q:"Draw a flowchart to find the largest among two numbers.",a:`<p>Algorithm: Input A and B → check if A > B → if YES print A, else print B → Stop</p><div class="code-block">        [START]
+           |
+    [Input A and B]
+           |
+      Is A > B?
+     /         \\
+   YES           NO
+    |              |
+ Print A        Print B
+    \\            /
+       [STOP]</div><div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    if (a > b)
+        printf("Largest = %d\\n", a);
+    else
+        printf("Largest = %d\\n", b);
+    return 0;
+}</div>`},
+{q:"Compare machine language, assembly language, and high-level language.",a:`<div class="tbl-wrap"><table><tr><th>Feature</th><th>Machine</th><th>Assembly</th><th>High-Level</th></tr><tr><td>Form</td><td>Binary (0s and 1s)</td><td>Mnemonics (ADD, MOV)</td><td>English-like (C, Python)</td></tr><tr><td>Readability</td><td>Very difficult</td><td>Difficult</td><td>Easy</td></tr><tr><td>Speed</td><td>Fastest</td><td>Fast</td><td>Slower</td></tr><tr><td>Portability</td><td>Not portable</td><td>Not portable</td><td>Portable</td></tr><tr><td>Translator</td><td>None needed</td><td>Assembler</td><td>Compiler/Interpreter</td></tr></table></div>`},
+{q:"Analyze the steps involved in solving a programming problem.",a:`<ol><li><strong>Understand the problem</strong> — identify what is given and required</li><li><strong>Identify inputs & outputs</strong> — e.g. input = two numbers, output = sum</li><li><strong>Design algorithm</strong> — write logical steps in plain language</li><li><strong>Draw flowchart</strong> — visualize logic with standard symbols</li><li><strong>Write code</strong> — implement algorithm in C</li><li><strong>Compile & test</strong> — check for syntax and logic errors</li><li><strong>Debug</strong> — fix all errors found during testing</li></ol>`},
+{q:"Design an algorithm to calculate the area of a rectangle.",a:`<p>Algorithm: Start → Input l and b → area = l × b → perimeter = 2 × (l + b) → Print → Stop</p><div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    float l, b;
+    scanf("%f %f", &l, &b);
+    printf("Area = %.2f\\n", l * b);
+    printf("Perimeter = %.2f\\n", 2*(l+b));
+    return 0;
+}</div>`},
+]},
+{g:"C",qs:[
+{q:"Explain the phases of problem-solving with examples.",a:`<h4>Phase 1 — Problem definition</h4><p>Clearly state the problem. Example: "Find sum of two numbers."</p><h4>Phase 2 — Problem analysis</h4><p>Input: two integers a, b | Output: sum = a + b</p><h4>Phase 3 — Algorithm design</h4><ol><li>Start</li><li>Input a, b</li><li>sum = a + b</li><li>Print sum</li><li>Stop</li></ol><h4>Phase 4 — Coding</h4><div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    int a, b, sum;
+    scanf("%d %d", &a, &b);
+    sum = a + b;
+    printf("Sum = %d\\n", sum);
+    return 0;
+}</div><h4>Phase 5 — Testing & debugging</h4><p>Run with test values: 5 and 3 → expected output: 8. Fix any errors.</p>`},
+{q:"Compare different generations of programming languages.",a:`<div class="tbl-wrap"><table><tr><th>Generation</th><th>Name</th><th>Features</th><th>Example</th></tr><tr><td>1GL</td><td>Machine language</td><td>Binary code, fastest, directly executed by CPU</td><td>10110000</td></tr><tr><td>2GL</td><td>Assembly language</td><td>Mnemonics, needs assembler to convert</td><td>MOV AX, BX</td></tr><tr><td>3GL</td><td>High-level language</td><td>English-like, portable, needs compiler</td><td>C, FORTRAN</td></tr><tr><td>4GL</td><td>Very high-level</td><td>Closer to human language, less code</td><td>SQL, MATLAB</td></tr><tr><td>5GL</td><td>AI/Natural language</td><td>Problem-based, AI-driven</td><td>Prolog, LISP</td></tr></table></div><div class="info-box info-tip">Key trend: each generation becomes more programmer-friendly but slower in raw execution speed.</div>`},
+{q:"Explain the complete structure of a C program.",a:`<div class="code-block">/* 1. Preprocessor directives */
+#include &lt;stdio.h&gt;
+#define PI 3.14
+
+/* 2. Global variables */
+int globalVar = 10;
+
+/* 3. Function prototype */
+void greet();
+
+/* 4. Main function */
+int main() {
+    int a = 5, b = 3;
+    printf("Sum = %d\\n", a + b);
+    greet();
+    return 0;
+}
+
+/* 5. User-defined function */
+void greet() {
+    printf("Hello from BIT412!\\n");
+}</div>`},
+]}
+]},
+
+{unit:"Unit 2 — Data Types, Variables, Operators & I/O", groups:[
+{g:"A",qs:[
+{q:"Define variable and constant.",a:`<p><strong>Variable:</strong> A named memory location whose value can change during program execution.<br>Example: <code>int age = 20;</code></p><p><strong>Constant:</strong> A named memory location whose value cannot be changed once assigned.<br>Example: <code>const float PI = 3.14;</code></p>`},
+{q:"What are primitive data types in C?",a:`<div class="tbl-wrap"><table><tr><th>Type</th><th>Size</th><th>Range</th><th>Format</th></tr><tr><td>int</td><td>2/4 bytes</td><td>-32768 to 32767</td><td>%d</td></tr><tr><td>float</td><td>4 bytes</td><td>3.4e-38 to 3.4e+38</td><td>%f</td></tr><tr><td>double</td><td>8 bytes</td><td>±1.7×10^308</td><td>%lf</td></tr><tr><td>char</td><td>1 byte</td><td>-128 to 127</td><td>%c</td></tr><tr><td>void</td><td>0</td><td>No value</td><td>—</td></tr></table></div>`},
+{q:"Differentiate between scanf() and printf().",a:`<div class="tbl-wrap"><table><tr><th>scanf()</th><th>printf()</th></tr><tr><td>Used for INPUT (reading data)</td><td>Used for OUTPUT (displaying data)</td></tr><tr><td>Requires & operator for variables</td><td>Does not require & operator</td></tr><tr><td>scanf("%d", &n);</td><td>printf("%d", n);</td></tr></table></div>`},
+{q:"What is type conversion?",a:`<p><strong>Implicit (automatic):</strong> Smaller type converted to larger automatically.<br>Example: <code>int a=5; float b=a;</code> → b becomes 5.0</p><p><strong>Explicit (casting):</strong> Programmer manually converts type.<br>Example: <code>float x=9.7; int y=(int)x;</code> → y becomes 9 (decimal truncated)</p>`},
+{q:"Define identifier and mention naming rules.",a:`<p>An <strong>identifier</strong> is a name given to a variable, function, or other entity in C.</p><ul><li>Must start with a letter (a–z, A–Z) or underscore (_)</li><li>Can contain letters, digits (0–9), and underscores</li><li>Cannot start with a digit</li><li>Cannot use reserved keywords (int, float, if, etc.)</li><li>C is case-sensitive: Age ≠ age</li></ul>`},
+]},
+{g:"B",qs:[
+{q:"Predict the output: int a=10, b=3; printf(\"%d\", a%b);",a:`<p>The <strong>%</strong> operator gives the remainder of division.</p><p>10 ÷ 3 = 3 remainder <strong>1</strong></p><div class="info-box info-imp">Output: 1</div>`},
+{q:"Explain operator precedence with examples.",a:`<div class="tbl-wrap"><table><tr><th>Precedence</th><th>Operators</th><th>Associativity</th></tr><tr><td>Highest</td><td>() [] .</td><td>Left to Right</td></tr><tr><td>2</td><td>++ -- ! ~</td><td>Right to Left</td></tr><tr><td>3</td><td>* / %</td><td>Left to Right</td></tr><tr><td>4</td><td>+ -</td><td>Left to Right</td></tr><tr><td>Lowest</td><td>= += -=</td><td>Right to Left</td></tr></table></div><p>Example: <code>int x = 2 + 3 * 4;</code> → multiplication first → 2 + 12 = <strong>14</strong></p>`},
+{q:"Differentiate arithmetic, relational, and logical operators.",a:`<div class="tbl-wrap"><table><tr><th>Type</th><th>Operators</th><th>Purpose</th><th>Example</th></tr><tr><td>Arithmetic</td><td>+ - * / %</td><td>Math calculations</td><td>a+b → 8</td></tr><tr><td>Relational</td><td>== != &lt; &gt; &lt;= &gt;=</td><td>Compare values</td><td>a&gt;b → 1 or 0</td></tr><tr><td>Logical</td><td>&& || !</td><td>Combine conditions</td><td>a&gt;0 && b&gt;0</td></tr></table></div>`},
+{q:"Write a program to swap two numbers.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    int a=5, b=8;
+
+    /* Method 1: with temp variable */
+    int temp=a; a=b; b=temp;
+    printf("With temp: a=%d b=%d\\n", a, b);
+
+    a=5; b=8;
+    /* Method 2: without temp (arithmetic) */
+    a=a+b; b=a-b; a=a-b;
+    printf("No temp: a=%d b=%d\\n", a, b);
+
+    return 0;
+}</div>`},
+]},
+{g:"C",qs:[
+{q:"Discuss all fundamental data types in C with memory requirements.",a:`<div class="tbl-wrap"><table><tr><th>Data type</th><th>Size</th><th>Range</th><th>Format</th></tr><tr><td>int</td><td>2/4 bytes</td><td>-32768 to 32767</td><td>%d</td></tr><tr><td>float</td><td>4 bytes</td><td>3.4e-38 to 3.4e+38</td><td>%f</td></tr><tr><td>double</td><td>8 bytes</td><td>1.7e-308 to 1.7e+308</td><td>%lf</td></tr><tr><td>char</td><td>1 byte</td><td>-128 to 127</td><td>%c</td></tr><tr><td>long int</td><td>4/8 bytes</td><td>±2 billion</td><td>%ld</td></tr><tr><td>unsigned int</td><td>2/4 bytes</td><td>0 to 65535</td><td>%u</td></tr></table></div>`},
+{q:"Write a program to calculate simple and compound interest.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+int main() {
+    float p, r, t;
+    printf("Enter Principal, Rate, Time: ");
+    scanf("%f %f %f", &p, &r, &t);
+    
+    float si = (p * r * t) / 100;
+    float amount = p * pow(1 + r/100, t);
+    float ci = amount - p;
+    
+    printf("Simple Interest  = %.2f\\n", si);
+    printf("Compound Interest = %.2f\\n", ci);
+    return 0;
+}</div>`},
+{q:"Write a program to swap two numbers using and without using a third variable.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    int a=5, b=8;
+
+    /* With temp variable */
+    int temp=a; a=b; b=temp;
+    printf("With temp: a=%d b=%d\\n", a, b);
+
+    a=5; b=8;
+    /* Without temp — arithmetic method */
+    a=a+b; b=a-b; a=a-b;
+    printf("No temp:   a=%d b=%d\\n", a, b);
+
+    a=5; b=8;
+    /* XOR method */
+    a=a^b; b=a^b; a=a^b;
+    printf("XOR:       a=%d b=%d\\n", a, b);
+    return 0;
+}</div>`},
+]}
+]},
+
+{unit:"Unit 3 — Control Structures", groups:[
+{g:"A",qs:[
+{q:"What is a decision-making statement?",a:`<p>A <strong>decision-making statement</strong> allows the program to choose between different paths based on a condition.</p><ul><li><strong>if</strong> — executes block when condition is true</li><li><strong>if-else</strong> — chooses between two blocks</li><li><strong>if-else if-else</strong> — chains multiple conditions</li><li><strong>switch</strong> — selects one case from many</li></ul>`},
+{q:"Differentiate while and do-while loop.",a:`<div class="tbl-wrap"><table><tr><th>while</th><th>do-while</th></tr><tr><td>Condition checked BEFORE body</td><td>Condition checked AFTER body</td></tr><tr><td>May execute 0 times (entry-controlled)</td><td>Always executes AT LEAST ONCE (exit-controlled)</td></tr><tr><td>while(cond) { body }</td><td>do { body } while(cond);</td></tr></table></div>`},
+{q:"What is the purpose of the break statement?",a:`<p>The <strong>break</strong> statement immediately exits the current loop or switch statement.</p><div class="code-block">for(int i=1; i<=10; i++) {
+    if(i==5) break;
+    printf("%d ", i);  /* prints: 1 2 3 4 */
+}</div>`},
+{q:"When is switch preferred over if-else?",a:`<p>Switch is preferred when testing a <strong>single variable</strong> against multiple fixed integer or char values — especially with many cases.</p><div class="info-box info-warn">Limitation: cannot use ranges, float values, or strings in switch cases.</div>`},
+]},
+{g:"B",qs:[
+{q:"Compare for, while, and do-while loops.",a:`<div class="tbl-wrap"><table><tr><th>Feature</th><th>for</th><th>while</th><th>do-while</th></tr><tr><td>Condition check</td><td>Before body</td><td>Before body</td><td>After body</td></tr><tr><td>Min executions</td><td>0</td><td>0</td><td>1 (always)</td></tr><tr><td>Initialization in loop</td><td>Yes</td><td>No</td><td>No</td></tr><tr><td>Best when</td><td>Count is known</td><td>Condition-based</td><td>Run-at-least-once needed</td></tr></table></div>`},
+{q:"Analyze the use of break and continue.",a:`<div class="code-block">/* break — exits the loop entirely */
+for(int i=1; i<=10; i++) {
+    if(i==6) break;
+    printf("%d ", i);  /* 1 2 3 4 5 */
+}
+
+/* continue — skips current iteration only */
+for(int i=1; i<=10; i++) {
+    if(i%2==0) continue;
+    printf("%d ", i);  /* 1 3 5 7 9 */
+}</div>`},
+{q:"Write a logic to check whether a year is leap year.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    int y;
+    scanf("%d", &y);
+    if((y%4==0 && y%100!=0) || (y%400==0))
+        printf("Leap Year\\n");
+    else
+        printf("Not Leap Year\\n");
+    return 0;
+}
+/* Rule: divisible by 4 BUT NOT 100, OR divisible by 400 */</div>`},
+{q:"Write a menu-driven calculator using switch.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    float a, b; int ch;
+    scanf("%f %f", &a, &b);
+    printf("1.Add 2.Sub 3.Mul 4.Div: ");
+    scanf("%d", &ch);
+    switch(ch) {
+        case 1: printf("%.2f\\n", a+b); break;
+        case 2: printf("%.2f\\n", a-b); break;
+        case 3: printf("%.2f\\n", a*b); break;
+        case 4: b ? printf("%.2f\\n",a/b) : printf("Div by 0!\\n"); break;
+        default: printf("Invalid!\\n");
+    }
+    return 0;
+}</div>`},
+]},
+{g:"C",qs:[
+{q:"Write a program to determine whether a number is prime.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    int n, isPrime=1;
+    scanf("%d", &n);
+    if(n<=1) isPrime=0;
+    for(int i=2; i*i<=n; i++)    /* check only up to √n */
+        if(n%i==0) { isPrime=0; break; }
+    printf(isPrime ? "Prime\\n" : "Not Prime\\n");
+    return 0;
+}</div><div class="info-box info-imp">Optimization: check only up to √n using i*i &lt;= n — much faster!</div>`},
+{q:"Write a program to print Fibonacci series up to N terms.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    int n, a=0, b=1, c;
+    scanf("%d", &n);
+    for(int i=1; i<=n; i++) {
+        printf("%d ", a);
+        c=a+b; a=b; b=c;
+    }
+    return 0;
+}
+/* n=8 output: 0 1 1 2 3 5 8 13 */</div>`},
+{q:"Write a program to generate multiplication tables from 1 to 10.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    for(int i=1; i<=10; i++) {
+        printf("\\nTable of %d:\\n", i);
+        for(int j=1; j<=10; j++)
+            printf("%d x %d = %d\\n", i, j, i*j);
+    }
+    return 0;
+}</div>`},
+]}
+]},
+
+{unit:"Unit 4 — Functions & Storage Classes", groups:[
+{g:"A",qs:[
+{q:"Define function and mention its advantages.",a:`<p>A <strong>function</strong> is a self-contained, reusable block of code that performs a specific task.</p><p>Advantages: Reusability, Modularity, Readability, Easier debugging, Reduces code duplication</p>`},
+{q:"What is recursion?",a:`<p><strong>Recursion</strong> is when a function calls itself. It must have a <strong>base case</strong> to stop the calls.</p><div class="code-block">int factorial(int n) {
+    if(n==0) return 1;       /* base case */
+    return n * factorial(n-1); /* recursive call */
+}</div>`},
+{q:"Differentiate local and global variables.",a:`<div class="tbl-wrap"><table><tr><th>Local variable</th><th>Global variable</th></tr><tr><td>Declared inside a function</td><td>Declared outside all functions</td></tr><tr><td>Accessible only in that function</td><td>Accessible by all functions</td></tr><tr><td>Stored in stack memory</td><td>Stored in data segment</td></tr><tr><td>Destroyed when function ends</td><td>Lives for entire program</td></tr></table></div>`},
+{q:"What is a function prototype?",a:`<p>A <strong>prototype</strong> declares the function name, return type, and parameter types before the function is defined. It tells the compiler what to expect.</p><div class="code-block">int add(int a, int b);  /* prototype — note semicolon at end */</div>`},
+{q:"List storage classes in C.",a:`<div class="tbl-wrap"><table><tr><th>Class</th><th>Keyword</th><th>Scope</th><th>Lifetime</th><th>Default value</th></tr><tr><td>Automatic</td><td>auto</td><td>Local</td><td>Block</td><td>Garbage</td></tr><tr><td>External</td><td>extern</td><td>Global</td><td>Program</td><td>0</td></tr><tr><td>Static</td><td>static</td><td>Local/Global</td><td>Program</td><td>0</td></tr><tr><td>Register</td><td>register</td><td>Local</td><td>Block</td><td>Garbage</td></tr></table></div>`},
+]},
+{g:"B",qs:[
+{q:"Compare call by value and call by reference.",a:`<div class="tbl-wrap"><table><tr><th>Call by value</th><th>Call by reference</th></tr><tr><td>A copy of the value is passed</td><td>The memory address is passed</td></tr><tr><td>Original variable NOT changed</td><td>Original variable IS changed</td></tr></table></div><div class="code-block">void byValue(int x) { x = 100; }    /* original unchanged */
+void byRef(int *x)  { *x = 100; }   /* original changed! */
+
+int main() {
+    int a = 5;
+    byValue(a);   /* a is still 5 */
+    byRef(&a);    /* a is now 100 */
+}</div>`},
+{q:"Analyze recursive function execution for factorial(3).",a:`<div class="code-block">factorial(3)
+  → 3 * factorial(2)
+       → 2 * factorial(1)
+            → 1 * factorial(0) → returns 1
+       → 2 * 1 = returns 2
+  → 3 * 2 = returns 6
+
+Final result = 6</div><div class="info-box info-tip">Each recursive call waits on the stack until the base case returns, then unwinds back.</div>`},
+{q:"Explain advantages and disadvantages of recursion.",a:`<h4>Advantages</h4><ul><li>Clean, elegant code for naturally recursive problems (factorial, Fibonacci, trees)</li><li>Easier to understand mathematically</li></ul><h4>Disadvantages</h4><ul><li>Slower — function call overhead for each call</li><li>Uses more memory — stack space, risk of stack overflow</li><li>Harder to debug than iterative solutions</li></ul>`},
+]},
+{g:"C",qs:[
+{q:"Write a program using recursion to calculate factorial.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+long factorial(int n) {
+    if(n==0 || n==1) return 1;  /* base case */
+    return n * factorial(n-1);  /* recursive call */
+}
+int main() {
+    int n;
+    scanf("%d", &n);
+    printf("Factorial of %d = %ld\\n", n, factorial(n));
+    return 0;
+}</div>`},
+{q:"Explain storage classes with examples.",a:`<h4>auto — default for local variables</h4><p>Destroyed when function returns. Value not retained between calls.</p><h4>static — retains value between calls</h4><div class="code-block">void count() {
+    static int c = 0;  /* initialized ONCE */
+    c++;
+    printf("Called %d times\\n", c);
+}
+/* Calling 3 times prints: 1, 2, 3 */</div><h4>extern — declared in another file</h4><p>Lifetime = entire program. Used for sharing variables across files.</p><h4>register — stored in CPU register</h4><p>Faster access for frequently used variables like loop counters.</p>`},
+{q:"Write a program to find GCD using user-defined functions.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+int gcd(int a, int b) {
+    if(b==0) return a;        /* base case: Euclidean algorithm */
+    return gcd(b, a%b);       /* recursive step */
+}
+int main() {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    int g = gcd(a, b);
+    printf("GCD = %d\\n", g);
+    printf("LCM = %d\\n", (a*b)/g);
+    return 0;
+}</div>`},
+{q:"Compare recursive and iterative approaches.",a:`<div class="tbl-wrap"><table><tr><th>Aspect</th><th>Recursive</th><th>Iterative</th></tr><tr><td>Code length</td><td>Short, elegant</td><td>Longer but explicit</td></tr><tr><td>Memory</td><td>More (call stack)</td><td>Less</td></tr><tr><td>Speed</td><td>Slower (call overhead)</td><td>Faster</td></tr><tr><td>Risk</td><td>Stack overflow</td><td>Infinite loop</td></tr><tr><td>Best for</td><td>Trees, factorial, towers</td><td>Simple loops</td></tr></table></div>`},
+]}
+]},
+
+{unit:"Unit 5 — Arrays & Strings", groups:[
+{g:"A",qs:[
+{q:"Define one-dimensional array.",a:`<p>A <strong>1D array</strong> is a collection of same-type elements stored in contiguous (adjacent) memory, accessed using a single index starting at 0.</p><div class="code-block">int marks[5] = {80, 75, 90, 85, 95};
+printf("%d", marks[2]);  /* prints 90 */</div>`},
+{q:"What is a string in C?",a:`<p>A <strong>string</strong> is an array of characters that ends with a null character <code>'\\0'</code> (automatically added).</p><div class="code-block">char name[] = "Ram";
+/* Stored in memory: 'R' 'a' 'm' '\\0' */</div>`},
+{q:"Name three string handling functions.",a:`<p>Include <code>#include &lt;string.h&gt;</code> to use these:</p><ul><li><strong>strlen(s)</strong> — returns length of string (not counting '\\0')</li><li><strong>strcpy(dest, src)</strong> — copies src into dest</li><li><strong>strcmp(s1, s2)</strong> — compares: returns 0 if equal</li><li><strong>strcat(dest, src)</strong> — appends src to end of dest</li></ul>`},
+{q:"What is a two-dimensional array?",a:`<p>A <strong>2D array</strong> is a matrix with rows and columns, accessed with two indices: [row][col].</p><div class="code-block">int mat[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
+printf("%d", mat[1][2]);  /* prints 6 (row 1, col 2) */</div>`},
+]},
+{g:"B",qs:[
+{q:"Analyze memory representation of arrays.",a:`<p>All elements stored in <strong>contiguous memory</strong>. Address formula: base + (i × sizeof(type))</p><div class="code-block">int arr[5] = {10, 20, 30, 40, 50};
+/* Memory addresses (assuming int = 4 bytes):
+   arr[0] at 1000: value 10
+   arr[1] at 1004: value 20
+   arr[2] at 1008: value 30
+   arr[3] at 1012: value 40
+   arr[4] at 1016: value 50 */</div>`},
+{q:"Explain string manipulation functions.",a:`<div class="tbl-wrap"><table><tr><th>Function</th><th>Purpose</th></tr><tr><td>strlen(s)</td><td>Length (not counting '\\0')</td></tr><tr><td>strcpy(d, s)</td><td>Copy string s into d</td></tr><tr><td>strcat(d, s)</td><td>Append s to end of d</td></tr><tr><td>strcmp(s1, s2)</td><td>0 if equal, negative if s1&lt;s2</td></tr><tr><td>strupr(s)</td><td>Convert to UPPERCASE</td></tr><tr><td>strlwr(s)</td><td>Convert to lowercase</td></tr><tr><td>strrev(s)</td><td>Reverse the string</td></tr></table></div>`},
+{q:"Explain initialization of arrays with examples.",a:`<div class="code-block">int a[5] = {1,2,3,4,5};       /* full initialization */
+int b[5] = {1,2};             /* partial: {1,2,0,0,0} */
+int d[] = {10,20,30};         /* size inferred = 3 */
+char s[] = "Hello";           /* '\\0' added automatically */
+char t[10] = {0};             /* all zeros (safe init) */</div>`},
+]},
+{g:"C",qs:[
+{q:"Write a program to find largest and smallest in an array.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    for(int i=0; i&lt;n; i++) scanf("%d", &arr[i]);
+    
+    int max=arr[0], min=arr[0];
+    for(int i=1; i&lt;n; i++) {
+        if(arr[i] > max) max = arr[i];
+        if(arr[i] &lt; min) min = arr[i];
+    }
+    printf("Max=%d  Min=%d\\n", max, min);
+    return 0;
+}</div>`},
+{q:"Write a program to check whether a string is palindrome.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char s[100], rev[100];
+    scanf("%s", s);
+    int len = strlen(s);
+    for(int i=0; i&lt;len; i++)
+        rev[i] = s[len-1-i];
+    rev[len] = '\\0';
+    
+    if(strcmp(s, rev)==0)
+        printf("Palindrome!\\n");
+    else
+        printf("Not Palindrome\\n");
+    return 0;
+}
+/* "madam" → Palindrome! */</div>`},
+{q:"Write a program to sort array in ascending order (Bubble Sort).",a:`<div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    for(int i=0; i&lt;n; i++) scanf("%d", &arr[i]);
+    
+    /* Bubble sort: compare adjacent pairs, swap if out of order */
+    for(int i=0; i&lt;n-1; i++)
+        for(int j=0; j&lt;n-i-1; j++)
+            if(arr[j] > arr[j+1]) {
+                int t=arr[j]; arr[j]=arr[j+1]; arr[j+1]=t;
+            }
+    
+    for(int i=0; i&lt;n; i++) printf("%d ", arr[i]);
+    return 0;
+}</div>`},
+]}
+]},
+
+{unit:"Unit 6 — Pointers", groups:[
+{g:"A",qs:[
+{q:"Define pointer.",a:`<p>A <strong>pointer</strong> is a variable that stores the <strong>memory address</strong> of another variable.</p><div class="code-block">int x = 10;
+int *ptr = &x;    /* ptr holds the ADDRESS of x */
+printf("%d", *ptr); /* *ptr = 10 (dereference: get value at address) */</div>`},
+{q:"What is a NULL pointer?",a:`<p>A <strong>NULL pointer</strong> points to nothing — its address is 0. Used to indicate that a pointer doesn't point to any valid memory location.</p><div class="info-box info-imp">Best practice: always initialize pointers to NULL and check before using: if(ptr != NULL)</div>`},
+{q:"What is pointer arithmetic?",a:`<p>Arithmetic on pointers works in units of the <strong>pointed-to type size</strong> (not raw bytes).</p><div class="code-block">int arr[] = {10, 20, 30};
+int *p = arr;
+p++;              /* moves 4 bytes forward (sizeof int = 4) */
+printf("%d", *p); /* prints 20 */</div>`},
+{q:"What is dereferencing?",a:`<p>Using the <code>*</code> operator to <strong>access the value</strong> stored at the address held by a pointer.</p><div class="code-block">int x = 42;
+int *p = &x;
+printf("%d", *p);  /* 42 — reads value at address */
+*p = 100;          /* x is now 100 — writes through pointer */</div>`},
+]},
+{g:"B",qs:[
+{q:"Explain pointer arithmetic with examples.",a:`<div class="code-block">int arr[] = {100, 200, 300};
+int *p = arr;
+printf("%d\\n", *(p+1));  /* 200 */
+printf("%d\\n", *(p+2));  /* 300 */
+p++;
+printf("%d\\n", *p);       /* 200 */
+
+/* Traverse array using pointer */
+for(int i=0; i&lt;3; i++)
+    printf("%d ", *(p+i));
+
+/* Traverse string using pointer */
+char *s = "Hello";
+while(*s) printf("%c", *s++);</div>`},
+{q:"Analyze the relationship between arrays and pointers.",a:`<p>The array name is a <strong>constant pointer</strong> to the first element. All these expressions are equivalent:</p><div class="code-block">int arr[] = {10, 20, 30};
+int *p = arr;
+
+arr[1] == *(arr+1) == p[1] == *(p+1)  /* all = 20 */</div><div class="info-box info-warn">Note: arr++ is INVALID (constant pointer), but p++ is valid.</div>`},
+{q:"Compare call by value and pointer-based parameter passing.",a:`<div class="code-block">void doubleVal(int x)  { x *= 2; }    /* a unchanged */
+void doubleRef(int *x) { *x *= 2; }   /* a changed! */
+
+int main() {
+    int a = 5;
+    doubleVal(a);   /* a is still 5 */
+    doubleRef(&a);  /* a is now 10 */
+    printf("%d\\n", a);  /* prints 10 */
+}</div>`},
+]},
+{g:"C",qs:[
+{q:"Write a program to swap two numbers using pointers.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+int main() {
+    int x, y;
+    scanf("%d %d", &x, &y);
+    printf("Before: x=%d y=%d\\n", x, y);
+    swap(&x, &y);
+    printf("After:  x=%d y=%d\\n", x, y);
+    return 0;
+}</div>`},
+{q:"Develop a program using pointers to find largest element.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+int findMax(int *arr, int n) {
+    int max = *arr;
+    for(int i=1; i&lt;n; i++)
+        if(*(arr+i) > max) max = *(arr+i);
+    return max;
+}
+int main() {
+    int arr[] = {45, 12, 78, 34, 90};
+    printf("Largest = %d\\n", findMax(arr, 5));  /* 90 */
+    return 0;
+}</div>`},
+{q:"Compare static and dynamic memory allocation.",a:`<div class="tbl-wrap"><table><tr><th>Static</th><th>Dynamic</th></tr><tr><td>Allocated at compile time</td><td>Allocated at run time</td></tr><tr><td>Fixed size</td><td>Flexible/adjustable size</td></tr><tr><td>Stack or data segment</td><td>Heap segment</td></tr><tr><td>Auto freed when scope ends</td><td>Must call free() manually</td></tr></table></div><div class="code-block">/* Dynamic allocation */
+int *p = (int*) malloc(5 * sizeof(int));
+/* use p[0] to p[4] */
+free(p);  /* MUST free to avoid memory leak */</div>`},
+]}
+]},
+
+{unit:"Unit 7 — Structures, Unions & Enumerations", groups:[
+{g:"A",qs:[
+{q:"Define structure.",a:`<p>A <strong>structure</strong> groups variables of <strong>different data types</strong> under one name. Each member has its own separate memory.</p><div class="code-block">struct Student {
+    int roll;
+    char name[50];
+    float marks;
+};
+struct Student s1;
+s1.roll = 101;</div>`},
+{q:"What is a union?",a:`<p>A <strong>union</strong> — all members share the <strong>same memory location</strong>. Only one member holds a valid value at a time. Size = size of the largest member.</p>`},
+{q:"Differentiate structure and union.",a:`<div class="tbl-wrap"><table><tr><th>Structure</th><th>Union</th></tr><tr><td>Each member has its own memory</td><td>All members share the same memory</td></tr><tr><td>Size = sum of all member sizes</td><td>Size = size of the largest member</td></tr><tr><td>All members valid at the same time</td><td>Only one member active at a time</td></tr></table></div>`},
+{q:"Define enumeration.",a:`<p>An <strong>enum</strong> assigns meaningful names to integer constants, making code more readable.</p><div class="code-block">enum Day {SUN=0, MON, TUE, WED, THU, FRI, SAT};
+enum Day today = WED;  /* today = 3 */</div>`},
+]},
+{g:"B",qs:[
+{q:"Analyze memory allocation in structures and unions.",a:`<div class="code-block">struct S { int i; float f; char c; };
+/* Size = 4 + 4 + 1 + (3 padding bytes) = 12 bytes */
+
+union U { int i; float f; char c; };
+/* Size = 4 bytes (largest member only) */</div><div class="info-box info-warn">Padding: compiler adds extra bytes for memory alignment — so struct size may be larger than the sum of member sizes.</div>`},
+{q:"Explain enumeration with examples.",a:`<div class="code-block">enum Season {SPRING=1, SUMMER, AUTUMN, WINTER};
+/* SPRING=1, SUMMER=2, AUTUMN=3, WINTER=4 */
+
+enum Color {RED, GREEN=5, BLUE};
+/* RED=0, GREEN=5, BLUE=6 */
+
+enum Season s = SUMMER;  /* s = 2 */</div>`},
+{q:"Explain nested structures.",a:`<div class="code-block">struct Address {
+    char city[30];
+    int pin;
+};
+struct Person {
+    char name[50];
+    struct Address addr;  /* nested structure */
+};
+struct Person p = {"Ram", {"Kathmandu", 44600}};
+printf("%s\\n", p.addr.city);  /* Kathmandu */</div>`},
+]},
+{g:"C",qs:[
+{q:"Write a program to store and display student records using structures.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+struct Student {
+    int roll;
+    char name[50];
+    float marks;
+    char grade;
+};
+int main() {
+    int n;
+    scanf("%d", &n);
+    struct Student s[n];
+    for(int i=0; i&lt;n; i++) {
+        scanf("%d %s %f", &s[i].roll, s[i].name, &s[i].marks);
+        s[i].grade = s[i].marks>=80 ? 'A' : s[i].marks>=60 ? 'B' : 'C';
+    }
+    for(int i=0; i&lt;n; i++)
+        printf("%-5d %-15s %.2f %c\\n",
+               s[i].roll, s[i].name, s[i].marks, s[i].grade);
+    return 0;
+}</div>`},
+{q:"Develop a program using array of structures.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+struct Book {
+    char title[50];
+    char author[40];
+    float price;
+};
+int main() {
+    struct Book lib[3] = {
+        {"C Programming", "Kernighan", 450},
+        {"Data Structures", "Cormen", 850},
+        {"Algorithms", "Sedgewick", 600}
+    };
+    for(int i=0; i&lt;3; i++)
+        printf("%-20s %-15s %.2f\\n",
+               lib[i].title, lib[i].author, lib[i].price);
+    return 0;
+}</div>`},
+{q:"Compare structures and unions with examples.",a:`<div class="code-block">struct S { int i; float f; };
+union  U { int i; float f; };
+
+struct S sv;
+sv.i = 5; sv.f = 3.14;
+printf("%d %.2f\\n", sv.i, sv.f);  /* 5 3.14 — BOTH valid */
+
+union U uv;
+uv.i = 5;
+printf("%d\\n", uv.i);   /* 5 */
+uv.f = 3.14;             /* i is now CORRUPTED (shared memory) */
+printf("%.2f\\n", uv.f); /* 3.14 */</div>`},
+]}
+]},
+
+{unit:"Unit 8 — File Handling", groups:[
+{g:"A",qs:[
+{q:"Define file handling.",a:`<p><strong>File handling</strong> refers to operations on disk files (create, read, write, modify) so data persists after the program ends. Uses the <code>FILE</code> pointer from <code>&lt;stdio.h&gt;</code>.</p>`},
+{q:"What is fopen()?",a:`<p><code>fopen()</code> opens a file and returns a FILE pointer. Returns NULL if the file cannot be opened.</p><div class="code-block">FILE *fp = fopen("data.txt", "w");
+if(fp == NULL) {
+    printf("Error opening file!\\n");
+    return 1;
+}</div>`},
+{q:"Differentiate text file and binary file.",a:`<div class="tbl-wrap"><table><tr><th>Text file</th><th>Binary file</th></tr><tr><td>Stores ASCII characters</td><td>Stores raw bytes</td></tr><tr><td>Human readable</td><td>Not human readable</td></tr><tr><td>Modes: "r", "w", "a"</td><td>Modes: "rb", "wb", "ab"</td></tr><tr><td>Newline character converted</td><td>Exact bytes stored as-is</td></tr></table></div>`},
+{q:"What is EOF?",a:`<p><strong>EOF</strong> (End of File) = value -1. Indicates that there is no more data to read from the file.</p><div class="code-block">int ch;
+while((ch = fgetc(fp)) != EOF)
+    putchar(ch);  /* read until end of file */</div>`},
+{q:"List common file modes in C.",a:`<div class="tbl-wrap"><table><tr><th>Mode</th><th>Meaning</th></tr><tr><td>"r"</td><td>Read — file must already exist</td></tr><tr><td>"w"</td><td>Write — creates new or overwrites existing</td></tr><tr><td>"a"</td><td>Append — adds to end, preserves existing content</td></tr><tr><td>"r+"</td><td>Read and Write — file must exist</td></tr><tr><td>"rb","wb"</td><td>Binary read/write modes</td></tr></table></div>`},
+]},
+{g:"B",qs:[
+{q:"Explain sequential and random file access.",a:`<h4>Sequential access</h4><p>Read or write one record after another from start to end — simple but slow for large files.</p><h4>Random access — jumping to any position</h4><div class="code-block">fseek(fp, 0, SEEK_END);   /* jump to end of file */
+fseek(fp, 10, SEEK_SET);  /* jump to byte 10 from start */
+fseek(fp, -5, SEEK_CUR);  /* move 5 bytes backward */
+ftell(fp);                 /* get current position (byte number) */
+rewind(fp);                /* go back to start */</div><p>SEEK_SET=0 (from start), SEEK_CUR=1 (from current), SEEK_END=2 (from end)</p>`},
+{q:"Explain file pointer operations.",a:`<div class="tbl-wrap"><table><tr><th>Function</th><th>Purpose</th></tr><tr><td>fseek(fp, offset, origin)</td><td>Move file pointer to a specific position</td></tr><tr><td>ftell(fp)</td><td>Return current position (in bytes from start)</td></tr><tr><td>rewind(fp)</td><td>Move pointer back to beginning</td></tr><tr><td>feof(fp)</td><td>Returns non-zero if end of file reached</td></tr></table></div>`},
+{q:"Discuss common file handling errors.",a:`<ul><li><strong>File not found</strong> — fopen() returns NULL; always check before use</li><li><strong>Permission denied</strong> — no read/write access to the file</li><li><strong>Not closing file</strong> — data may not be flushed to disk properly</li><li><strong>Buffer overflow</strong> — use fgets(buf, SIZE, fp) instead of gets()</li><li><strong>Reading past EOF</strong> — always check feof() before reading</li></ul><div class="code-block">FILE *fp = fopen("f.txt", "r");
+if(!fp) { perror("Error"); return 1; }
+/* always check NULL before using fp */</div>`},
+]},
+{g:"C",qs:[
+{q:"Write a program to write student records into a file.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+struct Student { int roll; char name[50]; float marks; };
+int main() {
+    FILE *fp = fopen("students.txt", "w");
+    if(!fp) { printf("Error!\\n"); return 1; }
+    int n;
+    scanf("%d", &n);
+    struct Student s;
+    for(int i=0; i&lt;n; i++) {
+        scanf("%d %s %f", &s.roll, s.name, &s.marks);
+        fprintf(fp, "%d %s %.2f\\n", s.roll, s.name, s.marks);
+    }
+    fclose(fp);
+    printf("Records saved!\\n");
+    return 0;
+}</div>`},
+{q:"Write a program to read and display file contents.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    FILE *fp = fopen("students.txt", "r");
+    if(!fp) { printf("File not found!\\n"); return 1; }
+    char line[100];
+    while(fgets(line, 100, fp))
+        printf("%s", line);
+    fclose(fp);
+    return 0;
+}</div>`},
+{q:"Write a program to count characters, words, and lines in a file.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+int main() {
+    FILE *fp = fopen("input.txt", "r");
+    if(!fp) { printf("Not found!\\n"); return 1; }
+    int chars=0, words=0, lines=0, inWord=0, ch;
+    while((ch = fgetc(fp)) != EOF) {
+        chars++;
+        if(ch == '\\n') lines++;
+        if(ch==' ' || ch=='\\t' || ch=='\\n') inWord=0;
+        else if(!inWord) { inWord=1; words++; }
+    }
+    fclose(fp);
+    printf("Chars=%d  Words=%d  Lines=%d\\n", chars, words, lines);
+    return 0;
+}</div>`},
+]}
+]},
+
+{unit:"Unit 9 — Preprocessor Directives & Advanced Concepts", groups:[
+{g:"A",qs:[
+{q:"What is a preprocessor directive?",a:`<p>Commands starting with <code>#</code> that are processed <strong>before compilation</strong>. No semicolon needed at the end.</p><div class="code-block">#include &lt;stdio.h&gt;   /* include header file */
+#define MAX 100      /* define a constant */
+#ifdef DEBUG         /* conditional compilation */
+    ...
+#endif</div>`},
+{q:"Define macro.",a:`<p>An identifier defined via <code>#define</code> that is replaced by the preprocessor before compilation — it is pure <strong>text substitution</strong>, not a function call.</p><div class="code-block">#define PI 3.14159
+#define SQUARE(x) ((x)*(x))
+#define MAX(a,b)  ((a)>(b)?(a):(b))</div>`},
+{q:"What is a header file?",a:`<p>A <code>.h</code> file containing declarations, macros, and type definitions shared across multiple source files via <code>#include</code>.</p><div class="tbl-wrap"><table><tr><th>Header</th><th>Contents</th></tr><tr><td>stdio.h</td><td>printf, scanf, FILE</td></tr><tr><td>stdlib.h</td><td>malloc, free, exit</td></tr><tr><td>string.h</td><td>strlen, strcpy, strcmp</td></tr><tr><td>math.h</td><td>sqrt, pow, sin, cos</td></tr></table></div>`},
+{q:"What is conditional compilation?",a:`<div class="code-block">#define DEBUG
+#ifdef DEBUG
+    printf("Debug: x=%d\\n", x);  /* only compiled if DEBUG is defined */
+#endif
+
+/* Common use: header guards to prevent double-inclusion */
+#ifndef MYHEADER_H
+#define MYHEADER_H
+/* header content here */
+#endif</div>`},
+{q:"Define command-line argument.",a:`<p>Values passed to the program when run from the terminal. Accessed through <code>argc</code> (count) and <code>argv[]</code> (array of strings).</p><div class="code-block">int main(int argc, char *argv[]) {
+    printf("Program: %s\\n", argv[0]);  /* program name */
+    printf("Args: %d\\n", argc-1);      /* number of arguments */
+}
+/* Run: ./prog Hello World → argc=3 */</div>`},
+]},
+{g:"B",qs:[
+{q:"Compare macros and functions.",a:`<div class="tbl-wrap"><table><tr><th>Macro</th><th>Function</th></tr><tr><td>Text substitution at preprocessing</td><td>Compiled code, called at runtime</td></tr><tr><td>No type checking</td><td>Type-checked by compiler</td></tr><tr><td>Faster (no call overhead)</td><td>Slightly slower (call/return overhead)</td></tr><tr><td>Cannot return a value</td><td>Can return a value</td></tr><tr><td>Works with any data type</td><td>Specific parameter types</td></tr></table></div><div class="info-box info-warn">Macro danger: SQUARE(x++) expands to ((x++)*(x++)) — double increment! Use functions for complex operations.</div>`},
+{q:"Explain conditional compilation with examples.",a:`<div class="code-block">#define WINDOWS
+#ifdef WINDOWS
+    printf("Windows build\\n");
+#elif defined LINUX
+    printf("Linux build\\n");
+#else
+    printf("Unknown OS\\n");
+#endif
+
+/* Version-based compilation */
+#define VERSION 2
+#if VERSION==1
+    printf("V1 features\\n");
+#elif VERSION==2
+    printf("V2 features\\n");
+#endif</div>`},
+{q:"Explain command-line arguments.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+int main(int argc, char *argv[]) {
+    if(argc != 3) {
+        printf("Usage: %s num1 num2\\n", argv[0]);
+        return 1;
+    }
+    int a = atoi(argv[1]);  /* convert string to int */
+    int b = atoi(argv[2]);
+    printf("Sum = %d\\n", a + b);
+    return 0;
+}
+/* Run: ./sum 10 20 → Sum=30 */</div>`},
+]},
+{g:"C",qs:[
+{q:"Explain all major preprocessor directives with examples.",a:`<div class="code-block">#include &lt;stdio.h&gt;          /* 1. Include system header */
+#include "myfile.h"          /*    Include user header */
+#define PI 3.14159           /* 2. Define constant */
+#define AREA(r) (PI*(r)*(r)) /*    Define function macro */
+#undef PI                    /* 3. Undefine (remove a macro) */
+#ifdef DEBUG                 /* 4. Conditional: if DEBUG defined */
+    printf("Debug\\n");
+#endif
+#define VERSION 2
+#if VERSION==1               /* 5. #if / #elif / #else */
+    printf("V1\\n");
+#elif VERSION==2
+    printf("V2\\n");
+#endif
+#pragma once                 /* 6. Compiler-specific: include once */</div>`},
+{q:"Develop a program using user-defined macros.",a:`<div class="code-block">#include &lt;stdio.h&gt;
+#define PI      3.14159
+#define SQUARE(x)  ((x)*(x))
+#define CUBE(x)    ((x)*(x)*(x))
+#define MAX(a,b)   ((a)>(b)?(a):(b))
+#define ABS(x)     ((x)&lt;0?-(x):(x))
+#define AREA(r)    (PI*SQUARE(r))
+
+int main() {
+    printf("Square(4)  = %d\\n",   SQUARE(4));     /* 16 */
+    printf("Cube(3)    = %d\\n",   CUBE(3));        /* 27 */
+    printf("Max(10,20) = %d\\n",   MAX(10,20));     /* 20 */
+    printf("Abs(-7)    = %d\\n",   ABS(-7));        /* 7  */
+    printf("Circle(5)  = %.2f\\n", AREA(5.0f));     /* 78.54 */
+    return 0;
+}</div>`},
+{q:"Explain the complete preprocessing phase in C program compilation.",a:`<ol><li><strong>Trigraph replacement</strong> — special character sequences like ??= are replaced</li><li><strong>Line splicing</strong> — lines ending with \\ are joined with the next line</li><li><strong>Tokenization</strong> — source code is split into meaningful tokens</li><li><strong>Directive processing</strong> — #include inserts file content, #define stores macro text, #ifdef includes or excludes sections</li><li><strong>Macro expansion</strong> — all macro identifiers replaced with their definitions (pure text substitution)</li><li><strong>Output</strong> — preprocessed source (with no # directives left) is passed to the actual compiler</li></ol><div class="info-box info-imp">View the preprocessor output by running: gcc -E program.c -o program.i</div>`},
+]}
+]}
+];
+
+let activeGroup = 'all';
+let openCards = new Set();
+
+function setGroup(g) {
+  activeGroup = g;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderAll();
+}
+
+function filterAll() { renderAll(); }
+
+function toggleCard(id) {
+  if(openCards.has(id)) openCards.delete(id);
+  else openCards.add(id);
+  const body = document.getElementById('body-'+id);
+  const chev = document.getElementById('chev-'+id);
+  if(body) {
+    body.classList.toggle('open', openCards.has(id));
+    if(chev) chev.style.transform = openCards.has(id) ? 'rotate(180deg)' : '';
+  }
+}
+
+function renderAll() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const content = document.getElementById('content');
+  const countBar = document.getElementById('countBar');
+  let html = '';
+  let total = 0;
+
+  data.forEach((unit, ui) => {
+    let unitHtml = '';
+    let unitCount = 0;
+    unit.groups.forEach(grp => {
+      if(activeGroup !== 'all' && grp.g !== activeGroup) return;
+      grp.qs.forEach((item, qi) => {
+        if(q && !item.q.toLowerCase().includes(q)) return;
+        const id = `u${ui}g${grp.g}q${qi}`;
+        const badgeCls = grp.g==='A'?'badge-a':grp.g==='B'?'badge-b':'badge-c';
+        const isOpen = openCards.has(id);
+        unitHtml += `<div class="q-card">
+          <div class="q-head" onclick="toggleCard('${id}')">
+            <span class="q-badge ${badgeCls}">Group ${grp.g} · ${grp.g==='A'?3:grp.g==='B'?5:10} marks</span>
+            <span class="q-text">${item.q}</span>
+            <span class="q-chevron" id="chev-${id}" style="transform:${isOpen?'rotate(180deg)':''}">▾</span>
+          </div>
+          <div class="q-body ${isOpen?'open':''}" id="body-${id}">${item.a}</div>
+        </div>`;
+        unitCount++;
+        total++;
+      });
+    });
+    if(unitCount > 0) {
+      html += `<div class="unit-section">
+        <div class="unit-title">${unit.unit}</div>
+        <div class="unit-meta">${unitCount} question${unitCount!==1?'s':''} shown</div>
+        ${unitHtml}
+      </div>`;
+    }
+  });
+
+  if(total === 0) {
+    html = `<div class="empty"><i class="ti ti-search" style="font-size:32px;display:block;margin-bottom:12px;opacity:.4" aria-hidden="true"></i>No questions found. Try a different search term.</div>`;
+  }
+
+  content.innerHTML = html;
+  countBar.innerHTML = `Showing <span>${total}</span> question${total!==1?'s':''}`;
+}
+
+renderAll();
+</script>
