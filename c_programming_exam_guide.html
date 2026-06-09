@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📖 C Programming Exam Guide</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0f172a;
+    min-height: 100vh;
+    color: #e2e8f0;
+    padding: 16px;
+  }
+  .header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .header-title { font-size: 26px; margin-bottom: 6px; }
+  .header-sub { color: #94a3b8; font-size: 14px; }
+  .badge {
+    display: inline-block;
+    background: #dc2626;
+    color: white;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    margin-top: 8px;
+    font-weight: bold;
+  }
+  #search {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: 14px;
+    margin-bottom: 14px;
+    outline: none;
+  }
+  #search::placeholder { color: #64748b; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .tab-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    background: #1e293b;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 400;
+    transition: all 0.2s;
+  }
+  .tab-btn.active { color: white; font-weight: 700; }
+  .count { color: #64748b; font-size: 12px; margin-bottom: 10px; }
+  .questions { display: flex; flex-direction: column; gap: 8px; }
+  .q-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .q-card.open { border-color: var(--accent); }
+  .q-btn {
+    width: 100%;
+    text-align: left;
+    padding: 14px 16px;
+    background: transparent;
+    border: none;
+    color: #e2e8f0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .q-btn:hover { background: #263348; }
+  .arrow { font-size: 16px; flex-shrink: 0; }
+  .q-answer {
+    display: none;
+    padding: 12px 16px 14px;
+    border-top: 1px solid #334155;
+  }
+  .q-card.open .q-answer { display: block; }
+  pre {
+    background: #0f172a;
+    border: 1px solid #1e3a5f;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 13px;
+    color: #a3e635;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0;
+    line-height: 1.6;
+    font-family: 'Courier New', monospace;
+  }
+  .footer {
+    margin-top: 20px;
+    background: #14532d;
+    border: 1px solid #166534;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 13px;
+    color: #86efac;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-title">📖 C Programming Exam Guide</div>
+  <div class="header-sub">NEB Class 11/12 Board Exam • 60+ Q&amp;A • Pass guaranteed!</div>
+  <div class="badge">🔥 LAST MINUTE REVISION</div>
+</div>
+
+<input id="search" type="text" placeholder="🔍 Search questions..." oninput="renderQuestions()">
+
+<div class="tabs" id="tabs"></div>
+<div class="count" id="count"></div>
+<div class="questions" id="questions"></div>
+
+<div class="footer">
+  💡 <strong>Exam Tip:</strong> Focus on P1–P10 programs + Theory Q1–Q14. These repeat every year! All the best! 🍀
+</div>
+
+<script>
+const sections = [
+  {
+    id: "theory",
+    label: "📚 Theory Questions",
+    color: "#3b82f6",
+    questions: [
+      {
+        q: "1. What is C programming language? Write its features.",
+        a: `C is a general-purpose, procedural programming language developed by Dennis Ritchie in 1972 at Bell Labs.
+
+Features:
+• Simple and efficient
+• Portable (runs on many platforms)
+• Structured language (uses functions, loops)
+• Rich set of operators and data types
+• Supports pointers
+• Fast execution speed
+• Mid-level language (between high and low level)`
+      },
+      {
+        q: "2. What are data types in C? Explain with examples.",
+        a: `Data types define the type of data a variable can hold.
+
+Types:
+1. int    – integers       → int age = 20;
+2. float  – decimal nums   → float pi = 3.14;
+3. double – large decimals → double d = 3.14159265;
+4. char   – single char    → char c = 'A';
+5. void   – no value       → void main()
+
+Size (approx):
+int = 2 or 4 bytes
+float = 4 bytes
+double = 8 bytes
+char = 1 byte`
+      },
+      {
+        q: "3. Define operators. Explain types of operators in C.",
+        a: `Operators are symbols that perform operations on variables/values.
+
+Types:
+1. Arithmetic: +, -, *, /, %
+   Example: a + b
+
+2. Relational: ==, !=, <, >, <=, >=
+   Example: a > b
+
+3. Logical: && (AND), || (OR), ! (NOT)
+   Example: a>0 && b>0
+
+4. Assignment: =, +=, -=, *=
+   Example: a = 5; a += 3;
+
+5. Increment/Decrement: ++, --
+   Example: a++; b--;
+
+6. Bitwise: &, |, ^, ~, <<, >>
+
+7. Conditional (Ternary): condition ? val1 : val2
+   Example: max = (a>b) ? a : b;`
+      },
+      {
+        q: "4. What is control structure? Explain types.",
+        a: `Control structure controls the flow of execution in a program.
+
+Types:
+1. Sequential – code executes line by line (default)
+
+2. Selection/Decision:
+   • if statement
+   • if-else statement
+   • else-if ladder
+   • switch statement
+
+3. Iteration/Loop:
+   • for loop – known number of repetitions
+   • while loop – entry-controlled loop
+   • do-while loop – exit-controlled loop
+
+4. Jump Statements:
+   • break – exits loop
+   • continue – skips current iteration
+   • goto – jumps to a label
+   • return – exits function`
+      },
+      {
+        q: "5. Differentiate between for loop and while loop.",
+        a: `FOR LOOP:
+• Used when number of iterations is known
+• Initialization, condition, update in one line
+• Syntax:
+  for(init; condition; update) { }
+
+WHILE LOOP:
+• Used when number of iterations is unknown
+• Condition checked before entering loop
+• Syntax:
+  while(condition) { }
+
+Example for loop:
+for(i=1; i<=5; i++) printf("%d", i);
+
+Example while loop:
+i=1;
+while(i<=5) { printf("%d",i); i++; }`
+      },
+      {
+        q: "6. Differentiate between while loop and do-while loop.",
+        a: `WHILE LOOP (Entry-controlled):
+• Condition checked BEFORE loop body
+• If condition is false, body never executes
+• Syntax: while(condition) { body }
+
+DO-WHILE LOOP (Exit-controlled):
+• Condition checked AFTER loop body
+• Body executes AT LEAST ONCE
+• Syntax: do { body } while(condition);
+
+Key difference: do-while always runs at least once
+even if condition is false from the start.`
+      },
+      {
+        q: "7. What is a function? Write its advantages.",
+        a: `A function is a block of code that performs a specific task and can be called multiple times.
+
+Syntax:
+return_type function_name(parameters) {
+   // body
+   return value;
+}
+
+Advantages:
+1. Code reusability – write once, use many times
+2. Easy to debug and maintain
+3. Reduces program length
+4. Modular programming
+5. Increases readability
+
+Types:
+• Library functions: printf(), scanf(), sqrt()
+• User-defined functions: created by programmer`
+      },
+      {
+        q: "8. What is recursion? Explain with example.",
+        a: `Recursion is when a function calls itself to solve a smaller version of the same problem.
+
+Example – Factorial using recursion:
+int factorial(int n) {
+   if(n == 0 || n == 1)
+      return 1;
+   else
+      return n * factorial(n-1);
+}
+
+int main() {
+   printf("%d", factorial(5));  // Output: 120
+   return 0;
+}
+
+Advantages:
+• Makes code shorter and cleaner
+• Useful for problems like factorial, Fibonacci, Tower of Hanoi`
+      },
+      {
+        q: "9. What is an array? Explain 1D and 2D arrays.",
+        a: `An array is a collection of elements of the same data type stored in contiguous memory.
+
+1D Array:
+• Single row of elements
+• Declaration: int a[5];
+• Access: a[0], a[1], ... a[4]
+• Example: int marks[5] = {80, 70, 90, 60, 85};
+
+2D Array:
+• Matrix form (rows and columns)
+• Declaration: int a[3][3];
+• Access: a[row][col]
+• Example: int matrix[2][2] = {{1,2},{3,4}};
+
+Used in: storing marks, matrices, tables`
+      },
+      {
+        q: "10. What is a string in C? Explain string functions.",
+        a: `A string is an array of characters terminated by null character '\\0'.
+
+Declaration: char name[20] = "Nepal";
+
+Important String Functions (from <string.h>):
+1. strlen(s)       – returns length of string
+2. strcpy(s1,s2)   – copies s2 into s1
+3. strcat(s1,s2)   – joins s2 at end of s1
+4. strcmp(s1,s2)   – compares two strings
+5. strupr(s)       – converts to uppercase
+6. strlwr(s)       – converts to lowercase
+7. strrev(s)       – reverses the string
+
+Example:
+char s[] = "Hello";
+printf("%d", strlen(s));  // Output: 5`
+      },
+      {
+        q: "11. What is a pointer? Write its advantages.",
+        a: `A pointer is a variable that stores the memory address of another variable.
+
+Declaration: int *p;
+Usage:
+  int a = 10;
+  int *p = &a;       // p stores address of a
+  printf("%d", *p);  // prints value at address = 10
+
+Advantages:
+1. Efficient memory use
+2. Used in dynamic memory allocation
+3. Enables call by reference in functions
+4. Essential for linked lists, trees
+5. Direct hardware/memory access
+
+Important operators:
+& – address-of operator
+* – dereference (value at address)`
+      },
+      {
+        q: "12. Differentiate between structure and union.",
+        a: `STRUCTURE:
+• Members have SEPARATE memory locations
+• Size = sum of all member sizes
+• All members accessible at same time
+• Keyword: struct
+
+UNION:
+• Members SHARE same memory location
+• Size = size of LARGEST member
+• Only ONE member accessible at a time
+• Keyword: union
+
+Example:
+struct Student {
+   char name[20];   // 20 bytes
+   int age;         // 4 bytes
+};  // Total = 24 bytes
+
+union Data {
+   char name[20];
+   int age;
+};  // Total = 20 bytes (largest)`
+      },
+      {
+        q: "13. What is structure? Write syntax and example.",
+        a: `Structure is a user-defined data type that groups different types of variables under one name.
+
+Syntax:
+struct structure_name {
+   data_type member1;
+   data_type member2;
+};
+
+Example:
+struct Student {
+   char name[50];
+   int age;
+   float marks;
+};
+
+int main() {
+   struct Student s1;
+   strcpy(s1.name, "Ram");
+   s1.age = 20;
+   s1.marks = 85.5;
+   printf("%s %d %.1f", s1.name, s1.age, s1.marks);
+   return 0;
+}`
+      },
+      {
+        q: "14. What is file handling in C? Explain file operations.",
+        a: `File handling allows storing data permanently in files on disk.
+
+Common Functions:
+1. fopen()  – opens a file
+2. fclose() – closes a file
+3. fprintf()– writes to file
+4. fscanf() – reads from file
+5. fputc()  – writes a character
+6. fgetc()  – reads a character
+7. feof()   – checks end of file
+
+File modes:
+"r" – read only
+"w" – write (creates/overwrites)
+"a" – append
+"r+" – read and write
+
+Example:
+FILE *f = fopen("data.txt", "w");
+fprintf(f, "Hello Nepal");
+fclose(f);`
+      },
+      {
+        q: "15. What are header files? Give examples.",
+        a: `Header files contain function declarations and macros used in C programs.
+They are included using #include directive.
+
+Common Header Files:
+1. <stdio.h>   – printf, scanf, fopen, fclose
+2. <conio.h>   – clrscr(), getch()
+3. <math.h>    – sqrt(), pow(), abs()
+4. <string.h>  – strlen(), strcpy(), strcmp()
+5. <stdlib.h>  – malloc(), free(), exit()
+6. <ctype.h>   – isdigit(), isalpha(), toupper()
+
+Example:
+#include<stdio.h>   // for printf, scanf
+#include<math.h>    // for sqrt
+#include<string.h>  // for strlen`
+      },
+      {
+        q: "16. What is the difference between call by value and call by reference?",
+        a: `CALL BY VALUE:
+• Copy of variable is passed to function
+• Original variable is NOT changed
+• Example:
+  void add(int a) { a = a+10; }
+  // original variable unchanged
+
+CALL BY REFERENCE:
+• Address (pointer) of variable is passed
+• Original variable IS changed
+• Example:
+  void add(int *a) { *a = *a+10; }
+  add(&x);  // original x is changed
+
+Key: Use call by reference when you want the
+function to modify the original variable.`
+      },
+      {
+        q: "17. What is dynamic memory allocation? Explain malloc() and free().",
+        a: `Dynamic memory allocation allocates memory at runtime (not at compile time).
+
+Functions (from <stdlib.h>):
+1. malloc(size)  – allocates memory block
+2. calloc(n,size)– allocates & initializes to 0
+3. realloc()     – resizes allocated memory
+4. free()        – releases allocated memory
+
+Example:
+int *p;
+p = (int*) malloc(5 * sizeof(int));  // allocate 5 ints
+if(p == NULL) { printf("Memory error"); }
+p[0] = 10;
+p[1] = 20;
+free(p);  // free the memory
+
+Advantage: Memory is allocated as needed,
+saving space compared to fixed arrays.`
+      },
+      {
+        q: "18. Explain #define and typedef in C.",
+        a: `#define (Preprocessor Macro):
+• Defines a constant or macro before compilation
+• No memory is used
+• Syntax: #define NAME value
+• Example:
+  #define PI 3.14159
+  #define MAX 100
+  area = PI * r * r;
+
+typedef:
+• Creates an alias/new name for existing data type
+• Syntax: typedef existing_type new_name;
+• Example:
+  typedef int INTEGER;
+  INTEGER a = 5, b = 10;
+  
+  typedef struct Student {
+     char name[50]; int age;
+  } STU;
+  STU s1;`
+      },
+      {
+        q: "19. What is the difference between local and global variables?",
+        a: `LOCAL VARIABLE:
+• Declared inside a function or block
+• Only accessible within that function/block
+• Created when function is called, destroyed when it ends
+• Example:
+  void show() {
+     int x = 5;  // local
+     printf("%d", x);
+  }
+
+GLOBAL VARIABLE:
+• Declared outside all functions (usually at top)
+• Accessible from ANY function in the program
+• Exists throughout the whole program
+• Example:
+  int count = 0;  // global
+  void add() { count++; }
+  void main() { printf("%d", count); }`
+      },
+      {
+        q: "20. What is a switch statement? Write syntax with example.",
+        a: `switch statement selects one block to execute from many options based on a variable's value.
+
+Syntax:
+switch(variable) {
+   case value1:
+      statements;
+      break;
+   case value2:
+      statements;
+      break;
+   default:
+      statements;
+}
+
+Example:
+int day = 3;
+switch(day) {
+   case 1: printf("Sunday"); break;
+   case 2: printf("Monday"); break;
+   case 3: printf("Tuesday"); break;
+   default: printf("Other day");
+}
+// Output: Tuesday
+
+Note: break is important to stop fall-through!`
+      }
+    ]
+  },
+  {
+    id: "programs",
+    label: "💻 Important Programs",
+    color: "#10b981",
+    questions: [
+      {
+        q: "P1. WAP to find the largest among 3 numbers.",
+        a: `#include<stdio.h>
+int main() {
+   int a, b, c;
+   printf("Enter 3 numbers: ");
+   scanf("%d %d %d", &a, &b, &c);
+   
+   if(a > b && a > c)
+      printf("Largest = %d", a);
+   else if(b > c)
+      printf("Largest = %d", b);
+   else
+      printf("Largest = %d", c);
+   
+   return 0;
+}`
+      },
+      {
+        q: "P2. WAP to print Fibonacci series up to 10 terms.",
+        a: `#include<stdio.h>
+int main() {
+   int a=0, b=1, c, i;
+   printf("Fibonacci Series: ");
+   printf("%d %d ", a, b);
+   
+   for(i=3; i<=10; i++) {
+      c = a + b;
+      printf("%d ", c);
+      a = b;
+      b = c;
+   }
+   return 0;
+}
+
+Output: 0 1 1 2 3 5 8 13 21 34`
+      },
+      {
+        q: "P3. WAP to check if a number is prime or not.",
+        a: `#include<stdio.h>
+int main() {
+   int n, i, flag=0;
+   printf("Enter a number: ");
+   scanf("%d", &n);
+   
+   for(i=2; i<=n/2; i++) {
+      if(n % i == 0) {
+         flag = 1;
+         break;
+      }
+   }
+   
+   if(flag == 0)
+      printf("%d is Prime", n);
+   else
+      printf("%d is Not Prime", n);
+   
+   return 0;
+}`
+      },
+      {
+        q: "P4. WAP to find factorial using recursion.",
+        a: `#include<stdio.h>
+
+int factorial(int n) {
+   if(n == 0 || n == 1)
+      return 1;
+   else
+      return n * factorial(n-1);
+}
+
+int main() {
+   int n;
+   printf("Enter number: ");
+   scanf("%d", &n);
+   printf("Factorial = %d", factorial(n));
+   return 0;
+}
+
+Example: factorial(5) = 5*4*3*2*1 = 120`
+      },
+      {
+        q: "P5. WAP to reverse a number.",
+        a: `#include<stdio.h>
+int main() {
+   int n, rev=0, rem;
+   printf("Enter a number: ");
+   scanf("%d", &n);
+   
+   while(n != 0) {
+      rem = n % 10;
+      rev = rev * 10 + rem;
+      n = n / 10;
+   }
+   
+   printf("Reversed = %d", rev);
+   return 0;
+}
+
+Example: 1234 → 4321`
+      },
+      {
+        q: "P6. WAP to check Armstrong number.",
+        a: `#include<stdio.h>
+int main() {
+   int n, temp, rem, sum=0;
+   printf("Enter number: ");
+   scanf("%d", &n);
+   temp = n;
+   
+   while(temp != 0) {
+      rem = temp % 10;
+      sum = sum + rem*rem*rem;
+      temp = temp / 10;
+   }
+   
+   if(sum == n)
+      printf("%d is Armstrong", n);
+   else
+      printf("%d is not Armstrong", n);
+   
+   return 0;
+}
+
+Example: 153 = 1^3+5^3+3^3 = 1+125+27 = 153 ✓`
+      },
+      {
+        q: "P7. WAP to sort an array using Bubble Sort.",
+        a: `#include<stdio.h>
+int main() {
+   int a[5], i, j, temp;
+   printf("Enter 5 numbers: ");
+   for(i=0; i<5; i++)
+      scanf("%d", &a[i]);
+   
+   // Bubble Sort
+   for(i=0; i<4; i++) {
+      for(j=0; j<4-i; j++) {
+         if(a[j] > a[j+1]) {
+            temp = a[j];
+            a[j] = a[j+1];
+            a[j+1] = temp;
+         }
+      }
+   }
+   
+   printf("Sorted: ");
+   for(i=0; i<5; i++)
+      printf("%d ", a[i]);
+   return 0;
+}`
+      },
+      {
+        q: "P8. WAP to find sum and average of array elements.",
+        a: `#include<stdio.h>
+int main() {
+   int a[10], i, sum=0;
+   float avg;
+   printf("Enter 10 numbers: ");
+   for(i=0; i<10; i++) {
+      scanf("%d", &a[i]);
+      sum += a[i];
+   }
+   
+   avg = (float)sum / 10;
+   printf("Sum = %d\\n", sum);
+   printf("Average = %.2f", avg);
+   return 0;
+}`
+      },
+      {
+        q: "P9. WAP to find length of string without strlen().",
+        a: `#include<stdio.h>
+int main() {
+   char s[100];
+   int i=0, count=0;
+   
+   printf("Enter string: ");
+   scanf("%s", s);
+   
+   while(s[i] != '\\0') {
+      count++;
+      i++;
+   }
+   
+   printf("Length = %d", count);
+   return 0;
+}
+
+Note: \\0 is the null terminator at end of string`
+      },
+      {
+        q: "P10. WAP to reverse a string.",
+        a: `#include<stdio.h>
+#include<string.h>
+int main() {
+   char s[100], rev[100];
+   int i, len;
+   
+   printf("Enter string: ");
+   scanf("%s", s);
+   
+   len = strlen(s);
+   for(i=0; i<len; i++) {
+      rev[i] = s[len-1-i];
+   }
+   rev[len] = '\\0';
+   
+   printf("Reversed = %s", rev);
+   return 0;
+}
+
+Example: "NEPAL" → "LADEN"`
+      },
+      {
+        q: "P11. WAP to count vowels and consonants in a string.",
+        a: `#include<stdio.h>
+#include<ctype.h>
+int main() {
+   char s[100];
+   int i, v=0, c=0;
+   char ch;
+   
+   printf("Enter string: ");
+   scanf("%s", s);
+   
+   for(i=0; s[i]!='\\0'; i++) {
+      ch = tolower(s[i]);
+      if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u')
+         v++;
+      else if(ch>='a' && ch<='z')
+         c++;
+   }
+   
+   printf("Vowels = %d\\n", v);
+   printf("Consonants = %d", c);
+   return 0;
+}`
+      },
+      {
+        q: "P12. WAP to perform matrix multiplication (2x2).",
+        a: `#include<stdio.h>
+int main() {
+   int a[2][2], b[2][2], c[2][2];
+   int i, j, k;
+   
+   printf("Enter matrix A (2x2):\\n");
+   for(i=0;i<2;i++)
+      for(j=0;j<2;j++)
+         scanf("%d",&a[i][j]);
+   
+   printf("Enter matrix B (2x2):\\n");
+   for(i=0;i<2;i++)
+      for(j=0;j<2;j++)
+         scanf("%d",&b[i][j]);
+   
+   // Multiplication
+   for(i=0;i<2;i++)
+      for(j=0;j<2;j++) {
+         c[i][j]=0;
+         for(k=0;k<2;k++)
+            c[i][j] += a[i][k]*b[k][j];
+      }
+   
+   printf("Result:\\n");
+   for(i=0;i<2;i++) {
+      for(j=0;j<2;j++)
+         printf("%d ", c[i][j]);
+      printf("\\n");
+   }
+   return 0;
+}`
+      },
+      {
+        q: "P13. WAP using structure to store and display student info.",
+        a: `#include<stdio.h>
+#include<string.h>
+struct Student {
+   char name[50];
+   int age;
+   float marks;
+};
+
+int main() {
+   struct Student s;
+   
+   printf("Enter name: ");
+   scanf("%s", s.name);
+   printf("Enter age: ");
+   scanf("%d", &s.age);
+   printf("Enter marks: ");
+   scanf("%f", &s.marks);
+   
+   printf("\\n--- Student Info ---\\n");
+   printf("Name: %s\\n", s.name);
+   printf("Age: %d\\n", s.age);
+   printf("Marks: %.2f\\n", s.marks);
+   
+   if(s.marks >= 40)
+      printf("Result: PASS");
+   else
+      printf("Result: FAIL");
+   
+   return 0;
+}`
+      },
+      {
+        q: "P14. WAP to demonstrate pointer (swap two numbers using pointer).",
+        a: `#include<stdio.h>
+
+void swap(int *x, int *y) {
+   int temp;
+   temp = *x;
+   *x = *y;
+   *y = temp;
+}
+
+int main() {
+   int a, b;
+   printf("Enter two numbers: ");
+   scanf("%d %d", &a, &b);
+   
+   printf("Before swap: a=%d, b=%d\\n", a, b);
+   swap(&a, &b);
+   printf("After swap: a=%d, b=%d\\n", a, b);
+   
+   return 0;
+}`
+      },
+      {
+        q: "P15. WAP to read and write data to a file.",
+        a: `#include<stdio.h>
+int main() {
+   FILE *f;
+   char name[50];
+   int age;
+   
+   // Write to file
+   f = fopen("student.txt", "w");
+   printf("Enter name and age: ");
+   scanf("%s %d", name, &age);
+   fprintf(f, "%s %d", name, age);
+   fclose(f);
+   
+   // Read from file
+   f = fopen("student.txt", "r");
+   fscanf(f, "%s %d", name, &age);
+   printf("\\nData from file: %s %d", name, age);
+   fclose(f);
+   
+   return 0;
+}`
+      },
+      {
+        q: "P16. WAP to check palindrome string.",
+        a: `#include<stdio.h>
+#include<string.h>
+int main() {
+   char s[100], rev[100];
+   int len, i;
+   
+   printf("Enter string: ");
+   scanf("%s", s);
+   len = strlen(s);
+   
+   for(i=0; i<len; i++)
+      rev[i] = s[len-1-i];
+   rev[len] = '\\0';
+   
+   if(strcmp(s, rev) == 0)
+      printf("%s is Palindrome", s);
+   else
+      printf("%s is NOT Palindrome", s);
+   
+   return 0;
+}
+// madam, racecar → Palindrome`
+      },
+      {
+        q: "P17. WAP to find power using recursion.",
+        a: `#include<stdio.h>
+
+int power(int base, int exp) {
+   if(exp == 0)
+      return 1;
+   else
+      return base * power(base, exp-1);
+}
+
+int main() {
+   int b, e;
+   printf("Enter base and exponent: ");
+   scanf("%d %d", &b, &e);
+   printf("%d^%d = %d", b, e, power(b, e));
+   return 0;
+}
+
+Example: power(2,4) = 2*2*2*2 = 16`
+      },
+      {
+        q: "P18. WAP to find GCD/HCF of two numbers.",
+        a: `#include<stdio.h>
+int main() {
+   int a, b, temp;
+   printf("Enter two numbers: ");
+   scanf("%d %d", &a, &b);
+   
+   while(b != 0) {
+      temp = b;
+      b = a % b;
+      a = temp;
+   }
+   
+   printf("GCD = %d", a);
+   return 0;
+}
+
+Example: GCD(12, 8) = 4`
+      },
+      {
+        q: "P19. WAP to print multiplication table.",
+        a: `#include<stdio.h>
+int main() {
+   int n, i;
+   printf("Enter number: ");
+   scanf("%d", &n);
+   
+   printf("Multiplication Table of %d:\\n", n);
+   for(i=1; i<=10; i++) {
+      printf("%d x %d = %d\\n", n, i, n*i);
+   }
+   return 0;
+}
+
+Example output for n=5:
+5 x 1 = 5
+5 x 2 = 10
+... up to 5 x 10 = 50`
+      },
+      {
+        q: "P20. WAP to display all prime numbers between 1 to 100.",
+        a: `#include<stdio.h>
+int main() {
+   int i, j, flag;
+   printf("Prime numbers between 1 to 100:\\n");
+   
+   for(i=2; i<=100; i++) {
+      flag = 0;
+      for(j=2; j<=i/2; j++) {
+         if(i % j == 0) {
+            flag = 1;
+            break;
+         }
+      }
+      if(flag == 0)
+         printf("%d ", i);
+   }
+   return 0;
+}`
+      },
+      {
+        q: "P21. WAP to calculate sum of digits of a number.",
+        a: `#include<stdio.h>
+int main() {
+   int n, sum=0, rem;
+   printf("Enter a number: ");
+   scanf("%d", &n);
+   
+   while(n != 0) {
+      rem = n % 10;
+      sum += rem;
+      n = n / 10;
+   }
+   
+   printf("Sum of digits = %d", sum);
+   return 0;
+}
+
+Example: 1234 → 1+2+3+4 = 10`
+      },
+      {
+        q: "P22. WAP to print Pascal's triangle.",
+        a: `#include<stdio.h>
+int main() {
+   int n, i, j, c;
+   printf("Enter rows: ");
+   scanf("%d", &n);
+   
+   for(i=0; i<n; i++) {
+      c = 1;
+      for(j=0; j<=i; j++) {
+         printf("%d ", c);
+         c = c * (i-j) / (j+1);
+      }
+      printf("\\n");
+   }
+   return 0;
+}
+
+Output (n=4):
+1
+1 1
+1 2 1
+1 3 3 1`
+      },
+      {
+        q: "P23. WAP to convert Celsius to Fahrenheit.",
+        a: `#include<stdio.h>
+int main() {
+   float c, f;
+   printf("Enter temperature in Celsius: ");
+   scanf("%f", &c);
+   
+   f = (c * 9/5) + 32;
+   
+   printf("%.2f Celsius = %.2f Fahrenheit", c, f);
+   return 0;
+}
+
+Formula: F = (C × 9/5) + 32
+Example: 100°C = 212°F`
+      },
+      {
+        q: "P24. WAP to find transpose of a matrix.",
+        a: `#include<stdio.h>
+int main() {
+   int a[3][3], i, j;
+   printf("Enter 3x3 matrix:\\n");
+   for(i=0;i<3;i++)
+      for(j=0;j<3;j++)
+         scanf("%d",&a[i][j]);
+   
+   printf("Transpose:\\n");
+   for(i=0;i<3;i++) {
+      for(j=0;j<3;j++)
+         printf("%d ", a[j][i]);  // note: j,i swapped
+      printf("\\n");
+   }
+   return 0;
+}
+
+Transpose: rows become columns`
+      },
+      {
+        q: "P25. WAP to implement simple calculator using switch.",
+        a: `#include<stdio.h>
+int main() {
+   float a, b, result;
+   char op;
+   
+   printf("Enter: num operator num (e.g. 5 + 3): ");
+   scanf("%f %c %f", &a, &op, &b);
+   
+   switch(op) {
+      case '+': result = a + b; break;
+      case '-': result = a - b; break;
+      case '*': result = a * b; break;
+      case '/':
+         if(b!=0) result = a/b;
+         else { printf("Error: Division by zero"); return 0; }
+         break;
+      default: printf("Invalid operator"); return 0;
+   }
+   
+   printf("Result = %.2f", result);
+   return 0;
+}`
+      }
+    ]
+  },
+  {
+    id: "short",
+    label: "⚡ Short Q&A",
+    color: "#f59e0b",
+    questions: [
+      { q: "What does printf() and scanf() do?", a: "printf() displays output on screen. scanf() reads input from keyboard. Both are in <stdio.h>" },
+      { q: "What is the format specifier for int, float, char?", a: "%d = int, %f = float, %c = char, %s = string, %lf = double" },
+      { q: "What is NULL in C?", a: "NULL is a macro representing the value 0 or an empty pointer. Used with pointers: int *p = NULL;" },
+      { q: "What is the difference between = and == in C?", a: "= is assignment operator (assigns value). == is relational operator (checks equality)." },
+      { q: "What is sizeof() operator?", a: "sizeof() returns the size of a data type in bytes. Example: sizeof(int) = 4 bytes" },
+      { q: "What is the use of #include in C?", a: "#include is a preprocessor directive that includes header files. Example: #include<stdio.h>" },
+      { q: "What is the entry point of a C program?", a: "main() function is the entry point. Execution always starts from main()." },
+      { q: "What is an infinite loop? Write an example.", a: "A loop that never ends. Example: while(1) { printf('Hello'); } — runs forever." },
+      { q: "What is break and continue statement?", a: "break: exits the loop completely. continue: skips current iteration and goes to next." },
+      { q: "What is type casting in C?", a: "Converting one data type to another. Example: float x = (float)5/2; // gives 2.5 instead of 2" },
+      { q: "What does return 0 mean in main()?", a: "return 0 means the program ended successfully. A non-zero value means an error occurred." },
+      { q: "What is a constant in C? How to declare?", a: "A constant is a value that cannot be changed. Two ways: const int x = 5; or #define X 5" },
+      { q: "What is the use of void in function?", a: "void means no return value (for return type) or no parameters (for parameter list). Example: void display() { }" },
+      { q: "What is a nested loop?", a: "A loop inside another loop. Used for 2D arrays, patterns. Example: for inside for." },
+      { q: "What are the basic parts of a C program?", a: "1. Header files  2. Global declarations  3. main() function  4. Variable declarations  5. Statements  6. return statement" }
+    ]
+  }
+];
+
+let activeSection = "theory";
+let openQ = null;
+
+function renderTabs() {
+  const tabsEl = document.getElementById('tabs');
+  tabsEl.innerHTML = sections.map(s => `
+    <button class="tab-btn ${s.id === activeSection ? 'active' : ''}"
+      style="${s.id === activeSection ? 'background:' + s.color : ''}"
+      onclick="setSection('${s.id}')">${s.label}</button>
+  `).join('');
+}
+
+function setSection(id) {
+  activeSection = id;
+  openQ = null;
+  document.getElementById('search').value = '';
+  renderTabs();
+  renderQuestions();
+}
+
+function renderQuestions() {
+  const search = document.getElementById('search').value.toLowerCase();
+  const current = sections.find(s => s.id === activeSection);
+  const filtered = current.questions.filter(
+    q => q.q.toLowerCase().includes(search) || q.a.toLowerCase().includes(search)
+  );
+  document.getElementById('count').textContent = `Showing ${filtered.length} questions`;
+  const qEl = document.getElementById('questions');
+  qEl.innerHTML = filtered.map((item, idx) => `
+    <div class="q-card ${openQ === idx ? 'open' : ''}" style="--accent:${current.color}" id="card-${idx}">
+      <button class="q-btn" onclick="toggleQ(${idx})">
+        <span>${escHtml(item.q)}</span>
+        <span class="arrow" style="color:${current.color}">${openQ === idx ? '▲' : '▼'}</span>
+      </button>
+      <div class="q-answer">
+        <pre>${escHtml(item.a)}</pre>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleQ(idx) {
+  openQ = openQ === idx ? null : idx;
+  renderQuestions();
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+renderTabs();
+renderQuestions();
+</script>
+</body>
+</html>
