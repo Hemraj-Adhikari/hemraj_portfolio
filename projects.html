@@ -1,202 +1,738 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Projects — Hemraj Adhikari</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    :root{--bg:#05060f;--bg2:#080a18;--surface:rgba(255,255,255,.035);--surface2:rgba(255,255,255,.06);--border:rgba(255,255,255,.06);--accent:#64d2ff;--accent2:#a78bfa;--accent3:#34d399;--text:#eef2ff;--text2:#8892b0;--text3:#3d4a6b;--grad:linear-gradient(135deg,#64d2ff,#a78bfa);--font-display:'DM Sans',sans-serif;--font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;--max:1140px;--gutter:clamp(18px,5vw,64px);--t:.22s cubic-bezier(.4,0,.2,1)}
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;line-height:1.7;-webkit-font-smoothing:antialiased}
-    ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
-    .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(100,210,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(100,210,255,.018) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 90% 70% at 50% 30%,black,transparent)}
-    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);animation:orbFloat 14s ease-in-out infinite}
-    .orb1{width:600px;height:600px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(167,139,250,.09),transparent 70%)}
-    .orb2{width:400px;height:400px;bottom:-80px;left:-100px;background:radial-gradient(circle,rgba(100,210,255,.08),transparent 70%);animation-delay:-6s}
-    @keyframes orbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,-22px)}}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,6,15,.85);backdrop-filter:blur(28px);border-bottom:1px solid var(--border)}
-    .nav-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;height:58px}
-    .logo{font-family:var(--font-mono);font-size:15px;color:var(--text);text-decoration:none}
-    .logo em{color:var(--accent);font-style:normal}
-    .nav-links{display:flex;gap:2px;list-style:none}
-    .nav-links a{font-size:13px;color:var(--text2);text-decoration:none;padding:5px 11px;border-radius:6px;transition:var(--t)}
-    .nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(255,255,255,.05)}
-    .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
-    .nav-toggle span{display:block;width:20px;height:1.5px;background:var(--text2);border-radius:2px;transition:var(--t)}
-    .nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-    .nav-toggle.open span:nth-child(2){opacity:0}
-    .nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-    .mobile-nav{display:none;position:fixed;top:58px;inset-x:0;z-index:99;background:var(--bg2);border-bottom:1px solid var(--border);padding:12px var(--gutter) 20px}
-    .mobile-nav.open{display:block}
-    .mobile-nav a{display:flex;align-items:center;padding:13px 0;color:var(--text2);text-decoration:none;font-size:15px;min-height:44px;border-bottom:1px solid var(--border);transition:var(--t)}
-    .mobile-nav a:hover{color:var(--text)}
-    .page{position:relative;z-index:1}
-    main{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
-    .hero-section{padding:clamp(100px,12vw,150px) 0 clamp(60px,8vw,100px)}
-    .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-    .eyebrow-line{width:24px;height:1px;background:var(--accent);flex-shrink:0}
-    .eyebrow-text{font-family:var(--font-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent)}
-    h1.page-title{font-family:var(--font-display);font-size:clamp(36px,7vw,80px);font-weight:700;line-height:1;letter-spacing:-3px;margin-bottom:16px}
-    h1.page-title mark{background:none;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-image:var(--grad);background-clip:text}
-    .page-desc{font-size:15px;color:var(--text2);max-width:560px;line-height:1.8;margin-bottom:32px}
-    .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
-    .reveal.visible{opacity:1;transform:none}
-    /* Filter */
-    .filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:36px}
-    .filter-btn{font-family:var(--font-mono);font-size:10px;letter-spacing:.8px;text-transform:uppercase;padding:5px 14px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--text3);cursor:pointer;transition:var(--t)}
-    .filter-btn:hover,.filter-btn.active{border-color:rgba(100,210,255,.25);color:var(--accent);background:rgba(100,210,255,.06)}
-    /* Cards */
-    .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:60px}
-    .proj-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:var(--t);display:flex;flex-direction:column}
-    .proj-card:hover{border-color:rgba(255,255,255,.1);transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
-    .proj-thumb{height:130px;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,rgba(100,210,255,.05),rgba(167,139,250,.05));border-bottom:1px solid var(--border)}
-    .proj-body{padding:20px 22px;flex:1;display:flex;flex-direction:column}
-    .proj-meta{display:flex;justify-content:space-between;margin-bottom:8px}
-    .proj-type{font-family:var(--font-mono);font-size:9.5px;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase}
-    .proj-year{font-family:var(--font-mono);font-size:9.5px;color:var(--text3)}
-    .proj-card h3{font-size:17px;font-weight:600;color:var(--text);margin-bottom:7px;letter-spacing:-.2px}
-    .proj-card p{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px;flex:1}
-    .proj-tech{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
-    .proj-tech span{font-family:var(--font-mono);font-size:9px;padding:2px 7px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:4px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
-    .proj-links{display:flex;gap:10px}
-    .proj-link{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:10.5px;color:var(--text2);letter-spacing:.5px;text-transform:uppercase;text-decoration:none;transition:var(--t)}
-    .proj-link:hover{color:var(--accent);gap:8px}
-    footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px var(--gutter);text-align:center;margin-top:0}
-    footer span{font-family:var(--font-mono);font-size:11px;color:var(--text3)}
-    @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:flex}}
-    @media(max-width:640px){.proj-grid{grid-template-columns:1fr}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Projects — Hemraj Adhikari | Web, Cloud & International Freelance Work</title>
+<meta name="description" content="Selected projects by Hemraj Adhikari — radio streaming platforms, EdTech, music academy & artist sites across Nepal, India & Australia, plus cloud and government IT work.">
+<meta name="theme-color" content="#0a0015">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-dark:#0a0015;
+  --bg-grad-start:#1a0033;
+  --bg-grad-end:#0f1d4d;
+  --card-bg:#1a0d2e;
+  --card-border:rgba(138,43,226,0.2);
+  --card-border-hover:rgba(255,20,147,0.6);
+  --text:#f3f5f9;
+  --text-dim:#b8a8d8;
+  --text-faint:#7d5fa6;
+  --accent:#ff1493;
+  --accent-alt:#7c3aed;
+  --accent-cyan:#00d9ff;
+  --gold:#ffd700;
+  --radius:16px;
+  --font-display:'Space Grotesk', system-ui, sans-serif;
+  --font-body:'Inter', system-ui, sans-serif;
+  --font-mono:'JetBrains Mono', monospace;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+/* Hide scrollbar but keep functionality */
+html::-webkit-scrollbar {
+  width: 6px;
+}
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+html::-webkit-scrollbar-thumb {
+  background: rgba(138,43,226,0.3);
+  border-radius: 3px;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,20,147,0.5);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-color: rgba(138,43,226,0.3) transparent;
+  scrollbar-width: thin;
+}
+
+body{
+  margin:0;
+  background: linear-gradient(135deg, var(--bg-grad-start) 0%, var(--bg-grad-end) 100%);
+  min-height:100vh;
+  color:var(--text);
+  font-family:var(--font-body);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+
+.noise-overlay{
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255,20,147,0.1), transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(124,60,248,0.12), transparent 45%),
+    radial-gradient(circle at 50% 60%, rgba(0,217,255,0.08), transparent 50%);
+}
+
+/* HEADER */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(10,0,21,0.8);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--card-border);
+}
+.header-inner{
+  max-width:1140px; margin:0 auto; padding:16px 24px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.brand{font-family:var(--font-display); font-weight:700; font-size:1.1rem; letter-spacing:0.01em;}
+.brand-mark{
+  background:linear-gradient(135deg, var(--accent), var(--accent-alt));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-right:4px;
+}
+.brand-dim{color:var(--text-dim); font-weight:400;}
+.header-nav{display:flex; gap:22px; font-size:0.9rem; color:var(--text-dim);}
+.header-nav a{
+  position:relative;
+  transition:color .3s ease;
+}
+.header-nav a:hover{
+  color:var(--accent);
+}
+.header-nav a::after{
+  content:'';
+  position:absolute;
+  bottom:-4px;
+  left:0;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg, var(--accent), var(--accent-alt));
+  transition:width .3s ease;
+}
+.header-nav a:hover::after{
+  width:100%;
+}
+
+/* HERO */
+.hero{position:relative; z-index:1; padding:90px 24px 60px; max-width:1140px; margin:0 auto;}
+.hero-inner{max-width:760px;}
+.eyebrow{
+  font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
+  background:linear-gradient(90deg, var(--accent), var(--accent-cyan));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin:0 0 18px;
+  font-weight:700;
+}
+.hero-title{
+  font-family:var(--font-display); font-weight:700;
+  font-size:clamp(2.2rem, 5vw, 3.6rem); line-height:1.1; margin:0 0 20px; letter-spacing:-0.02em;
+  background:linear-gradient(135deg, #ffffff, var(--accent-cyan), var(--accent));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{color:var(--text-dim); font-size:1.08rem; max-width:620px; margin:0 0 32px;}
+.hero-sub strong{color:var(--accent-cyan); font-weight:600;}
+
+.route-strip{
+  display:flex; align-items:center; flex-wrap:wrap; gap:10px;
+  margin-bottom:48px;
+}
+.route-chip{
+  font-family:var(--font-mono); font-size:0.85rem; padding:8px 16px;
+  border:1px solid var(--card-border); border-radius:999px; 
+  background:rgba(138,43,226,0.1);
+  color:var(--text);
+  backdrop-filter:blur(4px);
+  transition:all .3s ease;
+}
+.route-chip:hover{
+  border-color:var(--accent);
+  background:rgba(255,20,147,0.15);
+}
+.route-chip--ghost{color:var(--text-dim); border-style:dashed;}
+.route-line{width:24px; height:1px; background:linear-gradient(90deg, var(--card-border), transparent);}
+
+.hero-stats{
+  display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:24px;
+  border-top:1px solid var(--card-border); padding-top:28px;
+}
+.stat-num{
+  display:block; font-family:var(--font-display); font-weight:700;
+  font-size:clamp(1.8rem, 3vw, 2.4rem);
+  background:linear-gradient(135deg, var(--accent), var(--accent-cyan));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.stat-label{font-size:0.82rem; color:var(--text-dim);}
+
+/* FILTER BAR */
+.filter-bar{
+  position:sticky; top:65px; z-index:40;
+  background:rgba(10,0,21,0.85); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--card-border);
+  padding:14px 24px; overflow-x:auto;
+}
+.filter-inner{
+  max-width:1140px; margin:0 auto; display:flex; gap:10px;
+}
+.filter-btn{
+  font-family:var(--font-body); font-size:0.85rem; white-space:nowrap;
+  background:rgba(138,43,226,0.08); border:1px solid var(--card-border); 
+  color:var(--text-dim);
+  padding:10px 18px; border-radius:999px; cursor:pointer; 
+  transition:all .25s ease;
+}
+.filter-btn:hover{
+  color:var(--accent);
+  border-color:var(--accent);
+  background:rgba(255,20,147,0.1);
+}
+.filter-btn.is-active{
+  background:linear-gradient(135deg, var(--accent), var(--accent-alt));
+  color:#fff;
+  border-color:transparent;
+  font-weight:700;
+  box-shadow:0 8px 32px rgba(255,20,147,0.4);
+}
+
+/* PROJECT GRID */
+.project-section{max-width:1140px; margin:0 auto; padding:56px 24px 40px; position:relative; z-index:1;}
+.project-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px;
+}
+.card{
+  background:linear-gradient(135deg, rgba(26,13,46,0.7), rgba(26,13,46,0.4));
+  border:1px solid var(--card-border);
+  border-radius:var(--radius);
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  transition:all .3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter:blur(8px);
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:'';
+  position:absolute;
+  top:-50%;
+  right:-50%;
+  width:200px;
+  height:200px;
+  background:radial-gradient(circle, rgba(255,20,147,0.1), transparent);
+  border-radius:50%;
+  opacity:0;
+  transition:opacity .3s ease;
+}
+.card:hover{
+  transform:translateY(-8px);
+  border-color:var(--card-border-hover);
+  background:linear-gradient(135deg, rgba(26,13,46,0.9), rgba(26,13,46,0.6));
+  box-shadow:0 20px 60px rgba(255,20,147,0.2), inset 0 1px 0 rgba(138,43,226,0.3);
+}
+.card:hover::before{
+  opacity:1;
+}
+.card--highlight{
+  border:1.5px solid rgba(255,215,0,0.4);
+  background:linear-gradient(135deg, rgba(255,215,0,0.08), rgba(26,13,46,0.5));
+}
+.card-top{display:flex; align-items:center; justify-content:space-between; position:relative; z-index:1;}
+.card-index{font-family:var(--font-mono); color:var(--text-faint); font-size:0.9rem; font-weight:700;}
+.tag{font-family:var(--font-mono); font-size:0.75rem; padding:6px 12px; border-radius:999px; letter-spacing:0.05em; font-weight:600;}
+.tag--live{
+  background:linear-gradient(135deg, rgba(0,217,255,0.2), rgba(138,43,226,0.2));
+  color:var(--accent-cyan);
+  border:1px solid rgba(0,217,255,0.3);
+}
+.tag--private{
+  background:linear-gradient(135deg, rgba(124,60,248,0.2), rgba(255,20,147,0.1));
+  color:var(--accent-alt);
+  border:1px solid rgba(124,60,248,0.3);
+}
+.tag--gold{
+  background:linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,215,0,0.1));
+  color:var(--gold);
+  border:1px solid rgba(255,215,0,0.3);
+}
+.card-title{
+  font-family:var(--font-display); font-size:1.18rem; margin:0; line-height:1.3;
+  color:#fff;
+  position:relative; z-index:1;
+}
+.card-desc{
+  color:var(--text-dim); font-size:0.94rem; margin:0; flex-grow:1;
+  position:relative; z-index:1;
+}
+.card-tech{display:flex; flex-wrap:wrap; gap:8px; position:relative; z-index:1;}
+.card-tech span{
+  font-family:var(--font-mono); font-size:0.75rem; color:var(--text-dim);
+  background:rgba(138,43,226,0.15);
+  border:1px solid var(--card-border);
+  padding:4px 11px;
+  border-radius:8px;
+  transition:all .2s ease;
+}
+.card-tech span:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+  background:rgba(255,20,147,0.1);
+}
+.card-link{
+  margin-top:8px;
+  font-size:0.9rem;
+  font-weight:700;
+  background:linear-gradient(135deg, var(--accent), var(--accent-alt));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  position:relative; z-index:1;
+  transition:all .3s ease;
+}
+.card-link:hover{
+  gap:10px;
+  filter:drop-shadow(0 0 8px rgba(255,20,147,0.4));
+}
+.card-link--disabled{
+  color:var(--text-faint);
+  font-weight:600;
+  cursor:default;
+  background:none;
+  -webkit-text-fill-color:unset;
+}
+
+.empty-state{text-align:center; color:var(--text-dim); padding:80px 24px; font-size:1.1rem;}
+
+/* CTA */
+.cta{
+  padding:100px 24px 120px; text-align:center; position:relative; z-index:1;
+  background:linear-gradient(135deg, rgba(138,43,226,0.1), rgba(255,20,147,0.08));
+  border-top:1px solid var(--card-border);
+  border-bottom:1px solid var(--card-border);
+  margin:40px 0;
+}
+.cta-inner{max-width:620px; margin:0 auto;}
+.cta h2{
+  font-family:var(--font-display);
+  font-size:2.2rem;
+  margin:0 0 14px;
+  background:linear-gradient(135deg, #fff, var(--accent-cyan));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.cta p{color:var(--text-dim); margin:0 0 32px; font-size:1.05rem;}
+.cta-actions{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+.cta-actions a{
+  padding:14px 32px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:0.95rem;
+  transition:all .3s ease;
+  position:relative;
+  overflow:hidden;
+}
+.cta-actions a:first-child{
+  background:linear-gradient(135deg, var(--accent), var(--accent-alt));
+  color:#fff;
+  box-shadow:0 12px 40px rgba(255,20,147,0.4);
+}
+.cta-actions a:first-child:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 50px rgba(255,20,147,0.5);
+}
+.cta-actions a:last-child{
+  border:2px solid var(--accent);
+  color:var(--accent);
+  background:rgba(255,20,147,0.05);
+  backdrop-filter:blur(4px);
+}
+.cta-actions a:last-child:hover{
+  background:rgba(255,20,147,0.15);
+  box-shadow:0 12px 40px rgba(255,20,147,0.2);
+}
+
+/* FOOTER */
+.site-footer{
+  border-top:1px solid var(--card-border);
+  padding:36px 24px;
+  text-align:center;
+  color:var(--text-faint);
+  font-size:0.87rem;
+  position:relative; z-index:1;
+}
+.site-footer a{
+  color:var(--text-dim);
+  transition:color .3s ease;
+}
+.site-footer a:hover{
+  color:var(--accent);
+}
+
+@media (max-width:768px){
+  .hero-stats{grid-template-columns:repeat(2, 1fr); gap:20px;}
+  .header-nav{gap:12px; font-size:0.8rem;}
+  .project-grid{grid-template-columns:1fr;}
+  .cta{padding:80px 24px 100px;}
+  .cta h2{font-size:1.8rem;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;}
+}
+
+</style>
 </head>
 <body>
-  <div class="grid-bg"></div>
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
 
-  <nav>
-    <div class="nav-inner">
-      <a href="../index.html" class="logo">hem<em>raj</em>.dev</a>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="experience.html">Experience</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="projects.html" class="active">Projects</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
-  <div class="mobile-nav">
-    <a href="../index.html">Home</a>
-    <a href="experience.html">Experience</a>
-    <a href="services.html">Services</a>
-    <a href="projects.html">Projects</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#top" class="brand"><span class="brand-mark">★</span>hemraj<span class="brand-dim">.adhikari</span></a>
+    <nav class="header-nav">
+      <a href="https://hemrajadhikari.info.np/">Home</a>
+      <a href="https://hemrajadhikari.info.np/contact.html">Contact</a>
+      <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener">GitHub</a>
+    </nav>
   </div>
+</header>
 
-  <div class="page">
-    <main>
-      <div class="hero-section">
-        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Portfolio</span></div>
-        <h1 class="page-title">Featured <mark>Projects</mark></h1>
-        <p class="page-desc">Things I've built — from personal projects to client work. Each one taught me something valuable.</p>
+<main id="top">
 
-        <div class="filter-row reveal">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
-          <button class="filter-btn" data-filter="cloud">Cloud</button>
-          <button class="filter-btn" data-filter="frontend">Frontend</button>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Project Archive · 2021 — Present</p>
+      <h1 class="hero-title">Shipped from Kathmandu.<br>Running on three continents.</h1>
+      <p class="hero-sub">
+        A working log of websites, platforms and IT systems built, deployed and maintained for
+        radio stations, exam platforms, music academies, artists, shops and government offices —
+        across <strong>Nepal</strong>, <strong>India</strong> and <strong>Australia</strong>.
+      </p>
+
+      <div class="route-strip" id="routeStrip" aria-label="Countries worked in">
+        <span class="route-chip">🇳🇵 Nepal</span>
+        <span class="route-line"></span>
+        <span class="route-chip">🇮🇳 India</span>
+        <span class="route-line"></span>
+        <span class="route-chip">🇦🇺 Australia</span>
+        <span class="route-line"></span>
+        <span class="route-chip">🇬🇧 UK</span>
+        <span class="route-line"></span>
+        <span class="route-chip">🇮🇩 Indonesia</span>
+        <span class="route-line"></span>
+        <span class="route-chip route-chip--ghost">+ Worldwide (Upwork)</span>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num" data-target="100" data-suffix="+">0</span>
+          <span class="stat-label">Total Projects</span>
         </div>
-
-        <div class="proj-grid reveal">
-          <div class="proj-card" data-cat="frontend">
-            <div class="proj-thumb">🌐</div>
-            <div class="proj-body">
-              <div class="proj-meta"><span class="proj-type">Frontend</span><span class="proj-year">2024</span></div>
-              <h3>Personal Portfolio</h3>
-              <p>This very website — built with vanilla HTML, CSS and JavaScript. Fully responsive with dark theme, scroll animations and mobile nav.</p>
-              <div class="proj-tech"><span>HTML</span><span>CSS</span><span>JS</span><span>GitHub Pages</span></div>
-              <div class="proj-links"><a href="https://hemrajadhikari.info.np" target="_blank" rel="noopener" class="proj-link">Live →</a><a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener" class="proj-link">GitHub →</a></div>
-            </div>
-          </div>
-          <div class="proj-card" data-cat="fullstack">
-            <div class="proj-thumb">📝</div>
-            <div class="proj-body">
-              <div class="proj-meta"><span class="proj-type">Full-Stack</span><span class="proj-year">2024</span></div>
-              <h3>Nepal IT Blog Platform</h3>
-              <p>Multi-page blog platform with category pages, SEO-optimized content, sitemap, and structured data for Nepali IT students.</p>
-              <div class="proj-tech"><span>HTML</span><span>CSS</span><span>JS</span><span>SEO</span><span>Schema</span></div>
-              <div class="proj-links"><a href="https://hemrajadhikari.info.np/blog.html" target="_blank" rel="noopener" class="proj-link">Live →</a></div>
-            </div>
-          </div>
-          <div class="proj-card" data-cat="cloud">
-            <div class="proj-thumb">☁️</div>
-            <div class="proj-body">
-              <div class="proj-meta"><span class="proj-type">Cloud / DevOps</span><span class="proj-year">2023</span></div>
-              <h3>AWS Static Site Pipeline</h3>
-              <p>Automated CI/CD deployment pipeline using AWS S3, CloudFront CDN and GitHub Actions for zero-downtime static site hosting.</p>
-              <div class="proj-tech"><span>AWS S3</span><span>CloudFront</span><span>GitHub Actions</span><span>Route 53</span></div>
-              <div class="proj-links"><a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener" class="proj-link">GitHub →</a></div>
-            </div>
-          </div>
-          <div class="proj-card" data-cat="fullstack">
-            <div class="proj-thumb">🛒</div>
-            <div class="proj-body">
-              <div class="proj-meta"><span class="proj-type">Full-Stack</span><span class="proj-year">2023</span></div>
-              <h3>Local Business Website</h3>
-              <p>Responsive business website for a local Nepali client — includes product catalog, contact form, Google Maps integration and WhatsApp CTA.</p>
-              <div class="proj-tech"><span>HTML</span><span>CSS</span><span>JS</span><span>PHP</span></div>
-              <div class="proj-links"><span class="proj-link" style="cursor:default;color:var(--accent3)">✔ Delivered</span></div>
-            </div>
-          </div>
-          <div class="proj-card" data-cat="cloud">
-            <div class="proj-thumb">🐧</div>
-            <div class="proj-body">
-              <div class="proj-meta"><span class="proj-type">Linux / Server</span><span class="proj-year">2023</span></div>
-              <h3>Linux Server Setup Scripts</h3>
-              <p>Bash scripts for quick LAMP/LEMP server provisioning on Ubuntu — includes firewall config, SSL with Certbot, and Nginx reverse proxy.</p>
-              <div class="proj-tech"><span>Bash</span><span>Ubuntu</span><span>Nginx</span><span>Certbot</span></div>
-              <div class="proj-links"><a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener" class="proj-link">GitHub →</a></div>
-            </div>
-          </div>
-          <div class="proj-card" data-cat="frontend">
-            <div class="proj-thumb">📊</div>
-            <div class="proj-body">
-              <div class="proj-meta"><span class="proj-type">Frontend</span><span class="proj-year">2022</span></div>
-              <h3>Student Result Tracker</h3>
-              <p>A simple web app for BCA students to track semester results, calculate CGPA, and visualize grade trends with charts.</p>
-              <div class="proj-tech"><span>HTML</span><span>CSS</span><span>JS</span><span>Chart.js</span></div>
-              <div class="proj-links"><a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener" class="proj-link">GitHub →</a></div>
-            </div>
-          </div>
+        <div class="stat">
+          <span class="stat-num" data-target="5" data-suffix="">0</span>
+          <span class="stat-label">Countries Served</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="50" data-suffix="+">0</span>
+          <span class="stat-label">WordPress Sites</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="5" data-suffix="+">0</span>
+          <span class="stat-label">Years Freelancing</span>
         </div>
       </div>
-    </main>
-    <footer><span>© 2025 Hemraj Adhikari · Made with ♥ in Kathmandu 🇳🇵</span></footer>
-  </div>
+    </div>
+  </section>
 
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const mNav = document.querySelector('.mobile-nav');
-    toggle.addEventListener('click', () => { toggle.classList.toggle('open'); mNav.classList.toggle('open'); });
-    mNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { toggle.classList.remove('open'); mNav.classList.remove('open'); }));
-    const revObs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);} }), {threshold:.1});
-    document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
-    // Filter
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.dataset.filter;
-        document.querySelectorAll('.proj-card').forEach(card => {
-          card.style.display = (f === 'all' || card.dataset.cat === f) ? '' : 'none';
-        });
-      });
+  <!-- FILTERS -->
+  <section class="filter-bar" aria-label="Filter projects">
+    <div class="filter-inner">
+      <button class="filter-btn is-active" data-filter="all">All Work</button>
+      <button class="filter-btn" data-filter="web">Web & Streaming</button>
+      <button class="filter-btn" data-filter="music">Music & Arts — India</button>
+      <button class="filter-btn" data-filter="cloud">Cloud & Enterprise</button>
+      <button class="filter-btn" data-filter="govt">Government — Nepal</button>
+      <button class="filter-btn" data-filter="intl">International</button>
+    </div>
+  </section>
+
+  <!-- PROJECT GRID -->
+  <section class="project-section">
+    <div class="project-grid" id="projectGrid">
+
+      <!-- 1 -->
+      <article class="card" data-cat="web" data-order="01">
+        <div class="card-top">
+          <span class="card-index">01</span>
+          <span class="tag tag--live">Live</span>
+        </div>
+        <h3 class="card-title">Sanchar Sanket Media</h3>
+        <p class="card-desc">News & media publishing website for Nepal — article management, categorized news sections and a fast, mobile-first reading experience.</p>
+        <div class="card-tech"><span>WordPress</span><span>cPanel</span><span>SEO</span></div>
+        <a class="card-link" href="https://sancharsanket.com/" target="_blank" rel="noopener">View Live ↗</a>
+      </article>
+
+      <!-- 2 -->
+      <article class="card" data-cat="web" data-order="02">
+        <div class="card-top">
+          <span class="card-index">02</span>
+          <span class="tag tag--live">Live</span>
+        </div>
+        <h3 class="card-title">Mega Loksewa</h3>
+        <p class="card-desc">Government exam-prep platform for Loksewa aspirants across Nepal — mock tests, study material and a student-facing LMS dashboard.</p>
+        <div class="card-tech"><span>Laravel</span><span>MySQL</span><span>LMS</span></div>
+        <a class="card-link" href="https://www.megaloksewa.com/" target="_blank" rel="noopener">View Live ↗</a>
+      </article>
+
+      <!-- 3 -->
+      <article class="card" data-cat="web" data-order="03">
+        <div class="card-top">
+          <span class="card-index">03</span>
+          <span class="tag tag--live">Live</span>
+        </div>
+        <h3 class="card-title">Arradhana Shrestha — Trainer Portfolio</h3>
+        <p class="card-desc">Personal brand & portfolio site for a corporate trainer — service pages, blog integration and a fully custom mobile navigation.</p>
+        <div class="card-tech"><span>HTML/CSS/JS</span><span>Custom CMS</span><span>SEO</span></div>
+        <a class="card-link" href="https://arradhanashrestha.com/" target="_blank" rel="noopener">View Live ↗</a>
+      </article>
+
+      <!-- 4 -->
+      <article class="card" data-cat="web" data-order="04">
+        <div class="card-top">
+          <span class="card-index">04</span>
+          <span class="tag tag--live">Live</span>
+        </div>
+        <h3 class="card-title">KBM FM — Radio Streaming</h3>
+        <p class="card-desc">Live radio streaming platform with real-time audio broadcasting, program scheduling and listener engagement, deployed on AWS.</p>
+        <div class="card-tech"><span>PHP</span><span>MySQL</span><span>Streaming API</span><span>AWS</span></div>
+        <a class="card-link" href="https://kbmfm.com/" target="_blank" rel="noopener">View Live ↗</a>
+      </article>
+
+      <!-- 5 -->
+      <article class="card" data-cat="cloud" data-order="05">
+        <div class="card-top">
+          <span class="card-index">05</span>
+          <span class="tag tag--private">Enterprise</span>
+        </div>
+        <h3 class="card-title">Cloud IT Management System</h3>
+        <p class="card-desc">Advanced-level system project — server monitoring, access control and automated backups, built with C/C++/Java foundations and deployed using AWS & Microsoft 365 admin workflows.</p>
+        <div class="card-tech"><span>C / C++</span><span>Java</span><span>AWS</span><span>Microsoft 365</span></div>
+        <span class="card-link card-link--disabled">Private Build</span>
+      </article>
+
+      <!-- 6 -->
+      <article class="card" data-cat="web" data-order="06">
+        <div class="card-top">
+          <span class="card-index">06</span>
+          <span class="tag tag--private">Client</span>
+        </div>
+        <h3 class="card-title">Achham Online — Media Website</h3>
+        <p class="card-desc">Regional online news & media website for Achham, Nepal — built for fast publishing and local-audience reach.</p>
+        <div class="card-tech"><span>WordPress</span><span>Hosting</span><span>SEO</span></div>
+        <span class="card-link card-link--disabled">Private / Client Project</span>
+      </article>
+
+      <!-- 7 -->
+      <article class="card" data-cat="music" data-order="07">
+        <div class="card-top">
+          <span class="card-index">07</span>
+          <span class="tag tag--live">Live</span>
+        </div>
+        <h3 class="card-title">Sargam Sangeet Vidyalay</h3>
+        <p class="card-desc">Music academy website in Pune, India — course listings, faculty profiles and admissions info for an international music school.</p>
+        <div class="card-tech"><span>WordPress</span><span>cPanel</span><span>International Client</span></div>
+        <a class="card-link" href="https://www.sargamsangeetvidyalay.in/" target="_blank" rel="noopener">View Live ↗</a>
+      </article>
+
+      <!-- 8 -->
+      <article class="card" data-cat="music" data-order="08">
+        <div class="card-top">
+          <span class="card-index">08</span>
+          <span class="tag tag--private">Client</span>
+        </div>
+        <h3 class="card-title">Milind Kulkarni — Harmonium Artist & Teacher</h3>
+        <p class="card-desc">Web presence for a harmonium artist and teacher based in India, built to showcase performances and teaching profile.</p>
+        <div class="card-tech"><span>WordPress</span><span>Artist Branding</span></div>
+        <span class="card-link card-link--disabled">Private / Client Project</span>
+      </article>
+
+      <!-- 9 -->
+      <article class="card" data-cat="music" data-order="09">
+        <div class="card-top">
+          <span class="card-index">09</span>
+          <span class="tag tag--live">Live</span>
+        </div>
+        <h3 class="card-title">Aniruddha Deshpande — Tabla Artist</h3>
+        <p class="card-desc">Digital presence for a well-known tabla artist from India — social profile setup and YouTube channel page built out for performance content.</p>
+        <div class="card-tech"><span>Facebook Page</span><span>YouTube</span><span>Artist Branding</span></div>
+        <a class="card-link" href="https://www.facebook.com/taalaniruddha/" target="_blank" rel="noopener">Facebook ↗</a>
+        <a class="card-link" href="https://www.youtube.com/channel/UCA8gaBX51UhV4CHU0oriJCA" target="_blank" rel="noopener">YouTube ↗</a>
+      </article>
+
+      <!-- 10 -->
+      <article class="card" data-cat="intl" data-order="10">
+        <div class="card-top">
+          <span class="card-index">10</span>
+          <span class="tag tag--private">Client</span>
+        </div>
+        <h3 class="card-title">Veeraj Salse — Retail Shop, Mumbai</h3>
+        <p class="card-desc">E-commerce / catalogue website for a retail shop based in Mumbai, India — product listings and contact/enquiry flow.</p>
+        <div class="card-tech"><span>WordPress</span><span>WooCommerce</span></div>
+        <span class="card-link card-link--disabled">Private / Client Project</span>
+      </article>
+
+      <!-- 11 -->
+      <article class="card" data-cat="intl" data-order="11">
+        <div class="card-top">
+          <span class="card-index">11</span>
+          <span class="tag tag--private">Client</span>
+        </div>
+        <h3 class="card-title">Coffee Shop Website — Australia</h3>
+        <p class="card-desc">Menu & ordering-info website for a coffee shop in Australia — built for an international (non-Nepal, non-India) client via freelance channels.</p>
+        <div class="card-tech"><span>WordPress</span><span>Hosting</span></div>
+        <span class="card-link card-link--disabled">Private / Client Project</span>
+      </article>
+
+      <!-- 12 -->
+      <article class="card card--highlight" data-cat="intl" data-order="12">
+        <div class="card-top">
+          <span class="card-index">12</span>
+          <span class="tag tag--gold">NDA</span>
+        </div>
+        <h3 class="card-title">100+ More — International Freelance Projects</h3>
+        <p class="card-desc">Beyond what's listed here: 100+ freelance projects delivered for clients across Nepal, India, Australia and beyond via Upwork and direct contracts. Most are covered by client confidentiality, so they aren't named individually — happy to discuss scope and outcomes on request.</p>
+        <div class="card-tech"><span>WordPress</span><span>WooCommerce</span><span>cPanel</span><span>Client Sites</span></div>
+        <a class="card-link" href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener">Upwork Profile ↗</a>
+      </article>
+
+      <!-- 13 -->
+      <article class="card" data-cat="cloud" data-order="13">
+        <div class="card-top">
+          <span class="card-index">13</span>
+          <span class="tag tag--private">In Progress</span>
+        </div>
+        <h3 class="card-title">Route 2 Uni CRM System — UK Partner Coordination</h3>
+        <p class="card-desc">Internal CRM built from scratch for Route 2 Uni International Group — went from sole developer to leading the system, coordinating data flow with the UK team (Subin Sir) for university partner records, CAS deposits and enrollment tracking.</p>
+        <div class="card-tech"><span>CRM</span><span>UK Coordination</span><span>RBAC</span><span>Cloud</span></div>
+        <span class="card-link card-link--disabled">Internal / Company System</span>
+      </article>
+
+      <!-- 14 -->
+      <article class="card" data-cat="intl" data-order="14">
+        <div class="card-top">
+          <span class="card-index">14</span>
+          <span class="tag tag--private">Client</span>
+        </div>
+        <h3 class="card-title">Shopify Stores — Indonesia</h3>
+        <p class="card-desc">1–2 Shopify-based e-commerce websites built for a client in Indonesia — store setup, product catalogue and checkout flow.</p>
+        <div class="card-tech"><span>Shopify</span><span>E-commerce</span></div>
+        <span class="card-link card-link--disabled">Private / Client Project</span>
+      </article>
+
+      <!-- 15 -->
+      <article class="card" data-cat="govt" data-order="15">
+        <div class="card-top">
+          <span class="card-index">15</span>
+          <span class="tag tag--private">Public Sector</span>
+        </div>
+        <h3 class="card-title">Nepal Government & Public Institution Sites</h3>
+        <p class="card-desc">IT & web work for local government and public bodies in Nepal: Kamal Bajar Nagarpalika, Ward 7 (VDC), and Mankamana School — public information pages and basic IT support.</p>
+        <div class="card-tech"><span>WordPress</span><span>cPanel</span><span>Public Sector</span></div>
+        <span class="card-link card-link--disabled">Private / Public Sector Project</span>
+      </article>
+
+    </div>
+
+    <p class="empty-state" id="emptyState" hidden>No projects in this category yet — check back soon.</p>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-inner">
+      <h2>Have a project in mind?</h2>
+      <p>Available for freelance web, cloud & IT work — Nepal and worldwide.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/9779865802093?text=Hi%20Hemraj%2C%20I%20saw%20your%20project%20archive%20and%20would%20like%20to%20discuss.">Chat on WhatsApp</a>
+        <a href="mailto:hemrajhadhikari@gmail.com">Send Email</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Hemraj Adhikari · Kathmandu, Nepal · <a href="https://hemrajadhikari.info.np/">hemrajadhikari.info.np</a></p>
+</footer>
+
+<script>
+// Year in footer
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// ---- Animated stat counters ----
+const statEls = document.querySelectorAll('.stat-num');
+
+function animateCount(el){
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1500;
+  const start = performance.now();
+
+  function tick(now){
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.round(eased * target);
+    el.textContent = value + suffix;
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting){
+      animateCount(entry.target);
+      statObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+
+statEls.forEach(el => statObserver.observe(el));
+
+// ---- Project filtering ----
+const filterButtons = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.card');
+const emptyState = document.getElementById('emptyState');
+
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterButtons.forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+
+    const filter = btn.dataset.filter;
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const match = filter === 'all' || card.dataset.cat === filter;
+      card.style.display = match ? '' : 'none';
+      if (match) visibleCount++;
     });
-  </script>
+
+    emptyState.hidden = visibleCount !== 0;
+  });
+});
+
+</script>
 </body>
 </html>
