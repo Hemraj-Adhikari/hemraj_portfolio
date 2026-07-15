@@ -70,6 +70,23 @@
     if (mobileNavOverlay) mobileNavOverlay.addEventListener('click', closeMobileNav);
   }
 
+  /* ── NAV "LEARN" DROPDOWN ── */
+  document.querySelectorAll('.nav-dropdown').forEach(function (dd) {
+    var toggle = dd.querySelector('.nav-dropdown-toggle');
+    if (!toggle) return;
+
+    function closeDD() { dd.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+    function openDD()  { dd.classList.add('open'); toggle.setAttribute('aria-expanded', 'true'); }
+
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      dd.classList.contains('open') ? closeDD() : openDD();
+    });
+    dd.querySelectorAll('.nav-dropdown-menu a').forEach(function (a) { a.addEventListener('click', closeDD); });
+    document.addEventListener('click', function (e) { if (!dd.contains(e.target)) closeDD(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeDD(); } });
+  });
+
   /* ── SEARCH ── */
   var searchToggle = document.getElementById('searchToggle');
   var searchOverlay = document.getElementById('searchOverlay');
