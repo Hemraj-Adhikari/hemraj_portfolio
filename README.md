@@ -4,7 +4,7 @@
 
 # Hemraj Adhikari
 
-**IT Officer & Cloud Infrastructure Specialist**
+**IT Officer , Full Stack Devloper & Cloud Infrastructure Specialist**
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-hemrajadhikari.info.np-4f9cf9?style=for-the-badge&logo=google-chrome&logoColor=white)](https://hemrajadhikari.info.np/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-hemraajadhikari-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hemraajadhikari)
