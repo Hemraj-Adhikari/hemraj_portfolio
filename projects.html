@@ -304,6 +304,23 @@ a{color:inherit;text-decoration:none;}
   border:1.5px solid rgba(255,215,0,0.4);
   background:linear-gradient(135deg, rgba(255,215,0,0.08), rgba(26,13,46,0.5));
 }
+.card-thumb{
+  display:flex;
+  gap:8px;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--card-border);
+  position:relative; z-index:1;
+}
+.card-thumb img{
+  width:100%;
+  display:block;
+  object-fit:cover;
+  object-position:top center;
+  height:150px;
+  background:#0f0620;
+}
+.card-thumb.single img{height:170px;}
 .card-top{display:flex; align-items:center; justify-content:space-between; position:relative; z-index:1;}
 .card-index{font-family:var(--font-mono); color:var(--text-faint); font-size:0.9rem; font-weight:700;}
 .tag{font-family:var(--font-mono); font-size:0.75rem; padding:6px 12px; border-radius:999px; letter-spacing:0.05em; font-weight:600;}
@@ -549,6 +566,7 @@ a{color:inherit;text-decoration:none;}
     <div class="project-grid" id="projectGrid">
 
       <article class="card" data-cat="web" data-order="01">
+        <div class="card-thumb single"><img src="assets/sanchar-sanket.png" alt="Sanchar Sanket Media homepage" loading="lazy"></div>
         <div class="card-top">
           <span class="card-index">01</span>
           <span class="tag tag--live">Live</span>
@@ -571,6 +589,7 @@ a{color:inherit;text-decoration:none;}
       </article>
 
       <article class="card" data-cat="web" data-order="03">
+        <div class="card-thumb single"><img src="assets/arradhana-shrestha.png" alt="Arradhana Shrestha trainer portfolio homepage" loading="lazy"></div>
         <div class="card-top">
           <span class="card-index">03</span>
           <span class="tag tag--live">Live</span>
@@ -712,6 +731,60 @@ a{color:inherit;text-decoration:none;}
         <p class="card-desc">IT & web work for local government and public bodies in Nepal: Kamal Bajar Nagarpalika, Ward 7 (VDC), and Mankamana School — public information pages and basic IT support.</p>
         <div class="card-tech"><span>WordPress</span><span>cPanel</span><span>Public Sector</span></div>
         <span class="card-link card-link--disabled">Private / Public Sector Project</span>
+      </article>
+
+      <article class="card" data-cat="cloud" data-order="16">
+        <div class="card-thumb single"><img src="assets/tasktrack-login.png" alt="TaskTrack Daily Ops Board login screen" loading="lazy"></div>
+        <div class="card-top">
+          <span class="card-index">16</span>
+          <span class="tag tag--live">Live</span>
+        </div>
+        <h3 class="card-title">TaskTrack — Daily Ops & Reporting Portal</h3>
+        <p class="card-desc">Daily worklist and reporting app for Route 2 Uni's IT team — task board, meeting notes, activity history, PDF report generation, asset management, leave and attendance tracking.</p>
+        <div class="card-tech"><span>Next.js</span><span>Firebase</span><span>Firestore</span></div>
+        <a class="card-link" href="https://trackrecorde.vercel.app/" target="_blank" rel="noopener">View Live ↗</a>
+      </article>
+
+      <article class="card" data-cat="cloud" data-order="17">
+        <div class="card-thumb">
+          <img src="assets/r2u-crm-dashboard.png" alt="Route 2 Uni CRM Portal desktop dashboard" loading="lazy">
+          <img src="assets/r2u-mobile-dashboard.png" alt="Route 2 Uni CRM Portal mobile dashboard" loading="lazy">
+        </div>
+        <div class="card-top">
+          <span class="card-index">17</span>
+          <span class="tag tag--live">Live</span>
+        </div>
+        <h3 class="card-title">Route 2 Uni CRM Portal</h3>
+        <p class="card-desc">Live CRM dashboard for Route 2 Uni — student pipeline funnel, channel partner tracking, visa/CAS status overview and role-based access, built and maintained solo.</p>
+        <div class="card-tech"><span>JavaScript</span><span>Firebase</span><span>RBAC</span></div>
+        <a class="card-link" href="https://hemraj-adhikari.github.io/crmportal/" target="_blank" rel="noopener">View Live ↗</a>
+      </article>
+
+      <article class="card" data-cat="cloud" data-order="18">
+        <div class="card-thumb single"><img src="assets/university-directory.png" alt="Route 2 Uni University Intake Directory browse view" loading="lazy"></div>
+        <div class="card-top">
+          <span class="card-index">18</span>
+          <span class="tag tag--live">Live</span>
+        </div>
+        <h3 class="card-title">Route 2 Uni — University Intake Directory</h3>
+        <p class="card-desc">UK university directory built for the September 2026 intake — course counts, tuition fees, entry criteria and application deadlines across dozens of partner universities.</p>
+        <div class="card-tech"><span>HTML/CSS/JS</span><span>Data Automation</span></div>
+        <a class="card-link" href="https://hemraj-adhikari.github.io/Info-route2uni/" target="_blank" rel="noopener">View Live ↗</a>
+      </article>
+
+      <article class="card" data-cat="cloud" data-order="19">
+        <div class="card-thumb">
+          <img src="assets/mock-interview-landing.png" alt="Mock Pre-CAS Interview Tool landing page" loading="lazy">
+          <img src="assets/mock-interview-question.png" alt="Mock Pre-CAS Interview Tool live interview question" loading="lazy">
+        </div>
+        <div class="card-top">
+          <span class="card-index">19</span>
+          <span class="tag tag--live">Live</span>
+        </div>
+        <h3 class="card-title">PCI / Mock Pre-CAS Interview Tool</h3>
+        <p class="card-desc">Timed mock credibility-interview simulator for Pre-CAS prep — webcam recording, live speech-to-text transcription, rule-based scoring and a downloadable PDF report.</p>
+        <div class="card-tech"><span>Web Speech API</span><span>PDF Export</span><span>Vercel</span></div>
+        <a class="card-link" href="https://mock-pre-cas-module.vercel.app/interview/" target="_blank" rel="noopener">View Live ↗</a>
       </article>
 
     </div>
