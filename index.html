@@ -458,7 +458,7 @@
       <section id="certifications" aria-labelledby="cert-heading">
         <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Certifications</span></div>
         <h2 class="sec-title reveal" id="cert-heading">Professional <mark>Courses &amp; Certificates</mark></h2>
-        <div class="cert-icon-grid reveal">
+        <div class="cert-icon-grid reveal collapsible-grid" id="certGrid">
           <div class="cert-icon-card">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
             <div><div class="cert-icon-title">Tools of the Trade: Linux and SQL</div><div class="cert-icon-meta">Google (Coursera) · July 2026</div></div>
@@ -483,107 +483,111 @@
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1"/></svg></div>
             <div><div class="cert-icon-title">The Nuts and Bolts of Machine Learning</div><div class="cert-icon-meta">Coursera · Aug 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
             <div><div class="cert-icon-title">Sound the Alarm: Detection and Response</div><div class="cert-icon-meta">Google · Aug 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 10h-1.3A5 5 0 1 0 8 15h10a3.5 3.5 0 0 0 0-7z"/></svg></div>
             <div><div class="cert-icon-title">Deployment Patterns</div><div class="cert-icon-meta">Microsoft · Aug 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 10h-1.3A5 5 0 1 0 8 15h10a3.5 3.5 0 0 0 0-7z"/></svg></div>
             <div><div class="cert-icon-title">Design Processes to Automate Application Analytics</div><div class="cert-icon-meta">Microsoft · Aug 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
             <div><div class="cert-icon-title">Project Initiation: Starting a Successful Project</div><div class="cert-icon-meta">Google · Aug 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-4"/></svg></div>
             <div><div class="cert-icon-title">Regression Analysis: Simplify Complex Data Relationships</div><div class="cert-icon-meta">Google · Aug 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
             <div><div class="cert-icon-title">Assets, Threats, and Vulnerabilities</div><div class="cert-icon-meta">Google · Aug 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-4"/></svg></div>
             <div><div class="cert-icon-title">The Power of Statistics</div><div class="cert-icon-meta">Google · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1"/></svg></div>
             <div><div class="cert-icon-title">Google AI Professional Certificate</div><div class="cert-icon-meta">Google</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1"/></svg></div>
             <div><div class="cert-icon-title">AI for App Building</div><div class="cert-icon-meta">Google · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1"/></svg></div>
             <div><div class="cert-icon-title">AI for Data Analysis</div><div class="cert-icon-meta">Google · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 10h-1.3A5 5 0 1 0 8 15h10a3.5 3.5 0 0 0 0-7z"/></svg></div>
             <div><div class="cert-icon-title">Monitor, Analyze, and Tune AI Agents</div><div class="cert-icon-meta">Microsoft · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 10h-1.3A5 5 0 1 0 8 15h10a3.5 3.5 0 0 0 0-7z"/></svg></div>
             <div><div class="cert-icon-title">Configure your Microsoft 365 Experience</div><div class="cert-icon-meta">Microsoft · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
             <div><div class="cert-icon-title">Foundations of Project Management</div><div class="cert-icon-meta">Google · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1"/></svg></div>
             <div><div class="cert-icon-title">AI for Content Creation</div><div class="cert-icon-meta">Google · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1"/></svg></div>
             <div><div class="cert-icon-title">AI for Writing and Communicating</div><div class="cert-icon-meta">Google · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-4"/></svg></div>
             <div><div class="cert-icon-title">Go Beyond the Numbers: Translate Data into Insights</div><div class="cert-icon-meta">Google · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 10h-1.3A5 5 0 1 0 8 15h10a3.5 3.5 0 0 0 0-7z"/></svg></div>
             <div><div class="cert-icon-title">Automation Using Microsoft Defender</div><div class="cert-icon-meta">Microsoft · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 10h-1.3A5 5 0 1 0 8 15h10a3.5 3.5 0 0 0 0-7z"/></svg></div>
             <div><div class="cert-icon-title">Mitigate Incidents Using Microsoft Defender</div><div class="cert-icon-meta">Microsoft · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1"/></svg></div>
             <div><div class="cert-icon-title">AI for Research and Insights</div><div class="cert-icon-meta">Google · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
             <div><div class="cert-icon-title">Crash Course on Python</div><div class="cert-icon-meta">Coursera · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1"/></svg></div>
             <div><div class="cert-icon-title">AI for Brainstorming and Planning</div><div class="cert-icon-meta">Google · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
             <div><div class="cert-icon-title">Play It Safe: Manage Security Risks</div><div class="cert-icon-meta">Google · Jul 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1"/></svg></div>
             <div><div class="cert-icon-title">AI Fundamentals</div><div class="cert-icon-meta">Coursera · Jun 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-4"/></svg></div>
             <div><div class="cert-icon-title">Foundations of Data Science</div><div class="cert-icon-meta">Google · Jun 2026</div></div>
           </div>
-          <div class="cert-icon-card">
+          <div class="cert-icon-card cert-extra">
             <div class="cert-icon-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
             <div><div class="cert-icon-title">Foundations of Cybersecurity</div><div class="cert-icon-meta">Google · Jun 2026</div></div>
           </div>
         </div>
+        <button type="button" class="collapsible-toggle" id="certToggle" aria-expanded="false" aria-controls="certGrid">
+          <span>Show All Certificates (31)</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
       </section>
 
       <style>
@@ -593,6 +597,19 @@
         .cert-icon-title{font-weight:600;font-size:0.95rem;line-height:1.3;}
         .cert-icon-meta{font-size:0.8rem;opacity:0.7;margin-top:4px;}
         .proj-ico{width:100%;height:150px;display:flex;align-items:center;justify-content:center;background:rgba(138,43,226,0.06);color:#8a2be2;border-bottom:1px solid rgba(138,43,226,0.15);}
+        .cert-extra, .proj-extra{display:none;}
+        .collapsible-grid.expanded .cert-extra,
+        .collapsible-grid.expanded .proj-extra{display:flex;}
+        .collapsible-toggle{
+          display:flex;align-items:center;justify-content:center;gap:8px;
+          margin:24px auto 0;padding:11px 22px;
+          background:rgba(138,43,226,0.08);border:1px solid rgba(138,43,226,0.3);
+          border-radius:999px;color:#8a2be2;font-weight:600;font-size:0.88rem;
+          cursor:pointer;transition:background .2s ease,transform .15s ease;
+        }
+        .collapsible-toggle:hover{background:rgba(138,43,226,0.16);}
+        .collapsible-toggle svg{transition:transform .25s ease;}
+        .collapsible-toggle.is-open svg{transform:rotate(180deg);}
       </style>
 
       <!-- ══ EXPERIENCE SECTION ══ -->
@@ -787,7 +804,7 @@
       <section id="portfolio" aria-labelledby="portfolio-heading">
         <div class="eyebrow reveal"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text">Portfolio</span></div>
         <h2 class="sec-title reveal" id="portfolio-heading">Featured <mark>Projects</mark></h2>
-        <div class="proj-grid">
+        <div class="proj-grid collapsible-grid" id="projGrid">
 
           <article class="proj-card reveal" itemscope itemtype="https://schema.org/CreativeWork">
             <div class="proj-thumb proj-ico" aria-hidden="true"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M9 12h1m4 0h1"/></svg></div>
@@ -836,7 +853,7 @@
             </div>
           </article>
 
-          <article class="proj-card reveal" itemscope itemtype="https://schema.org/CreativeWork">
+          <article class="proj-card reveal proj-extra" itemscope itemtype="https://schema.org/CreativeWork">
             <div class="proj-thumb proj-ico" aria-hidden="true"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1"/></svg></div>
             <div class="proj-body">
               <div class="proj-meta"><span class="proj-type">EdTech — AI Interview Prep</span><span class="proj-year"><time datetime="2026">2026</time></span></div>
@@ -849,7 +866,7 @@
             </div>
           </article>
 
-          <article class="proj-card reveal" itemscope itemtype="https://schema.org/CreativeWork">
+          <article class="proj-card reveal proj-extra" itemscope itemtype="https://schema.org/CreativeWork">
             <div class="proj-thumb proj-ico" aria-hidden="true"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
             <div class="proj-body">
               <div class="proj-meta"><span class="proj-type">Media &amp; Streaming</span><span class="proj-year"><time datetime="2023">2023</time></span></div>
@@ -862,7 +879,7 @@
             </div>
           </article>
 
-          <article class="proj-card reveal" itemscope itemtype="https://schema.org/CreativeWork">
+          <article class="proj-card reveal proj-extra" itemscope itemtype="https://schema.org/CreativeWork">
             <div class="proj-thumb proj-ico" aria-hidden="true"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
             <div class="proj-body">
               <div class="proj-meta"><span class="proj-type">Media &amp; Streaming</span><span class="proj-year"><time datetime="2024">2024</time></span></div>
@@ -872,7 +889,7 @@
             </div>
           </article>
 
-          <article class="proj-card reveal" itemscope itemtype="https://schema.org/CreativeWork">
+          <article class="proj-card reveal proj-extra" itemscope itemtype="https://schema.org/CreativeWork">
             <div class="proj-thumb proj-ico" aria-hidden="true"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
             <div class="proj-body">
               <div class="proj-meta"><span class="proj-type">Media &amp; Streaming</span><span class="proj-year"><time datetime="2024">2024</time></span></div>
@@ -882,7 +899,7 @@
             </div>
           </article>
 
-          <article class="proj-card reveal" itemscope itemtype="https://schema.org/CreativeWork">
+          <article class="proj-card reveal proj-extra" itemscope itemtype="https://schema.org/CreativeWork">
             <div class="proj-thumb proj-ico" aria-hidden="true"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
             <div class="proj-body">
               <div class="proj-meta"><span class="proj-type">Client — Tespaxi</span><span class="proj-year"><time datetime="2024">2024</time></span></div>
@@ -895,7 +912,7 @@
             </div>
           </article>
 
-          <article class="proj-card reveal" itemscope itemtype="https://schema.org/CreativeWork">
+          <article class="proj-card reveal proj-extra" itemscope itemtype="https://schema.org/CreativeWork">
             <div class="proj-thumb proj-ico" aria-hidden="true"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
             <div class="proj-body">
               <div class="proj-meta"><span class="proj-type">Client — Tespaxi Verraj Sales</span><span class="proj-year"><time datetime="2024">2024</time></span></div>
@@ -905,7 +922,7 @@
             </div>
           </article>
 
-          <article class="proj-card reveal" itemscope itemtype="https://schema.org/CreativeWork">
+          <article class="proj-card reveal proj-extra" itemscope itemtype="https://schema.org/CreativeWork">
             <div class="proj-thumb proj-ico" aria-hidden="true"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21V4a1 1 0 0 1 1-1h9l6 6v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M9 21v-6h6v6"/></svg></div>
             <div class="proj-body">
               <div class="proj-meta"><span class="proj-type">Client — Tespaxi Institute</span><span class="proj-year"><time datetime="2022">2022</time></span></div>
@@ -919,6 +936,10 @@
           </article>
 
         </div>
+        <button type="button" class="collapsible-toggle" id="projToggle" aria-expanded="false" aria-controls="projGrid">
+          <span>Show All Projects (11)</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
       </section>
 
       <!-- ══ CONTACT SECTION ══ -->
@@ -981,18 +1002,6 @@
             <a href="https://wa.me/9779865802093" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Hemraj Adhikari Nepal" role="listitem"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
           </div>
         </div>
-        <nav aria-label="Site pages" class="footer-col">
-          <div class="footer-col-title">Pages</div>
-          <ul class="footer-nav-list" role="list">
-            <li><a href="https://hemrajadhikari.info.np/">Home</a></li>
-            <li><a href="https://hemrajadhikari.info.np/experience.html">Expertise</a></li>
-            <li><a href="https://hemrajadhikari.info.np/projects.html">Programs</a></li>
-            <li><a href="blog.html">IT Blog Nepal</a></li>
-            <li><a href="https://hemrajadhikari.info.np/clients.html">Clients</a></li>
-            <li><a href="https://hemrajadhikari.info.np/reviews.html">Reviews</a></li>
-            <li><a href="https://hemrajadhikari.info.np/contact.html">Contact</a></li>
-          </ul>
-        </nav>
       </div>
       <div class="footer-contact-strip">
         <a href="mailto:hemrajhadhikari@gmail.com" class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>hemrajhadhikari@gmail.com</a>
@@ -1019,5 +1028,26 @@
   </button>
 
   <script src="main.js" defer></script>
+  <script>
+    (function () {
+      function setupToggle(toggleId, gridId, showLabel, hideLabel) {
+        var btn = document.getElementById(toggleId);
+        var grid = document.getElementById(gridId);
+        if (!btn || !grid) return;
+        var label = btn.querySelector('span');
+        btn.addEventListener('click', function () {
+          var isOpen = grid.classList.toggle('expanded');
+          btn.classList.toggle('is-open', isOpen);
+          btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          if (label) label.textContent = isOpen ? hideLabel : showLabel;
+          if (!isOpen) {
+            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      }
+      setupToggle('certToggle', 'certGrid', 'Show All Certificates (31)', 'Show Fewer Certificates');
+      setupToggle('projToggle', 'projGrid', 'Show All Projects (11)', 'Show Fewer Projects');
+    })();
+  </script>
 </body>
 </html>
