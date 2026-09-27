@@ -1,0 +1,150 @@
+# ============================================================
+# Hemraj Adhikari Portfolio — .htaccess
+# Used only if the site is served by Apache. GitHub Pages ignores this file.
+# ============================================================
+
+Options -Indexes
+ServerSignature Off
+
+# ── HTTPS redirect ──────────────────────────────────────────
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# ── www → non-www ────────────────────────────────────────────
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# ── Trailing slash removal (except directories) ─────────────
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [R=301,L]
+
+# ── GZIP Compression ────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/x-javascript text/javascript
+  AddOutputFilterByType DEFLATE image/svg+xml application/xml
+  AddOutputFilterByType DEFLATE font/ttf font/otf font/woff font/woff2
+  AddOutputFilterByType DEFLATE application/font-woff application/font-woff2
+</IfModule>
+
+# ── Brotli (if available) ────────────────────────────────────
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json
+  AddOutputFilterByType BROTLI_COMPRESS font/woff font/woff2 image/svg+xml
+</IfModule>
+
+# ── Browser Caching ──────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html                     "access plus 1 hour"
+  ExpiresByType text/css                      "access plus 1 year"
+  ExpiresByType application/javascript        "access plus 1 year"
+  ExpiresByType image/png                     "access plus 1 year"
+  ExpiresByType image/jpg                     "access plus 1 year"
+  ExpiresByType image/jpeg                    "access plus 1 year"
+  ExpiresByType image/gif                     "access plus 1 year"
+  ExpiresByType image/webp                    "access plus 1 year"
+  ExpiresByType image/avif                    "access plus 1 year"
+  ExpiresByType image/svg+xml                 "access plus 1 year"
+  ExpiresByType image/x-icon                  "access plus 1 year"
+  ExpiresByType font/woff                     "access plus 1 year"
+  ExpiresByType font/woff2                    "access plus 1 year"
+  ExpiresByType application/font-woff         "access plus 1 year"
+  ExpiresByType application/font-woff2        "access plus 1 year"
+  ExpiresByType application/manifest+json     "access plus 1 week"
+</IfModule>
+
+# ── Cache-Control + Security Headers ────────────────────────
+<IfModule mod_headers.c>
+
+  # Static assets — long cache with immutable flag
+  <FilesMatch "\.(css|js|woff|woff2|ttf|otf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpg|jpeg|gif|webp|avif|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML — short cache, always revalidate
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+
+  # CORS for webfonts (prevents font loading failures in some browsers)
+  <FilesMatch "\.(woff|woff2|ttf|otf|eot)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+
+  # Vary header ensures CDN caches compressed + uncompressed separately
+  Header append Vary Accept-Encoding
+
+  # ── Security Headers ─────────────────────────────────────
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # Content Security Policy
+  # All scripts and fonts are served from this domain.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https: blob:; connect-src 'self' https://formspree.io https://api.formspree.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io;"
+
+  # Remove server fingerprints
+  Header unset Server
+  Header unset X-Powered-By
+
+</IfModule>
+
+# ── ETags — disable (use Cache-Control instead) ──────────────
+FileETag None
+
+# ── MIME Types ───────────────────────────────────────────────
+<IfModule mod_mime.c>
+  AddType application/javascript          js mjs
+  AddType text/css                        css
+  AddType image/webp                      webp
+  AddType image/avif                      avif
+  AddType font/woff                       woff
+  AddType font/woff2                      woff2
+  AddType application/manifest+json      webmanifest
+</IfModule>
+
+# ── Block known malicious scanners ───────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTP_USER_AGENT} (masscan|nikto|sqlmap|nmap|dirbuster|zgrab) [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+
+# ── Custom error pages ───────────────────────────────────────
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+
+# ── Removed pages → closest new page ────────────────────────
+Redirect 301 /blog-index.html /blog.html
+Redirect 301 /programs.html /services.html
+Redirect 301 /reviews.html /about.html
+Redirect 301 /bit-mentor.html /blog.html
+Redirect 301 /bca-mentor.html /blog.html
+Redirect 301 /csit-mentor.html /blog.html
+Redirect 301 /CT401_Complete_QA.html /blog.html
+Redirect 301 /bit412_c_programming_study_guide.html /blog.html
+Redirect 301 /c-language-bit-exam.html /blog.html
+Redirect 301 /c-question-answer-Exam.html /blog.html
+Redirect 301 /c_programming_exam_guide.html /blog.html
+Redirect 301 /digital-logic-bit-exam.html /blog.html
+Redirect 301 /foundation-of-it-exam.html /blog.html
+
+# ── Deny access to sensitive files ───────────────────────────
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+<FilesMatch "\.(sql|log|env|config|bak|backup|sh|bash)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>

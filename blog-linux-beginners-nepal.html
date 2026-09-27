@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="ne-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Linux Suru Garne Complete Guide — Nepal IT Students Ko Lagi | Hemraj Adhikari</title>
+<meta name="description" content="Linux suru garnu cha Nepal ma? Command line, file system, user management, server setup — sabai Nepali context ma step-by-step. BCA, BSc CSIT, BIT students ko lagi complete Linux guide.">
+<meta name="author" content="Hemraj Adhikari">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://hemrajadhikari.info.np/blog-linux-beginners-nepal.html">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hemraj Adhikari">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Linux Suru Garne Complete Guide — Nepal IT Students Ko Lagi">
+<meta property="og:description" content="Linux suru garnu cha Nepal ma? Command line, file system, user management, server setup — sabai Nepali context ma step-by-step. BCA, BSc CSIT, BIT students ko lagi complete Linux guide.">
+<meta property="og:url" content="https://hemrajadhikari.info.np/blog-linux-beginners-nepal.html">
+<meta property="og:image" content="https://hemrajadhikari.info.np/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hemraj Adhikari, Head of IT and full-stack developer, Kathmandu">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Linux Suru Garne Complete Guide — Nepal IT Students Ko Lagi">
+<meta name="twitter:description" content="Linux suru garnu cha Nepal ma? Command line, file system, user management, server setup — sabai Nepali context ma step-by-step. BCA, BSc CSIT, BIT students ko lagi complete Linux guide.">
+<meta name="twitter:image" content="https://hemrajadhikari.info.np/assets/img/og-image.jpg">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="assets/fonts/manrope-variable.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css?v=20260927g">
+<script src="assets/js/site.js?v=20260927g" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BlogPosting",
+   "headline": "Linux Suru Garne Complete Guide — Nepal IT Students Ko Lagi",
+   "description": "Linux suru garnu cha Nepal ma? Command line, file system, user management, server setup — sabai Nepali context ma step-by-step. BCA, BSc CSIT, BIT students ko lagi complete Linux guide.",
+   "url": "https://hemrajadhikari.info.np/blog-linux-beginners-nepal.html",
+   "mainEntityOfPage": "https://hemrajadhikari.info.np/blog-linux-beginners-nepal.html",
+   "image": "https://hemrajadhikari.info.np/assets/img/og-image.jpg",
+   "inLanguage": "ne",
+   "author": {
+    "@type": "Person",
+    "@id": "https://hemrajadhikari.info.np/#person",
+    "name": "Hemraj Adhikari",
+    "url": "https://hemrajadhikari.info.np/"
+   },
+   "publisher": {
+    "@type": "Person",
+    "@id": "https://hemrajadhikari.info.np/#person",
+    "name": "Hemraj Adhikari"
+   },
+   "keywords": "Linux Nepal, Linux beginners Nepal, Linux commands Nepal, Linux sysadmin Nepal, Ubuntu Nepal, server Nepal, Linux tutorial Nepal Nepali, BCA CSIT Linux, Linux career Nepal",
+   "datePublished": "2025-06-20"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://hemrajadhikari.info.np/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://hemrajadhikari.info.np/blog.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Linux suru garne complete guide",
+     "item": "https://hemrajadhikari.info.np/blog-linux-beginners-nepal.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html"><b>Hemraj Adhikari</b></a>
+    <nav class="nav" aria-label="Main">
+      <a href="about.html">About</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="credentials.html">Certifications</a>
+      <a href="services.html">Services</a>
+      <a href="blog.html" aria-current="page">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="btn btn--sm header-cv" href="CV-Hemraj%20Adhikari.pdf" download="Hemraj-Adhikari-CV.pdf">Download CV</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <nav aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="experience.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="credentials.html">Certifications</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html" aria-current="page">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="btn-row">
+    <a class="btn" href="CV-Hemraj%20Adhikari.pdf" download="Hemraj-Adhikari-CV.pdf">Download CV</a>
+    <a class="btn btn--outline" href="https://wa.me/9779865802093" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</div>
+
+<main id="main">
+  <article>
+    <header class="article-head">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="blog.html">Blog</a><span aria-hidden="true">/</span><span>Linux</span></nav>
+        <h1>Linux Suru Garne Complete Guide — Nepal IT Students Ko Lagi</h1>
+        <p class="lead">&quot;Linux garo lagcha&quot; — Nepal ma sabai IT students le yo bhancha suru ma. Tara cloud, servers, cybersecurity, DevOps — sabai Linux ma run hunchha. Yo guide le Linux beginner bata confident user banaucha — practical, Nepal-friendly approach sanga.</p>
+        <div class="byline"><img src="assets/img/hemraj-adhikari-portrait.webp" alt="" width="42" height="42"><div><b>Hemraj Adhikari</b>Jun 2025 &middot; 12 min read &middot; Nepali</div></div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="article-layout">
+        <div>
+          <div class="prose">
+            
+            
+<p>3.5+ years Linux use garirako manchhe hau ma. Daily AWS EC2 servers manage garchu — sabai Linux. Nepal IT ma job chahincha? Cloud chahincha? Cybersecurity? DevOps? — <strong>sabai ko base cha Linux.</strong></p>
+<p>Tara Nepal ma Linux teaching hunchha class ma "commands rataau" style ma. Practical use case bujhauna gardaina. Yo blog ma ma practical, real-world approach rakha cha.</p>
+<div class="callout blue">
+<div class="callout-label"> Setup Required</div>
+ Practice ko lagi: <strong>Ubuntu 22.04 LTS</strong> install gara (virtual machine ma pani huncha — VirtualBox free cha). Ya Windows 10/11 ma <strong>WSL2</strong> enable gara — Linux directly Windows ma run hunchha!
+ </div>
+<h2 id="linux-kina-sik-nu-parchha">Linux Kina Sik-nu Parchha?</h2>
+<p>Kina bhane yo skills bina Nepal IT ma limited ceiling cha:</p>
+<ul>
+<li><strong>AWS EC2, Google Cloud, Azure</strong> — sabai servers Linux based cha. Cloud engineer = Linux expert.</li>
+<li><strong>Cybersecurity:</strong> Kali Linux, penetration testing, network security — sabai Linux ma hunchha.</li>
+<li><strong>DevOps / SRE:</strong> Docker, Kubernetes, Jenkins — Linux environment ma run hunchha.</li>
+<li><strong>Web Hosting:</strong> cPanel, Apache, Nginx, PHP — Linux servers ma.</li>
+<li><strong>Salary boost:</strong> Linux sysadmin certified (RHCSA, LPIC) = Rs. 20,000-40,000 badhi per month Nepal ma.</li>
+</ul>
+<h2 id="linux-file-system-nepal-context-ma-bujhau">Linux File System — Nepal Context Ma Bujhau</h2>
+<p>Windows ma C:/, D:/ drives hunchhan. Linux ma sabai ek tree ma cha — root <strong>/</strong> bata start hunchha. Yo understand garyo bhane sabai easy hunchha:</p>
+<div class="table-wrap"><table class="comp-table">
+<thead>
+<tr><th>Directory</th><th>Ke cha yaha?</th><th>Nepal Analogy</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>/</strong></td><td>Root — sabai ko base</td><td>Nepal ko Singha Durbar — sabai ko mukhya karyalaya</td></tr>
+<tr><td><strong>/home</strong></td><td>User files — tero personal folder</td><td>Tero ghar ko kotha</td></tr>
+<tr><td><strong>/etc</strong></td><td>Configuration files</td><td>Office ko niyam-kanun files</td></tr>
+<tr><td><strong>/var/log</strong></td><td>System logs</td><td>Server ko diary/record</td></tr>
+<tr><td><strong>/tmp</strong></td><td>Temporary files</td><td>Recycle bin jastai</td></tr>
+<tr><td><strong>/bin, /usr/bin</strong></td><td>Executable programs</td><td>Programs folder (Windows ko)</td></tr>
+<tr><td><strong>/root</strong></td><td>Root user's home</td><td>Admin ko private office</td></tr>
+</tbody>
+</table></div>
+<h2 id="must-know-commands-daily-use-wala">⌨ Must-Know Commands — Daily Use Wala</h2>
+<div class="code-block">
+<div class="code-header"><span class="code-lang">Navigation &amp; Files</span></div>
+<div class="code-body">pwd # Current location kaha cha? (Print Working Directory)
+ls # Folder ko contents list gara
+ls -la # Hidden files pani dekha, details sanga
+cd /home/hemraj # Directory change gara
+cd .. # Ek level maathi jau
+mkdir projects # Naya folder banau
+rm file.txt # File delete gara
+rm -rf folder/ # Folder ra sabai contents delete (CAREFUL!)
+cp file.txt /tmp # File copy gara
+mv file.txt /home# File move/rename gara
+cat file.txt # File content dekha
+nano file.txt # File edit gara (simple editor)</div>
+</div>
+<div class="code-block">
+<div class="code-header"><span class="code-lang">System Information</span></div>
+<div class="code-body">uname -a # OS information
+df -h # Disk space — kati baki cha?
+free -h # RAM usage
+top # Running processes (like Task Manager)
+htop # Better task manager (install: sudo apt install htop)
+ps aux # All processes list
+whoami # Tero current user ko naam
+id # User ID ra group information</div>
+</div>
+<div class="code-block">
+<div class="code-header"><span class="code-lang">User Management</span></div>
+<div class="code-body">sudo useradd -m hemraj # Naya user banau
+sudo passwd hemraj # User ko password set gara
+sudo usermod -aG sudo hemraj # User lai sudo (admin) access deu
+sudo userdel -r hemraj # User delete gara
+groups hemraj # User kun groups ma cha?
+su - hemraj # User switch gara</div>
+</div>
+<div class="code-block">
+<div class="code-header"><span class="code-lang">Package Management (Ubuntu/Debian)</span></div>
+<div class="code-body">sudo apt update # Package list update gara
+sudo apt upgrade # Sabai packages update gara
+sudo apt install nginx # Nginx web server install gara
+sudo apt install python3 # Python install gara
+sudo apt remove nginx # Package remove gara
+sudo apt autoremove # Unused packages clean gara</div>
+</div>
+<h2 id="file-permissions-important-concept">File Permissions — Important Concept</h2>
+<p>Linux ma file permissions bujhna parchha — interview ma pani sodhcha, daily use ma pani aaucha.</p>
+<div class="code-block">
+<div class="code-header"><span class="code-lang">Permissions Explained</span></div>
+<div class="code-body"># ls -la output:
+# -rwxr-xr-- 1 hemraj users 1234 Jun 20 file.sh
+#
+# Breakdown:
+# - = file type (- = file, d = directory)
+# rwx = owner permissions (read/write/execute)
+# r-x = group permissions (read/execute only)
+# r-- = others permissions (read only)
+
+chmod 755 file.sh # rwxr-xr-x — common for scripts
+chmod 644 file.txt # rw-r--r-- — common for files
+chmod +x script.sh # Execute permission add gara
+chown hemraj:users file.sh # Owner change gara</div>
+</div>
+<div class="callout orange">
+<div class="callout-label"> Common Mistake</div>
+ Nepal IT students le often <code>chmod 777</code> garcha — "sabai le access paos" bhani. Yo HUGE security mistake cha — server ma kahile pani 777 nagara. 755 (scripts ko lagi) ya 644 (files ko lagi) use gara.
+ </div>
+<h2 id="web-server-setup-practical-exercise">Web Server Setup — Practical Exercise</h2>
+<p>Theory padhe pachi yo practical garau — Ubuntu ma Nginx web server setup:</p>
+<div class="code-block">
+<div class="code-header"><span class="code-lang">Nginx Web Server Setup on Ubuntu</span></div>
+<div class="code-body"># Step 1: System update gara
+sudo apt update &amp;&amp; sudo apt upgrade -y
+
+# Step 2: Nginx install gara
+sudo apt install nginx -y
+
+# Step 3: Start ra enable gara
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+# Step 4: Status check gara
+sudo systemctl status nginx
+
+# Step 5: Browser ma http://localhost kholu — Nginx default page dekhinccha!
+
+# Step 6: Web files yaha rakhnu
+cd /var/www/html
+sudo nano index.html # Afno HTML file lekhnu</div>
+</div>
+<p>Yo garyo bhane tero first Linux web server ready! AWS EC2 ma pani exactly yei steps cha — server publicly accessible hunchha.</p>
+<h2 id="linux-certifications-career-ko-lagi">Linux Certifications — Career Ko Lagi</h2>
+<div class="info-grid">
+<div class="info-card">
+
+<div class="info-card-title">LPIC-1 (Linux Professional)</div>
+<div class="info-card-text">Entry level. 2 exams. Globally recognized. Nepal ma pani valid. Recommended for beginners. ~$200 exam fee.</div>
+</div>
+<div class="info-card">
+
+<div class="info-card-title">RHCSA (Red Hat)</div>
+<div class="info-card-text">Enterprise Linux. Hands-on exam — commands type garnu parchha. Nepal ma IT companies Red Hat prefer garcha senior roles ma.</div>
+</div>
+<div class="info-card">
+
+<div class="info-card-title">CompTIA Linux+</div>
+<div class="info-card-text">Vendor-neutral certification. MCQ + performance based. CompTIA brand globally respected — US jobs ko lagi helpful.</div>
+</div>
+<div class="info-card">
+
+<div class="info-card-title">AWS + Linux Combined</div>
+<div class="info-card-text">AWS SAA + Linux skills = powerful combo. Nepal ma cloud engineer ko lagi most in-demand combination cha.</div>
+</div>
+</div>
+<h2 id="30-day-linux-learning-plan">30-Day Linux Learning Plan</h2>
+<div class="table-wrap"><table class="comp-table">
+<thead>
+<tr><th>Week</th><th>Topics</th><th>Practice</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Week 1</strong></td><td>Navigation, files, directories, basic commands</td><td>Daily 30 min terminal practice</td></tr>
+<tr><td><strong>Week 2</strong></td><td>User management, permissions, package manager</td><td>Create users, set permissions</td></tr>
+<tr><td><strong>Week 3</strong></td><td>Processes, networking basics, SSH</td><td>SSH into a server (AWS free tier use gara)</td></tr>
+<tr><td><strong>Week 4</strong></td><td>Web server setup (Nginx/Apache), shell scripting basics</td><td>Deploy a simple website on Linux server</td></tr>
+</tbody>
+</table></div>
+<div class="callout green">
+<div class="callout-label"> Nepal IT Opportunity</div>
+ Nepal ma Linux sysadmin skills bhayeko IT professional ko starting salary Rs. 40,000-70,000 cha. AWS + Linux combo = Rs. 80,000-1,50,000 possible cha. 6 months serious practice + LPIC-1 cert le career completely change garna milcha.
+ </div>
+
+<div class="tag-cloud">
+<span class="tag-item highlight">#LinuxNepal</span>
+<span class="tag-item highlight">#SysAdminNepal</span>
+<span class="tag-item">#UbuntuNepal</span>
+<span class="tag-item">#ITCareerNepal</span>
+<span class="tag-item">#LinuxCommands</span>
+<span class="tag-item">#CloudNepal</span>
+</div>
+          </div>
+          <aside class="card author" aria-label="About the author">
+            <img src="assets/img/hemraj-adhikari-portrait.webp" alt="Hemraj Adhikari" width="64" height="64" loading="lazy">
+            <div>
+              <h2>Hemraj Adhikari</h2>
+              <p>Head of IT at Route 2 Uni and full-stack developer in Kathmandu. I write practical guides for people starting out in IT in Nepal.</p>
+              <div class="links"><a href="about.html">About me</a><a href="https://www.linkedin.com/in/hemrajadhikariy/" target="_blank" rel="noopener">LinkedIn</a><a href="contact.html">Ask a question</a></div>
+            </div>
+          </aside>
+          <section class="related" aria-label="More posts">
+            <h2>More posts</h2>
+            <div class="grid-3"><a class="card" href="it-freelance-blog.html"><span>Freelancing &middot; 12 min read</span><h3>Freelancing in Nepal&#x27;s IT sector: a detailed technical guide</h3></a><a class="card" href="blog-python-beginners-nepal.html"><span>Programming &middot; 10 min read</span><h3>Python for beginners in Nepal: a complete learning guide</h3></a><a class="card" href="blog-freelancing-nepal-it.html"><span>Freelancing &middot; 11 min read</span><h3>Nepal bata IT freelancing: Upwork, Fiverr ra payment</h3></a></div>
+          </section>
+        </div>
+        <nav class="toc" aria-label="On this page">
+          <h2>On this page</h2>
+          <ol><li><a href="#linux-kina-sik-nu-parchha">Linux Kina Sik-nu Parchha?</a></li><li><a href="#linux-file-system-nepal-context-ma-bujhau">Linux File System — Nepal Context Ma Bujhau</a></li><li><a href="#must-know-commands-daily-use-wala">⌨ Must-Know Commands — Daily Use Wala</a></li><li><a href="#file-permissions-important-concept">File Permissions — Important Concept</a></li><li><a href="#web-server-setup-practical-exercise">Web Server Setup — Practical Exercise</a></li><li><a href="#linux-certifications-career-ko-lagi">Linux Certifications — Career Ko Lagi</a></li><li><a href="#30-day-linux-learning-plan">30-Day Linux Learning Plan</a></li></ol>
+        </nav>
+      </div>
+    </div>
+  </article>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="index.html"><b>Hemraj Adhikari</b></a>
+        <p>Head of IT at Route 2 Uni and full-stack developer, based in Kathmandu, Nepal.</p>
+        <div class="socials">
+        <a href="https://www.linkedin.com/in/hemrajadhikariy/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+        <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
+        <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener" aria-label="Upwork"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.56 13.2c-1.08 0-2.1-.46-3.02-1.2l.23-1.06.01-.04c.2-1.13.84-3.02 2.78-3.02a2.66 2.66 0 0 1 0 5.32zm0-8.02c-2.48 0-4.4 1.61-5.18 4.26-1.19-1.79-2.1-3.95-2.62-5.76H8.08v6.97a2.47 2.47 0 1 1-4.94 0V3.68H.46v6.97a5.15 5.15 0 0 0 10.3.04V9.53c.52 1.08 1.16 2.18 1.94 3.16l-1.65 7.75h2.75l1.19-5.62a6.3 6.3 0 0 0 3.57 1.07 5.36 5.36 0 0 0 0-10.71z"/></svg></a>
+        <a href="https://wa.me/9779865802093" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5v-.5c-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3M12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.2 24l6.4-1.7A11.8 11.8 0 0 0 24 12c0-3.2-1.2-6.2-3.5-8.5"/></svg></a>
+        <a href="mailto:hemrajhadhikari@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+      </div>
+      </div>
+      <div>
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="credentials.html">Certifications</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>More</h2>
+        <ul>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="clients.html">Clients</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:hemrajhadhikari@gmail.com">hemrajhadhikari@gmail.com</a></li>
+          <li><a href="https://wa.me/9779865802093" target="_blank" rel="noopener">+977 986-5802093</a></li>
+          <li><a href="https://www.linkedin.com/in/hemrajadhikariy/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a class="foot-cv" href="CV-Hemraj%20Adhikari.pdf" download="Hemraj-Adhikari-CV.pdf">Download CV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> Hemraj Adhikari</span>
+      <span>Kathmandu, Nepal</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
