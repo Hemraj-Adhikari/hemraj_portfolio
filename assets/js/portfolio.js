@@ -200,8 +200,9 @@
 
   /* ---------------- render ---------------- */
   var grid = $('#workGrid');
+  var isHome = document.body.classList.contains('home');
   if (grid) {
-    grid.innerHTML = PROJECTS.map(function (p, i) {
+    grid.innerHTML = (isHome ? PROJECTS.slice(0, 6) : PROJECTS).map(function (p, i) {
       var link = p.url
         ? '<a class="w-link" href="' + p.url + '" target="_blank" rel="noopener">View project ' + ARROW + '<span class="sr-only" style="position:absolute;left:-9999px"> (' + esc(p.title) + ', opens in a new tab)</span></a>'
         : (p.live ? '<span class="w-private">Live · link on request</span>' : '<span class="w-private">' + LOCK + 'Private · demo on request</span>');
@@ -313,21 +314,20 @@
   if (links) links.addEventListener('click', function (e) { if (e.target.tagName === 'A') { links.classList.remove('open'); menuBtn && menuBtn.setAttribute('aria-expanded', 'false'); } });
   window.addEventListener('scroll', function () { nav && nav.classList.toggle('scrolled', window.scrollY > 8); }, { passive: true });
 
-  var secs = ['about', 'services', 'work', 'experience', 'education', 'learning', 'contact'].map(function (id) { return document.getElementById(id); }).filter(Boolean);
-  if ('IntersectionObserver' in window && secs.length) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) {
-          $$('.nav-links a').forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
-        }
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    secs.forEach(function (s) { io.observe(s); });
-  }
+  /* active menu item = current page */
+  var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  $$('.nav-links a').forEach(function (a) {
+    if ((a.getAttribute('href') || '').toLowerCase() === here) { a.classList.add('active'); a.setAttribute('aria-current', 'page'); }
+  });
 
-  /* service "Explore" pre-selects the project type */
-  $$('[data-topic]').forEach(function (a) {
-    a.addEventListener('click', function () { var s = $('#f-topic'); if (s) s.value = a.getAttribute('data-topic'); });
+  /* "Explore" on a service opens the contact page with the project type chosen */
+  var topic = null;
+  try { topic = new URLSearchParams(location.search).get('topic'); } catch (e) {}
+  if (topic) { var sel = $('#f-topic'); if (sel) sel.value = topic; }
+
+  /* FAQ: one open at a time */
+  $$('.faq details').forEach(function (d) {
+    d.addEventListener('toggle', function () { if (d.open) $$('.faq details').forEach(function (o) { if (o !== d) o.open = false; }); });
   });
 
   /* ---------------- contact form (Formspree) ---------------- */
