@@ -19,7 +19,7 @@
       desc: 'CRM and staff-compliance portal for a UK domiciliary care agency: right-to-work checks, visa sponsorship and DBS expiry tracking, documents and an audit log. I lead the roadmap and the build.',
       stack: 'Next.js 14 · TypeScript · Tailwind · Firebase', url: '',
       mock: 'compliance', color: '#1f5a34', host: 'dreamscarehomes', name: 'Dreams Care' },
-    { title: 'Hajiri HR & Attendance', type: 'system', cat: 'HRM / Route 2 Uni', live: false,
+    { title: 'Hajiri HR and Attendance', type: 'system', cat: 'HRM / Route 2 Uni', live: false,
       desc: 'HR and attendance system for Route 2 Uni: daily hajiri, approvals, leave, holidays and notices, with team and department reports. Dates show in Bikram Sambat and AD.',
       stack: 'Firebase · Firestore · RBAC · Nepali calendar', url: '',
       mock: 'hajiri', color: '#2e9e55', host: 'hajiri.route2uni', name: 'Hajiri' },
@@ -148,7 +148,7 @@
   var DETAIL = {
     'Route 2 Uni CRM': { role: 'Sole developer, now technical lead', year: '2025 – now', hl: ['Pipeline from enquiry to offer, Pre-CAS, CAS and visa', 'Role-based access and MFA for staff and partners', 'Used daily by 50+ staff, about 40% less manual reporting', '10-phase rebuild onto Next.js, NestJS, PostgreSQL and AWS'] },
     'Dreams Care Homes CRM': { role: 'Project manager and technical lead', year: '2026 – now', hl: ['Right-to-work, visa sponsorship and DBS expiry tracking', 'Staff documents and a full audit log', 'Firebase Auth, Firestore and Storage with role-based rules', 'Built on Next.js 14, TypeScript and Tailwind CSS'] },
-    'Hajiri HR & Attendance': { role: 'Built for Route2Uni', hl: ['Daily attendance with approvals', 'Leave, holidays and notices in one place', 'Bikram Sambat and AD dates side by side', 'Team and department reports'] },
+    'Hajiri HR and Attendance': { role: 'Built for Route2Uni', hl: ['Daily attendance with approvals', 'Leave, holidays and notices in one place', 'Bikram Sambat and AD dates side by side', 'Team and department reports'] },
     'Kaam Khoj': { role: 'Founder', hl: ['Workers call employers directly, no commission', 'Nepali-first interface with a read-aloud button', 'Larger text option and works on weak internet', 'Job categories such as labourer, mason, plumber and electrician'] },
     'Slotly': { role: 'Designer and developer', hl: ['Services and customer list', 'Shareable booking link', 'Expected income and no-show tracking', 'Simple Romanised Nepali interface'] },
     'Partner Bulk Messaging': { role: 'Built for the Route2Uni B2B team', hl: ['Bulk messages on WhatsApp and email', 'Templates with personalised fields', 'Contact lists of partner agents', 'Delivery status for each partner'] },
@@ -415,7 +415,7 @@
     setMenu(false);
     lastFocus = document.activeElement;
     qs = document.createElement('div'); qs.className = 'qs'; qs.setAttribute('role', 'dialog'); qs.setAttribute('aria-modal', 'true'); qs.setAttribute('aria-label', 'Search the site');
-    qs.innerHTML = '<div class="qs-box"><label class="qs-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="qs-input" type="search" placeholder="Search pages, projects, certificates…" autocomplete="off" aria-label="Search"><button type="button" class="qs-esc" aria-label="Close search">Esc</button></label><ul class="qs-list" role="listbox"></ul><p class="qs-tip"><kbd>↑</kbd><kbd>↓</kbd> move · <kbd>Enter</kbd> open · <kbd>Ctrl</kbd>+<kbd>K</kbd> anywhere</p></div>';
+    qs.innerHTML = '<div class="qs-box"><label class="qs-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="qs-input" type="search" placeholder="Search pages, projects, certificates…" autocomplete="off" aria-label="Search"><button type="button" class="qs-esc" aria-label="Close search">Esc</button></label><ul class="qs-list" role="listbox"></ul><p class="qs-tip"><kbd>↑</kbd><kbd>↓</kbd> move · <kbd>Enter</kbd> open</p></div>';
     qs.addEventListener('click', function (e) {
       if (e.target === qs || e.target.classList.contains('qs-esc')) { closeQs(); return; }
       var li = e.target.closest('[data-qi]'); if (li) pickQs(+li.getAttribute('data-qi'));
@@ -431,7 +431,6 @@
     drawQs(''); input.focus();
   }
   document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-search]')) openQs(); });
-  if (!/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)) $$('.search-btn kbd').forEach(function (k) { k.textContent = 'Ctrl K'; });
 
   /* one keyboard handler for every overlay */
   document.addEventListener('keydown', function (e) {

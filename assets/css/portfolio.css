@@ -961,3 +961,4 @@ body.lock { overflow: hidden; }
 /* calmer details */
 .about-photo { box-shadow: 0 30px 60px -30px rgba(20, 20, 20, .35); }
 .l-card:hover { transform: translateY(-4px); }
+.search-btn { width: 38px !important; padding: 0 !important; justify-content: center; }
