@@ -143,6 +143,25 @@
     pen: '<svg class="ill" viewBox="0 0 80 80"><path d="m52 10 18 18-30 30-22 6 6-22z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"/><path d="m46 16 18 18" stroke="#111" stroke-width="3"/><circle cx="34" cy="46" r="4" fill="#111"/></svg>'
   };
 
+
+  /* extra detail shown in the project panel */
+  var DETAIL = {
+    'Route 2 Uni CRM': { role: 'Sole developer, now technical lead', year: '2025 – now', hl: ['Pipeline from enquiry to offer, Pre-CAS, CAS and visa', 'Role-based access and MFA for staff and partners', 'Used daily by 50+ staff, about 40% less manual reporting', '10-phase rebuild onto Next.js, NestJS, PostgreSQL and AWS'] },
+    'Dreams Care Homes CRM': { role: 'Project manager and technical lead', year: '2026 – now', hl: ['Right-to-work, visa sponsorship and DBS expiry tracking', 'Staff documents and a full audit log', 'Firebase Auth, Firestore and Storage with role-based rules', 'Built on Next.js 14, TypeScript and Tailwind CSS'] },
+    'Hajiri HR & Attendance': { role: 'Built for Route2Uni', hl: ['Daily attendance with approvals', 'Leave, holidays and notices in one place', 'Bikram Sambat and AD dates side by side', 'Team and department reports'] },
+    'Kaam Khoj': { role: 'Founder', hl: ['Workers call employers directly, no commission', 'Nepali-first interface with a read-aloud button', 'Larger text option and works on weak internet', 'Job categories such as labourer, mason, plumber and electrician'] },
+    'Slotly': { role: 'Designer and developer', hl: ['Services and customer list', 'Shareable booking link', 'Expected income and no-show tracking', 'Simple Romanised Nepali interface'] },
+    'Partner Bulk Messaging': { role: 'Built for the Route2Uni B2B team', hl: ['Bulk messages on WhatsApp and email', 'Templates with personalised fields', 'Contact lists of partner agents', 'Delivery status for each partner'] },
+    'TaskTrack': { role: 'Designer and developer', year: '2026', hl: ['Per-person daily work board', 'One-click PDF reports', 'IT asset register and attendance'] },
+    'Mock Pre-CAS Interview': { role: 'Designer and developer', year: '2026', hl: ['23 timed questions with webcam recording', 'Live speech-to-text transcript', 'Rule-based scoring and a PDF report for counsellors'] },
+    'UK University Intake Directory': { role: 'Designer and developer', year: '2026', hl: ['Search and sort partner universities', 'UG and PG tuition per year', 'Entry criteria and deadline flags'] },
+    'KBM FM': { year: '2023', hl: ['Live radio streaming', 'Programme schedules', 'Hosted on AWS'] },
+    'Mega Loksewa': { year: '2022', hl: ['Mock tests for government exams', 'Live classes', 'Learning management system'] },
+    'Sanchar Sanket': { year: '2024', hl: ['News categories', 'Fast mobile reading', 'Managed hosting'] },
+    'Sargam Sangeet Vidyalay': { year: '2024', hl: ['Website for a music school in Pune', 'Built through an agency partner'] },
+    'Aaradhana Shrestha': { hl: ['Personal brand website for a corporate trainer'] }
+  };
+
   /* ---------------- drawn previews ---------------- */
   function bar(host) { return '<div class="mock-bar"><i></i><i></i><i></i><span>' + esc(host) + '</span></div>'; }
   function side(p, items) {
@@ -212,9 +231,9 @@
         ? '<a class="w-link" href="' + p.url + '" target="_blank" rel="noopener">View project ' + ARROW + '<span class="sr-only" style="position:absolute;left:-9999px"> (' + esc(p.title) + ', opens in a new tab)</span></a>'
         : (p.live ? '<span class="w-private">Live · link on request</span>' : '<span class="w-private">' + LOCK + 'Private · demo on request</span>');
       var shot = p.img ? '<img src="' + p.img + '" alt="' + esc(p.title) + ' screenshot" loading="lazy">' : mock(p);
-      return '<article class="work-card' + ((i % 4 === 0 || i % 4 === 3) ? ' is-dark' : '') + '" data-type="' + p.type + '">' +
+      return '<article class="work-card' + ((i % 4 === 0 || i % 4 === 3) ? ' is-dark' : '') + '" data-type="' + p.type + '" data-p="' + PROJECTS.indexOf(p) + '">' +
         '<span class="w-badge' + (p.live || p.badge ? '' : ' private') + '">' + (p.badge || (p.live ? 'Live' : 'Private')) + '</span>' +
-        '<div class="w-text"><span class="w-cat">' + esc(p.cat) + '</span><h3 class="w-title">' + esc(p.title) + '</h3><p class="w-desc">' + esc(p.desc) + '</p><span class="w-stack">' + esc(p.stack) + '</span>' + link + '</div>' +
+        '<div class="w-text"><span class="w-cat">' + esc(p.cat) + '</span><h3 class="w-title">' + esc(p.title) + '</h3><p class="w-desc">' + esc(p.desc) + '</p><span class="w-stack">' + esc(p.stack) + '</span><div class="w-actions"><button class="w-more" type="button" data-open="' + PROJECTS.indexOf(p) + '">Details <span aria-hidden="true">+</span></button>' + link + '</div></div>' +
         '<div class="w-shot">' + shot + '</div></article>';
     }).join('');
   }
@@ -273,23 +292,156 @@
   if (cm) cm.addEventListener('click', function () { showAll = !showAll; renderCourses(); });
   renderCourses();
 
-  /* ---------------- lightbox ---------------- */
-  var lb = null;
-  function closeLb() { if (lb) { lb.remove(); lb = null; document.removeEventListener('keydown', onKey); } }
-  function onKey(e) { if (e.key === 'Escape') closeLb(); }
+  /* ---------------- lightbox (prev / next / swipe) ---------------- */
+  var lb = null, lbItems = [], lbIndex = 0, lastFocus = null;
+  function itemFrom(t) {
+    if (t.classList.contains('g-item')) return { full: t.getAttribute('data-full'), title: t.querySelector('figcaption b').textContent + ' · ' + t.querySelector('figcaption span').textContent, verify: '' };
+    if (t.classList.contains('cert-open')) { var c = CERTS[+t.getAttribute('data-i')]; return { full: 'assets/img/' + c.img + '.webp', title: c.t, verify: c.u }; }
+    return { full: t.getAttribute('data-full'), title: t.getAttribute('data-title'), verify: t.getAttribute('data-verify') };
+  }
+  function drawLb() {
+    var it = lbItems[lbIndex];
+    var img = $('.lb-img', lb);
+    img.src = it.full; img.alt = it.title;
+    $('.cap', lb).innerHTML = '<b>' + esc(it.title) + '</b>' + (it.verify ? ' · <a href="' + it.verify + '" target="_blank" rel="noopener">Verify on Coursera ↗</a>' : '') + (lbItems.length > 1 ? '<span class="lb-count">' + (lbIndex + 1) + ' / ' + lbItems.length + '</span>' : '');
+    lb.setAttribute('aria-label', it.title);
+  }
+  function stepLb(d) { if (lbItems.length < 2) return; lbIndex = (lbIndex + d + lbItems.length) % lbItems.length; drawLb(); }
+  function closeLb() { if (!lb) return; lb.remove(); lb = null; document.body.classList.remove('lock'); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+  function openLb(items, index) {
+    closeLb(); lastFocus = document.activeElement;
+    lbItems = items; lbIndex = index || 0;
+    lb = document.createElement('div');
+    lb.className = 'lightbox'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true');
+    lb.innerHTML = '<button class="icon-btn close" type="button" aria-label="Close">✕</button>' +
+      (items.length > 1 ? '<button class="lb-nav prev" type="button" aria-label="Previous">‹</button><button class="lb-nav next" type="button" aria-label="Next">›</button>' : '') +
+      '<img class="lb-img" alt=""><p class="cap"></p>';
+    lb.addEventListener('click', function (ev) {
+      if (ev.target === lb || ev.target.classList.contains('close')) closeLb();
+      else if (ev.target.classList.contains('prev')) stepLb(-1);
+      else if (ev.target.classList.contains('next')) stepLb(1);
+    });
+    var sx = null;
+    lb.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', function (e) { if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) stepLb(dx < 0 ? 1 : -1); sx = null; });
+    document.body.appendChild(lb); document.body.classList.add('lock');
+    drawLb(); $('.close', lb).focus();
+  }
   document.addEventListener('click', function (e) {
     var t = e.target.closest && e.target.closest('.cert-thumb, .cert-open, .g-item[data-full]');
     if (!t) return;
-    var full, title, verify;
-    if (t.classList.contains('g-item')) { full = t.getAttribute('data-full'); title = t.querySelector('figcaption b').textContent + ' · ' + t.querySelector('figcaption span').textContent; verify = ''; }
-    else if (t.classList.contains('cert-open')) { var c = CERTS[+t.getAttribute('data-i')]; full = 'assets/img/' + c.img + '.webp'; title = c.t; verify = c.u; }
-    else { full = t.getAttribute('data-full'); title = t.getAttribute('data-title'); verify = t.getAttribute('data-verify'); }
-    lb = document.createElement('div');
-    lb.className = 'lightbox'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-label', title);
-    lb.innerHTML = '<button class="icon-btn close" type="button" aria-label="Close">✕</button><img src="' + full + '" alt="' + esc(title) + ' certificate"><p class="cap">' + esc(title) + (verify ? ' · <a href="' + verify + '" target="_blank" rel="noopener">Verify on Coursera</a>' : '') + '</p>';
-    lb.addEventListener('click', function (ev) { if (ev.target === lb || ev.target.classList.contains('close')) closeLb(); });
-    document.body.appendChild(lb); document.addEventListener('keydown', onKey);
-    $('.close', lb).focus();
+    var group = t.classList.contains('g-item') ? $$('.g-item[data-full]', t.parentNode) : t.classList.contains('cert-open') ? [t] : $$('.cert-thumb', t.parentNode);
+    openLb(group.map(itemFrom), group.indexOf(t));
+  });
+
+  /* ---------------- project details panel ---------------- */
+  var panel = null;
+  function closePanel() {
+    if (!panel) return;
+    var p = panel; panel = null;
+    p.classList.remove('open'); setTimeout(function () { p.remove(); }, 320);
+    document.body.classList.remove('lock'); if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function openPanel(i) {
+    var p = PROJECTS[i]; if (!p) return;
+    var d = DETAIL[p.title] || {};
+    if (!panel) lastFocus = document.activeElement;
+    if (panel) panel.remove();
+    panel = document.createElement('div');
+    panel.className = 'pp'; panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-modal', 'true'); panel.setAttribute('aria-label', p.title);
+    var hl = (d.hl || []).map(function (h) { return '<li>' + esc(h) + '</li>'; }).join('');
+    var meta = [d.role ? ['Role', d.role] : null, d.year ? ['Year', d.year] : null, ['Status', p.badge || (p.live ? 'Live' : 'Private')]].filter(Boolean)
+      .map(function (m) { return '<div><small>' + m[0] + '</small><b>' + esc(m[1]) + '</b></div>'; }).join('');
+    var stack = p.stack.split(' · ').map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('');
+    var cta = p.url
+      ? '<a class="btn btn--dark btn--pill" href="' + p.url + '" target="_blank" rel="noopener">Open live project ' + ARROW + '</a>'
+      : '<a class="btn btn--dark btn--pill" href="contact.html?topic=' + encodeURIComponent('Something else') + '">Ask for a demo ' + ARROW + '</a>';
+    panel.innerHTML = '<div class="pp-backdrop" data-close></div><article class="pp-sheet" tabindex="-1">' +
+      '<header class="pp-head"><span class="w-cat">' + esc(p.cat) + '</span><button class="icon-btn" type="button" data-close aria-label="Close">✕</button></header>' +
+      '<div class="pp-shot">' + mock(p) + '</div>' +
+      '<h2>' + esc(p.title) + '</h2><p class="pp-desc">' + esc(p.desc) + '</p>' +
+      '<div class="pp-meta">' + meta + '</div>' +
+      (hl ? '<h3>Highlights</h3><ul class="pp-hl">' + hl + '</ul>' : '') +
+      '<h3>Stack</h3><div class="tags-row">' + stack + '</div>' +
+      '<footer class="pp-foot">' + cta + '<span class="pp-nav"><span class="pp-count">' + (i + 1) + ' / ' + PROJECTS.length + '</span><button class="icon-btn" type="button" data-step="-1" aria-label="Previous project">‹</button><button class="icon-btn" type="button" data-step="1" aria-label="Next project">›</button></span></footer></article>';
+    panel.addEventListener('click', function (e) {
+      if (e.target.closest('[data-close]')) { closePanel(); return; }
+      var st = e.target.closest('[data-step]');
+      if (st) openPanel((i + (+st.getAttribute('data-step')) + PROJECTS.length) % PROJECTS.length);
+    });
+    document.body.appendChild(panel); document.body.classList.add('lock');
+    var pnl = panel;
+    requestAnimationFrame(function () { pnl.classList.add('open'); $('.pp-sheet', pnl).focus(); });
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-open]');
+    if (b) { e.preventDefault(); openPanel(+b.getAttribute('data-open')); return; }
+    var card = e.target.closest && e.target.closest('.work-card');
+    if (card && !e.target.closest('a, button')) openPanel(+card.getAttribute('data-p'));
+  });
+  try { var pq = new URLSearchParams(location.search).get('project'); if (pq !== null && grid) openPanel(+pq); } catch (e) {}
+
+  /* ---------------- quick search (Ctrl / Cmd + K, or "/") ---------------- */
+  var PAGES = [['Home', 'index.html', 'Start page'], ['About', 'about.html', 'Background and how I work'], ['Services', 'services.html', 'What I can build for you'], ['Work', 'projects.html', 'All 14 projects'], ['Experience', 'experience.html', 'Career timeline and skills'], ['Education', 'education.html', 'Degrees'], ['Certificates', 'credentials.html', '44 certificates'], ['Contact', 'contact.html', 'Send a message'], ['Resume', 'resume.html', 'One-page resume'], ['Download CV', 'CV-Hemraj%20Adhikari.pdf', 'PDF file']];
+  function searchIndex() {
+    var out = PAGES.map(function (p) { return { k: 'Page', t: p[0], s: p[2], go: function () { location.href = p[1]; } }; });
+    PROJECTS.forEach(function (p, i) { out.push({ k: 'Project', t: p.title, s: p.cat, go: function () { if (grid && !isHome) openPanel(i); else location.href = 'projects.html?project=' + i; } }); });
+    var certItems = CERTS.map(function (x) { return { full: 'assets/img/' + x.img + '.webp', title: x.t, verify: x.u }; });
+    CERTS.forEach(function (c, i) { out.push({ k: 'Certificate', t: c.t, s: c.who + ' · ' + c.when, go: function () { openLb(certItems, i); } }); });
+    var courseItems = COURSES.map(function (x) { return { full: 'assets/img/courses/' + x[3].toLowerCase() + '.webp', title: x[0], verify: 'https://coursera.org/verify/' + x[3] }; });
+    COURSES.forEach(function (c, i) { out.push({ k: 'Course', t: c[0], s: c[1] + ' · ' + c[2], go: function () { openLb(courseItems, i); } }); });
+    return out;
+  }
+  var qs = null, qsItems = [], qsSel = 0;
+  function closeQs() { if (!qs) return; qs.remove(); qs = null; document.body.classList.remove('lock'); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+  function drawQs(q) {
+    var all = searchIndex(); q = (q || '').trim().toLowerCase();
+    qsItems = q ? all.filter(function (x) { return (x.t + ' ' + x.s + ' ' + x.k).toLowerCase().indexOf(q) > -1; }).slice(0, 40)
+                : all.filter(function (x) { return x.k === 'Page' || x.k === 'Project'; }).slice(0, 16);
+    qsSel = 0;
+    $('.qs-list', qs).innerHTML = qsItems.length
+      ? qsItems.map(function (x, i) { return '<li role="option" data-qi="' + i + '" aria-selected="' + (i === 0) + '"><span class="qs-k">' + x.k + '</span><b>' + esc(x.t) + '</b><small>' + esc(x.s) + '</small></li>'; }).join('')
+      : '<li class="qs-empty">No matches. Try “CRM”, “AWS” or “Cybersecurity”.</li>';
+  }
+  function moveQs(d) {
+    var lis = $$('[data-qi]', qs); if (!lis.length) return;
+    qsSel = (qsSel + d + lis.length) % lis.length;
+    lis.forEach(function (l, i) { l.setAttribute('aria-selected', String(i === qsSel)); });
+    lis[qsSel].scrollIntoView({ block: 'nearest' });
+  }
+  function pickQs(i) { var it = qsItems[i]; if (!it) return; closeQs(); it.go(); }
+  function openQs() {
+    if (qs) return;
+    setMenu(false);
+    lastFocus = document.activeElement;
+    qs = document.createElement('div'); qs.className = 'qs'; qs.setAttribute('role', 'dialog'); qs.setAttribute('aria-modal', 'true'); qs.setAttribute('aria-label', 'Search the site');
+    qs.innerHTML = '<div class="qs-box"><label class="qs-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="qs-input" type="search" placeholder="Search pages, projects, certificates…" autocomplete="off" aria-label="Search"><button type="button" class="qs-esc" aria-label="Close search">Esc</button></label><ul class="qs-list" role="listbox"></ul><p class="qs-tip"><kbd>↑</kbd><kbd>↓</kbd> move · <kbd>Enter</kbd> open · <kbd>Ctrl</kbd>+<kbd>K</kbd> anywhere</p></div>';
+    qs.addEventListener('click', function (e) {
+      if (e.target === qs || e.target.classList.contains('qs-esc')) { closeQs(); return; }
+      var li = e.target.closest('[data-qi]'); if (li) pickQs(+li.getAttribute('data-qi'));
+    });
+    var input = $('input', qs);
+    input.addEventListener('input', function () { drawQs(input.value); });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); moveQs(1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); moveQs(-1); }
+      else if (e.key === 'Enter') { e.preventDefault(); pickQs(qsSel); }
+    });
+    document.body.appendChild(qs); document.body.classList.add('lock');
+    drawQs(''); input.focus();
+  }
+  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-search]')) openQs(); });
+
+  /* one keyboard handler for every overlay */
+  document.addEventListener('keydown', function (e) {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); if (qs) closeQs(); else openQs(); return; }
+    var typing = /input|textarea|select/i.test((document.activeElement || {}).tagName || '');
+    if (e.key === '/' && !qs && !typing) { e.preventDefault(); openQs(); return; }
+    if (e.key === 'Escape') { if (qs) closeQs(); else if (lb) closeLb(); else if (panel) closePanel(); }
+    if (lb && e.key === 'ArrowRight') stepLb(1);
+    if (lb && e.key === 'ArrowLeft') stepLb(-1);
+    if (panel && !lb && e.key === 'ArrowRight') { var n = $('[data-step="1"]', panel); if (n) n.click(); }
+    if (panel && !lb && e.key === 'ArrowLeft') { var pv = $('[data-step="-1"]', panel); if (pv) pv.click(); }
   });
 
   /* ---------------- filters ---------------- */
@@ -312,7 +464,7 @@
   });
 
   /* ---------------- nav, progress, back to top ---------------- */
-  var nav = $('.nav'), menuBtn = $('#menuBtn'), links = $('#navLinks'), bar = $('#progress'), toTop = $('#toTop'), mBar = $('#mBar');
+  var nav = $('.nav'), menuBtn = $('#menuBtn'), links = $('#navLinks'), progressBar = $('#progress'), toTop = $('#toTop'), mBar = $('#mBar');
   function setMenu(open) {
     if (!links) return;
     links.classList.toggle('open', open);
@@ -326,7 +478,7 @@
   function onScroll() {
     var y = window.scrollY, h = document.documentElement.scrollHeight - window.innerHeight;
     if (nav) nav.classList.toggle('scrolled', y > 8);
-    if (bar) bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, y / h) : 0) + ')';
+    if (progressBar) progressBar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, y / h) : 0) + ')';
     if (toTop) toTop.classList.toggle('show', y > window.innerHeight * 0.9);
     if (mBar) mBar.classList.toggle('show', y > window.innerHeight * 0.6 && y < h - 120);
     ticking = false;
