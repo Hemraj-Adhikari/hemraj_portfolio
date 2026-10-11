@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hemraj Adhikari Resume</title>
+<meta name="description" content="Resume of Hemraj Adhikari, Head of IT at Route 2 Uni and full-stack developer, Kathmandu, Nepal.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: a single A4-proportioned sheet on a paper-toned desk, two-column skills block, print-ready. */
+:root {
+  --desk: #efede4; --paper: #fffef9; --ink: #1b1b1b; --ink-2: #4b4b47; --muted: #84837b;
+  --line: #e4e1d6; --olive: #4d5a2c; --olive-soft: #f4f3ea; --accent: #ef4a2b;
+  --f-sans: "Inter", ui-sans-serif, system-ui, sans-serif; --f-caps: "Cinzel", Georgia, serif; --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --desk: #121210; --paper: #1b1b18; --ink: #efede6; --ink-2: #c3c1b8; --muted: #8b897f; --line: #302f2a; --olive: #a8b77a; --olive-soft: #23241c; --accent: #ff6a4b; color-scheme: dark; } }
+:root[data-theme="dark"] { --desk: #121210; --paper: #1b1b18; --ink: #efede6; --ink-2: #c3c1b8; --muted: #8b897f; --line: #302f2a; --olive: #a8b77a; --olive-soft: #23241c; --accent: #ff6a4b; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--desk); color: var(--ink); font-family: var(--f-sans); font-size: 14px; line-height: 1.55; padding-inline: 16px; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.bar { max-width: 860px; margin: 0 auto; padding-block: 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.back { font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: var(--ink-2); display: inline-flex; gap: 8px; align-items: center; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); text-decoration: none; display: inline-flex; gap: 8px; align-items: center; cursor: pointer; color: var(--ink); }
+.btn.solid { background: var(--olive); border-color: var(--olive); color: var(--paper); }
+.sheet { max-width: 860px; margin: 0 auto 48px; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgba(40, 36, 20, .35); padding: clamp(24px, 5vw, 56px); }
+header.top { display: grid; grid-template-columns: 84px 1fr auto; gap: 22px; align-items: center; padding-bottom: 22px; border-bottom: 2px solid var(--ink); }
+header.top img { width: 84px; height: 84px; border-radius: 8px; object-fit: cover; object-position: top; background: #fff; }
+h1 { font-family: var(--f-caps); font-weight: 600; font-size: clamp(28px, 4.4vw, 40px); letter-spacing: .02em; margin: 0; line-height: 1; }
+.role { font-family: var(--f-mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--olive); font-weight: 700; margin-top: 8px; }
+.contact { list-style: none; margin: 0; padding: 0; font-size: 12px; color: var(--ink-2); display: grid; gap: 3px; text-align: right; }
+.contact a { text-decoration: none; }
+.focus { font-family: var(--f-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding-block: 12px; display: flex; gap: 10px; flex-wrap: wrap; border-bottom: 1px solid var(--line); }
+.focus span + span::before { content: "•"; margin-right: 10px; color: var(--accent); }
+section { padding-top: 24px; }
+h2 { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; margin: 0 0 12px; display: flex; gap: 10px; align-items: center; }
+h2 em { font-style: normal; color: var(--accent); }
+h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+p { margin: 0; color: var(--ink-2); max-width: 75ch; }
+.skills { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 28px; background: var(--olive-soft); border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px; }
+.skills h3 { font-family: var(--f-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; font-weight: 500; }
+.skills p { font-size: 13px; color: var(--ink); }
+.job { display: grid; gap: 6px; padding-block: 12px; border-bottom: 1px dashed var(--line); }
+.job:last-child { border-bottom: 0; }
+.job-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.job h3 { margin: 0; font-size: 15px; }
+.job h3 span { font-weight: 500; color: var(--ink-2); }
+.when { font-family: var(--f-mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
+.job ul { margin: 0; padding-left: 18px; color: var(--ink-2); display: grid; gap: 3px; }
+.proj { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+.proj div b { display: block; font-size: 13.5px; }
+.proj div span { color: var(--ink-2); font-size: 12.5px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.list { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 13px; }
+.list b { font-weight: 600; }
+.list span { color: var(--muted); font-family: var(--f-mono); font-size: 11px; margin-left: 6px; }
+@media (max-width: 640px) {
+  header.top { grid-template-columns: 64px 1fr; }
+  header.top img { width: 64px; height: 64px; }
+  .contact { grid-column: 1 / -1; text-align: left; }
+  .skills, .proj, .two { grid-template-columns: 1fr; }
+}
+@media print {
+  body { background: #fff; padding: 0; font-size: 12px; }
+  .bar { display: none; }
+  .sheet { box-shadow: none; border: 0; margin: 0; padding: 0; max-width: none; }
+  .job, .proj div { break-inside: avoid; }
+  @page { margin: 14mm; }
+}
+</style>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+</head>
+<body>
+<div class="bar">
+  <a class="back" href="index.html">← Back to portfolio</a>
+  <div class="actions">
+    <a class="btn" href="CV-Hemraj%20Adhikari.pdf" download>↓ Download CV (PDF)</a>
+    <button class="btn solid" type="button" id="printBtn">⎙ Print resume</button>
+  </div>
+</div>
+
+<main class="sheet">
+  <header class="top">
+    <img src="assets/img/hemraj-adhikari-portrait.webp" alt="Hemraj Adhikari" width="900" height="900">
+    <div>
+      <h1>Hemraj Adhikari</h1>
+      <div class="role">Head of IT · Full-Stack Developer</div>
+    </div>
+    <ul class="contact">
+      <li><a href="mailto:hemrajhadhikari@gmail.com">hemrajhadhikari@gmail.com</a></li>
+      <li>+977 986-5802093</li>
+      <li>Kathmandu, Nepal</li>
+      <li><a href="https://www.linkedin.com/in/hemrajadhikariy/">linkedin.com/in/hemrajadhikariy</a></li>
+      <li><a href="https://github.com/Hemraj-Adhikari">github.com/Hemraj-Adhikari</a></li>
+      <li><a href="https://hemrajadhikari.info.np">hemrajadhikari.info.np</a></li>
+    </ul>
+  </header>
+  <div class="focus"><span>CRM &amp; internal tools</span><span>Full-stack development</span><span>Cloud &amp; hosting</span><span>IT infrastructure</span><span>Project management</span></div>
+
+  <section>
+    <h2><em>01</em> / Professional summary</h2>
+    <p>Head of IT and full-stack developer with more than four years in IT roles and freelance web work since 2021. I build the CRMs and internal tools teams work in every day, and run the infrastructure, cloud hosting and support underneath them. Delivered 65+ websites and web apps for clients in Nepal, India, the UK, Australia and Indonesia. Seven professional certificates from Google and IBM, including IBM Full Stack Software Developer.</p>
+  </section>
+
+  <section>
+    <h2><em>02</em> / Technical skills</h2>
+    <div class="skills">
+      <div><h3>Languages &amp; frameworks</h3><p>JavaScript · TypeScript · React · Next.js · Node.js · Express · PHP · Laravel · Python · Flask · Django · FastAPI · Java · Swift</p></div>
+      <div><h3>Data</h3><p>Firebase / Firestore · MySQL · PostgreSQL · MongoDB · SQL · dashboards &amp; reporting</p></div>
+      <div><h3>Cloud &amp; servers</h3><p>AWS (EC2, S3, IAM, VPC, CloudWatch) · Azure · Linux · Docker · Kubernetes · OpenShift · CI/CD · GitHub Actions · Vercel · cPanel/WHM · Cloudflare · DNS</p></div>
+      <div><h3>Workplace IT &amp; security</h3><p>Microsoft 365 · Google Workspace · Windows Server · Active Directory · Intune · RBAC · MFA · Defender · SPF/DKIM/DMARC</p></div>
+      <div><h3>Web platforms</h3><p>WordPress · WooCommerce · Shopify · HTML / CSS</p></div>
+      <div><h3>Delivery</h3><p>Project management · Agile &amp; Scrum · CRM architecture · process automation · requirements</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><em>03</em> / Experience</h2>
+    <div class="job">
+      <div class="job-head"><h3>Head of Information Technology <span>· Route 2 Uni International Group, Kathmandu</span></h3><span class="when">May 2026 – Present</span></div>
+      <ul>
+        <li>Lead IT strategy, infrastructure and support for 50+ staff (IT Officer May–Aug 2026, Head of IT since Aug 2026).</li>
+        <li>Built the company CRM (student pipeline, partners, CAS and visa tracking) with RBAC, MFA and data-governance rules.</li>
+        <li>Shipped Hajiri (HR &amp; attendance), TaskTrack, a bulk WhatsApp and email tool for the B2B team, the Sep 2026 university directory and a mock Pre-CAS interview simulator.</li>
+        <li>Leadership dashboards cut manual reporting by about 40%; ticket resolution time down 25%.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <div class="job-head"><h3>Project Manager <span>· Dreams Care Homes, Newport, Wales (hybrid)</span></h3><span class="when">Aug 2026 – Present</span></div>
+      <ul>
+        <li>Own planning, scope and delivery of the DreamsCareHome systems project: custom CRM, backend services, API integrations and automation.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <div class="job-head"><h3>iOS Developer Intern <span>· Apple, Indonesia (remote)</span></h3><span class="when">Jun 2026 – Present</span></div>
+      <ul><li>Help develop and maintain iOS applications in Swift with a distributed team.</li></ul>
+    </div>
+    <div class="job">
+      <div class="job-head"><h3>IT Officer <span>· Citizen Infotech, Kathmandu</span></h3><span class="when">Aug 2024 – May 2026</span></div>
+      <ul>
+        <li>CRM administration for 50+ users; data-entry standards and integrity checks cut data errors by 35%.</li>
+        <li>Automated management reports, saving about 6 hours a week; client portals at 98%+ uptime.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <div class="job-head"><h3>IT Support Specialist <span>· Percoid IT Solution, Lalitpur</span></h3><span class="when">Feb 2022 – Jul 2024</span></div>
+      <ul>
+        <li>L1/L2 helpdesk for 100+ users with a 95% first-contact fix rate; Windows Server, Active Directory, Microsoft 365, Google Workspace.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <div class="job-head"><h3>Full-Stack Web Developer &amp; Hosting <span>· Freelance, remote</span></h3><span class="when">Jan 2021 – Present</span></div>
+      <ul>
+        <li>65+ websites and web apps for clients in five countries; hosting on AWS EC2, cPanel/WHM and Hostinger with sub-2-second loads.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2><em>04</em> / Selected projects</h2>
+    <div class="proj">
+      <div><b>Route 2 Uni CRM</b><span>Student pipeline CRM for 50+ staff · JavaScript, Firebase, RBAC</span></div>
+      <div><b>Dreams Care Homes CRM</b><span>Staff compliance: right to work, visas, DBS · UK</span></div>
+      <div><b>Hajiri HR &amp; Attendance</b><span>Attendance, leave and approvals with Nepali dates · Firebase</span></div>
+      <div><b>Kaam Khoj</b><span>Free job app for daily-wage workers, Nepali-first · PWA</span></div>
+      <div><b>Slotly</b><span>Booking app and web app for any business</span></div>
+      <div><b>TaskTrack</b><span>IT team work board with PDF reports · Next.js, Firebase, Vercel</span></div>
+      <div><b>Mock Pre-CAS Interview</b><span>23-question simulator with webcam and transcript · Web Speech API</span></div>
+      <div><b>KBM FM</b><span>Live radio streaming platform · PHP, MySQL, AWS</span></div>
+      <div><b>Mega Loksewa</b><span>Government exam prep and LMS · Laravel, MySQL</span></div>
+    </div>
+  </section>
+
+  <section class="two">
+    <div>
+      <h2><em>05</em> / Education</h2>
+      <ul class="list">
+        <li><b>Bachelor of Information Technology</b><br>Janamaitri Multiple Campus, Bagmati University</li>
+        <li><b>+2 Computer Science</b> <span>2022</span><br>Sodsha Devi School, Kathmandu</li>
+        <li><b>SLC</b> <span>2019</span><br>Manakamana Secondary School, Achham</li>
+      </ul>
+    </div>
+    <div>
+      <h2><em>06</em> / Certifications</h2>
+      <ul class="list">
+        <li><b>IBM Full Stack Software Developer</b> <span>Oct 2026</span></li>
+        <li><b>Google Project Management</b> <span>Sep 2026</span></li>
+        <li><b>Google AI Essentials</b> <span>Sep 2026</span></li>
+        <li><b>Google Cybersecurity</b> <span>Aug 2026</span></li>
+        <li><b>Google Advanced Data Analytics</b> <span>Aug 2026</span></li>
+        <li><b>IBM AI Developer</b> <span>Aug 2026</span></li>
+        <li><b>Google AI</b> <span>Jul 2026</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+<script>document.getElementById('printBtn').addEventListener('click',function(){window.print()});</script>
+</body>
+</html>
