@@ -312,7 +312,7 @@
   });
 
   /* ---------------- nav, progress, back to top ---------------- */
-  var nav = $('.nav'), menuBtn = $('#menuBtn'), links = $('#navLinks'), bar = $('#progress'), toTop = $('#toTop');
+  var nav = $('.nav'), menuBtn = $('#menuBtn'), links = $('#navLinks'), bar = $('#progress'), toTop = $('#toTop'), mBar = $('#mBar');
   function setMenu(open) {
     if (!links) return;
     links.classList.toggle('open', open);
@@ -328,11 +328,13 @@
     if (nav) nav.classList.toggle('scrolled', y > 8);
     if (bar) bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, y / h) : 0) + ')';
     if (toTop) toTop.classList.toggle('show', y > window.innerHeight * 0.9);
+    if (mBar) mBar.classList.toggle('show', y > window.innerHeight * 0.6 && y < h - 120);
     ticking = false;
   }
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
   if (toTop) toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  var mTop = $('.m-top'); if (mTop) mTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
   /* ---------------- toast + copy ---------------- */
   var toastEl = $('#toast'), toastT;
