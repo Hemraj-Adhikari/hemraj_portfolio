@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap">
-<link rel="stylesheet" href="assets/css/portfolio.css?v=2">
+<link rel="stylesheet" href="assets/css/portfolio.css?v=4">
 </head>
 <body class="page page-contact">
 <a class="skip" href="#main">Skip to content</a>
@@ -38,6 +38,7 @@
         <li><a href="credentials.html">Learning</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="resume.html">Resume</a></li>
+        <li class="nav-mobile-only"><a href="CV-Hemraj%20Adhikari.pdf">Download CV</a></li>
       </ul>
       <button class="icon-btn theme-toggle" id="themeBtn" type="button" aria-label="Switch light or dark theme">
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -48,6 +49,7 @@
       </button>
     </div>
   </div>
+  <span class="progress" id="progress" aria-hidden="true"></span>
 </header>
 
 <main id="main">
@@ -60,7 +62,7 @@
       <p class="lede">A role, a project or a question about your systems. Send a message and I will reply within a day.</p>
       
     </div>
-    <aside class="hero-aside"><span class="eyebrow">Reach me</span><div class="aside-stats"><div><b>&lt;24<em>h</em></b><span>reply time</span></div><div><b>+5:45</b><span>Nepal time, UTC</span></div><div><b>Email</b><span>best first step</span></div><div><b>WhatsApp</b><span>fastest in office hours</span></div></div><p class="aside-note"><span class="status"><i></i>Open to remote roles</span></p></aside>
+    <div class="hero-visual"><figure class="hero-photo"><img src="assets/img/me/at-desk.webp" alt="Hemraj smiling at his desk" fetchpriority="high"><figcaption>Say hello</figcaption></figure><aside class="hero-aside"><span class="eyebrow">Reach me</span><div class="aside-stats"><div><b>&lt;24<em>h</em></b><span>reply time</span></div><div><b>+5:45</b><span>Nepal time, UTC</span></div><div><b>Email</b><span>best first step</span></div><div><b>WhatsApp</b><span>fastest in office hours</span></div></div><p class="aside-note"><span class="status"><i></i>Open to remote roles</span></p></aside></div>
   </div>
 </section>
 <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Full-time roles</span><span>CRM projects</span><span>Web apps</span><span>Cloud &amp; DevOps</span><span>IT support</span><span>Consulting</span><span>Full-time roles</span><span>CRM projects</span><span>Web apps</span><span>Cloud &amp; DevOps</span><span>IT support</span><span>Consulting</span></div></div>
@@ -68,11 +70,12 @@
 <section class="section" id="contact">
   <div class="wrap contact">
     <div class="contact-copy">
+      <div class="contact-me"><img src="assets/img/me/headshot.webp" alt="Hemraj Adhikari" width="58" height="58" loading="lazy"><div><b>Hemraj Adhikari</b><span><i></i>Usually replies within a day</span></div></div>
       <span class="eyebrow">Get in touch</span>
       <h2>Let's work<br><span class="accent">together</span></h2>
       <p>A role, a project or a question about your IT setup. Send me a message and I'll reply within a day. I'm based in Kathmandu (UTC+5:45).</p>
       <div class="contact-lines">
-        <a class="c-line" href="mailto:hemrajhadhikari@gmail.com"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span>hemrajhadhikari@gmail.com</span></a>
+        <a class="c-line" href="mailto:hemrajhadhikari@gmail.com" data-copy="hemrajhadhikari@gmail.com" title="Click to copy"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span>hemrajhadhikari@gmail.com</span></a>
         <a class="c-line" href="https://wa.me/9779865802093" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span>+977 986-5802093 · WhatsApp</span></a>
         <div class="c-line"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span>Kathmandu, Nepal</span></div>
       </div>
@@ -87,12 +90,12 @@
     <form class="form" id="contactForm" action="https://formspree.io/f/xkgdznrn" method="POST" novalidate>
       <h3>Send a message</h3>
       <div class="row">
-        <div class="field"><label for="f-name">Your name <i>*</i></label><input id="f-name" name="name" required autocomplete="name"></div>
-        <div class="field"><label for="f-email">Your email <i>*</i></label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="f-name">Your name <i>*</i></label><input id="f-name" aria-describedby="f-name-err" name="name" required autocomplete="name"><span class="err" id="f-name-err">Please enter your name.</span></div>
+        <div class="field"><label for="f-email">Your email <i>*</i></label><input id="f-email" aria-describedby="f-email-err" name="email" type="email" required autocomplete="email"><span class="err" id="f-email-err">Please enter a valid email address.</span></div>
       </div>
       <div class="field">
         <label for="f-topic">Project type <i>*</i></label>
-        <select id="f-topic" name="topic" required>
+        <select id="f-topic" aria-describedby="f-topic-err" name="topic" required>
           <option value="">Select an option</option>
           <option>A CRM or internal tool</option>
           <option>A website or web app</option>
@@ -102,11 +105,11 @@
           <option>Data and reporting</option>
           <option>A full-time role</option>
           <option>Something else</option>
-        </select>
+        </select><span class="err" id="f-topic-err">Please choose a project type.</span>
       </div>
       <div class="field">
         <label for="f-msg">Your message <i>*</i></label>
-        <textarea id="f-msg" name="message" maxlength="2000" required></textarea>
+        <textarea id="f-msg" aria-describedby="f-msg-err" name="message" maxlength="2000" required></textarea><span class="err" id="f-msg-err">Please write a short message.</span>
         <span class="count" id="msgCount">0/2000</span>
       </div>
       <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -125,26 +128,35 @@
 
 <footer class="footer">
   <div class="wrap">
-    <div class="top">
-      <div>
+    <div class="foot-cta">
+      <p class="eyebrow">Have a project or a role in mind?</p>
+      <a class="foot-big" href="contact.html">Let&rsquo;s work together <span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M5 4h7v7"/></svg></span></a>
+    </div>
+    <div class="foot-grid">
+      <div class="foot-brand">
         <h4>Hemraj Adhikari</h4>
-        <p class="role">Head of IT · Full-Stack Developer</p>
-        <p class="loc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Kathmandu, Nepal</p>
-      </div>
-      <div class="socials">
+        <p class="role">Full-Stack Developer · Head of IT</p>
+        <p class="loc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Kathmandu, Nepal · UTC+5:45</p>
+        <div class="socials">
         <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.300 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></a>
         <a href="https://www.linkedin.com/in/hemrajadhikariy/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.5h-3V20h3V8.5zM5 3.5A1.75 1.75 0 1 0 5 7a1.75 1.75 0 0 0 0-3.5zM20.5 13.3c0-3-1.6-4.9-4.2-4.9-1.6 0-2.6.9-3 1.6V8.5h-3V20h3v-6c0-1.5.6-2.7 2.1-2.7s1.9 1.2 1.9 2.8V20h3.2v-6.7z"/></svg></a>
         <a href="https://wa.me/9779865802093" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
         <a href="mailto:hemrajhadhikari@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
       </div>
+      </div>
+      <nav class="foot-col" aria-label="Pages"><h5>Pages</h5><a href="about.html">About</a><a href="services.html">Services</a><a href="projects.html">Work</a><a href="experience.html">Experience</a></nav>
+      <nav class="foot-col" aria-label="More pages"><h5>More</h5><a href="education.html">Education</a><a href="credentials.html">Certificates</a><a href="resume.html">Resume</a><a href="blog.html">Blog</a></nav>
+      <div class="foot-col"><h5>Contact</h5><button class="copy-btn" type="button" data-copy="hemrajhadhikari@gmail.com">hemrajhadhikari@gmail.com <span>Copy</span></button><a href="https://wa.me/9779865802093" target="_blank" rel="noopener">WhatsApp +977 986-5802093</a><a href="CV-Hemraj%20Adhikari.pdf">Download CV ↓</a></div>
     </div>
     <div class="bottom">
       <span>© <span id="yr">2026</span> Hemraj Adhikari. All rights reserved.</span>
-      <span class="links"><a href="blog.html">Blog</a><a href="resume.html">Resume</a><a href="CV-Hemraj%20Adhikari.pdf">Download CV</a></span>
+      <span>Designed &amp; built in Kathmandu</span>
     </div>
   </div>
 </footer>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 13V3M4 7l4-4 4 4"/></svg></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/js/portfolio.js?v=2"></script>
+<script src="assets/js/portfolio.js?v=4"></script>
 </body>
 </html>

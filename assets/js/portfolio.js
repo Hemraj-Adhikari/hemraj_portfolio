@@ -273,10 +273,11 @@
   function closeLb() { if (lb) { lb.remove(); lb = null; document.removeEventListener('keydown', onKey); } }
   function onKey(e) { if (e.key === 'Escape') closeLb(); }
   document.addEventListener('click', function (e) {
-    var t = e.target.closest && e.target.closest('.cert-thumb, .cert-open');
+    var t = e.target.closest && e.target.closest('.cert-thumb, .cert-open, .g-item[data-full]');
     if (!t) return;
     var full, title, verify;
-    if (t.classList.contains('cert-open')) { var c = CERTS[+t.getAttribute('data-i')]; full = 'assets/img/' + c.img + '.webp'; title = c.t; verify = c.u; }
+    if (t.classList.contains('g-item')) { full = t.getAttribute('data-full'); title = t.querySelector('figcaption b').textContent + ' · ' + t.querySelector('figcaption span').textContent; verify = ''; }
+    else if (t.classList.contains('cert-open')) { var c = CERTS[+t.getAttribute('data-i')]; full = 'assets/img/' + c.img + '.webp'; title = c.t; verify = c.u; }
     else { full = t.getAttribute('data-full'); title = t.getAttribute('data-title'); verify = t.getAttribute('data-verify'); }
     lb = document.createElement('div');
     lb.className = 'lightbox'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-label', title);
@@ -305,14 +306,80 @@
     try { localStorage.setItem('theme', next); } catch (e) {}
   });
 
-  /* ---------------- nav ---------------- */
-  var nav = $('.nav'), menuBtn = $('#menuBtn'), links = $('#navLinks');
-  if (menuBtn) menuBtn.addEventListener('click', function () {
-    var open = links.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', String(open));
+  /* ---------------- nav, progress, back to top ---------------- */
+  var nav = $('.nav'), menuBtn = $('#menuBtn'), links = $('#navLinks'), bar = $('#progress'), toTop = $('#toTop');
+  function setMenu(open) {
+    if (!links) return;
+    links.classList.toggle('open', open);
+    document.body.classList.toggle('lock', open);
+    if (menuBtn) { menuBtn.setAttribute('aria-expanded', String(open)); menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); }
+  }
+  if (menuBtn) menuBtn.addEventListener('click', function () { setMenu(!links.classList.contains('open')); });
+  if (links) links.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  var ticking = false;
+  function onScroll() {
+    var y = window.scrollY, h = document.documentElement.scrollHeight - window.innerHeight;
+    if (nav) nav.classList.toggle('scrolled', y > 8);
+    if (bar) bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, y / h) : 0) + ')';
+    if (toTop) toTop.classList.toggle('show', y > window.innerHeight * 0.9);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+  if (toTop) toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  /* ---------------- toast + copy ---------------- */
+  var toastEl = $('#toast'), toastT;
+  function toast(msg) {
+    if (!toastEl) return;
+    toastEl.textContent = msg; toastEl.classList.add('show');
+    clearTimeout(toastT); toastT = setTimeout(function () { toastEl.classList.remove('show'); }, 2200);
+  }
+  document.addEventListener('click', function (e) {
+    var c = e.target.closest && e.target.closest('[data-copy]');
+    if (!c) return;
+    var text = c.getAttribute('data-copy');
+    if (c.tagName === 'A') e.preventDefault();
+    var done = function () { toast('Email copied: ' + text); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () { toast(text); });
+    else toast(text);
   });
-  if (links) links.addEventListener('click', function (e) { if (e.target.tagName === 'A') { links.classList.remove('open'); menuBtn && menuBtn.setAttribute('aria-expanded', 'false'); } });
-  window.addEventListener('scroll', function () { nav && nav.classList.toggle('scrolled', window.scrollY > 8); }, { passive: true });
+
+  /* gallery video play / pause */
+  $$('.g-video').forEach(function (fig) {
+    var v = $('video', fig), b = $('.g-sound', fig);
+    if (!v || !b) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); b.textContent = '▶'; b.setAttribute('aria-label', 'Play video'); }
+    b.addEventListener('click', function () {
+      if (v.paused) { v.play(); b.textContent = '❚❚'; b.setAttribute('aria-label', 'Pause video'); }
+      else { v.pause(); b.textContent = '▶'; b.setAttribute('aria-label', 'Play video'); }
+    });
+  });
+
+  /* ---------------- spotlight on project cards ---------------- */
+  document.addEventListener('pointermove', function (e) {
+    var card = e.target.closest && e.target.closest('.work-card');
+    if (!card) return;
+    var r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+
+  /* ---------------- reveal on scroll (only for things below the fold) ---------------- */
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var revealEls = $$('.section-head, .work-card, .tl-item, .edu-card, .l-card, .fact, .principle, .svc, .step, .skill, .stat, .split-card, .cert-thumb, .faq details, .contact-copy, .form, .learn-head, .about-photo');
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.remove('pre'); ro.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(function (el, i) {
+      if (el.getBoundingClientRect().top > window.innerHeight) {
+        el.classList.add('reveal', 'pre');
+        el.style.transitionDelay = ((i % 3) * 70) + 'ms';
+        ro.observe(el);
+      }
+    });
+  }
 
   /* active menu item = current page */
   var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
@@ -332,18 +399,35 @@
 
   /* ---------------- contact form (Formspree) ---------------- */
   var form = $('#contactForm'), msg = $('#formMsg'), ta = $('#f-msg'), cnt = $('#msgCount');
+  function check(f) {
+    var ok = !!f.value.trim() && (f.type !== 'email' || /^\S+@\S+\.\S+$/.test(f.value.trim()));
+    var field = f.closest('.field');
+    if (field) { field.classList.toggle('invalid', !ok); field.classList.toggle('valid', ok); }
+    f.setAttribute('aria-invalid', String(!ok));
+    return ok;
+  }
   if (ta && cnt) ta.addEventListener('input', function () { cnt.textContent = ta.value.length + '/2000'; });
-  if (form) form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var bad = $$('[required]', form).filter(function (f) { return !f.value.trim() || (f.type === 'email' && !/^\S+@\S+\.\S+$/.test(f.value)); });
-    if (bad.length) { msg.className = 'form-msg err'; msg.textContent = 'Please fill in your name, a valid email, the project type and a message.'; bad[0].focus(); return; }
-    var btn = $('button[type=submit]', form); btn.disabled = true;
-    msg.className = 'form-msg'; msg.textContent = 'Sending…';
-    fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-      .then(function (r) { if (!r.ok) throw new Error(); form.reset(); if (cnt) cnt.textContent = '0/2000'; msg.className = 'form-msg ok'; msg.textContent = 'Thanks, your message was sent. I will reply within a day.'; })
-      .catch(function () { msg.className = 'form-msg err'; msg.textContent = 'The message could not be sent. Please email hemrajhadhikari@gmail.com directly.'; })
-      .then(function () { btn.disabled = false; });
-  });
+  if (form) {
+    $$('[required]', form).forEach(function (f) {
+      f.addEventListener('blur', function () { if (f.value) check(f); });
+      f.addEventListener('input', function () { if (f.closest('.field').classList.contains('invalid')) check(f); });
+      f.addEventListener('change', function () { check(f); });
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var bad = $$('[required]', form).filter(function (f) { return !check(f); });
+      if (bad.length) { msg.className = 'form-msg err'; msg.textContent = 'Please fix the highlighted fields.'; bad[0].focus(); return; }
+      var btn = $('button[type=submit]', form); btn.disabled = true;
+      msg.className = 'form-msg'; msg.textContent = 'Sending…';
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (r) {
+          if (!r.ok) throw new Error();
+          form.innerHTML = '<div class="form-done"><span class="tick"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5 9-10"/></svg></span><h3>Message sent</h3><p>Thank you. I will reply within a day, usually sooner.</p><a class="btn btn--ghost btn--pill" href="index.html">Back to home</a></div>';
+          toast('Message sent');
+        })
+        .catch(function () { msg.className = 'form-msg err'; msg.textContent = 'The message could not be sent. Please email hemrajhadhikari@gmail.com directly.'; btn.disabled = false; });
+    });
+  }
 
   var yr = $('#yr'); if (yr) yr.textContent = new Date().getFullYear();
 })();
