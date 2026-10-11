@@ -83,12 +83,12 @@
 
   var CERTS = [
     { t: 'IBM Full Stack Software Developer', who: 'IBM · Coursera', when: 'Oct 2026', n: '15 courses', d: 'React, Node.js and Express, Python and Django, Git, Docker, Kubernetes and OpenShift, microservices and serverless, with a full-stack capstone deployed to the cloud.', foot: 'View certificate', c: 'l-navy l-wide', ill: 'stack', img: 'cert-ibm-full-stack-developer', u: '' },
-    { t: 'Google Project Management', who: 'Google · Coursera', when: 'Sep 2026', n: '7 courses', d: 'Initiating, planning and running traditional and Agile projects.', foot: 'Plans that ship.', c: 'l-red', ill: 'flag', img: 'cert-google-project-management', u: 'https://coursera.org/verify/professional-cert/FNO8CY5VUBI1' },
-    { t: 'Google Advanced Data Analytics', who: 'Google · Coursera', when: 'Aug 2026', n: '7 courses', d: 'Statistics, regression and machine learning in Python, with a capstone.', foot: 'Decisions from data.', c: 'l-blue', ill: 'chart', img: 'cert-google-advanced-data-analytics', u: 'https://coursera.org/verify/professional-cert/EFS3MQDVCNMY' },
-    { t: 'Google Cybersecurity', who: 'Google · Coursera', when: 'Aug 2026', n: '9 courses', d: 'Security frameworks, networks, Linux, SQL, SIEM tools and Python automation.', foot: 'Protect what you build.', c: 'l-green', ill: 'shield', img: 'cert-google-cybersecurity', u: 'https://coursera.org/verify/professional-cert/EV6A6CZUO3XZ' },
-    { t: 'Google AI', who: 'Google · Coursera', when: 'Jul 2026', n: '7 courses', d: 'AI for research, writing, data analysis and building small apps.', foot: 'Learning today, building tomorrow.', c: 'l-black', ill: 'spark', img: 'cert-google-ai', u: 'https://coursera.org/verify/professional-cert/26CKVVWU0EKY' },
-    { t: 'IBM AI Developer', who: 'IBM · Coursera', when: 'Aug 2026', n: '10 courses', d: 'Web development, Python and Flask, and generative AI applications.', foot: 'From ideas to working apps.', c: 'l-pink', ill: 'bulb', img: 'cert-ibm-ai-developer', u: 'https://coursera.org/verify/professional-cert/WYG3ENN67WGZ' },
-    { t: 'Google AI Essentials', who: 'Google · Coursera', when: 'Sep 2026', n: '5 courses', d: 'Using AI tools responsibly to get more done at work.', foot: 'Working smarter with AI.', c: 'l-yellow', ill: 'pen', img: 'cert-google-ai-essentials', u: 'https://coursera.org/verify/specialization/RD5VSI3KEUBL' }
+    { t: 'Google Project Management', who: 'Google · Coursera', when: 'Sep 2026', n: '7 courses', d: 'Initiating, planning and running traditional and Agile projects.', foot: 'Verify on Coursera', c: 'l-red', ill: 'flag', img: 'cert-google-project-management', u: 'https://coursera.org/verify/professional-cert/FNO8CY5VUBI1' },
+    { t: 'Google Advanced Data Analytics', who: 'Google · Coursera', when: 'Aug 2026', n: '7 courses', d: 'Statistics, regression and machine learning in Python, with a capstone.', foot: 'Verify on Coursera', c: 'l-blue', ill: 'chart', img: 'cert-google-advanced-data-analytics', u: 'https://coursera.org/verify/professional-cert/EFS3MQDVCNMY' },
+    { t: 'Google Cybersecurity', who: 'Google · Coursera', when: 'Aug 2026', n: '9 courses', d: 'Security frameworks, networks, Linux, SQL, SIEM tools and Python automation.', foot: 'Verify on Coursera', c: 'l-green', ill: 'shield', img: 'cert-google-cybersecurity', u: 'https://coursera.org/verify/professional-cert/EV6A6CZUO3XZ' },
+    { t: 'Google AI', who: 'Google · Coursera', when: 'Jul 2026', n: '7 courses', d: 'AI for research, writing, data analysis and building small apps.', foot: 'Verify on Coursera', c: 'l-black', ill: 'spark', img: 'cert-google-ai', u: 'https://coursera.org/verify/professional-cert/26CKVVWU0EKY' },
+    { t: 'IBM AI Developer', who: 'IBM · Coursera', when: 'Aug 2026', n: '10 courses', d: 'Web development, Python and Flask, and generative AI applications.', foot: 'Verify on Coursera', c: 'l-pink', ill: 'bulb', img: 'cert-ibm-ai-developer', u: 'https://coursera.org/verify/professional-cert/WYG3ENN67WGZ' },
+    { t: 'Google AI Essentials', who: 'Google · Coursera', when: 'Sep 2026', n: '5 courses', d: 'Using AI tools responsibly to get more done at work.', foot: 'Verify on Coursera', c: 'l-yellow', ill: 'pen', img: 'cert-google-ai-essentials', u: 'https://coursera.org/verify/specialization/RD5VSI3KEUBL' }
   ];
 
   /* Individual course certificates (Google, on Coursera). code = Coursera verify code */
@@ -431,6 +431,7 @@
     drawQs(''); input.focus();
   }
   document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-search]')) openQs(); });
+  if (!/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)) $$('.search-btn kbd').forEach(function (k) { k.textContent = 'Ctrl K'; });
 
   /* one keyboard handler for every overlay */
   document.addEventListener('keydown', function (e) {

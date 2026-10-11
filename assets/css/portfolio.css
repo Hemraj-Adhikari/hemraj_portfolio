@@ -932,3 +932,32 @@ body.lock { overflow: hidden; }
 .qs-tip { margin: 0; padding: 10px 16px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); }
 .qs-tip kbd { font-family: var(--f-mono); font-size: 10.5px; border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; background: var(--bg-soft); }
 @media (max-width: 640px) { .qs { padding-top: 10px; } .qs-box { max-height: 86dvh; } .qs-tip { display: none; } .qs-list li[data-qi] { grid-template-columns: 1fr; } .qs-k { grid-row: auto; } }
+
+/* ================= CLEANER PAGE HEADERS ================= */
+.page-hero { padding-block: clamp(40px, 6vw, 72px); border-bottom: 1px solid var(--line); }
+.page-hero::before { display: none; }
+.page-hero .wrap { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); align-items: center; gap: clamp(28px, 5vw, 72px); }
+.page-hero h1 { font-size: clamp(46px, 6.4vw, 84px); letter-spacing: -.045em; line-height: .95; margin: 18px 0 18px; }
+.page-hero .lede { font-size: clamp(17px, 1.5vw, 19px); max-width: 50ch; }
+.hero-facts { list-style: none; margin: 28px 0 0; padding: 22px 0 0; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 18px 40px; }
+.hero-facts li { display: grid; gap: 2px; }
+.hero-facts b { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -.03em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.hero-facts span { font-size: 13.5px; color: var(--muted); }
+.page-hero .actions { margin-top: 26px; }
+.hero-photo { width: min(100%, 380px); justify-self: end; transform: none !important; border-radius: 22px; box-shadow: 0 30px 60px -28px rgba(20, 20, 20, .35); }
+.hero-photo:hover { transform: none; }
+.hero-photo img { image-rendering: auto; }
+.hero-photo figcaption { top: auto; bottom: 14px; left: 14px; right: auto; }
+@media (max-width: 900px) {
+  .page-hero .wrap { grid-template-columns: 1fr; }
+  .hero-photo { justify-self: start; width: 100%; max-width: 420px; aspect-ratio: 5 / 4; }
+}
+@media (max-width: 760px) {
+  .page-hero { padding-block: 28px 36px; }
+  .page-hero h1 { font-size: clamp(40px, 12vw, 56px); margin: 12px 0 12px; }
+  .hero-facts { gap: 14px 28px; margin-top: 22px; padding-top: 18px; }
+  .hero-photo { max-width: none; aspect-ratio: 4 / 3; }
+}
+/* calmer details */
+.about-photo { box-shadow: 0 30px 60px -30px rgba(20, 20, 20, .35); }
+.l-card:hover { transform: translateY(-4px); }
