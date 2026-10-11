@@ -12,12 +12,12 @@
   /* ---------------- data ---------------- */
   var PROJECTS = [
     { title: 'Route 2 Uni CRM', type: 'system', cat: 'CRM / Education consultancy', live: true,
-      desc: 'One CRM for the whole student journey, from enquiry to offer, Pre-CAS, CAS and visa. Staff and partners each get their own dashboard; used daily by 50+ people.',
-      stack: 'JavaScript · Firebase · Firestore · RBAC · MFA', url: 'https://hemraj-adhikari.github.io/crmportal/',
+      desc: 'One CRM for the whole student journey, from enquiry to offer, Pre-CAS, CAS and visa, used by 50+ staff and 30+ partners. Now in a 10-phase rebuild onto Next.js, NestJS, PostgreSQL, Prisma, Redis and BullMQ on AWS.',
+      stack: 'Next.js · NestJS · PostgreSQL · Prisma · Redis · AWS', url: 'https://www.route2unigroup.com/',
       mock: 'kanban', color: '#17393b', host: 'route2uni-crm', name: 'ROUTE 2 UNI', cols: ['Offer', 'Pre-CAS', 'CAS', 'Visa'] },
     { title: 'Dreams Care Homes CRM', type: 'system', cat: 'CRM / UK health & social care', live: false,
-      desc: 'Staff compliance CRM for a care-home operator in Wales: right-to-work checks, visa sponsorship and DBS expiry tracking, documents and an audit log. I am the project manager.',
-      stack: 'Node.js · REST APIs · Automation · Audit log', url: '',
+      desc: 'CRM and staff-compliance portal for a UK domiciliary care agency: right-to-work checks, visa sponsorship and DBS expiry tracking, documents and an audit log. I lead the roadmap and the build.',
+      stack: 'Next.js 14 · TypeScript · Tailwind · Firebase', url: '',
       mock: 'compliance', color: '#1f5a34', host: 'dreamscarehomes', name: 'Dreams Care' },
     { title: 'Hajiri HR & Attendance', type: 'system', cat: 'HRM / Route 2 Uni', live: false,
       desc: 'HR and attendance system for Route 2 Uni: daily hajiri, approvals, leave, holidays and notices, with team and department reports. Dates show in Bikram Sambat and AD.',
@@ -37,23 +37,23 @@
       mock: 'broadcast', color: '#1f9d55', host: 'b2b-messaging', name: 'B2B Broadcast' },
     { title: 'TaskTrack', type: 'system', cat: 'Internal tool / Operations', live: true,
       desc: 'Daily work board for the IT team, with history, one-click PDF reports, an IT asset register and leave in one app.',
-      stack: 'Next.js · Firebase · Vercel · PDF export', url: 'https://trackrecorde.vercel.app/',
+      stack: 'Next.js · Firebase · Vercel · PDF export', url: '',
       mock: 'kanban', color: '#ef4a2b', host: 'trackrecorde.vercel.app', name: 'TaskTrack', cols: ['To do', 'Doing', 'Review', 'Done'] },
     { title: 'Mock Pre-CAS Interview', type: 'system', cat: 'Web app / EdTech', live: true,
       desc: 'Practice for the UK Pre-CAS interview in the browser: 23 timed questions, webcam recording, live transcript and a PDF report for counsellors.',
-      stack: 'JavaScript · Web Speech API · MediaRecorder', url: 'https://mock-pre-cas-module.vercel.app/interview/',
+      stack: 'JavaScript · Web Speech API · MediaRecorder', url: '',
       mock: 'interview', color: '#5b6cff', host: 'mock-pre-cas-module.vercel.app' },
     { title: 'UK University Intake Directory', type: 'system', cat: 'Web app / Data', live: true,
       desc: 'Searchable list of partner UK universities for the September 2026 intake, with tuition, entry criteria and deadline flags. Used by counsellors on calls.',
-      stack: 'HTML · CSS · JavaScript · GitHub Pages', url: 'https://hemraj-adhikari.github.io/Info-route2uni/',
+      stack: 'HTML · CSS · JavaScript · GitHub Pages', url: '',
       mock: 'table', color: '#7a1f3d', host: 'info-route2uni', rows: [['University', 'UG / yr', 'PG / yr', 'Deadline'], 4] },
     { title: 'KBM FM', type: 'web', cat: 'Media / Radio streaming', live: true, dark: true,
       desc: 'Live radio streaming platform with programme schedules, hosted on AWS.',
-      stack: 'PHP · MySQL · AWS', url: 'https://kbmfm.com/',
+      stack: 'PHP · MySQL · AWS', url: '',
       mock: 'radio', color: '#d6262f', host: 'kbmfm.com', name: 'KBM FM', headline: 'Live radio, 24 hours a day' },
     { title: 'Mega Loksewa', type: 'web', cat: 'Education / Exam prep & LMS', live: true,
       desc: 'Government exam-prep platform with mock tests, live classes and a learning management system.',
-      stack: 'Laravel · MySQL', url: 'https://www.megaloksewa.com/',
+      stack: 'Laravel · MySQL', url: '',
       mock: 'quiz', color: '#1f6fd6', host: 'megaloksewa.com', name: 'Mega Loksewa' },
     { title: 'Sanchar Sanket', type: 'web', cat: 'Media / News portal', live: true,
       desc: 'News and media portal with categories, fast mobile reading and managed hosting.',
@@ -61,7 +61,7 @@
       mock: 'news', color: '#b3122b', host: 'sancharsanket.com', name: 'Sanchar Sanket' },
     { title: 'Sargam Sangeet Vidyalay', type: 'web', cat: 'Education / Music school, Pune', live: true, dark: true,
       desc: 'Website for a music school in Pune, India, built through an agency partner.',
-      stack: 'WordPress', url: 'https://www.sargamsangeetvidyalay.in/',
+      stack: 'WordPress', url: '',
       mock: 'brand', color: '#8a3b12', host: 'sargamsangeetvidyalay.in', name: 'Sargam', headline: 'Learn Indian classical music' },
     { title: 'Aaradhana Shrestha', type: 'web', cat: 'Personal brand / Corporate trainer', live: true, dark: true,
       desc: 'Personal website for a soft-skills and corporate trainer in Nepal.',
@@ -75,21 +75,57 @@
     { t: 'Kamal Bazar Municipality', s: 'Public information, incl. Ward 7 · WordPress' },
     { t: 'Manakamana School', s: 'School website and IT support · WordPress' },
     { t: 'Milind Kulkarni', s: 'Harmonium artist, India · WordPress' },
-    { t: 'Aniruddha Deshpande', s: 'Tabla artist · YouTube & Facebook setup', u: 'https://www.youtube.com/channel/UCA8gaBX51UhV4CHU0oriJCA' },
+    { t: 'Aniruddha Deshpande', s: 'Tabla artist · YouTube & Facebook setup' },
     { t: 'Café website, Australia', s: 'Menu and ordering information · WordPress' },
     { t: 'Shopify stores, Indonesia', s: 'Two e-commerce builds · Shopify' },
-    { t: 'Tespaxi (agency partner)', s: 'Delivery partner for clients in India' },
-    { t: 'GitHub', s: 'Code and smaller projects', u: 'https://github.com/Hemraj-Adhikari' }
+    { t: 'Tespaxi (agency partner)', s: 'Delivery partner for clients in India' }
   ];
 
   var CERTS = [
     { t: 'IBM Full Stack Software Developer', who: 'IBM · Coursera', when: 'Oct 2026', n: '15 courses', d: 'React, Node.js and Express, Python and Django, Git, Docker, Kubernetes and OpenShift, microservices and serverless, with a full-stack capstone deployed to the cloud.', foot: 'View certificate', c: 'l-navy l-wide', ill: 'stack', img: 'cert-ibm-full-stack-developer', u: '' },
-    { t: 'Google Cybersecurity', who: 'Google · Coursera', when: 'Aug 2026', n: '9 courses', d: 'Security frameworks, networks, Linux, SQL, SIEM tools and Python automation.', foot: 'Protect what you build.', c: 'l-green', ill: 'shield', img: 'cert-google-cybersecurity', u: 'https://coursera.org/verify/professional-cert/WYG3ENN67WGZ' },
-    { t: 'IBM AI Developer', who: 'IBM · Coursera', when: 'Aug 2026', n: '10 courses', d: 'Web development, Python and Flask, and generative AI applications.', foot: 'From ideas to working apps.', c: 'l-blue', ill: 'bulb', img: 'cert-ibm-ai-developer', u: 'https://coursera.org/verify/professional-cert/FNO8CY5VUBI1' },
-    { t: 'Google Project Management', who: 'Google · Coursera', when: 'Sep 2026', n: '7 courses', d: 'Initiating, planning and running traditional and Agile projects.', foot: 'Plans that ship.', c: 'l-red', ill: 'flag', img: 'cert-google-project-management', u: 'https://coursera.org/verify/professional-cert/EV6A6CZUO3XZ' },
-    { t: 'Google Advanced Data Analytics', who: 'Google · Coursera', when: 'Aug 2026', n: '7 courses', d: 'Statistics, regression and machine learning in Python, with a capstone.', foot: 'Decisions from data.', c: 'l-pink', ill: 'chart', img: 'cert-google-advanced-data-analytics', u: 'https://coursera.org/verify/professional-cert/26CKVVWU0EKY' },
-    { t: 'Google AI', who: 'Google · Coursera', when: 'Jul 2026', n: '7 courses', d: 'AI for research, writing, data analysis and building small apps.', foot: 'Learning today, building tomorrow.', c: 'l-black', ill: 'spark', img: 'cert-google-ai', u: 'https://coursera.org/verify/professional-cert/EFS3MQDVCNMY' },
+    { t: 'Google Project Management', who: 'Google · Coursera', when: 'Sep 2026', n: '7 courses', d: 'Initiating, planning and running traditional and Agile projects.', foot: 'Plans that ship.', c: 'l-red', ill: 'flag', img: 'cert-google-project-management', u: 'https://coursera.org/verify/professional-cert/FNO8CY5VUBI1' },
+    { t: 'Google Advanced Data Analytics', who: 'Google · Coursera', when: 'Aug 2026', n: '7 courses', d: 'Statistics, regression and machine learning in Python, with a capstone.', foot: 'Decisions from data.', c: 'l-blue', ill: 'chart', img: 'cert-google-advanced-data-analytics', u: 'https://coursera.org/verify/professional-cert/EFS3MQDVCNMY' },
+    { t: 'Google Cybersecurity', who: 'Google · Coursera', when: 'Aug 2026', n: '9 courses', d: 'Security frameworks, networks, Linux, SQL, SIEM tools and Python automation.', foot: 'Protect what you build.', c: 'l-green', ill: 'shield', img: 'cert-google-cybersecurity', u: 'https://coursera.org/verify/professional-cert/EV6A6CZUO3XZ' },
+    { t: 'Google AI', who: 'Google · Coursera', when: 'Jul 2026', n: '7 courses', d: 'AI for research, writing, data analysis and building small apps.', foot: 'Learning today, building tomorrow.', c: 'l-black', ill: 'spark', img: 'cert-google-ai', u: 'https://coursera.org/verify/professional-cert/26CKVVWU0EKY' },
+    { t: 'IBM AI Developer', who: 'IBM · Coursera', when: 'Aug 2026', n: '10 courses', d: 'Web development, Python and Flask, and generative AI applications.', foot: 'From ideas to working apps.', c: 'l-pink', ill: 'bulb', img: 'cert-ibm-ai-developer', u: 'https://coursera.org/verify/professional-cert/WYG3ENN67WGZ' },
     { t: 'Google AI Essentials', who: 'Google · Coursera', when: 'Sep 2026', n: '5 courses', d: 'Using AI tools responsibly to get more done at work.', foot: 'Working smarter with AI.', c: 'l-yellow', ill: 'pen', img: 'cert-google-ai-essentials', u: 'https://coursera.org/verify/specialization/RD5VSI3KEUBL' }
+  ];
+
+  /* Individual course certificates (Google, on Coursera). code = Coursera verify code */
+  var COURSES = [
+    ['Discover the Art of Prompting', 'Google AI Essentials', 'Sep 20, 2026', '0CEGZOFPX8WV'],
+    ['Use AI Responsibly', 'Google AI Essentials', 'Sep 20, 2026', 'MN1K79DD6RPD'],
+    ['Stay Ahead of the AI Curve', 'Google AI Essentials', 'Sep 20, 2026', '7N31UGMJ2KVF'],
+    ['Maximize Productivity With AI Tools', 'Google AI Essentials', 'Sep 18, 2026', '18BEC6JHCX7K'],
+    ['Agile Project Management', 'Google Project Management', 'Sep 6, 2026', '1RMB1D3E7013'],
+    ['Project Execution: Running the Project', 'Google Project Management', 'Sep 2, 2026', 'O5SMPLB3O5XN'],
+    ['Foundations of Business Intelligence', 'Google Business Intelligence', 'Aug 29, 2026', 'YA0PNE20TZPH'],
+    ['Using Python to Interact with the Operating System', 'Google IT Automation', 'Aug 27, 2026', 'YBJETE60VOYT'],
+    ['Project Planning: Putting It All Together', 'Google Project Management', 'Aug 26, 2026', 'XGX1VPUGU0ON'],
+    ['Put It to Work: Prepare for Cybersecurity Jobs', 'Google Cybersecurity', 'Aug 24, 2026', 'LAGABL6IARV7'],
+    ['Automate Cybersecurity Tasks with Python', 'Google Cybersecurity', 'Aug 22, 2026', '4BSLO20PPXHX'],
+    ['Google Advanced Data Analytics Capstone', 'Google Advanced Data Analytics', 'Aug 19, 2026', 'BBDA8XDBZTII'],
+    ['The Nuts and Bolts of Machine Learning', 'Google Advanced Data Analytics', 'Aug 18, 2026', 'GBLQKIUUEFRF'],
+    ['Sound the Alarm: Detection and Response', 'Google Cybersecurity', 'Aug 15, 2026', 'UO16FIOIBP0I'],
+    ['Project Initiation: Starting a Successful Project', 'Google Project Management', 'Aug 8, 2026', 'J5EKS4Z57RJW'],
+    ['Regression Analysis: Simplify Complex Data Relationships', 'Google Advanced Data Analytics', 'Aug 7, 2026', 'KV7DZS5JT3KY'],
+    ['Assets, Threats, and Vulnerabilities', 'Google Cybersecurity', 'Aug 5, 2026', '47AY1MAFYMD4'],
+    ['The Power of Statistics', 'Google Advanced Data Analytics', 'Jul 30, 2026', '9SOAJ95WA8GM'],
+    ['AI for App Building', 'Google AI', 'Jul 28, 2026', 'Y2MVH2ZL0048'],
+    ['AI for Data Analysis', 'Google AI', 'Jul 26, 2026', 'UMHPJ3CLSSNC'],
+    ['Foundations of Project Management', 'Google Project Management', 'Jul 24, 2026', 'UI1L6FDAW3IA'],
+    ['AI for Content Creation', 'Google AI', 'Jul 23, 2026', 'HNQJ331RSBHT'],
+    ['Tools of the Trade: Linux and SQL', 'Google Cybersecurity', 'Jul 22, 2026', 'VZT001FCE51O'],
+    ['AI for Writing and Communicating', 'Google AI', 'Jul 20, 2026', '8KWN5CR1PLF7'],
+    ['Go Beyond the Numbers: Translate Data into Insights', 'Google Advanced Data Analytics', 'Jul 15, 2026', 'MLQXIOMB1EWJ'],
+    ['AI for Research and Insights', 'Google AI', 'Jul 14, 2026', 'BGC3X0E73L2D'],
+    ['Connect and Protect: Networks and Network Security', 'Google Cybersecurity', 'Jul 13, 2026', 'PXP1YVN7DTN4'],
+    ['Crash Course on Python', 'Google IT Automation', 'Jul 10, 2026', 'PWQDJTZ82GRU'],
+    ['AI for Brainstorming and Planning', 'Google AI', 'Jul 6, 2026', '1PGGNJHAURHA'],
+    ['Play It Safe: Manage Security Risks', 'Google Cybersecurity', 'Jul 4, 2026', 'JSJQHOMFNL37'],
+    ['AI Fundamentals', 'Google AI', 'Jun 28, 2026', '650A433LEW80'],
+    ['Foundations of Data Science', 'Google Advanced Data Analytics', 'Jun 27, 2026', 'Q30M6URIGFFB'],
+    ['Foundations of Cybersecurity', 'Google Cybersecurity', 'Jun 25, 2026', '7BUM8PZW1LU0']
   ];
 
   var ILL = {
@@ -168,7 +204,7 @@
     grid.innerHTML = PROJECTS.map(function (p, i) {
       var link = p.url
         ? '<a class="w-link" href="' + p.url + '" target="_blank" rel="noopener">View project ' + ARROW + '<span class="sr-only" style="position:absolute;left:-9999px"> (' + esc(p.title) + ', opens in a new tab)</span></a>'
-        : '<span class="w-private">' + LOCK + 'Private · demo on request</span>';
+        : (p.live ? '<span class="w-private">Live · link on request</span>' : '<span class="w-private">' + LOCK + 'Private · demo on request</span>');
       var shot = p.img ? '<img src="' + p.img + '" alt="' + esc(p.title) + ' screenshot" loading="lazy">' : mock(p);
       return '<article class="work-card' + ((i % 4 === 0 || i % 4 === 3) ? ' is-dark' : '') + '" data-type="' + p.type + '">' +
         '<span class="w-badge' + (p.live || p.badge ? '' : ' private') + '">' + (p.badge || (p.live ? 'Live' : 'Private')) + '</span>' +
@@ -193,12 +229,43 @@
         : '<button type="button" class="l-card cert-open ' + c.c + '" data-i="' + i + '">' + body + '</button>';
     }).join('');
   }
+  function thumb(full, sm, title, label, verify) {
+    return '<button class="cert-thumb" type="button" data-full="' + full + '" data-title="' + esc(title) + '" data-verify="' + (verify || '') + '"><img src="' + sm + '" alt="" width="640" height="495" loading="lazy"><small>' + esc(label) + '</small><b>' + esc(title) + '</b></button>';
+  }
   var ar = $('#archiveRow');
   if (ar) {
-    ar.innerHTML = CERTS.map(function (c, i) {
-      return '<button class="cert-thumb" type="button" data-i="' + i + '"><img src="assets/img/' + c.img + '-sm.webp" alt="" width="640" height="495"><small>' + esc(c.who.split(' ·')[0]) + ' · ' + c.when + '</small><b>' + esc(c.t) + '</b></button>';
+    ar.innerHTML = CERTS.map(function (c) {
+      return thumb('assets/img/' + c.img + '.webp', 'assets/img/' + c.img + '-sm.webp', c.t, c.who.split(' ·')[0] + ' · ' + c.when, c.u);
     }).join('');
   }
+  var cr = $('#courseRow'), cf = $('#courseFilters'), cm = $('#courseMore');
+  var GROUPS = [['all', 'All'], ['Google AI', 'Google AI'], ['Google Cybersecurity', 'Cybersecurity'], ['Google Advanced Data Analytics', 'Data Analytics'], ['Google Project Management', 'Project Management'], ['Google AI Essentials', 'AI Essentials'], ['other', 'Other']];
+  var MAIN = GROUPS.slice(1, 6).map(function (g) { return g[0]; });
+  var courseFilter = 'all', showAll = false;
+  function renderCourses() {
+    if (!cr) return;
+    var list = COURSES.filter(function (c) { return courseFilter === 'all' || (courseFilter === 'other' ? MAIN.indexOf(c[1]) < 0 : c[1] === courseFilter); });
+    var shown = (courseFilter === 'all' && !showAll) ? list.slice(0, 12) : list;
+    cr.innerHTML = shown.map(function (c) {
+      var k = c[3].toLowerCase();
+      return thumb('assets/img/courses/' + k + '.webp', 'assets/img/courses/' + k + '-sm.webp', c[0], c[1].replace('Google ', '') + ' · ' + c[2], 'https://coursera.org/verify/' + c[3]);
+    }).join('');
+    if (cm) { cm.hidden = !(courseFilter === 'all' && list.length > 12); cm.textContent = showAll ? 'Show fewer' : 'Show all ' + list.length + ' course certificates'; }
+  }
+  if (cf) {
+    cf.innerHTML = GROUPS.map(function (g) {
+      var n = g[0] === 'all' ? COURSES.length : COURSES.filter(function (c) { return g[0] === 'other' ? MAIN.indexOf(c[1]) < 0 : c[1] === g[0]; }).length;
+      return '<button class="filter" type="button" data-cf="' + g[0] + '" aria-pressed="' + (g[0] === 'all') + '">' + g[1] + ' <span style="opacity:.6">' + n + '</span></button>';
+    }).join('');
+    cf.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-cf]'); if (!b) return;
+      courseFilter = b.getAttribute('data-cf');
+      $$('[data-cf]', cf).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      renderCourses();
+    });
+  }
+  if (cm) cm.addEventListener('click', function () { showAll = !showAll; renderCourses(); });
+  renderCourses();
 
   /* ---------------- lightbox ---------------- */
   var lb = null;
@@ -207,10 +274,12 @@
   document.addEventListener('click', function (e) {
     var t = e.target.closest && e.target.closest('.cert-thumb, .cert-open');
     if (!t) return;
-    var c = CERTS[+t.getAttribute('data-i')];
+    var full, title, verify;
+    if (t.classList.contains('cert-open')) { var c = CERTS[+t.getAttribute('data-i')]; full = 'assets/img/' + c.img + '.webp'; title = c.t; verify = c.u; }
+    else { full = t.getAttribute('data-full'); title = t.getAttribute('data-title'); verify = t.getAttribute('data-verify'); }
     lb = document.createElement('div');
-    lb.className = 'lightbox'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-label', c.t);
-    lb.innerHTML = '<button class="icon-btn close" type="button" aria-label="Close">✕</button><img src="assets/img/' + c.img + '.webp" alt="' + esc(c.t) + ' certificate"><p class="cap">' + esc(c.t) + (c.u ? ' · <a href="' + c.u + '" target="_blank" rel="noopener">Verify on Coursera</a>' : '') + '</p>';
+    lb.className = 'lightbox'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-label', title);
+    lb.innerHTML = '<button class="icon-btn close" type="button" aria-label="Close">✕</button><img src="' + full + '" alt="' + esc(title) + ' certificate"><p class="cap">' + esc(title) + (verify ? ' · <a href="' + verify + '" target="_blank" rel="noopener">Verify on Coursera</a>' : '') + '</p>';
     lb.addEventListener('click', function (ev) { if (ev.target === lb || ev.target.classList.contains('close')) closeLb(); });
     document.body.appendChild(lb); document.addEventListener('keydown', onKey);
     $('.close', lb).focus();

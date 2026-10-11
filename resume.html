@@ -62,7 +62,19 @@ p { margin: 0; color: var(--ink-2); max-width: 75ch; }
   .skills, .proj, .two { grid-template-columns: 1fr; }
 }
 @media print {
-  body { background: #fff; padding: 0; font-size: 12px; }
+  :root { --paper: #fff; --desk: #fff; --olive-soft: #f6f6f1; }
+  body { background: #fff; padding: 0; font-size: 10.5px; line-height: 1.45; }
+  section { padding-top: 14px; }
+  h2 { margin-bottom: 8px; break-after: avoid; }
+  header.top { grid-template-columns: 64px 1fr auto; gap: 16px; padding-bottom: 14px; }
+  header.top img { width: 64px; height: 64px; }
+  h1 { font-size: 28px; }
+  .contact { font-size: 10px; }
+  .skills { padding: 12px 14px; gap: 8px 22px; }
+  .skills p, .proj div span, .list { font-size: 10.5px; }
+  .job { padding-block: 7px; gap: 3px; }
+  .job h3 { font-size: 12.5px; }
+  .job ul { gap: 1px; }
   .bar { display: none; }
   .sheet { box-shadow: none; border: 0; margin: 0; padding: 0; max-width: none; }
   .job, .proj div { break-inside: avoid; }
@@ -85,7 +97,7 @@ p { margin: 0; color: var(--ink-2); max-width: 75ch; }
     <img src="assets/img/hemraj-adhikari-portrait.webp" alt="Hemraj Adhikari" width="900" height="900">
     <div>
       <h1>Hemraj Adhikari</h1>
-      <div class="role">Head of IT · Full-Stack Developer</div>
+      <div class="role">Full-Stack Developer · Backend &amp; CRM Systems · Cloud</div>
     </div>
     <ul class="contact">
       <li><a href="mailto:hemrajhadhikari@gmail.com">hemrajhadhikari@gmail.com</a></li>
@@ -96,63 +108,62 @@ p { margin: 0; color: var(--ink-2); max-width: 75ch; }
       <li><a href="https://hemrajadhikari.info.np">hemrajadhikari.info.np</a></li>
     </ul>
   </header>
-  <div class="focus"><span>CRM &amp; internal tools</span><span>Full-stack development</span><span>Cloud &amp; hosting</span><span>IT infrastructure</span><span>Project management</span></div>
+  <div class="focus"><span>Full-stack development</span><span>Backend &amp; CRM systems</span><span>Cloud (AWS)</span><span>Technical leadership</span></div>
 
   <section>
     <h2><em>01</em> / Professional summary</h2>
-    <p>Head of IT and full-stack developer with more than four years in IT roles and freelance web work since 2021. I build the CRMs and internal tools teams work in every day, and run the infrastructure, cloud hosting and support underneath them. Delivered 65+ websites and web apps for clients in Nepal, India, the UK, Australia and Indonesia. Seven professional certificates from Google and IBM, including IBM Full Stack Software Developer.</p>
+    <p>Full-Stack Developer with 2+ years of experience building and running backend-heavy CRM platforms and cloud infrastructure. Architects Node.js, NestJS and Next.js systems on PostgreSQL, Firebase and MongoDB, exposed through RESTful APIs, and administers AWS (EC2, S3, IAM, VPC, CloudWatch). Currently leads the CRM platform rebuild at Route2Uni International Group (50+ staff, 30+ partner integrations) and a CRM and compliance portal for Dreams Care Homes (UK), delivering as both engineer and technical lead.</p>
   </section>
 
   <section>
     <h2><em>02</em> / Technical skills</h2>
     <div class="skills">
-      <div><h3>Languages &amp; frameworks</h3><p>JavaScript · TypeScript · React · Next.js · Node.js · Express · PHP · Laravel · Python · Flask · Django · FastAPI · Java · Swift</p></div>
-      <div><h3>Data</h3><p>Firebase / Firestore · MySQL · PostgreSQL · MongoDB · SQL · dashboards &amp; reporting</p></div>
-      <div><h3>Cloud &amp; servers</h3><p>AWS (EC2, S3, IAM, VPC, CloudWatch) · Azure · Linux · Docker · Kubernetes · OpenShift · CI/CD · GitHub Actions · Vercel · cPanel/WHM · Cloudflare · DNS</p></div>
-      <div><h3>Workplace IT &amp; security</h3><p>Microsoft 365 · Google Workspace · Windows Server · Active Directory · Intune · RBAC · MFA · Defender · SPF/DKIM/DMARC</p></div>
-      <div><h3>Web platforms</h3><p>WordPress · WooCommerce · Shopify · HTML / CSS</p></div>
-      <div><h3>Delivery</h3><p>Project management · Agile &amp; Scrum · CRM architecture · process automation · requirements</p></div>
+      <div><h3>Languages</h3><p>TypeScript · JavaScript · Python · Java · SQL · Swift · C# · C++</p></div>
+      <div><h3>Frontend</h3><p>React · Next.js · Tailwind CSS · HTML5 · CSS3 · responsive UI/UX design</p></div>
+      <div><h3>Backend &amp; APIs</h3><p>Node.js · NestJS · Express · FastAPI · Django · REST API design · Prisma ORM · Redis · BullMQ · RBAC · authentication &amp; authorization</p></div>
+      <div><h3>Databases</h3><p>PostgreSQL · MySQL · MongoDB · Firebase / Firestore</p></div>
+      <div><h3>Cloud &amp; DevOps</h3><p>AWS (EC2, S3, IAM, VPC, CloudWatch, Route 53) · Azure · Google Cloud · Docker · Kubernetes · CI/CD · Git · GitHub · Vercel · Linux</p></div>
+      <div><h3>Systems &amp; practices</h3><p>CRM architecture · system design · workflow automation · API integration · Agile delivery · data governance · MFA &amp; security policy · technical project leadership</p></div>
+      <div><h3>Mobile</h3><p>iOS development (Swift) · mobile API integration</p></div>
+      <div><h3>IT operations</h3><p>Windows Server · Active Directory · Group Policy · Microsoft 365 · Google Workspace · cPanel &amp; WHM · ITSM / helpdesk</p></div>
     </div>
   </section>
 
   <section>
-    <h2><em>03</em> / Experience</h2>
+    <h2><em>03</em> / Professional experience</h2>
     <div class="job">
-      <div class="job-head"><h3>Head of Information Technology <span>· Route 2 Uni International Group, Kathmandu</span></h3><span class="when">May 2026 – Present</span></div>
+      <div class="job-head"><h3>Project Manager, CRM &amp; Full-Stack Development <span>· Dreams Care Homes, Newport, Wales, UK (hybrid)</span></h3><span class="when">Jul 2026 – Present</span></div>
       <ul>
-        <li>Lead IT strategy, infrastructure and support for 50+ staff (IT Officer May–Aug 2026, Head of IT since Aug 2026).</li>
-        <li>Built the company CRM (student pipeline, partners, CAS and visa tracking) with RBAC, MFA and data-governance rules.</li>
-        <li>Shipped Hajiri (HR &amp; attendance), TaskTrack, a bulk WhatsApp and email tool for the B2B team, the Sep 2026 university directory and a mock Pre-CAS interview simulator.</li>
-        <li>Leadership dashboards cut manual reporting by about 40%; ticket resolution time down 25%.</li>
+        <li>Lead the technical roadmap and full-stack build of a bespoke CRM and staff-compliance portal for a UK domiciliary care agency, using Next.js 14, TypeScript and Tailwind CSS.</li>
+        <li>Designed the backend data and access layer on Firebase (Auth, Firestore, Storage) with role-based security rules, as the foundation for a planned migration to NestJS and PostgreSQL.</li>
+        <li>Run delivery end to end, from requirements gathering and sprint planning to stakeholder reporting for UK leadership, coordinating a distributed team.</li>
+        <li>Rebuilt the portal UI/UX on a production-grade design system with real-time interactive components, improving usability.</li>
       </ul>
     </div>
     <div class="job">
-      <div class="job-head"><h3>Project Manager <span>· Dreams Care Homes, Newport, Wales (hybrid)</span></h3><span class="when">Aug 2026 – Present</span></div>
+      <div class="job-head"><h3>Head of Information Technology Department <span>· Route2Uni International Group, Kathmandu (on-site)</span></h3><span class="when">Feb 2026 – Present</span></div>
       <ul>
-        <li>Own planning, scope and delivery of the DreamsCareHome systems project: custom CRM, backend services, API integrations and automation.</li>
+        <li>Lead the IT department, setting infrastructure strategy and cloud operations for 50+ staff.</li>
+        <li>Lead the full-stack rebuild of the core CRM platform, with a 10-phase migration roadmap onto Next.js, NestJS, PostgreSQL, Prisma, Redis and BullMQ, deployed on AWS.</li>
+        <li>Administer AWS (EC2, S3, IAM, VPC, CloudWatch) and enforce RBAC and MFA policies, reaching 100% compliance with internal security standards.</li>
+        <li>Manage 30+ university partner-portal integrations, sustaining 99%+ uptime and real-time data accuracy across partner workflows.</li>
       </ul>
     </div>
     <div class="job">
-      <div class="job-head"><h3>iOS Developer Intern <span>· Apple, Indonesia (remote)</span></h3><span class="when">Jun 2026 – Present</span></div>
-      <ul><li>Help develop and maintain iOS applications in Swift with a distributed team.</li></ul>
-    </div>
-    <div class="job">
-      <div class="job-head"><h3>IT Officer <span>· Citizen Infotech, Kathmandu</span></h3><span class="when">Aug 2024 – May 2026</span></div>
+      <div class="job-head"><h3>IT Officer, UK Team and Nepal Team <span>· Route2Uni International Group, Kathmandu</span></h3><span class="when">Feb 2025 – Jan 2026</span></div>
       <ul>
-        <li>CRM administration for 50+ users; data-entry standards and integrity checks cut data errors by 35%.</li>
-        <li>Automated management reports, saving about 6 hours a week; client portals at 98%+ uptime.</li>
+        <li>Administered CRM operations and application workflows for the UK team, keeping data accurate across 40+ UK university partner integrations.</li>
+        <li>Built automated reporting dashboards with scripting and workflow automation, cutting manual reporting effort by 40%.</li>
+        <li>Coordinated student support, admissions and infrastructure teams, reducing average ticket resolution time by 25%.</li>
+        <li>Delivered L1/L2 technical support organisation-wide with sub-2-hour SLA response times.</li>
       </ul>
     </div>
     <div class="job">
-      <div class="job-head"><h3>IT Support Specialist <span>· Percoid IT Solution, Lalitpur</span></h3><span class="when">Feb 2022 – Jul 2024</span></div>
+      <div class="job-head"><h3>IT Support Specialist <span>· Percoid IT Solutions, Lalitpur</span></h3><span class="when">Feb 2023 – Jan 2024</span></div>
       <ul>
-        <li>L1/L2 helpdesk for 100+ users with a 95% first-contact fix rate; Windows Server, Active Directory, Microsoft 365, Google Workspace.</li>
-      </ul>
-    </div>
-    <div class="job">
-      <div class="job-head"><h3>Full-Stack Web Developer &amp; Hosting <span>· Freelance, remote</span></h3><span class="when">Jan 2021 – Present</span></div>
-      <ul>
-        <li>65+ websites and web apps for clients in five countries; hosting on AWS EC2, cPanel/WHM and Hostinger with sub-2-second loads.</li>
+        <li>Delivered L1/L2 helpdesk support to 100+ users across hardware, software and network domains, with a 95% first-call resolution rate and all SLA targets met.</li>
+        <li>Deployed and maintained Windows 10/11 endpoints and administered Windows Server and Active Directory, including user lifecycle management and Group Policy.</li>
+        <li>Restructured IT asset inventory and hardware lifecycle documentation, improving tracking accuracy by 25% and reducing procurement delays.</li>
       </ul>
     </div>
   </section>
@@ -160,15 +171,12 @@ p { margin: 0; color: var(--ink-2); max-width: 75ch; }
   <section>
     <h2><em>04</em> / Selected projects</h2>
     <div class="proj">
-      <div><b>Route 2 Uni CRM</b><span>Student pipeline CRM for 50+ staff · JavaScript, Firebase, RBAC</span></div>
-      <div><b>Dreams Care Homes CRM</b><span>Staff compliance: right to work, visas, DBS · UK</span></div>
+      <div><b>Route2Uni CRM</b><span>Student pipeline CRM, 50+ staff · rebuild on Next.js, NestJS, PostgreSQL</span></div>
+      <div><b>Dreams Care Homes CRM</b><span>Staff compliance: right to work, visas, DBS · Next.js, Firebase</span></div>
       <div><b>Hajiri HR &amp; Attendance</b><span>Attendance, leave and approvals with Nepali dates · Firebase</span></div>
       <div><b>Kaam Khoj</b><span>Free job app for daily-wage workers, Nepali-first · PWA</span></div>
       <div><b>Slotly</b><span>Booking app and web app for any business</span></div>
-      <div><b>TaskTrack</b><span>IT team work board with PDF reports · Next.js, Firebase, Vercel</span></div>
-      <div><b>Mock Pre-CAS Interview</b><span>23-question simulator with webcam and transcript · Web Speech API</span></div>
-      <div><b>KBM FM</b><span>Live radio streaming platform · PHP, MySQL, AWS</span></div>
-      <div><b>Mega Loksewa</b><span>Government exam prep and LMS · Laravel, MySQL</span></div>
+      <div><b>Partner Bulk Messaging</b><span>WhatsApp and email outreach for the B2B team</span></div>
     </div>
   </section>
 
@@ -176,9 +184,9 @@ p { margin: 0; color: var(--ink-2); max-width: 75ch; }
     <div>
       <h2><em>05</em> / Education</h2>
       <ul class="list">
-        <li><b>Bachelor of Information Technology</b><br>Janamaitri Multiple Campus, Bagmati University</li>
-        <li><b>+2 Computer Science</b> <span>2022</span><br>Sodsha Devi School, Kathmandu</li>
-        <li><b>SLC</b> <span>2019</span><br>Manakamana Secondary School, Achham</li>
+        <li><b>BSc Computer Science and Information Technology</b> <span>2023 – Present</span><br>Model Institute of Technology (Kathmandu Model)</li>
+        <li><b>Bachelor of Information Technology (BIT)</b> <span>2024 – Present</span><br>Janamaitri Multiple Campus, Bagmati Pradesh University</li>
+        <li><b>Higher Secondary (+2), Computer Science</b> <span>2022</span><br>Sodsha Devi School, NEB</li>
       </ul>
     </div>
     <div>
@@ -187,10 +195,13 @@ p { margin: 0; color: var(--ink-2); max-width: 75ch; }
         <li><b>IBM Full Stack Software Developer</b> <span>Oct 2026</span></li>
         <li><b>Google Project Management</b> <span>Sep 2026</span></li>
         <li><b>Google AI Essentials</b> <span>Sep 2026</span></li>
-        <li><b>Google Cybersecurity</b> <span>Aug 2026</span></li>
         <li><b>Google Advanced Data Analytics</b> <span>Aug 2026</span></li>
+        <li><b>Google Cybersecurity</b> <span>Aug 2026</span></li>
         <li><b>IBM AI Developer</b> <span>Aug 2026</span></li>
         <li><b>Google AI</b> <span>Jul 2026</span></li>
+        <li><b>cPanel &amp; WHM Administration</b> <span>Dec 2025</span></li>
+        <li><b>Hardware Maintenance and Networking</b>, D/T Solution <span>2023</span></li>
+        <li>50+ Coursera courses, incl. AI for App Building, Automate Cybersecurity Tasks with Python, Foundations of Business Intelligence, Agile Project Management and Crash Course on Python</li>
       </ul>
     </div>
   </section>
