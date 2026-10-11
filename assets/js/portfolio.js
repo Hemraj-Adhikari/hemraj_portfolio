@@ -93,6 +93,9 @@
 
   /* Individual course certificates (Google, on Coursera). code = Coursera verify code */
   var COURSES = [
+    ['Introduction to Git and GitHub', 'Google IT Automation', 'Sep 16, 2026', 'XKPYGRWG5NR1'],
+    ['Capstone: Applying Project Management in the Real World', 'Google Project Management', 'Sep 15, 2026', 'EIZQATYL4EYC'],
+    ['Introduction to AI', 'Google AI Essentials', 'Sep 15, 2026', 'WG9NUE2ZA9RJ'],
     ['Discover the Art of Prompting', 'Google AI Essentials', 'Sep 20, 2026', '0CEGZOFPX8WV'],
     ['Use AI Responsibly', 'Google AI Essentials', 'Sep 20, 2026', 'MN1K79DD6RPD'],
     ['Stay Ahead of the AI Curve', 'Google AI Essentials', 'Sep 20, 2026', '7N31UGMJ2KVF'],
@@ -104,6 +107,7 @@
     ['Project Planning: Putting It All Together', 'Google Project Management', 'Aug 26, 2026', 'XGX1VPUGU0ON'],
     ['Put It to Work: Prepare for Cybersecurity Jobs', 'Google Cybersecurity', 'Aug 24, 2026', 'LAGABL6IARV7'],
     ['Automate Cybersecurity Tasks with Python', 'Google Cybersecurity', 'Aug 22, 2026', '4BSLO20PPXHX'],
+    ['Accelerate Your Job Search with AI', 'Google Career Certificates', 'Aug 19, 2026', '18SDY3HZ8PA8'],
     ['Google Advanced Data Analytics Capstone', 'Google Advanced Data Analytics', 'Aug 19, 2026', 'BBDA8XDBZTII'],
     ['The Nuts and Bolts of Machine Learning', 'Google Advanced Data Analytics', 'Aug 18, 2026', 'GBLQKIUUEFRF'],
     ['Sound the Alarm: Detection and Response', 'Google Cybersecurity', 'Aug 15, 2026', 'UO16FIOIBP0I'],
@@ -127,6 +131,7 @@
     ['Foundations of Data Science', 'Google Advanced Data Analytics', 'Jun 27, 2026', 'Q30M6URIGFFB'],
     ['Foundations of Cybersecurity', 'Google Cybersecurity', 'Jun 25, 2026', '7BUM8PZW1LU0']
   ];
+  COURSES.sort(function (a, b) { return new Date(b[2]) - new Date(a[2]); });
 
   var ILL = {
     stack: '<svg class="ill" viewBox="0 0 80 80"><rect x="12" y="46" width="56" height="14" rx="4" fill="#ef4a2b"/><rect x="12" y="30" width="56" height="14" rx="4" fill="#fff"/><rect x="12" y="14" width="56" height="14" rx="4" fill="#5b8cff"/><path d="M30 19l-5 2 5 2M50 19l5 2-5 2" stroke="#fff" stroke-width="2" fill="none"/></svg>',

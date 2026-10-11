@@ -765,3 +765,17 @@ body.lock { overflow: hidden; }
 .contact-me b { display: block; font-size: 15px; }
 .contact-me span { font-size: 13px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
 .contact-me span i { width: 7px; height: 7px; border-radius: 50%; background: #2fbf6b; }
+
+/* IBM programme course lists */
+.ibm-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 18px; }
+.ibm-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 24px 26px; display: grid; gap: 16px; align-content: start; }
+.ibm-card--dark { background: linear-gradient(140deg, #0d1b45, #1c3a8a); color: #fff; border-color: transparent; }
+.ibm-head { display: flex; gap: 14px; align-items: center; }
+.ibm-logo { width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; letter-spacing: .08em; font-size: 14px; background: #0f62fe; color: #fff; flex: none; }
+.ibm-head h4 { margin: 0; font-size: 19px; letter-spacing: -.01em; }
+.ibm-head span { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; opacity: .7; }
+.ibm-card ol { margin: 0; padding-left: 22px; display: grid; gap: 7px; font-size: 14px; columns: 1; }
+.ibm-card ol li::marker { font-family: var(--f-mono); font-size: 11px; color: var(--accent); }
+.ibm-card--dark ol li::marker { color: #8fb4ff; }
+.ibm-card--dark ol { color: #e3e8f7; }
+@media (max-width: 860px) { .ibm-grid { grid-template-columns: 1fr; } }
