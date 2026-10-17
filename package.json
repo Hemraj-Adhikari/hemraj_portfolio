@@ -1,0 +1,22 @@
+{
+  "name": "hemraj-portfolio",
+  "private": true,
+  "description": "Static portfolio site. Plain HTML/CSS/JS; the tools here only minify assets, build the sitemap and RSS feed, and run checks.",
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "check": "node tools/check.mjs",
+    "a11y": "node tools/a11y.mjs",
+    "css:unused": "node tools/unused-css.mjs",
+    "github": "node tools/github-repos.mjs",
+    "serve": "npx --yes http-server -p 8080 -c-1 ."
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.10.2",
+    "esbuild": "0.25.10",
+    "html-validate": "9.7.1",
+    "lightningcss": "1.30.1",
+    "playwright": "1.56.1",
+    "purgecss": "7.0.2"
+  }
+}

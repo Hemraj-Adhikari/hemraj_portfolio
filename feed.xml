@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hemraj Adhikari · Blog</title>
+    <link>https://hemrajadhikari.info.np/blog.html</link>
+    <atom:link href="https://hemrajadhikari.info.np/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Practical guides on CRMs, cloud, security and starting a career in IT in Nepal.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 17 Oct 2026 06:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Role-based access control for CRMs and internal tools: a practical guide</title>
+      <link>https://hemrajadhikari.info.np/blog-rbac-crm-guide.html</link>
+      <guid isPermaLink="true">https://hemrajadhikari.info.np/blog-rbac-crm-guide.html</guid>
+      <pubDate>Sat, 17 Oct 2026 06:00:00 GMT</pubDate>
+      <description>How to design role-based access control (RBAC) for a CRM or internal tool: a permission matrix, the database model, server-side checks in NestJS, record scopes, Firebase rules, MFA and an audit log.</description>
+    </item>
+    <item>
+      <title>Python for Beginners Nepal 2025 — Learn, Build and Get Hired</title>
+      <link>https://hemrajadhikari.info.np/blog-python-beginners-nepal.html</link>
+      <guid isPermaLink="true">https://hemrajadhikari.info.np/blog-python-beginners-nepal.html</guid>
+      <pubDate>Sun, 31 May 2026 06:00:00 GMT</pubDate>
+      <description>Complete Python beginner guide for Nepal students. Learn Python from scratch — why Python, how to install, what to build, and how to get a job in Nepal using Python skills.</description>
+    </item>
+    <item>
+      <title>Linux Suru Garne Complete Guide — Nepal IT Students Ko Lagi</title>
+      <link>https://hemrajadhikari.info.np/blog-linux-beginners-nepal.html</link>
+      <guid isPermaLink="true">https://hemrajadhikari.info.np/blog-linux-beginners-nepal.html</guid>
+      <pubDate>Fri, 20 Jun 2025 06:00:00 GMT</pubDate>
+      <description>Linux suru garnu cha Nepal ma? Command line, file system, user management, server setup — sabai Nepali context ma step-by-step. BCA, BSc CSIT, BIT students ko lagi complete Linux guide.</description>
+    </item>
+    <item>
+      <title>Nepal Bata IT Freelancing — Dollar Kamaaunu ko Complete Guide</title>
+      <link>https://hemrajadhikari.info.np/blog-freelancing-nepal-it.html</link>
+      <guid isPermaLink="true">https://hemrajadhikari.info.np/blog-freelancing-nepal-it.html</guid>
+      <pubDate>Sun, 15 Jun 2025 06:00:00 GMT</pubDate>
+      <description>Nepal bata Upwork, Fiverr, Toptal ma IT freelancing suru garnu cha? Profile setup, first client, payment receive — sabai step-by-step guide 2025 ma.</description>
+    </item>
+    <item>
+      <title>AWS Cloud Jobs Nepal 2025 — Salary, Skills ra Career Guide</title>
+      <link>https://hemrajadhikari.info.np/blog-aws-jobs-nepal.html</link>
+      <guid isPermaLink="true">https://hemrajadhikari.info.np/blog-aws-jobs-nepal.html</guid>
+      <pubDate>Tue, 10 Jun 2025 06:00:00 GMT</pubDate>
+      <description>Nepal ma AWS Cloud Engineer ko demand, salary range, required certifications ra career path. Cloud computing Nepal ma career suru garnu cha bhane yo guide complete cha.</description>
+    </item>
+    <item>
+      <title>BCA vs BSc CSIT Nepal 2025 — Kun Course Linu Ramro?</title>
+      <link>https://hemrajadhikari.info.np/blog-bca-vs-bsccsit-nepal.html</link>
+      <guid isPermaLink="true">https://hemrajadhikari.info.np/blog-bca-vs-bsccsit-nepal.html</guid>
+      <pubDate>Thu, 05 Jun 2025 06:00:00 GMT</pubDate>
+      <description>Nepal ma BCA ra BSc CSIT ko complete comparison — subjects, fees, scope, salary, job opportunities. IT career suru garneko lagi kun course best cha 2025 ma?</description>
+    </item>
+    <item>
+      <title>Nepal IT Student Project Ideas — Garo dekhi Advanced Samma</title>
+      <link>https://hemrajadhikari.info.np/blog-nepal-it-student-projects.html</link>
+      <guid isPermaLink="true">https://hemrajadhikari.info.np/blog-nepal-it-student-projects.html</guid>
+      <pubDate>Sun, 01 Jun 2025 06:00:00 GMT</pubDate>
+      <description>Nepal ma BCA, BSc CSIT, BIT padhne students ko lagi complete project ideas guide — Beginner dekhi Advanced level samma. Real-world Nepal problems solve garne projects.</description>
+    </item>
+    <item>
+      <title>Freelancing in Nepal's IT Sector: A Detailed Technical Guide</title>
+      <link>https://hemrajadhikari.info.np/it-freelance-blog.html</link>
+      <guid isPermaLink="true">https://hemrajadhikari.info.np/it-freelance-blog.html</guid>
+      <pubDate>Thu, 01 May 2025 06:00:00 GMT</pubDate>
+      <description>Everything you need to start, price, and grow a freelance tech career from Nepal — platforms, payments, taxes, and real earning data.</description>
+    </item>
+  </channel>
+</rss>

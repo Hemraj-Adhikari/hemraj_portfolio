@@ -32,10 +32,9 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}document.documentElement.classList.add('js')</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap">
-<link rel="stylesheet" href="assets/css/portfolio.css?v=11">
+<link rel="preload" href="assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/portfolio.min.css?v=1d127184">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://hemrajadhikari.info.np/contact.html#page", "url": "https://hemrajadhikari.info.np/contact.html", "name": "Contact Hemraj Adhikari | Hire a Full-Stack Developer in Nepal", "description": "Contact Hemraj Adhikari, full-stack developer and IT lead in Kathmandu, Nepal, for remote roles, CRM projects, web apps and cloud work. Replies within a day.", "inLanguage": "en", "isPartOf": {"@id": "https://hemrajadhikari.info.np/#website"}, "about": {"@id": "https://hemrajadhikari.info.np/#person"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://hemrajadhikari.info.np/"}, {"@type": "ListItem", "position": 2, "name": "Contact", "item": "https://hemrajadhikari.info.np/contact.html"}]}, {"@type": "Person", "@id": "https://hemrajadhikari.info.np/#person", "name": "Hemraj Adhikari", "url": "https://hemrajadhikari.info.np/", "jobTitle": "Full-Stack Developer", "address": {"@type": "PostalAddress", "addressLocality": "Kathmandu", "addressCountry": "NP"}, "sameAs": ["https://www.linkedin.com/in/hemrajadhikariy/", "https://github.com/Hemraj-Adhikari"]}]}</script>
 </head>
 <body class="page page-contact">
@@ -43,7 +42,7 @@
 
 <header class="nav" id="top">
   <div class="wrap">
-    <a href="index.html" class="logo" aria-label="Hemraj Adhikari, home"><span class="logo-mark" aria-hidden="true">HA</span><span class="logo-text"><b>Hemraj Adhikari</b><small>Full-Stack Developer · Head of IT</small></span></a>
+    <a href="index.html" class="logo"><span class="logo-mark" aria-hidden="true">HA</span><span class="logo-text"><b>Hemraj Adhikari</b><small>Full-Stack Developer · Head of IT</small></span></a>
     <div class="nav-right">
       <ul class="nav-links" id="navLinks">
         <li><a href="about.html">About</a></li>
@@ -86,7 +85,7 @@
 <section class="section" id="contact">
   <div class="wrap contact">
     <div class="contact-copy">
-      <div class="contact-me"><img src="assets/img/me/headshot.webp" alt="Hemraj Adhikari" width="58" height="58" loading="lazy"><div><b>Hemraj Adhikari</b><span><i></i>Usually replies within a day</span></div></div>
+      <div class="contact-me"><img src="assets/img/me/headshot-sm.webp" alt="Hemraj Adhikari" width="58" height="58" loading="lazy"><div><b>Hemraj Adhikari</b><span><i></i>Usually replies within a day</span></div></div>
       <span class="eyebrow">Get in touch</span>
       <h2>Let's work<br><span class="accent">together</span></h2>
       <p>A role, a project or a question about your IT setup. Send me a message and I'll reply within a day. I'm based in Kathmandu (UTC+5:45).</p>
@@ -95,6 +94,7 @@
         <a class="c-line" href="https://wa.me/9779865802093" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span>+977 986-5802093 · WhatsApp</span></a>
         <div class="c-line"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span>Kathmandu, Nepal</span></div>
       </div>
+      <div class="book-call" data-book hidden><a class="btn btn--ghost btn--pill" href="contact.html" target="_blank" rel="noopener">Book a 15-minute call <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M5 4h7v7"/></svg></a><small>Pick a time that suits you, Nepal time UTC+5:45</small></div>
       <div class="socials">
         <a href="https://www.linkedin.com/in/hemrajadhikariy/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.5h-3V20h3V8.5zM5 3.5A1.75 1.75 0 1 0 5 7a1.75 1.75 0 0 0 0-3.5zM20.5 13.3c0-3-1.6-4.9-4.2-4.9-1.6 0-2.6.9-3 1.6V8.5h-3V20h3v-6c0-1.5.6-2.7 2.1-2.7s1.9 1.2 1.9 2.8V20h3.2v-6.7z"/></svg></a>
         <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></a>
@@ -106,7 +106,7 @@
     <form class="form" id="contactForm" action="https://formspree.io/f/xkgdznrn" method="POST" novalidate>
       <h3>Send a message</h3>
       <div class="row">
-        <div class="field"><label for="f-name">Your name <i>*</i></label><input id="f-name" aria-describedby="f-name-err" name="name" required autocomplete="name"><span class="err" id="f-name-err">Please enter your name.</span></div>
+        <div class="field"><label for="f-name">Your name <i>*</i></label><input id="f-name" type="text" aria-describedby="f-name-err" name="name" required autocomplete="name"><span class="err" id="f-name-err">Please enter your name.</span></div>
         <div class="field"><label for="f-email">Your email <i>*</i></label><input id="f-email" aria-describedby="f-email-err" name="email" type="email" required autocomplete="email"><span class="err" id="f-email-err">Please enter a valid email address.</span></div>
       </div>
       <div class="field">
@@ -166,7 +166,7 @@
     </div>
     <div class="bottom">
       <span>© <span id="yr">2026</span> Hemraj Adhikari. All rights reserved.</span>
-      <span>Designed &amp; built Hem Raj</span>
+      <span>Designed &amp; built by Hemraj Adhikari</span>
     </div>
   </div>
 </footer>
@@ -180,6 +180,7 @@
 </nav>
 
 
-<script src="assets/js/portfolio.js?v=8"></script>
+<script src="assets/js/config.js?v=08af1525"></script>
+<script src="assets/js/portfolio.min.js?v=7940b9e6"></script>
 </body>
 </html>

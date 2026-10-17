@@ -32,10 +32,9 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}document.documentElement.classList.add('js')</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap">
-<link rel="stylesheet" href="assets/css/portfolio.css?v=11">
+<link rel="preload" href="assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/portfolio.min.css?v=1d127184">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://hemrajadhikari.info.np/about.html#page", "url": "https://hemrajadhikari.info.np/about.html", "name": "About Hemraj Adhikari | Full-Stack Developer in Kathmandu, Nepal", "description": "About Hemraj Adhikari, a full-stack developer and Head of IT in Kathmandu, Nepal. CRM platforms, backend systems, AWS cloud and IT leadership for teams in Nepal and the UK.", "inLanguage": "en", "isPartOf": {"@id": "https://hemrajadhikari.info.np/#website"}, "about": {"@id": "https://hemrajadhikari.info.np/#person"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://hemrajadhikari.info.np/"}, {"@type": "ListItem", "position": 2, "name": "About", "item": "https://hemrajadhikari.info.np/about.html"}]}, {"@type": "Person", "@id": "https://hemrajadhikari.info.np/#person", "name": "Hemraj Adhikari", "url": "https://hemrajadhikari.info.np/", "jobTitle": "Full-Stack Developer", "address": {"@type": "PostalAddress", "addressLocality": "Kathmandu", "addressCountry": "NP"}, "sameAs": ["https://www.linkedin.com/in/hemrajadhikariy/", "https://github.com/Hemraj-Adhikari"]}]}</script>
 </head>
 <body class="page page-about">
@@ -43,7 +42,7 @@
 
 <header class="nav" id="top">
   <div class="wrap">
-    <a href="index.html" class="logo" aria-label="Hemraj Adhikari, home"><span class="logo-mark" aria-hidden="true">HA</span><span class="logo-text"><b>Hemraj Adhikari</b><small>Full-Stack Developer · Head of IT</small></span></a>
+    <a href="index.html" class="logo"><span class="logo-mark" aria-hidden="true">HA</span><span class="logo-text"><b>Hemraj Adhikari</b><small>Full-Stack Developer · Head of IT</small></span></a>
     <div class="nav-right">
       <ul class="nav-links" id="navLinks">
         <li><a href="about.html">About</a></li>
@@ -86,10 +85,10 @@
 <section class="section" id="about">
   <div class="wrap">
     <div class="split-card">
-      <h3>Part Developer. <span class="accent">Part IT Lead.</span></h3>
+      <h2>Part Developer. <span class="accent">Part IT Lead.</span></h2>
       <div class="split-grid">
         <div class="split-col">
-          <h4>Developer</h4>
+          <h3>Developer</h3>
           <ul>
             <li>Next.js, React, TypeScript &amp; Tailwind CSS</li>
             <li>Node.js, NestJS &amp; FastAPI backends</li>
@@ -104,7 +103,7 @@
           <b>CLOUD</b>
         </div>
         <div class="split-col">
-          <h4>IT Lead</h4>
+          <h3>IT Lead</h3>
           <ul>
             <li>IT strategy and roadmap for 50+ staff</li>
             <li>AWS EC2, S3, IAM, VPC, CloudWatch, Route 53</li>
@@ -141,7 +140,7 @@
       </figure>
     </div>
 
-    <div class="stats" aria-label="Key numbers">
+    <div class="stats" role="group" aria-label="Key numbers">
       <div class="stat"><b>30<em>+</em></b><span>university partner integrations</span></div>
       <div class="stat"><b>2<em>+</em> yrs</b><span>building full-stack CRM platforms</span></div>
       <div class="stat"><b>7</b><span>professional certificates, Google &amp; IBM</span></div>
@@ -162,7 +161,7 @@
   <div class="wrap">
     <div class="section-head section-head--split"><div style="display:grid;gap:12px"><span class="eyebrow">Beyond the screen</span><h2 class="h-section">A few moments <span class="accent">off the keyboard</span></h2></div><p class="lede" style="max-width:38ch">Speaking to students, travelling and time outdoors. Click any photo to see it larger.</p></div>
     <div class="gallery">
-      <figure class="g-item g-video"><video src="assets/img/me/speaking.mp4" poster="assets/img/me/speaking-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Hemraj speaking at a podium"></video><figcaption><b>On stage</b><span>Speaking at a student event</span></figcaption><button class="g-sound" type="button" aria-label="Pause video">❚❚</button></figure>
+      <figure class="g-item g-video"><video data-src="assets/img/me/speaking.mp4" poster="assets/img/me/speaking-poster.jpg" muted loop playsinline preload="none" title="Hemraj speaking at a podium"></video><button class="g-sound" type="button" aria-label="Pause video">❚❚</button><figcaption><b>On stage</b><span>Speaking at a student event</span></figcaption></figure>
       <figure class="g-item g-tall" data-full="assets/img/me/speaking-1.webp"><img src="assets/img/me/speaking-1.webp" alt="Hemraj speaking at a podium in a suit" loading="lazy"><figcaption><b>Speaking</b><span>Sharing what I&rsquo;ve learned</span></figcaption></figure>
       <figure class="g-item" data-full="assets/img/me/travel.webp"><img src="assets/img/me/travel.webp" alt="Hemraj taking a selfie before boarding a flight" loading="lazy"><figcaption><b>Travelling</b><span>Boarding the next flight</span></figcaption></figure>
       <figure class="g-item" data-full="assets/img/me/hills.webp"><img src="assets/img/me/hills.webp" alt="Hemraj in sunglasses on a hill above the city" loading="lazy"><figcaption><b>Outdoors</b><span>Above the valley</span></figcaption></figure>
@@ -198,7 +197,7 @@
     </div>
     <div class="bottom">
       <span>© <span id="yr">2026</span> Hemraj Adhikari. All rights reserved.</span>
-      <span>Designed &amp; built Hem Raj</span>
+      <span>Designed &amp; built by Hemraj Adhikari</span>
     </div>
   </div>
 </footer>
@@ -212,6 +211,7 @@
 </nav>
 
 
-<script src="assets/js/portfolio.js?v=8"></script>
+<script src="assets/js/config.js?v=08af1525"></script>
+<script src="assets/js/portfolio.min.js?v=7940b9e6"></script>
 </body>
 </html>

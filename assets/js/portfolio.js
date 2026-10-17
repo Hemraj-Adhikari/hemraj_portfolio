@@ -11,15 +11,15 @@
 
   /* ---------------- data ---------------- */
   var PROJECTS = [
-    { title: 'Route 2 Uni CRM', type: 'system', cat: 'CRM / Education consultancy', live: true,
+    { title: 'Route 2 Uni CRM', case: 'case-route2uni-crm.html', type: 'system', cat: 'CRM / Education consultancy', live: true,
       desc: 'One CRM for the whole student journey, from enquiry to offer, Pre-CAS, CAS and visa, used by 50+ staff and 30+ partners. Now in a 10-phase rebuild onto Next.js, NestJS, PostgreSQL, Prisma, Redis and BullMQ on AWS.',
       stack: 'Next.js · NestJS · PostgreSQL · Prisma · Redis · AWS', url: 'https://www.route2unigroup.com/',
       mock: 'kanban', color: '#17393b', host: 'route2uni-crm', name: 'ROUTE 2 UNI', cols: ['Offer', 'Pre-CAS', 'CAS', 'Visa'] },
-    { title: 'Dreams Care Homes CRM', type: 'system', cat: 'CRM / UK health & social care', live: false,
+    { title: 'Dreams Care Homes CRM', case: 'case-dreams-care-crm.html', type: 'system', cat: 'CRM / UK health & social care', live: false,
       desc: 'CRM and staff-compliance portal for a UK domiciliary care agency: right-to-work checks, visa sponsorship and DBS expiry tracking, documents and an audit log. I lead the roadmap and the build.',
       stack: 'Next.js 14 · TypeScript · Tailwind · Firebase', url: '',
       mock: 'compliance', color: '#1f5a34', host: 'dreamscarehomes', name: 'Dreams Care' },
-    { title: 'Hajiri HR and Attendance', type: 'system', cat: 'HRM / Route 2 Uni', live: false,
+    { title: 'Hajiri HR and Attendance', case: 'case-hajiri-hr.html', type: 'system', cat: 'HRM / Route 2 Uni', live: false,
       desc: 'HR and attendance system for Route 2 Uni: daily hajiri, approvals, leave, holidays and notices, with team and department reports. Dates show in Bikram Sambat and AD.',
       stack: 'Firebase · Firestore · RBAC · Nepali calendar', url: '',
       mock: 'hajiri', color: '#2e9e55', host: 'hajiri.route2uni', name: 'Hajiri' },
@@ -233,7 +233,7 @@
       var shot = p.img ? '<img src="' + p.img + '" alt="' + esc(p.title) + ' screenshot" loading="lazy">' : mock(p);
       return '<article class="work-card' + ((i % 4 === 0 || i % 4 === 3) ? ' is-dark' : '') + '" data-type="' + p.type + '" data-p="' + PROJECTS.indexOf(p) + '">' +
         '<span class="w-badge' + (p.live || p.badge ? '' : ' private') + '">' + (p.badge || (p.live ? 'Live' : 'Private')) + '</span>' +
-        '<div class="w-text"><span class="w-cat">' + esc(p.cat) + '</span><h3 class="w-title">' + esc(p.title) + '</h3><p class="w-desc">' + esc(p.desc) + '</p><span class="w-stack">' + esc(p.stack) + '</span><div class="w-actions"><button class="w-more" type="button" data-open="' + PROJECTS.indexOf(p) + '">Details <span aria-hidden="true">+</span></button>' + link + '</div></div>' +
+        '<div class="w-text"><span class="w-cat">' + esc(p.cat) + '</span><h3 class="w-title">' + esc(p.title) + '</h3><p class="w-desc">' + esc(p.desc) + '</p><span class="w-stack">' + esc(p.stack) + '</span><div class="w-actions"><button class="w-more" type="button" data-open="' + PROJECTS.indexOf(p) + '">Details <span aria-hidden="true">+</span></button>' + (p.case ? '<a class="w-case" href="' + p.case + '">Case study ' + ARROW + '</a>' : '') + link + '</div></div>' +
         '<div class="w-shot">' + shot + '</div></article>';
     }).join('');
   }
@@ -509,8 +509,21 @@
   $$('.g-video').forEach(function (fig) {
     var v = $('video', fig), b = $('.g-sound', fig);
     if (!v || !b) return;
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); b.textContent = '▶'; b.setAttribute('aria-label', 'Play video'); }
+    var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* the clip is only downloaded once it scrolls near the viewport */
+    var load = function () { if (v.dataset.src && !v.getAttribute('src')) { v.src = v.dataset.src; v.load(); } };
+    if (still) { b.textContent = '▶'; b.setAttribute('aria-label', 'Play video'); }
+    if ('IntersectionObserver' in window) {
+      var vo = new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          if (!en.isIntersecting) { if (!v.paused) v.pause(); return; }
+          load(); if (!still && b.getAttribute('aria-label') !== 'Play video') { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+        });
+      }, { rootMargin: '200px' });
+      vo.observe(v);
+    } else { load(); }
     b.addEventListener('click', function () {
+      load();
       if (v.paused) { v.play(); b.textContent = '❚❚'; b.setAttribute('aria-label', 'Pause video'); }
       else { v.pause(); b.textContent = '▶'; b.setAttribute('aria-label', 'Play video'); }
     });
@@ -578,15 +591,95 @@
       if (bad.length) { msg.className = 'form-msg err'; msg.textContent = 'Please fix the highlighted fields.'; bad[0].focus(); return; }
       var btn = $('button[type=submit]', form); btn.disabled = true;
       msg.className = 'form-msg'; msg.textContent = 'Sending…';
+      var val = function (n) { var f = form.elements[n]; return f ? f.value.trim() : ''; };
+      var data = { name: val('name'), email: val('email'), topic: val('topic'), message: val('message') };
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
         .then(function (r) {
-          if (!r.ok) throw new Error();
-          form.innerHTML = '<div class="form-done"><span class="tick"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5 9-10"/></svg></span><h3>Message sent</h3><p>Thank you. I will reply within a day, usually sooner.</p><a class="btn btn--ghost btn--pill" href="index.html">Back to home</a></div>';
-          toast('Message sent');
+          if (r.ok) return null;
+          /* Formspree explains validation errors (422) in JSON; show those, fall back otherwise */
+          return r.json().then(function (j) { throw new Error(j && j.errors ? j.errors.map(function (x) { return x.message; }).join(' ') : ''); }, function () { throw new Error(''); });
         })
-        .catch(function () { msg.className = 'form-msg err'; msg.textContent = 'The message could not be sent. Please email hemrajhadhikari@gmail.com directly.'; btn.disabled = false; });
+        .then(function () {
+          try { sessionStorage.setItem('sentName', data.name.split(' ')[0]); } catch (e) {}
+          location.href = 'thanks.html';
+        })
+        .catch(function (err) { fallback(err && err.message, data); btn.disabled = false; });
     });
   }
+
+  /* if the form service is down or blocked, offer the same message by email or WhatsApp */
+  function fallback(reason, d) {
+    var body = 'Hi Hemraj,\n\n' + d.message + '\n\n' + d.name + '\n' + d.email;
+    var subject = 'Website enquiry: ' + (d.topic || 'General');
+    var mail = 'mailto:hemrajhadhikari@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    var wa = 'https://wa.me/9779865802093?text=' + encodeURIComponent(subject + '\n\n' + d.message + '\n\n' + d.name);
+    msg.className = 'form-msg err';
+    msg.innerHTML = esc(reason || 'The message could not be sent from the form.') +
+      ' Your text is kept below. Send it with one click instead: <a href="' + esc(mail) + '">by email</a> or <a href="' + esc(wa) + '" target="_blank" rel="noopener">on WhatsApp</a>.';
+  }
+
+  /* ---------------- settings from assets/js/config.js ---------------- */
+  var SITE = window.SITE || {};
+
+  /* testimonials: the section stays hidden until real quotes are added */
+  var qWrap = $('#testimonials'), qGrid = $('#quoteGrid');
+  var quotes = (SITE.testimonials || []).filter(function (q) { return q && q.quote && q.name; });
+  if (qWrap && qGrid && quotes.length) {
+    qGrid.innerHTML = quotes.map(function (q) {
+      return '<figure class="quote-card"><blockquote>' + esc(q.quote) + '</blockquote><figcaption><b>' + esc(q.name) + '</b>' +
+        (q.role ? '<span>' + esc(q.role) + '</span>' : '') +
+        (q.link && /^https:\/\//.test(q.link) ? '<a href="' + esc(q.link) + '" target="_blank" rel="noopener">View on LinkedIn ↗</a>' : '') + '</figcaption></figure>';
+    }).join('');
+    qWrap.hidden = false;
+  }
+
+  /* booking link for a short call */
+  if (SITE.bookingUrl && /^https:\/\//.test(SITE.bookingUrl)) {
+    $$('[data-book]').forEach(function (el) {
+      var a = $('a', el); if (a) a.href = SITE.bookingUrl;
+      el.hidden = false;
+    });
+  }
+
+  /* GitHub repositories, refreshed daily by .github/workflows/maintain.yml into assets/data/github.json */
+  var gh = $('#ghGrid');
+  if (gh && window.fetch) {
+    var LANG = { JavaScript: '#f1e05a', TypeScript: '#3178c6', HTML: '#e34c26', CSS: '#563d7c', Python: '#3572A5', Swift: '#F05138', PHP: '#4F5D95', Java: '#b07219', Dart: '#00B4AB', Shell: '#89e051', Vue: '#41b883', 'C++': '#f34b7d', C: '#555555' };
+    var ago = function (d) {
+      var days = Math.round((Date.now() - new Date(d)) / 864e5);
+      if (days < 1) return 'today'; if (days < 2) return 'yesterday'; if (days < 31) return days + ' days ago';
+      var m = Math.round(days / 30); if (m < 12) return m + (m === 1 ? ' month ago' : ' months ago');
+      var y = Math.round(m / 12); return y + (y === 1 ? ' year ago' : ' years ago');
+    };
+    fetch('assets/data/github.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+      var repos = (j && j.repos) || [];
+      if (!repos.length) return;
+      gh.innerHTML = repos.slice(0, 6).map(function (r) {
+        return '<a class="gh-card" href="' + esc(r.url) + '" target="_blank" rel="noopener"><h3>' + esc(r.name) + '</h3>' +
+          (r.description ? '<p>' + esc(r.description) + '</p>' : '') +
+          '<div class="gh-foot">' + (r.language ? '<span class="gh-lang" style="--lc:' + (LANG[r.language] || '#8d8a85') + '"><i></i>' + esc(r.language) + '</span>' : '') +
+          (r.stars ? '<span>★ ' + r.stars + '</span>' : '') + '<span>Updated ' + ago(r.pushed_at) + '</span></div></a>';
+      }).join('');
+      var sec = gh.closest('[hidden]'); if (sec) sec.hidden = false;
+    }).catch(function () {});
+  }
+
+  /* case study: highlight the current section in the side menu */
+  var csToc = $$('.cs-toc a[href^="#"]');
+  if (csToc.length && 'IntersectionObserver' in window) {
+    var csMap = {};
+    csToc.forEach(function (a) { var t = document.getElementById(a.getAttribute('href').slice(1)); if (t) csMap[t.id] = a; });
+    var csIo = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting && csMap[e.target.id]) { csToc.forEach(function (a) { a.classList.remove('is-active'); }); csMap[e.target.id].classList.add('is-active'); }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    Object.keys(csMap).forEach(function (id) { csIo.observe(document.getElementById(id)); });
+  }
+
+  /* thanks page: greet by first name if the form just sent */
+  var tn = $('#thanksName');
+  if (tn) { try { var n = sessionStorage.getItem('sentName'); if (n) { tn.textContent = ', ' + n; sessionStorage.removeItem('sentName'); } } catch (e) {} }
 
   var yr = $('#yr'); if (yr) yr.textContent = new Date().getFullYear();
 })();

@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Role-based access control for CRMs and internal tools: a practical guide | Hemraj Adhikari</title>
+<link rel="alternate" type="application/rss+xml" title="Hemraj Adhikari blog" href="feed.xml">
+<meta name="description" content="How to design role-based access control (RBAC) for a CRM or internal tool: a permission matrix, the database model, server-side checks in NestJS, record scopes, Firebase rules, MFA and an audit log.">
+<meta name="author" content="Hemraj Adhikari">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://hemrajadhikari.info.np/blog-rbac-crm-guide.html">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hemraj Adhikari">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Role-based access control for CRMs and internal tools: a practical guide">
+<meta property="og:description" content="How to design role-based access control (RBAC) for a CRM or internal tool: a permission matrix, the database model, server-side checks in NestJS, record scopes, Firebase rules, MFA and an audit log.">
+<meta property="og:url" content="https://hemrajadhikari.info.np/blog-rbac-crm-guide.html">
+<meta property="og:image" content="https://hemrajadhikari.info.np/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hemraj Adhikari, Head of IT and full-stack developer, Kathmandu">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Role-based access control for CRMs and internal tools: a practical guide">
+<meta name="twitter:description" content="How to design role-based access control (RBAC) for a CRM or internal tool: a permission matrix, the database model, server-side checks in NestJS, record scopes, Firebase rules, MFA and an audit log.">
+<meta name="twitter:image" content="https://hemrajadhikari.info.np/assets/img/og-image.jpg">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="assets/fonts/manrope-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.min.css?v=b901531e">
+<script src="assets/js/config.js?v=08af1525" defer></script>
+<script src="assets/js/site.min.js?v=3347f7ec" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BlogPosting",
+   "headline": "Role-based access control for CRMs and internal tools: a practical guide",
+   "description": "How to design role-based access control (RBAC) for a CRM or internal tool: a permission matrix, the database model, server-side checks in NestJS, record scopes, Firebase rules, MFA and an audit log.",
+   "url": "https://hemrajadhikari.info.np/blog-rbac-crm-guide.html",
+   "mainEntityOfPage": "https://hemrajadhikari.info.np/blog-rbac-crm-guide.html",
+   "image": "https://hemrajadhikari.info.np/assets/img/og-image.jpg",
+   "inLanguage": "en",
+   "author": {
+    "@type": "Person",
+    "@id": "https://hemrajadhikari.info.np/#person",
+    "name": "Hemraj Adhikari",
+    "url": "https://hemrajadhikari.info.np/"
+   },
+   "publisher": {
+    "@type": "Person",
+    "@id": "https://hemrajadhikari.info.np/#person",
+    "name": "Hemraj Adhikari"
+   },
+   "keywords": "RBAC, role-based access control, CRM security, NestJS guard, Prisma, Firebase security rules, MFA, audit log",
+   "datePublished": "2026-10-17",
+   "dateModified": "2026-10-17"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://hemrajadhikari.info.np/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://hemrajadhikari.info.np/blog.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "RBAC for CRMs",
+     "item": "https://hemrajadhikari.info.np/blog-rbac-crm-guide.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html"><b>Hemraj Adhikari</b></a>
+    <nav class="nav" aria-label="Main">
+      <a href="about.html">About</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="credentials.html">Certifications</a>
+      <a href="services.html">Services</a>
+      <a href="blog.html" aria-current="page">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="btn btn--sm header-cv" href="CV-Hemraj%20Adhikari.pdf" download="Hemraj-Adhikari-CV.pdf">Download CV</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <nav aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="experience.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="credentials.html">Certifications</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html" aria-current="page">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="btn-row">
+    <a class="btn" href="CV-Hemraj%20Adhikari.pdf" download="Hemraj-Adhikari-CV.pdf">Download CV</a>
+    <a class="btn btn--outline" href="https://wa.me/9779865802093" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</div>
+
+<main id="main">
+  <article>
+    <header class="article-head">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="blog.html">Blog</a><span aria-hidden="true">/</span><span>Security</span></nav>
+        <h1>Role-based access control for CRMs and internal tools: a practical guide</h1>
+        <p class="lead">Roles, permissions and scope for a CRM or internal tool: how to plan them, model them in the database and enforce them on the server, with code for NestJS, Prisma and Firebase.</p>
+        <div class="byline"><img src="assets/img/hemraj-adhikari-portrait-sm.webp" alt="" width="42" height="42"><div><b>Hemraj Adhikari</b>Oct 2026 &middot; 9 min read &middot; English</div></div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="article-layout">
+        <div>
+          <div class="prose">
+<p>Every CRM ends up holding information that not everyone should see: personal documents, passport and visa details, salaries, partner commissions. The moment more than a handful of people use the system, &ldquo;everyone is an admin&rdquo; stops being a shortcut and becomes a risk.</p>
+<p>Role-based access control (RBAC) is the usual answer. The idea is simple, but it is easy to get wrong in ways that only show up later: a check that exists in the interface but not on the server, a report that leaks other teams&rsquo; data, or a permissions table nobody understands any more. This guide is the checklist I use when designing access for CRMs and internal tools.</p>
+<div class="callout blue"><div class="callout-label">Who this is for</div>Developers building a CRM, HR system or admin panel with more than one kind of user. The examples use NestJS, Prisma and Firebase, but the ideas apply to any stack.</div>
+<h2 id="three-ideas">Three ideas: roles, permissions and scope</h2>
+<p>Most access rules can be described with three separate questions. Keeping them separate is what keeps the system understandable.</p>
+<ul>
+<li><strong>Permission: what action?</strong> Small, specific verbs on a type of record, such as <code>student:read</code>, <code>student:update_stage</code> or <code>report:export</code>.</li>
+<li><strong>Role: who usually does it?</strong> A named bundle of permissions that matches a real job: counsellor, team lead, admissions, finance, partner agent, admin.</li>
+<li><strong>Scope: on which records?</strong> Own records, the team&rsquo;s or branch&rsquo;s records, or everything.</li>
+</ul>
+<p>Code should check <strong>permissions</strong>, never role names. <code>if (user.role === 'manager')</code> scattered across a codebase is what makes access impossible to change later. When a new role appears, you should only have to edit data, not code.</p>
+<h2 id="matrix">Start with a permission matrix, not code</h2>
+<p>Before writing anything, sit with the people who will use the system and fill in a table like this one. It becomes the specification, and later the seed data.</p>
+<div class="table-wrap"><table class="comp-table">
+<thead><tr><th>Permission</th><th>Counsellor</th><th>Team lead</th><th>Admissions</th><th>Partner agent</th><th>Admin</th></tr></thead>
+<tbody>
+<tr><td><strong>student:read</strong></td><td>Own</td><td>Team</td><td>All</td><td>Own referrals</td><td>All</td></tr>
+<tr><td><strong>student:update_stage</strong></td><td>Own</td><td>Team</td><td>All</td><td>&mdash;</td><td>All</td></tr>
+<tr><td><strong>document:view_passport</strong></td><td>Own</td><td>Team</td><td>All</td><td>&mdash;</td><td>All</td></tr>
+<tr><td><strong>report:export</strong></td><td>&mdash;</td><td>Team</td><td>All</td><td>&mdash;</td><td>All</td></tr>
+<tr><td><strong>user:manage</strong></td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>All</td></tr>
+</tbody></table></div>
+<p>Two things usually come out of this exercise. First, &ldquo;export&rdquo; is its own permission: being able to read a list on screen is very different from downloading all of it. Second, outside users such as partner agents need their own role with a much narrower scope, not a restricted version of a staff role.</p>
+<h2 id="data-model">Model it in the database</h2>
+<p>A role and permission model that lives in the database lets an admin adjust access without a deploy. In Prisma it looks like this:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">schema.prisma</span></div><div class="code-body">model User {
+  id       String  @id @default(cuid())
+  email    String  @unique
+  roleId   String
+  role     Role    @relation(fields: [roleId], references: [id])
+  branchId String? // used for &quot;team&quot; scope
+}
+
+model Role {
+  id          String           @id @default(cuid())
+  name        String           @unique // &quot;counsellor&quot;, &quot;team_lead&quot;, ...
+  users       User[]
+  permissions RolePermission[]
+}
+
+model Permission {
+  id    String           @id @default(cuid())
+  key   String           @unique // &quot;student:read&quot;, &quot;student:read_team&quot;
+  roles RolePermission[]
+}
+
+model RolePermission {
+  roleId       String
+  permissionId String
+  role         Role       @relation(fields: [roleId], references: [id])
+  permission   Permission @relation(fields: [permissionId], references: [id])
+
+  @@id([roleId, permissionId])
+}</div></div>
+<p>Scope gets its own keys next to the action: <code>student:read</code> lets a user open the student list at all, while <code>student:read_team</code> or <code>student:read_all</code> widen which records they see. A user with neither sees only their own. It keeps the table flat and easy to read in the admin screen. When a user signs in, load their permission keys once and put them in the session or token, so every request does not need extra queries.</p>
+<h2 id="server-checks">Enforce it on the server, every time</h2>
+<p>Hiding a button is good for usability, but it is not security. Anyone can call your API directly, so every route must check permissions on the server. In NestJS a small decorator and guard do the job:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">permissions.guard.ts</span></div><div class="code-body">import { CanActivate, ExecutionContext, ForbiddenException, Injectable, SetMetadata } from &#x27;@nestjs/common&#x27;;
+import { Reflector } from &#x27;@nestjs/core&#x27;;
+
+export const PERMS_KEY = &#x27;permissions&#x27;;
+export const RequirePermissions = (...perms: string[]) =&gt; SetMetadata(PERMS_KEY, perms);
+
+@Injectable()
+export class PermissionsGuard implements CanActivate {
+  constructor(private reflector: Reflector) {}
+
+  canActivate(ctx: ExecutionContext): boolean {
+    const required = this.reflector.getAllAndOverride&lt;string[]&gt;(PERMS_KEY, [ctx.getHandler(), ctx.getClass()]);
+    // Deny by default: a route with no declared permission is a bug, not a public route.
+    if (!required || required.length === 0) throw new ForbiddenException(&#x27;No permission declared for this route&#x27;);
+
+    const user = ctx.switchToHttp().getRequest().user; // set by your auth guard
+    const granted = new Set&lt;string&gt;(user?.permissions ?? []);
+    if (!required.every((p) =&gt; granted.has(p))) throw new ForbiddenException(&#x27;Missing permission&#x27;);
+    return true;
+  }
+}</div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">students.controller.ts</span></div><div class="code-body">@Controller(&#x27;students&#x27;)
+@UseGuards(JwtAuthGuard, PermissionsGuard)
+export class StudentsController {
+  constructor(private readonly students: StudentsService) {}
+
+  @Get()
+  @RequirePermissions(&#x27;student:read&#x27;)
+  findAll(@Req() req) {
+    return this.students.findAllFor(req.user);
+  }
+
+  @Patch(&#x27;:id/stage&#x27;)
+  @RequirePermissions(&#x27;student:update_stage&#x27;)
+  moveStage(@Req() req, @Param(&#x27;id&#x27;) id: string, @Body() dto: MoveStageDto) {
+    return this.students.moveStage(req.user, id, dto);
+  }
+}</div></div>
+<p>Deny-by-default is the most important line. When someone adds a new endpoint and forgets the decorator, the endpoint is closed rather than open, and the mistake shows up immediately in testing.</p>
+<h2 id="scope">Scope: the part most systems forget</h2>
+<p>A permission check answers &ldquo;may this user read students?&rdquo; It does not answer &ldquo;which students?&rdquo; That second question has to be applied to <em>every</em> query, including search, exports and dashboards. Put it in one function and reuse it:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">students.scope.ts</span></div><div class="code-body">import { Prisma } from &#x27;@prisma/client&#x27;;
+
+export function studentScope(user: AuthUser): Prisma.StudentWhereInput {
+  const has = (p: string) =&gt; user.permissions.includes(p);
+  if (has(&#x27;student:read_all&#x27;)) return {};
+  if (has(&#x27;student:read_team&#x27;)) return { branchId: user.branchId };
+  return { counsellorId: user.id }; // own records only
+}
+
+// every read goes through the scope
+const students = await prisma.student.findMany({
+  where: { AND: [studentScope(user), filters] },
+});</div></div>
+<div class="callout orange"><div class="callout-label">Common leak</div>The list screen is scoped, but the <strong>CSV export</strong>, the <strong>global search</strong> or a <strong>dashboard total</strong> queries the table directly. Test those three on purpose with a low-privilege account.</div>
+<p>Also check scope on single-record routes. <code>GET /students/:id</code> must confirm that the record falls inside the user&rsquo;s scope, otherwise anyone can walk through IDs one by one.</p>
+<h2 id="firebase">If you are on Firebase</h2>
+<p>With Firestore there is often no API server in between, so the rules <em>are</em> the security layer. Keep the role on a user document and check it in the rules:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">firestore.rules</span></div><div class="code-body">rules_version = &#x27;2&#x27;;
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function role() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    match /staff/{staffId} {
+      allow read: if signedIn() &amp;&amp; role() in [&#x27;admin&#x27;, &#x27;compliance&#x27;];
+      allow write: if signedIn() &amp;&amp; role() == &#x27;admin&#x27;;
+    }
+
+    // users may read their own profile but never change their own role
+    match /users/{uid} {
+      allow read: if signedIn() &amp;&amp; request.auth.uid == uid;
+      allow write: if signedIn() &amp;&amp; role() == &#x27;admin&#x27;;
+    }
+  }
+}</div></div>
+<p>Apply the same idea to Cloud Storage rules for uploaded documents, and test both with the Firebase emulator before deploying. A rule that only exists in the front end is not a rule.</p>
+<h2 id="mfa-sessions">MFA and sessions</h2>
+<ul>
+<li><strong>Require MFA for every staff account</strong>, not only admins. Most account takeovers start with a reused password on an ordinary account.</li>
+<li><strong>Keep sessions short for powerful roles</strong> and ask for MFA again before sensitive actions such as changing roles or exporting everything.</li>
+<li><strong>Remove access on the day someone leaves.</strong> Make disabling a user one click, and have it end their active sessions.</li>
+<li><strong>Review access every quarter.</strong> Export the list of users with their roles and ask each team lead to confirm it. Roles drift as people change jobs.</li>
+</ul>
+<h2 id="audit-log">Keep an audit log</h2>
+<p>Sooner or later someone asks &ldquo;who changed this?&rdquo; An audit log answers it, and it is much easier to build at the start than to add later.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">schema.prisma</span></div><div class="code-body">model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String
+  action    String   // &quot;student.stage_changed&quot;, &quot;user.role_changed&quot;
+  entity    String   // &quot;Student&quot;
+  entityId  String
+  before    Json?
+  after     Json?
+  ip        String?
+  createdAt DateTime @default(now())
+
+  @@index([entity, entityId])
+}</div></div>
+<p>Write to it from the service layer in the same transaction as the change, record role and permission changes as well as data changes, and never allow updates or deletes on the table from the application.</p>
+<h2 id="checklist">Checklist before you go live</h2>
+<div class="info-grid">
+<div class="info-card"><div class="info-card-title">Design</div><div class="info-card-text">A permission matrix agreed with the people who use the system. Code checks permissions, not role names. Export is a separate permission.</div></div>
+<div class="info-card"><div class="info-card-title">Server</div><div class="info-card-text">Every route has a permission, and routes without one are denied. Single-record routes check scope too.</div></div>
+<div class="info-card"><div class="info-card-title">Data</div><div class="info-card-text">One scope function used by lists, search, exports and dashboards. Tested with a low-privilege account.</div></div>
+<div class="info-card"><div class="info-card-title">People</div><div class="info-card-text">MFA for all staff, same-day removal for leavers, a quarterly access review and an audit log of every change.</div></div>
+</div>
+<p>None of this is complicated on its own. What makes it work is doing all of it, consistently, from the first version. If you are planning a CRM or internal tool and want a second opinion on the access model, <a href="contact.html?topic=Security%20review">send me a message</a>.</p>
+<div class="tag-cloud">
+<span class="tag-item highlight">#RBAC</span>
+<span class="tag-item highlight">#CRM</span>
+<span class="tag-item">#NestJS</span>
+<span class="tag-item">#Prisma</span>
+<span class="tag-item">#Firebase</span>
+<span class="tag-item">#Security</span>
+</div>
+
+          </div>
+          <aside class="card author" aria-label="About the author">
+            <img src="assets/img/hemraj-adhikari-portrait-sm.webp" alt="Hemraj Adhikari" width="64" height="64" loading="lazy">
+            <div>
+              <h2>Hemraj Adhikari</h2>
+              <p>Head of IT at Route 2 Uni and full-stack developer in Kathmandu. I build CRMs and internal tools, and write practical guides for people working in IT in Nepal.</p>
+              <div class="links"><a href="about.html">About me</a><a href="case-route2uni-crm.html">CRM case study</a><a href="contact.html">Ask a question</a></div>
+            </div>
+          </aside>
+          <section class="related" aria-label="More posts">
+            <h2>More posts</h2>
+            <div class="grid-3"><a class="card" href="it-freelance-blog.html"><span>Freelancing &middot; 12 min read</span><h3>Freelancing in Nepal&#x27;s IT sector: a detailed technical guide</h3></a><a class="card" href="blog-python-beginners-nepal.html"><span>Programming &middot; 10 min read</span><h3>Python for beginners in Nepal: a complete learning guide</h3></a><a class="card" href="blog-freelancing-nepal-it.html"><span>Freelancing &middot; 11 min read</span><h3>Nepal bata IT freelancing: Upwork, Fiverr ra payment</h3></a></div>
+          </section>
+        </div>
+        <nav class="toc" aria-label="On this page">
+          <h2>On this page</h2>
+          <ol><li><a href="#three-ideas">Three ideas: roles, permissions and scope</a></li><li><a href="#matrix">Start with a permission matrix, not code</a></li><li><a href="#data-model">Model it in the database</a></li><li><a href="#server-checks">Enforce it on the server, every time</a></li><li><a href="#scope">Scope: the part most systems forget</a></li><li><a href="#firebase">If you are on Firebase</a></li><li><a href="#mfa-sessions">MFA and sessions</a></li><li><a href="#audit-log">Keep an audit log</a></li><li><a href="#checklist">Checklist before you go live</a></li></ol>
+        </nav>
+      </div>
+    </div>
+  </article>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="index.html"><b>Hemraj Adhikari</b></a>
+        <p>Head of IT at Route 2 Uni and full-stack developer, based in Kathmandu, Nepal.</p>
+        <div class="socials">
+        <a href="https://www.linkedin.com/in/hemrajadhikariy/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+        <a href="https://github.com/Hemraj-Adhikari" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
+        <a href="https://www.upwork.com/freelancers/hemrajadhikari" target="_blank" rel="noopener" aria-label="Upwork"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.56 13.2c-1.08 0-2.1-.46-3.02-1.2l.23-1.06.01-.04c.2-1.13.84-3.02 2.78-3.02a2.66 2.66 0 0 1 0 5.32zm0-8.02c-2.48 0-4.4 1.61-5.18 4.26-1.19-1.79-2.1-3.95-2.62-5.76H8.08v6.97a2.47 2.47 0 1 1-4.94 0V3.68H.46v6.97a5.15 5.15 0 0 0 10.3.04V9.53c.52 1.08 1.16 2.18 1.94 3.16l-1.65 7.75h2.75l1.19-5.62a6.3 6.3 0 0 0 3.57 1.07 5.36 5.36 0 0 0 0-10.71z"/></svg></a>
+        <a href="https://wa.me/9779865802093" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5v-.5c-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3M12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.2 24l6.4-1.7A11.8 11.8 0 0 0 24 12c0-3.2-1.2-6.2-3.5-8.5"/></svg></a>
+        <a href="mailto:hemrajhadhikari@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+      </div>
+      </div>
+      <div>
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="credentials.html">Certifications</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>More</h2>
+        <ul>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="clients.html">Clients</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:hemrajhadhikari@gmail.com">hemrajhadhikari@gmail.com</a></li>
+          <li><a href="https://wa.me/9779865802093" target="_blank" rel="noopener">+977 986-5802093</a></li>
+          <li><a href="https://www.linkedin.com/in/hemrajadhikariy/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a class="foot-cv" href="CV-Hemraj%20Adhikari.pdf" download="Hemraj-Adhikari-CV.pdf">Download CV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> Hemraj Adhikari</span>
+      <span>Kathmandu, Nepal</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

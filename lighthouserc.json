@@ -1,0 +1,26 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "./",
+      "numberOfRuns": 1,
+      "url": [
+        "http://localhost/index.html",
+        "http://localhost/projects.html",
+        "http://localhost/case-route2uni-crm.html",
+        "http://localhost/contact.html",
+        "http://localhost/blog-rbac-crm-guide.html"
+      ]
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["warn", { "minScore": 0.85 }],
+        "categories:accessibility": ["error", { "minScore": 0.95 }],
+        "categories:best-practices": ["warn", { "minScore": 0.9 }],
+        "categories:seo": ["error", { "minScore": 0.95 }]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}

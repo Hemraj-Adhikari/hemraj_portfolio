@@ -122,31 +122,6 @@
     });
   }
 
-  /* contact form (Formspree) */
-  var form = $('form[data-ajax]');
-  if (form && window.fetch) {
-    var status = $('.form-status', form), msg = $('textarea', form), counter = $('[data-chars]', form);
-    if (msg && counter) msg.addEventListener('input', function () { counter.textContent = msg.value.length + ' / 2000'; });
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var bad = null;
-      $$('[required]', form).forEach(function (f) {
-        var ok = f.value.trim() !== '' && (f.type !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value));
-        f.closest('.field').classList.toggle('is-invalid', !ok);
-        f.setAttribute('aria-invalid', String(!ok));
-        if (!ok && !bad) bad = f;
-      });
-      if (bad) { bad.focus(); show('Please fill in your name, a valid email and a message.', false); return; }
-      var b = $('button[type="submit"]', form), label = b.textContent;
-      b.disabled = true; b.textContent = 'Sending...';
-      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-        .then(function (r) { if (!r.ok) throw 0; form.reset(); if (counter) counter.textContent = '0 / 2000'; show('Thanks, your message was sent. I will reply within a day.', true); })
-        .catch(function () { show('Sorry, that did not send. Please email hemrajhadhikari@gmail.com instead.', false); })
-        .then(function () { b.disabled = false; b.textContent = label; });
-    });
-    function show(t, ok) { status.textContent = t; status.className = 'form-status ' + (ok ? 'is-ok' : 'is-err'); }
-  }
-
   /* blog: highlight the current section in the table of contents */
   var toc = $$('.toc a[href^="#"]');
   if (toc.length && 'IntersectionObserver' in window) {
