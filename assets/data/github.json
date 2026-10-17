@@ -1,1 +1,59 @@
-{ "updated": null, "repos": [] }
+{
+  "updated": "2026-10-17T08:10:55.713Z",
+  "repos": [
+    {
+      "name": "hemraj_portfolio",
+      "description": "my portfolio",
+      "url": "https://github.com/Hemraj-Adhikari/hemraj_portfolio",
+      "homepage": "https://hemrajadhikari.info.np/",
+      "language": "HTML",
+      "stars": 1,
+      "pushed_at": "2026-10-17T08:10:44Z"
+    },
+    {
+      "name": "achiveerrr",
+      "description": "",
+      "url": "https://github.com/Hemraj-Adhikari/achiveerrr",
+      "homepage": "",
+      "language": "",
+      "stars": 2,
+      "pushed_at": "2026-10-13T06:24:39Z"
+    },
+    {
+      "name": "-Introducing-Gemini-3.5-",
+      "description": "",
+      "url": "https://github.com/Hemraj-Adhikari/-Introducing-Gemini-3.5-",
+      "homepage": "",
+      "language": "HTML",
+      "stars": 2,
+      "pushed_at": "2026-09-01T04:36:42Z"
+    },
+    {
+      "name": "-Introducing-Gemini-3.5-Transcribe",
+      "description": "",
+      "url": "https://github.com/Hemraj-Adhikari/-Introducing-Gemini-3.5-Transcribe",
+      "homepage": "",
+      "language": "",
+      "stars": 2,
+      "pushed_at": "2026-08-27T08:53:19Z"
+    },
+    {
+      "name": "DSA-Problem-Solve-",
+      "description": "",
+      "url": "https://github.com/Hemraj-Adhikari/DSA-Problem-Solve-",
+      "homepage": "",
+      "language": "C++",
+      "stars": 1,
+      "pushed_at": "2026-08-02T07:00:08Z"
+    },
+    {
+      "name": "demotest",
+      "description": "",
+      "url": "https://github.com/Hemraj-Adhikari/demotest",
+      "homepage": "",
+      "language": "",
+      "stars": 1,
+      "pushed_at": "2026-07-30T10:09:06Z"
+    }
+  ]
+}
